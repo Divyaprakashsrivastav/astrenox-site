@@ -1,0 +1,33 @@
+export default function Services() {
+
+  const services = [
+    "Artificial Intelligence",
+    "Robotics Development",
+    "Autonomous Systems",
+    "Software Engineering"
+  ]
+
+  return (
+    <section id="services" className="py-32 bg-black text-white text-center">
+
+      <h2 className="text-4xl font-bold mb-16">
+        Our Services
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-20">
+
+        {services.map((service,i)=>(
+          <div key={i} className="p-10 border border-gray-800 rounded-xl hover:bg-gray-900 transition">
+
+            <h3 className="text-xl font-semibold">
+              {service}
+            </h3>
+
+          </div>
+        ))}
+
+      </div>
+
+    </section>
+  )
+}
