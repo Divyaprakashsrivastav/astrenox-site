@@ -7,15 +7,17 @@ interface VisualProps {
   index: number;
 }
 
+const MAX_INDEX = 4;
+
 function useStepMotion(progress: MotionValue<number>, index: number) {
   const floatY = useTransform(progress, (p) => {
-    const dist = Math.abs(p * 4 - index);
-    return Math.max(0, 1 - dist * 1.4) * -6;
+    const dist = Math.abs(p * MAX_INDEX - index);
+    return Math.max(0, 1 - dist * 1.4) * -5;
   });
 
   const emphasis = useTransform(progress, (p) => {
-    const dist = Math.abs(p * 4 - index);
-    return Math.max(0.25, 1 - dist * 0.55);
+    const dist = Math.abs(p * MAX_INDEX - index);
+    return Math.max(0.35, 1 - dist * 0.5);
   });
 
   return { floatY, emphasis };
@@ -37,7 +39,7 @@ export function ReviewVisual({ progress, index }: VisualProps) {
         cy="40"
         r="14"
         fill="none"
-        stroke="#6FA3B8"
+        stroke="#7D2E68"
         strokeWidth="1"
         style={{ opacity: emphasis }}
       />
@@ -62,7 +64,7 @@ export function DeliveryVisual({ progress, index }: VisualProps) {
           height="36"
           rx="4"
           fill="#F7F8FA"
-          stroke="#6FA3B8"
+          stroke="#7D2E68"
           strokeWidth="1"
           style={{ opacity: emphasis }}
         />
@@ -72,7 +74,7 @@ export function DeliveryVisual({ progress, index }: VisualProps) {
         y1="40"
         x2="90"
         y2="40"
-        stroke="#6FA3B8"
+        stroke="#7D2E68"
         strokeWidth="1"
         strokeDasharray="3 4"
         style={{ opacity: emphasis }}
@@ -93,13 +95,13 @@ export function ProductionVisual({ progress, index }: VisualProps) {
         height="44"
         rx="6"
         fill="#F7F8FA"
-        stroke="#6FA3B8"
+        stroke="#7D2E68"
         strokeWidth="1"
         style={{ strokeOpacity: emphasis }}
       />
-      <circle cx="40" cy="42" r="6" fill="#6FA3B8" opacity="0.2" />
-      <circle cx="60" cy="42" r="6" fill="#6FA3B8" opacity="0.35" />
-      <circle cx="80" cy="42" r="6" fill="#6FA3B8" opacity="0.5" />
+      <circle cx="40" cy="42" r="6" fill="#7D2E68" opacity="0.2" />
+      <circle cx="60" cy="42" r="6" fill="#7D2E68" opacity="0.35" />
+      <circle cx="80" cy="42" r="6" fill="#7D2E68" opacity="0.5" />
     </motion.svg>
   );
 }
@@ -112,7 +114,7 @@ export function OptimizationVisual({ progress, index }: VisualProps) {
       <motion.path
         d="M 16 55 Q 40 25 60 40 T 104 30"
         fill="none"
-        stroke="#6FA3B8"
+        stroke="#7D2E68"
         strokeWidth="1.5"
         style={{ opacity: emphasis }}
       />
@@ -124,7 +126,7 @@ export function OptimizationVisual({ progress, index }: VisualProps) {
           width="12"
           height={h * 0.4}
           rx="2"
-          fill="#6FA3B8"
+          fill="#7D2E68"
           opacity={0.2 + i * 0.15}
         />
       ))}
@@ -147,11 +149,11 @@ export function ScaleVisual({ progress, index }: VisualProps) {
         cy="40"
         r="22"
         fill="none"
-        stroke="#6FA3B8"
+        stroke="#7D2E68"
         strokeWidth="1"
         style={{ scale: ringScale, opacity: emphasis, transformOrigin: "60px 40px" }}
       />
-      <motion.circle cx="60" cy="40" r="10" fill="#6FA3B8" style={{ opacity: emphasis }} />
+      <motion.circle cx="60" cy="40" r="10" fill="#7D2E68" style={{ opacity: emphasis }} />
       {[0, 1, 2, 3].map((i) => (
         <line
           key={i}

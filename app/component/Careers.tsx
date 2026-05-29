@@ -24,7 +24,7 @@ const openings = [
 
 export default function Careers() {
   return (
-    <section id="careers" className="py-28 lg:py-40 border-t border-border/60">
+    <section id="careers" className="relative py-32 lg:py-44 border-t border-border/40">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export default function Careers() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.07, duration: 0.5 }}
               whileHover={{ x: 3 }}
-              className="premium-card p-6 flex items-center justify-between group cursor-pointer"
+              className="glass-card p-6 flex items-center justify-between group cursor-pointer glow-border"
             >
               <div>
                 <h3 className="font-heading font-semibold text-text group-hover:text-primary transition-colors duration-300">

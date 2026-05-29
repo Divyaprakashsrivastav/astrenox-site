@@ -2,17 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Features", href: "#services" },
+  { label: "Capabilities", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "Projects", href: "#projects" },
   { label: "Research", href: "#research" },
-  { label: "Careers", href: "#careers" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -37,51 +34,49 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "glass-nav shadow-sm shadow-primary/5"
-            : "bg-transparent border-b border-border/40"
-        }`}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6"
       >
-        <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-[68px] lg:h-[76px] flex items-center justify-between relative">
+        <nav
+          className={`nav-float max-w-5xl mx-auto h-14 px-2 sm:px-3 flex items-center justify-between transition-all duration-400 ${
+            scrolled ? "nav-float-scrolled" : ""
+          }`}
+        >
           <a
             href="#"
-            className="font-heading text-xl font-semibold text-text tracking-tight hover:text-primary transition-colors duration-300 shrink-0 z-10"
+            className="font-heading text-lg font-semibold text-text pl-3 sm:pl-4 hover:text-primary transition-colors"
           >
-            Astreanox
+            Astrenox
           </a>
 
-          <div className="hidden lg:flex items-center justify-center absolute left-1/2 -translate-x-1/2 gap-0.5">
+          <div className="hidden md:flex items-center gap-0.5">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="relative px-4 py-2 text-sm font-medium text-muted hover:text-text transition-colors duration-300 group"
+                className="px-3.5 py-2 text-[13px] font-medium text-muted hover:text-text rounded-full transition-colors"
               >
                 {link.label}
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 h-px w-0 bg-primary transition-all duration-300 ease-out group-hover:w-[calc(100%-2rem)]" />
               </a>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="flex items-center gap-3 shrink-0 z-10"
-          >
-            <a href="#contact" className="btn-dark hidden sm:inline-flex text-sm">
-              Book a Call
+          <div className="flex items-center gap-2 pr-1 sm:pr-2">
+            <a
+              href="#contact"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-[13px] font-medium text-white bg-primary hover:bg-[#6a2859] rounded-full transition-colors shadow-sm"
+            >
+              Book a call
+              <ArrowRight size={14} strokeWidth={2} />
             </a>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 rounded-lg text-text border border-transparent hover:border-border hover:bg-white/60 transition-all duration-300"
+              className="md:hidden p-2 rounded-full text-text hover:bg-background transition-colors"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
-              {mobileOpen ? <X size={20} strokeWidth={1.5} /> : <Menu size={20} strokeWidth={1.5} />}
+              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
-          </motion.div>
+          </div>
         </nav>
       </motion.header>
 
@@ -91,54 +86,38 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 lg:hidden"
+            className="fixed inset-0 z-40 md:hidden"
           >
             <div
-              className="absolute inset-0 bg-text/10 backdrop-blur-sm"
+              className="absolute inset-0 bg-text/20 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 32, stiffness: 320 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-background border-l border-border shadow-2xl"
+              initial={{ y: -8, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -8, opacity: 0 }}
+              className="absolute top-20 left-4 right-4 nav-float p-6 bg-card"
             >
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.05 } },
-                }}
-                className="flex flex-col pt-24 px-8 gap-0.5"
-              >
+              <div className="flex flex-col gap-1">
                 {navLinks.map((link) => (
-                  <motion.a
+                  <a
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    variants={{
-                      hidden: { opacity: 0, x: 16 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    className="py-3.5 text-base font-medium text-text hover:text-primary transition-colors border-b border-border/60"
+                    className="py-3 text-base font-medium text-text hover:text-primary transition-colors"
                   >
                     {link.label}
-                  </motion.a>
+                  </a>
                 ))}
-                <motion.a
+                <a
                   href="#contact"
                   onClick={() => setMobileOpen(false)}
-                  variants={{
-                    hidden: { opacity: 0, x: 16 },
-                    visible: { opacity: 1, x: 0 },
-                  }}
-                  className="btn-dark mt-8 text-center justify-center"
+                  className="mt-4 inline-flex items-center justify-center gap-2 py-3 text-sm font-medium text-white bg-primary rounded-full"
                 >
-                  Book a Call
-                </motion.a>
-              </motion.div>
+                  Book a call
+                  <ArrowRight size={14} />
+                </a>
+              </div>
             </motion.div>
           </motion.div>
         )}

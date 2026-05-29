@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import type { ReactNode, MouseEvent } from "react";
 
 interface SocialLink {
   label: string;
@@ -48,41 +48,62 @@ const socialLinks: SocialLink[] = [
   { label: "YouTube", href: "#", icon: <YouTubeIcon /> },
 ];
 
+function SocialGlassButton({
+  social,
+  index,
+}: {
+  social: SocialLink;
+  index: number;
+}) {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 280, damping: 22 });
+  const springY = useSpring(y, { stiffness: 280, damping: 22 });
+
+  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.2);
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.2);
+  };
+
+  const onLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.a
+      href={social.href}
+      aria-label={social.label}
+      style={{ x: springX, y: springY }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      initial={{ opacity: 0, y: 12, scale: 0.92 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        delay: 0.1 + index * 0.06,
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.98 }}
+      className="footer-glass group relative flex h-11 w-11 items-center justify-center rounded-xl text-[#a8b0c0] transition-colors duration-300 hover:text-white hover:border-[#c97b84]/25"
+    >
+      <span
+        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-[#c97b84]/[0.06] transition-opacity duration-300"
+        aria-hidden
+      />
+      <span className="relative z-10">{social.icon}</span>
+    </motion.a>
+  );
+}
+
 export default function SocialIcons() {
   return (
-    <div className="flex items-center justify-center gap-3 sm:gap-3.5">
+    <div className="flex items-center justify-center gap-3">
       {socialLinks.map((social, i) => (
-        <motion.a
-          key={social.label}
-          href={social.href}
-          aria-label={social.label}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            delay: 0.08 + i * 0.05,
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          whileHover={{
-            y: -2,
-            scale: 1.06,
-            transition: {
-              duration: 0.35,
-              ease: [0.22, 1, 0.36, 1],
-            },
-          }}
-          whileTap={{ scale: 0.97 }}
-          className="group relative flex h-10 w-10 items-center justify-center rounded-[10px] border border-white/[0.12] bg-white/[0.03] text-white/50 backdrop-blur-sm transition-[border-color,box-shadow,color] duration-400 ease-out hover:border-primary/45 hover:text-primary hover:shadow-[0_0_22px_rgba(111,163,184,0.28),inset_0_1px_0_rgba(255,255,255,0.06)]"
-        >
-          <span
-            className="absolute inset-0 rounded-[10px] opacity-0 transition-opacity duration-400 group-hover:opacity-100 pointer-events-none"
-            style={{
-              boxShadow: "inset 0 0 0 1px rgba(111,163,184,0.25)",
-            }}
-          />
-          {social.icon}
-        </motion.a>
+        <SocialGlassButton key={social.label} social={social} index={i} />
       ))}
     </div>
   );

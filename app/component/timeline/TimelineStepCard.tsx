@@ -3,9 +3,15 @@
 import {
   motion,
   useTransform,
+  useSpring,
   type MotionValue,
 } from "framer-motion";
 import type { ComponentType } from "react";
+
+const CARD_MIN_HEIGHT = 340;
+
+const SHADOW_REST =
+  "0 1px 2px rgba(16,24,40,0.05), 0 2px 8px rgba(16,24,40,0.04), inset 0 1px 0 rgba(255,255,255,0.95)";
 
 interface TimelineStepCardProps {
   index: number;
@@ -26,62 +32,63 @@ export default function TimelineStepCard({
   progress,
   totalSteps,
 }: TimelineStepCardProps) {
-  const maxIndex = totalSteps - 1;
+  const maxIndex = Math.max(totalSteps - 1, 1);
 
-  const opacity = useTransform(progress, (p) => {
+  const activeStrength = useTransform(progress, (p) => {
     const active = p * maxIndex;
     const dist = Math.abs(active - index);
-    if (dist < 0.35) return 1;
-    if (dist < 1) return 0.55 + (1 - dist) * 0.35;
-    return 0.42;
+    if (dist < 0.3) return 1;
+    if (dist < 0.85) return Math.max(0, 1 - ((dist - 0.3) / 0.55) * 0.85);
+    return 0;
   });
 
-  const scale = useTransform(progress, (p) => {
-    const active = p * maxIndex;
-    const dist = Math.abs(active - index);
-    if (dist < 0.35) return 1.03;
-    return 0.96 + Math.max(0, 0.04 - dist * 0.04);
+  const smoothStrength = useSpring(activeStrength, {
+    stiffness: 95,
+    damping: 24,
+    mass: 0.8,
   });
 
-  const borderColor = useTransform(progress, (p) => {
-    const active = p * maxIndex;
-    const dist = Math.abs(active - index);
-    const t = Math.max(0, 1 - dist * 1.2);
-    const r = Math.round(111 + (217 - 111) * (1 - t));
-    const g = Math.round(163 + (222 - 163) * (1 - t));
-    const b = Math.round(184 + (229 - 184) * (1 - t));
-    return `rgba(${r}, ${g}, ${b}, ${0.5 + t * 0.5})`;
+  const opacity = useTransform(smoothStrength, (t) =>
+    t > 0.45 ? 1 : 0.92 + t * 0.08
+  );
+
+  const scale = useTransform(smoothStrength, (t) => 0.985 + t * 0.055);
+
+  const y = useTransform(smoothStrength, (t) => -t * 8);
+
+  const borderWidth = useTransform(smoothStrength, (t) =>
+    t > 0.45 ? "1.5px" : "1px"
+  );
+
+  const borderColor = useTransform(smoothStrength, (t) => {
+    const alpha = 0.55 + t * 0.4;
+    return t > 0.45
+      ? `rgba(125, 46, 104, ${0.45 + t * 0.35})`
+      : `rgba(229, 231, 235, ${alpha})`;
   });
 
-  const shadow = useTransform(progress, (p) => {
-    const active = p * maxIndex;
-    const dist = Math.abs(active - index);
-    const t = Math.max(0, 1 - dist * 1.1);
-    return `0 ${4 + t * 8}px ${24 + t * 24}px rgba(111, 163, 184, ${0.06 + t * 0.12}), 0 0 ${t * 40}px rgba(111, 163, 184, ${t * 0.15})`;
+  const boxShadow = useTransform(smoothStrength, (t) => {
+    if (t < 0.25) return SHADOW_REST;
+    return [
+      SHADOW_REST,
+      `0 8px 24px rgba(16,24,40,${0.06 + t * 0.04})`,
+      `0 20px 48px rgba(125,46,104,${0.06 + t * 0.08})`,
+      `0 0 0 1px rgba(125,46,104,${0.04 + t * 0.06})`,
+    ].join(", ");
   });
 
-  const grayscale = useTransform(progress, (p) => {
-    const active = p * maxIndex;
-    const dist = Math.abs(active - index);
-    return `grayscale(${Math.min(0.45, dist * 0.35)})`;
-  });
+  const surfaceGlow = useTransform(smoothStrength, (t) => t);
+  const titleColor = useTransform(smoothStrength, (t) =>
+    t > 0.45 ? "#0a0a0a" : "#1d2939"
+  );
+  const descOpacity = useTransform(smoothStrength, (t) => 0.78 + t * 0.22);
+  const stepBadgeOpacity = useTransform(smoothStrength, (t) => 0.85 + t * 0.15);
 
-  const y = useTransform(progress, (p) => {
+  const iconY = useTransform(progress, (p) => {
     const active = p * maxIndex;
     const dist = Math.abs(active - index);
-    return dist < 0.4 ? -4 : 0;
-  });
-
-  const labelOpacity = useTransform(progress, (p) => {
-    const active = p * maxIndex;
-    const dist = Math.abs(active - index);
-    return dist < 0.5 ? 1 : 0.45;
-  });
-
-  const glowOpacity = useTransform(progress, (p) => {
-    const active = p * maxIndex;
-    const dist = Math.abs(active - index);
-    return Math.max(0, 1 - dist * 1.15) * 0.85;
+    if (dist >= 0.45) return 0;
+    return Math.sin(p * Math.PI * 3 + index * 0.8) * 2.5 * (1 - dist * 1.2);
   });
 
   return (
@@ -91,37 +98,63 @@ export default function TimelineStepCard({
         scale,
         y,
         borderColor,
-        boxShadow: shadow,
-        filter: grayscale,
+        boxShadow,
+        borderWidth,
+        minHeight: CARD_MIN_HEIGHT,
       }}
       whileHover={{
-        transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
+        y: -8,
+        rotateX: 1.5,
+        rotateY: index % 2 === 0 ? -1.25 : 1.25,
+        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
       }}
-      className="group relative flex flex-col rounded-xl border bg-surface/90 backdrop-blur-sm p-5 lg:p-6 min-w-[260px] lg:min-w-0 flex-1"
+      className="group relative flex h-full w-full flex-col rounded-[1.125rem] border bg-card [transform-style:preserve-3d] will-change-transform"
     >
       <motion.div
-        style={{ opacity: glowOpacity }}
-        className="absolute inset-0 rounded-xl pointer-events-none bg-gradient-to-b from-primary/10 via-transparent to-transparent"
+        style={{ opacity: surfaceGlow }}
+        className="absolute inset-0 rounded-[1.125rem] pointer-events-none bg-gradient-to-b from-white via-card to-[#fafafa]"
+        aria-hidden
+      />
+      <motion.div
+        style={{ opacity: surfaceGlow }}
+        className="absolute inset-0 rounded-[1.125rem] pointer-events-none bg-gradient-to-br from-primary/[0.06] via-transparent to-secondary/[0.04]"
+        aria-hidden
+      />
+      <motion.div
+        style={{ opacity: surfaceGlow }}
+        className="absolute -inset-px rounded-[1.125rem] pointer-events-none shadow-[0_0_32px_rgba(125,46,104,0.1)]"
         aria-hidden
       />
 
-      <motion.span
-        style={{ opacity: labelOpacity }}
-        className="text-[10px] font-medium tracking-[0.2em] text-primary uppercase mb-3"
-      >
-        {step}
-      </motion.span>
+      <div className="relative z-10 flex h-full flex-col p-7 lg:p-8">
+        <motion.div style={{ opacity: stepBadgeOpacity }} className="mb-5">
+          <span className="inline-flex items-center rounded-md border border-primary/15 bg-primary/[0.06] px-2.5 py-1 text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">
+            {step}
+          </span>
+        </motion.div>
 
-      <h3 className="font-heading text-lg lg:text-xl font-semibold text-text tracking-tight mb-2">
-        {title}
-      </h3>
+        <motion.h3
+          style={{ color: titleColor }}
+          className="font-heading text-[1.125rem] lg:text-xl font-semibold tracking-[-0.02em] leading-[1.25] mb-4 min-h-[3.5rem] lg:min-h-[3.75rem]"
+        >
+          {title}
+        </motion.h3>
 
-      <p className="text-sm text-muted leading-relaxed mb-5 flex-1">
-        {description}
-      </p>
+        <motion.p
+          style={{ opacity: descOpacity }}
+          className="text-[0.8125rem] leading-[1.65] text-muted mb-7 min-h-[4.75rem] flex-1"
+        >
+          {description}
+        </motion.p>
 
-      <div className="h-16 lg:h-20 flex items-center justify-center opacity-90">
-        <Visual progress={progress} index={index} />
+        <motion.div
+          style={{ y: iconY }}
+          className="mt-auto flex h-[76px] shrink-0 items-center justify-center rounded-xl border border-border bg-[#fafbfc] shadow-[inset_0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 group-hover:border-primary/20 group-hover:bg-white group-hover:shadow-[inset_0_1px_2px_rgba(16,24,40,0.03),0_4px_12px_rgba(16,24,40,0.04)]"
+        >
+          <div className="h-[52px] w-full max-w-[148px] px-3 transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+            <Visual progress={progress} index={index} />
+          </div>
+        </motion.div>
       </div>
     </motion.article>
   );

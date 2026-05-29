@@ -1,98 +1,104 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
-import GradientBlobs from "./ui/GradientBlobs";
-import GeometricBackground from "./ui/GeometricBackground";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import HeroAINetwork from "./hero/HeroAINetwork";
+import HeroFloatingCards from "./hero/HeroFloatingCards";
+import LiquidButton from "./ui/LiquidButton";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.1 } },
+};
+
 export default function Hero() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const visualY = useTransform(scrollYProgress, [0, 1], [0, 48]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      <div className="absolute inset-0 grid-background opacity-60" />
-      <GradientBlobs />
-      <GeometricBackground />
+    <section
+      ref={ref}
+      className="relative min-h-[100svh] flex items-center overflow-hidden hero-gradient"
+    >
+      <div
+        className="hero-glow w-[480px] h-[360px] -top-24 right-0"
+        style={{ background: "rgba(201, 123, 132, 0.08)" }}
+        aria-hidden
+      />
+      <div
+        className="hero-glow w-[400px] h-[320px] bottom-0 left-[-8%]"
+        style={{ background: "rgba(125, 46, 104, 0.06)" }}
+        aria-hidden
+      />
+      <div className="absolute inset-0 mesh-grid opacity-40" aria-hidden />
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-36 pb-28 lg:pt-44 lg:pb-36"
-      >
-        <motion.div variants={fadeUp} transition={{ delay: 0.15 }} className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-border bg-surface/80 text-xs font-medium text-muted mb-10 backdrop-blur-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-          Enterprise autonomous intelligence
-        </motion.div>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-36 lg:pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p
+              variants={fadeUp}
+              className="text-xs font-semibold tracking-[0.18em] uppercase text-muted mb-6"
+            >
+              Astrenox · Intelligent Autonomous Systems
+            </motion.p>
 
-        <motion.h1
-          variants={fadeUp}
-          transition={{ delay: 0.25 }}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-semibold text-text tracking-tight leading-[1.08]"
-        >
-          Building{" "}
-          <span className="font-editorial text-primary">intelligent</span>
-          <br />
-          autonomous systems
-        </motion.h1>
+            <motion.h1
+              variants={fadeUp}
+              className="font-heading text-[clamp(2.25rem,5.5vw,3.75rem)] font-semibold text-text tracking-tight leading-[1.1]"
+            >
+              ASTRENOX builds{" "}
+              <span className="text-highlight-primary">intelligent</span>{" "}
+              autonomous systems.
+            </motion.h1>
 
-        <motion.p
-          variants={fadeUp}
-          transition={{ delay: 0.35 }}
-          className="mt-6 font-heading text-2xl sm:text-3xl md:text-4xl font-semibold text-muted/90 tracking-tight"
-        >
-          for the{" "}
-          <span className="font-editorial text-text">future-ready</span> enterprise
-        </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 text-base sm:text-lg text-muted max-w-lg leading-relaxed"
+            >
+              Enterprise-grade AI for drones, aerospace, robotics, and computer
+              vision — trusted by teams who ship mission-critical technology.
+            </motion.p>
 
-        <motion.p
-          variants={fadeUp}
-          transition={{ delay: 0.45 }}
-          className="mt-8 text-base sm:text-lg text-muted max-w-xl mx-auto leading-relaxed"
-        >
-          AI-powered innovation across drones, aerospace, robotics, and intelligent
-          software — engineered for mission-critical scale.
-        </motion.p>
+            <motion.div
+              variants={fadeUp}
+              className="mt-10 flex flex-col sm:flex-row items-start gap-3"
+            >
+              <LiquidButton href="#services" variant="primary">
+                Explore capabilities
+                <ArrowRight size={16} strokeWidth={2} />
+              </LiquidButton>
+              <LiquidButton href="#contact" variant="outline">
+                Talk to our team
+              </LiquidButton>
+            </motion.div>
+          </motion.div>
 
-        <motion.div
-          variants={fadeUp}
-          transition={{ delay: 0.55 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a href="#services" className="btn-dark group">
-            Explore Platform
-            <ArrowRight
-              size={16}
-              strokeWidth={1.5}
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            />
-          </a>
-          <a href="#contact" className="btn-outline group">
-            <Calendar size={16} strokeWidth={1.5} />
-            Book a Call
-          </a>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-[0.2em] text-muted">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 bg-gradient-to-b from-primary/60 to-transparent"
-        />
-      </motion.div>
+          <motion.div
+            style={{ y: visualY }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="relative min-h-[340px] lg:min-h-[400px] flex items-center justify-center"
+          >
+            <HeroFloatingCards />
+            <HeroAINetwork />
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

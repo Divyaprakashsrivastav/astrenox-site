@@ -1,50 +1,83 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import SectionHeader from "./ui/SectionHeader";
-import { staggerContainer, staggerItem } from "./ui/FadeIn";
+import { staggerContainer } from "./ui/FadeIn";
+import ProjectCard, { type Project } from "./projects/ProjectCard";
 
-const projects = [
+const projects: Project[] = [
   {
+    id: "skyguard",
     title: "SkyGuard AI Surveillance",
-    category: "Drone Technology",
+    category: "Autonomous Drones",
     description:
-      "Autonomous aerial surveillance with real-time threat detection and multi-drone coordination.",
+      "Multi-drone coordination with real-time threat detection for enterprise security.",
+    tags: ["UAV", "Swarm AI", "Radar Fusion", "Edge AI"],
+    stats: [
+      { value: "12 km", label: "Coverage" },
+      { value: "<40ms", label: "Latency" },
+      { value: "99.8%", label: "Accuracy" },
+    ],
+    href: "#contact",
   },
   {
+    id: "orion",
     title: "Orion Navigation System",
-    category: "Autonomous Navigation",
-    description:
-      "GPS-denied navigation using visual-inertial odometry for aerospace and defense.",
-  },
-  {
-    title: "AgriBot Precision Platform",
-    category: "Robotics Solutions",
-    description:
-      "AI-powered agricultural robots for precision farming and autonomous harvesting.",
-  },
-  {
-    title: "Neural Flight Controller",
     category: "AI Systems",
     description:
-      "Deep reinforcement learning flight controller for dynamic environments.",
+      "GPS-denied navigation via visual-inertial odometry and neural pathfinding.",
+    tags: ["VIO", "Neural Nav", "Path Planning", "Edge AI"],
+    stats: [
+      { value: "±0.3m", label: "Accuracy" },
+      { value: "GPS-denied", label: "Environments" },
+      { value: "24/7", label: "Operations" },
+    ],
+    href: "#contact",
+  },
+  {
+    id: "robotics",
+    title: "AgriBot Precision Platform",
+    category: "Robotics",
+    description:
+      "Autonomous manipulators with sub-millimeter precision for industrial farming.",
+    tags: ["Manipulator", "Automation", "Field Ops", "Edge AI"],
+    stats: [
+      { value: "±0.02mm", label: "Precision" },
+      { value: "99.7%", label: "Uptime" },
+      { value: "847", label: "Cycles/hr" },
+    ],
+    href: "#process",
+  },
+  {
+    id: "vision",
+    title: "Neural Flight Controller",
+    category: "Computer Vision",
+    description:
+      "RL perception stack for dynamic object tracking in contested airspace.",
+    tags: ["Detection", "Tracking", "RL Control", "60 FPS"],
+    stats: [
+      { value: "60 FPS", label: "Frame rate" },
+      { value: "120+", label: "Classes" },
+      { value: "<16ms", label: "Inference" },
+    ],
+    href: "#services",
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28 lg:py-40 border-t border-border/60">
+    <section id="projects" className="section-shell relative bg-background">
+      <div className="section-divider" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
-          label="Our Work"
+          label="Projects"
           title={
             <>
-              Projects that define the{" "}
-              <span className="font-editorial text-primary">frontier</span>
+              Systems deployed at the{" "}
+              <span className="text-highlight-primary">frontier</span>
             </>
           }
-          description="Explore our portfolio of autonomous systems deployed across aerospace, defense, and enterprise."
+          description="Production missions across defense, aerospace, and enterprise — each card is a live snapshot of technology in the field."
         />
 
         <motion.div
@@ -52,44 +85,10 @@ export default function Projects() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          className="projects-grid"
         >
           {projects.map((project) => (
-            <motion.article
-              key={project.title}
-              variants={staggerItem}
-              whileHover={{ y: -5 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="group premium-card relative overflow-hidden aspect-[16/10] cursor-pointer p-0"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-primary/10" />
-              <div
-                className="absolute inset-0 opacity-40"
-                style={{
-                  backgroundImage: `radial-gradient(circle at 1px 1px, #6FA3B8 0.5px, transparent 0)`,
-                  backgroundSize: "24px 24px",
-                }}
-              />
-
-              <div className="absolute inset-0 border border-border group-hover:border-primary/30 transition-colors duration-400 rounded-xl pointer-events-none" />
-
-              <div className="relative h-full flex flex-col justify-end p-8 lg:p-10">
-                <span className="inline-flex self-start px-3 py-1 rounded-full text-xs font-medium text-primary border border-primary/25 bg-primary/5 mb-4">
-                  {project.category}
-                </span>
-                <h3 className="font-heading text-xl lg:text-2xl font-semibold text-text mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-muted leading-relaxed max-w-md opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  {project.description}
-                </p>
-                <motion.div
-                  className="absolute top-6 right-6 w-9 h-9 rounded-full border border-border flex items-center justify-center bg-surface opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:border-primary/30"
-                >
-                  <ArrowUpRight size={16} className="text-text" strokeWidth={1.5} />
-                </motion.div>
-              </div>
-            </motion.article>
+            <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
       </div>

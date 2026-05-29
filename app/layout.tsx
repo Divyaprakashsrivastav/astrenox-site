@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Astreanox | Intelligent Autonomous Systems",
+  title: "Astrenox | Intelligent Autonomous Systems",
   description:
     "AI-powered innovation in drones, aerospace, robotics, and intelligent software systems. Building future-ready autonomous solutions for enterprise.",
   keywords: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "software engineering",
   ],
   openGraph: {
-    title: "Astreanox | Intelligent Autonomous Systems",
+    title: "Astrenox | Intelligent Autonomous Systems",
     description:
       "AI-powered innovation in drones, aerospace, robotics, and intelligent software systems.",
     type: "website",
@@ -45,7 +45,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-body">{children}</body>
+      <body className="min-h-full flex flex-col font-body selection:bg-primary/15 selection:text-text">
+        {children}
+      </body>
     </html>
   );
 }

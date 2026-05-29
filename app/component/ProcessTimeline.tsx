@@ -1,14 +1,16 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   useScroll,
   useTransform,
   useSpring,
-  MotionValue,
+  useMotionValueEvent,
+  type MotionValue,
 } from "framer-motion";
 import TimelineStepCard from "./timeline/TimelineStepCard";
+import TimelineBackground from "./timeline/TimelineBackground";
 import {
   ReviewVisual,
   DeliveryVisual,
@@ -56,59 +58,89 @@ const STEPS = [
 ] as const;
 
 const STEP_COUNT = STEPS.length;
-const SCROLL_VH_PER_STEP = 85;
+const SCROLL_VH_PER_STEP = 88;
+const CARD_HEIGHT = 340;
 
 function TimelineMarker({
   index,
   label,
   progress,
+  activeIndex,
 }: {
   index: number;
   label: string;
   progress: MotionValue<number>;
+  activeIndex: number;
 }) {
   const maxIndex = STEP_COUNT - 1;
+  const isActive = activeIndex === index;
 
   const dotScale = useTransform(progress, (p) => {
     const active = p * maxIndex;
     const dist = Math.abs(active - index);
-    return dist < 0.4 ? 1.2 : 0.85;
+    return dist < 0.3 ? 1.3 : 0.92;
   });
 
   const dotOpacity = useTransform(progress, (p) => {
     const active = p * maxIndex;
     const dist = Math.abs(active - index);
-    if (dist < 0.35) return 1;
-    return 0.35 + Math.max(0, 0.4 - dist * 0.35);
+    if (dist < 0.3) return 1;
+    return 0.65 + Math.max(0, 0.3 - dist * 0.3);
   });
 
-  const textOpacity = useTransform(progress, (p) => {
+  const labelOpacity = useTransform(progress, (p) => {
     const active = p * maxIndex;
     const dist = Math.abs(active - index);
-    return dist < 0.45 ? 1 : 0.4;
+    return dist < 0.35 ? 1 : 0.62;
   });
 
   const ringOpacity = useTransform(progress, (p) => {
     const active = p * maxIndex;
     const dist = Math.abs(active - index);
-    return Math.max(0, 1 - dist * 1.5);
+    return Math.max(0, 1 - dist * 2);
   });
 
   return (
-    <div className="flex flex-col items-center gap-2 flex-1 min-w-0 z-10">
+    <div className="flex flex-col items-center gap-3 flex-1 min-w-0 z-10">
       <motion.div
         style={{ scale: dotScale, opacity: dotOpacity }}
-        className="relative flex items-center justify-center w-8 h-8"
+        className="relative flex h-10 w-10 items-center justify-center"
       >
+        {isActive && (
+          <>
+            <motion.span
+              className="absolute inset-[-4px] rounded-full border border-primary/25"
+              animate={{ scale: [1, 1.45, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
+              aria-hidden
+            />
+            <motion.span
+              className="absolute inset-0 rounded-full bg-primary/10"
+              animate={{ opacity: [0.4, 0.7, 0.4] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+              aria-hidden
+            />
+          </>
+        )}
         <motion.div
           style={{ opacity: ringOpacity }}
-          className="absolute inset-0 rounded-full border border-primary/40 bg-primary/10"
+          className="absolute inset-0 rounded-full border border-primary/20 bg-white shadow-sm"
         />
-        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+        <motion.div
+          className={`rounded-full transition-colors duration-300 ${
+            isActive
+              ? "h-3.5 w-3.5 bg-primary shadow-[0_0_14px_rgba(125,46,104,0.5)]"
+              : "h-2.5 w-2.5 bg-[#d0d5dd]"
+          }`}
+          layout
+          transition={{ type: "spring", stiffness: 380, damping: 26 }}
+        />
       </motion.div>
       <motion.span
-        style={{ opacity: textOpacity }}
-        className="text-[10px] sm:text-xs font-medium tracking-wider text-muted uppercase text-center truncate w-full px-1"
+        style={{ opacity: labelOpacity }}
+        className={`text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] uppercase text-center truncate w-full px-1 ${
+          isActive ? "text-primary" : "text-[#667085]"
+        }`}
       >
         {label}
       </motion.span>
@@ -118,6 +150,7 @@ function TimelineMarker({
 
 export default function ProcessTimeline() {
   const containerRef = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -125,18 +158,21 @@ export default function ProcessTimeline() {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 28,
-    restDelta: 0.0008,
+    stiffness: 88,
+    damping: 24,
+    mass: 0.85,
+    restDelta: 0.0006,
+  });
+
+  useMotionValueEvent(smoothProgress, "change", (v) => {
+    const idx = Math.round(v * (STEP_COUNT - 1));
+    setActiveIndex(Math.min(Math.max(idx, 0), STEP_COUNT - 1));
   });
 
   const lineWidth = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
-
-  const headerY = useTransform(smoothProgress, [0, 0.15], [0, -8]);
-  const headerOpacity = useTransform(smoothProgress, [0, 0.12], [1, 0.92]);
-
-  const parallaxY = useTransform(smoothProgress, [0, 1], [24, -24]);
-  const parallaxYInverse = useTransform(parallaxY, (v) => -v * 0.6);
+  const lineGlow = useTransform(smoothProgress, [0, 1], [0.45, 1]);
+  const headerY = useTransform(smoothProgress, [0, 0.1], [0, -4]);
+  const headerOpacity = useTransform(smoothProgress, [0, 0.08], [1, 0.97]);
 
   const sectionHeight = `${STEP_COUNT * SCROLL_VH_PER_STEP + 40}vh`;
 
@@ -144,63 +180,89 @@ export default function ProcessTimeline() {
     <section
       id="process"
       ref={containerRef}
-      className="relative border-t border-border/60"
+      className="relative bg-background"
       style={{ height: sectionHeight }}
     >
-      <div className="sticky top-0 h-screen flex flex-col overflow-hidden bg-background">
-        <div className="absolute inset-0 grid-background opacity-50 pointer-events-none" />
-        <motion.div
-          style={{ y: parallaxY }}
-          className="absolute -top-32 right-0 w-[420px] h-[420px] rounded-full bg-primary/6 blur-3xl pointer-events-none"
-        />
-        <motion.div
-          style={{ y: parallaxYInverse }}
-          className="absolute bottom-0 left-[10%] w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none"
-        />
+      <div
+        className="sticky top-0 h-screen flex flex-col overflow-hidden bg-background"
+        style={{ perspective: 1400 }}
+      >
+        <TimelineBackground progress={smoothProgress} />
 
-        <div className="relative flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 lg:px-8 pt-28 lg:pt-32 pb-8 lg:pb-12">
+        <div className="relative flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 lg:px-8 pt-[7.5rem] lg:pt-32 pb-10 lg:pb-12">
           <motion.div style={{ y: headerY, opacity: headerOpacity }}>
-            <div className="max-w-3xl mx-auto text-center mb-8 lg:mb-10 shrink-0">
-              <span className="inline-block text-xs font-medium text-primary tracking-[0.2em] uppercase mb-5">
+            <div className="max-w-2xl mx-auto text-center mb-12 lg:mb-14 shrink-0">
+              <span className="inline-block text-[11px] font-semibold text-[#667085] tracking-[0.24em] uppercase mb-6">
                 How We Work
               </span>
-              <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-text tracking-tight leading-[1.15]">
-                A cinematic path from review to{" "}
-                <span className="font-editorial text-primary">scale</span>
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.875rem] font-semibold text-[#0a0a0a] tracking-[-0.03em] leading-[1.1]">
+                A path from review to{" "}
+                <span className="text-highlight-primary">scale</span>
               </h2>
-              <p className="mt-5 text-base sm:text-lg text-muted leading-relaxed max-w-2xl mx-auto">
-                Scroll to explore each phase of our enterprise delivery model —
-                designed for clarity, momentum, and long-term autonomy.
+              <p className="mt-6 text-base sm:text-[1.0625rem] text-[#667085] leading-[1.7] max-w-xl mx-auto">
+                Scroll through each phase of our delivery model — clarity,
+                momentum, and long-term autonomy at every step.
               </p>
             </div>
           </motion.div>
 
           {/* Progress track */}
-          <div className="relative mt-2 mb-8 lg:mb-10 px-2 sm:px-4">
-            <div className="absolute top-4 left-4 right-4 sm:left-8 sm:right-8 h-px bg-border" />
-            <motion.div
-              style={{ width: lineWidth }}
-              className="absolute top-4 left-4 sm:left-8 h-px bg-gradient-to-r from-primary via-primary/80 to-primary/40 origin-left"
-            />
-            <div className="relative flex justify-between gap-1">
+          <div className="relative mb-11 lg:mb-14 px-2 sm:px-4 shrink-0">
+            <div className="absolute top-[19px] left-4 right-4 sm:left-8 sm:right-8 h-[3px] rounded-full bg-[#e5e7eb] shadow-[inset_0_1px_2px_rgba(16,24,40,0.06)] overflow-visible">
+              <motion.div
+                style={{ width: lineWidth, opacity: lineGlow }}
+                className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-primary/90 via-primary to-secondary/90"
+              />
+              <motion.div
+                style={{ width: lineWidth, opacity: lineGlow }}
+                className="absolute inset-y-[-2px] left-0 h-[7px] rounded-full bg-primary/30 blur-[4px]"
+                aria-hidden
+              />
+              <motion.div
+                style={{ left: lineWidth, opacity: lineGlow }}
+                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-primary border-[2.5px] border-white shadow-[0_0_0_1px_rgba(125,46,104,0.2),0_2px_8px_rgba(125,46,104,0.35)] z-10"
+                aria-hidden
+              />
+            </div>
+
+            <div className="relative flex justify-between gap-2 pt-1">
               {STEPS.map((s, i) => (
                 <TimelineMarker
                   key={s.step}
                   index={i}
                   label={s.title.split(" ")[0]}
                   progress={smoothProgress}
+                  activeIndex={activeIndex}
                 />
               ))}
             </div>
           </div>
 
-          {/* Cards — horizontal on desktop, scroll-snap row on tablet */}
-          <div className="flex-1 flex items-stretch min-h-0">
-            <div className="w-full flex gap-4 lg:gap-5 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory lg:snap-none scrollbar-hide">
+          {/* Cards */}
+          <div className="relative flex-1 flex items-stretch min-h-[340px]">
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 w-8 lg:w-12 z-10 bg-gradient-to-r from-background to-transparent"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-8 lg:w-12 z-10 bg-gradient-to-l from-background to-transparent"
+              aria-hidden
+            />
+
+            <div className="w-full flex gap-5 lg:gap-6 overflow-x-auto lg:overflow-visible pb-5 lg:pb-0 snap-x snap-mandatory lg:snap-none scrollbar-hide items-stretch px-1">
               {STEPS.map((item, i) => (
-                <div
+                <motion.div
                   key={item.step}
-                  className="snap-center shrink-0 w-[min(85vw,280px)] lg:shrink lg:w-auto lg:flex-1"
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{
+                    delay: i * 0.07,
+                    duration: 0.65,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  className="snap-center shrink-0 w-[min(88vw,304px)] lg:shrink lg:flex-1 lg:min-w-0 h-full"
+                  style={{ minHeight: CARD_HEIGHT }}
                 >
                   <TimelineStepCard
                     index={i}
@@ -211,35 +273,48 @@ export default function ProcessTimeline() {
                     progress={smoothProgress}
                     totalSteps={STEP_COUNT}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Active step readout */}
-          <ActiveStepCaption progress={smoothProgress} />
+          <ActiveStepCaption activeIndex={activeIndex} />
         </div>
       </div>
     </section>
   );
 }
 
-function ActiveStepCaption({ progress }: { progress: MotionValue<number> }) {
-  const opacity = useTransform(progress, [0, 0.05], [1, 1]);
+function ActiveStepCaption({ activeIndex }: { activeIndex: number }) {
+  const step = STEPS[activeIndex];
 
   return (
     <motion.div
-      style={{ opacity }}
-      className="mt-6 lg:mt-8 flex items-center justify-center gap-3 text-xs text-muted"
+      className="mt-8 lg:mt-10 flex flex-col items-center gap-3 shrink-0"
+      layout
     >
-      <span className="hidden sm:inline tracking-[0.15em] uppercase">
-        Scroll to advance
-      </span>
       <motion.div
-        animate={{ y: [0, 4, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="w-px h-6 bg-gradient-to-b from-primary/50 to-transparent"
-      />
+        key={activeIndex}
+        initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card px-5 py-2.5 shadow-[0_1px_2px_rgba(16,24,40,0.05),0_4px_12px_rgba(16,24,40,0.04)]"
+      >
+        <span className="text-[11px] font-semibold tracking-wide text-primary uppercase">
+          {step.step}
+        </span>
+        <span className="h-1 w-1 rounded-full bg-border" aria-hidden />
+        <span className="text-sm font-medium text-[#1d2939]">{step.title}</span>
+      </motion.div>
+
+      <div className="flex items-center gap-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#98a2b3]">
+        <span>Scroll to advance</span>
+        <motion.div
+          animate={{ y: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-5 bg-gradient-to-b from-primary/70 to-transparent"
+        />
+      </div>
     </motion.div>
   );
 }

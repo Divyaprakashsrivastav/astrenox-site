@@ -1,43 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
-
-const companies = [
-  "SpaceX",
-  "NASA",
-  "Airbus",
-  "Boeing",
-  "Lockheed",
-  "Northrop",
-];
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import TrustedBackground from "./trusted/TrustedBackground";
+import EcosystemNetwork from "./trusted/EcosystemNetwork";
+import ClientLogoGrid from "./trusted/ClientLogoGrid";
+import TrustedStatsBar from "./trusted/TrustedStatsBar";
 
 export default function TrustedCompanies() {
-  return (
-    <section className="py-14 lg:py-16 border-y border-border/60 bg-surface/50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-xs font-medium text-muted uppercase tracking-[0.2em] mb-10"
-        >
-          Trusted by industry leaders
-        </motion.p>
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-        <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
-          {companies.map((company, i) => (
-            <motion.div
-              key={company}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.06, duration: 0.5 }}
-              className="font-heading text-lg sm:text-xl font-semibold text-muted/30 hover:text-muted/60 transition-colors duration-500 cursor-default select-none"
-            >
-              {company}
-            </motion.div>
-          ))}
+  return (
+    <section
+      ref={sectionRef}
+      id="trusted"
+      className="trusted-section relative overflow-hidden"
+      aria-labelledby="trusted-heading"
+    >
+      <TrustedBackground />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <motion.header
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="trusted-header"
+        >
+          <p className="trusted-eyebrow">Industry network</p>
+          <h2 id="trusted-heading" className="trusted-title">
+            Trusted Across Critical Industries
+          </h2>
+          <p className="trusted-subtitle">
+            Building intelligent autonomous systems for aerospace, defense, robotics,
+            manufacturing, and enterprise AI.
+          </p>
+        </motion.header>
+
+        <div className="trusted-ecosystem-wrap">
+          <EcosystemNetwork inView={inView} />
         </div>
+
+        <ClientLogoGrid inView={inView} />
+
+        <TrustedStatsBar />
       </div>
     </section>
   );

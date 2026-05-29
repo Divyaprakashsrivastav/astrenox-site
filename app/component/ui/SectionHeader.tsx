@@ -19,26 +19,26 @@ export default function SectionHeader({
   const alignment = align === "center" ? "text-center mx-auto" : "text-left";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
+    <motion.header
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`max-w-3xl mb-20 lg:mb-24 ${alignment}`}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      className={`max-w-2xl mb-16 lg:mb-20 ${alignment}`}
     >
       {label && (
-        <span className="inline-block text-xs font-medium text-primary tracking-[0.2em] uppercase mb-5">
+        <p className="text-[11px] font-medium text-muted uppercase tracking-[0.22em] mb-5">
           {label}
-        </span>
+        </p>
       )}
-      <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-text tracking-tight leading-[1.15]">
+      <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-text tracking-tight leading-[1.12]">
         {title}
       </h2>
       {description && (
-        <p className="mt-5 text-base sm:text-lg text-muted leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-5 text-base text-muted leading-relaxed font-light">
           {description}
         </p>
       )}
-    </motion.div>
+    </motion.header>
   );
 }
