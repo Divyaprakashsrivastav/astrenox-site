@@ -41,7 +41,7 @@ export default function Navbar() {
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-6 left-0 right-0 z-50 px-4 sm:px-6"
+        className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6"
       >
         <nav
           className={`nav-float max-w-5xl mx-auto h-11 px-2 sm:px-3 flex items-center justify-between transition-all duration-400 ${
@@ -159,7 +159,7 @@ export default function Navbar() {
               initial={{ y: -8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -8, opacity: 0 }}
-              className="absolute top-[4.5rem] left-4 right-4 nav-float p-5 bg-card max-h-[75vh] overflow-y-auto"
+              className="absolute top-[3.25rem] left-4 right-4 nav-float p-5 bg-card max-h-[75vh] overflow-y-auto"
             >
               <div className="flex flex-col gap-1">
                 <Link href="/" onClick={() => setMobileOpen(false)} className="py-3 text-base font-medium text-text">

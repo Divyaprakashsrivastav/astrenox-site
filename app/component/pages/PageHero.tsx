@@ -21,7 +21,7 @@ export default function PageHero({
   secondaryCta = { label: "Explore services", href: "/services" },
 }: PageHeroProps) {
   return (
-    <section className="relative pt-24 pb-12 lg:pt-28 lg:pb-16 overflow-hidden hero-gradient">
+    <section className="relative pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden hero-gradient">
       <div className="absolute inset-0 mesh-grid opacity-30" aria-hidden />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div

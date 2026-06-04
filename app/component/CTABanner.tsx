@@ -41,7 +41,7 @@ export default function CTABanner() {
                 {ctaBanner.primaryCta}
                 <ArrowRight size={16} strokeWidth={2} />
               </LiquidButton>
-              <LiquidButton href="#projects" variant="outline">
+              <LiquidButton href="/platform" variant="outline">
                 {ctaBanner.secondaryCta}
               </LiquidButton>
             </div>

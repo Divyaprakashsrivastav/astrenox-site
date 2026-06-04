@@ -10,12 +10,14 @@ export const navServices = [
 ] as const;
 
 export const navSolutions = [
+  { label: "Intelligence Platform", href: "/platform" },
   { label: "Hire Talent", href: "/careers" },
   { label: "MVP Studio", href: "/services/mvp-studio" },
 ] as const;
 
 export const primaryNav = [
   { label: "Home", href: "/" },
+  { label: "Platform", href: "/platform" },
   { label: "About Us", href: "/about" },
   { label: "Industries", href: "/services/industries" },
   { label: "Products", href: "/projects" },
@@ -25,6 +27,7 @@ export const primaryNav = [
 
 export const footerQuickLinks = [
   { label: "Home", href: "/" },
+  { label: "Intelligence Platform", href: "/platform" },
   { label: "AI Transformation", href: "/services/ai-transformation" },
   { label: "AI Engineering", href: "/services/ai-engineering" },
   { label: "Intelligent Automations", href: "/services/intelligent-automations" },
@@ -39,6 +42,7 @@ export const footerQuickLinks = [
 ] as const;
 
 export const footerNav = [
+  { label: "Platform", href: "/platform" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Products", href: "/projects" },

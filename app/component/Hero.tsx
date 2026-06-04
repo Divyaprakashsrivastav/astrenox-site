@@ -48,7 +48,7 @@ export default function Hero() {
       />
       <div className="absolute inset-0 mesh-grid opacity-40" aria-hidden />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-14 lg:pt-32 lg:pb-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-14 lg:pt-28 lg:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.p

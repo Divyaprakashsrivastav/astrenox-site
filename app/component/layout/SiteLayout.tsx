@@ -1,7 +1,7 @@
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import SiteEffects from "../ui/SiteEffects";
-import NewsTicker from "../home/NewsTicker";
+import AstrenoxChatbot from "../chat/AstrenoxChatbot";
 
 export default function SiteLayout({
   children,
@@ -11,10 +11,10 @@ export default function SiteLayout({
   return (
     <>
       <SiteEffects />
-      <NewsTicker />
       <Navbar />
       <main className="min-h-screen bg-background">{children}</main>
       <Footer />
+      <AstrenoxChatbot />
     </>
   );
 }

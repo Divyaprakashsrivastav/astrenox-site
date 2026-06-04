@@ -1,5 +1,6 @@
 import SiteLayout from "./component/layout/SiteLayout";
 import Hero from "./component/Hero";
+import IntelligencePlatformTeaser from "./component/home/IntelligencePlatformTeaser";
 import EmailCaptureSection from "./component/home/EmailCaptureSection";
 import Features from "./component/Features";
 import MethodologyBottleneck from "./component/home/MethodologyBottleneck";
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <SiteLayout>
       <Hero />
+      <IntelligencePlatformTeaser />
       <EmailCaptureSection />
       <Features />
       <MethodologyBottleneck />

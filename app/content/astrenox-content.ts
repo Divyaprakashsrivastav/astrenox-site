@@ -6,18 +6,17 @@ export const site = {
   brand: "Astrenox",
   tagline: "AI-First Digital Transformation",
   email: "hello@astrenox.com",
-  news: "Metal raises $5M from Base10",
 } as const;
 
 export const hero = {
-  eyebrow: "Astrenox · AI-First Digital Transformation",
+  eyebrow: "Astrenox · Enterprise AI Operating System",
   headline: "Creating engineering disruption with AI-first transformation.",
   subheadline:
-    "We diagnose bottlenecks, design the right AI, and scale execution—from quick wins to enterprise rollouts—combining strategy and hands-on engineering to deliver measurable outcomes.",
+    "Powered by the Astrenox Intelligence Platform—unified search, knowledge graphs, and autonomous agents that turn fragmented systems into intelligent operations.",
   primaryCta: "Request a consult",
   primaryHref: "/contact",
-  secondaryCta: "Explore services",
-  secondaryHref: "/services",
+  secondaryCta: "Intelligence Platform",
+  secondaryHref: "/platform",
   requestAccessCta: "Request access",
   requestAccessHref: "/contact",
 } as const;
@@ -144,7 +143,7 @@ export const capabilities = [
     description:
       "Autonomous agents that reason, plan, and execute multi-step workflows across search, APIs, and enterprise data with full observability.",
     cta: "Agent architecture",
-    ctaHref: "/research",
+    ctaHref: "/platform#ai-agents",
     colSpan: "col-span-12 sm:col-span-6 lg:col-span-4",
     row: "medium" as const,
   },
@@ -162,12 +161,12 @@ export const capabilities = [
   },
   {
     id: "analytics" as const,
-    category: "Platforms",
-    title: "Enterprise AI Platforms",
+    category: "Platform",
+    title: "Astrenox Intelligence Platform",
     description:
-      "Flagship orchestration and copilot layers—unify models, data, and workflows into governable, vendor-agnostic ecosystems built for scale.",
-    cta: "View platforms",
-    ctaHref: "/projects",
+      "The AI operating system behind every engagement—enterprise search, knowledge graph, agents, and workflow automation with explainable decisions.",
+    cta: "Explore platform",
+    ctaHref: "/platform",
     colSpan: "col-span-12 lg:col-span-6",
     row: "medium" as const,
     layout: "split" as const,
@@ -468,9 +467,9 @@ export const ctaBanner = {
   eyebrow: "Stay on the right side of history",
   title: "Ready to build what's next?",
   description:
-    "Tell us where you are constrained and we'll design AI-first solutions that ship and scale—weeks to launch, we ship with you.",
+    "Deploy the Astrenox Intelligence Platform or engage our teams to ship search, agents, and automation—weeks to launch, we ship with you.",
   primaryCta: "Get started",
-  secondaryCta: "Talk to us",
+  secondaryCta: "View platform",
 } as const;
 
 export const footer = {
