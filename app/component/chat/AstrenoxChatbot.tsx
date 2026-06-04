@@ -85,27 +85,36 @@ export default function AstrenoxChatbot() {
       ]);
 
       try {
+        const apiMessages = history
+          .filter((m) => m.content.trim())
+          .map(({ role, content }) => ({ role, content }));
+
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            messages: history.map(({ role, content }) => ({ role, content })),
-          }),
+          body: JSON.stringify({ messages: apiMessages }),
         });
 
-        if (!res.ok) {
-          let errMsg = "Something went wrong. Please try again.";
+        const contentType = res.headers.get("content-type") ?? "";
+
+        if (!res.ok || contentType.includes("application/json")) {
+          let errMsg = `Request failed (${res.status}).`;
           try {
             const data = await res.json();
-            if (data?.error) errMsg = data.error;
+            if (data?.success === false && data?.error) {
+              errMsg = data.error;
+            } else if (data?.error) {
+              errMsg = data.error;
+            }
           } catch {
-            /* plain stream error */
+            const text = await res.text().catch(() => "");
+            if (text) errMsg = text.slice(0, 500);
           }
           throw new Error(errMsg);
         }
 
         const reader = res.body?.getReader();
-        if (!reader) throw new Error("No response stream.");
+        if (!reader) throw new Error("No response stream from server.");
 
         const decoder = new TextDecoder();
         let accumulated = "";
@@ -119,6 +128,10 @@ export default function AstrenoxChatbot() {
               m.id === assistantId ? { ...m, content: accumulated } : m
             )
           );
+        }
+
+        if (!accumulated.trim()) {
+          throw new Error("Empty response from assistant. Check API logs.");
         }
       } catch (e) {
         const errMsg = e instanceof Error ? e.message : "Request failed.";
