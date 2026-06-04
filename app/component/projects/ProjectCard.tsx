@@ -20,6 +20,7 @@ export interface Project {
   description: string;
   tags: string[];
   stats: { label: string; value: string }[];
+  outcome?: string;
   href: string;
 }
 
@@ -61,6 +62,9 @@ export default function ProjectCard({ project }: { project: Project }) {
             <span className="project-card-category">{project.category}</span>
             <h3 className="project-card-title">{project.title}</h3>
             <p className="project-card-description">{project.description}</p>
+            {project.outcome ? (
+              <p className="project-card-outcome">{project.outcome}</p>
+            ) : null}
           </div>
 
           <ul className="project-metrics" aria-label="Project metrics">

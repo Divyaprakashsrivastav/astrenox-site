@@ -4,65 +4,18 @@ import { motion } from "framer-motion";
 import SectionHeader from "./ui/SectionHeader";
 import { staggerContainer } from "./ui/FadeIn";
 import ProjectCard, { type Project } from "./projects/ProjectCard";
+import { projects, projectsSection } from "@/app/content/astrenox-content";
 
-const projects: Project[] = [
-  {
-    id: "skyguard",
-    title: "SkyGuard AI Surveillance",
-    category: "Autonomous Drones",
-    description:
-      "Multi-drone coordination with real-time threat detection for enterprise security.",
-    tags: ["UAV", "Swarm AI", "Radar Fusion", "Edge AI"],
-    stats: [
-      { value: "12 km", label: "Coverage" },
-      { value: "<40ms", label: "Latency" },
-      { value: "99.8%", label: "Accuracy" },
-    ],
-    href: "#contact",
-  },
-  {
-    id: "orion",
-    title: "Orion Navigation System",
-    category: "AI Systems",
-    description:
-      "GPS-denied navigation via visual-inertial odometry and neural pathfinding.",
-    tags: ["VIO", "Neural Nav", "Path Planning", "Edge AI"],
-    stats: [
-      { value: "±0.3m", label: "Accuracy" },
-      { value: "GPS-denied", label: "Environments" },
-      { value: "24/7", label: "Operations" },
-    ],
-    href: "#contact",
-  },
-  {
-    id: "robotics",
-    title: "AgriBot Precision Platform",
-    category: "Robotics",
-    description:
-      "Autonomous manipulators with sub-millimeter precision for industrial farming.",
-    tags: ["Manipulator", "Automation", "Field Ops", "Edge AI"],
-    stats: [
-      { value: "±0.02mm", label: "Precision" },
-      { value: "99.7%", label: "Uptime" },
-      { value: "847", label: "Cycles/hr" },
-    ],
-    href: "#process",
-  },
-  {
-    id: "vision",
-    title: "Neural Flight Controller",
-    category: "Computer Vision",
-    description:
-      "RL perception stack for dynamic object tracking in contested airspace.",
-    tags: ["Detection", "Tracking", "RL Control", "60 FPS"],
-    stats: [
-      { value: "60 FPS", label: "Frame rate" },
-      { value: "120+", label: "Classes" },
-      { value: "<16ms", label: "Inference" },
-    ],
-    href: "#services",
-  },
-];
+const projectCards: Project[] = projects.map((p) => ({
+  id: p.id,
+  title: p.title,
+  category: p.category,
+  description: p.description,
+  tags: [...p.tags],
+  stats: p.stats.map((s) => ({ ...s })),
+  outcome: p.outcome,
+  href: p.href,
+}));
 
 export default function Projects() {
   return (
@@ -70,14 +23,14 @@ export default function Projects() {
       <div className="section-divider" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
-          label="Projects"
+          label={projectsSection.label}
           title={
             <>
-              Systems deployed at the{" "}
-              <span className="text-highlight-primary">frontier</span>
+              Real stories,{" "}
+              <span className="text-highlight-primary">real results</span>.
             </>
           }
-          description="Production missions across defense, aerospace, and enterprise — each card is a live snapshot of technology in the field."
+          description={projectsSection.description}
         />
 
         <motion.div
@@ -87,7 +40,7 @@ export default function Projects() {
           variants={staggerContainer}
           className="projects-grid"
         >
-          {projects.map((project) => (
+          {projectCards.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>

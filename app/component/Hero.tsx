@@ -6,6 +6,8 @@ import { useRef } from "react";
 import HeroAINetwork from "./hero/HeroAINetwork";
 import HeroFloatingCards from "./hero/HeroFloatingCards";
 import LiquidButton from "./ui/LiquidButton";
+import { hero } from "@/app/content/astrenox-content";
+import HeroPETrust from "./home/HeroPETrust";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -32,7 +34,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[100svh] flex items-center overflow-hidden hero-gradient"
+      className="relative min-h-[90svh] flex items-center overflow-hidden hero-gradient"
     >
       <div
         className="hero-glow w-[480px] h-[360px] -top-24 right-0"
@@ -46,45 +48,46 @@ export default function Hero() {
       />
       <div className="absolute inset-0 mesh-grid opacity-40" aria-hidden />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20 lg:pt-36 lg:pb-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-28 pb-14 lg:pt-32 lg:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.p
               variants={fadeUp}
               className="text-xs font-semibold tracking-[0.18em] uppercase text-muted mb-6"
             >
-              Astrenox · Intelligent Autonomous Systems
+              {hero.eyebrow}
             </motion.p>
 
             <motion.h1
               variants={fadeUp}
               className="font-heading text-[clamp(2.25rem,5.5vw,3.75rem)] font-semibold text-text tracking-tight leading-[1.1]"
             >
-              ASTRENOX builds{" "}
-              <span className="text-highlight-primary">intelligent</span>{" "}
-              autonomous systems.
+              {hero.headline.split("AI-first")[0]}
+              <span className="text-highlight-primary">AI-first</span>
+              {hero.headline.split("AI-first")[1]}
             </motion.h1>
 
             <motion.p
               variants={fadeUp}
               className="mt-6 text-base sm:text-lg text-muted max-w-lg leading-relaxed"
             >
-              Enterprise-grade AI for drones, aerospace, robotics, and computer
-              vision — trusted by teams who ship mission-critical technology.
+              {hero.subheadline}
             </motion.p>
 
             <motion.div
               variants={fadeUp}
-              className="mt-10 flex flex-col sm:flex-row items-start gap-3"
+              className="mt-8 flex flex-col sm:flex-row items-start gap-3"
             >
-              <LiquidButton href="#services" variant="primary">
-                Explore capabilities
+              <LiquidButton href={hero.primaryHref} variant="primary">
+                {hero.primaryCta}
                 <ArrowRight size={16} strokeWidth={2} />
               </LiquidButton>
-              <LiquidButton href="#contact" variant="outline">
-                Talk to our team
+              <LiquidButton href={hero.secondaryHref} variant="outline">
+                {hero.secondaryCta}
               </LiquidButton>
             </motion.div>
+
+            <HeroPETrust />
           </motion.div>
 
           <motion.div

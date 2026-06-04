@@ -6,6 +6,7 @@ import TrustedBackground from "./trusted/TrustedBackground";
 import EcosystemNetwork from "./trusted/EcosystemNetwork";
 import ClientLogoGrid from "./trusted/ClientLogoGrid";
 import TrustedStatsBar from "./trusted/TrustedStatsBar";
+import { trustedSection } from "@/app/content/astrenox-content";
 
 export default function TrustedCompanies() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -27,14 +28,11 @@ export default function TrustedCompanies() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="trusted-header"
         >
-          <p className="trusted-eyebrow">Industry network</p>
+          <p className="trusted-eyebrow">{trustedSection.eyebrow}</p>
           <h2 id="trusted-heading" className="trusted-title">
-            Trusted Across Critical Industries
+            {trustedSection.title}
           </h2>
-          <p className="trusted-subtitle">
-            Building intelligent autonomous systems for aerospace, defense, robotics,
-            manufacturing, and enterprise AI.
-          </p>
+          <p className="trusted-subtitle">{trustedSection.subtitle}</p>
         </motion.header>
 
         <div className="trusted-ecosystem-wrap">

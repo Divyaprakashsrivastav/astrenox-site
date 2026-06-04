@@ -8,6 +8,10 @@ import SectionHeader from "./ui/SectionHeader";
 import { staggerContainer, staggerItem } from "./ui/FadeIn";
 import FeatureCardVisual, { type FeatureVisualId } from "./features/FeatureCardVisual";
 import { useReducedMotion } from "./features/useReducedMotion";
+import {
+  capabilities as contentCapabilities,
+  capabilitiesSection,
+} from "@/app/content/astrenox-content";
 
 type BentoRow = "large" | "medium";
 type CardLayout = "stack" | "split";
@@ -24,87 +28,10 @@ interface Capability {
   layout?: CardLayout;
 }
 
-const capabilities: Capability[] = [
-  {
-    id: "ai-systems",
-    category: "Neural Systems",
-    title: "AI Systems",
-    description:
-      "Enterprise neural orchestration — inference pipelines, decision layers, and autonomous control at scale.",
-    cta: "Explore AI systems",
-    ctaHref: "#contact",
-    colSpan: "col-span-12 lg:col-span-8",
-    row: "large",
-  },
-  {
-    id: "drones",
-    category: "Autonomous Flight",
-    title: "Autonomous Drones",
-    description:
-      "Mission-ready UAV stacks with swarm coordination, radar fusion, and real-time path planning.",
-    cta: "View drone platform",
-    ctaHref: "#projects",
-    colSpan: "col-span-12 lg:col-span-4",
-    row: "large",
-  },
-  {
-    id: "robotics",
-    category: "Industrial Robotics",
-    title: "Robotics",
-    description:
-      "Precision manipulators and field robots with adaptive motion planning and assembly intelligence.",
-    cta: "See robotics stack",
-    ctaHref: "#process",
-    colSpan: "col-span-12 sm:col-span-6 lg:col-span-4",
-    row: "medium",
-  },
-  {
-    id: "aerospace",
-    category: "Space Systems",
-    title: "Aerospace Research",
-    description:
-      "Orbital mechanics, avionics, and propulsion R&D for next-generation autonomous space missions.",
-    cta: "Aerospace programs",
-    ctaHref: "#research",
-    colSpan: "col-span-12 sm:col-span-6 lg:col-span-4",
-    row: "medium",
-  },
-  {
-    id: "vision",
-    category: "Perception",
-    title: "Computer Vision",
-    description:
-      "Real-time object detection, tracking, and scene understanding for navigation and surveillance.",
-    cta: "Vision capabilities",
-    ctaHref: "#services",
-    colSpan: "col-span-12 sm:col-span-6 lg:col-span-4",
-    row: "medium",
-  },
-  {
-    id: "research",
-    category: "R&D Pipeline",
-    title: "Research & Development",
-    description:
-      "From lab prototype to production — structured experiments, validation, and deployment pipelines.",
-    cta: "R&D approach",
-    ctaHref: "#research",
-    colSpan: "col-span-12 lg:col-span-6",
-    row: "medium",
-    layout: "split",
-  },
-  {
-    id: "analytics",
-    category: "Operational Intelligence",
-    title: "Predictive Analytics",
-    description:
-      "Forecasting engines and mission telemetry that turn sensor data into decisive operational insight.",
-    cta: "Analytics platform",
-    ctaHref: "#contact",
-    colSpan: "col-span-12 lg:col-span-6",
-    row: "medium",
-    layout: "split",
-  },
-];
+const capabilities: Capability[] = contentCapabilities.map((c) => ({
+  ...c,
+  layout: "layout" in c ? c.layout : undefined,
+}));
 
 function FeatureCard({ capability }: { capability: Capability }) {
   const reducedMotion = useReducedMotion();
@@ -183,14 +110,14 @@ export default function Features() {
       <div className="section-divider" />
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
-          label="Capabilities"
+          label={capabilitiesSection.label}
           title={
             <>
-              One platform.{" "}
-              <span className="text-highlight-primary">Seven</span> live modules.
+              {capabilitiesSection.title.split(" production")[0]}
+              <span className="text-highlight-primary"> production</span>.
             </>
           }
-          description="Each capability ships as a production-ready system — neural, aerial, robotic, and orbital intelligence built for enterprise missions."
+          description={capabilitiesSection.description}
         />
 
         <motion.div

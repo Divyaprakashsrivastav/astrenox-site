@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface FooterNavLinkProps {
   href: string;
@@ -10,8 +11,7 @@ interface FooterNavLinkProps {
 
 export default function FooterNavLink({ href, label, index }: FooterNavLinkProps) {
   return (
-    <motion.a
-      href={href}
+    <motion.div
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -20,10 +20,14 @@ export default function FooterNavLink({ href, label, index }: FooterNavLinkProps
         duration: 0.45,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative px-1 py-1 text-sm font-medium text-[#a8b0c0] hover:text-white transition-colors duration-300"
+    >
+    <Link
+      href={href}
+      className="group relative inline-block px-1 py-1 text-sm font-medium text-[#a8b0c0] hover:text-white transition-colors duration-300"
     >
       {label}
       <span className="absolute -bottom-0.5 left-0 right-0 h-px origin-left scale-x-0 bg-[#c97b84]/70 transition-transform duration-300 ease-out group-hover:scale-x-100" />
-    </motion.a>
+    </Link>
+    </motion.div>
   );
 }

@@ -1,99 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-
-interface StatConfig {
-  label: string;
-  type: "counter" | "decimal" | "static";
-  value?: number;
-  suffix?: string;
-  display?: string;
-}
-
-const stats: StatConfig[] = [
-  { type: "counter", value: 50, suffix: "+", label: "Enterprise Deployments" },
-  { type: "counter", value: 100, suffix: "M+", label: "Autonomous Decisions Processed" },
-  { type: "decimal", value: 99.98, suffix: "%", label: "Reliability" },
-  { type: "static", display: "24/7", label: "Operations" },
-];
-
-function useAnimatedNumber(target: number, active: boolean, decimals = 0) {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (!active) return;
-    let start: number | undefined;
-    let frame: number;
-    const duration = 2000;
-
-    const tick = (ts: number) => {
-      if (!start) start = ts;
-      const p = Math.min((ts - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      const val = eased * target;
-      setCurrent(decimals > 0 ? Math.round(val * 100) / 100 : Math.floor(val));
-      if (p < 1) frame = requestAnimationFrame(tick);
-    };
-
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [active, target, decimals]);
-
-  return current;
-}
-
-function CounterStat({
-  value,
-  suffix,
-  active,
-}: {
-  value: number;
-  suffix: string;
-  active: boolean;
-}) {
-  const n = useAnimatedNumber(value, active);
-  return (
-    <span className="trusted-stat-value">
-      {n}
-      {suffix}
-    </span>
-  );
-}
-
-function DecimalStat({
-  value,
-  suffix,
-  active,
-}: {
-  value: number;
-  suffix: string;
-  active: boolean;
-}) {
-  const n = useAnimatedNumber(value, active, 2);
-  return (
-    <span className="trusted-stat-value">
-      {n.toFixed(2)}
-      {suffix}
-    </span>
-  );
-}
-
-function StatValue({ stat, active }: { stat: StatConfig; active: boolean }) {
-  if (stat.type === "static") {
-    return <span className="trusted-stat-value">{stat.display}</span>;
-  }
-  if (stat.type === "decimal" && stat.value !== undefined) {
-    return <DecimalStat value={stat.value} suffix={stat.suffix ?? ""} active={active} />;
-  }
-  return (
-    <CounterStat
-      value={stat.value ?? 0}
-      suffix={stat.suffix ?? ""}
-      active={active}
-    />
-  );
-}
+import { useRef } from "react";
+import { trustedSection } from "@/app/content/astrenox-content";
 
 export default function TrustedStatsBar() {
   const ref = useRef<HTMLDivElement>(null);
@@ -108,7 +17,7 @@ export default function TrustedStatsBar() {
       className="trusted-stats-bar"
     >
       <ul className="trusted-stats-list">
-        {stats.map((stat, i) => (
+        {trustedSection.stats.map((stat, i) => (
           <motion.li
             key={stat.label}
             initial={{ opacity: 0, y: 12 }}
@@ -116,7 +25,7 @@ export default function TrustedStatsBar() {
             transition={{ delay: 0.35 + i * 0.08, duration: 0.5 }}
             className="trusted-stat-item"
           >
-            <StatValue stat={stat} active={inView} />
+            <span className="trusted-stat-value">{stat.value}</span>
             <span className="trusted-stat-label">{stat.label}</span>
           </motion.li>
         ))}

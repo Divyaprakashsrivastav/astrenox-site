@@ -16,21 +16,21 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Astrenox | Intelligent Autonomous Systems",
+  title: "Astrenox | AI-First Digital Transformation",
   description:
-    "AI-powered innovation in drones, aerospace, robotics, and intelligent software systems. Building future-ready autonomous solutions for enterprise.",
+    "Astrenox diagnoses bottlenecks, designs the right AI, and scales execution—from intelligent automations to enterprise platforms and elite engineering talent.",
   keywords: [
-    "AI systems",
-    "drone technology",
-    "aerospace",
-    "robotics",
-    "autonomous navigation",
-    "software engineering",
+    "AI transformation",
+    "AI engineering",
+    "intelligent automations",
+    "agentic AI",
+    "enterprise AI platforms",
+    "digital transformation",
   ],
   openGraph: {
-    title: "Astrenox | Intelligent Autonomous Systems",
+    title: "Astrenox | AI-First Digital Transformation",
     description:
-      "AI-powered innovation in drones, aerospace, robotics, and intelligent software systems.",
+      "Strategy and hands-on engineering for measurable AI outcomes—Solvoris, Orzo, and production rollouts at enterprise scale.",
     type: "website",
   },
 };

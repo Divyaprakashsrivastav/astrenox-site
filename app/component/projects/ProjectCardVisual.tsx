@@ -1,23 +1,31 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { SkyGuardProjectVisual } from "./projectVisuals/SkyGuardProjectVisual";
+import { AISystemsVisual } from "../features/visuals/AISystemsVisual";
+import { AnalyticsVisual } from "../features/visuals/AnalyticsVisual";
+import { ResearchVisual } from "../features/visuals/ResearchVisual";
 import { OrionProjectVisual } from "./projectVisuals/OrionProjectVisual";
 import { RoboticsProjectVisual } from "./projectVisuals/RoboticsProjectVisual";
 import { VisionProjectVisual } from "./projectVisuals/VisionProjectVisual";
+import type { ProjectVisualId } from "@/app/content/astrenox-content";
 
-export type ProjectVisualId = "skyguard" | "orion" | "robotics" | "vision";
+export type { ProjectVisualId };
 
 export interface ProjectVisualProps {
   active: boolean;
   reducedMotion: boolean;
 }
 
-const VISUALS: Record<ProjectVisualId, (props: ProjectVisualProps) => ReactNode> = {
-  skyguard: SkyGuardProjectVisual,
-  orion: OrionProjectVisual,
-  robotics: RoboticsProjectVisual,
-  vision: VisionProjectVisual,
+const VISUALS: Record<
+  ProjectVisualId,
+  (props: ProjectVisualProps) => ReactNode
+> = {
+  solvoris: AISystemsVisual,
+  orzo: AnalyticsVisual,
+  velocity: RoboticsProjectVisual,
+  copilot: VisionProjectVisual,
+  "data-revamp": ResearchVisual,
+  frontend: OrionProjectVisual,
 };
 
 interface ProjectCardVisualProps extends ProjectVisualProps {

@@ -37,7 +37,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-6"
+              className="flex w-full items-start justify-between gap-4 px-4 py-4 text-left sm:px-5"
               aria-expanded={isOpen}
             >
               <span className="text-sm sm:text-base font-medium text-text leading-snug">

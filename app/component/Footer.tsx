@@ -1,19 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import FooterBackground from "./footer/FooterBackground";
 import FooterBrandWatermark from "./footer/FooterBrandWatermark";
 import FooterNavLink from "./footer/FooterNavLink";
 import SocialIcons from "./footer/SocialIcons";
-
-const navLinks = [
-  { label: "Capabilities", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Projects", href: "#projects" },
-  { label: "Research", href: "#research" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
-];
+import { footer } from "@/app/content/astrenox-content";
+import { footerQuickLinks } from "@/app/content/site-pages";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -26,10 +20,7 @@ const fadeUp = {
 
 export default function Footer() {
   return (
-    <footer
-      id="contact"
-      className="relative overflow-hidden min-h-[580px] sm:min-h-[640px] lg:min-h-[700px]"
-    >
+    <footer className="relative overflow-hidden min-h-[275px] lg:min-h-[310px]">
       <FooterBackground />
       <FooterBrandWatermark />
 
@@ -39,11 +30,11 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="pt-20 lg:pt-28 pb-16 lg:pb-20 text-center"
+          className="pt-10 lg:pt-12 pb-8 lg:pb-10 text-center"
         >
           <p className="font-heading text-2xl sm:text-3xl lg:text-[2.25rem] font-semibold text-white tracking-[-0.02em] leading-[1.2] max-w-3xl mx-auto">
-            Building the future of{" "}
-            <span className="text-[#c97b84]">intelligent autonomy</span>.
+            {footer.headline}{" "}
+            <span className="text-[#c97b84]">{footer.headlineAccent}</span>
           </p>
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
@@ -61,59 +52,94 @@ export default function Footer() {
           variants={{
             visible: { transition: { staggerChildren: 0.07, delayChildren: 0.04 } },
           }}
-          className="pb-16 lg:pb-24 space-y-8 lg:space-y-10"
+          className="pb-8 lg:pb-10 space-y-4"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 lg:gap-8 items-start">
-            <motion.div
-              variants={fadeUp}
-              className="footer-glass rounded-2xl p-6 lg:p-7 text-center lg:text-left"
-            >
-              <a href="#" className="group inline-flex flex-col gap-2.5">
-                <span className="font-heading text-2xl lg:text-[1.75rem] font-semibold text-white tracking-tight">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <motion.div variants={fadeUp} className="footer-glass rounded-2xl p-6 lg:p-7">
+              <Link href="/" className="group inline-flex flex-col gap-2.5">
+                <span className="font-heading text-2xl font-semibold text-white tracking-tight">
                   Astrenox
                 </span>
                 <span className="h-px w-12 bg-[#c97b84]/50 group-hover:w-16 group-hover:bg-[#c97b84] transition-all duration-400" />
-              </a>
-              <p className="mt-4 text-xs font-medium tracking-[0.2em] uppercase text-[#a8b0c0]">
-                Intelligent autonomous systems
-              </p>
+              </Link>
+              <p className="mt-4 text-sm text-[#a8b0c0] leading-relaxed">{footer.description}</p>
+              <SocialIcons />
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="footer-glass rounded-2xl p-6 lg:p-7">
+              <h4 className="text-sm font-semibold text-white mb-4">Quick links</h4>
+              <ul className="space-y-2 text-sm text-[#a8b0c0] max-h-64 overflow-y-auto scrollbar-hide">
+                {footerQuickLinks.map((link) => (
+                  <li key={link.href + link.label}>
+                    <Link href={link.href} className="hover:text-white transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="footer-glass rounded-2xl p-6 lg:p-7">
+              <h4 className="text-sm font-semibold text-white mb-4">Contact</h4>
+              <ul className="space-y-3 text-sm text-[#a8b0c0]">
+                <li>
+                  <a
+                    href="https://maps.google.com/?q=Noida%20UP"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    {footer.address}
+                  </a>
+                </li>
+                <li>{footer.addressAlt}</li>
+                <li>
+                  <a href={`tel:${footer.phone.replace(/\s/g, "")}`} className="hover:text-white">
+                    {footer.phone}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${footer.contactEmail}`} className="hover:text-white text-[#c97b84]">
+                    {footer.contactEmail}
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${footer.partnerEmail}`} className="hover:text-white">
+                    {footer.partnerEmail}
+                  </a>
+                </li>
+              </ul>
             </motion.div>
 
             <motion.nav
               variants={fadeUp}
-              className="footer-glass rounded-2xl px-6 py-5 lg:px-8 lg:py-6 flex flex-wrap items-center justify-center gap-x-7 gap-y-3"
-              aria-label="Footer"
+              className="footer-glass rounded-2xl p-6 lg:p-7 flex flex-col gap-3"
+              aria-label="Footer shortcuts"
             >
-              {navLinks.map((link, i) => (
-                <FooterNavLink
-                  key={link.label}
-                  href={link.href}
-                  label={link.label}
-                  index={i}
-                />
+              <h4 className="text-sm font-semibold text-white mb-1">Explore</h4>
+              {footerQuickLinks.slice(0, 6).map((link, i) => (
+                <FooterNavLink key={link.label} href={link.href} label={link.label} index={i} />
               ))}
             </motion.nav>
-
-            <motion.div
-              variants={fadeUp}
-              className="footer-glass rounded-2xl p-6 lg:p-7 flex flex-col items-center lg:items-end gap-4"
-            >
-              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-[#a8b0c0]">
-                Connect
-              </p>
-              <SocialIcons />
-            </motion.div>
           </div>
 
           <motion.div
             variants={fadeUp}
-            className="footer-glass rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+            className="footer-glass rounded-2xl px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
           >
             <p className="text-sm text-[#c4c9d4]">
               &copy; {new Date().getFullYear()} Astrenox. All rights reserved.
             </p>
+            <div className="flex items-center gap-6 text-xs uppercase tracking-[0.2em] text-[#8b95a8]">
+              <Link href="/privacy" className="hover:text-white transition-colors">
+                Privacy
+              </Link>
+              <Link href="/legal" className="hover:text-white transition-colors">
+                Legal
+              </Link>
+            </div>
             <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-[#8b95a8]">
-              Enterprise AI · Aerospace · Robotics
+              {footer.legal}
             </p>
           </motion.div>
         </motion.div>

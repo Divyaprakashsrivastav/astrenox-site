@@ -31,7 +31,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto"
         >
           {highlights.map((item, i) => (
             <motion.div
@@ -41,7 +41,7 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 + i * 0.1, duration: 0.55 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="glass-card p-10 text-center glow-border"
+              className="glass-card p-6 text-center glow-border"
             >
               <p className="font-heading text-3xl lg:text-4xl font-semibold text-accent-gradient">
                 {item.value}

@@ -18,48 +18,24 @@ import {
   OptimizationVisual,
   ScaleVisual,
 } from "./timeline/TimelineVisuals";
+import { processSection, processSteps } from "@/app/content/astrenox-content";
 
-const STEPS = [
-  {
-    step: "Step 01",
-    title: "System Review",
-    description:
-      "Deep audit of your infrastructure, data flows, and autonomy readiness across every critical layer.",
-    Visual: ReviewVisual,
-  },
-  {
-    step: "Step 02",
-    title: "Weekly Delivery",
-    description:
-      "Iterative sprints with measurable milestones — shipping production-grade increments every week.",
-    Visual: DeliveryVisual,
-  },
-  {
-    step: "Step 03",
-    title: "Production",
-    description:
-      "Hardened deployment pipelines with enterprise security, observability, and compliance built in.",
-    Visual: ProductionVisual,
-  },
-  {
-    step: "Step 04",
-    title: "Optimization",
-    description:
-      "Continuous performance tuning, model refinement, and operational efficiency at scale.",
-    Visual: OptimizationVisual,
-  },
-  {
-    step: "Step 05",
-    title: "Scale Automation",
-    description:
-      "Self-scaling autonomous workflows that compound value across your entire organization.",
-    Visual: ScaleVisual,
-  },
+const STEP_VISUALS = [
+  ReviewVisual,
+  DeliveryVisual,
+  ProductionVisual,
+  OptimizationVisual,
+  ScaleVisual,
 ] as const;
 
+const STEPS = processSteps.map((step, i) => ({
+  ...step,
+  Visual: STEP_VISUALS[i],
+}));
+
 const STEP_COUNT = STEPS.length;
-const SCROLL_VH_PER_STEP = 88;
-const CARD_HEIGHT = 340;
+const SCROLL_VH_PER_STEP = 70;
+const CARD_HEIGHT = 300;
 
 function TimelineMarker({
   index,
@@ -189,25 +165,24 @@ export default function ProcessTimeline() {
       >
         <TimelineBackground progress={smoothProgress} />
 
-        <div className="relative flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 lg:px-8 pt-[7.5rem] lg:pt-32 pb-10 lg:pb-12">
+        <div className="relative flex-1 flex flex-col max-w-7xl mx-auto w-full px-6 lg:px-8 pt-[5.5rem] lg:pt-24 pb-8 lg:pb-10">
           <motion.div style={{ y: headerY, opacity: headerOpacity }}>
-            <div className="max-w-2xl mx-auto text-center mb-12 lg:mb-14 shrink-0">
-              <span className="inline-block text-[11px] font-semibold text-[#667085] tracking-[0.24em] uppercase mb-6">
-                How We Work
+            <div className="max-w-2xl mx-auto text-center mb-8 lg:mb-10 shrink-0">
+              <span className="inline-block text-[11px] font-semibold text-[#667085] tracking-[0.24em] uppercase mb-4">
+                {processSection.partBLabel}
               </span>
               <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.875rem] font-semibold text-[#0a0a0a] tracking-[-0.03em] leading-[1.1]">
-                A path from review to{" "}
-                <span className="text-highlight-primary">scale</span>
+                Think → Align →{" "}
+                <span className="text-highlight-primary">Execute</span>
               </h2>
-              <p className="mt-6 text-base sm:text-[1.0625rem] text-[#667085] leading-[1.7] max-w-xl mx-auto">
-                Scroll through each phase of our delivery model — clarity,
-                momentum, and long-term autonomy at every step.
+              <p className="mt-4 text-base sm:text-[1.0625rem] text-[#667085] leading-[1.65] max-w-xl mx-auto">
+                {processSection.description}
               </p>
             </div>
           </motion.div>
 
           {/* Progress track */}
-          <div className="relative mb-11 lg:mb-14 px-2 sm:px-4 shrink-0">
+          <div className="relative mb-8 lg:mb-10 px-2 sm:px-4 shrink-0">
             <div className="absolute top-[19px] left-4 right-4 sm:left-8 sm:right-8 h-[3px] rounded-full bg-[#e5e7eb] shadow-[inset_0_1px_2px_rgba(16,24,40,0.06)] overflow-visible">
               <motion.div
                 style={{ width: lineWidth, opacity: lineGlow }}
@@ -249,7 +224,7 @@ export default function ProcessTimeline() {
               aria-hidden
             />
 
-            <div className="w-full flex gap-5 lg:gap-6 overflow-x-auto lg:overflow-visible pb-5 lg:pb-0 snap-x snap-mandatory lg:snap-none scrollbar-hide items-stretch px-1">
+            <div className="w-full flex gap-4 lg:gap-4 overflow-x-auto lg:overflow-visible pb-5 lg:pb-0 snap-x snap-mandatory lg:snap-none scrollbar-hide items-stretch px-1">
               {STEPS.map((item, i) => (
                 <motion.div
                   key={item.step}
@@ -290,7 +265,7 @@ function ActiveStepCaption({ activeIndex }: { activeIndex: number }) {
 
   return (
     <motion.div
-      className="mt-8 lg:mt-10 flex flex-col items-center gap-3 shrink-0"
+      className="mt-6 lg:mt-8 flex flex-col items-center gap-2 shrink-0"
       layout
     >
       <motion.div

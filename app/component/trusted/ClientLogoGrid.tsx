@@ -1,15 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const companies = [
-  "SpaceX",
-  "NASA",
-  "Airbus",
-  "Boeing",
-  "Lockheed Martin",
-  "Northrop Grumman",
-];
+import { trustedSection } from "@/app/content/astrenox-content";
 
 const logoContainer = {
   hidden: {},
@@ -35,7 +27,7 @@ export default function ClientLogoGrid({ inView }: { inView: boolean }) {
       animate={inView ? "visible" : "hidden"}
       variants={logoContainer}
     >
-      {companies.map((name) => (
+      {trustedSection.clientLogos.map((name) => (
         <motion.li key={name} variants={logoItem} className="trusted-logo-card">
           <span className="trusted-logo-card-glow" aria-hidden />
           <span className="trusted-logo-name">{name}</span>

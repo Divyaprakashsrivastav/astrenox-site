@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import type { ComponentType } from "react";
 
-const CARD_MIN_HEIGHT = 340;
+const CARD_MIN_HEIGHT = 300;
 
 const SHADOW_REST =
   "0 1px 2px rgba(16,24,40,0.05), 0 2px 8px rgba(16,24,40,0.04), inset 0 1px 0 rgba(255,255,255,0.95)";

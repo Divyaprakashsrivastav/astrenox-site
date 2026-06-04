@@ -9,14 +9,15 @@ const CX = 200;
 const CY = 200;
 const R = 148;
 
-const NODES = [
-  { id: "aerospace", label: "Aerospace", angle: -90 },
-  { id: "defense", label: "Defense", angle: -30 },
-  { id: "robotics", label: "Robotics", angle: 30 },
-  { id: "ai", label: "AI Systems", angle: 90 },
-  { id: "drones", label: "Autonomous Drones", angle: 150 },
-  { id: "vision", label: "Computer Vision", angle: 210 },
-].map((n) => {
+import { trustedSection } from "@/app/content/astrenox-content";
+
+const NODE_ANGLES = [-90, -30, 30, 90, 150, 210];
+
+const NODES = trustedSection.ecosystemNodes.map((label, i) => ({
+  id: `node-${i}`,
+  label,
+  angle: NODE_ANGLES[i] ?? i * 60,
+})).map((n) => {
   const rad = (n.angle * Math.PI) / 180;
   return {
     ...n,
