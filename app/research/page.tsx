@@ -32,7 +32,7 @@ export default function ResearchPage() {
 
       <section className="section-shell relative bg-background">
         <div className="section-divider" />
-        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center premium-card p-8">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center premium-card p-6">
           <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-text tracking-tight">
             {researchPage.disruption.title}
           </h2>

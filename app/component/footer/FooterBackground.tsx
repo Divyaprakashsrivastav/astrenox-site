@@ -1,33 +1,33 @@
 "use client";
 
-export default function FooterBackground() {
+import { motion } from "framer-motion";
+import { useReducedMotion } from "../features/useReducedMotion";
+
+interface FooterBackgroundProps {
+  active?: boolean;
+}
+
+export default function FooterBackground({ active = true }: FooterBackgroundProps) {
+  const reduced = useReducedMotion();
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(180deg, #111111 0%, #171020 50%, #0f0b14 100%)`,
+    <div className="ax-footer-bg" aria-hidden>
+      <div className="ax-footer-bg-base" />
+      <div className="ax-footer-bg-radial" />
+      <div className="footer-grain ax-footer-grain" />
+      <motion.div
+        className="ax-footer-orb"
+        animate={
+          active && !reduced
+            ? { x: ["-12%", "12%", "-12%"] }
+            : { x: 0 }
+        }
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
       />
-
-      {/* Very soft radial — no blue/purple bloom */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,rgba(255,255,255,0.03),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_30%_at_50%_100%,rgba(201,123,132,0.04),transparent_50%)]" />
-
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)
-          `,
-          backgroundSize: "96px 96px",
-        }}
-      />
-
-      <div className="footer-grain absolute inset-0" />
-
-      <div className="absolute inset-x-0 top-0 h-px bg-white/[0.08]" />
     </div>
   );
 }

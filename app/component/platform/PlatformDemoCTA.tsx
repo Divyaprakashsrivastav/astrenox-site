@@ -9,29 +9,32 @@ export default function PlatformDemoCTA() {
   const d = intelligencePlatform.demo;
 
   return (
-    <section id={d.id} className="section-shell relative platform-section-dark scroll-mt-28">
-      <div className="absolute inset-0 mesh-grid opacity-10" aria-hidden />
+    <section id={d.id} className="section-shell relative bg-[#111111] scroll-mt-28 border-t border-white/[0.06]">
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.65 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
           className="max-w-2xl mx-auto text-center"
         >
-          <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-dark-muted mb-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-dark-muted mb-2">
             {d.label}
           </p>
           <h2 className="font-heading text-3xl sm:text-4xl font-semibold text-dark-text tracking-tight leading-[1.12]">
             {d.title}
           </h2>
-          <p className="mt-4 text-base text-dark-muted leading-relaxed">{d.description}</p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+          <p className="mt-3 text-base text-dark-muted leading-relaxed">{d.description}</p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
             <LiquidButton href={d.primaryHref} variant="primary">
               {d.primaryCta}
               <ArrowRight size={16} strokeWidth={2} />
             </LiquidButton>
-            <LiquidButton href={d.secondaryHref} variant="outline" className="!border-white/20 !text-dark-text hover:!bg-white/10">
+            <LiquidButton
+              href={d.secondaryHref}
+              variant="outline"
+              className="!border-white/20 !text-dark-text hover:!bg-white/10"
+            >
               {d.secondaryCta}
             </LiquidButton>
           </div>

@@ -31,7 +31,7 @@ export default function AboutPage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {aboutPage.beliefs.map((b) => (
-              <article key={b.num} className="premium-card p-8">
+              <article key={b.num} className="premium-card p-6">
                 <span className="text-xs font-semibold text-primary tracking-widest">
                   {b.num}
                 </span>
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <SectionHeader label="Leadership" title="Meet the builders behind Astrenox" />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {aboutPage.leadership.map((person) => (
-              <article key={person.name} className="premium-card p-8 text-center">
+              <article key={person.name} className="premium-card p-6 text-center">
                 <div className="w-14 h-14 mx-auto rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center font-heading text-xl font-semibold text-primary">
                   {person.name.charAt(0)}
                 </div>
@@ -92,7 +92,7 @@ export default function AboutPage() {
             title={aboutPage.hiringTeaser.title}
             description={aboutPage.hiringTeaser.description}
           />
-          <blockquote className="premium-card p-8 max-w-3xl mx-auto text-center italic text-muted">
+          <blockquote className="premium-card p-6 max-w-3xl mx-auto text-center italic text-muted">
             &ldquo;{aboutPage.hiringTeaser.quote}&rdquo;
           </blockquote>
           <div className="mt-8 space-y-3 max-w-2xl mx-auto">

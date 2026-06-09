@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Send, Sparkles, X } from "lucide-react";
+import { Bot, MessageCircle, Send, X } from "lucide-react";
 import {
   useCallback,
   useEffect,
@@ -181,7 +181,7 @@ export default function AstrenoxChatbot() {
             <header className="chat-panel-header">
               <div className="chat-panel-brand">
                 <span className="chat-panel-logo" aria-hidden>
-                  <Sparkles size={14} strokeWidth={2} />
+                  <Bot size={14} strokeWidth={2} />
                 </span>
                 <div>
                   <h2 id={`${formId}-title`} className="chat-panel-title">
@@ -287,9 +287,6 @@ export default function AstrenoxChatbot() {
         className="chat-launcher"
         aria-expanded={open}
         aria-controls="astrenox-chat-panel"
-        whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.96 }}
-        transition={{ type: "spring", stiffness: 420, damping: 22 }}
       >
         <AnimatePresence mode="wait" initial={false}>
           {open ? (
@@ -312,7 +309,6 @@ export default function AstrenoxChatbot() {
               className="chat-launcher-inner"
             >
               <MessageCircle size={22} strokeWidth={2} />
-              <span className="chat-launcher-pulse" aria-hidden />
             </motion.span>
           )}
         </AnimatePresence>

@@ -23,9 +23,7 @@ export default function PlatformSection({
   const bg =
     variant === "dark"
       ? "platform-section-dark"
-      : variant === "muted"
-        ? "bg-[#f3f2f6]"
-        : "bg-background";
+      : "bg-background";
 
   return (
     <section id={id} className={`section-shell relative ${bg} scroll-mt-28`}>
@@ -36,7 +34,7 @@ export default function PlatformSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-2xl mb-8 lg:mb-10"
+          className="max-w-2xl mb-6 lg:mb-8"
         >
           <p className="text-[11px] font-medium text-muted uppercase tracking-[0.22em] mb-3">
             {label}

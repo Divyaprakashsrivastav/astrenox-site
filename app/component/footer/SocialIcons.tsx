@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import type { ReactNode, MouseEvent } from "react";
+import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 import { site, socialLinks } from "@/app/content/astrenox-content";
+
+const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
 
 interface SocialLink {
   label: string;
@@ -60,26 +62,12 @@ const socialItems: SocialLink[] = [
 function SocialGlassButton({
   social,
   index,
+  revealed,
 }: {
   social: SocialLink;
   index: number;
+  revealed: boolean;
 }) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 280, damping: 22 });
-  const springY = useSpring(y, { stiffness: 280, damping: 22 });
-
-  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - rect.left - rect.width / 2) * 0.2);
-    y.set((e.clientY - rect.top - rect.height / 2) * 0.2);
-  };
-
-  const onLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   const external = social.href.startsWith("http");
 
   return (
@@ -88,35 +76,36 @@ function SocialGlassButton({
       aria-label={social.label}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      style={{ x: springX, y: springY }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      initial={{ opacity: 0, y: 12, scale: 0.92 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true }}
+      className="ax-footer-social-btn"
+      initial={{ opacity: 0, scale: 0.75 }}
+      animate={revealed ? { opacity: 1, scale: 1 } : {}}
       transition={{
-        delay: 0.1 + index * 0.06,
+        delay: 0.35 + index * 0.07,
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1],
+        ease: EASE_OUT,
       }}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.98 }}
-      className="footer-glass group relative flex h-11 w-11 items-center justify-center rounded-xl text-[#a8b0c0] transition-colors duration-300 hover:text-white hover:border-[#c97b84]/25"
+      whileHover={{ scale: 1.1, rotate: 8 }}
+      whileTap={{ scale: 0.95 }}
     >
-      <span
-        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-[#c97b84]/[0.06] transition-opacity duration-300"
-        aria-hidden
-      />
-      <span className="relative z-10">{social.icon}</span>
+      {social.icon}
     </motion.a>
   );
 }
 
-export default function SocialIcons() {
+interface SocialIconsProps {
+  revealed?: boolean;
+}
+
+export default function SocialIcons({ revealed = false }: SocialIconsProps) {
   return (
-    <div className="flex items-center justify-center gap-3">
+    <div className="ax-footer-socials">
       {socialItems.map((social, i) => (
-        <SocialGlassButton key={social.label} social={social} index={i} />
+        <SocialGlassButton
+          key={social.label}
+          social={social}
+          index={i}
+          revealed={revealed}
+        />
       ))}
     </div>
   );

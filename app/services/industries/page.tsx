@@ -23,7 +23,7 @@ export default function IndustriesPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {industriesPage.stats.map((s) => (
-              <div key={s.label} className="premium-card p-8 text-center">
+              <div key={s.label} className="premium-card p-6 text-center">
                 <p className="font-heading text-3xl font-semibold text-text">{s.value}</p>
                 <p className="mt-2 text-xs uppercase tracking-wide text-muted">{s.label}</p>
               </div>

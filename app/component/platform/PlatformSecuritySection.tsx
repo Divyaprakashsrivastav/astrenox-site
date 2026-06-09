@@ -11,13 +11,7 @@ export default function PlatformSecuritySection() {
   const s = intelligencePlatform.security;
 
   return (
-    <PlatformSection
-      id={s.id}
-      label={s.label}
-      title={s.title}
-      description={s.description}
-      variant="muted"
-    >
+    <PlatformSection id={s.id} label={s.label} title={s.title} description={s.description}>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {s.pillars.map((pillar, i) => {
           const Icon = pillarIcons[i] ?? Shield;
@@ -28,7 +22,7 @@ export default function PlatformSecuritySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06 }}
-              className="premium-card p-5 flex gap-4"
+              className="enterprise-card p-5 flex gap-4"
             >
               <div className="w-10 h-10 shrink-0 rounded-lg bg-background border border-border flex items-center justify-center">
                 <Icon size={18} className="text-primary" strokeWidth={2} />

@@ -52,7 +52,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32">
+    <section id="services" className="py-16 lg:py-20">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -75,7 +75,7 @@ export default function Services() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
               whileHover={{ y: -4 }}
-              className="glass-card rounded-2xl p-8 transition-all duration-300 group cursor-default"
+              className="glass-card rounded-2xl p-6 transition-all duration-300 group cursor-default"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}

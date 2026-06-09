@@ -26,7 +26,7 @@ export default function EnterpriseSearchSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-3 premium-card p-5 lg:p-6 platform-search-console"
+          className="lg:col-span-3 enterprise-card p-5 lg:p-6"
         >
           <div className="flex items-center gap-2 mb-4">
             <Search size={18} className="text-primary" strokeWidth={2} />
@@ -90,9 +90,11 @@ export default function EnterpriseSearchSection() {
           return (
             <motion.article
               key={source.id}
-              whileHover={{ y: -2 }}
-              className="premium-card p-4 platform-source-card"
-              style={{ transitionDelay: `${i * 40}ms` }}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04 }}
+              className="enterprise-card p-4"
             >
               <div className="w-9 h-9 rounded-lg bg-background border border-border flex items-center justify-center mb-3">
                 <Icon size={16} className="text-primary" strokeWidth={2} />

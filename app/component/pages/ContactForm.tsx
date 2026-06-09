@@ -1,6 +1,8 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
 import { contactPage } from "@/app/content/site-pages";
 import { site } from "@/app/content/astrenox-content";
 
@@ -25,7 +27,27 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="premium-card card-pad lg:card-pad-lg space-y-4">
+    <AnimatePresence mode="wait">
+      {submitted ? (
+        <motion.div
+          key="success"
+          className="premium-card card-pad contact-form-success"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.45, ease: [0, 0, 0.2, 1] }}
+        >
+          <CheckCircle2 size={32} className="text-emerald-500 mb-3" />
+          <p className="font-heading text-lg font-semibold">Request prepared</p>
+          <p className="text-sm text-muted mt-2">Your email client is opening with your message.</p>
+        </motion.div>
+      ) : (
+    <motion.form
+      key="form"
+      onSubmit={handleSubmit}
+      className="premium-card card-pad lg:card-pad-lg space-y-4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="block">
           <span className="text-xs font-medium text-muted uppercase tracking-wide">
@@ -89,8 +111,10 @@ export default function ContactForm() {
         type="submit"
         className="w-full sm:w-auto px-8 py-3.5 text-sm font-medium text-white bg-primary hover:bg-[#6a2859] rounded-full transition-colors shadow-sm"
       >
-        {submitted ? "Opening your email client…" : "Send Message"}
+        Send Message
       </button>
-    </form>
+    </motion.form>
+      )}
+    </AnimatePresence>
   );
 }

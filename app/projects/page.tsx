@@ -48,7 +48,7 @@ export default function ProjectsPage() {
           <SectionHeader label="Outcomes" title="Client impact" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {projectsPage.quotes.map((q) => (
-              <blockquote key={q.metric} className="premium-card p-8">
+              <blockquote key={q.metric} className="premium-card p-6">
                 <p className="font-heading text-4xl font-semibold text-primary">{q.metric}</p>
                 <p className="mt-1 text-xs uppercase tracking-wide text-muted">{q.label}</p>
                 <p className="mt-5 text-sm text-muted italic leading-relaxed">

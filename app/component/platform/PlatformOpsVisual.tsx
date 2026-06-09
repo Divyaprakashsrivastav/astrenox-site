@@ -14,12 +14,12 @@ export default function PlatformOpsVisual() {
   const reduced = useReducedMotion();
 
   return (
-    <div className="platform-ops-panel premium-card p-4 lg:p-5 h-full min-h-[320px]">
+    <div className="enterprise-card p-4 lg:p-5">
       <div className="flex items-center justify-between mb-4 px-1">
         <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
           Live operations
         </span>
-        <span className="platform-live-dot text-[10px] font-medium text-primary">● Active</span>
+        <span className="text-[10px] font-medium text-primary">● Active</span>
       </div>
 
       <div className="platform-dashboard-grid">
@@ -31,7 +31,7 @@ export default function PlatformOpsVisual() {
             {[40, 55, 48, 72, 65, 88, 76].map((h, i) => (
               <motion.span
                 key={i}
-                className="platform-spark-bar"
+                className="platform-spark-bar !bg-primary"
                 initial={{ scaleY: 0 }}
                 animate={{ scaleY: 1 }}
                 transition={{ delay: reduced ? 0 : 0.4 + i * 0.06, duration: 0.5 }}

@@ -54,7 +54,7 @@ function FloatingCard({
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="glass-card p-8 lg:p-10 max-w-md h-full"
+        className="glass-card p-6 max-w-md h-full"
       >
       <div className="flex gap-1 mb-6">
         {Array.from({ length: 5 }).map((_, i) => (
@@ -75,7 +75,7 @@ function FloatingCard({
 
 export default function Testimonials() {
   return (
-    <section className="relative py-32 lg:py-44 overflow-hidden">
+    <section className="relative py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-deep-purple/20 blur-[100px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-secondary/10 blur-[80px]" />

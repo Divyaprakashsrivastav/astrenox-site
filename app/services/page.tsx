@@ -28,7 +28,7 @@ export default function ServicesPage() {
               <Link
                 key={service.slug}
                 href={service.href}
-                className="premium-card p-8 group hover:border-primary/25 transition-colors block"
+                className="premium-card p-6 group hover:border-primary/25 transition-colors block"
               >
                 <h3 className="font-heading text-xl font-semibold text-text group-hover:text-primary transition-colors">
                   {service.title}

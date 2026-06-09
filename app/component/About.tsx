@@ -11,7 +11,7 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-32 lg:py-44">
+    <section id="about" className="relative py-20 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-secondary/20 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

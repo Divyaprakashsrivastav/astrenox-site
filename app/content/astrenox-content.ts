@@ -473,9 +473,9 @@ export const ctaBanner = {
 } as const;
 
 export const footer = {
-  headline: "The cost of intelligence is falling to zero.",
-  headlineAccent: "Build for flow—not for perfect.",
-  tagline: "AI-first strategy & engineering",
+  headline: "Transition from architecture to production.",
+  headlineAccent: "Ship systems—not slides.",
+  tagline: "System Transformation Engine",
   description:
     "AI-first strategy and engineering partners helping teams modernize operations, build AI-native products, and deliver measurable outcomes at velocity.",
   contactEmail: "hello@astrenox.com",

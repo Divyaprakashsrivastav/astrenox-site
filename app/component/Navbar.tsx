@@ -127,7 +127,7 @@ export default function Navbar() {
           <div className="flex items-center gap-2 pr-1 sm:pr-2">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-[13px] font-medium text-white bg-primary hover:bg-[#6a2859] rounded-full transition-colors shadow-sm"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-[13px] font-medium text-white bg-primary hover:bg-[#7a2966] rounded-full transition-colors shadow-sm"
             >
               Book a call
               <ArrowRight size={14} strokeWidth={2} />

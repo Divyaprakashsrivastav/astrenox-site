@@ -14,7 +14,7 @@ interface LiquidButtonProps {
 
 const variants: Record<Variant, string> = {
   primary:
-    "text-white bg-primary hover:bg-[#6a2859] border border-transparent shadow-sm",
+    "text-white bg-primary hover:bg-[#7a2966] border border-transparent shadow-sm",
   outline:
     "text-text bg-card border border-border hover:border-[#d0d5dd] hover:bg-background",
   ghost: "text-muted bg-transparent border border-transparent hover:text-text",

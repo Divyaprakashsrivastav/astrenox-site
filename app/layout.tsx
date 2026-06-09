@@ -16,21 +16,21 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Astrenox | AI-First Digital Transformation",
+  title: "Astrenox | The AI Operating System for the Physical World",
   description:
-    "Astrenox diagnoses bottlenecks, designs the right AI, and scales execution—from intelligent automations to enterprise platforms and elite engineering talent.",
+    "Astrenox connects enterprise intelligence to autonomous systems—robotics, aerospace, logistics, and industrial operations through one production-grade control plane.",
   keywords: [
-    "AI transformation",
-    "AI engineering",
-    "intelligent automations",
-    "agentic AI",
-    "enterprise AI platforms",
-    "digital transformation",
+    "enterprise AI",
+    "autonomous systems",
+    "robotics orchestration",
+    "aerospace AI",
+    "physical world AI",
+    "production engineering",
   ],
   openGraph: {
-    title: "Astrenox | AI-First Digital Transformation",
+    title: "Astrenox | The AI Operating System for the Physical World",
     description:
-      "Strategy and hands-on engineering for measurable AI outcomes—Solvoris, Orzo, and production rollouts at enterprise scale.",
+      "Enterprise AI, autonomous systems, and production-grade engineering—unified under one operating system for the physical world.",
     type: "website",
   },
 };

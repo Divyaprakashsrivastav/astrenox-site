@@ -21,7 +21,7 @@ export default function PageHero({
   secondaryCta = { label: "Explore services", href: "/services" },
 }: PageHeroProps) {
   return (
-    <section className="relative pt-20 pb-12 lg:pt-24 lg:pb-16 overflow-hidden hero-gradient">
+    <section className="relative pt-16 pb-10 lg:pt-20 lg:pb-12 overflow-hidden hero-gradient">
       <div className="absolute inset-0 mesh-grid opacity-30" aria-hidden />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
@@ -31,17 +31,17 @@ export default function PageHero({
           className="max-w-3xl"
         >
           {eyebrow ? (
-            <p className="text-xs font-semibold tracking-[0.18em] uppercase text-muted mb-6">
+            <p className="text-xs font-semibold tracking-[0.18em] uppercase text-muted mb-3">
               {eyebrow}
             </p>
           ) : null}
           <h1 className="font-heading text-[clamp(2rem,4.5vw,3.25rem)] font-semibold text-text tracking-tight leading-[1.1]">
             {title}
           </h1>
-          <p className="mt-6 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-muted max-w-2xl leading-relaxed">
             {description}
           </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <LiquidButton href={primaryCta.href} variant="primary">
               {primaryCta.label}
               <ArrowRight size={16} strokeWidth={2} />

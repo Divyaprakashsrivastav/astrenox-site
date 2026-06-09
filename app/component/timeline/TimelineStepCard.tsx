@@ -126,7 +126,7 @@ export default function TimelineStepCard({
         aria-hidden
       />
 
-      <div className="relative z-10 flex h-full flex-col p-7 lg:p-8">
+      <div className="relative z-10 flex h-full flex-col p-6">
         <motion.div style={{ opacity: stepBadgeOpacity }} className="mb-5">
           <span className="inline-flex items-center rounded-md border border-primary/15 bg-primary/[0.06] px-2.5 py-1 text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">
             {step}
