@@ -1,11 +1,10 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import type { MouseEvent, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
-
-const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
+import { MOTION } from "../motion/home-motion";
 
 interface HeroCtaProps {
   href: string;
@@ -15,23 +14,6 @@ interface HeroCtaProps {
 
 export default function HeroCta({ href, variant, children }: HeroCtaProps) {
   const reduced = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 260, damping: 24 });
-  const springY = useSpring(y, { stiffness: 260, damping: 24 });
-
-  const onMove = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (reduced) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - rect.left - rect.width / 2) * 0.14);
-    y.set((e.clientY - rect.top - rect.height / 2) * 0.14);
-  };
-
-  const onLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   const cls =
     variant === "primary"
       ? "hero-btn hero-btn-primary group"
@@ -41,28 +23,47 @@ export default function HeroCta({ href, variant, children }: HeroCtaProps) {
     <motion.a
       href={href}
       className={cls}
-      style={reduced ? undefined : { x: springX, y: springY }}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
+      whileHover={
+        reduced
+          ? undefined
+          : {
+              y: -2,
+              scale: 1.02,
+              boxShadow:
+                variant === "primary"
+                  ? "0 8px 32px rgba(124, 58, 237, 0.32), 0 4px 16px rgba(25, 211, 197, 0.15)"
+                  : "0 6px 24px rgba(111, 44, 145, 0.1), 0 2px 6px rgba(17,17,17,0.05)",
+            }
+      }
       whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.28, ease: MOTION.lineReveal.ease }}
       variants={{
-        hidden: { opacity: 0, y: 10 },
+        hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.65, ease: EASE_OUT },
+          filter: "blur(0px)",
+          transition: { duration: MOTION.lineReveal.duration, ease: MOTION.lineReveal.ease },
         },
       }}
     >
       {children}
-      <ArrowRight
-        size={16}
-        className={
-          variant === "primary"
-            ? "hero-btn-arrow"
-            : "hero-btn-arrow hero-btn-arrow--ghost"
-        }
-      />
+      <motion.span
+        className="hero-btn-arrow-wrap"
+        aria-hidden
+        initial={false}
+        whileHover={reduced ? undefined : { x: 4 }}
+        transition={{ duration: 0.25, ease: MOTION.lineReveal.ease }}
+      >
+        <ArrowRight
+          size={16}
+          className={
+            variant === "primary"
+              ? "hero-btn-arrow"
+              : "hero-btn-arrow hero-btn-arrow--ghost"
+          }
+        />
+      </motion.span>
     </motion.a>
   );
 }

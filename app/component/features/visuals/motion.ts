@@ -1,12 +1,13 @@
 import type { Transition } from "framer-motion";
 
 export const COLORS = {
-  primary: "#7D2E68",
-  secondary: "#C97B84",
+  primary: "#6F2C91",
+  secondary: "#B65C8A",
+  accent: "#19D3C5",
   line: "#D0D5DD",
-  lineMuted: "#E5E7EB",
+  lineMuted: "#E8E8EE",
   fill: "#FFFFFF",
-  glow: "rgba(125, 46, 104, 0.12)",
+  glow: "rgba(111, 44, 145, 0.1)",
 } as const;
 
 export function safeSvgId(reactId: string): string {

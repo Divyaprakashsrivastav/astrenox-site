@@ -36,24 +36,40 @@ export const homeCapabilities = {
       title: "Enterprise AI",
       description:
         "Multi-model orchestration, knowledge graphs, and governed agent fleets at scale.",
+      metrics: [
+        { value: "30+", label: "Model routes" },
+        { value: "99.9%", label: "Uptime SLA" },
+      ],
     },
     {
       id: "drones" as const,
       title: "Autonomous Drones",
       description:
         "Mission routing, fleet telemetry, and human-in-the-loop autonomy for aerial operations.",
+      metrics: [
+        { value: "500+", label: "Flight hours" },
+        { value: "Real-time", label: "Telemetry" },
+      ],
     },
     {
       id: "robotics" as const,
       title: "Robotics",
       description:
         "Closed-loop manipulators, warehouse agents, and industrial automation with full observability.",
+      metrics: [
+        { value: "24/7", label: "Agent ops" },
+        { value: "<50ms", label: "Loop latency" },
+      ],
     },
     {
       id: "aerospace" as const,
       title: "Aerospace Intelligence",
       description:
         "Orbital telemetry, trajectory planning, and mission-grade decision systems.",
+      metrics: [
+        { value: "Mission", label: "Grade AI" },
+        { value: "Multi-orbit", label: "Coverage" },
+      ],
     },
   ],
 } as const;
@@ -106,81 +122,70 @@ export const homeOperatingSystem = {
   layers: [
     {
       id: "perception",
-      title: "Perception Layer",
-      description: "Sensors, vision, telemetry, and real-world signal ingestion.",
-      items: ["Computer vision", "Fleet telemetry", "Edge streams"],
+      title: "Perception",
+      description: "Vision, telemetry, and sensor fusion at the edge.",
+      items: ["Computer Vision", "Telemetry", "Sensor Fusion"],
     },
     {
       id: "intelligence",
-      title: "Intelligence Layer",
-      description: "Multi-model reasoning, knowledge graphs, and agent cognition.",
-      items: ["LLM routing", "Knowledge graph", "Scenario agents"],
+      title: "Intelligence",
+      description: "Models, graphs, and reasoning for decisions.",
+      items: ["AI Models", "Knowledge Graphs", "Reasoning"],
     },
     {
       id: "orchestration",
-      title: "Orchestration Layer",
-      description: "Policies, workflows, integrations, and governed automation.",
-      items: ["Control plane", "Runbooks", "30+ integrations"],
+      title: "Orchestration",
+      description: "Agents, workflows, and policy in one control plane.",
+      items: ["Agents", "Workflow Engine", "Policy Layer"],
     },
     {
       id: "execution",
-      title: "Physical Execution",
-      description: "Commands issued to robots, routes, plants, and mission systems.",
-      items: ["Robotics API", "Mission dispatch", "Closed-loop ops"],
+      title: "Execution",
+      description: "Autonomous systems deployed in the physical world.",
+      items: ["Drones", "Robotics", "Aerospace"],
     },
   ],
 } as const;
 
 export const homeMethodology = {
+  id: "methodology",
   label: "Deployment Methodology",
   title: "From Signal to Physical Outcome",
   subtitle: "THINK → ALIGN → EXECUTE",
   description:
-    "Enterprise programs that connect intelligence layers to autonomous execution—robotics, aerospace, and industrial systems in production.",
+    "How Astrenox transforms raw signals into deployed autonomous systems.",
   stages: [
     {
       id: "think",
       number: "01",
       title: "THINK",
-      tagline: "Intelligence diagnosis",
+      tagline: "Signal intelligence",
       items: [
-        { title: "Direction", description: "Vision, scope, and success KPIs locked before build." },
-        { title: "Readiness", description: "People, process, and technology constraints mapped." },
-        { title: "Foundation", description: "Use cases ranked by impact, feasibility, and time-to-value." },
-      ],
-      metrics: [
-        { value: "100%", label: "KPI alignment" },
-        { value: "72h", label: "Diagnostic window" },
+        "Diagnose the system.",
+        "Map constraints.",
+        "Identify opportunities.",
       ],
     },
     {
       id: "align",
       number: "02",
       title: "ALIGN",
-      tagline: "Architecture orchestration",
+      tagline: "Architecture design",
       items: [
-        { title: "Governance network", description: "Policy, access, and model risk wired into the graph." },
-        { title: "Cross-functional orchestration", description: "Squads, data flows, and ownership sequenced." },
-        { title: "System foundation", description: "Integrations, data models, and agent frameworks composed." },
-      ],
-      metrics: [
-        { value: "30+", label: "Integration nodes" },
-        { value: "Unified", label: "Control plane" },
+        "Design architecture.",
+        "Define governance.",
+        "Build deployment strategy.",
       ],
     },
     {
       id: "execute",
       number: "03",
       title: "EXECUTE",
-      tagline: "Production deployment engine",
+      tagline: "Production deployment",
       items: [
-        { title: "Live deployment", description: "Evaluation, safety gates, and observability from sprint one." },
-        { title: "AI automation loops", description: "Agentic runbooks and closed-loop operations." },
-        { title: "Real-time telemetry", description: "ROI, latency, and outcome dashboards for leaders." },
-      ],
-      metrics: [
-        { value: "99.4%", label: "Delivery success" },
-        { value: "24/7", label: "Agent ops" },
+        "Ship to production.",
+        "Monitor performance.",
+        "Scale operations.",
       ],
     },
   ],
@@ -189,26 +194,48 @@ export const homeMethodology = {
 export const homeTriFlywheel = {
   label: "Defensibility Model",
   title: "Architecting Defensibility: The Tri-Flywheel Model",
-  description: "Three reinforcing loops that compound speed, intelligence, and ecosystem advantage.",
+  description:
+    "Three reinforcing loops compound speed, intelligence, and ecosystem advantage into a durable strategic moat.",
   centerLabel: "Astrenox Core",
   flywheels: [
     {
       id: "product",
-      title: "Product Delivery Flywheel",
-      description: "Faster shipping → richer feedback → better AI products → higher retention.",
-      highlights: ["Outcome squads", "Production gates", "Weekly releases"],
+      tabLabel: "Product",
+      title: "Product Delivery",
+      description:
+        "Velocity compounds into product quality—each release tightens the feedback loop and deepens retention.",
+      steps: [
+        "Ship faster",
+        "Collect feedback",
+        "Improve AI",
+        "Increase retention",
+      ],
     },
     {
       id: "operations",
-      title: "Internal AI Operations Flywheel",
-      description: "Automation → cost efficiency → reinvestment → deeper agentic coverage.",
-      highlights: ["Agent runbooks", "Knowledge graph", "Closed-loop ops"],
+      tabLabel: "Operations",
+      title: "Internal AI Operations",
+      description:
+        "Automation frees capital and capacity—reinvested into broader agentic coverage across the stack.",
+      steps: [
+        "Automate workflows",
+        "Reduce cost",
+        "Reinvest gains",
+        "Expand coverage",
+      ],
     },
     {
       id: "ecosystem",
-      title: "Ecosystem Alignment Flywheel",
-      description: "Partner depth → preferred access → faster integration → stronger moats.",
-      highlights: ["Cloud alliances", "Model routing", "Vendor-agnostic core"],
+      tabLabel: "Ecosystem",
+      title: "Ecosystem Alignment",
+      description:
+        "Partner depth unlocks distribution and integration speed—network effects that widen the moat over time.",
+      steps: [
+        "Partner integrations",
+        "Market access",
+        "Distribution",
+        "Network effects",
+      ],
     },
   ],
 } as const;

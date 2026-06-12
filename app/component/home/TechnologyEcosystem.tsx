@@ -13,7 +13,7 @@ export default function TechnologyEcosystem() {
   const inView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <DesignSection id="technology" className="tech-cmd-section">
+    <DesignSection id="technology" className="tech-cmd-section" ambient="alt">
       <div ref={ref} className="tech-cmd-layout">
         <motion.div
           className="tech-cmd-copy"

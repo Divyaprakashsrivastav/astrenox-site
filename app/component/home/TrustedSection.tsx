@@ -2,80 +2,55 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import DesignSection, { DesignHeader } from "../design/DesignSection";
+import DesignSection from "../design/DesignSection";
 import { homeEnterpriseEcosystem } from "@/app/content/homepage-content";
 
 const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
 
-const CATEGORY_LABELS: Record<string, string> = {
-  cloud: "Cloud",
-  ai: "AI",
-  integration: "Enterprise",
-};
+const PARTNERS = [
+  "OpenAI",
+  "Anthropic",
+  "AWS",
+  "Azure",
+  "Google Cloud",
+  "Snowflake",
+  "Databricks",
+  "Palantir",
+] as const;
 
 export default function TrustedSection() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10%" });
-  const track = [...homeEnterpriseEcosystem.marquee, ...homeEnterpriseEcosystem.marquee];
-
-  const allPartners = homeEnterpriseEcosystem.rings.flatMap((ring) =>
-    ring.partners.map((p) => ({ ...p, ringId: ring.id }))
-  );
+  const inView = useInView(ref, { once: true, margin: "-8%" });
+  const track = [...PARTNERS, ...PARTNERS];
 
   return (
-    <DesignSection id="trusted" border className="ax-section-compact partners-section">
-      <DesignHeader
-        label={homeEnterpriseEcosystem.label}
-        title={homeEnterpriseEcosystem.title}
-        description={homeEnterpriseEcosystem.description}
-        align="center"
-      />
+    <DesignSection id="trusted" border className="trust-eco-section">
+      <div ref={ref} className="trust-eco-glass">
+        <motion.div
+          className="trust-eco-head"
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, ease: EASE_OUT }}
+        >
+          <p className="trust-eco-label">{homeEnterpriseEcosystem.label}</p>
+          <h2 className="trust-eco-title">Trusted Ecosystem</h2>
+          <p className="trust-eco-desc">{homeEnterpriseEcosystem.description}</p>
+        </motion.div>
 
-      <div ref={ref} className="partners-cloud">
-        <div className="partners-categories">
-          {homeEnterpriseEcosystem.rings.map((ring, i) => (
-            <motion.div
-              key={ring.id}
-              className="partners-category-card"
-              initial={{ opacity: 0, y: 12 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: EASE_OUT }}
-            >
-              <p className="partners-category-label">
-                {CATEGORY_LABELS[ring.id] ?? ring.title}
-              </p>
-              <ul className="partners-category-list">
-                {ring.partners.slice(0, 4).map((p) => (
-                  <li key={p.id}>{p.name}</li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="partners-marquee" aria-label="Partner logos">
-          <div className="partners-marquee-track">
+        <div className="trust-eco-marquee" aria-label="Partner ecosystem">
+          <div className="trust-eco-marquee-track trust-eco-marquee-track--live">
             {track.map((name, i) => (
-              <span key={`${name}-${i}`} className="partners-logo-chip" data-cursor-hover>
+              <motion.span
+                key={`${name}-${i}`}
+                className="trust-eco-logo"
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 0.25 }}
+                data-cursor-hover
+              >
                 {name}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </div>
-
-        <div className="partners-grid">
-          {allPartners.slice(0, 12).map((p, i) => (
-            <motion.span
-              key={p.id}
-              className="partners-logo-tile"
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.1 + i * 0.03, duration: 0.4 }}
-              data-cursor-hover
-            >
-              {p.name}
-            </motion.span>
-          ))}
         </div>
       </div>
     </DesignSection>

@@ -13,7 +13,7 @@ export default function HomeMetrics() {
   const inView = useInView(ref, { once: true, margin: "-12%" });
 
   return (
-    <DesignSection id="metrics">
+    <DesignSection id="metrics" ambient="alt">
       <DesignHeader
         label={homeMetrics.label}
         title={homeMetrics.title}

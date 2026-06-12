@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import AmbientBlobs from "../ui/AmbientBlobs";
 import { FadeUp } from "./FadeUp";
 
 interface DesignSectionProps {
@@ -9,6 +10,8 @@ interface DesignSectionProps {
   className?: string;
   dark?: boolean;
   border?: boolean;
+  /** Subtle ambient blobs behind section (light sections only) */
+  ambient?: boolean | "alt";
 }
 
 export default function DesignSection({
@@ -17,13 +20,18 @@ export default function DesignSection({
   className = "",
   dark = false,
   border = true,
+  ambient = true,
 }: DesignSectionProps) {
+  const ambientVariant =
+    ambient === "alt" ? "section-alt" : ambient ? "section" : null;
+
   return (
     <section
       id={id}
-      className={`ax-section scroll-mt-28 ${dark ? "ax-section-dark" : "ax-section-light"} ${border ? "ax-section-border" : ""} ${className}`}
+      className={`ax-section ax-section-wrap scroll-mt-28 ${dark ? "ax-section-dark" : "ax-section-light"} ${border ? "ax-section-border" : ""} ${className}`}
     >
-      <div className="ax-container">{children}</div>
+      {!dark && ambientVariant && <AmbientBlobs variant={ambientVariant} />}
+      <div className="ax-container ax-section-content">{children}</div>
     </section>
   );
 }

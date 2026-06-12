@@ -32,15 +32,8 @@ export default function MethodologyPipeline() {
               <h3 className="font-heading text-lg font-semibold text-text">{stage.title}</h3>
               <p className="text-xs text-primary font-medium mt-1">{stage.tagline}</p>
               <p className="text-sm text-muted mt-3 leading-relaxed">
-                {stage.items[0]?.description}
+                {stage.items[0]}
               </p>
-              <div className="flex gap-2 mt-4">
-                {stage.metrics.map((m) => (
-                  <span key={m.label} className="method-metric-chip">
-                    <strong>{m.value}</strong> {m.label}
-                  </span>
-                ))}
-              </div>
             </article>
           </StoryReveal>
         ))}

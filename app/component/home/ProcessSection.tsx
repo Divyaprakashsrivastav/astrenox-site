@@ -1,1 +1,1 @@
-export { default } from "../methodology/MethodologyHorizon";
+export { default } from "../methodology/SignalJourney";

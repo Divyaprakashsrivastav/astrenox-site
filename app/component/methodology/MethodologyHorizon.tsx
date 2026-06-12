@@ -71,20 +71,9 @@ export default function MethodologyHorizon() {
                   >
                     <ul className="meth-horizon-items">
                       {stage.items.map((item) => (
-                        <li key={item.title}>
-                          <strong>{item.title}</strong>
-                          <span>{item.description}</span>
-                        </li>
+                        <li key={item}>{item}</li>
                       ))}
                     </ul>
-                    <div className="meth-horizon-metrics">
-                      {stage.metrics.map((m) => (
-                        <div key={m.label}>
-                          <p className="meth-horizon-metric-val">{m.value}</p>
-                          <p className="meth-horizon-metric-lbl">{m.label}</p>
-                        </div>
-                      ))}
-                    </div>
                   </motion.div>
                 </div>
               </motion.article>

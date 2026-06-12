@@ -17,8 +17,7 @@ type StageData = {
   number: string;
   title: string;
   tagline: string;
-  items: readonly { title: string; description: string }[];
-  metrics: readonly { value: string; label: string }[];
+  items: readonly string[];
 };
 
 interface JourneyStagePanelProps {
@@ -91,32 +90,12 @@ export default function JourneyStagePanel({
 
         <div className="journey-stage-visual">{visual}</div>
 
-        <motion.div
-          className="journey-stage-metrics"
-          initial={false}
-          animate={{ height: active ? "auto" : 0, opacity: active ? 1 : 0 }}
-          transition={{ duration: 0.45 }}
-        >
-          {stage.metrics.map((m, mi) => (
-            <motion.div
-              key={m.label}
-              className="journey-metric"
-              initial={{ opacity: 0, y: 6 }}
-              animate={active ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.15 + mi * 0.1 }}
-            >
-              <span className="journey-metric-value">{m.value}</span>
-              <span className="journey-metric-label">{m.label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-
         <div className="journey-stage-modules">
           {stage.items.map((item, ii) => (
             <IntelligenceModule
-              key={item.title}
-              title={item.title}
-              description={item.description}
+              key={item}
+              title={item}
+              description=""
               index={ii}
               visible={active}
             />

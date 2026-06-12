@@ -18,25 +18,25 @@ export default function HeroKpis({ className = "" }: HeroKpisProps) {
   return (
     <motion.div
       ref={ref}
-      className={`hero-kpi-row ${className}`.trim()}
+      className={`hero-kpi-row hero-kpi-row--compact ${className}`.trim()}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={{
-        visible: { transition: { staggerChildren: 0.06, delayChildren: 0.1 } },
+        visible: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } },
       }}
     >
       {homeHero.kpis.map((kpi) => (
         <motion.div
           key={kpi.label}
           variants={{
-            hidden: { opacity: 0, y: 8 },
+            hidden: { opacity: 0, y: 6 },
             visible: {
               opacity: 1,
               y: 0,
-              transition: { duration: 0.55, ease: EASE_OUT },
+              transition: { duration: 0.5, ease: EASE_OUT },
             },
           }}
-          className="hero-kpi-card"
+          className="hero-kpi-item"
         >
           <p className="hero-kpi-value tabular-nums">
             <AnimatedCounter

@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import DesignSection, { DesignHeader } from "../design/DesignSection";
 import { Stagger, StaggerItem } from "../design/FadeUp";
+import CapabilityCard from "../capabilities/CapabilityCard";
 import { AISystemsVisual } from "../features/visuals/AISystemsVisual";
 import { DroneVisual } from "../features/visuals/DroneVisual";
 import { RoboticsVisual } from "../features/visuals/RoboticsVisual";
 import { AerospaceVisual } from "../features/visuals/AerospaceVisual";
 import { useReducedMotion } from "../features/useReducedMotion";
 import { homeCapabilities } from "@/app/content/homepage-content";
-import { EASE_PREMIUM } from "../v2/motion";
 
 const VISUALS = {
   "enterprise-ai": AISystemsVisual,
@@ -24,32 +23,30 @@ export default function CapabilitiesSection() {
   const reduced = useReducedMotion();
 
   return (
-    <DesignSection id="capabilities">
+    <DesignSection id="capabilities" ambient="alt">
       <DesignHeader
         label={homeCapabilities.label}
         title={homeCapabilities.title}
         description={homeCapabilities.description}
       />
-      <Stagger className="ax-cap-grid">
+      <Stagger className="ax-cap-grid ax-cap-grid-premium">
         {homeCapabilities.items.map((cap) => {
           const Visual = VISUALS[cap.id];
           const isActive = active === cap.id;
           return (
             <StaggerItem key={cap.id}>
-              <motion.article
-                className="ax-cap-card"
-                onMouseEnter={() => setActive(cap.id)}
-                onMouseLeave={() => setActive(null)}
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25, ease: EASE_PREMIUM }}
-                data-cursor-hover
-              >
-                <div className="ax-cap-visual">
+              <CapabilityCard
+                title={cap.title}
+                description={cap.description}
+                metrics={cap.metrics}
+                active={isActive}
+                reduced={reduced}
+                onEnter={() => setActive(cap.id)}
+                onLeave={() => setActive(null)}
+                visual={
                   <Visual active={isActive} reducedMotion={reduced} />
-                </div>
-                <h3 className="ax-cap-title">{cap.title}</h3>
-                <p className="ax-cap-desc">{cap.description}</p>
-              </motion.article>
+                }
+              />
             </StaggerItem>
           );
         })}

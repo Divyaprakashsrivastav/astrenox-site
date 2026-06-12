@@ -1,22 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
 import { homeTechnology } from "@/app/content/homepage-content";
 
-const VB = 400;
-const CX = 200;
-const CY = 200;
+const VB = 440;
+const CX = 220;
+const CY = 220;
+const R = 140;
 
-const NODE_LAYOUT = [
-  { id: "models", label: "AI Models", angle: -90 },
-  { id: "cloud", label: "Cloud", angle: -30 },
-  { id: "databases", label: "Data", angle: 30 },
-  { id: "devops", label: "DevOps", angle: 90 },
-  { id: "integrations", label: "Enterprise", angle: 150 },
-  { id: "automation", label: "Automation", angle: 210 },
-  { id: "agents", label: "Frameworks", angle: 270 },
+const PARTNERS = [
+  { id: "openai", label: "OpenAI", angle: -90 },
+  { id: "anthropic", label: "Anthropic", angle: -45 },
+  { id: "aws", label: "AWS", angle: 0 },
+  { id: "azure", label: "Azure", angle: 45 },
+  { id: "gcp", label: "Google Cloud", angle: 90 },
+  { id: "databricks", label: "Databricks", angle: 135 },
+  { id: "snowflake", label: "Snowflake", angle: 180 },
+  { id: "palantir", label: "Palantir", angle: -135 },
 ] as const;
 
 function polar(angle: number, r: number) {
@@ -29,105 +31,90 @@ interface TechEcosystemLiveProps {
 }
 
 export default function TechEcosystemLive({ active }: TechEcosystemLiveProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-8%" });
   const reduced = useReducedMotion();
-  const R = 128;
-
-  const nodes = useMemo(
-    () =>
-      NODE_LAYOUT.map((n) => {
-        const cat = homeTechnology.categories.find((c) => c.id === n.id);
-        return { ...n, title: cat?.title ?? n.label, items: cat?.items ?? [] };
-      }),
-    []
-  );
+  const [hovered, setHovered] = useState<string | null>(null);
+  const live = active && inView && !reduced;
 
   return (
-    <div className="tech-live" aria-label="Astrenox technology ecosystem">
-      <div className="tech-live-ambient" aria-hidden>
-        <div className="tech-live-mesh" />
+    <div
+      ref={ref}
+      className={`tech-eco-live${live ? " is-live" : ""}`}
+      aria-label="Interactive ecosystem architecture"
+    >
+      <div className="tech-eco-live-ambient" aria-hidden>
+        <div className="tech-eco-live-mesh" />
       </div>
 
-      <svg viewBox={`0 0 ${VB} ${VB}`} className="tech-live-svg" aria-hidden>
+      <svg viewBox={`0 0 ${VB} ${VB}`} className="tech-eco-live-svg" aria-hidden>
         <defs>
-          <radialGradient id="tech-core-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#7D2E68" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#7D2E68" stopOpacity="0" />
-          </radialGradient>
-          <linearGradient id="tech-packet" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#7D2E68" stopOpacity="0" />
-            <stop offset="50%" stopColor="#C97B84" />
-            <stop offset="100%" stopColor="#7D2E68" stopOpacity="0" />
+          <linearGradient id="eco-packet" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#b14683" stopOpacity="0" />
+            <stop offset="50%" stopColor="#d27ca8" />
+            <stop offset="100%" stopColor="#b14683" stopOpacity="0" />
           </linearGradient>
         </defs>
 
-        <circle cx={CX} cy={CY} r={72} fill="url(#tech-core-glow)" />
-
-        {nodes.map((node, i) => {
+        {PARTNERS.map((node, i) => {
           const { x, y } = polar(node.angle, R);
-          const d = `M ${CX} ${CY} L ${x} ${y}`;
+          const d = `M ${x} ${y} L ${CX} ${CY}`;
+          const lit = hovered === node.id || hovered === null;
+          const pathActive = live && (hovered === node.id || hovered === null);
           return (
             <g key={node.id}>
-              <path d={d} className="tech-live-path" />
-              {active && !reduced && (
-                <circle r="3" fill="url(#tech-packet)">
+              <path
+                d={d}
+                className={`tech-eco-live-path ${lit ? "" : "is-dim"} ${hovered === node.id ? "is-active" : ""} ${pathActive ? "is-flowing" : ""}`}
+                style={{ animationDelay: `${i * 0.15}s` }}
+              />
+              {live && (
+                <circle r="3" fill="url(#eco-packet)">
                   <animateMotion
-                    dur={`${2.4 + i * 0.3}s`}
+                    dur={`${2.6 + i * 0.2}s`}
                     repeatCount="indefinite"
                     path={d}
-                    begin={`${i * 0.35}s`}
+                    begin={`${i * 0.3}s`}
                   />
                 </circle>
               )}
             </g>
           );
         })}
-
-        <g className="tech-live-core">
-          <rect
-            x={CX - 52}
-            y={CY - 22}
-            width={104}
-            height={44}
-            rx={12}
-            className="tech-live-core-box"
-          />
-          <text x={CX} y={CY - 2} className="tech-live-core-label">
-            {homeTechnology.coreLabel}
-          </text>
-          <text x={CX} y={CY + 14} className="tech-live-core-sub">
-            Orchestration
-          </text>
-        </g>
-
-        {nodes.map((node) => {
-          const { x, y } = polar(node.angle, R);
-          return (
-            <g key={`node-${node.id}`} transform={`translate(${x}, ${y})`}>
-              <motion.rect
-                x={-44}
-                y={-18}
-                width={88}
-                height={36}
-                rx={10}
-                className="tech-live-node"
-                animate={active ? { opacity: [0.85, 1, 0.85] } : {}}
-                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <text y={4} className="tech-live-node-label">
-                {node.title}
-              </text>
-            </g>
-          );
-        })}
       </svg>
 
-      <div className="tech-live-legend">
-        {nodes.slice(0, 4).map((n) => (
-          <span key={n.id} className="tech-live-chip">
-            {n.items[0]}
-          </span>
-        ))}
-      </div>
+      <motion.div
+        className="tech-eco-live-core"
+        animate={live ? { scale: [1, 1.03, 1] } : {}}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <span className="tech-eco-live-core-tag">Orchestration</span>
+        <strong>{homeTechnology.coreLabel}</strong>
+      </motion.div>
+
+      {PARTNERS.map((node) => {
+        const { x, y } = polar(node.angle, R);
+        const pct = (v: number) => `${(v / VB) * 100}%`;
+        const isHov = hovered === node.id;
+        return (
+          <motion.button
+            key={node.id}
+            type="button"
+            className={`tech-eco-live-node ${isHov ? "is-active" : ""} ${hovered && hovered !== node.id ? "is-dim" : ""} ${live ? "is-pulsing" : ""}`}
+            style={{ left: pct(x), top: pct(y) }}
+            onMouseEnter={() => setHovered(node.id)}
+            onMouseLeave={() => setHovered(null)}
+            whileHover={{ scale: 1.04 }}
+            animate={
+              live && isHov
+                ? { boxShadow: "0 12px 32px rgba(177,70,131,0.2)" }
+                : {}
+            }
+          >
+            {node.label}
+          </motion.button>
+        );
+      })}
     </div>
   );
 }

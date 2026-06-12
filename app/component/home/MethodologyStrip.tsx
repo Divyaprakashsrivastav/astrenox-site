@@ -45,24 +45,13 @@ export default function MethodologyStrip() {
                   <p className="text-xs text-muted mt-0.5">{stage.tagline}</p>
                 </div>
               </div>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {stage.items.map((item) => (
-                  <li key={item.title} className="border-t border-border pt-3 first:border-t-0 first:pt-0">
-                    <p className="text-sm font-medium text-text">{item.title}</p>
-                    <p className="text-sm text-muted mt-1 leading-relaxed">{item.description}</p>
+                  <li key={item} className="text-sm text-muted leading-relaxed">
+                    {item}
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {stage.metrics.map((m) => (
-                  <span
-                    key={m.label}
-                    className="text-xs px-2.5 py-1 rounded-md bg-background border border-border text-muted"
-                  >
-                    <strong className="text-text font-semibold">{m.value}</strong> {m.label}
-                  </span>
-                ))}
-              </div>
             </motion.article>
           ))}
         </div>

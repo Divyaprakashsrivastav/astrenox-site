@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import FloatingArchitectureLayers from "../control-plane/FloatingArchitectureLayers";
+import AICommandCenter from "../control-plane/AICommandCenter";
 import DesignSection from "../design/DesignSection";
 import { homeControlPlane } from "@/app/content/homepage-content";
 
@@ -33,14 +33,14 @@ export default function ControlPlaneSection() {
             transition={{ delay: 0.1, duration: 0.4 }}
           >
             <span className="cp-live-dot" />
-            SYSTEM ARCHITECTURE
+            LIVE COMMAND
           </motion.span>
           <p className="cp-eyebrow">{homeControlPlane.label}</p>
           <h2 className="cp-title">{homeControlPlane.title}</h2>
           <p className="cp-subtitle">{homeControlPlane.description}</p>
         </motion.header>
 
-        <FloatingArchitectureLayers active={inView} />
+        <AICommandCenter active={inView} />
       </div>
     </DesignSection>
   );

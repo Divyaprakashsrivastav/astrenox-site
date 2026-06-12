@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { EASE_PREMIUM } from "../v2/motion";
+import { MOTION, sectionRevealVariant } from "../motion/home-motion";
 
 export function FadeUp({
   children,
@@ -15,10 +15,11 @@ export function FadeUp({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.4, delay, ease: EASE_PREMIUM }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={sectionRevealVariant}
+      transition={{ delay }}
       className={className}
     >
       {children}
@@ -37,7 +38,7 @@ export function Stagger({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-50px" }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: 0.08 } },
@@ -57,13 +58,7 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EASE_PREMIUM } },
-      }}
-      className={className}
-    >
+    <motion.div variants={sectionRevealVariant} className={className}>
       {children}
     </motion.div>
   );

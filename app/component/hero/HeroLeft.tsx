@@ -5,28 +5,7 @@ import { useRef } from "react";
 import HeroCta from "./HeroCta";
 import HeroKpis from "./HeroKpis";
 import { homeHero } from "@/app/content/homepage-content";
-
-const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
-
-const lineReveal = {
-  hidden: { opacity: 0, y: 14, filter: "blur(5px)" },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.65, delay, ease: EASE_OUT },
-  }),
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.6, delay, ease: EASE_OUT },
-  }),
-};
+import { lineRevealVariant, MOTION } from "../motion/home-motion";
 
 export default function HeroLeft() {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,7 +19,7 @@ export default function HeroLeft() {
         custom={0}
         initial="hidden"
         animate={show}
-        variants={fadeUp}
+        variants={lineRevealVariant}
         className="hero-eyebrow"
       >
         {homeHero.eyebrow}
@@ -49,48 +28,30 @@ export default function HeroLeft() {
       <h1 className="hero-title">
         <motion.span
           className="hero-title-line"
-          custom={0.06}
+          custom={MOTION.lineReveal.stagger}
           initial="hidden"
           animate={show}
-          variants={lineReveal}
+          variants={lineRevealVariant}
         >
           {headline.line1}
         </motion.span>
         <motion.span
           className="hero-title-line"
-          custom={0.14}
+          custom={MOTION.lineReveal.stagger * 2}
           initial="hidden"
           animate={show}
-          variants={lineReveal}
+          variants={lineRevealVariant}
         >
-          <span className="hero-gradient-text">{headline.highlightA}</span>
-          {headline.line2After}
-        </motion.span>
-        <motion.span
-          className="hero-title-line"
-          custom={0.22}
-          initial="hidden"
-          animate={show}
-          variants={lineReveal}
-        >
-          <span className="hero-gradient-text">{headline.highlightB}</span>{" "}
-          {headline.line3}
+          {headline.highlightA}
+          {headline.line2After} {headline.highlightB} {headline.line3}
         </motion.span>
       </h1>
 
-      <motion.span
-        className="hero-accent-line"
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
-        transition={{ duration: 0.7, delay: 0.32, ease: EASE_OUT }}
-        aria-hidden
-      />
-
       <motion.p
-        custom={0.34}
+        custom={MOTION.lineReveal.stagger * 3}
         initial="hidden"
         animate={show}
-        variants={fadeUp}
+        variants={lineRevealVariant}
         className="hero-description"
       >
         {homeHero.description}
@@ -103,7 +64,10 @@ export default function HeroLeft() {
         variants={{
           hidden: {},
           visible: {
-            transition: { staggerChildren: 0.1, delayChildren: 0.44 },
+            transition: {
+              staggerChildren: MOTION.lineReveal.stagger,
+              delayChildren: MOTION.lineReveal.stagger * 4,
+            },
           },
         }}
       >
