@@ -1,0 +1,306 @@
+/* Enterprise Ecosystem & Alliances — inherits global canvas */
+.eco-section {
+  position: relative;
+  overflow: visible;
+  background: transparent;
+  border: none;
+}
+
+.eco-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: clamp(4.5rem, 10vw, 120px) 40px;
+  text-align: center;
+}
+
+/* Header */
+.eco-header {
+  max-width: 750px;
+  margin-inline: auto;
+  margin-bottom: 56px;
+}
+
+.eco-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #a855f7;
+  margin-bottom: 22px;
+}
+
+.eco-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fafafb;
+  max-width: 700px;
+  margin-inline: auto;
+  margin-bottom: 0;
+}
+
+.eco-description {
+  max-width: 700px;
+  margin-inline: auto;
+  margin-top: 22px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Partner logos */
+.eco-logos-zone {
+  position: relative;
+  margin-bottom: clamp(3.5rem, 7vw, 5rem);
+}
+
+.eco-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.eco-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: eco-marquee-scroll 80s linear infinite;
+}
+
+.eco-marquee:hover .eco-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes eco-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.eco-logo-pill {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 26px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.88);
+  white-space: nowrap;
+  cursor: default;
+  transition:
+    transform 0.4s var(--ease-premium),
+    box-shadow 0.4s var(--ease-premium),
+    border-color 0.4s var(--ease-premium),
+    background 0.4s var(--ease-premium);
+}
+
+.eco-logo-pill:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(192, 132, 252, 0.35);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.28),
+    0 0 24px rgba(168, 85, 247, 0.2);
+}
+
+/* Metric cards */
+.eco-metrics {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin-inline: auto;
+  margin-bottom: clamp(3.5rem, 7vw, 5rem);
+}
+
+.eco-stats-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 350px;
+  transform: translate(-50%, -50%);
+  opacity: 0.12;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.25), transparent 70%);
+}
+
+@media (min-width: 640px) {
+  .eco-metrics {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.eco-metric-card {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.5rem, 3vw, 2rem) 1.5rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+  transform-style: preserve-3d;
+  transition:
+    box-shadow 0.4s var(--ease-premium),
+    border-color 0.4s var(--ease-premium);
+}
+
+.eco-metric-card:hover {
+  border-color: rgba(192, 132, 252, 0.22);
+  box-shadow:
+    0 20px 52px rgba(0, 0, 0, 0.28),
+    0 0 32px rgba(168, 85, 247, 0.1);
+}
+
+.eco-metric-value {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.eco-metric-label {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Testimonial */
+.eco-testimonial {
+  position: relative;
+  max-width: 960px;
+  margin-inline: auto;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+  transform-style: preserve-3d;
+  text-align: left;
+  transition: box-shadow 0.45s var(--ease-premium);
+}
+
+.eco-testimonial:hover {
+  box-shadow:
+    0 28px 64px rgba(0, 0, 0, 0.32),
+    0 0 40px rgba(168, 85, 247, 0.1);
+}
+
+.eco-testimonial-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease-premium);
+}
+
+.eco-testimonial:hover .eco-testimonial-shine {
+  opacity: 1;
+}
+
+.eco-testimonial-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .eco-testimonial-grid {
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 2.5rem;
+  }
+}
+
+.eco-quote-icon {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1.25rem;
+  color: rgba(168, 85, 247, 0.55);
+}
+
+.eco-quote-text {
+  font-family: var(--font-heading);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.eco-testimonial-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.eco-avatar-placeholder {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(99, 102, 241, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.eco-company-placeholder {
+  width: 5.5rem;
+  height: 2rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.eco-testimonial-author {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.eco-testimonial-role {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.58);
+  max-width: 14rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eco-marquee-track {
+    animation: none;
+  }
+}

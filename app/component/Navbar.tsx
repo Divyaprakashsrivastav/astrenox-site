@@ -30,10 +30,15 @@ export default function Navbar() {
     };
   }, [mobileOpen]);
 
+  const isActive = (href: string) => pathname === href;
+
   const linkClass = (href: string) =>
-    `px-3 py-2 text-[13px] font-medium rounded-full transition-colors ${
-      pathname === href ? "text-text bg-background/80" : "text-muted hover:text-text"
+    `nav-link px-3 py-2 text-[13px] font-medium rounded-full transition-all duration-300 ${
+      isActive(href) ? "nav-link--active" : "nav-link--idle"
     }`;
+
+  const dropdownBtnClass =
+    "nav-link nav-link--idle flex items-center gap-1 px-3 py-2 text-[13px] font-medium rounded-full transition-all duration-300";
 
   return (
     <>
@@ -41,16 +46,16 @@ export default function Navbar() {
         initial={{ y: -16, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6"
+        className="nav-header"
       >
         <nav
-          className={`nav-float max-w-5xl mx-auto h-11 px-2 sm:px-3 flex items-center justify-between transition-all duration-400 ${
+          className={`nav-float flex items-center justify-between h-12 px-2 sm:px-3 transition-all duration-400 ${
             scrolled ? "nav-float-scrolled" : ""
           }`}
         >
           <Link
             href="/"
-            className="font-heading text-lg font-semibold text-text pl-3 sm:pl-4 hover:text-primary transition-colors"
+            className="nav-logo font-heading text-lg font-semibold pl-3 sm:pl-4 transition-colors duration-300"
           >
             Astrenox
           </Link>
@@ -65,23 +70,28 @@ export default function Navbar() {
               onMouseEnter={() => setOpenDropdown("services")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <button
-                type="button"
-                className="flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-muted hover:text-text rounded-full"
-              >
+              <button type="button" className={dropdownBtnClass}>
                 Services
-                <ChevronDown size={14} className={openDropdown === "services" ? "rotate-180" : ""} />
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-300 ${
+                    openDropdown === "services" ? "rotate-180" : ""
+                  }`}
+                />
               </button>
               {openDropdown === "services" ? (
-                <div className="absolute top-full left-0 mt-1 w-56 premium-card py-2 shadow-lg">
-                  <Link href="/services" className="block px-4 py-2 text-xs font-semibold text-primary uppercase tracking-wide">
+                <div className="nav-dropdown absolute top-full left-0 mt-2 w-56 py-2">
+                  <Link
+                    href="/services"
+                    className="block px-4 py-2 text-xs font-semibold uppercase tracking-wide text-[#c084fc]"
+                  >
                     All services
                   </Link>
                   {navServices.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block px-4 py-2 text-sm text-muted hover:text-text hover:bg-background/80"
+                      className="nav-dropdown-link block px-4 py-2 text-sm"
                     >
                       {item.label}
                     </Link>
@@ -95,20 +105,22 @@ export default function Navbar() {
               onMouseEnter={() => setOpenDropdown("solutions")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <button
-                type="button"
-                className="flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-muted hover:text-text rounded-full"
-              >
+              <button type="button" className={dropdownBtnClass}>
                 Solutions
-                <ChevronDown size={14} className={openDropdown === "solutions" ? "rotate-180" : ""} />
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-300 ${
+                    openDropdown === "solutions" ? "rotate-180" : ""
+                  }`}
+                />
               </button>
               {openDropdown === "solutions" ? (
-                <div className="absolute top-full left-0 mt-1 w-48 premium-card py-2 shadow-lg">
+                <div className="nav-dropdown absolute top-full left-0 mt-2 w-48 py-2">
                   {navSolutions.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="block px-4 py-2 text-sm text-muted hover:text-text hover:bg-background/80"
+                      className="nav-dropdown-link block px-4 py-2 text-sm"
                     >
                       {item.label}
                     </Link>
@@ -125,16 +137,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 pr-1 sm:pr-2">
-            <Link
-              href="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-[13px] font-medium text-white bg-primary hover:bg-[#7a2966] rounded-full transition-colors shadow-sm"
-            >
+            <Link href="/contact" className="nav-cta hidden sm:inline-flex items-center gap-2">
               Book a call
               <ArrowRight size={14} strokeWidth={2} />
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 rounded-full text-text hover:bg-background transition-colors"
+              className="nav-mobile-toggle lg:hidden p-2 rounded-full transition-colors duration-300"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
               {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -152,21 +161,31 @@ export default function Navbar() {
             className="fixed inset-0 z-40 lg:hidden"
           >
             <div
-              className="absolute inset-0 bg-text/20 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
               onClick={() => setMobileOpen(false)}
             />
             <motion.div
               initial={{ y: -8, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -8, opacity: 0 }}
-              className="absolute top-[3.25rem] left-4 right-4 nav-float p-5 bg-card max-h-[75vh] overflow-y-auto"
+              className="nav-mobile-panel absolute top-[4.5rem] left-1/2 -translate-x-1/2 w-[92%] max-w-lg p-5 max-h-[75vh] overflow-y-auto"
             >
               <div className="flex flex-col gap-1">
-                <Link href="/" onClick={() => setMobileOpen(false)} className="py-3 text-base font-medium text-text">
+                <Link
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  className="py-3 text-base font-medium text-white"
+                >
                   Home
                 </Link>
-                <p className="pt-2 text-[10px] font-semibold uppercase tracking-widest text-muted">Services</p>
-                <Link href="/services" onClick={() => setMobileOpen(false)} className="py-2 text-sm text-muted pl-2">
+                <p className="pt-2 text-[10px] font-semibold uppercase tracking-widest text-white/45">
+                  Services
+                </p>
+                <Link
+                  href="/services"
+                  onClick={() => setMobileOpen(false)}
+                  className="py-2 text-sm text-white/70 pl-2"
+                >
                   All services
                 </Link>
                 {navServices.map((item) => (
@@ -174,18 +193,20 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="py-2 text-sm text-muted pl-2"
+                    className="py-2 text-sm text-white/70 pl-2"
                   >
                     {item.label}
                   </Link>
                 ))}
-                <p className="pt-2 text-[10px] font-semibold uppercase tracking-widest text-muted">Solutions</p>
+                <p className="pt-2 text-[10px] font-semibold uppercase tracking-widest text-white/45">
+                  Solutions
+                </p>
                 {navSolutions.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="py-2 text-sm text-muted pl-2"
+                    className="py-2 text-sm text-white/70 pl-2"
                   >
                     {item.label}
                   </Link>
@@ -195,7 +216,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="py-3 text-base font-medium text-text"
+                    className="py-3 text-base font-medium text-white"
                   >
                     {link.label}
                   </Link>
@@ -203,7 +224,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="mt-4 inline-flex items-center justify-center gap-2 py-3 text-sm font-medium text-white bg-primary rounded-full"
+                  className="nav-cta mt-4 inline-flex items-center justify-center gap-2 py-3"
                 >
                   Book a call
                   <ArrowRight size={14} />

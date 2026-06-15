@@ -1,0 +1,450 @@
+/* ═══════════════════════════════════════════════════════════
+   SITE SCALE — typography, spacing, proportions
+   Theme, colors, animations unchanged — sizing only
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --scale-hero: clamp(3.4rem, 5vw, 5rem);
+  --scale-section: clamp(2.2rem, 3vw, 3.2rem);
+  --scale-card-title: 1.35rem;
+  --scale-sub: 1.15rem;
+  --scale-body: 1rem;
+  --scale-label: 0.85rem;
+  --scale-content-max: 1280px;
+  --scale-content-x: 40px;
+  --scale-section-top: 110px;
+  --scale-section-bottom: 80px;
+  --scale-heading-desc: 22px;
+  --scale-desc-content: 56px;
+  --scale-card-radius: 24px;
+  --scale-card-padding: 28px;
+  --scale-card-bg: rgba(255, 255, 255, 0.04);
+  --scale-card-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Hero ── */
+.hero,
+.hero-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: 120px;
+  padding-bottom: 140px;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  padding-inline: var(--scale-content-x);
+}
+
+.hero-title {
+  font-size: var(--scale-hero);
+  line-height: 0.95;
+  font-weight: 700;
+  max-width: 900px;
+}
+
+.hero-description {
+  margin: 22px auto 28px;
+  max-width: 700px;
+  font-size: var(--scale-body);
+  line-height: 1.75;
+}
+
+.hero-eyebrow {
+  margin-bottom: 18px;
+  font-size: var(--scale-label);
+}
+
+.hero-metrics {
+  margin-top: 36px;
+  margin-bottom: 80px;
+}
+
+.hero-btn {
+  min-height: 54px;
+  padding: 20px 34px;
+  border-radius: 16px;
+  font-size: 16px;
+}
+
+/* ── Unified section titles ── */
+.flow-title,
+.moat-title,
+.eco-title,
+.ind-title,
+.mission-pipeline-section .ax-title,
+.home-flow .ax-title {
+  font-size: var(--scale-section) !important;
+  line-height: 1.1 !important;
+  font-weight: 700 !important;
+  max-width: 700px !important;
+  margin-inline: auto;
+}
+
+/* Section headers */
+.flow-header,
+.moat-header,
+.eco-header,
+.ind-header,
+.mission-pipeline-section .ax-header {
+  max-width: 750px;
+  margin-inline: auto;
+  margin-bottom: var(--scale-desc-content);
+  text-align: center;
+}
+
+.flow-eyebrow,
+.moat-eyebrow,
+.eco-eyebrow,
+.ind-eyebrow,
+.mission-pipeline-section .ax-label {
+  margin-bottom: var(--scale-heading-desc);
+  font-size: var(--scale-label);
+}
+
+.flow-description,
+.moat-description,
+.eco-description,
+.ind-description,
+.mission-pipeline-section .ax-description {
+  max-width: 700px;
+  margin-top: var(--scale-heading-desc);
+  margin-inline: auto;
+  font-size: var(--scale-body);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.moat-description {
+  margin-bottom: 0;
+}
+
+/* ── Section shells ── */
+.flow-section {
+  padding-top: var(--scale-section-top);
+  padding-bottom: var(--scale-section-bottom);
+}
+
+.home-flow .ind-inner,
+.home-flow .eco-inner,
+.home-flow .moat-section-inner {
+  max-width: var(--scale-content-max);
+  padding-inline: var(--scale-content-x);
+  padding-top: var(--scale-section-top);
+  padding-bottom: var(--scale-section-bottom);
+}
+
+.flow-section-inner {
+  max-width: var(--scale-content-max);
+  padding-inline: var(--scale-content-x);
+}
+
+.moat-section-inner {
+  max-width: var(--scale-content-max);
+  padding-inline: var(--scale-content-x);
+}
+
+.eco-inner,
+.ind-inner {
+  max-width: var(--scale-content-max);
+  padding-inline: var(--scale-content-x);
+}
+
+/* ── Unified glass cards ── */
+.metrics-flow-card,
+.svc-flow-card,
+.ind-holo-card,
+.mission-card,
+.moat-panel,
+.eco-testimonial,
+.tech-category-card,
+.testimonial-card {
+  background: var(--scale-card-bg);
+  border: 1px solid var(--scale-card-border);
+  border-radius: var(--scale-card-radius);
+}
+
+.mission-card,
+.ind-holo-card,
+.svc-flow-link {
+  padding: var(--scale-card-padding);
+}
+
+/* ── Metrics ── */
+#metrics .flow-header {
+  margin-bottom: var(--scale-desc-content);
+}
+
+.metrics-flow-card {
+  height: 140px;
+  border-radius: 22px;
+  width: min(240px, 100%);
+}
+
+.metrics-flow-value {
+  font-size: 2.8rem;
+  line-height: 1;
+}
+
+.metrics-flow-label {
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+.metrics-flow-grid {
+  gap: 24px;
+}
+
+/* ── Services ── */
+#services .flow-header {
+  margin-bottom: var(--scale-desc-content);
+}
+
+#services .flow-title {
+  max-width: 650px !important;
+}
+
+#services .flow-description {
+  max-width: 650px;
+}
+
+.svc-flow-card {
+  height: 300px;
+}
+
+.svc-flow-link {
+  padding: var(--scale-card-padding);
+}
+
+.svc-flow-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.svc-flow-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.svc-flow-title {
+  font-size: var(--scale-card-title);
+}
+
+.svc-flow-desc {
+  font-size: var(--scale-body);
+}
+
+.svc-flow-outcome {
+  font-size: var(--scale-label);
+}
+
+/* ── Methodology ── */
+.mission-card-stage {
+  width: min(100%, 22rem);
+}
+
+.mission-pipeline-content {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--scale-content-x);
+}
+
+.home-flow .mission-pipeline-section .mission-pin-sticky {
+  align-items: flex-start;
+  padding-top: 80px;
+  box-sizing: border-box;
+}
+
+.home-flow .hero + .mission-pipeline-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 500px;
+  opacity: 0.18;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(139, 92, 246, 0.75) 0%,
+    rgba(88, 40, 180, 0.35) 42%,
+    transparent 72%
+  );
+}
+
+.mission-card {
+  padding: var(--scale-card-padding);
+  border-radius: var(--scale-card-radius);
+  background: var(--scale-card-bg);
+}
+
+.mission-card-title {
+  font-size: var(--scale-card-title);
+}
+
+.mission-card-subtitle {
+  font-size: var(--scale-body);
+  line-height: 1.75;
+}
+
+.mission-card-visual {
+  height: 4.5rem;
+  margin-bottom: 1rem;
+}
+
+.mission-card-list li {
+  font-size: var(--scale-label);
+}
+
+.mission-pipeline-section .ax-header {
+  margin-bottom: var(--scale-desc-content);
+}
+
+/* ── Flywheel ── */
+.moat-header {
+  margin-bottom: var(--scale-desc-content);
+}
+
+.moat-viz-wrap {
+  transform: scale(0.92);
+}
+
+.moat-viz {
+  width: min(100%, 22rem);
+}
+
+@media (min-width: 1024px) {
+  .moat-viz {
+    max-width: 24rem;
+  }
+}
+
+.moat-layout {
+  margin-top: 0;
+  gap: 48px;
+}
+
+.moat-detail-title {
+  font-size: var(--scale-sub);
+  line-height: 1.2;
+}
+
+.moat-detail-desc {
+  font-size: var(--scale-body);
+  line-height: 1.75;
+}
+
+/* ── Industries ── */
+.ind-header {
+  margin-bottom: var(--scale-desc-content);
+}
+
+.ind-holo-card {
+  height: 320px;
+  padding: var(--scale-card-padding);
+  border-radius: var(--scale-card-radius);
+  background: var(--scale-card-bg);
+}
+
+.ind-holo-title {
+  font-size: var(--scale-card-title);
+}
+
+.ind-holo-desc {
+  font-size: var(--scale-body);
+  line-height: 1.75;
+}
+
+.ind-holo-cases-label {
+  font-size: var(--scale-label);
+}
+
+.ind-holo-chip {
+  font-size: var(--scale-label);
+}
+
+.ind-sectors-grid {
+  gap: 24px;
+}
+
+/* ── Ecosystem ── */
+.eco-header {
+  margin-bottom: var(--scale-desc-content);
+}
+
+/* ── Home flow tokens ── */
+.home-flow {
+  --flow-section-y: var(--scale-section-top);
+  --flow-header-gap: var(--scale-desc-content);
+  --flow-card-gap: 24px;
+  --type-major: var(--scale-section);
+  --type-card: var(--scale-card-title);
+  --type-body: var(--scale-body);
+  --type-caption: var(--scale-label);
+}
+
+#metrics.flow-section,
+#services.flow-section {
+  padding-top: var(--scale-section-top);
+  padding-bottom: var(--scale-section-bottom);
+}
+
+/* Reduce ambient bridge height */
+.home-flow > section + section::before {
+  height: 60px;
+}
+
+/* ── Responsive ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .flow-title,
+  .moat-title,
+  .eco-title,
+  .ind-title,
+  .mission-pipeline-section .ax-title {
+    font-size: clamp(2.2rem, 3.5vw, 2.8rem) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --scale-content-x: 24px;
+    --scale-section-top: 80px;
+    --scale-section-bottom: 64px;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .flow-title,
+  .moat-title,
+  .eco-title,
+  .ind-title,
+  .mission-pipeline-section .ax-title {
+    font-size: 1.9rem !important;
+  }
+
+  .metrics-flow-card {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .ind-holo-card {
+    height: auto;
+    min-height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metrics-flow-card {
+    animation: none !important;
+  }
+}

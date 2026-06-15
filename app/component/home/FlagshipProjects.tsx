@@ -27,7 +27,7 @@ export default function FlagshipProjects() {
               <h3 className="project-showcase-title">{project.title}</h3>
               <p className="project-showcase-outcome">{project.outcome}</p>
               <p className="project-showcase-detail">
-                <strong>Challenge.</strong> {project.challenge}
+                <strong>Description.</strong> {project.description}
               </p>
               <Link href={project.href} className="project-showcase-link group">
                 Read case study

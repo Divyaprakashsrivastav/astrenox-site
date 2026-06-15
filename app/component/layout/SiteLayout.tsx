@@ -1,5 +1,5 @@
 import Navbar from "../Navbar";
-import Footer from "../Footer";
+import ConditionalFooter from "../footer/ConditionalFooter";
 import SiteEffects from "../ui/SiteEffects";
 import AstrenoxChatbot from "../chat/AstrenoxChatbot";
 import PageTransition from "../design/PageTransition";
@@ -16,10 +16,10 @@ export default function SiteLayout({
       <PremiumCursor />
       <SiteEffects />
       <Navbar />
-      <main className="min-h-screen bg-background">
+      <main className="min-h-screen">
         <PageTransition>{children}</PageTransition>
       </main>
-      <Footer />
+      <ConditionalFooter />
       <AstrenoxChatbot />
     </TooltipProvider>
   );

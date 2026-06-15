@@ -7,8 +7,41 @@ import { Fragment, useState } from "react";
 import DesignSection from "../design/DesignSection";
 import { FadeUp } from "../design/FadeUp";
 import { useReducedMotion } from "../features/useReducedMotion";
-import { homeOperatingSystem } from "@/app/content/homepage-content";
 import { MOTION } from "../motion/home-motion";
+
+const operatingSystemContent = {
+  label: "Architecture",
+  title: "One Operating System. Four Layers.",
+  description:
+    "A unified stack—perception, intelligence, orchestration, and physical execution.",
+  id: "operating-system",
+  layers: [
+    {
+      id: "perception",
+      title: "Perception",
+      description: "Vision, telemetry, and sensor fusion at the edge.",
+      items: ["Computer Vision", "Telemetry", "Sensor Fusion"],
+    },
+    {
+      id: "intelligence",
+      title: "Intelligence",
+      description: "Models, graphs, and reasoning for decisions.",
+      items: ["AI Models", "Knowledge Graphs", "Reasoning"],
+    },
+    {
+      id: "orchestration",
+      title: "Orchestration",
+      description: "Agents, workflows, and policy in one control plane.",
+      items: ["Agents", "Workflow Engine", "Policy Layer"],
+    },
+    {
+      id: "execution",
+      title: "Execution",
+      description: "Autonomous systems deployed in the physical world.",
+      items: ["Drones", "Robotics", "Aerospace"],
+    },
+  ],
+} as const;
 
 const LAYER_ICONS: Record<string, LucideIcon> = {
   perception: Eye,
@@ -59,7 +92,7 @@ function FlowConnector({
 
 export default function OperatingSystemSection() {
   const reduced = useReducedMotion();
-  const { layers } = homeOperatingSystem;
+  const { layers } = operatingSystemContent;
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const setActive = (id: string | null) => {
@@ -68,12 +101,12 @@ export default function OperatingSystemSection() {
 
   return (
     <DesignSection
-      id={homeOperatingSystem.id}
+      id={operatingSystemContent.id}
       className="os-flow-section ax-section-compact"
     >
       <FadeUp className="os-flow-header">
-        <p className="ax-label">{homeOperatingSystem.label}</p>
-        <h2 className="ax-title">{homeOperatingSystem.title}</h2>
+        <p className="ax-label">{operatingSystemContent.label}</p>
+        <h2 className="ax-title">{operatingSystemContent.title}</h2>
       </FadeUp>
 
       <div className="os-flow-track">

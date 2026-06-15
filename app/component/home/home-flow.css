@@ -1,0 +1,560 @@
+/* ══════════════════════════════════════════
+   HOME FLOW — one continuous premium canvas
+   ══════════════════════════════════════════ */
+
+.home-flow {
+  --flow-section-y: 110px;
+  --flow-header-gap: 56px;
+  --flow-card-gap: 24px;
+  --type-major: clamp(2.2rem, 3vw, 3.2rem);
+  --type-sub: 1.15rem;
+  --type-card: 1.35rem;
+  --type-body: 1rem;
+  --type-caption: 0.85rem;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #05020d 0%,
+    #060313 25%,
+    #070415 50%,
+    #080517 75%,
+    #09061a 100%
+  );
+  background-attachment: fixed;
+  color: #fafafb;
+}
+
+.home-flow-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.home-flow-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+}
+
+.home-flow-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 40%, rgba(5, 2, 13, 0.35) 100%);
+}
+
+.home-flow-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ambient bridges between sections */
+.home-flow > section,
+.home-flow > .home-flow-section {
+  position: relative;
+  z-index: 1;
+}
+
+.home-flow > section + section::before,
+.home-flow > .home-flow-section + section::before,
+.home-flow > section + .home-flow-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(55vw, 520px);
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(168, 85, 247, 0.07) 0%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Flow section shell */
+.flow-section {
+  position: relative;
+  padding-top: 110px;
+  padding-bottom: 80px;
+  background: transparent;
+  border: none;
+  overflow: visible;
+}
+
+.flow-section-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 40px;
+}
+
+/* Flow typography */
+.flow-header {
+  max-width: 750px;
+  margin-inline: auto;
+  margin-bottom: 56px;
+  text-align: center;
+}
+
+.flow-header--left {
+  margin-inline: 0;
+  text-align: left;
+}
+
+.flow-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #a855f7;
+  margin-bottom: 18px;
+}
+
+.flow-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fafafb;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.flow-description {
+  max-width: 700px;
+  margin-top: 22px;
+  margin-inline: auto;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.flow-header--left .flow-description {
+  margin-inline: 0;
+}
+
+/* Strip duplicate section backgrounds inside flow */
+.home-flow .hero-section {
+  background: transparent;
+  border: none;
+}
+
+.home-flow .moat-section,
+.home-flow .eco-section,
+.home-flow .ind-section,
+.home-flow .mission-pipeline-section {
+  background: transparent;
+  border-top: none;
+}
+
+.home-flow .mission-pipeline-section {
+  padding-top: 0;
+}
+
+@media (max-width: 1023px) {
+  .home-flow .mission-pipeline-section {
+    padding-top: 80px;
+    padding-bottom: var(--space-section-y);
+  }
+
+  .home-flow .mission-pipeline-section .mission-pin-sticky {
+    padding-top: 0;
+  }
+}
+
+.home-flow > .hero + section::before,
+.home-flow > .hero + .home-flow-section::before {
+  display: none;
+}
+
+.home-flow .ind-inner,
+.home-flow .eco-inner,
+.home-flow .moat-section-inner {
+  padding-block: var(--flow-section-y);
+}
+
+.home-flow .ind-inner,
+.home-flow .eco-inner,
+.home-flow .moat-section-inner {
+  max-width: 1280px;
+  padding-inline: 40px;
+  padding-block: var(--flow-section-y);
+}
+
+/* ══ Metrics section ══ */
+#metrics.flow-section {
+  padding-top: 110px;
+  padding-bottom: 80px;
+}
+
+#metrics .flow-header {
+  max-width: 700px;
+  margin-bottom: 56px;
+}
+
+#metrics .flow-title {
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  line-height: 1.1;
+  max-width: 700px;
+}
+
+#metrics .flow-description {
+  font-size: 1rem;
+  max-width: 550px;
+  margin-top: 22px;
+}
+
+/* ══ Metrics — glass stat cards ══ */
+.metrics-flow-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.metrics-flow-card {
+  position: relative;
+  overflow: hidden;
+  width: min(240px, 100%);
+  height: 140px;
+  padding: 1rem 1.25rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: metrics-card-float 7s ease-in-out infinite;
+  transition:
+    transform 0.45s var(--ease-premium),
+    box-shadow 0.45s var(--ease-premium),
+    border-color 0.45s var(--ease-premium);
+}
+
+.metrics-flow-card:nth-child(2) { animation-delay: 0.6s; }
+.metrics-flow-card:nth-child(3) { animation-delay: 1.2s; }
+.metrics-flow-card:nth-child(4) { animation-delay: 0.3s; }
+.metrics-flow-card:nth-child(5) { animation-delay: 0.9s; }
+
+@keyframes metrics-card-float {
+  0%, 100% { transform: translateY(-3px); }
+  50% { transform: translateY(3px); }
+}
+
+.metrics-flow-card:hover {
+  transform: translateY(-8px);
+  animation-play-state: paused;
+  border-color: rgba(192, 132, 252, 0.25);
+  box-shadow:
+    0 24px 64px rgba(124, 58, 237, 0.18),
+    0 0 40px rgba(168, 85, 247, 0.12);
+}
+
+.metrics-flow-card-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-premium);
+}
+
+.metrics-flow-card:hover .metrics-flow-card-particles {
+  opacity: 1;
+}
+
+.metrics-flow-card-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(192, 132, 252, 0.5);
+}
+
+.metrics-flow-card-particles span:nth-child(1) { top: 20%; left: 15%; }
+.metrics-flow-card-particles span:nth-child(2) { top: 65%; left: 80%; }
+.metrics-flow-card-particles span:nth-child(3) { top: 40%; left: 55%; }
+
+.metrics-flow-value {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fafafb;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.metrics-flow-label {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.375rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ══ Services section ══ */
+#services.flow-section {
+  padding-top: 110px;
+  padding-bottom: 80px;
+}
+
+#services .flow-header {
+  max-width: 650px;
+  margin-bottom: 56px;
+}
+
+#services .flow-title {
+  font-size: clamp(2.2rem, 3vw, 3.2rem);
+  line-height: 1.15;
+  max-width: 650px;
+}
+
+#services .flow-description {
+  font-size: 1rem;
+  max-width: 650px;
+  margin-top: 22px;
+}
+
+/* ══ Services — premium product cards ══ */
+.svc-flow-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .svc-flow-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .svc-flow-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.svc-flow-wrap {
+  animation: svc-flow-float var(--svc-float-dur, 8s) ease-in-out infinite;
+  animation-delay: var(--svc-float-delay, 0s);
+}
+
+.svc-flow-wrap:nth-child(odd) {
+  margin-top: 6px;
+}
+
+.svc-flow-wrap:nth-child(even) {
+  margin-top: -4px;
+}
+
+@keyframes svc-flow-float {
+  0%, 100% {
+    transform: translateY(-4px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.svc-flow-card {
+  position: relative;
+  height: 300px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 64px rgba(124, 58, 237, 0.1);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    box-shadow 0.45s var(--ease-premium),
+    border-color 0.45s var(--ease-premium);
+}
+
+.svc-flow-card:hover {
+  border-color: rgba(192, 132, 252, 0.28);
+  box-shadow:
+    0 28px 80px rgba(124, 58, 237, 0.2),
+    0 0 48px rgba(168, 85, 247, 0.14);
+}
+
+.svc-flow-accent {
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #a855f7, transparent);
+  opacity: 0.55;
+}
+
+.svc-flow-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-premium);
+}
+
+.svc-flow-card:hover .svc-flow-particles {
+  opacity: 1;
+}
+
+.svc-flow-particles span {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(192, 132, 252, 0.45);
+}
+
+.svc-flow-particles span:nth-child(1) { top: 18%; left: 12%; }
+.svc-flow-particles span:nth-child(2) { top: 72%; left: 78%; }
+
+.svc-flow-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.svc-flow-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.12);
+  transition:
+    transform 0.45s var(--ease-premium),
+    box-shadow 0.45s var(--ease-premium);
+}
+
+.svc-flow-card:hover .svc-flow-icon {
+  transform: rotate(8deg);
+  box-shadow: 0 0 32px rgba(168, 85, 247, 0.3);
+}
+
+.svc-flow-title {
+  margin-top: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fafafb;
+  line-height: 1.25;
+}
+
+.svc-flow-desc {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+  flex: 1;
+}
+
+.svc-flow-outcome {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(168, 85, 247, 0.8);
+}
+
+.svc-flow-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.875rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  transition: color 0.35s var(--ease-premium);
+}
+
+.svc-flow-card:hover .svc-flow-cta {
+  color: #c084fc;
+}
+
+/* Flow overrides for remaining DesignSection sections */
+.home-flow .flow-section .ax-title,
+.home-flow .flow-title {
+  color: #fafafb;
+}
+
+.home-flow .tech-category-card,
+.home-flow .testimonial-card,
+.home-flow .ax-project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  color: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 48px rgba(124, 58, 237, 0.08);
+  transition:
+    transform 0.45s var(--ease-premium),
+    box-shadow 0.45s var(--ease-premium);
+}
+
+.home-flow .tech-category-card:hover,
+.home-flow .testimonial-card:hover,
+.home-flow .ax-project-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 24px 64px rgba(124, 58, 237, 0.16),
+    0 0 36px rgba(168, 85, 247, 0.1);
+}
+
+.home-flow .tech-category-title,
+.home-flow .testimonial-quote,
+.home-flow .ax-project-title {
+  color: #fafafb;
+}
+
+.home-flow .testimonial-footer {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.home-flow .testimonial-role {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.home-flow .ax-section-surface {
+  background: transparent;
+}
+
+.home-flow .site-ending-shell {
+  background: #060611;
+}
+
+.home-flow .ax-label {
+  color: #a855f7;
+  letter-spacing: 0.35em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-flow-wrap,
+  .metrics-flow-card {
+    animation: none !important;
+  }
+}

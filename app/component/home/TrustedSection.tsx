@@ -7,24 +7,13 @@ import { homeEnterpriseEcosystem } from "@/app/content/homepage-content";
 
 const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
 
-const PARTNERS = [
-  "OpenAI",
-  "Anthropic",
-  "AWS",
-  "Azure",
-  "Google Cloud",
-  "Snowflake",
-  "Databricks",
-  "Palantir",
-] as const;
-
 export default function TrustedSection() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-8%" });
-  const track = [...PARTNERS, ...PARTNERS];
+  const track = [...homeEnterpriseEcosystem.marquee, ...homeEnterpriseEcosystem.marquee];
 
   return (
-    <DesignSection id="trusted" border className="trust-eco-section">
+    <DesignSection id="ecosystem" border className="trust-eco-section">
       <div ref={ref} className="trust-eco-glass">
         <motion.div
           className="trust-eco-head"
@@ -33,7 +22,7 @@ export default function TrustedSection() {
           transition={{ duration: 0.5, ease: EASE_OUT }}
         >
           <p className="trust-eco-label">{homeEnterpriseEcosystem.label}</p>
-          <h2 className="trust-eco-title">Trusted Ecosystem</h2>
+          <h2 className="trust-eco-title">{homeEnterpriseEcosystem.title}</h2>
           <p className="trust-eco-desc">{homeEnterpriseEcosystem.description}</p>
         </motion.div>
 

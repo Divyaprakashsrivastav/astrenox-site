@@ -1,42 +1,41 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import DesignSection from "../design/DesignSection";
-import TechEcosystemLive from "../technology/TechEcosystemLive";
+import { motion } from "framer-motion";
+import DesignSection, { DesignHeader } from "../design/DesignSection";
+import { Stagger, StaggerItem } from "../design/FadeUp";
 import { homeTechnology } from "@/app/content/homepage-content";
-
-const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
+import { EASE_PREMIUM } from "../v2/motion";
 
 export default function TechnologyEcosystem() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10%" });
-
   return (
-    <DesignSection id="technology" className="tech-cmd-section" ambient="alt">
-      <div ref={ref} className="tech-cmd-layout">
-        <motion.div
-          className="tech-cmd-copy"
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.65, ease: EASE_OUT }}
-        >
-          <p className="tech-cmd-label">{homeTechnology.label}</p>
-          <h2 className="tech-cmd-title">{homeTechnology.title}</h2>
-          <p className="tech-cmd-description">{homeTechnology.description}</p>
-        </motion.div>
+    <DesignSection id="technology" flow border={false} ambient={false} className="tech-grid-section">
+      <DesignHeader
+        flow
+        label={homeTechnology.label}
+        title={homeTechnology.title}
+        description={homeTechnology.description}
+      />
 
-        <div className="tech-cmd-panel-wrap">
-          <div className="tech-cmd-panel-glow" aria-hidden />
-          <motion.div
-            className="tech-live-panel"
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.65, ease: EASE_OUT, delay: 0.1 }}
-          >
-            <TechEcosystemLive active={inView} />
-          </motion.div>
-        </div>
+      <div>
+        <Stagger className="tech-category-grid">
+          {homeTechnology.categories.map((category) => (
+            <StaggerItem key={category.id}>
+              <motion.article
+                className="tech-category-card"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3, ease: EASE_PREMIUM }}
+                data-cursor-hover
+              >
+                <h3 className="tech-category-title">{category.title}</h3>
+                <ul className="tech-category-list">
+                  {category.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </motion.article>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </div>
     </DesignSection>
   );

@@ -3,8 +3,40 @@
 import { motion } from "framer-motion";
 import { Plane, Bot, Factory, Truck } from "lucide-react";
 import StorySection, { StoryReveal } from "../system/StorySection";
-import { homePhysicalWorld } from "@/app/content/homepage-content";
 import { EASE_PREMIUM } from "../v2/motion";
+
+const physicalWorldContent = {
+  label: "Physical World",
+  title: "Intelligence That Moves Through Reality",
+  description:
+    "From factory floors to flight systems, Astrenox orchestrates AI where decisions become physical outcomes.",
+  domains: [
+    {
+      id: "robotics",
+      title: "Robotics & Autonomy",
+      outcome: "Closed-loop agent fleets with human oversight at the edge.",
+      metric: "24/7 ops",
+    },
+    {
+      id: "aerospace",
+      title: "Aerospace Systems",
+      outcome: "Mission-grade routing, telemetry graphs, and safety gates.",
+      metric: "99.9% SLA",
+    },
+    {
+      id: "logistics",
+      title: "Autonomous Logistics",
+      outcome: "Dynamic fleet orchestration across warehouses and routes.",
+      metric: "22% cost ↓",
+    },
+    {
+      id: "industrial",
+      title: "Industrial Operations",
+      outcome: "Predictive maintenance and production scheduling agents.",
+      metric: "40% faster",
+    },
+  ],
+} as const;
 
 const ICONS = [Bot, Plane, Truck, Factory];
 
@@ -19,13 +51,13 @@ export default function PhysicalWorldSection() {
   return (
     <StorySection
       id="physical-world"
-      label={homePhysicalWorld.label}
-      title={homePhysicalWorld.title}
-      description={homePhysicalWorld.description}
+      label={physicalWorldContent.label}
+      title={physicalWorldContent.title}
+      description={physicalWorldContent.description}
       variant="dark"
     >
       <div className="physical-world-grid">
-        {homePhysicalWorld.domains.map((domain, i) => {
+        {physicalWorldContent.domains.map((domain, i) => {
           const Icon = ICONS[i] ?? Bot;
           return (
             <StoryReveal key={domain.id} delay={i * 0.08}>

@@ -1,1 +1,1 @@
-export { default } from "../methodology/SignalJourney";
+export { default } from "../methodology/MissionPipeline";

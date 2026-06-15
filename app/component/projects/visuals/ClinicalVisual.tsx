@@ -14,16 +14,49 @@ const TRIALS = [
   { x: 300, y: 145 },
 ];
 
-export default function ClinicalVisual({ active }: { active: boolean }) {
+export default function ClinicalVisual({
+  active,
+  dark = false,
+  hideChrome = false,
+}: {
+  active: boolean;
+  dark?: boolean;
+  hideChrome?: boolean;
+}) {
   const reduced = useReducedMotion();
+  const accent = dark ? "#a855f7" : "#8E2F74";
+  const pulse = dark ? "#c084fc" : "#C97B84";
+  const label = dark ? "rgba(192, 132, 252, 0.55)" : "#5F6778";
+  const nodeFill = dark ? "rgba(255, 255, 255, 0.06)" : "#F8F8FA";
+  const nodeStroke = dark ? "rgba(168, 85, 247, 0.35)" : "#E5E7EB";
+  const trialFill = dark ? "rgba(139, 92, 246, 0.2)" : "#fff";
 
   return (
-    <VisualFrame label="Trial matching" active={active}>
+    <VisualFrame
+      label="Trial matching"
+      active={active}
+      dark={dark}
+      hideChrome={hideChrome}
+    >
       <svg viewBox="0 0 400 176" className="w-full h-full" aria-hidden>
-        <text x="52" y="68" fontSize="8" fill="#5F6778" fontFamily="system-ui,sans-serif" fontWeight="600">
+        <text
+          x="52"
+          y="68"
+          fontSize="8"
+          fill={label}
+          fontFamily="system-ui,sans-serif"
+          fontWeight="600"
+        >
           PATIENTS
         </text>
-        <text x="278" y="68" fontSize="8" fill="#5F6778" fontFamily="system-ui,sans-serif" fontWeight="600">
+        <text
+          x="278"
+          y="68"
+          fontSize="8"
+          fill={label}
+          fontFamily="system-ui,sans-serif"
+          fontWeight="600"
+        >
           TRIALS
         </text>
         {PATIENTS.map((p, pi) =>
@@ -37,7 +70,7 @@ export default function ClinicalVisual({ active }: { active: boolean }) {
                 y1={p.y}
                 x2={t.x - 12}
                 y2={t.y}
-                stroke="#8E2F74"
+                stroke={accent}
                 strokeWidth="0.8"
                 strokeOpacity={0.25}
                 animate={
@@ -52,20 +85,29 @@ export default function ClinicalVisual({ active }: { active: boolean }) {
         )}
         {PATIENTS.map((p, i) => (
           <g key={`p-${i}`}>
-            <circle cx={p.x} cy={p.y} r="10" fill="#F8F8FA" stroke="#E5E7EB" strokeWidth="1" />
-            <circle cx={p.x} cy={p.y} r="4" fill="#8E2F74" fillOpacity="0.5" />
+            <circle cx={p.x} cy={p.y} r="10" fill={nodeFill} stroke={nodeStroke} strokeWidth="1" />
+            <circle cx={p.x} cy={p.y} r="4" fill={accent} fillOpacity="0.55" />
           </g>
         ))}
         {TRIALS.map((t, i) => (
           <g key={`t-${i}`}>
-            <rect x={t.x - 10} y={t.y - 8} width="20" height="16" rx="3" fill="#fff" stroke="#8E2F74" strokeWidth="1" />
+            <rect
+              x={t.x - 10}
+              y={t.y - 8}
+              width="20"
+              height="16"
+              rx="3"
+              fill={trialFill}
+              stroke={accent}
+              strokeWidth="1"
+            />
             {!reduced && active && (
               <motion.circle
                 cx={t.x}
                 cy={t.y}
                 r="14"
                 fill="none"
-                stroke="#C97B84"
+                stroke={pulse}
                 strokeWidth="0.6"
                 animate={{ opacity: [0.5, 0, 0.5], r: [12, 18, 12] }}
                 transition={{ duration: 2.2, delay: i * 0.35, repeat: Infinity }}
@@ -73,7 +115,14 @@ export default function ClinicalVisual({ active }: { active: boolean }) {
             )}
           </g>
         ))}
-        <text x="16" y="24" fontSize="9" fill="#5F6778" fontFamily="system-ui,sans-serif" fontWeight="600">
+        <text
+          x="16"
+          y="24"
+          fontSize="9"
+          fill={label}
+          fontFamily="system-ui,sans-serif"
+          fontWeight="600"
+        >
           HIPAA PIPELINE · CRITERIA MATCH
         </text>
       </svg>

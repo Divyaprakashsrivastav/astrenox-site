@@ -1,62 +1,94 @@
 "use client";
 
+import "./contact-ending.css";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  FileText,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import ContactForm from "../pages/ContactForm";
-import DesignSection from "../design/DesignSection";
 import { homeContactCta } from "@/app/content/homepage-content";
-import { footer, site } from "@/app/content/astrenox-content";
+import { EASE_PREMIUM } from "../v2/motion";
 
-const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
+const EASE = EASE_PREMIUM;
+
+const INFO_ICONS = {
+  mail: Mail,
+  phone: Phone,
+  map: MapPin,
+  file: FileText,
+  calendar: Calendar,
+} as const;
 
 export default function HomeContactCTA() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10%" });
+  const inView = useInView(ref, { once: true, margin: "-8%" });
 
   return (
-    <DesignSection id="contact" dark className="contact-split-section" border={false}>
-      <div ref={ref} className="contact-split">
-        <motion.div
-          className="contact-split-copy"
-          initial={{ opacity: 0, x: -16 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.65, ease: EASE_OUT }}
-        >
-          <p className="ax-label">{homeContactCta.eyebrow}</p>
-          <h2 className="contact-split-title">{homeContactCta.title}</h2>
-          <p className="contact-split-desc">{homeContactCta.description}</p>
-          <ul className="contact-split-trust">
-            {homeContactCta.trust.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-          <div className="contact-split-actions">
-            <a href={homeContactCta.primaryHref} className="hero-btn hero-btn-primary group">
-              {homeContactCta.primaryCta}
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-            </a>
-            <a href={homeContactCta.secondaryHref} className="hero-btn hero-btn-ghost-light">
-              {homeContactCta.secondaryCta}
-            </a>
-          </div>
-          <p className="contact-split-note">{homeContactCta.calendarNote}</p>
-          <div className="contact-split-meta">
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <span>{footer.phone}</span>
-            <span>{footer.address}</span>
-          </div>
-        </motion.div>
+    <section id="contact" className="site-ending-contact scroll-mt-28">
+      <div ref={ref} className="site-ending-inner">
+        <div className="site-ending-grid">
+          <motion.div
+            className="site-ending-panel"
+            initial={{ opacity: 0, y: 32 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+            transition={{ duration: 0.75, ease: EASE }}
+          >
+            <p className="site-ending-eyebrow">{homeContactCta.eyebrow}</p>
+            <h2 className="site-ending-title">{homeContactCta.title}</h2>
+            <p className="site-ending-desc">{homeContactCta.description}</p>
 
-        <motion.div
-          className="contact-split-form"
-          initial={{ opacity: 0, x: 16 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.65, delay: 0.1, ease: EASE_OUT }}
-        >
-          <ContactForm />
-        </motion.div>
+            <div className="site-ending-actions">
+              <a href={homeContactCta.primaryHref} className="site-ending-btn-primary group">
+                {homeContactCta.primaryCta}
+                <ArrowRight size={16} className="site-ending-btn-arrow" aria-hidden />
+              </a>
+              <a href={homeContactCta.secondaryHref} className="site-ending-btn-secondary">
+                {homeContactCta.secondaryCta}
+              </a>
+            </div>
+
+            <div className="site-ending-info">
+              {homeContactCta.infoRows.map((row, index) => {
+                const Icon = INFO_ICONS[row.icon];
+                return (
+                  <motion.a
+                    key={row.label}
+                    href={row.href}
+                    className="site-ending-info-row"
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -12 }}
+                    transition={{ duration: 0.55, delay: 0.2 + index * 0.07, ease: EASE }}
+                    data-cursor-hover
+                  >
+                    <span className="site-ending-info-icon">
+                      <Icon size={16} aria-hidden />
+                    </span>
+                    <span className="site-ending-info-text">
+                      <span className="site-ending-info-label">{row.label}</span>
+                      <span className="site-ending-info-value">{row.value}</span>
+                    </span>
+                  </motion.a>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="site-ending-form-wrap"
+            initial={{ opacity: 0, y: 32 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
+            transition={{ duration: 0.75, delay: 0.12, ease: EASE }}
+          >
+            <ContactForm variant="premium" />
+          </motion.div>
+        </div>
       </div>
-    </DesignSection>
+    </section>
   );
 }

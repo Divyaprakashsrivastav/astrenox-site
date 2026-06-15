@@ -1,76 +1,30 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import HeroCta from "./HeroCta";
 import HeroKpis from "./HeroKpis";
 import { homeHero } from "@/app/content/homepage-content";
-import { lineRevealVariant, MOTION } from "../motion/home-motion";
+
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: EASE },
+});
 
 export default function HeroLeft() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "0px 0px -5% 0px" });
-  const { headline } = homeHero;
-  const show = isInView ? "visible" : "hidden";
-
   return (
-    <div ref={ref} className="hero-left">
-      <motion.p
-        custom={0}
-        initial="hidden"
-        animate={show}
-        variants={lineRevealVariant}
-        className="hero-eyebrow"
-      >
-        {homeHero.eyebrow}
-      </motion.p>
+    <div className="hero-left">
+      <motion.h1 className="hero-title" {...fadeUp(0.1)}>
+        {homeHero.headline}
+      </motion.h1>
 
-      <h1 className="hero-title">
-        <motion.span
-          className="hero-title-line"
-          custom={MOTION.lineReveal.stagger}
-          initial="hidden"
-          animate={show}
-          variants={lineRevealVariant}
-        >
-          {headline.line1}
-        </motion.span>
-        <motion.span
-          className="hero-title-line"
-          custom={MOTION.lineReveal.stagger * 2}
-          initial="hidden"
-          animate={show}
-          variants={lineRevealVariant}
-        >
-          {headline.highlightA}
-          {headline.line2After} {headline.highlightB} {headline.line3}
-        </motion.span>
-      </h1>
-
-      <motion.p
-        custom={MOTION.lineReveal.stagger * 3}
-        initial="hidden"
-        animate={show}
-        variants={lineRevealVariant}
-        className="hero-description"
-      >
+      <motion.p className="hero-description" {...fadeUp(0.22)}>
         {homeHero.description}
       </motion.p>
 
-      <motion.div
-        className="hero-cta-row"
-        initial="hidden"
-        animate={show}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: MOTION.lineReveal.stagger,
-              delayChildren: MOTION.lineReveal.stagger * 4,
-            },
-          },
-        }}
-      >
+      <motion.div className="hero-cta-row" {...fadeUp(0.34)}>
         <HeroCta href={homeHero.primaryHref} variant="primary">
           {homeHero.primaryCta}
         </HeroCta>
@@ -79,7 +33,9 @@ export default function HeroLeft() {
         </HeroCta>
       </motion.div>
 
-      <HeroKpis className="hero-kpis-inline" />
+      <motion.div className="hero-metrics-glass" {...fadeUp(0.46)}>
+        <HeroKpis />
+      </motion.div>
     </div>
   );
 }

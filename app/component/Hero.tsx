@@ -1,20 +1,18 @@
 "use client";
 
-import AmbientBlobs from "./ui/AmbientBlobs";
-import HeroLeft from "./hero/HeroLeft";
-import HeroLayeredEngine from "./hero/HeroLayeredEngine";
+import HexGridBackground from "@/components/backgrounds/HexGridBackground";
+import HeroParticles from "./backgrounds/HeroParticles";
+import HeroContent from "./hero/HeroContent";
 
 export default function Hero() {
   return (
-    <section className="hero-section">
-      <div className="hero-section-bg" aria-hidden>
-        <AmbientBlobs variant="hero" />
-        <div className="hero-section-mesh" />
-        <div className="hero-section-grid" />
-      </div>
-      <div className="hero-section-inner">
-        <HeroLeft />
-        <HeroLayeredEngine />
+    <section className="hero hero-section hero-section--light">
+      <HexGridBackground />
+      <HeroParticles />
+      <div className="hero-seam-glow" aria-hidden="true" />
+
+      <div className="hero-inner">
+        <HeroContent />
       </div>
     </section>
   );

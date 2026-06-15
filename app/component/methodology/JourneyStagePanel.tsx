@@ -12,12 +12,14 @@ import type { ReactNode } from "react";
 import IntelligenceModule from "./IntelligenceModule";
 import { useReducedMotion } from "../features/useReducedMotion";
 
+type StageItem = string;
+
 type StageData = {
   id: string;
   number: string;
   title: string;
   tagline: string;
-  items: readonly string[];
+  items: readonly StageItem[];
 };
 
 interface JourneyStagePanelProps {

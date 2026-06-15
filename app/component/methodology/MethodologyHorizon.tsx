@@ -18,7 +18,6 @@ export default function MethodologyHorizon() {
   return (
     <DesignSection id="methodology">
       <DesignHeader label={homeMethodology.label} title={homeMethodology.title} description={homeMethodology.description} />
-      <p className="meth-horizon-subtitle">{homeMethodology.subtitle}</p>
 
       <div ref={ref} className="meth-horizon">
         <div className="meth-horizon-track" aria-hidden>

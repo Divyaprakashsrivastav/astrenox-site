@@ -5,12 +5,14 @@ import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { MOTION } from "../motion/home-motion";
 
+type StageItem = string;
+
 type StageData = {
   id: string;
   number: string;
   title: string;
   tagline: string;
-  items: readonly string[];
+  items: readonly StageItem[];
 };
 
 interface SignalJourneyStageProps {
@@ -69,9 +71,9 @@ export default function SignalJourneyStage({
         <div className="signal-journey-stage-visual">{visual}</div>
 
         <ul className="signal-journey-stage-list">
-          {stage.items.map((line, i) => (
+          {stage.items.map((item, i) => (
             <motion.li
-              key={line}
+              key={item}
               initial={false}
               animate={
                 active
@@ -84,7 +86,7 @@ export default function SignalJourneyStage({
                 ease: MOTION.lineReveal.ease,
               }}
             >
-              {line}
+              {item}
             </motion.li>
           ))}
         </ul>

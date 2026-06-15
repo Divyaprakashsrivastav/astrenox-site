@@ -27,12 +27,12 @@ export default function HeroCta({ href, variant, children }: HeroCtaProps) {
         reduced
           ? undefined
           : {
-              y: -2,
-              scale: 1.02,
+              y: variant === "primary" ? 0 : -2,
+              scale: variant === "primary" ? 1.04 : 1.015,
               boxShadow:
                 variant === "primary"
-                  ? "0 8px 32px rgba(124, 58, 237, 0.32), 0 4px 16px rgba(25, 211, 197, 0.15)"
-                  : "0 6px 24px rgba(111, 44, 145, 0.1), 0 2px 6px rgba(17,17,17,0.05)",
+                  ? "0 0 35px rgba(177, 78, 255, 0.45), 0 8px 28px rgba(124, 58, 237, 0.28)"
+                  : "0 6px 24px rgba(124, 58, 237, 0.12), 0 2px 6px rgba(17,17,17,0.04)",
             }
       }
       whileTap={{ scale: 0.98 }}

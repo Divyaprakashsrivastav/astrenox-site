@@ -4,7 +4,12 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import AICommandCenter from "../control-plane/AICommandCenter";
 import DesignSection from "../design/DesignSection";
-import { homeControlPlane } from "@/app/content/homepage-content";
+
+const controlPlaneContent = {
+  label: "Control Plane",
+  title: "Control Plane",
+  description: "Enterprise operating layer for autonomous systems.",
+} as const;
 
 const EASE_OUT: [number, number, number, number] = [0, 0, 0.2, 1];
 
@@ -35,9 +40,9 @@ export default function ControlPlaneSection() {
             <span className="cp-live-dot" />
             LIVE COMMAND
           </motion.span>
-          <p className="cp-eyebrow">{homeControlPlane.label}</p>
-          <h2 className="cp-title">{homeControlPlane.title}</h2>
-          <p className="cp-subtitle">{homeControlPlane.description}</p>
+          <p className="cp-eyebrow">{controlPlaneContent.label}</p>
+          <h2 className="cp-title">{controlPlaneContent.title}</h2>
+          <p className="cp-subtitle">{controlPlaneContent.description}</p>
         </motion.header>
 
         <AICommandCenter active={inView} />

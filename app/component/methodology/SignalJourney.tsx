@@ -60,7 +60,11 @@ export default function SignalJourney() {
           >
             <p className="ax-label">{homeMethodology.label}</p>
             <h2 className="ax-title">{homeMethodology.title}</h2>
-            <p className="signal-journey-subtitle">{homeMethodology.subtitle}</p>
+            {"subtitle" in homeMethodology &&
+            typeof homeMethodology.subtitle === "string" &&
+            homeMethodology.subtitle ? (
+              <p className="signal-journey-subtitle">{homeMethodology.subtitle}</p>
+            ) : null}
             <p className="ax-description signal-journey-desc">
               {homeMethodology.description}
             </p>

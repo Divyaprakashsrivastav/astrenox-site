@@ -25,14 +25,32 @@ const EDGES: [number, number][] = [
   [4, 5],
 ];
 
-export default function NexusCoreVisual({ active }: { active: boolean }) {
+export default function NexusCoreVisual({
+  active,
+  dark = false,
+  hideChrome = false,
+}: {
+  active: boolean;
+  dark?: boolean;
+  hideChrome?: boolean;
+}) {
   const reduced = useReducedMotion();
   const speed = active ? 0.75 : 1;
+  const line = dark ? "rgba(168, 85, 247, 0.28)" : "#E5E7EB";
+  const accent = dark ? "#a855f7" : "#8E2F74";
+  const nodeFill = dark ? "rgba(139, 92, 246, 0.35)" : "#fff";
+  const nodeStroke = dark ? "rgba(192, 132, 252, 0.45)" : "#E5E7EB";
+  const label = dark ? "rgba(192, 132, 252, 0.55)" : "#5F6778";
 
   return (
-    <VisualFrame label="Orchestration graph" active={active}>
+    <VisualFrame
+      label="Orchestration graph"
+      active={active}
+      dark={dark}
+      hideChrome={hideChrome}
+    >
       <svg viewBox="0 0 400 176" className="w-full h-full" aria-hidden>
-        {EDGES.map(([a, b], i) => {
+        {EDGES.map(([a, b]) => {
           const na = NODES[a];
           const nb = NODES[b];
           return (
@@ -42,7 +60,7 @@ export default function NexusCoreVisual({ active }: { active: boolean }) {
               y1={na.y}
               x2={nb.x}
               y2={nb.y}
-              stroke="#E5E7EB"
+              stroke={line}
               strokeWidth="1"
             />
           );
@@ -55,7 +73,7 @@ export default function NexusCoreVisual({ active }: { active: boolean }) {
             <motion.circle
               key={`pulse-${a}-${b}`}
               r="2.5"
-              fill="#8E2F74"
+              fill={accent}
               animate={{
                 cx: [na.x, nb.x],
                 cy: [na.y, nb.y],
@@ -73,20 +91,50 @@ export default function NexusCoreVisual({ active }: { active: boolean }) {
           cx={CX}
           cy={CY}
           r={active ? 34 : 30}
-          fill="#8E2F74"
-          fillOpacity={active ? 0.14 : 0.08}
+          fill={accent}
+          fillOpacity={active ? 0.18 : 0.1}
           animate={reduced ? {} : { opacity: active ? [0.5, 1, 0.5] : [0.35, 0.7, 0.35] }}
           transition={{ duration: 2.5, repeat: Infinity }}
         />
-        <circle cx={CX} cy={CY} r="10" fill="#8E2F74" />
-        <circle cx={CX} cy={CY} r="14" fill="none" stroke="#8E2F74" strokeOpacity="0.35" strokeWidth="1" />
+        <circle cx={CX} cy={CY} r="10" fill={accent} />
+        <circle
+          cx={CX}
+          cy={CY}
+          r="14"
+          fill="none"
+          stroke={accent}
+          strokeOpacity="0.45"
+          strokeWidth="1"
+        />
         {NODES.map((n) => (
           <g key={n.id}>
-            <line x1={CX} y1={CY} x2={n.x} y2={n.y} stroke="#8E2F74" strokeWidth="0.8" strokeOpacity="0.25" />
-            <circle cx={n.x} cy={n.y} r="5" fill="#fff" stroke="#E5E7EB" strokeWidth="1" />
+            <line
+              x1={CX}
+              y1={CY}
+              x2={n.x}
+              y2={n.y}
+              stroke={accent}
+              strokeWidth="0.8"
+              strokeOpacity="0.3"
+            />
+            <circle
+              cx={n.x}
+              cy={n.y}
+              r="5"
+              fill={nodeFill}
+              stroke={nodeStroke}
+              strokeWidth="1"
+            />
           </g>
         ))}
-        <text x="16" y="24" fontSize="9" fill="#5F6778" fontFamily="system-ui,sans-serif" fontWeight="600">
+        <text
+          x="16"
+          y="24"
+          fontSize="9"
+          fill={label}
+          fontFamily="system-ui,sans-serif"
+          fontWeight="600"
+        >
           LANGGRAPH · ROUTING · OBSERVABILITY
         </text>
       </svg>

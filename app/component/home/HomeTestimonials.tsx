@@ -32,8 +32,9 @@ export default function HomeTestimonials() {
   }, [api, reduced, paused, scrollNext]);
 
   return (
-    <DesignSection id="testimonials" className="ax-section-surface">
+    <DesignSection id="testimonials" flow border={false} ambient={false}>
       <DesignHeader
+        flow
         label={homeTestimonials.label}
         title={homeTestimonials.title}
         description={homeTestimonials.description}

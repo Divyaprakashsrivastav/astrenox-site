@@ -69,7 +69,11 @@ export default function TransformationJourney() {
               {homeMethodology.title}
             </h2>
             <p className="mt-2 text-sm font-semibold tracking-[0.14em] text-primary uppercase">
-              {homeMethodology.subtitle}
+              {"subtitle" in homeMethodology &&
+              typeof homeMethodology.subtitle === "string" &&
+              homeMethodology.subtitle
+                ? homeMethodology.subtitle
+                : "THINK → ALIGN → EXECUTE"}
             </p>
             <p className="mt-3 text-base text-muted leading-relaxed font-light">
               {homeMethodology.description}

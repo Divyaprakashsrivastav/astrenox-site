@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
-import { homeTechnology } from "@/app/content/homepage-content";
 
 const VB = 440;
 const CX = 220;
@@ -89,7 +88,7 @@ export default function TechEcosystemLive({ active }: TechEcosystemLiveProps) {
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
         <span className="tech-eco-live-core-tag">Orchestration</span>
-        <strong>{homeTechnology.coreLabel}</strong>
+        <strong>Astrenox Core</strong>
       </motion.div>
 
       {PARTNERS.map((node) => {

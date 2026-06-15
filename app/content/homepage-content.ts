@@ -1,191 +1,66 @@
 /**
  * Homepage content — System Transformation Engine narrative.
+ * Single source of truth for all homepage copy.
  */
 
 export const homeHero = {
-  eyebrow: "System Transformation Engine",
-  headline: {
-    line1: "Creating Sustainable",
-    highlightA: "Business Value",
-    line2After: " Through",
-    highlightB: "AI-First",
-    line3: "Transformation",
-  },
+  eyebrow: "SYSTEM TRANSFORMATION ENGINE",
+  headline: "Creating Sustainable Business Value Through AI-First Digital Transformation",
   description:
-    "Astrenox architects enterprise operating systems—unifying strategy, agentic AI, and production engineering to compound defensibility and measurable ROI.",
-  primaryCta: "Run System Diagnostic",
-  primaryHref: "/contact?intent=diagnostic",
-  secondaryCta: "Explore Methodology",
-  secondaryHref: "#methodology",
+    "Astrenox helps enterprises modernize operations, deploy AI systems, and create measurable business outcomes.",
+  primaryCta: "Schedule Strategy Call",
+  primaryHref: "/contact?intent=strategy",
+  secondaryCta: "Explore Platform",
+  secondaryHref: "/platform",
   kpis: [
-    { value: 500, suffix: "+", label: "Enterprise Workflows" },
+    { value: 500, suffix: "+", label: "Deployments" },
     { value: 99.9, suffix: "%", label: "Reliability", decimals: 1 },
-    { value: 30, suffix: "+", label: "AI Integrations" },
-    { value: 10, suffix: "x", label: "Deployment Speed" },
-  ],
-} as const;
-
-export const homeCapabilities = {
-  label: "Capabilities",
-  title: "Production systems for the physical world",
-  description:
-    "Four flagship disciplines—each engineered for enterprise deployment, not prototypes.",
-  items: [
-    {
-      id: "enterprise-ai" as const,
-      title: "Enterprise AI",
-      description:
-        "Multi-model orchestration, knowledge graphs, and governed agent fleets at scale.",
-      metrics: [
-        { value: "30+", label: "Model routes" },
-        { value: "99.9%", label: "Uptime SLA" },
-      ],
-    },
-    {
-      id: "drones" as const,
-      title: "Autonomous Drones",
-      description:
-        "Mission routing, fleet telemetry, and human-in-the-loop autonomy for aerial operations.",
-      metrics: [
-        { value: "500+", label: "Flight hours" },
-        { value: "Real-time", label: "Telemetry" },
-      ],
-    },
-    {
-      id: "robotics" as const,
-      title: "Robotics",
-      description:
-        "Closed-loop manipulators, warehouse agents, and industrial automation with full observability.",
-      metrics: [
-        { value: "24/7", label: "Agent ops" },
-        { value: "<50ms", label: "Loop latency" },
-      ],
-    },
-    {
-      id: "aerospace" as const,
-      title: "Aerospace Intelligence",
-      description:
-        "Orbital telemetry, trajectory planning, and mission-grade decision systems.",
-      metrics: [
-        { value: "Mission", label: "Grade AI" },
-        { value: "Multi-orbit", label: "Coverage" },
-      ],
-    },
-  ],
-} as const;
-
-export const homeControlPlane = {
-  label: "Control Plane",
-  title: "Control Plane",
-  description: "Enterprise operating layer for autonomous systems.",
-} as const;
-
-export const homePhysicalWorld = {
-  label: "Physical World",
-  title: "Intelligence That Moves Through Reality",
-  description:
-    "From factory floors to flight systems, Astrenox orchestrates AI where decisions become physical outcomes.",
-  domains: [
-    {
-      id: "robotics",
-      title: "Robotics & Autonomy",
-      outcome: "Closed-loop agent fleets with human oversight at the edge.",
-      metric: "24/7 ops",
-    },
-    {
-      id: "aerospace",
-      title: "Aerospace Systems",
-      outcome: "Mission-grade routing, telemetry graphs, and safety gates.",
-      metric: "99.9% SLA",
-    },
-    {
-      id: "logistics",
-      title: "Autonomous Logistics",
-      outcome: "Dynamic fleet orchestration across warehouses and routes.",
-      metric: "22% cost ↓",
-    },
-    {
-      id: "industrial",
-      title: "Industrial Operations",
-      outcome: "Predictive maintenance and production scheduling agents.",
-      metric: "40% faster",
-    },
-  ],
-} as const;
-
-export const homeOperatingSystem = {
-  label: "Architecture",
-  title: "One Operating System. Four Layers.",
-  description:
-    "A Palantir-grade stack—perception, intelligence, orchestration, and physical execution—unified under Astrenox.",
-  id: "operating-system",
-  layers: [
-    {
-      id: "perception",
-      title: "Perception",
-      description: "Vision, telemetry, and sensor fusion at the edge.",
-      items: ["Computer Vision", "Telemetry", "Sensor Fusion"],
-    },
-    {
-      id: "intelligence",
-      title: "Intelligence",
-      description: "Models, graphs, and reasoning for decisions.",
-      items: ["AI Models", "Knowledge Graphs", "Reasoning"],
-    },
-    {
-      id: "orchestration",
-      title: "Orchestration",
-      description: "Agents, workflows, and policy in one control plane.",
-      items: ["Agents", "Workflow Engine", "Policy Layer"],
-    },
-    {
-      id: "execution",
-      title: "Execution",
-      description: "Autonomous systems deployed in the physical world.",
-      items: ["Drones", "Robotics", "Aerospace"],
-    },
+    { value: 30, suffix: "+", label: "Integrations" },
+    { value: 10, suffix: "X", label: "Deployment Speed" },
   ],
 } as const;
 
 export const homeMethodology = {
   id: "methodology",
-  label: "Deployment Methodology",
-  title: "From Signal to Physical Outcome",
-  subtitle: "THINK → ALIGN → EXECUTE",
+  label: "Our Methodology",
+  title: "Strategy Shipped to Outcome",
   description:
-    "How Astrenox transforms raw signals into deployed autonomous systems.",
+    "We don't make presentations. We build and deploy systems.",
   stages: [
     {
-      id: "think",
+      id: "discover",
       number: "01",
-      title: "THINK",
-      tagline: "Signal intelligence",
+      title: "DISCOVER",
+      tagline: "Understand the opportunity",
       items: [
-        "Diagnose the system.",
-        "Map constraints.",
-        "Identify opportunities.",
+        "Business diagnostics",
+        "AI readiness assessment",
+        "Process mapping",
+        "Value identification",
       ],
     },
     {
-      id: "align",
+      id: "architect",
       number: "02",
-      title: "ALIGN",
-      tagline: "Architecture design",
+      title: "ARCHITECT",
+      tagline: "Design the operating model",
       items: [
-        "Design architecture.",
-        "Define governance.",
-        "Build deployment strategy.",
+        "AI architecture",
+        "Data strategy",
+        "Governance",
+        "Deployment roadmap",
       ],
     },
     {
-      id: "execute",
+      id: "deploy",
       number: "03",
-      title: "EXECUTE",
-      tagline: "Production deployment",
+      title: "DEPLOY",
+      tagline: "Ship production systems",
       items: [
-        "Ship to production.",
-        "Monitor performance.",
-        "Scale operations.",
+        "AI agents",
+        "Automation workflows",
+        "Monitoring",
+        "Scale operations",
       ],
     },
   ],
@@ -195,106 +70,53 @@ export const homeTriFlywheel = {
   label: "Defensibility Model",
   title: "Architecting Defensibility: The Tri-Flywheel Model",
   description:
-    "Three reinforcing loops compound speed, intelligence, and ecosystem advantage into a durable strategic moat.",
+    "Three reinforcing loops that compound speed, intelligence, and ecosystem advantage.",
   centerLabel: "Astrenox Core",
   flywheels: [
     {
       id: "product",
       tabLabel: "Product",
-      title: "Product Delivery",
+      title: "Product Delivery Flywheel",
       description:
-        "Velocity compounds into product quality—each release tightens the feedback loop and deepens retention.",
-      steps: [
-        "Ship faster",
-        "Collect feedback",
-        "Improve AI",
-        "Increase retention",
-      ],
+        "Faster shipping → richer feedback → better AI products → higher retention.",
+      steps: ["Ship faster", "Collect feedback", "Improve AI", "Increase retention"],
     },
     {
       id: "operations",
       tabLabel: "Operations",
-      title: "Internal AI Operations",
+      title: "Internal AI-Operations Flywheel",
       description:
-        "Automation frees capital and capacity—reinvested into broader agentic coverage across the stack.",
-      steps: [
-        "Automate workflows",
-        "Reduce cost",
-        "Reinvest gains",
-        "Expand coverage",
-      ],
+        "Automation → cost efficiency → reinvestment → deeper agentic coverage.",
+      steps: ["Automate workflows", "Reduce cost", "Reinvest gains", "Expand coverage"],
     },
     {
       id: "ecosystem",
       tabLabel: "Ecosystem",
-      title: "Ecosystem Alignment",
+      title: "Ecosystem Alignment Flywheel",
       description:
-        "Partner depth unlocks distribution and integration speed—network effects that widen the moat over time.",
-      steps: [
-        "Partner integrations",
-        "Market access",
-        "Distribution",
-        "Network effects",
-      ],
+        "Partner depth → preferred access → faster integration → stronger moats.",
+      steps: ["Partner integrations", "Market access", "Distribution", "Network effects"],
     },
   ],
 } as const;
 
 export const homeEnterpriseEcosystem = {
-  label: "Enterprise Trust",
-  title: "Built on Production-Grade Infrastructure",
+  label: "Alliances",
+  title: "Our Enterprise Ecosystem & Alliances",
   description:
-    "Cloud, model, and integration partners unified through Astrenox—the control plane for physical-world AI operations.",
-  coreLabel: "Astrenox Core",
-  rings: [
-    {
-      id: "cloud",
-      title: "Cloud Infrastructure",
-      ringIndex: 1,
-      partners: [
-        { id: "aws", name: "AWS", category: "Cloud Infrastructure", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "azure", name: "Azure", category: "Cloud Infrastructure", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "gcp", name: "Google Cloud", category: "Cloud Infrastructure", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "oracle", name: "Oracle", category: "Cloud Infrastructure", tooltip: "Connected through Astrenox orchestration layer" },
-      ],
-    },
-    {
-      id: "ai",
-      title: "AI & Intelligence",
-      ringIndex: 2,
-      partners: [
-        { id: "openai", name: "OpenAI", category: "AI & Intelligence", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "anthropic", name: "Anthropic", category: "AI & Intelligence", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "deepmind", name: "Google DeepMind", category: "AI & Intelligence", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "meta", name: "Meta AI", category: "AI & Intelligence", tooltip: "Connected through Astrenox orchestration layer" },
-        { id: "cohere", name: "Cohere", category: "AI & Intelligence", tooltip: "Connected through Astrenox orchestration layer" },
-      ],
-    },
-    {
-      id: "integration",
-      title: "Enterprise Integrations",
-      ringIndex: 3,
-      partners: [
-        { id: "salesforce", name: "Salesforce", category: "Enterprise Integrations", tooltip: "Integrated into enterprise deployment stack" },
-        { id: "servicenow", name: "ServiceNow", category: "Enterprise Integrations", tooltip: "Integrated into enterprise deployment stack" },
-        { id: "snowflake", name: "Snowflake", category: "Enterprise Integrations", tooltip: "Integrated into enterprise deployment stack" },
-        { id: "databricks", name: "Databricks", category: "Enterprise Integrations", tooltip: "Integrated into enterprise deployment stack" },
-        { id: "palantir", name: "Palantir", category: "Enterprise Integrations", tooltip: "Integrated into enterprise deployment stack" },
-      ],
-    },
-  ],
-  businessImpact: [
-    { id: "multicloud", title: "Multi-Cloud Ready", description: "Deploy across AWS, Azure, GCP without lock-in." },
-    { id: "secure", title: "Enterprise Secure", description: "Governance, audit trails, and policy-aware routing." },
-    { id: "ainative", title: "AI Native", description: "Model-agnostic intelligence at the orchestration layer." },
-    { id: "scale", title: "Production Scale", description: "From pilot to fleet-wide agent operations." },
-  ],
+    "Cloud, AI, and integration partners—activated through one Astrenox control plane.",
   marquee: [
     "AWS",
+    "Microsoft Azure",
+    "Google Cloud",
+    "Oracle Cloud",
     "OpenAI",
-    "Azure",
     "Anthropic",
+    "Google DeepMind",
+    "Meta AI",
+    "Cohere",
     "Salesforce",
+    "ServiceNow",
     "Snowflake",
     "Databricks",
     "Palantir",
@@ -310,75 +132,125 @@ export const homeIndustries = {
       id: "manufacturing",
       title: "Manufacturing",
       description: "Intelligent operations from plant floor to supply chain.",
-      useCases: ["Predictive maintenance", "Quality vision systems", "Production scheduling agents", "Supplier risk intelligence"],
+      useCases: [
+        "Predictive maintenance",
+        "Quality vision systems",
+        "Production scheduling agents",
+        "Supplier risk intelligence",
+      ],
     },
     {
       id: "healthcare",
       title: "Healthcare",
       description: "Clinical and operational AI with compliance-by-design.",
-      useCases: ["Clinical trial matching", "Prior authorization automation", "Care pathway copilots", "HIPAA-aware document intelligence"],
+      useCases: [
+        "Clinical trial matching",
+        "Prior authorization automation",
+        "Care pathway copilots",
+        "HIPAA-aware document intelligence",
+      ],
     },
     {
       id: "financial",
       title: "Financial Services",
       description: "Risk, compliance, and client intelligence at scale.",
-      useCases: ["AML monitoring agents", "Wealth risk engines", "Regulatory reporting automation", "Client 360 knowledge search"],
+      useCases: [
+        "AML monitoring agents",
+        "Wealth risk engines",
+        "Regulatory reporting automation",
+        "Client 360 knowledge search",
+      ],
     },
     {
       id: "retail",
-      title: "Retail",
+      title: "Retail and Consumer",
       description: "Merchandising, fulfillment, and customer experience AI.",
-      useCases: ["Demand forecasting", "Personalization engines", "Returns automation", "Store operations copilots"],
+      useCases: [
+        "Demand forecasting",
+        "Personalization engines",
+        "Returns automation",
+        "Store operations copilots",
+      ],
     },
     {
       id: "realestate",
-      title: "Real Estate",
+      title: "Real Estate and Construction",
       description: "Portfolio intelligence and transaction acceleration.",
-      useCases: ["Deal underwriting assistants", "Lease abstraction", "Portfolio analytics", "Tenant experience automation"],
+      useCases: [
+        "Deal underwriting assistants",
+        "Lease abstraction",
+        "Portfolio analytics",
+        "Tenant experience automation",
+      ],
     },
     {
       id: "logistics",
-      title: "Logistics",
+      title: "Logistics and Supply Chain",
       description: "Fleet, route, and warehouse orchestration.",
-      useCases: ["Dynamic routing agents", "Warehouse robotics coordination", "ETA prediction", "Freight document automation"],
+      useCases: [
+        "Dynamic routing agents",
+        "Warehouse robotics coordination",
+        "ETA prediction",
+        "Freight document automation",
+      ],
     },
     {
       id: "education",
-      title: "Education",
+      title: "Education and Skilling",
       description: "Learning operations and student success systems.",
-      useCases: ["Adaptive learning paths", "Admissions workflow AI", "Faculty operations automation", "Accreditation reporting"],
+      useCases: [
+        "Adaptive learning paths",
+        "Admissions workflow AI",
+        "Faculty operations automation",
+        "Accreditation reporting",
+      ],
     },
     {
       id: "government",
-      title: "Government",
+      title: "Government and Public Sector",
       description: "Secure citizen services and policy intelligence.",
-      useCases: ["Case management automation", "Policy research agents", "Fraud detection", "Multilingual citizen support"],
+      useCases: [
+        "Case management automation",
+        "Policy research agents",
+        "Fraud detection",
+        "Multilingual citizen support",
+      ],
     },
     {
       id: "professional",
       title: "Professional Services",
       description: "Knowledge leverage across engagements and delivery.",
-      useCases: ["Proposal intelligence", "Engagement knowledge graphs", "Billing automation", "Expert matching agents"],
+      useCases: [
+        "Proposal intelligence",
+        "Engagement knowledge graphs",
+        "Billing automation",
+        "Expert matching agents",
+      ],
     },
     {
       id: "technology",
-      title: "Technology",
+      title: "Technology and SaaS",
       description: "AI-native product companies and platform scale-ups.",
-      useCases: ["MVP acceleration", "Agentic product layers", "DevOps intelligence", "Customer success automation"],
+      useCases: [
+        "MVP acceleration",
+        "Agentic product layers",
+        "DevOps intelligence",
+        "Customer success automation",
+      ],
     },
   ],
 } as const;
 
 export const homeMetrics = {
   label: "Outcomes",
-  title: "Performance In Numbers",
+  title: "Performance in Numbers",
   description: "Measured delivery—not marketing claims.",
   stats: [
     { value: 99.4, suffix: "%", decimals: 1, label: "Project Delivery Success Rate" },
-    { value: 40, suffix: "%", label: "Reduction In Time To Market" },
-    { value: 50, suffix: "+", label: "Production AI Use Cases" },
-    { display: "4.8/5", label: "Client Satisfaction" },
-    { value: 35, suffix: "%", label: "Operational Efficiency Improvement" },
+    { value: 40, suffix: "%", label: "Average Reduction in Time-to-Market" },
+    { value: 50, suffix: "+", label: "Production AI Use Cases Delivered" },
+    { display: "4.8/5", label: "Client Satisfaction Rating" },
+    { value: 35, suffix: "%", label: "Average Operational Efficiency Improvement" },
   ],
 } as const;
 
@@ -391,49 +263,49 @@ export const homeServices = {
       id: "consulting",
       title: "AI Consulting & Transformation",
       description: "30/60/90-day audits, adoption roadmaps, and practitioner-led execution.",
-      metric: "12-week transformation sprints",
+      outcome: "12-week transformation sprints",
       href: "/services/ai-transformation",
     },
     {
       id: "agentic",
       title: "Agentic Managed Services",
       description: "Managed agent fleets, runbooks, and observability across your estate.",
-      metric: "24/7 agent operations",
+      outcome: "24/7 agent operations",
       href: "/platform",
     },
     {
       id: "staffing",
       title: "Staff Augmentation & Fractional CXOs",
       description: "Elite AI, data, and product leaders embedded with outcome accountability.",
-      metric: "2-week team activation",
+      outcome: "2-week team activation",
       href: "/careers",
     },
     {
       id: "digital",
-      title: "Digital & IT Services",
+      title: "Digital and IT Services",
       description: "Modern engineering, integration, and human-centered digital delivery.",
-      metric: "Enterprise-grade SDLC",
+      outcome: "Enterprise-grade SDLC",
       href: "/services/digital-it-consulting",
     },
     {
       id: "products",
       title: "Purpose-Built Products",
       description: "Flagship platforms and copilots engineered for your domain.",
-      metric: "Production in weeks",
+      outcome: "Production in weeks",
       href: "/projects",
     },
     {
       id: "infra",
       title: "Infrastructure & Cloud Management",
       description: "Secure, scalable cloud foundations for AI workloads and data platforms.",
-      metric: "Multi-cloud ready",
+      outcome: "Multi-cloud ready",
       href: "/services/ai-engineering",
     },
     {
       id: "mvp",
       title: "Software Factory & MVP Studio",
       description: "High-velocity squads shipping investor-ready MVPs and scale paths.",
-      metric: "6-week MVP cycles",
+      outcome: "6-week MVP cycles",
       href: "/services/mvp-studio",
     },
   ],
@@ -441,35 +313,76 @@ export const homeServices = {
 
 export const homeTechnology = {
   label: "Technology",
-  title: "Technology Ecosystem Architecture",
+  title: "Technology Ecosystem",
   description: "Vendor-agnostic orchestration across the modern AI stack.",
-  coreLabel: "Astrenox Core",
   categories: [
-    { id: "models", title: "AI Models", items: ["GPT-4o", "Claude", "Gemini", "Llama", "Mistral"] },
-    { id: "agents", title: "Agent Frameworks", items: ["LangGraph", "CrewAI", "AutoGen", "Semantic Kernel"] },
-    { id: "automation", title: "Automation Tools", items: ["n8n", "Temporal", "Airflow", "Zapier Enterprise"] },
-    { id: "cloud", title: "Cloud Platforms", items: ["AWS", "Azure", "GCP", "Kubernetes"] },
-    { id: "databases", title: "Databases", items: ["PostgreSQL", "Snowflake", "Pinecone", "Neo4j"] },
-    { id: "fullstack", title: "Frontend/Backend", items: ["Next.js", "React", "Python", "FastAPI", "Node"] },
-    { id: "devops", title: "DevOps", items: ["Terraform", "GitHub Actions", "ArgoCD", "Datadog"] },
-    { id: "analytics", title: "Analytics", items: ["dbt", "Looker", "Power BI", "Amplitude"] },
-    { id: "integrations", title: "Enterprise Integrations", items: ["Salesforce", "SAP", "Workday", "ServiceNow"] },
-    { id: "design", title: "Design Tools", items: ["Figma", "Framer", "Storybook", "Design Systems"] },
+    {
+      id: "models",
+      title: "AI Models & LLMs",
+      items: ["GPT-4o", "Claude", "Gemini", "Llama", "Mistral"],
+    },
+    {
+      id: "agents",
+      title: "Agent Frameworks",
+      items: ["LangGraph", "CrewAI", "AutoGen", "Semantic Kernel"],
+    },
+    {
+      id: "automation",
+      title: "Automation Tools",
+      items: ["n8n", "Temporal", "Airflow", "Zapier Enterprise"],
+    },
+    {
+      id: "cloud",
+      title: "Cloud Platforms",
+      items: ["AWS", "Azure", "GCP", "Kubernetes"],
+    },
+    {
+      id: "databases",
+      title: "Data & Vector Databases",
+      items: ["PostgreSQL", "Snowflake", "Pinecone", "Neo4j"],
+    },
+    {
+      id: "fullstack",
+      title: "Frontend & Backend Technologies",
+      items: ["Next.js", "React", "Python", "FastAPI", "Node"],
+    },
+    {
+      id: "devops",
+      title: "DevOps & CI/CD",
+      items: ["Terraform", "GitHub Actions", "ArgoCD", "Datadog"],
+    },
+    {
+      id: "analytics",
+      title: "Analytics & Observability",
+      items: ["dbt", "Looker", "Power BI", "Amplitude"],
+    },
+    {
+      id: "integrations",
+      title: "Enterprise Integrations",
+      items: ["Salesforce", "SAP", "Workday", "ServiceNow"],
+    },
+    {
+      id: "design",
+      title: "Design & Prototyping",
+      items: ["Figma", "Framer", "Storybook", "Design Systems"],
+    },
   ],
 } as const;
 
 export const homeFlagshipProjects = {
-  label: "Case Studies",
-  title: "Systems Operating in the Physical World",
-  description: "Autonomous operations, aerospace-grade orchestration, and enterprise AI—verified under production load.",
+  label: "Flagship Projects",
+  title: "Flagship Projects & Products",
+  description: "Architecture proven in production—with outcomes that survived executive review.",
   items: [
     {
       id: "nexuscore" as const,
       title: "NexusCore Orchestrator",
       category: "Enterprise AI Platform",
-      challenge: "Fragmented model providers and siloed workflows blocked enterprise AI scale.",
-      solution: "Unified orchestration layer with governance, routing, and observability across providers.",
+      description:
+        "Unified orchestration layer with governance, routing, and observability across providers.",
       outcome: "Single control plane for 30+ connectors and multi-model agent fleets.",
+      status: "Production" as const,
+      techStack: ["Python", "FastAPI", "OpenAI", "Kubernetes", "React", "Postgres"],
       metrics: [
         { value: "30+", label: "Integrations" },
         { value: "99.9%", label: "Uptime SLA" },
@@ -481,9 +394,11 @@ export const homeFlagshipProjects = {
       id: "synapse" as const,
       title: "Synapse Logistics Engine",
       category: "Autonomous Operations",
-      challenge: "Manual dispatch and exception handling drained margin on high-volume routes.",
-      solution: "Agentic routing, fleet telemetry graph, and exception runbooks in one engine.",
+      description:
+        "Agentic routing, fleet telemetry graph, and exception runbooks in one engine.",
       outcome: "Dynamic optimization with human-in-the-loop for edge cases only.",
+      status: "Live" as const,
+      techStack: ["Python", "Kafka", "React", "Postgres", "Kubernetes"],
       metrics: [
         { value: "22%", label: "Cost reduction" },
         { value: "18%", label: "On-time gain" },
@@ -495,9 +410,11 @@ export const homeFlagshipProjects = {
       id: "codeforge" as const,
       title: "CodeForge Insight",
       category: "Engineering Intelligence",
-      challenge: "Legacy repos and docs made AI-assisted development inconsistent and risky.",
-      solution: "Code-aware RAG, PR agents, and quality gates integrated into the SDLC.",
+      description:
+        "Code-aware RAG, PR agents, and quality gates integrated into the SDLC.",
       outcome: "Developer velocity up with audit-ready change lineage.",
+      status: "Enterprise" as const,
+      techStack: ["TypeScript", "OpenAI", "GitHub", "React", "Postgres"],
       metrics: [
         { value: "35%", label: "PR throughput" },
         { value: "95+", label: "Quality score" },
@@ -509,9 +426,11 @@ export const homeFlagshipProjects = {
       id: "sovereign" as const,
       title: "Sovereign Wealth Risk Engine",
       category: "Financial Intelligence",
-      challenge: "Portfolio risk signals scattered across research, market, and compliance systems.",
-      solution: "Knowledge graph + scenario agents with explainable decision trails.",
+      description:
+        "Knowledge graph + scenario agents with explainable decision trails.",
       outcome: "Executive dashboards with live traversals and approval workflows.",
+      status: "Production" as const,
+      techStack: ["Python", "Neo4j", "FastAPI", "React", "Kubernetes"],
       metrics: [
         { value: "60%", label: "Faster analysis" },
         { value: "Full", label: "Audit lineage" },
@@ -523,9 +442,11 @@ export const homeFlagshipProjects = {
       id: "clinical" as const,
       title: "ClinicalMatch MVP",
       category: "Healthcare AI",
-      challenge: "Trial enrollment bottlenecks delayed studies and inflated site costs.",
-      solution: "Clinical criteria matching agent with HIPAA-aware document pipeline.",
+      description:
+        "Clinical criteria matching agent with HIPAA-aware document pipeline.",
       outcome: "MVP to pilot sites in six weeks with measurable enrollment lift.",
+      status: "Beta" as const,
+      techStack: ["Python", "OpenAI", "FastAPI", "React", "HIPAA"],
       metrics: [
         { value: "6 wk", label: "MVP delivery" },
         { value: "28%", label: "Match accuracy lift" },
@@ -542,30 +463,34 @@ export const homeTestimonials = {
   description: "Enterprise stakeholders who measure us on production outcomes—not presentations.",
   items: [
     {
-      quote: "Astrenox became our operating system for plant autonomy—we went from pilots to closed-loop robotics in one quarter.",
-      author: "Chief Digital Officer",
-      role: "Global Manufacturing Enterprise",
+      quote:
+        "Astrenox turned our AI strategy into operating rhythm. We went from pilots to production agents in one quarter.",
+      author: "[Client Name]",
+      role: "Chief Digital Officer, Global Manufacturing Enterprise",
       projectType: "Agentic Operations",
       outcome: "35% efficiency gain in plant scheduling",
     },
     {
-      quote: "The Tri-Flywheel framing changed how our board funds AI—we now compound capability instead of funding one-offs.",
-      author: "VP Strategy",
-      role: "Fortune 500 Financial Services",
+      quote:
+        "The Tri-Flywheel framing changed how our board funds AI—we now compound capability instead of funding one-offs.",
+      author: "[Client Name]",
+      role: "VP Strategy, Fortune 500 Financial Services",
       projectType: "AI Transformation",
       outcome: "40% faster time-to-market on digital products",
     },
     {
-      quote: "Their managed agent layer runs our support and research workflows with full observability. Finally, AI we can audit.",
-      author: "Head of Enterprise Technology",
-      role: "Healthcare Network",
+      quote:
+        "Their managed agent layer runs our support and research workflows with full observability. Finally, AI we can audit.",
+      author: "[Client Name]",
+      role: "Head of Enterprise Technology, Healthcare Network",
       projectType: "Agentic Managed Services",
       outcome: "30% reduction in case resolution time",
     },
     {
-      quote: "NexusCore became our internal AI OS. One orchestration standard across twelve business units.",
-      author: "SVP Engineering",
-      role: "Technology Holding Company",
+      quote:
+        "NexusCore became our internal AI OS. One orchestration standard across twelve business units.",
+      author: "[Client Name]",
+      role: "SVP Engineering, Technology Holding Company",
       projectType: "Platform Engineering",
       outcome: "50+ production use cases in 12 months",
     },
@@ -574,31 +499,90 @@ export const homeTestimonials = {
 
 export const homeContactCta = {
   eyebrow: "Engage Astrenox",
-  title: "Deploy the AI Operating System",
+  title: "Transition from Architecture to Production",
   description:
-    "Connect enterprise intelligence to autonomous systems. Schedule a control-plane scoping session or submit an enterprise RFP.",
-  trust: ["Mission-grade SLAs", "Robotics & aerospace programs", "Production engineering—not prototypes"],
-  primaryCta: "Schedule Control Plane Scoping",
+    "Schedule a scoping session with our transformation architects—or submit an RFP for enterprise procurement.",
+  primaryCta: "Schedule Architecture Scoping",
   primaryHref: "/contact?intent=scoping",
-  secondaryCta: "Submit RFP",
+  secondaryCta: "Submit RFP / Technical Specs",
   secondaryHref: "/contact?intent=rfp",
-  calendarNote: "Calendar integration available on request for enterprise accounts.",
+  infoRows: [
+    {
+      icon: "mail" as const,
+      label: "Email",
+      value: "engineering@astrenox.com",
+      href: "mailto:engineering@astrenox.com",
+    },
+    {
+      icon: "phone" as const,
+      label: "Phone",
+      value: "+91 XXXXX XXXXX",
+      href: "tel:+910000000000",
+    },
+    {
+      icon: "map" as const,
+      label: "Address",
+      value: "India",
+      href: "/contact",
+    },
+    {
+      icon: "calendar" as const,
+      label: "Discovery Call",
+      value: "Architecture Discovery",
+      href: "/contact?intent=scoping",
+    },
+    {
+      icon: "file" as const,
+      label: "Submit RFP",
+      value: "Technical specifications",
+      href: "/contact?intent=rfp",
+    },
+  ],
+  channels: [
+    { label: "Technical Discovery", value: "Available on request for enterprise accounts" },
+    { label: "Direct Calendar Sync", value: "Calendar integration available on request" },
+    { label: "Architecture & RFP Email", value: "engineering@astrenox.com" },
+    { label: "Partnership Email", value: "partnerships@astrenox.com" },
+    { label: "Phone Number", value: "[Phone Number Placeholder]" },
+    { label: "Corporate Address", value: "[Corporate Address Placeholder]" },
+  ],
 } as const;
 
 export const homeFooter = {
   about:
-    "Astrenox is the AI Operating System for the Physical World—enterprise intelligence, autonomous systems, and production-grade engineering.",
+    "AI-first consulting and production engineering for enterprises that ship real systems—not slide decks.",
+  aboutLink: { label: "About Astrenox", href: "/about" },
+  companyLinks: [
+    { label: "About", href: "/about" },
+    { label: "Careers", href: "/careers" },
+    { label: "Platform", href: "/platform" },
+    { label: "Contact", href: "/contact" },
+  ],
   servicesLinks: [
-    { label: "AI Consulting & Transformation", href: "/services/ai-transformation" },
-    { label: "Agentic Managed Services", href: "/platform" },
-    { label: "Staff Augmentation", href: "/careers" },
-    { label: "Digital & IT Services", href: "/services/digital-it-consulting" },
+    { label: "AI Consulting", href: "/services/ai-transformation" },
+    { label: "AI Engineering", href: "/services/ai-engineering" },
+    { label: "Digital Transformation", href: "/services/digital-it-consulting" },
+    { label: "Automation", href: "/services/intelligent-automations" },
     { label: "MVP Studio", href: "/services/mvp-studio" },
   ],
-  industriesLinks: [
-    { label: "Manufacturing", href: "/services/industries" },
-    { label: "Healthcare", href: "/services/industries" },
-    { label: "Financial Services", href: "/services/industries" },
-    { label: "Technology", href: "/services/industries" },
+  resourcesLinks: [
+    { label: "Projects", href: "/projects" },
+    { label: "Research", href: "/research" },
+    { label: "Industries", href: "/services/industries" },
+    { label: "Platform", href: "/platform" },
+    { label: "Careers", href: "/careers" },
   ],
+  servicesLink: { label: "Services", href: "/services" },
+  industriesLink: { label: "Industries", href: "/services/industries" },
+  github: { label: "GitHub", href: "https://github.com" },
+  linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/company/astrenox" },
+  x: { label: "X", href: "https://x.com" },
+  email: "engineering@astrenox.com",
+  copyright: "© 2026 Astrenox",
+  legalLinks: [
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/legal" },
+    { label: "Cookies", href: "/legal" },
+  ],
+  madeWith: "Made with AI",
 } as const;
