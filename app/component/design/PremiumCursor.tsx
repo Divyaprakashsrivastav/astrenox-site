@@ -6,6 +6,7 @@ import { useReducedMotion } from "../features/useReducedMotion";
 
 export default function PremiumCursor() {
   const reduced = useReducedMotion();
+  const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -14,9 +15,18 @@ export default function PremiumCursor() {
   const ringY = useSpring(0, { stiffness: 120, damping: 18 });
 
   useEffect(() => {
-    if (reduced || typeof window === "undefined") return;
+    if (reduced) {
+      setReady(false);
+      return;
+    }
+
     const fine = window.matchMedia("(pointer: fine)");
-    if (!fine.matches) return;
+    if (!fine.matches) {
+      setReady(false);
+      return;
+    }
+
+    setReady(true);
 
     const onMove = (e: MouseEvent) => {
       setPos({ x: e.clientX, y: e.clientY });
@@ -41,7 +51,7 @@ export default function PremiumCursor() {
     };
   }, [reduced, ringX, ringY]);
 
-  if (reduced) return null;
+  if (!ready) return null;
 
   return (
     <>
@@ -50,14 +60,14 @@ export default function PremiumCursor() {
         style={{ left: pos.x, top: pos.y }}
         animate={{ opacity: visible ? 1 : 0, scale: hovering ? 0.5 : 1 }}
         transition={{ duration: 0.15 }}
-        aria-hidden
+        aria-hidden={true}
       />
       <motion.div
         className="ax-cursor-ring"
         style={{ x: ringX, y: ringY }}
         animate={{ opacity: visible ? 1 : 0, scale: hovering ? 1.6 : 1 }}
         transition={{ duration: 0.2 }}
-        aria-hidden
+        aria-hidden={true}
       />
     </>
   );

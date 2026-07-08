@@ -566,6 +566,7 @@ export const homeFooter = {
     { label: "MVP Studio", href: "/services/mvp-studio" },
   ],
   resourcesLinks: [
+    { label: "Products", href: "/products" },
     { label: "Projects", href: "/projects" },
     { label: "Research", href: "/research" },
     { label: "Industries", href: "/services/industries" },

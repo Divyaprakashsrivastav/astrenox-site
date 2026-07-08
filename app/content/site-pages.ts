@@ -15,13 +15,14 @@ export const navSolutions = [
   { label: "MVP Studio", href: "/services/mvp-studio" },
 ] as const;
 
+/** Flat nav links (dropdown parents rendered separately in Navbar). */
 export const primaryNav = [
   { label: "Home", href: "/" },
   { label: "Platform", href: "/platform" },
-  { label: "About Us", href: "/about" },
+  { label: "Products", href: "/products" },
   { label: "Industries", href: "/services/industries" },
-  { label: "Products", href: "/projects" },
   { label: "Research", href: "/research" },
+  { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -36,7 +37,7 @@ export const footerQuickLinks = [
   { label: "MVP Studio", href: "/services/mvp-studio" },
   { label: "About Us", href: "/about" },
   { label: "Industries", href: "/services/industries" },
-  { label: "Products", href: "/projects" },
+  { label: "Products", href: "/products" },
   { label: "Research", href: "/research" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -45,7 +46,7 @@ export const footerNav = [
   { label: "Platform", href: "/platform" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Products", href: "/projects" },
+  { label: "Products", href: "/products" },
   { label: "Research", href: "/research" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },

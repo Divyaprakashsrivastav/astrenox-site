@@ -1,0 +1,45 @@
+/* Industries grid — extends MVP Studio design system */
+.mvp-industries-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .mvp-industries-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .mvp-industries-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.mvp-industry-card {
+  padding: 1.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+  text-align: center;
+}
+
+.mvp-industry-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: rgba(139, 92, 246, 0.95);
+}
+
+.mvp-industry-card span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(250, 250, 251, 0.8);
+}

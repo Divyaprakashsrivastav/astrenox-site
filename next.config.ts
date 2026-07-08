@@ -30,7 +30,6 @@ const nextConfig: NextConfig = {
     return [
       { source: "/about-us", destination: "/about", permanent: true },
       { source: "/hire-talent", destination: "/careers", permanent: true },
-      { source: "/products", destination: "/projects", permanent: true },
       { source: "/ai-engineering", destination: "/services/ai-engineering", permanent: true },
       { source: "/ai-transformation", destination: "/services/ai-transformation", permanent: true },
       { source: "/intelligent-automations", destination: "/services/intelligent-automations", permanent: true },

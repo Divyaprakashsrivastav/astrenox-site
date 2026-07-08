@@ -1,0 +1,696 @@
+/* ═══════════════════════════════════════════════════════════
+   Astrenox Dock Navigation — rebuilt from scratch
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Centered viewport wrapper (no translateX centering) ── */
+.dock-shell {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.dock-header {
+  width: min(1600px, calc(100vw - 48px));
+  margin: 0 auto;
+  pointer-events: auto;
+}
+
+.dock-bar {
+  height: 64px;
+  background: rgba(10, 10, 18, 0.9);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.5),
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+.dock-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  height: 100%;
+  padding: 0 1rem 0 1.125rem;
+  column-gap: 0.75rem;
+}
+
+.dock-zone {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.dock-zone--brand {
+  justify-content: flex-start;
+}
+
+.dock-zone--menu {
+  justify-content: center;
+  min-width: 0;
+  overflow: visible;
+}
+
+.dock-zone--cta {
+  justify-content: flex-end;
+  gap: 0.625rem;
+}
+
+/* ── Brand ── */
+.dock-brand {
+  font-family: var(--font-heading, ui-serif, Georgia, serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.dock-brand:hover {
+  color: #f5f3ff;
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* ── Center menu — 14px / 18px gaps, never clip ── */
+.dock-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 18px;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+@media (min-width: 1200px) {
+  .dock-menu {
+    display: flex;
+  }
+}
+
+.dock-mega-anchor {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dock-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0;
+  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.58);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.3s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.3s ease;
+}
+
+@media (min-width: 1500px) {
+  .dock-link {
+    font-size: 14px;
+  }
+}
+
+.dock-link:hover,
+.dock-link--mega-open {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dock-link--active {
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+}
+
+.dock-link-text {
+  position: relative;
+  z-index: 1;
+}
+
+.dock-link-hover-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #c084fc, #a855f7);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.dock-link:hover .dock-link-hover-bar,
+.dock-link--mega-open .dock-link-hover-bar {
+  transform: scaleX(1);
+}
+
+.dock-link--active .dock-link-hover-bar {
+  display: none;
+}
+
+.dock-link-active-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #7c3aed, #c084fc, #a855f7);
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+}
+
+.dock-chevron {
+  opacity: 0.45;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+
+.dock-link--mega:hover .dock-chevron {
+  opacity: 0.75;
+}
+
+.dock-chevron--open {
+  transform: rotate(180deg);
+  opacity: 0.9;
+}
+
+/* ── CTA ── */
+.dock-cta {
+  display: none;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5625rem 1.05rem;
+  font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #fff;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #a855f7 100%);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.4), 0 4px 16px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+@media (min-width: 1200px) {
+  .dock-cta {
+    display: inline-flex;
+  }
+}
+
+.dock-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 44px rgba(168, 85, 247, 0.52), 0 8px 24px rgba(0, 0, 0, 0.32);
+}
+
+.dock-cta-icon {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dock-cta:hover .dock-cta-icon {
+  transform: translateX(4px);
+}
+
+.dock-cta--drawer {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.25rem;
+}
+
+.dock-burger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+@media (min-width: 1200px) {
+  .dock-burger {
+    display: none;
+  }
+}
+
+.dock-burger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Mega menu backdrop ── */
+.dock-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+body.dock-mega-open main,
+body.dock-mega-open footer {
+  filter: blur(4px);
+  opacity: 0.75;
+  pointer-events: none;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+body:not(.dock-mega-open) main,
+body:not(.dock-mega-open) footer {
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── Floating mega panel — centered under dock, 16px gap ── */
+.dock-mega-shell {
+  display: none;
+  position: fixed;
+  top: calc(20px + 64px);
+  left: 0;
+  right: 0;
+  z-index: 450;
+  padding-top: 16px;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+@media (min-width: 1200px) {
+  .dock-mega-shell {
+    display: flex;
+  }
+}
+
+.dock-mega-float {
+  width: min(1150px, calc(100vw - 48px));
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.dock-mega-float--narrow {
+  width: min(560px, calc(100vw - 48px));
+}
+
+.dock-mega-panel {
+  pointer-events: auto;
+  padding: 1.375rem 1.5rem 1.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 8, 14, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 44px 110px rgba(0, 0, 0, 0.58),
+    0 16px 48px rgba(0, 0, 0, 0.38),
+    0 0 80px rgba(124, 58, 237, 0.07);
+}
+
+.dock-mega-panel--stack {
+  padding: 1.25rem 1.375rem 1.375rem;
+}
+
+.dock-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.dock-mega-grid--single {
+  grid-template-columns: 1fr;
+}
+
+.dock-mega-section {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dock-mega-section-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(196, 181, 253, 0.72);
+  margin-bottom: 0.625rem;
+}
+
+/* ── Mega cards ── */
+.dock-mega-card {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.6875rem 0.8125rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.035);
+  text-decoration: none;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.dock-mega-card--compact {
+  grid-template-columns: 36px 1fr auto;
+  padding: 0.625rem 0.75rem;
+}
+
+.dock-mega-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(124, 58, 237, 0.11);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(124, 58, 237, 0.16);
+}
+
+.dock-mega-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  color: #c4b5fd;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dock-mega-card:hover .dock-mega-card-icon {
+  transform: scale(1.06);
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.28);
+}
+
+.dock-mega-card-copy {
+  min-width: 0;
+}
+
+.dock-mega-card-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fafafb;
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+}
+
+.dock-mega-card-desc {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  line-height: 1.42;
+  color: rgba(250, 250, 251, 0.48);
+  transition: color 0.3s ease;
+}
+
+.dock-mega-card:hover .dock-mega-card-desc {
+  color: rgba(250, 250, 251, 0.68);
+}
+
+.dock-mega-card-arrow {
+  color: rgba(196, 181, 253, 0.32);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+
+.dock-mega-card:hover .dock-mega-card-arrow {
+  transform: translateX(4px);
+  color: #c4b5fd;
+}
+
+/* ── Mobile / tablet drawer ── */
+.dock-drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (min-width: 1200px) {
+  .dock-drawer-scrim {
+    display: none;
+  }
+}
+
+.dock-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 650;
+  width: min(440px, 100vw);
+  background: rgba(8, 8, 14, 0.98);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -24px 0 80px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1200px) {
+  .dock-drawer {
+    display: none;
+  }
+}
+
+.dock-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.125rem 1.375rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dock-drawer-title {
+  font-family: var(--font-heading, ui-serif, Georgia, serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dock-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  cursor: pointer;
+}
+
+.dock-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.875rem 1.375rem 2rem;
+}
+
+.dock-drawer-link.dock-link {
+  display: flex;
+  width: 100%;
+  padding: 0.85rem 0;
+  font-size: 0.9375rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dock-drawer-mobile {
+  display: block;
+}
+
+.dock-drawer-tablet {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dock-drawer-mobile {
+    display: none;
+  }
+
+  .dock-drawer-tablet {
+    display: block;
+  }
+}
+
+.dock-drawer-accordion {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dock-drawer-accordion-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dock-drawer-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 0.875rem;
+}
+
+.dock-drawer-card {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.65rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.025);
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.dock-drawer-card:hover {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(139, 92, 246, 0.24);
+  transform: translateX(3px);
+}
+
+.dock-drawer-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+}
+
+.dock-drawer-card-title {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dock-drawer-card-desc {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.46);
+  line-height: 1.38;
+}
+
+.dock-drawer-card-arrow {
+  color: rgba(196, 181, 253, 0.35);
+  transition: transform 0.25s ease;
+}
+
+.dock-drawer-card:hover .dock-drawer-card-arrow {
+  transform: translateX(3px);
+  color: #c4b5fd;
+}
+
+.dock-drawer-section-label,
+.dock-drawer-block-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(196, 181, 253, 0.62);
+  margin: 0.5rem 0 0.4rem;
+}
+
+.dock-drawer-block {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Tablet compact dock ── */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .dock-shell {
+    padding: 0 16px;
+  }
+
+  .dock-header {
+    width: min(1600px, calc(100vw - 32px));
+  }
+
+  .dock-zone--menu {
+    display: none;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .dock-shell {
+    top: 12px;
+    padding: 0 12px;
+  }
+
+  .dock-header {
+    width: 100%;
+  }
+
+  .dock-bar {
+    height: 58px;
+    border-radius: 18px;
+  }
+
+  .dock-grid {
+    grid-template-columns: 1fr auto;
+    padding: 0 0.875rem;
+  }
+
+  .dock-zone--menu {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock-link-hover-bar,
+  .dock-mega-card,
+  .dock-mega-card-icon,
+  .dock-mega-card-arrow,
+  .dock-cta,
+  .dock-cta-icon {
+    transition: none;
+  }
+}
