@@ -319,6 +319,10 @@ body:not(.dock-mega-open) footer {
   width: min(560px, calc(100vw - 48px));
 }
 
+.dock-mega-float--catalog {
+  width: min(920px, calc(100vw - 48px));
+}
+
 .dock-mega-panel {
   pointer-events: auto;
   padding: 1.375rem 1.5rem 1.5rem;
@@ -334,6 +338,21 @@ body:not(.dock-mega-open) footer {
     0 0 80px rgba(124, 58, 237, 0.07);
 }
 
+.dock-mega-panel--catalog {
+  padding: 1.625rem 1.75rem 1.75rem;
+  border-radius: 26px;
+  border-color: rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.01) 42%, transparent 100%),
+    rgba(6, 6, 12, 0.94);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 48px 120px rgba(0, 0, 0, 0.62),
+    0 20px 56px rgba(0, 0, 0, 0.4),
+    0 0 100px rgba(124, 58, 237, 0.09);
+}
+
 .dock-mega-panel--stack {
   padding: 1.25rem 1.375rem 1.375rem;
 }
@@ -342,6 +361,65 @@ body:not(.dock-mega-open) footer {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
+}
+
+.dock-mega-catalog {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.dock-mega-grid--catalog {
+  gap: 0.75rem;
+}
+
+.dock-mega-grid--catalog .dock-mega-card {
+  min-height: 5.75rem;
+  align-content: center;
+}
+
+.dock-mega-featured-wrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.25rem;
+}
+
+.dock-mega-card--featured {
+  width: min(100%, 28rem);
+  min-height: 4.75rem;
+  padding: 0.875rem 1.125rem;
+  grid-template-columns: 42px 1fr auto;
+  gap: 0.875rem;
+  border-color: rgba(255, 255, 255, 0.09);
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%),
+    rgba(255, 255, 255, 0.04);
+}
+
+.dock-mega-card--featured .dock-mega-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+
+.dock-mega-card--featured .dock-mega-card-title {
+  font-size: 0.875rem;
+  letter-spacing: -0.015em;
+}
+
+.dock-mega-card--featured .dock-mega-card-desc {
+  font-size: 0.71875rem;
+  line-height: 1.48;
+}
+
+.dock-mega-card--featured:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background:
+    linear-gradient(135deg, rgba(124, 58, 237, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%),
+    rgba(124, 58, 237, 0.1);
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.32),
+    0 0 32px rgba(124, 58, 237, 0.18);
 }
 
 .dock-mega-grid--single {
@@ -366,19 +444,24 @@ body:not(.dock-mega-open) footer {
 /* ── Mega cards ── */
 .dock-mega-card {
   display: grid;
-  grid-template-columns: 38px 1fr auto;
-  gap: 0.75rem;
+  grid-template-columns: 40px 1fr auto;
+  gap: 0.8125rem;
   align-items: center;
-  padding: 0.6875rem 0.8125rem;
-  border-radius: 16px;
+  padding: 0.8125rem 0.9375rem;
+  border-radius: 17px;
   border: 1px solid rgba(255, 255, 255, 0.07);
   background: rgba(255, 255, 255, 0.035);
   text-decoration: none;
   transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.dock-mega-panel--catalog .dock-mega-card {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .dock-mega-card--compact {
@@ -387,63 +470,83 @@ body:not(.dock-mega-open) footer {
 }
 
 .dock-mega-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: rgba(168, 85, 247, 0.45);
   background: rgba(124, 58, 237, 0.11);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28), 0 0 24px rgba(124, 58, 237, 0.16);
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.26),
+    0 0 28px rgba(124, 58, 237, 0.14);
+}
+
+.dock-mega-panel--catalog .dock-mega-card:hover {
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.28),
+    0 0 32px rgba(124, 58, 237, 0.16);
 }
 
 .dock-mega-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 12px;
   background: rgba(124, 58, 237, 0.12);
   border: 1px solid rgba(139, 92, 246, 0.22);
   color: #c4b5fd;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    background 0.35s ease;
 }
 
 .dock-mega-card:hover .dock-mega-card-icon {
-  transform: scale(1.06);
-  box-shadow: 0 0 18px rgba(168, 85, 247, 0.28);
+  transform: scale(1.05);
+  background: rgba(124, 58, 237, 0.18);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.26);
 }
 
 .dock-mega-card-copy {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dock-mega-card-title {
   display: block;
-  font-size: 0.8125rem;
+  font-size: 0.84375rem;
   font-weight: 600;
   color: #fafafb;
-  line-height: 1.32;
-  letter-spacing: -0.01em;
+  line-height: 1.34;
+  letter-spacing: -0.012em;
 }
 
 .dock-mega-card-desc {
   display: block;
-  margin-top: 0.15rem;
-  font-size: 0.6875rem;
-  line-height: 1.42;
-  color: rgba(250, 250, 251, 0.48);
-  transition: color 0.3s ease;
+  margin-top: 0.2rem;
+  font-size: 0.703125rem;
+  line-height: 1.45;
+  color: rgba(250, 250, 251, 0.5);
+  transition: color 0.35s ease;
 }
 
 .dock-mega-card:hover .dock-mega-card-desc {
-  color: rgba(250, 250, 251, 0.68);
+  color: rgba(250, 250, 251, 0.72);
 }
 
 .dock-mega-card-arrow {
   color: rgba(196, 181, 253, 0.32);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+  flex-shrink: 0;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .dock-mega-card:hover .dock-mega-card-arrow {
-  transform: translateX(4px);
+  transform: translateX(5px);
   color: #c4b5fd;
 }
 

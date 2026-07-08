@@ -31,7 +31,11 @@ export default function MVPStudioFAQ({ items }: { items: FAQItem[] }) {
               onClick={() => setOpenIndex(isOpen ? null : i)}
             >
               {item.q}
-              <ChevronDown size={18} className="mvp-faq-chevron" aria-hidden />
+              <ChevronDown
+                size={18}
+                className={`mvp-faq-chevron mvp-chevron ${isOpen ? "is-open" : ""}`}
+                aria-hidden
+              />
             </button>
             <AnimatePresence initial={false}>
               {isOpen && (

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import type { NavMegaGroup, NavMegaItem } from "@/app/content/nav-config";
+import type { NavMegaGroup, NavMegaItem, NavMegaLayout } from "@/app/content/nav-config";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -26,7 +26,7 @@ const cardMotion = {
 type NavMegaMenuProps = {
   group: NavMegaGroup;
   menuId: string;
-  layout?: "grid" | "stack";
+  layout?: NavMegaLayout;
   onNavigate?: () => void;
 };
 
@@ -34,18 +34,26 @@ function MegaCard({
   item,
   onNavigate,
   compact,
+  featured,
 }: {
   item: NavMegaItem;
   onNavigate?: () => void;
   compact?: boolean;
+  featured?: boolean;
 }) {
   const Icon = item.icon;
   return (
-    <motion.div variants={cardMotion}>
+    <motion.div variants={cardMotion} className={featured ? "dock-mega-featured-wrap" : undefined}>
       <Link
         href={item.href}
         role="menuitem"
-        className={`dock-mega-card ${compact ? "dock-mega-card--compact" : ""}`}
+        className={[
+          "dock-mega-card",
+          compact ? "dock-mega-card--compact" : "",
+          featured ? "dock-mega-card--featured" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
         onClick={onNavigate}
       >
         <span className="dock-mega-card-icon" aria-hidden>
@@ -68,24 +76,46 @@ export default function NavMegaMenu({
   onNavigate,
 }: NavMegaMenuProps) {
   const stack = layout === "stack";
+  const catalog = layout === "catalog";
+  const catalogGridItems = catalog ? group.items.slice(0, -1) : [];
+  const catalogFeatured = catalog && group.items.length > 0 ? group.items[group.items.length - 1] : null;
 
   return (
     <motion.div
       id={menuId}
       role="menu"
       aria-label={group.label}
-      className={`dock-mega-panel ${stack ? "dock-mega-panel--stack" : ""}`}
+      className={[
+        "dock-mega-panel",
+        stack ? "dock-mega-panel--stack" : "",
+        catalog ? "dock-mega-panel--catalog" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
       variants={panelMotion}
       initial="hidden"
       animate="visible"
       exit="exit"
     >
-      {group.items.length > 0 && (
-        <div className={`dock-mega-grid ${stack ? "dock-mega-grid--single" : ""}`}>
-          {group.items.map((item) => (
-            <MegaCard key={item.href} item={item} onNavigate={onNavigate} compact={stack} />
-          ))}
+      {catalog ? (
+        <div className="dock-mega-catalog">
+          <div className="dock-mega-grid dock-mega-grid--catalog">
+            {catalogGridItems.map((item) => (
+              <MegaCard key={item.href} item={item} onNavigate={onNavigate} />
+            ))}
+          </div>
+          {catalogFeatured && (
+            <MegaCard item={catalogFeatured} onNavigate={onNavigate} featured />
+          )}
         </div>
+      ) : (
+        group.items.length > 0 && (
+          <div className={`dock-mega-grid ${stack ? "dock-mega-grid--single" : ""}`}>
+            {group.items.map((item) => (
+              <MegaCard key={item.href} item={item} onNavigate={onNavigate} compact={stack} />
+            ))}
+          </div>
+        )
       )}
       {group.sections?.map((section) => (
         <div key={section.title} className="dock-mega-section">

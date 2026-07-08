@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import SiteLayout from "@/app/component/layout/SiteLayout";
-import ServicePage from "@/app/component/service-page/ServicePage";
-import { qualityEngineeringContent } from "@/app/content/service-pages";
+import QualityEngineeringPageClient from "@/app/component/quality-engineering/QualityEngineeringPageClient";
+import { qualityEngineeringPageContent } from "@/app/content/quality-engineering-content";
 
 export const metadata: Metadata = {
-  title: qualityEngineeringContent.metadata.title,
-  description: qualityEngineeringContent.metadata.description,
+  title: "Quality Engineering & Software Testing | Astrenox",
+  description: qualityEngineeringPageContent.hero.description,
 };
 
 export default function QualityEngineeringPage() {
   return (
     <SiteLayout>
-      <ServicePage content={qualityEngineeringContent} visual="quality" />
+      <QualityEngineeringPageClient />
     </SiteLayout>
   );
 }

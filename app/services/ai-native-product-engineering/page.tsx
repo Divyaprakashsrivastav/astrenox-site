@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import SiteLayout from "@/app/component/layout/SiteLayout";
-import ServicePage from "@/app/component/service-page/ServicePage";
-import { aiNativeProductContent } from "@/app/content/service-pages";
+import AINativeProductPageClient from "@/app/component/ai-native-product/AINativeProductPageClient";
+import { aiNativeProductPageContent } from "@/app/content/ai-native-product-content";
 
 export const metadata: Metadata = {
-  title: aiNativeProductContent.metadata.title,
-  description: aiNativeProductContent.metadata.description,
+  title: "AI-Native Product Engineering | Astrenox",
+  description: aiNativeProductPageContent.hero.description,
 };
 
 export default function AINativeProductEngineeringPage() {
   return (
     <SiteLayout>
-      <ServicePage content={aiNativeProductContent} visual="aiProduct" />
+      <AINativeProductPageClient />
     </SiteLayout>
   );
 }

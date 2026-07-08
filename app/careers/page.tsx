@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import SiteLayout from "@/app/component/layout/SiteLayout";
-import ServicePage from "@/app/component/service-page/ServicePage";
-import { hireTechTalentContent } from "@/app/content/service-pages";
+import HireTechTalentPageClient from "@/app/component/hire-tech-talent/HireTechTalentPageClient";
+import { hireTechTalentPageContent } from "@/app/content/hire-tech-talent-content";
 
 export const metadata: Metadata = {
-  title: hireTechTalentContent.metadata.title,
-  description: hireTechTalentContent.metadata.description,
+  title: "Hire Tech Talent & Embedded Teams | Astrenox",
+  description: hireTechTalentPageContent.hero.description,
 };
 
 export default function HireTechTalentPage() {
   return (
     <SiteLayout>
-      <ServicePage content={hireTechTalentContent} visual="talent" />
+      <HireTechTalentPageClient />
     </SiteLayout>
   );
 }

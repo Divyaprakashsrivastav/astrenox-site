@@ -1,0 +1,410 @@
+/* Blockchain & Web3 — Astrenox design system, network personality */
+
+.bc-page {
+  --bc-cyan: #34d399;
+  --bc-cyan-soft: rgba(52, 211, 153, 0.16);
+}
+
+.bc-ambient-cyan {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 40% 30% at 15% 70%,
+    rgba(52, 211, 153, 0.07),
+    transparent 70%
+  );
+}
+
+.bc-hero {
+  padding-block: clamp(5rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem);
+}
+
+.bc-hero-grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.bc-hero-copy {
+  text-align: center;
+}
+
+.bc-hero-copy .mvp-hero-ctas {
+  justify-content: center;
+}
+
+.bc-hero-desc {
+  margin-inline: auto;
+  text-align: center;
+  max-width: 560px;
+}
+
+.bc-hero-label {
+  display: inline-flex;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(167, 243, 208, 0.95);
+  background: var(--bc-cyan-soft);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  border-radius: 999px;
+}
+
+@media (min-width: 960px) {
+  .bc-hero-grid {
+    grid-template-columns: 1fr 1.05fr;
+  }
+
+  .bc-hero-copy {
+    text-align: left;
+  }
+
+  .bc-hero-copy .mvp-hero-ctas {
+    justify-content: flex-start;
+  }
+
+  .bc-hero-title {
+    text-align: left;
+  }
+
+  .bc-hero-desc {
+    margin-inline: 0;
+    text-align: left;
+  }
+}
+
+/* Solution Brief */
+.bc-brief-layout {
+  display: grid;
+  gap: 2rem;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.bc-brief-title {
+  text-align: left;
+  margin-inline: 0;
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.bc-brief-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  bottom: 0.15em;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #7c3aed, #34d399);
+}
+
+.bc-brief-text p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgba(250, 250, 251, 0.62);
+  margin-bottom: 1.15rem;
+}
+
+.bc-brief-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Core Services — masonry-like expand panels */
+.bc-services-grid {
+  display: grid;
+  gap: 1rem;
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.bc-service-card {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.bc-service-trigger {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.25rem 1.35rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bc-service-trigger h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.bc-service-icon {
+  margin-bottom: 0;
+  width: 36px;
+  height: 36px;
+  color: rgba(167, 243, 208, 0.95);
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.bc-service-body {
+  overflow: hidden;
+}
+
+.bc-service-inner {
+  padding: 0 1.35rem 1.5rem;
+}
+
+.bc-service-inner > p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.62);
+  margin-bottom: 0.9rem;
+}
+
+.bc-enables-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 1.1rem 0 0.75rem;
+  color: rgba(167, 243, 208, 0.9);
+}
+
+.bc-enables-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.bc-enables-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(250, 250, 251, 0.75);
+}
+
+/* Execution */
+.bc-exec-intro {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.bc-exec-intro p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.62);
+  margin-bottom: 0.85rem;
+}
+
+.bc-exec-timeline {
+  max-width: 720px;
+}
+
+.bc-exec-step {
+  padding: 1.15rem 1.35rem;
+}
+
+.bc-exec-step p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(250, 250, 251, 0.88);
+  margin: 0;
+}
+
+/* Advantage */
+.bc-advantage-grid {
+  display: grid;
+  gap: 1.15rem;
+}
+
+@media (min-width: 768px) {
+  .bc-advantage-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bc-advantage-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 520px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+/* Outcomes */
+.bc-outcomes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 820px;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 720px) {
+  .bc-outcomes-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bc-outcome-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 1rem 1.15rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(250, 250, 251, 0.82);
+  border-radius: 16px;
+}
+
+/* CTA */
+.bc-cta-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.62);
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+
+.bc-cta {
+  border-color: rgba(52, 211, 153, 0.15);
+}
+
+/* Network visual */
+.bc-visual {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  height: clamp(340px, 42vw, 420px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(52, 211, 153, 0.12);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+
+.bc-visual-glow {
+  position: absolute;
+  inset: 18% 22%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 68%);
+  pointer-events: none;
+}
+
+.bc-visual-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(52, 211, 153, 0.14);
+  pointer-events: none;
+}
+
+.bc-visual-ring--a {
+  width: 58%;
+  height: 58%;
+  left: 21%;
+  top: 18%;
+  animation: bc-pulse 6s ease-in-out infinite;
+}
+
+.bc-visual-ring--b {
+  width: 36%;
+  height: 36%;
+  left: 32%;
+  top: 30%;
+  border-color: rgba(139, 92, 246, 0.2);
+  animation: bc-pulse 7.5s ease-in-out infinite reverse;
+}
+
+.bc-visual-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.bc-node {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(250, 250, 251, 0.92);
+  white-space: nowrap;
+  border-radius: 12px !important;
+  animation: bc-float 5.2s ease-in-out infinite;
+}
+
+.bc-node:nth-child(odd) {
+  animation-delay: 0.7s;
+}
+
+.bc-node-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  background: rgba(52, 211, 153, 0.16);
+  color: rgba(167, 243, 208, 0.95);
+}
+
+@keyframes bc-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes bc-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-node,
+  .bc-visual-ring {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .bc-visual {
+    min-height: 300px;
+  }
+
+  .bc-node {
+    font-size: 0.6rem;
+    padding: 0.32rem 0.5rem;
+  }
+}

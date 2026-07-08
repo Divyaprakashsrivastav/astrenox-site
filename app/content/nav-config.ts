@@ -12,7 +12,6 @@ import {
   Blocks,
   Server,
   Layers,
-  Lock,
   TestTube2,
   Building2,
   Package,
@@ -28,11 +27,15 @@ export type NavMegaItem = {
   icon: LucideIcon;
 };
 
+export type NavMegaLayout = "grid" | "stack" | "catalog";
+
 export type NavMegaGroup = {
   label: string;
   items: NavMegaItem[];
   /** Optional nested section inside a mega menu (e.g. Inside Astrenox) */
   sections?: { title: string; items: NavMegaItem[] }[];
+  /** Premium catalog layout: paired grid + centered featured last item */
+  layout?: NavMegaLayout;
 };
 
 export const navAiServices: NavMegaGroup = {
@@ -85,6 +88,7 @@ export const navAiServices: NavMegaGroup = {
 
 export const navDigitalConsulting: NavMegaGroup = {
   label: "Digital Consulting & IT Services",
+  layout: "catalog",
   items: [
     {
       label: "MVP Studio",
@@ -115,12 +119,6 @@ export const navDigitalConsulting: NavMegaGroup = {
       href: "/services/ai-native-product-engineering",
       description: "End-to-end product engineering for AI-first software.",
       icon: Layers,
-    },
-    {
-      label: "DevOps & Enterprise IT Security Consulting",
-      href: "/services/devops-enterprise-security",
-      description: "CI/CD, infrastructure hardening, and security posture management.",
-      icon: Lock,
     },
     {
       label: "Quality Engineering & Software Testing",

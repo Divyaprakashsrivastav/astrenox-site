@@ -1,232 +1,120 @@
+/** Verbatim from MVP studio.docx only. */
 export const mvpStudioContent = {
-  hero: {
-    label: "Digital Consulting",
-    title: "Build Your MVP in Weeks,\nNot Months.",
-    subtitle:
-      "Launch investor-ready digital products with a senior engineering team focused on speed, architecture and scalability.",
-    primaryCta: "Start Your MVP",
-    secondaryCta: "View Process",
-    primaryHref: "/contact",
-    secondaryHref: "#process",
-  },
-  about: {
-    title: "What is MVP Studio",
-    paragraphs: [
-      "MVP Studio is Astrenox's accelerated product engineering program for enterprises and funded startups that need to validate ideas in market—not in slide decks.",
-      "We embed senior architects, product engineers, and delivery leads who have shipped production systems across fintech, healthtech, and enterprise SaaS. Every engagement is structured for clarity, velocity, and technical debt you won't regret later.",
-      "From discovery workshops to production deployment, we own the full stack: product definition, UX flows, backend services, cloud infrastructure, and observability. You get a launch-ready MVP with documentation, handoff, and a roadmap for scale.",
-      "Whether you're preparing for a Series A, testing a new revenue line, or replacing legacy workflows, MVP Studio compresses months of hiring and alignment into a single accountable delivery motion.",
-    ],
-    features: [
-      {
-        title: "Rapid Validation",
-        description: "Test hypotheses with real users in weeks using production-grade builds, not prototypes that break under load.",
-        icon: "Zap" as const,
-      },
-      {
-        title: "Senior Engineers",
-        description: "Work directly with staff-level engineers who have shipped at scale—no junior bench, no handoffs to offshore teams.",
-        icon: "Users" as const,
-      },
-      {
-        title: "Production Ready",
-        description: "Every deliverable includes CI/CD, monitoring, security baselines, and deployment runbooks from day one.",
-        icon: "ShieldCheck" as const,
-      },
-      {
-        title: "Scalable Architecture",
-        description: "Modular systems designed to evolve into full products without costly rewrites when traction arrives.",
-        icon: "Layers" as const,
-      },
-    ],
-  },
+  brand: "MVP Studio",
   process: {
     id: "process",
-    label: "Process",
-    title: "Development Process",
+    title: "How It Works: From Idea to Live Product in 21 Days",
+    intro:
+      "We don’t do endless planning loops. Our process is engineered to remove uncertainty and get your product into users' hands fast so you can start gathering real data.",
     steps: [
       {
-        name: "Discover",
-        description: "Align on problem space, success metrics, and technical constraints with stakeholders and engineering.",
+        heading: "1.Define & Scope (Days 1-3):Workshop & Alignment.",
+        description:
+          'We align on your core problem and separate the "must-haves" from the "nice-to-haves."',
+        activities:
+          "Activities: Jobs-to-be-done framing, technical architecture planning, and UI/UX wireframing.",
+        deliverables:
+          "Deliverables: A confirmed one-page spec, screen map, and a prioritized sprint backlog.",
       },
       {
-        name: "Design",
-        description: "Translate requirements into flows, system architecture, and a phased delivery plan with clear milestones.",
+        heading: "2.Build & Instrument (Days 4-16):Heads-down Engineering.",
+        description:
+          "Our team sets up the infrastructure and builds your core product features with clean, scalable code.",
+        activities:
+          "Activities: Front-end/back-end development, API integrations, authentication, and setting up CI/CD pipelines.",
+        deliverables:
+          "Deliverables: A fully functional, deployed MVP with built-in telemetry (logs, metrics, and error tracking) so you can see exactly how users interact with the app.",
       },
       {
-        name: "Develop",
-        description: "Build in two-week sprints with weekly demos, integrated QA, and continuous deployment to staging.",
-      },
-      {
-        name: "Validate",
-        description: "Run structured user testing, performance benchmarks, and security review before production cutover.",
-      },
-      {
-        name: "Launch",
-        description: "Deploy to production, enable observability, and hand off documentation with a 30-day support window.",
-      },
-    ],
-  },
-  capabilities: {
-    label: "Capabilities",
-    title: "End-to-end product engineering",
-    items: [
-      {
-        title: "UI/UX Design",
-        description: "Enterprise-grade interfaces with design systems, accessibility, and responsive layouts.",
-        icon: "Palette" as const,
-      },
-      {
-        title: "Frontend Engineering",
-        description: "React and Next.js applications with performance budgets and component libraries.",
-        icon: "Monitor" as const,
-      },
-      {
-        title: "Backend Systems",
-        description: "APIs, microservices, event pipelines, and data models built for reliability.",
-        icon: "Server" as const,
-      },
-      {
-        title: "Cloud Deployment",
-        description: "Infrastructure as code on AWS, Azure, or GCP with automated pipelines.",
-        icon: "Cloud" as const,
-      },
-      {
-        title: "AI Integration",
-        description: "LLM workflows, RAG pipelines, and agentic features integrated into your product surface.",
-        icon: "Brain" as const,
-      },
-      {
-        title: "Product Strategy",
-        description: "Roadmap prioritization, metric frameworks, and go-to-market alignment with engineering.",
-        icon: "Target" as const,
+        heading: "3.Launch & Handoff (Days 17-21):Beta Rollout & Next Steps.",
+        description:
+          "We test, launch, and prepare your team to take the reins (or continue with us for the next iteration).",
+        activities:
+          "Activities: Quality assurance, beta deployment to your first users, and handover sessions.",
+        deliverables:
+          "Deliverables: Live application URL, full source code access, an operational runbook, and a recommended v0.1 backlog based on initial usage signals.",
       },
     ],
   },
-  stack: {
-    label: "Technology",
-    title: "Technology Stack",
-    items: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "Python",
-      "PostgreSQL",
-      "Docker",
-      "AWS",
-      "Azure",
-      "OpenAI",
-      "LangChain",
-      "Redis",
-      "Kubernetes",
+  pricing: {
+    title: "Transparent Pricing",
+    intro:
+      "We charge based on value and scope, not hourly estimates that creep up over time.",
+    cardTitle: "The 3-Week MVP Sprint",
+    price: "Starts from $1,500",
+    bestFor: "Best for well-scoped products with up to 3 core user flows.",
+    includedTitle: "What’s Included:",
+    included: [
+      "Product strategy workshop & UI kit",
+      "Full-stack development (App, API, Database)",
+      "Core infrastructure: Auth, Payments (e.g., Stripe), Email, and Analytics",
+      "Cloud or Vercel deployment with full handoff",
+      "Two-week post-launch warranty for critical bug fixes",
     ],
   },
-  projects: {
-    label: "Portfolio",
-    title: "Featured MVP Projects",
+  addons: {
+    title: "Fixed-Fee Add-ons:",
+    intro:
+      "Need more horsepower? We offer transparent, flat-rate pricing for complex requirements:",
     items: [
-      {
-        name: "Nexus Trade Platform",
-        industry: "Financial Services",
-        timeline: "10 weeks",
-        stack: ["Next.js", "PostgreSQL", "AWS"],
-        outcome: "Secured $4.2M seed round with live demo to institutional investors.",
-      },
-      {
-        name: "CarePath Clinical Portal",
-        industry: "Healthcare",
-        timeline: "12 weeks",
-        stack: ["React", "Python", "Azure"],
-        outcome: "Pilot deployed across 3 hospital networks with HIPAA-compliant audit trail.",
-      },
-      {
-        name: "FleetOps Command Center",
-        industry: "Logistics",
-        timeline: "9 weeks",
-        stack: ["Next.js", "Node.js", "Kubernetes"],
-        outcome: "Reduced dispatch coordination time by 38% in first 60 days post-launch.",
-      },
+      "Custom AI models, RAG systems, or intelligent agents",
+      "Complex data migrations",
+      "Additional 3rd-party software integrations",
+      "SOC 2-ready foundation and security compliance",
     ],
   },
-  stats: {
-    label: "Why Astrenox",
-    title: "Proven delivery at enterprise scale",
-    items: [
-      { value: 25, suffix: "+", label: "Products Launched" },
-      { value: 98, suffix: "%", label: "Client Satisfaction" },
-      { value: 12, suffix: "", label: "Weeks Avg. MVP Delivery" },
-      { value: 100, suffix: "%", label: "Production Ready" },
-    ],
-  },
-  testimonials: {
-    label: "Testimonials",
-    title: "What leaders say",
+  advantages: {
     items: [
       {
-        quote:
-          "Astrenox delivered a production MVP in eleven weeks that our internal team estimated would take nine months. The architecture documentation alone saved us months of rework.",
-        author: "Sarah Chen",
-        role: "VP Product, Meridian Capital",
+        title: "AI-First Architecture",
+        description:
+          "We do not bolt AI onto legacy frameworks. We natively integrate LLMs, RAG pipelines, and multi-agent orchestration directly into your application logic from day one.",
       },
       {
-        quote:
-          "We needed investor-grade software, not a clickable prototype. MVP Studio gave us both velocity and engineering rigor—we closed our round with the product as the centerpiece.",
-        author: "James Okonkwo",
-        role: "CEO, Veridian Health",
+        title: "Accelerated Go-to-Market (GTM)",
+        description:
+          "By leveraging our pre-configured compute infrastructure and QualityOps frameworks, we collapse standard development lifecycles. We transition from architectural scoping to a deployable, high-fidelity application in weeks through rigid sprint cycles.",
       },
       {
-        quote:
-          "The team embedded seamlessly with our compliance and security reviewers. Launch wasn't a scramble—it was a scheduled, observable cutover.",
-        author: "Elena Vasquez",
-        role: "CTO, Arcline Logistics",
+        title: "Production-Ready Codebases",
+        description:
+          "Speed does not excuse fragile architecture. We deliver modular, containerized microservices equipped with automated CI/CD pipelines, robust unit testing, and integrated telemetry to absorb immediate user scale.",
+      },
+      {
+        title: "Strict Scoping & Seamless Handoff",
+        description: "We enforce deterministic scopes to pr.",
+        continuation:
+          "event feature creep. Once product-market fit is validated, we provide a clean transfer of the codebase, API documentation, and operational dashboards to your internal developers for continuous scaling",
       },
     ],
   },
   faq: {
-    label: "FAQ",
-    title: "Common questions",
+    title: "Frequently Asked Questions",
     items: [
       {
-        q: "How is MVP Studio different from a typical dev agency?",
-        a: "We staff senior engineers only, own architecture decisions, and deliver production infrastructure—not throwaway code. Every engagement includes observability, security review, and handoff documentation.",
+        q: "Who owns the intellectual property (IP) and source code?",
+        a: "You do. 100%. Upon final payment and project handover, all code, designs, and assets are fully transferred to your company.",
       },
       {
-        q: "What is the typical timeline for an MVP?",
-        a: "Most engagements run 8–14 weeks depending on scope. We define milestones in the discovery phase and hold weekly demos so stakeholders see progress continuously.",
+        q: "What do you need from us to get started?",
+        a: "We need focused time from the founder for our initial scoping workshop, a single decisive point of contact, and access to any existing brand assets, APIs, or tools you want us to integrate.",
       },
       {
-        q: "Do you work with existing internal teams?",
-        a: "Yes. We integrate with your product, design, and engineering leads. Our goal is acceleration with knowledge transfer, not dependency.",
+        q: "What tech stack do you use?",
+        a: "We build on modern, scalable, and widely supported frameworks (like React/Next.js, Node, and cloud-native databases) ensuring that any future developer can easily pick up the codebase.",
       },
       {
-        q: "What happens after launch?",
-        a: "Every project includes a 30-day support window, full documentation, and an optional retainer for iteration or scale-up engineering.",
+        q: "Will this MVP scale if we get a sudden spike in users?",
+        a: 'Absolutely. We don\'t build "throwaway" code. We engineer MVPs with clean modules, environment configurations, and production-ready CI/CD pipelines from the very first commit.',
       },
       {
-        q: "Can you integrate AI features into the MVP?",
-        a: "Absolutely. We build RAG pipelines, agent workflows, and LLM-powered features with governance and cost controls from the start.",
+        q: "What if my idea requires more than 3 core flows?",
+        a: 'If your product is too complex for a 3-week sprint, we will identify the absolute core value proposition to build first. Anything beyond that can be handled as a fixed-fee add-on or moved into an immediate "Phase 2" sprint after launch.',
+      },
+      {
+        q: "What happens after the MVP is launched?",
+        a: "You have options. We provide a complete handover with documentation if you want your internal team to take over. Alternatively, you can retain us on a month-to-month basis for continuous iteration and feature releases based on user feedback.",
       },
     ],
   },
-  cta: {
-    title: "Let's Build Your Next Product.",
-    subtitle:
-      "Schedule a discovery call with our product engineering leads. We'll assess fit, outline a delivery plan, and share relevant case studies from your industry.",
-    primaryCta: "Book Discovery Call",
-    secondaryCta: "Download Capability Deck",
-    primaryHref: "/contact",
-    secondaryHref: "/contact",
-  },
-};
-
-export type MVPIconName =
-  | "Zap"
-  | "Users"
-  | "ShieldCheck"
-  | "Layers"
-  | "Palette"
-  | "Monitor"
-  | "Server"
-  | "Cloud"
-  | "Brain"
-  | "Target";
+} as const;

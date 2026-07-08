@@ -1,0 +1,218 @@
+/* Hire Tech Talent — extends MVP Studio design system */
+
+.htt-hero {
+  padding-block: clamp(5rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem);
+}
+
+.htt-hero-grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.htt-hero-copy {
+  text-align: center;
+}
+
+.htt-hero-copy .mvp-hero-ctas {
+  justify-content: center;
+}
+
+.htt-hero-copy .mvp-hero-subtitle.htt-hero-desc {
+  margin-inline: auto;
+  text-align: center;
+}
+
+@media (min-width: 960px) {
+  .htt-hero-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .htt-hero-copy {
+    text-align: left;
+  }
+
+  .htt-hero-copy .mvp-hero-ctas {
+    justify-content: flex-start;
+  }
+
+  .htt-hero-copy .mvp-hero-brand {
+    text-align: left;
+  }
+
+  .htt-hero-copy .mvp-hero-subtitle.htt-hero-desc {
+    margin-inline: 0;
+    text-align: left;
+  }
+}
+
+.htt-hero-label {
+  display: inline-flex;
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(196, 181, 253, 0.95);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 999px;
+}
+
+.htt-overview-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .htt-overview-grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 3.5rem;
+  }
+}
+
+.htt-overview-title {
+  text-align: left;
+  margin-inline: 0;
+}
+
+.htt-overview-text p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgba(250, 250, 251, 0.62);
+}
+
+.htt-model-trigger-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.htt-model-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+}
+
+.htt-point-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.htt-point-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 251, 0.72);
+}
+
+.htt-point-list strong {
+  color: rgba(250, 250, 251, 0.92);
+  font-weight: 600;
+}
+
+.htt-cta-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.62);
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+
+/* Talent org chart visual */
+.htt-visual {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  height: clamp(340px, 42vw, 420px);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+}
+
+.htt-visual-glow {
+  position: absolute;
+  inset: 15% 20%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 70%);
+  pointer-events: none;
+}
+
+.htt-visual-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.htt-role-card {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(250, 250, 251, 0.9);
+  white-space: nowrap;
+  border-radius: 12px !important;
+  animation: htt-float 5s ease-in-out infinite;
+}
+
+.htt-role-card:nth-child(odd) {
+  animation-delay: 0.6s;
+}
+
+.htt-role-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  background: rgba(124, 58, 237, 0.18);
+  color: rgba(196, 181, 253, 0.95);
+}
+
+@keyframes htt-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .htt-role-card {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .htt-visual {
+    min-height: 300px;
+  }
+
+  .htt-role-card {
+    font-size: 0.62rem;
+    padding: 0.35rem 0.55rem;
+  }
+}

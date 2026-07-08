@@ -250,11 +250,19 @@ export default function Navbar() {
             onMouseEnter={cancelClose}
             onMouseLeave={deferCloseMega}
           >
-            <div className={`dock-mega-float ${megaOpen === "products" ? "dock-mega-float--narrow" : ""}`}>
+            <div
+              className={[
+                "dock-mega-float",
+                megaOpen === "products" ? "dock-mega-float--narrow" : "",
+                megaOpen === "digital" ? "dock-mega-float--catalog" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               <NavMegaMenu
                 group={groups[megaOpen]}
                 menuId={`dock-mega-${megaOpen}`}
-                layout={megaOpen === "products" ? "stack" : "grid"}
+                layout={groups[megaOpen].layout ?? (megaOpen === "products" ? "stack" : "grid")}
               />
             </div>
           </div>

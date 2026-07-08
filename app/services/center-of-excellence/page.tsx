@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import SiteLayout from "@/app/component/layout/SiteLayout";
-import ServicePage from "@/app/component/service-page/ServicePage";
-import { centerOfExcellenceContent } from "@/app/content/service-pages";
+import CenterOfExcellencePageClient from "@/app/component/center-of-excellence/CenterOfExcellencePageClient";
+import { centerOfExcellencePageContent } from "@/app/content/center-of-excellence-content";
 
 export const metadata: Metadata = {
-  title: centerOfExcellenceContent.metadata.title,
-  description: centerOfExcellenceContent.metadata.description,
+  title: "Center of Excellence (CoE) | Astrenox",
+  description: centerOfExcellencePageContent.hero.lead,
 };
 
 export default function CenterOfExcellencePage() {
   return (
     <SiteLayout>
-      <ServicePage content={centerOfExcellenceContent} visual="coe" />
+      <CenterOfExcellencePageClient />
     </SiteLayout>
   );
 }
