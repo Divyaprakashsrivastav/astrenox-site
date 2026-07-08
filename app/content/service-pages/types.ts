@@ -33,6 +33,85 @@ export type ServiceIconName =
   | "Truck"
   | "Gauge";
 
+export type ServicePageChapterCta = {
+  title?: string;
+  subtitle?: string;
+  paragraphs?: string[];
+  primaryCta: string;
+  secondaryCta?: string;
+  tertiaryCta?: string;
+  primaryHref: string;
+  secondaryHref?: string;
+  tertiaryHref?: string;
+};
+
+export type ServicePageChapter = {
+  id: string;
+  label?: string;
+  title: string;
+  subtitle?: string;
+  heroCtas?: Array<{ label: string; href: string }>;
+  overview?: {
+    title?: string;
+    paragraphs: string[];
+  };
+  contentSections?: Array<{
+    title?: string;
+    paragraphs?: string[];
+    tags?: string[];
+  }>;
+  methodology?: {
+    title: string;
+    intro?: string;
+    items: Array<{ title: string; description: string }>;
+  };
+  featureItems?: {
+    label?: string;
+    title: string;
+    intro?: string;
+    items: Array<{ title: string; description: string }>;
+  };
+  capabilities?: {
+    id?: string;
+    label?: string;
+    title: string;
+    intro?: string;
+    items: Array<{
+      title: string;
+      description?: string;
+      paragraphs?: string[];
+      enables?: string[];
+      icon: ServiceIconName;
+    }>;
+  };
+  tags?: string[];
+  integrations?: {
+    label?: string;
+    title: string;
+    intro?: string;
+    items: Array<{
+      title: string;
+      paragraphs?: string[];
+      bullets?: string[];
+      afterBullets?: string[];
+    }>;
+  };
+  workflow?: {
+    id?: string;
+    label?: string;
+    title: string;
+    intro?: string;
+    steps: Array<{ name: string; description: string }>;
+  };
+  impact?: {
+    label?: string;
+    title: string;
+    intro?: string;
+    items: Array<{ title: string; description: string }>;
+  };
+  cta?: ServicePageChapterCta;
+};
+
 export type ServicePageContent = {
   metadata: { title: string; description: string };
   hero: {
@@ -43,29 +122,82 @@ export type ServicePageContent = {
     secondaryCta: string;
     primaryHref: string;
     secondaryHref: string;
+    trustLine?: string;
   };
-  overview: {
-    title: string;
+  intro?: {
     paragraphs: string[];
   };
-  capabilities: {
+  overview?: {
+    title?: string;
+    paragraphs: string[];
+  };
+  engineeringCapabilities?: {
     label: string;
     title: string;
-    items: Array<{ title: string; description: string; icon: ServiceIconName }>;
+    intro?: string;
+    items: Array<{
+      capability: string;
+      technicalFocus: string;
+      businessOutcome: string;
+    }>;
   };
-  workflow: {
+  capabilities?: {
+    id?: string;
+    label: string;
+    title: string;
+    intro?: string;
+    items: Array<{
+      title: string;
+      description?: string;
+      paragraphs?: string[];
+      enables?: string[];
+      icon: ServiceIconName;
+    }>;
+  };
+  chapters?: ServicePageChapter[];
+  workflow?: {
     id: string;
     label: string;
     title: string;
+    intro?: string;
     steps: Array<{ name: string; description: string }>;
   };
-  stack: { label: string; title: string; items: string[] };
-  outcomes: {
+  stack?: {
+    label: string;
+    title: string;
+    intro?: string;
+    items: Array<string | { title: string; description: string; icon?: ServiceIconName }>;
+  };
+  serviceOfferings?: {
+    label: string;
+    title: string;
+    intro?: string;
+    items: Array<{ service: string; outcome: string }>;
+  };
+  interventions?: {
+    label: string;
+    title: string;
+    intro?: string;
+    items: Array<{ title: string; description: string; icon: ServiceIconName }>;
+  };
+  deliverables?: {
+    label: string;
+    title: string;
+    intro?: string;
+    items: Array<{ title: string; description: string; icon?: ServiceIconName }>;
+  };
+  impact?: {
+    label?: string;
+    title: string;
+    intro?: string;
+    items: Array<{ title: string; description: string }>;
+  };
+  outcomes?: {
     label: string;
     title: string;
     items: Array<{ value: number; suffix: string; label: string }>;
   };
-  projects: {
+  projects?: {
     label: string;
     title: string;
     items: Array<{
@@ -76,27 +208,28 @@ export type ServicePageContent = {
       outcome: string;
     }>;
   };
-  industries: {
+  industries?: {
     label: string;
     title: string;
     items: Array<{ name: string; icon: ServiceIconName }>;
   };
-  testimonials: {
+  testimonials?: {
     label: string;
     title: string;
     items: Array<{ quote: string; author: string; role: string }>;
   };
-  faq: {
+  faq?: {
     label: string;
     title: string;
     items: Array<{ q: string; a: string }>;
   };
-  cta: {
+  cta?: {
     title: string;
-    subtitle: string;
+    subtitle?: string;
+    paragraphs?: string[];
     primaryCta: string;
-    secondaryCta: string;
+    secondaryCta?: string;
     primaryHref: string;
-    secondaryHref: string;
+    secondaryHref?: string;
   };
 };

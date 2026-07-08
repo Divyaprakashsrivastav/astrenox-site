@@ -53,9 +53,11 @@ function ServicePageHero({ hero, visual }: ServicePageHeroProps) {
             ))}
           </motion.h1>
 
-          <motion.p className="mvp-hero-subtitle" variants={fadeUp}>
-            {hero.subtitle}
-          </motion.p>
+          {hero.subtitle ? (
+            <motion.p className="mvp-hero-subtitle" variants={fadeUp}>
+              {hero.subtitle}
+            </motion.p>
+          ) : null}
 
           <motion.div className="mvp-hero-ctas" variants={fadeUp}>
             <Link href={hero.primaryHref} className="mvp-btn-primary">
@@ -66,6 +68,12 @@ function ServicePageHero({ hero, visual }: ServicePageHeroProps) {
               {hero.secondaryCta}
             </Link>
           </motion.div>
+
+          {hero.trustLine && (
+            <motion.p className="mvp-hero-trust" variants={fadeUp}>
+              {hero.trustLine}
+            </motion.p>
+          )}
         </motion.div>
 
         <motion.div

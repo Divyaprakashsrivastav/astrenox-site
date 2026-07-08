@@ -1,5 +1,17 @@
-import { createPlaceholderRoute } from "@/app/lib/placeholder-route";
+import type { Metadata } from "next";
+import SiteLayout from "@/app/component/layout/SiteLayout";
+import ServicePage from "@/app/component/service-page/ServicePage";
+import { aiConsultingAdvisoryContent } from "@/app/content/service-pages";
 
-const route = createPlaceholderRoute("/services/ai-consulting-advisory");
-export const metadata = route.metadata;
-export default route.Page;
+export const metadata: Metadata = {
+  title: aiConsultingAdvisoryContent.metadata.title,
+  description: aiConsultingAdvisoryContent.metadata.description,
+};
+
+export default function AIConsultingAdvisoryPage() {
+  return (
+    <SiteLayout>
+      <ServicePage content={aiConsultingAdvisoryContent} visual="advisory" />
+    </SiteLayout>
+  );
+}

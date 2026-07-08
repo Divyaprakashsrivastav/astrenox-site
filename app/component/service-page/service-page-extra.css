@@ -43,3 +43,269 @@
   font-weight: 500;
   color: rgba(250, 250, 251, 0.8);
 }
+
+/* Hero trust line */
+.mvp-hero-trust {
+  margin-top: 1.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(250, 250, 251, 0.45);
+  padding-left: 0.75rem;
+  border-left: 2px solid rgba(139, 92, 246, 0.35);
+}
+
+/* Service offerings table */
+.mvp-offerings-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mvp-offerings-header {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mvp-offerings-header {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1.5rem;
+    padding: 0 1.5rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(139, 92, 246, 0.7);
+  }
+}
+
+.mvp-offerings-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+@media (min-width: 768px) {
+  .mvp-offerings-row {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+}
+
+.mvp-offerings-row:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(124, 58, 237, 0.06);
+}
+
+.mvp-offerings-service {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(250, 250, 251, 0.92);
+}
+
+.mvp-offerings-outcome {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 251, 0.55);
+}
+
+/* Section intro copy */
+.mvp-section-intro {
+  max-width: 52rem;
+  margin: -0.5rem 0 1.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.58);
+}
+
+/* Engineering capabilities table — 3 columns */
+.mvp-capabilities-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mvp-capabilities-header {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .mvp-capabilities-header {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 1.5rem;
+    padding: 0 1.5rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(139, 92, 246, 0.7);
+  }
+}
+
+.mvp-capabilities-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+@media (min-width: 1024px) {
+  .mvp-capabilities-row {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+}
+
+.mvp-capabilities-row:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  background: rgba(124, 58, 237, 0.06);
+}
+
+.mvp-capabilities-capability {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(250, 250, 251, 0.92);
+}
+
+.mvp-capabilities-focus,
+.mvp-capabilities-outcome {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 251, 0.55);
+}
+
+@media (max-width: 1023px) {
+  .mvp-capabilities-focus::before {
+    content: "Technical Focus: ";
+    font-weight: 600;
+    color: rgba(139, 92, 246, 0.75);
+  }
+
+  .mvp-capabilities-outcome::before {
+    content: "Business Outcome: ";
+    font-weight: 600;
+    color: rgba(139, 92, 246, 0.75);
+  }
+}
+
+/* Interventions — 2×2 on desktop */
+@media (min-width: 1024px) {
+  .mvp-interventions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Deliverables — 2×2 artifact cards */
+@media (min-width: 1024px) {
+  .mvp-deliverables-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mvp-deliverable-card h3 {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+
+/* Longer framework step descriptions */
+.mvp-timeline-step:hover p,
+.mvp-timeline-step:focus-within p {
+  max-height: 160px;
+}
+
+/* Capability module enables lists */
+.mvp-cap-card p + p {
+  margin-top: 0.75rem;
+}
+
+.mvp-cap-enables {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mvp-cap-enables-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(139, 92, 246, 0.85);
+  margin-bottom: 0.625rem;
+}
+
+.mvp-cap-enables ul {
+  margin: 0;
+  padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.mvp-cap-enables li {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(250, 250, 251, 0.55);
+}
+
+/* Multi-chapter service pages */
+.mvp-chapter-divider {
+  height: 1px;
+  margin: 0 auto;
+  max-width: min(72rem, calc(100% - 3rem));
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 92, 246, 0.35) 20%,
+    rgba(139, 92, 246, 0.35) 80%,
+    transparent
+  );
+}
+
+.mvp-chapter-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: rgba(250, 250, 251, 0.95);
+  margin-bottom: 1rem;
+}
+
+.mvp-chapter-subtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 251, 0.65);
+  max-width: 48rem;
+  margin-bottom: 1.5rem;
+}
+
+.mvp-chapter-cta-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: rgba(250, 250, 251, 0.95);
+}
+
+.mvp-cta-buttons-wrap {
+  flex-wrap: wrap;
+}
+
+.mvp-about-text-full {
+  grid-column: 1 / -1;
+}
+
+.mvp-cap-enables-list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.mvp-cap-enables-list li {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(250, 250, 251, 0.55);
+}

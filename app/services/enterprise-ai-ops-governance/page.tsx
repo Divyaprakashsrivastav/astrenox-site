@@ -1,5 +1,17 @@
-import { createPlaceholderRoute } from "@/app/lib/placeholder-route";
+import type { Metadata } from "next";
+import SiteLayout from "@/app/component/layout/SiteLayout";
+import ServicePage from "@/app/component/service-page/ServicePage";
+import { enterpriseAiOpsContent } from "@/app/content/service-pages";
 
-const route = createPlaceholderRoute("/services/enterprise-ai-ops-governance");
-export const metadata = route.metadata;
-export default route.Page;
+export const metadata: Metadata = {
+  title: enterpriseAiOpsContent.metadata.title,
+  description: enterpriseAiOpsContent.metadata.description,
+};
+
+export default function EnterpriseAiOpsPage() {
+  return (
+    <SiteLayout>
+      <ServicePage content={enterpriseAiOpsContent} visual="aiOps" />
+    </SiteLayout>
+  );
+}
