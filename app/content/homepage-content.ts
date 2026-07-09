@@ -1,5 +1,5 @@
 /**
- * Homepage content — System Transformation Engine narrative.
+ * Homepage content — verbatim from approved Content.docx.
  * Single source of truth for all homepage copy.
  */
 
@@ -7,583 +7,465 @@ export const homeHero = {
   eyebrow: "SYSTEM TRANSFORMATION ENGINE",
   headline: "Creating Sustainable Business Value Through AI-First Digital Transformation",
   description:
-    "Astrenox helps enterprises modernize operations, deploy AI systems, and create measurable business outcomes.",
-  primaryCta: "Schedule Strategy Call",
-  primaryHref: "/contact?intent=strategy",
-  secondaryCta: "Explore Platform",
-  secondaryHref: "/platform",
+    "Organizations today face increasing pressure to modernize operations, improve efficiency, and unlock value from rapidly growing volumes of data. While many businesses recognize the potential of AI and digital transformation, turning strategy into measurable outcomes remains a significant challenge.\n\nAstrenox helps organizations navigate this complexity through a combination of AI engineering, technology consulting, and digital transformation expertise. We work closely with leadership teams to identify opportunities, remove operational bottlenecks, and implement scalable solutions that deliver measurable business impact.\n\nPrimary CTA\n\nRun System Diagnostic →\n\nSecondary CTA\n\nView Technical Documentation",
+  primaryCta: "Run System Diagnostic →",
+  primaryHref: "/contact?intent=diagnostic",
+  secondaryCta: "View Technical Documentation",
+  secondaryHref: "/research",
   kpis: [
-    { value: 500, suffix: "+", label: "Deployments" },
-    { value: 99.9, suffix: "%", label: "Reliability", decimals: 1 },
-    { value: 30, suffix: "+", label: "Integrations" },
-    { value: 10, suffix: "X", label: "Deployment Speed" },
+    { value: 90, suffix: "%", label: "Project Delivery Success Rate" },
+    { value: 40, suffix: "%", label: "Average Reduction in Time-to-Market" },
+    { value: 50, suffix: "+", label: "Production AI Use Cases Delivered" },
+    { value: 4.8, suffix: "/5", decimals: 1, label: "Client Satisfaction Rating" },
   ],
 } as const;
 
 export const homeMethodology = {
   id: "methodology",
-  label: "Our Methodology",
+  label: "2. OUR METHODOLOGY / APPROACH",
   title: "Strategy Shipped to Outcome",
   description:
-    "We don't make presentations. We build and deploy systems.",
+    "Successful digital transformation requires a rigorous methodology that aligns business priorities with deep technical execution. We guide organizations from baseline strategy to sustainable, measurable operational impact.",
   stages: [
     {
-      id: "discover",
+      id: "think",
       number: "01",
-      title: "DISCOVER",
-      tagline: "Understand the opportunity",
+      title: "STAGE 01: THINK",
+      tagline:
+        "This phase establishes strategic direction, assesses technical maturity, and engineers the architectural baseline required for scalable integration.",
       items: [
-        "Business diagnostics",
-        "AI readiness assessment",
-        "Process mapping",
-        "Value identification",
+        "Direction:- Align technical ambition with target business outcomes, defining precise project scope and standardized success KPIs.",
+        "Readiness:-  Evaluate legacy technology stacks, data silos, and operational workflows to isolate infrastructural gaps and sequence capability development.",
+        "Foundation:-  Map IT/OT convergence across the value chain, defining robust data models and strict standards for interoperability, modularity, and security.",
       ],
     },
     {
-      id: "architect",
+      id: "align",
       number: "02",
-      title: "ARCHITECT",
-      tagline: "Design the operating model",
+      title: "STAGE 02: ALIGN",
+      tagline:
+        "This phase transitions foundational strategy into a mobilized, prioritized portfolio designed to deliver maximum short-term and long-term value.",
       items: [
-        "AI architecture",
-        "Data strategy",
-        "Governance",
-        "Deployment roadmap",
+        "Focus: Build a value-scored use-case portfolio that balances immediate operational wins with complex, compounding strategic initiatives linked directly to ROI metrics.",
+        "Coordination:- Establish cross-functional governance structures, definitive ownership roles, and rigid decision-making authority matrices to synchronize delivery across departments.",
       ],
     },
     {
-      id: "deploy",
+      id: "execute",
       number: "03",
-      title: "DEPLOY",
-      tagline: "Ship production systems",
+      title: "STAGE 03: EXECUTE",
+      tagline:
+        "This phase builds the deployment engine, activates data pipelines, and implements continuous recalibration loops based on real-time operational telemetry.",
       items: [
-        "AI agents",
-        "Automation workflows",
-        "Monitoring",
-        "Scale operations",
+        "Engine:- Standardize deployment processes using repeatable templates and agile delivery cycles to drive efficient, site-by-site scaling while mitigating adoption friction.",
+        "Insight: Operationalize high-fidelity data pipelines via live dashboards and AI/ML-driven recommendations to power real-time decision-making at all tiers.",
+        "Refinement: Track leading and lagging indicators through closed-loop feedback systems and technical retrospectives to continuously calibrate the overarching roadmap.",
       ],
     },
   ],
 } as const;
 
 export const homeTriFlywheel = {
-  label: "Defensibility Model",
+  label: "3. FLYWHEEL SECTION",
   title: "Architecting Defensibility: The Tri-Flywheel Model",
   description:
-    "Three reinforcing loops that compound speed, intelligence, and ecosystem advantage.",
+    "Building a business by simply wrapping an off-the-shelf AI model offers no long-term competitive edge. True market durability requires capturing a high-friction operational workflow and expanding that footprint through three distinct phases:",
   centerLabel: "Astrenox Core",
   flywheels: [
     {
       id: "product",
-      tabLabel: "Product",
-      title: "Product Delivery Flywheel",
+      tabLabel: "Product Delivery",
+      title: "The Product Delivery Flywheel",
       description:
-        "Faster shipping → richer feedback → better AI products → higher retention.",
-      steps: ["Ship faster", "Collect feedback", "Improve AI", "Increase retention"],
+        "1. The Product Delivery Flywheel:-  Capture proprietary insights by routing every unique customer interaction into your core architecture. This automated feedback makes your software smarter and highly specialized over time.",
+      steps: [] as readonly string[],
     },
     {
       id: "operations",
-      tabLabel: "Operations",
-      title: "Internal AI-Operations Flywheel",
+      tabLabel: "Internal AI-Operations",
+      title: "The Internal AI-Operations Flywheel",
       description:
-        "Automation → cost efficiency → reinvestment → deeper agentic coverage.",
-      steps: ["Automate workflows", "Reduce cost", "Reinvest gains", "Expand coverage"],
+        "2. The Internal AI-Operations Flywheel:- Accelerate development speed by embedding autonomous tools into the engineering lifecycle to minimize operational overhead. Simultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO)—ensuring you are natively indexed when users query AI search engines.",
+      steps: [] as readonly string[],
     },
     {
       id: "ecosystem",
-      tabLabel: "Ecosystem",
-      title: "Ecosystem Alignment Flywheel",
+      tabLabel: "Ecosystem Alignment",
+      title: "The Ecosystem Alignment Flywheel",
       description:
-        "Partner depth → preferred access → faster integration → stronger moats.",
-      steps: ["Partner integrations", "Market access", "Distribution", "Network effects"],
+        "3. The Ecosystem Alignment Flywheel:- Convert early success into industry dominance through seamless compatibility with Cloud Service Providers (CSPs), major vendors, and Systems Integrators (SIs). This structural integration unlocks massive, built-in distribution channels that return fresh enterprise insights to the start, compounding overall growth.",
+      steps: [] as readonly string[],
     },
   ],
 } as const;
 
 export const homeEnterpriseEcosystem = {
-  label: "Alliances",
-  title: "Our Enterprise Ecosystem & Alliances",
+  label: "Technology Ecosystem",
+  title: "Vendor-Agnostic Integration",
   description:
-    "Cloud, AI, and integration partners—activated through one Astrenox control plane.",
+    "We leverage strategic alliances with leading providers (OpenAI, Anthropic, Google, Meta) to route workloads to the optimal model, ensuring architectural flexibility without vendor lock-in.",
   marquee: [
-    "AWS",
-    "Microsoft Azure",
-    "Google Cloud",
-    "Oracle Cloud",
     "OpenAI",
     "Anthropic",
-    "Google DeepMind",
-    "Meta AI",
-    "Cohere",
+    "Google",
+    "Meta",
+    "LangGraph",
+    "CrewAI",
+    "n8n",
+    "AWS",
+    "Google Cloud Platform",
+    "Microsoft Azure",
     "Salesforce",
+    "SAP",
     "ServiceNow",
-    "Snowflake",
-    "Databricks",
-    "Palantir",
+    "HubSpot",
   ],
 } as const;
 
 export const homeIndustries = {
-  label: "Industries",
-  title: "Transformation Across Critical Sectors",
-  description: "Production AI patterns tailored to regulatory, operational, and data realities.",
+  label: "4. INDUSTRIES SECTION",
+  title: "4. INDUSTRIES SECTION",
+  description:
+    "Application Modernization*, and *Product Engineering*. Dropping these terms makes the firm sound like a generic agency rather than a high-end technical consultancy.",
   items: [
     {
       id: "manufacturing",
       title: "Manufacturing",
-      description: "Intelligent operations from plant floor to supply chain.",
+      description:
+        "Description: Enhancing production efficiency and operational resilience through intelligent automation and modernized infrastructure.",
       useCases: [
-        "Predictive maintenance",
-        "Quality vision systems",
-        "Production scheduling agents",
-        "Supplier risk intelligence",
+        "BMS (Building Management Systems) and computer vision for facility safety.",
+        "Legacy application modernization for factory floor systems.",
+        "Cloud managed services for scaling supply chain analytics.",
+        "Software testing and quality assurance for automated assembly lines.",
       ],
     },
     {
       id: "healthcare",
       title: "Healthcare",
-      description: "Clinical and operational AI with compliance-by-design.",
+      description:
+        "Description:-  Empowering patient care and securing sensitive health data with compliant, scalable, and user-centric digital platforms.",
       useCases: [
-        "Clinical trial matching",
-        "Prior authorization automation",
-        "Care pathway copilots",
-        "HIPAA-aware document intelligence",
+        "Electronic health record (EHR) legacy app modernization.",
+        "Cloud managed services for compliant medical data storage.",
+        "Software testing and quality assurance for critical medical software.",
       ],
     },
     {
       id: "financial",
       title: "Financial Services",
-      description: "Risk, compliance, and client intelligence at scale.",
+      description:
+        "Description:- Modernizing financial workflows to ensure regulatory compliance, reduce operational risk, and deliver secure digital experiences.",
       useCases: [
-        "AML monitoring agents",
-        "Wealth risk engines",
-        "Regulatory reporting automation",
-        "Client 360 knowledge search",
+        "Legacy app modernization for core banking and payment gateways.",
+        "Secure data center and networking architectures for data protection.",
+        "UI/UX and product engineering for mobile banking platforms.",
+        "Software testing and quality assurance for compliance and fraud detection.",
       ],
     },
     {
       id: "retail",
       title: "Retail and Consumer",
-      description: "Merchandising, fulfillment, and customer experience AI.",
+      description:
+        "Description:-  Driving customer engagement and optimizing inventory through unified shopping experiences and high-availability IT platforms.",
       useCases: [
-        "Demand forecasting",
-        "Personalization engines",
-        "Returns automation",
-        "Store operations copilots",
+        "E-commerce and product engineering for customer journeys.",
+        "Computer vision for retail footfall and automated checkout analytics.",
+        "Cloud managed services to handle peak seasonal traffic scaling.",
+        "Software testing and quality assurance for point-of-sale (POS) systems.",
       ],
     },
     {
       id: "realestate",
       title: "Real Estate and Construction",
-      description: "Portfolio intelligence and transaction acceleration.",
+      description:
+        "Description:- Transforming property management and site development with connected building technologies and streamlined project operations.",
       useCases: [
-        "Deal underwriting assistants",
-        "Lease abstraction",
-        "Portfolio analytics",
-        "Tenant experience automation",
+        "BMS and computer vision for smart building climate and access security.",
+        "Cloud managed services for centralized property portfolio management.",
+        "Data center and networking setups for corporate real estate hubs.",
+        "UI/UX and product engineering for tenant management dashboards.",
       ],
     },
     {
       id: "logistics",
       title: "Logistics and Supply Chain",
-      description: "Fleet, route, and warehouse orchestration.",
+      description:
+        "Description: Improving fleet visibility and operational agility with responsive tracking networks and data-driven routing systems.",
       useCases: [
-        "Dynamic routing agents",
-        "Warehouse robotics coordination",
-        "ETA prediction",
-        "Freight document automation",
+        "Data center and networking optimization for real-time freight tracking.",
+        "Legacy app modernization of warehouse management software.",
+        "Software testing and quality assurance for logistics and dispatch tools.",
+        "Cloud managed services for global supply chain visibility platforms.",
       ],
     },
     {
       id: "education",
       title: "Education and Skilling",
-      description: "Learning operations and student success systems.",
+      description:
+        "Description:- Delivering accessible, high-performance learning environments through reliable digital platforms and user-focused design",
       useCases: [
-        "Adaptive learning paths",
-        "Admissions workflow AI",
-        "Faculty operations automation",
-        "Accreditation reporting",
+        "UI/UX and product engineering for learning management systems (LMS).",
+        "Cloud managed services to support high-volume video streaming.",
+        "Legacy app modernization for student enrollment and administration portals.",
+        "Computer vision for secure online exam proctoring.",
       ],
     },
     {
       id: "government",
       title: "Government and Public Sector",
-      description: "Secure citizen services and policy intelligence.",
+      description:
+        "Description:- Modernizing public services to increase citizen accessibility, ensure data sovereignty, and improve administrative efficiency.",
       useCases: [
-        "Case management automation",
-        "Policy research agents",
-        "Fraud detection",
-        "Multilingual citizen support",
+        "Legacy app modernization for civil registry and tax systems.",
+        "Secure data center and networking compliance for public data storage.",
+        "Software testing and quality assurance for public service web portals.",
+        "Cloud managed services to streamline municipal IT operations.",
       ],
     },
     {
       id: "professional",
       title: "Professional Services",
-      description: "Knowledge leverage across engagements and delivery.",
+      description:
+        "Description:-  Streamlining operational workflows and client delivery with custom-engineered applications and stable digital infrastructures.",
       useCases: [
-        "Proposal intelligence",
-        "Engagement knowledge graphs",
-        "Billing automation",
-        "Expert matching agents",
+        "UI/UX and product engineering for client reporting dashboards.",
+        "Cloud managed services for secure, collaborative document management.",
+        "Software testing and quality assurance for internal billing systems.",
+        "Legacy app modernization for enterprise resource planning (ERP) systems.",
       ],
     },
     {
       id: "technology",
       title: "Technology and SaaS",
-      description: "AI-native product companies and platform scale-ups.",
+      description:
+        "Description:-  Accelerating product roadmaps and ensuring platform reliability to support rapid growth and high user adoption.",
       useCases: [
-        "MVP acceleration",
-        "Agentic product layers",
-        "DevOps intelligence",
-        "Customer success automation",
+        "End-to-end UI/UX and product engineering for new software releases.",
+        "Comprehensive software testing and quality assurance to minimize deployment bugs.",
+        "Highly available data center and networking setups for global service delivery.",
+        "Cloud managed services to optimize infrastructure costs and automate scaling.",
       ],
     },
   ],
 } as const;
 
 export const homeMetrics = {
-  label: "Outcomes",
+  label: "6. METRICS SECTION",
   title: "Performance in Numbers",
-  description: "Measured delivery—not marketing claims.",
+  description:
+    "[90%]\n\nProject Delivery Success Rate\n\n[40%]\n\nAverage Reduction in Time-to-Market\n\n[50+]\n\nProduction AI Use Cases Delivered\n\n[4.8/5]\n\nClient Satisfaction Rating\n\n[35%]\n\nAverage Operational Efficiency Improvement\n\nMetrics to be validated and updated with verified company data.",
   stats: [
-    { value: 99.4, suffix: "%", decimals: 1, label: "Project Delivery Success Rate" },
-    { value: 40, suffix: "%", label: "Average Reduction in Time-to-Market" },
-    { value: 50, suffix: "+", label: "Production AI Use Cases Delivered" },
+    { value: 90, suffix: "%", decimals: 0, label: "Project Delivery Success Rate" },
+    { value: 40, suffix: "%", decimals: 0, label: "Average Reduction in Time-to-Market" },
+    { value: 50, suffix: "+", decimals: 0, label: "Production AI Use Cases Delivered" },
     { display: "4.8/5", label: "Client Satisfaction Rating" },
-    { value: 35, suffix: "%", label: "Average Operational Efficiency Improvement" },
+    { value: 35, suffix: "%", decimals: 0, label: "Average Operational Efficiency Improvement" },
   ],
 } as const;
 
 export const homeServices = {
-  label: "Services",
-  title: "Full-Stack Transformation Capabilities",
-  description: "From boardroom strategy to production agents—one accountable partner.",
+  label: "7. SERVICES SECTION",
+  title: "7. SERVICES SECTION",
+  description: "",
   items: [
     {
       id: "consulting",
-      title: "AI Consulting & Transformation",
-      description: "30/60/90-day audits, adoption roadmaps, and practitioner-led execution.",
-      outcome: "12-week transformation sprints",
+      title: "1. AI Consulting & Transformation-",
+      description:
+        "Description:- Aligning business goals with AI-native architecture. We handle model selection, fine-tuning, and integration to convert legacy processes into intelligent workflows.",
+      outcome: "Outcome:- Decrease operational overhead by 40%.",
       href: "/services/ai-transformation",
     },
     {
       id: "agentic",
-      title: "Agentic Managed Services",
-      description: "Managed agent fleets, runbooks, and observability across your estate.",
-      outcome: "24/7 agent operations",
-      href: "/platform",
+      title: "2. Agentic Managed Services-",
+      description:
+        "Description:- Engineering autonomous, context-aware systems. We deploy agents with RAG capabilities and persistent memory to execute complex, multi-step business logic independently.",
+      outcome: "Outcome:- Eliminate manual routing with 24/7 automation.",
+      href: "/services/intelligent-automations",
     },
     {
       id: "staffing",
-      title: "Staff Augmentation & Fractional CXOs",
-      description: "Elite AI, data, and product leaders embedded with outcome accountability.",
-      outcome: "2-week team activation",
+      title: "3. Staff Augmentation & Fractional CXOs-",
+      description:
+        "Description:- On-demand access to elite ML engineers and data scientists. Integrate our experts into your current sprints or leverage our fractional C-suite for technical governance.",
+      outcome: "Outcome:- Accelerate development velocity by 3x.",
       href: "/careers",
     },
     {
       id: "digital",
-      title: "Digital and IT Services",
-      description: "Modern engineering, integration, and human-centered digital delivery.",
-      outcome: "Enterprise-grade SDLC",
+      title: "4. Digital and IT Services-",
+      description:
+        "Description:- Hardening your core digital backbone. We focus on resilient API integrations and secure microservices to ensure your enterprise architecture remains performant under load.",
+      outcome: "Outcome:- Achieve 99.99% system availability.",
       href: "/services/digital-it-consulting",
     },
     {
       id: "products",
-      title: "Purpose-Built Products",
-      description: "Flagship platforms and copilots engineered for your domain.",
-      outcome: "Production in weeks",
-      href: "/projects",
+      title: "5. Purpose-Built Products-",
+      description:
+        "Description:- Designing bespoke software that addresses unique market gaps. We engineer proprietary platforms that leverage your internal data to create durable competitive advantages.",
+      outcome: "Outcome:- Convert unique business logic into scalable IP.",
+      href: "/products",
     },
     {
       id: "infra",
-      title: "Infrastructure & Cloud Management",
-      description: "Secure, scalable cloud foundations for AI workloads and data platforms.",
-      outcome: "Multi-cloud ready",
-      href: "/services/ai-engineering",
+      title: "6. Infrastructure & Cloud Management-",
+      description:
+        "Description:- Governance of multi-cloud environments built for intensive AI inference. We provide proactive orchestration, security, and observability to manage compute costs.",
+      outcome: "Outcome:-  Reduce cloud infrastructure spend by 30%.",
+      href: "/infrastructure-solutions",
     },
     {
       id: "mvp",
-      title: "Software Factory & MVP Studio",
-      description: "High-velocity squads shipping investor-ready MVPs and scale paths.",
-      outcome: "6-week MVP cycles",
+      title: "7. Software Factory & MVP Studio-",
+      description:
+        "Description:- A disciplined, agile approach to product validation. We collapse the timeline from prototype to secure, production-ready MVP.",
+      outcome: "Outcome:- Concept to market in under 12 weeks.",
       href: "/services/mvp-studio",
     },
   ],
 } as const;
 
 export const homeTechnology = {
-  label: "Technology",
-  title: "Technology Ecosystem",
-  description: "Vendor-agnostic orchestration across the modern AI stack.",
+  label: "Technology Ecosystem",
+  title: "8 Our Technology Ecosystem1 AI Models & LLMs",
+  description:
+    "8 Our Technology Ecosystem1 AI Models & LLMs\n\nDeploying production-grade AI requires deep structural synchronization across technology infrastructure and foundational models. Astrenox acts as a systems integrator, orchestrating a unified ecosystem that guarantees multi-cloud interoperability, security, and high computational efficiency.\n\nVendor-Agnostic Integration: We leverage strategic alliances with leading providers (OpenAI, Anthropic, Google, Meta) to route workloads to the optimal model, ensuring architectural flexibility without vendor lock-in.\n\nAdvanced Orchestration: By bridging foundational models with engineering frameworks like LangGraph, CrewAI, and n8n, we construct resilient, future-proof automation pipelines that execute reliably across environments.\n\nEnterprise-Grade Governance: Every component in our stack and partner network adheres to strict enterprise benchmarks for data security, observability, and access control from development through production scaling.",
   categories: [
     {
       id: "models",
-      title: "AI Models & LLMs",
-      items: ["GPT-4o", "Claude", "Gemini", "Llama", "Mistral"],
+      title: "1 AI Models & LLMs",
+      items: [
+        "Technologies: OpenAI, Anthropic Claude, Google Gemini, Mistral, Qwen, GLM, Kimi, deepseek",
+        "Strategic selection and deployment of foundation models optimized for latency, token economics, and domain-specific reasoning.",
+        "OpenAI",
+        "Anthropic Claude",
+        "Google Gemini",
+        "Mistral",
+        "Qwen",
+        "GLM",
+        "Kimi",
+        "deepseek",
+      ],
     },
     {
       id: "agents",
-      title: "Agent Frameworks",
-      items: ["LangGraph", "CrewAI", "AutoGen", "Semantic Kernel"],
+      title: "2 Agent Frameworks",
+      items: [
+        "Technologies: LangChain,openclaw, hermes,  CrewAI.",
+        "Orchestration libraries for building deterministic multi-agent workflows, enabling complex reasoning and reliable external API execution in production.",
+        "LangChain",
+        "openclaw",
+        "hermes",
+        "CrewAI.",
+      ],
     },
     {
       id: "automation",
-      title: "Automation Tools",
-      items: ["n8n", "Temporal", "Airflow", "Zapier Enterprise"],
+      title: "3 Automation Tools",
+      items: [
+        "Technologies: Make, Zapier, n8n, Microsoft Power Automate.",
+        "Event-driven pipeline integration bridging legacy systems and modern APIs to automate complex, multistep business logic.",
+        "Make",
+        "Zapier",
+        "n8n",
+        "Microsoft Power Automate.",
+      ],
     },
     {
       id: "cloud",
-      title: "Cloud Platforms",
-      items: ["AWS", "Azure", "GCP", "Kubernetes"],
+      title: "4  Cloud Platforms",
+      items: [
+        "Technologies: AWS, Google Cloud Platform, Microsoft Azure.",
+        "Cloud-native architectures optimized for high-availability machine learning workloads, distributed microservices, and elastic compute.",
+        "AWS",
+        "Google Cloud Platform",
+        "Microsoft Azure.",
+      ],
     },
     {
       id: "databases",
-      title: "Data & Vector Databases",
-      items: ["PostgreSQL", "Snowflake", "Pinecone", "Neo4j"],
+      title: "5 Data & Vector Databases",
+      items: [
+        "Technologies: Pinecone, Milvus, Qdrant, PostgreSQL (pgvector), Snowflake.",
+        "High-performance storage for high-dimensional embeddings and unstructured data, ensuring sub-millisecond query latency for Retrieval-Augmented Generation (RAG) pipelines.",
+        "Pinecone",
+        "Milvus",
+        "Qdrant",
+        "PostgreSQL (pgvector)",
+        "Snowflake.",
+      ],
     },
     {
       id: "fullstack",
-      title: "Frontend & Backend Technologies",
-      items: ["Next.js", "React", "Python", "FastAPI", "Node"],
+      title: "6 Frontend & Backend Technologies",
+      items: [
+        "Technologies: React, Next.js, Python (FastAPI), Node.js, Go.",
+        "API-first microservices and component-driven interfaces designed for high concurrency and real-time AI interactions.",
+        "React",
+        "Next.js",
+        "Python (FastAPI)",
+        "Node.js",
+        "Go.",
+      ],
     },
     {
       id: "devops",
-      title: "DevOps & CI/CD",
-      items: ["Terraform", "GitHub Actions", "ArgoCD", "Datadog"],
+      title: "7 DevOps & CI/CD Tools",
+      items: [
+        "Technologies: Docker, Kubernetes, Terraform, GitHub Actions, GitLab CI/CD.",
+        "Strict Infrastructure as Code (IaC) and automated testing pipelines ensuring consistent environment parity and zero-downtime deployments.",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "GitHub Actions",
+        "GitLab CI/CD.",
+      ],
     },
     {
       id: "analytics",
-      title: "Analytics & Observability",
-      items: ["dbt", "Looker", "Power BI", "Amplitude"],
+      title: "8 Analytics & Observability Tools",
+      items: [
+        "Technologies: Datadog, Grafana, LangSmith, Splunk, MLflow",
+        "Deep telemetry and distributed tracing to monitor resource utilization, detect LLM drift, and enforce strict enterprise SLAs.",
+        "Datadog",
+        "Grafana",
+        "LangSmith",
+        "Splunk",
+        "MLflow",
+      ],
     },
     {
       id: "integrations",
-      title: "Enterprise Integrations",
-      items: ["Salesforce", "SAP", "Workday", "ServiceNow"],
+      title: "9 Enterprise Integrations",
+      items: [
+        "Technologies: Salesforce, SAP, ServiceNow, HubSpot.",
+        "Secure, bi-directional data synchronization between custom AI layers and core enterprise infrastructure.",
+        "Salesforce",
+        "SAP",
+        "ServiceNow",
+        "HubSpot.",
+      ],
     },
     {
       id: "design",
-      title: "Design & Prototyping",
-      items: ["Figma", "Framer", "Storybook", "Design Systems"],
+      title: "10 Design & Prototyping Tools",
+      items: [
+        "Technologies: Figma, Framer, Sketch.",
+        "Rapid prototyping to map complex machine execution to intuitive, accessible human-computer interfaces.",
+        "Figma",
+        "Framer",
+        "Sketch.",
+      ],
     },
   ],
 } as const;
 
-export const homeFlagshipProjects = {
-  label: "Flagship Projects",
-  title: "Flagship Projects & Products",
-  description: "Architecture proven in production—with outcomes that survived executive review.",
-  items: [
-    {
-      id: "nexuscore" as const,
-      title: "NexusCore Orchestrator",
-      category: "Enterprise AI Platform",
-      description:
-        "Unified orchestration layer with governance, routing, and observability across providers.",
-      outcome: "Single control plane for 30+ connectors and multi-model agent fleets.",
-      status: "Production" as const,
-      techStack: ["Python", "FastAPI", "OpenAI", "Kubernetes", "React", "Postgres"],
-      metrics: [
-        { value: "30+", label: "Integrations" },
-        { value: "99.9%", label: "Uptime SLA" },
-        { value: "40%", label: "Faster rollout" },
-      ],
-      href: "/platform",
-    },
-    {
-      id: "synapse" as const,
-      title: "Synapse Logistics Engine",
-      category: "Autonomous Operations",
-      description:
-        "Agentic routing, fleet telemetry graph, and exception runbooks in one engine.",
-      outcome: "Dynamic optimization with human-in-the-loop for edge cases only.",
-      status: "Live" as const,
-      techStack: ["Python", "Kafka", "React", "Postgres", "Kubernetes"],
-      metrics: [
-        { value: "22%", label: "Cost reduction" },
-        { value: "18%", label: "On-time gain" },
-        { value: "Live", label: "Fleet graph" },
-      ],
-      href: "/projects",
-    },
-    {
-      id: "codeforge" as const,
-      title: "CodeForge Insight",
-      category: "Engineering Intelligence",
-      description:
-        "Code-aware RAG, PR agents, and quality gates integrated into the SDLC.",
-      outcome: "Developer velocity up with audit-ready change lineage.",
-      status: "Enterprise" as const,
-      techStack: ["TypeScript", "OpenAI", "GitHub", "React", "Postgres"],
-      metrics: [
-        { value: "35%", label: "PR throughput" },
-        { value: "95+", label: "Quality score" },
-        { value: "2 wk", label: "Pilot to prod" },
-      ],
-      href: "/services/ai-engineering",
-    },
-    {
-      id: "sovereign" as const,
-      title: "Sovereign Wealth Risk Engine",
-      category: "Financial Intelligence",
-      description:
-        "Knowledge graph + scenario agents with explainable decision trails.",
-      outcome: "Executive dashboards with live traversals and approval workflows.",
-      status: "Production" as const,
-      techStack: ["Python", "Neo4j", "FastAPI", "React", "Kubernetes"],
-      metrics: [
-        { value: "60%", label: "Faster analysis" },
-        { value: "Full", label: "Audit lineage" },
-        { value: "4.9/5", label: "Stakeholder NPS" },
-      ],
-      href: "/contact",
-    },
-    {
-      id: "clinical" as const,
-      title: "ClinicalMatch MVP",
-      category: "Healthcare AI",
-      description:
-        "Clinical criteria matching agent with HIPAA-aware document pipeline.",
-      outcome: "MVP to pilot sites in six weeks with measurable enrollment lift.",
-      status: "Beta" as const,
-      techStack: ["Python", "OpenAI", "FastAPI", "React", "HIPAA"],
-      metrics: [
-        { value: "6 wk", label: "MVP delivery" },
-        { value: "28%", label: "Match accuracy lift" },
-        { value: "HIPAA", label: "Aligned controls" },
-      ],
-      href: "/services/mvp-studio",
-    },
-  ],
-} as const;
-
-export const homeTestimonials = {
-  label: "Testimonials",
-  title: "Trusted by Transformation Leaders",
-  description: "Enterprise stakeholders who measure us on production outcomes—not presentations.",
-  items: [
-    {
-      quote:
-        "Astrenox turned our AI strategy into operating rhythm. We went from pilots to production agents in one quarter.",
-      author: "[Client Name]",
-      role: "Chief Digital Officer, Global Manufacturing Enterprise",
-      projectType: "Agentic Operations",
-      outcome: "35% efficiency gain in plant scheduling",
-    },
-    {
-      quote:
-        "The Tri-Flywheel framing changed how our board funds AI—we now compound capability instead of funding one-offs.",
-      author: "[Client Name]",
-      role: "VP Strategy, Fortune 500 Financial Services",
-      projectType: "AI Transformation",
-      outcome: "40% faster time-to-market on digital products",
-    },
-    {
-      quote:
-        "Their managed agent layer runs our support and research workflows with full observability. Finally, AI we can audit.",
-      author: "[Client Name]",
-      role: "Head of Enterprise Technology, Healthcare Network",
-      projectType: "Agentic Managed Services",
-      outcome: "30% reduction in case resolution time",
-    },
-    {
-      quote:
-        "NexusCore became our internal AI OS. One orchestration standard across twelve business units.",
-      author: "[Client Name]",
-      role: "SVP Engineering, Technology Holding Company",
-      projectType: "Platform Engineering",
-      outcome: "50+ production use cases in 12 months",
-    },
-  ],
-} as const;
-
-export const homeContactCta = {
-  eyebrow: "Engage Astrenox",
-  title: "Transition from Architecture to Production",
-  description:
-    "Schedule a scoping session with our transformation architects—or submit an RFP for enterprise procurement.",
-  primaryCta: "Schedule Architecture Scoping",
-  primaryHref: "/contact?intent=scoping",
-  secondaryCta: "Submit RFP / Technical Specs",
-  secondaryHref: "/contact?intent=rfp",
-  infoRows: [
-    {
-      icon: "mail" as const,
-      label: "Email",
-      value: "engineering@astrenox.com",
-      href: "mailto:engineering@astrenox.com",
-    },
-    {
-      icon: "phone" as const,
-      label: "Phone",
-      value: "+91 XXXXX XXXXX",
-      href: "tel:+910000000000",
-    },
-    {
-      icon: "map" as const,
-      label: "Address",
-      value: "India",
-      href: "/contact",
-    },
-    {
-      icon: "calendar" as const,
-      label: "Discovery Call",
-      value: "Architecture Discovery",
-      href: "/contact?intent=scoping",
-    },
-    {
-      icon: "file" as const,
-      label: "Submit RFP",
-      value: "Technical specifications",
-      href: "/contact?intent=rfp",
-    },
-  ],
-  channels: [
-    { label: "Technical Discovery", value: "Available on request for enterprise accounts" },
-    { label: "Direct Calendar Sync", value: "Calendar integration available on request" },
-    { label: "Architecture & RFP Email", value: "engineering@astrenox.com" },
-    { label: "Partnership Email", value: "partnerships@astrenox.com" },
-    { label: "Phone Number", value: "[Phone Number Placeholder]" },
-    { label: "Corporate Address", value: "[Corporate Address Placeholder]" },
-  ],
-} as const;
-
-export const homeFooter = {
-  about:
-    "AI-first consulting and production engineering for enterprises that ship real systems—not slide decks.",
-  aboutLink: { label: "About Astrenox", href: "/about" },
-  companyLinks: [
-    { label: "About", href: "/about" },
-    { label: "Careers", href: "/careers" },
-    { label: "Platform", href: "/platform" },
-    { label: "Contact", href: "/contact" },
-  ],
-  servicesLinks: [
-    { label: "AI Consulting", href: "/services/ai-transformation" },
-    { label: "AI Engineering", href: "/services/ai-engineering" },
-    { label: "Digital Transformation", href: "/services/digital-it-consulting" },
-    { label: "Automation", href: "/services/intelligent-automations" },
-    { label: "MVP Studio", href: "/services/mvp-studio" },
-  ],
-  resourcesLinks: [
-    { label: "Products", href: "/products" },
-    { label: "Projects", href: "/projects" },
-    { label: "Research", href: "/research" },
-    { label: "Industries", href: "/services/industries" },
-    { label: "Platform", href: "/platform" },
-    { label: "Careers", href: "/careers" },
-  ],
-  servicesLink: { label: "Services", href: "/services" },
-  industriesLink: { label: "Industries", href: "/services/industries" },
-  github: { label: "GitHub", href: "https://github.com" },
-  linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/company/astrenox" },
-  x: { label: "X", href: "https://x.com" },
-  email: "engineering@astrenox.com",
-  copyright: "© 2026 Astrenox",
-  legalLinks: [
-    { label: "Privacy", href: "/privacy" },
-    { label: "Terms", href: "/legal" },
-    { label: "Cookies", href: "/legal" },
-  ],
-  madeWith: "Made with AI",
-} as const;
+export {
+  homeFlagshipProjects,
+  homeTestimonials,
+  homeContactCta,
+  homeFooter,
+} from "./homepage-content-remainder";
