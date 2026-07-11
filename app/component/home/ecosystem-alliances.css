@@ -67,8 +67,12 @@
 
 .eco-marquee-track {
   display: flex;
+  align-items: center;
   width: max-content;
-  gap: 1rem;
+  gap: clamp(2rem, 4vw, 3rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
   animation: eco-marquee-scroll 80s linear infinite;
 }
 
@@ -85,37 +89,37 @@
   }
 }
 
-.eco-logo-pill {
+.eco-logo-item {
+  position: relative;
   flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px 26px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.88);
-  white-space: nowrap;
+  display: grid;
+  place-items: center;
+  width: clamp(56px, 8vw, 68px);
+  height: clamp(56px, 8vw, 68px);
   cursor: default;
-  transition:
-    transform 0.4s var(--ease-premium),
-    box-shadow 0.4s var(--ease-premium),
-    border-color 0.4s var(--ease-premium),
-    background 0.4s var(--ease-premium);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.eco-logo-pill:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(192, 132, 252, 0.35);
-  box-shadow:
-    0 12px 32px rgba(0, 0, 0, 0.28),
-    0 0 24px rgba(168, 85, 247, 0.2);
+.eco-logo-item:hover {
+  transform: scale(1.08);
+}
+
+.eco-logo-glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.45), transparent 70%);
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.eco-logo-item:hover .eco-logo-glow {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Metric cards */

@@ -4,6 +4,7 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import { EASE_PREMIUM } from "../v2/motion";
 import { AI_ENGINEERING_TECH_STACK } from "./tech-stack-config";
+import TechSvgLogo from "../home/TechSvgLogo";
 
 function AIEngineeringTechStack() {
   return (
@@ -50,16 +51,7 @@ function AIEngineeringTechStack() {
               <article className="aie-tech-card">
                 <div className="aie-tech-card-glow" aria-hidden />
                 <div className="aie-tech-logo-wrap">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={tech.src}
-                    alt=""
-                    className={`aie-tech-logo${tech.darkLogo ? " aie-tech-logo--invert" : ""}`}
-                    width={40}
-                    height={40}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <TechSvgLogo file={tech.file} name={tech.name} size={48} />
                 </div>
                 <p className="aie-tech-name">{tech.name}</p>
               </article>

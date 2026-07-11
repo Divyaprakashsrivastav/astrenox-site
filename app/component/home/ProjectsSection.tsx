@@ -19,6 +19,7 @@ import AnimatedCounter from "../ui/AnimatedCounter";
 import { useReducedMotion } from "../features/useReducedMotion";
 import { homeFlagshipProjects } from "@/app/content/homepage-content";
 import { EASE_PREMIUM } from "../v2/motion";
+import { ExpandableBlock, ParagraphExpand } from "./disclosure/HomeDisclosure";
 
 type ProjectItem = (typeof homeFlagshipProjects.items)[number];
 
@@ -180,17 +181,22 @@ function FeaturedProjectCard({
       <div className="projects-featured-body">
         <p className="projects-featured-category">{project.category}</p>
         <h3 className="projects-featured-title">{project.title}</h3>
-        <p className="projects-featured-desc">{project.description}</p>
-        <p className="projects-featured-outcome">
-          <strong>Result.</strong> {project.outcome}
-        </p>
-        <KpiPills
-          metrics={project.metrics}
-          animate={inView}
-          reduced={reduced}
-        />
-        <TechStack stack={project.techStack} />
-        <CaseStudyLink href={project.href} />
+        <ExpandableBlock
+          expandLabel="View project details"
+          collapseLabel="Hide project details"
+        >
+          <p className="projects-featured-desc">{project.description}</p>
+          <p className="projects-featured-outcome">
+            <strong>Result.</strong> {project.outcome}
+          </p>
+          <KpiPills
+            metrics={project.metrics}
+            animate={inView}
+            reduced={reduced}
+          />
+          <TechStack stack={project.techStack} />
+          <CaseStudyLink href={project.href} />
+        </ExpandableBlock>
       </div>
     </motion.article>
   );
@@ -242,12 +248,17 @@ function CompactProjectCard({
       <div className="projects-compact-body">
         <p className="projects-compact-category">{project.category}</p>
         <h3 className="projects-compact-title">{project.title}</h3>
-        <p className="projects-compact-desc">{project.description}</p>
-        <div className="projects-compact-footer">
-          <KpiPills metrics={project.metrics} animate={inView} reduced={reduced} />
-          <TechStack stack={project.techStack} />
-          <CaseStudyLink href={project.href} />
-        </div>
+        <ExpandableBlock
+          expandLabel="View project details"
+          collapseLabel="Hide project details"
+        >
+          <p className="projects-compact-desc">{project.description}</p>
+          <div className="projects-compact-footer">
+            <KpiPills metrics={project.metrics} animate={inView} reduced={reduced} />
+            <TechStack stack={project.techStack} />
+            <CaseStudyLink href={project.href} />
+          </div>
+        </ExpandableBlock>
       </div>
     </motion.article>
   );
@@ -274,9 +285,13 @@ export default function ProjectsSection() {
         >
           <p className="projects-showcase-eyebrow">{homeFlagshipProjects.label}</p>
           <h2 className="projects-showcase-title">{homeFlagshipProjects.title}</h2>
-          <p className="projects-showcase-description">
-            {homeFlagshipProjects.description}
-          </p>
+          <div className="projects-showcase-description">
+            <ParagraphExpand
+              paragraphs={homeFlagshipProjects.description.split("\n\n").filter(Boolean)}
+              visibleCount={1}
+              paragraphClassName="projects-showcase-description-p"
+            />
+          </div>
         </motion.header>
 
         <FeaturedProjectCard project={featured} reduced={reduced} />

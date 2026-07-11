@@ -12,15 +12,9 @@ import { homeEnterpriseEcosystem, homeMetrics, homeTestimonials } from "@/app/co
 import { useReducedMotion } from "../features/useReducedMotion";
 import AnimatedCounter from "../ui/AnimatedCounter";
 import { EASE_PREMIUM } from "../v2/motion";
-
-const TRUST_LOGOS = [
-  "AWS",
-  "Microsoft Azure",
-  "OpenAI",
-  "Anthropic",
-  "Snowflake",
-  "Salesforce",
-] as const;
+import { ExpandableBlock, ParagraphExpand } from "./disclosure/HomeDisclosure";
+import TechSvgLogo from "./TechSvgLogo";
+import { VENDOR_MARQUEE_LOGOS } from "./vendor-marquee-logos";
 
 const PROOF_STATS = homeMetrics.stats.slice(0, 3);
 const featured = homeTestimonials.items[0];
@@ -147,7 +141,10 @@ export default function TrustSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, margin: "-10%" });
   const reduced = useReducedMotion();
-  const marqueeTrack = [...TRUST_LOGOS, ...TRUST_LOGOS, ...TRUST_LOGOS, ...TRUST_LOGOS];
+  const marqueeTrack = [
+    ...homeEnterpriseEcosystem.marquee,
+    ...homeEnterpriseEcosystem.marquee,
+  ];
 
   return (
     <section id="trust" className="eco-section scroll-mt-28">
@@ -161,46 +158,62 @@ export default function TrustSection() {
         >
           <p className="eco-eyebrow">{homeEnterpriseEcosystem.label}</p>
           <h2 className="eco-title">{homeEnterpriseEcosystem.title}</h2>
-          <p className="eco-description">{homeEnterpriseEcosystem.description}</p>
+          <div className="eco-description">
+            <ParagraphExpand
+              paragraphs={[homeEnterpriseEcosystem.description]}
+              visibleCount={1}
+              paragraphClassName="eco-description-p"
+            />
+          </div>
         </motion.header>
 
         <div ref={sectionRef} className="eco-logos-zone">
           <div className="eco-marquee" aria-label="Partner ecosystem">
-            <div className="eco-marquee-track">
-              {marqueeTrack.map((label, i) => (
-                <motion.span
-                  key={`${label}-${i}`}
-                  className="eco-logo-pill"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: Math.min(i * 0.04, 0.5),
-                    ease: EASE_PREMIUM,
-                  }}
-                  data-cursor-hover
-                >
-                  {label}
-                </motion.span>
-              ))}
-            </div>
+            <ul className="eco-marquee-track">
+              {marqueeTrack.map((label, i) => {
+                const logo = VENDOR_MARQUEE_LOGOS[label];
+                return (
+                  <motion.li
+                    key={`${label}-${i}`}
+                    className="eco-logo-item"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: Math.min(i * 0.04, 0.5),
+                      ease: EASE_PREMIUM,
+                    }}
+                    data-cursor-hover
+                  >
+                    <span className="eco-logo-glow" aria-hidden />
+                    <TechSvgLogo file={logo.file} name={label} size={48} />
+                  </motion.li>
+                );
+              })}
+            </ul>
           </div>
         </div>
 
-        <div className="eco-metrics">
-          <div className="eco-stats-glow" aria-hidden="true" />
-          {PROOF_STATS.map((stat, index) => (
-            <MetricCard
-              key={stat.label}
-              stat={stat}
-              index={index}
-              inView={inView}
-              reduced={reduced}
-            />
-          ))}
-        </div>
+        <ExpandableBlock
+          expandLabel="View ecosystem proof points"
+          collapseLabel="Hide ecosystem proof points"
+          className="eco-proof-disclosure"
+        >
+          <div className="eco-metrics">
+            <div className="eco-stats-glow" aria-hidden="true" />
+            {PROOF_STATS.map((stat, index) => (
+              <MetricCard
+                key={stat.label}
+                stat={stat}
+                index={index}
+                inView={inView}
+                reduced={reduced}
+              />
+            ))}
+          </div>
 
-        <TestimonialCard inView={inView} reduced={reduced} />
+          <TestimonialCard inView={inView} reduced={reduced} />
+        </ExpandableBlock>
       </div>
     </section>
   );

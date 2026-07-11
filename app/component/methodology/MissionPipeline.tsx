@@ -12,6 +12,7 @@ import MissionScrollCard, {
   useCardPointerEvents,
 } from "./MissionScrollCard";
 import { FadeUp } from "../design/FadeUp";
+import { ParagraphExpand } from "../home/disclosure/HomeDisclosure";
 
 const VISUALS = ["signal", "neural", "orbital"] as const;
 const SCROLL_SPRING = { stiffness: 85, damping: 22, mass: 0.9, restDelta: 0.0008 };
@@ -152,7 +153,12 @@ export default function MissionPipeline() {
           <FadeUp className="ax-header ax-header-center mission-pipeline-header">
             <p className="ax-label">{homeMethodology.label}</p>
             <h2 className="ax-title">{homeMethodology.title}</h2>
-            <p className="ax-description">{homeMethodology.description}</p>
+            <div className="ax-description">
+              <ParagraphExpand
+                paragraphs={homeMethodology.description.split("\n\n").filter(Boolean)}
+                visibleCount={1}
+              />
+            </div>
           </FadeUp>
 
           <div className="mission-pipeline">

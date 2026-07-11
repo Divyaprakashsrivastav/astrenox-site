@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "normalize-tech-svgs": "node scripts/normalize-tech-svgs.mjs"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.13",

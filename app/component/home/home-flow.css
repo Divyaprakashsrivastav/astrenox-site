@@ -3,8 +3,8 @@
    ══════════════════════════════════════════ */
 
 .home-flow {
-  --flow-section-y: 110px;
-  --flow-header-gap: 56px;
+  --flow-section-y: 72px;
+  --flow-header-gap: 40px;
   --flow-card-gap: 24px;
   --type-major: clamp(2.2rem, 3vw, 3.2rem);
   --type-sub: 1.15rem;
@@ -145,6 +145,7 @@
   border: none;
 }
 
+.home-flow .flywheel-story,
 .home-flow .moat-section,
 .home-flow .eco-section,
 .home-flow .ind-section,
@@ -173,12 +174,14 @@
   display: none;
 }
 
+.home-flow .flywheel-story-inner,
 .home-flow .ind-inner,
 .home-flow .eco-inner,
 .home-flow .moat-section-inner {
   padding-block: var(--flow-section-y);
 }
 
+.home-flow .flywheel-story-inner,
 .home-flow .ind-inner,
 .home-flow .eco-inner,
 .home-flow .moat-section-inner {

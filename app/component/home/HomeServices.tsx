@@ -1,11 +1,7 @@
 "use client";
 
-import {
-  motion,
-  useMotionTemplate,
-  useSpring,
-} from "framer-motion";
-import Link from "next/link";
+import "./services-showcase.css";
+import { motion } from "framer-motion";
 import {
   Sparkles,
   Bot,
@@ -14,132 +10,135 @@ import {
   Box,
   Cloud,
   Code2,
-  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
-import { useCallback, useRef, type CSSProperties, type MouseEvent } from "react";
-import DesignSection, { DesignHeader } from "../design/DesignSection";
+import { useCallback, useRef, useState, type TouchEvent } from "react";
 import { homeServices } from "@/app/content/homepage-content";
-import { useReducedMotion } from "../features/useReducedMotion";
 import { EASE_PREMIUM } from "../v2/motion";
+import ServicesAmbient from "./ServicesAmbient";
+import ServiceShowcasePanel from "./ServiceShowcasePanel";
 
 const icons: LucideIcon[] = [Sparkles, Bot, Users, Monitor, Box, Cloud, Code2];
 
-const FLOAT_DURS = [7, 8.5, 6.5, 9, 7.5, 8, 9.5];
-
-function ServiceCard({
-  service,
-  index,
-  Icon,
-  reduced,
-}: {
-  service: (typeof homeServices.items)[number];
-  index: number;
-  Icon: LucideIcon;
-  reduced: boolean;
-}) {
-  const cardRef = useRef<HTMLElement>(null);
-  const rotateX = useSpring(0, { stiffness: 180, damping: 22 });
-  const rotateY = useSpring(0, { stiffness: 180, damping: 22 });
-  const lift = useSpring(0, { stiffness: 200, damping: 24 });
-  const scale = useSpring(1, { stiffness: 200, damping: 24 });
-  const transform = useMotionTemplate`perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(${lift}px) scale(${scale})`;
-
-  const handleMouseEnter = useCallback(() => {
-    if (reduced) return;
-    lift.set(-10);
-    scale.set(1.02);
-  }, [reduced, lift, scale]);
-
-  const handleMouseMove = useCallback(
-    (e: MouseEvent<HTMLElement>) => {
-      if (reduced || !cardRef.current) return;
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      rotateY.set(x * 4);
-      rotateX.set(-y * 4);
-    },
-    [reduced, rotateX, rotateY]
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    rotateX.set(0);
-    rotateY.set(0);
-    lift.set(0);
-    scale.set(1);
-  }, [rotateX, rotateY, lift, scale]);
-
-  const floatStyle = {
-    "--svc-float-delay": `${(index * 0.67) % 3}s`,
-    "--svc-float-dur": `${FLOAT_DURS[index % FLOAT_DURS.length]}s`,
-  } as CSSProperties;
-
-  return (
-    <motion.div
-      className="svc-flow-wrap"
-      style={floatStyle}
-      initial={{ opacity: 0, y: 44, filter: "blur(8px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, margin: "-8%" }}
-      transition={{ duration: 0.8, delay: index * 0.12, ease: EASE_PREMIUM }}
-    >
-      <motion.article
-        ref={cardRef}
-        className="svc-flow-card"
-        style={reduced ? undefined : { transform }}
-        onMouseEnter={handleMouseEnter}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        data-cursor-hover
-      >
-        <span className="svc-flow-accent" aria-hidden />
-        <div className="svc-flow-particles" aria-hidden>
-          <span />
-          <span />
-        </div>
-        <Link href={service.href} className="svc-flow-link">
-          <div className="svc-flow-icon">
-            <Icon size={26} strokeWidth={1.75} />
-          </div>
-          <h3 className="svc-flow-title">{service.title}</h3>
-          <p className="svc-flow-desc">{service.description}</p>
-          <p className="svc-flow-outcome">{service.outcome}</p>
-          <span className="svc-flow-cta">
-            Explore capability <ArrowRight size={14} />
-          </span>
-        </Link>
-      </motion.article>
-    </motion.div>
-  );
-}
-
 export default function HomeServices() {
-  const reduced = useReducedMotion();
+  type ServiceId = (typeof homeServices.items)[number]["id"];
+  const [activeId, setActiveId] = useState<ServiceId>(homeServices.items[0].id);
+  const touchStartX = useRef(0);
+
+  const activeIndex = homeServices.items.findIndex((item) => item.id === activeId);
+  const activeService = homeServices.items[activeIndex >= 0 ? activeIndex : 0];
+  const activeIcon = icons[activeIndex >= 0 ? activeIndex : 0] ?? Sparkles;
+
+  const selectService = useCallback((id: ServiceId) => {
+    setActiveId(id);
+  }, []);
+
+  const goToRelative = useCallback(
+    (delta: number) => {
+      const idx = homeServices.items.findIndex((item) => item.id === activeId);
+      const next =
+        (idx + delta + homeServices.items.length) % homeServices.items.length;
+      setActiveId(homeServices.items[next].id);
+    },
+    [activeId],
+  );
+
+  const handleTouchStart = useCallback((e: TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent<HTMLDivElement>) => {
+      const diff = e.changedTouches[0].clientX - touchStartX.current;
+      if (Math.abs(diff) < 48) return;
+      goToRelative(diff < 0 ? 1 : -1);
+    },
+    [goToRelative],
+  );
+
+  const description = homeServices.description.trim();
 
   return (
-    <DesignSection id="services" flow border={false} ambient={false}>
-      <DesignHeader
-        flow
-        label={homeServices.label}
-        title={homeServices.title}
-        description={homeServices.description}
-      />
+    <section id="services" className="svc-section scroll-mt-28">
+      <ServicesAmbient />
 
-      <div className="svc-flow-grid">
-        {homeServices.items.map((service, i) => {
-          const Icon = icons[i] ?? Sparkles;
-          return (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              index={i}
-              Icon={Icon}
-              reduced={reduced}
+      <div className="svc-inner">
+        <motion.header
+          className="svc-header"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-10%" }}
+          transition={{ duration: 0.6, ease: EASE_PREMIUM }}
+        >
+          <p className="svc-eyebrow">{homeServices.label}</p>
+          <h2 className="svc-title">{homeServices.title}</h2>
+          {description ? <p className="svc-description">{description}</p> : null}
+        </motion.header>
+
+        <div className="svc-showcase">
+          <motion.nav
+            className="svc-showcase-nav"
+            aria-label="Services"
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease: EASE_PREMIUM }}
+          >
+            <ul className="svc-nav-list">
+              {homeServices.items.map((service, i) => {
+                const isActive = service.id === activeId;
+                const Icon = icons[i] ?? Sparkles;
+
+                return (
+                  <motion.li
+                    key={service.id}
+                    className="svc-nav-item"
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.45,
+                      delay: 0.04 + i * 0.05,
+                      ease: EASE_PREMIUM,
+                    }}
+                  >
+                    <button
+                      type="button"
+                      className={`svc-nav-btn${isActive ? " is-active" : ""}`}
+                      onMouseEnter={() => selectService(service.id)}
+                      onFocus={() => selectService(service.id)}
+                      onClick={() => selectService(service.id)}
+                      aria-current={isActive ? "true" : undefined}
+                    >
+                      <span className="svc-nav-indicator" aria-hidden />
+                      <span className="svc-nav-num">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="svc-nav-icon" aria-hidden>
+                        <Icon size={16} strokeWidth={1.75} />
+                      </span>
+                      <span className="svc-nav-label">{service.title}</span>
+                    </button>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </motion.nav>
+
+          <div
+            className="svc-panel-area"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            <ServiceShowcasePanel
+              service={activeService}
+              icon={activeIcon}
+              index={activeIndex >= 0 ? activeIndex : 0}
             />
-          );
-        })}
+            <div className="svc-swipe-hint" aria-hidden>
+              Swipe to explore services
+            </div>
+          </div>
+        </div>
       </div>
-    </DesignSection>
+    </section>
   );
 }

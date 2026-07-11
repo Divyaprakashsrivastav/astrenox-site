@@ -1,0 +1,7 @@
+openai: MISSING
+amazonaws: MISSING
+microsoftazure: MISSING
+mistralai: Mistral AI
+pinecone: MISSING
+servicenow: MISSING
+salesforce: MISSING

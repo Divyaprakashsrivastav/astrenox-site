@@ -6,10 +6,12 @@ import DesignSection, { DesignHeader } from "../design/DesignSection";
 import AnimatedCounter from "../ui/AnimatedCounter";
 import { homeMetrics } from "@/app/content/homepage-content";
 import { EASE_PREMIUM } from "../v2/motion";
+import { ParagraphExpand } from "./disclosure/HomeDisclosure";
 
 export default function HomeMetrics() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-12%" });
+  const descriptionParagraphs = homeMetrics.description.split("\n\n").filter(Boolean);
 
   return (
     <DesignSection id="metrics" flow border={false} ambient={false}>
@@ -17,7 +19,13 @@ export default function HomeMetrics() {
         flow
         label={homeMetrics.label}
         title={homeMetrics.title}
-        description={homeMetrics.description}
+        description={
+          <ParagraphExpand
+            paragraphs={descriptionParagraphs}
+            visibleCount={2}
+            paragraphClassName="flow-description"
+          />
+        }
         align="center"
       />
 

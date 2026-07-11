@@ -56,7 +56,7 @@ export function DesignHeader({
 }: {
   label?: string;
   title: ReactNode;
-  description?: string;
+  description?: ReactNode;
   align?: "left" | "center";
   flow?: boolean;
 }) {
@@ -67,7 +67,13 @@ export function DesignHeader({
       >
         {label && <p className="flow-eyebrow">{label}</p>}
         <h2 className="flow-title">{title}</h2>
-        {description && <p className="flow-description">{description}</p>}
+        {description ? (
+          typeof description === "string" ? (
+            <p className="flow-description">{description}</p>
+          ) : (
+            <div className="flow-description">{description}</div>
+          )
+        ) : null}
       </FadeUp>
     );
   }
@@ -76,7 +82,13 @@ export function DesignHeader({
     <FadeUp className={`ax-header ${align === "center" ? "ax-header-center" : ""}`}>
       {label && <p className="ax-label">{label}</p>}
       <h2 className="ax-title">{title}</h2>
-      {description && <p className="ax-description">{description}</p>}
+      {description ? (
+        typeof description === "string" ? (
+          <p className="ax-description">{description}</p>
+        ) : (
+          <div className="ax-description">{description}</div>
+        )
+      ) : null}
     </FadeUp>
   );
 }

@@ -342,32 +342,13 @@
   margin-bottom: var(--scale-desc-content);
 }
 
-.ind-holo-card {
-  height: 320px;
-  padding: var(--scale-card-padding);
-  border-radius: var(--scale-card-radius);
+.ind-showcase-panel {
+  border-radius: 20px;
   background: var(--scale-card-bg);
 }
 
-.ind-holo-title {
-  font-size: var(--scale-card-title);
-}
-
-.ind-holo-desc {
-  font-size: var(--scale-body);
-  line-height: 1.75;
-}
-
-.ind-holo-cases-label {
-  font-size: var(--scale-label);
-}
-
-.ind-holo-chip {
-  font-size: var(--scale-label);
-}
-
-.ind-sectors-grid {
-  gap: 24px;
+.ind-showcase {
+  gap: 1.5rem;
 }
 
 /* ── Ecosystem ── */
@@ -437,9 +418,8 @@
     max-width: 280px;
   }
 
-  .ind-holo-card {
-    height: auto;
-    min-height: 280px;
+  .ind-showcase-panel {
+    min-height: 380px;
   }
 }
 
