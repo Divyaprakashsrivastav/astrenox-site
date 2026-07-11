@@ -3,16 +3,47 @@
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { useRef, type ReactNode } from "react";
+import AstrenoxLogo from "./brand/AstrenoxLogo";
 import { homeFooter } from "@/app/content/homepage-content";
+import {
+  navContactHref,
+  navIndustriesHref,
+  navInfrastructureHref,
+  navResearchHref,
+} from "@/app/content/nav-config";
 import { EASE_PREMIUM } from "./v2/motion";
-import EndingAmbient from "./footer/EndingAmbient";
-import "./home/contact-ending.css";
+import FooterGlassWordmark from "./footer/FooterGlassWordmark";
+import FooterPremiumBackground from "./footer/FooterPremiumBackground";
+import FooterLink from "./footer/FooterLink";
+import "./footer/footer-premium.css";
 
-const EASE = EASE_PREMIUM;
+const QUICK_LINKS = [
+  { label: "AI Services", href: "/services" },
+  { label: "Digital Consulting", href: "/services/digital-it-consulting" },
+  { label: "Products", href: "/products" },
+  { label: "Infrastructure", href: navInfrastructureHref },
+  { label: "Industries", href: navIndustriesHref },
+] as const;
 
-const cardReveal = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE } },
+const RESOURCE_LINKS = [
+  { label: "Blog", href: navResearchHref },
+  { label: "Case Studies", href: "/projects" },
+  { label: "Careers", href: "/careers" },
+  { label: "Documentation", href: navResearchHref },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/legal" },
+] as const;
+
+const BOTTOM_LINKS = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/legal" },
+  { label: "Cookies", href: "/legal" },
+  { label: "Accessibility", href: "/legal" },
+] as const;
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 18 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_PREMIUM } },
 };
 
 function GitHubIcon() {
@@ -62,10 +93,9 @@ function SocialButton({
     <a
       href={href}
       aria-label={label}
-      className="site-ending-social-btn"
+      className="ft-social-btn"
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      data-cursor-hover
     >
       {icon}
     </a>
@@ -75,50 +105,45 @@ function SocialButton({
 function FooterContent({ inView }: { inView: boolean }) {
   return (
     <>
-      <div className="site-ending-wordmark" aria-hidden>
-        <span className="site-ending-wordmark-text">ASTRENOX</span>
-      </div>
+      <FooterGlassWordmark />
 
-      <div className="site-ending-footer-inner">
+      <div className="ft-inner">
         <motion.div
-          className="site-ending-footer-grid"
+          className="ft-main"
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          variants={{ visible: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } } }}
+          variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
         >
-          <motion.article variants={cardReveal} className="site-ending-footer-card">
-            <h4 className="site-ending-footer-card-title">Company</h4>
-            <Link href={homeFooter.aboutLink.href} className="site-ending-footer-card-logo">
-              Astrenox
-            </Link>
-            <p className="site-ending-footer-card-copy">{homeFooter.about}</p>
-          </motion.article>
+          <motion.div variants={fadeUp} className="ft-brand">
+            <AstrenoxLogo variant="footer" showWordmark={false} />
+            <p className="ft-brand-copy">{homeFooter.about}</p>
+          </motion.div>
 
-          <motion.article variants={cardReveal} className="site-ending-footer-card">
-            <h4 className="site-ending-footer-card-title">Services</h4>
-            <ul className="site-ending-footer-links">
-              {homeFooter.servicesLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
+          <motion.nav variants={fadeUp} className="ft-col" aria-label="Quick links">
+            <h3 className="ft-col-title">Quick Links</h3>
+            <ul className="ft-links">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.href + link.label}>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
-          </motion.article>
+          </motion.nav>
 
-          <motion.article variants={cardReveal} className="site-ending-footer-card">
-            <h4 className="site-ending-footer-card-title">Resources</h4>
-            <ul className="site-ending-footer-links">
-              {homeFooter.resourcesLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href}>{link.label}</Link>
+          <motion.nav variants={fadeUp} className="ft-col" aria-label="Resources">
+            <h3 className="ft-col-title">Resources</h3>
+            <ul className="ft-links">
+              {RESOURCE_LINKS.map((link) => (
+                <li key={link.href + link.label}>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
-          </motion.article>
+          </motion.nav>
 
-          <motion.article variants={cardReveal} className="site-ending-footer-card">
-            <h4 className="site-ending-footer-card-title">Connect</h4>
-            <div className="site-ending-socials">
+          <motion.div variants={fadeUp} className="ft-connect">
+            <h3 className="ft-col-title">Connect</h3>
+            <div className="ft-socials">
               <SocialButton
                 href={homeFooter.linkedin.href}
                 label="LinkedIn"
@@ -136,29 +161,32 @@ function FooterContent({ inView }: { inView: boolean }) {
                 label="Email"
                 icon={<MailIcon />}
               />
-              <SocialButton
-                href={homeFooter.x.href}
-                label="X"
-                icon={<XIcon />}
-                external
-              />
+              <SocialButton href={homeFooter.x.href} label="X" icon={<XIcon />} external />
             </div>
-          </motion.article>
+            <a href={`mailto:${homeFooter.email}`} className="ft-email">
+              {homeFooter.email}
+            </a>
+            <Link href={navContactHref} className="ft-schedule-btn">
+              Schedule Call
+            </Link>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          className="site-ending-bar"
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
-          transition={{ duration: 0.65, delay: 0.45, ease: EASE }}
+          className="ft-bottom"
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4, ease: EASE_PREMIUM }}
         >
-          <span className="site-ending-bar-copy">{homeFooter.copyright}</span>
-          {homeFooter.legalLinks.map((link) => (
-            <Link key={link.href + link.label} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
-          <span className="site-ending-bar-made">{homeFooter.madeWith}</span>
+          <span className="ft-bottom-copy">{homeFooter.copyright}</span>
+          <nav className="ft-bottom-nav" aria-label="Legal">
+            {BOTTOM_LINKS.map((link) => (
+              <Link key={link.label} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <span className="ft-bottom-tagline">Built for Enterprise AI</span>
         </motion.div>
       </div>
     </>
@@ -170,10 +198,8 @@ export default function Footer({ embedded = false }: { embedded?: boolean }) {
   const inView = useInView(ref, { once: true, margin: "-6%" });
 
   const footer = (
-    <footer
-      ref={ref}
-      className={`site-ending-footer${embedded ? " site-ending-footer--embedded" : ""}`}
-    >
+    <footer ref={ref} className={`ft-footer${embedded ? " ft-footer--embedded" : ""}`}>
+      <FooterPremiumBackground />
       <FooterContent inView={inView} />
     </footer>
   );
@@ -182,7 +208,6 @@ export default function Footer({ embedded = false }: { embedded?: boolean }) {
 
   return (
     <div className="site-ending-shell site-ending-shell--standalone">
-      <EndingAmbient />
       {footer}
     </div>
   );

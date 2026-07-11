@@ -3,6 +3,7 @@
 import "./nav/nav.css";
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import AstrenoxLogo from "./brand/AstrenoxLogo";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
@@ -193,9 +194,7 @@ export default function Navbar() {
           <nav aria-label="Main navigation" className="dock-bar">
             <div className="dock-grid">
               <div className="dock-zone dock-zone--brand">
-                <Link href="/" className="dock-brand" aria-label="Astrenox home">
-                  Astrenox
-                </Link>
+                <AstrenoxLogo variant="nav" height={40} />
               </div>
 
               <div className="dock-zone dock-zone--menu">
@@ -292,7 +291,7 @@ export default function Navbar() {
               transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="dock-drawer-head">
-                <span className="dock-drawer-title">Menu</span>
+                <AstrenoxLogo variant="drawer" onClick={closeDrawer} />
                 <button type="button" className="dock-drawer-close" onClick={closeDrawer} aria-label="Close menu">
                   <X size={20} />
                 </button>

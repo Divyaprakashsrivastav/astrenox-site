@@ -1,0 +1,16 @@
+{
+  "name": "Astrenox",
+  "short_name": "Astrenox",
+  "description": "The AI Operating System for the Physical World",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060611",
+  "theme_color": "#6d28d9",
+  "icons": [
+    {
+      "src": "/brand/astrenox-logo.png",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

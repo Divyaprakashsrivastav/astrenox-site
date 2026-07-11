@@ -1,7 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Bot, MessageCircle, Send, X } from "lucide-react";
+import { MessageCircle, Send, X } from "lucide-react";
+import AstrenoxLogo from "../brand/AstrenoxLogo";
 import {
   useCallback,
   useEffect,
@@ -181,7 +182,7 @@ export default function AstrenoxChatbot() {
             <header className="chat-panel-header">
               <div className="chat-panel-brand">
                 <span className="chat-panel-logo" aria-hidden>
-                  <Bot size={14} strokeWidth={2} />
+                  <AstrenoxLogo height={28} href={null} showWordmark={false} />
                 </span>
                 <div>
                   <h2 id={`${formId}-title`} className="chat-panel-title">

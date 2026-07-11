@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, type ComponentType } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -25,14 +25,28 @@ const fadeUp = {
 type ServicePageHeroProps = {
   hero: ServicePageContent["hero"];
   visual: HeroVisualVariant;
+  HeroVisualComponent?: ComponentType;
+  HeroAmbientComponent?: ComponentType;
+  heroSectionClassName?: string;
 };
 
-function ServicePageHero({ hero, visual }: ServicePageHeroProps) {
+function ServicePageHero({
+  hero,
+  visual,
+  HeroVisualComponent,
+  HeroAmbientComponent,
+  heroSectionClassName,
+}: ServicePageHeroProps) {
   const titleLines = hero.title.split("\n");
   const visualConfig = heroVisualConfigs[visual];
 
   return (
-    <section className="mvp-inner mvp-hero-section" aria-labelledby="service-hero-title">
+    <section
+      className={`mvp-inner mvp-hero-section${heroSectionClassName ? ` ${heroSectionClassName}` : ""}`}
+      aria-labelledby="service-hero-title"
+    >
+      {HeroAmbientComponent ? <HeroAmbientComponent /> : null}
+
       <div className="mvp-hero-grid">
         <motion.div
           className="mvp-hero-copy"
@@ -81,7 +95,11 @@ function ServicePageHero({ hero, visual }: ServicePageHeroProps) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.85, delay: 0.2, ease: EASE_PREMIUM }}
         >
-          <HeroVisual cards={visualConfig.cards} connections={[...visualConfig.connections]} />
+          {HeroVisualComponent ? (
+            <HeroVisualComponent />
+          ) : (
+            <HeroVisual cards={visualConfig.cards} connections={[...visualConfig.connections]} />
+          )}
         </motion.div>
       </div>
     </section>

@@ -1,0 +1,62 @@
+/* Astrenox official logo — asset used exactly as provided */
+
+.ax-logo-link,
+.ax-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.ax-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ax-brand-word {
+  font-family: var(--font-heading, ui-serif, Georgia, serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ax-logo-link--nav {
+  height: 40px;
+}
+
+.ax-logo-link--drawer {
+  height: 36px;
+}
+
+.ax-logo-wrap--footer {
+  display: block;
+  margin-bottom: 1.125rem;
+}
+
+.ax-logo-mark {
+  display: block;
+  height: var(--ax-logo-h, 40px);
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.ax-logo-link--footer .ax-logo-mark,
+.ax-logo-wrap--footer .ax-logo-mark {
+  height: 64px;
+}
+
+.ax-logo-link--nav .ax-logo-mark,
+.ax-logo-link--drawer .ax-logo-mark {
+  height: var(--ax-logo-h, 40px);
+}
+
+.ax-logo-link:hover .ax-brand-word {
+  color: #f5f3ff;
+}

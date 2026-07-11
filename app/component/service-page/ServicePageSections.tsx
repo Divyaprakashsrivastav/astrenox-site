@@ -1,6 +1,6 @@
 "use client";
 
-import { memo } from "react";
+import { memo, type ComponentType } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
@@ -38,7 +38,24 @@ function SectionIntro({ intro }: { intro?: string }) {
   return <p className="mvp-section-intro">{intro}</p>;
 }
 
-function ServicePageSections({ content }: { content: ServicePageContent }) {
+type WorkflowSection = NonNullable<ServicePageContent["workflow"]>;
+type CapabilitiesSection = NonNullable<ServicePageContent["capabilities"]>;
+type OverviewSection = NonNullable<ServicePageContent["overview"]>;
+type ServiceOfferingsSection = NonNullable<ServicePageContent["serviceOfferings"]>;
+
+function ServicePageSections({
+  content,
+  OverviewComponent,
+  WorkflowComponent,
+  CapabilitiesComponent,
+  ServiceOfferingsComponent,
+}: {
+  content: ServicePageContent;
+  OverviewComponent?: ComponentType<{ overview: OverviewSection }>;
+  WorkflowComponent?: ComponentType<{ workflow: WorkflowSection }>;
+  CapabilitiesComponent?: ComponentType<{ capabilities: CapabilitiesSection }>;
+  ServiceOfferingsComponent?: ComponentType<{ serviceOfferings: ServiceOfferingsSection }>;
+}) {
   const {
     intro,
     overview,
@@ -112,112 +129,124 @@ function ServicePageSections({ content }: { content: ServicePageContent }) {
   ) : null;
 
   const capabilitiesSection = capabilities ? (
-    <section
-      id={capabilities.id}
-      className="mvp-inner mvp-section"
-      aria-labelledby="service-cap-title"
-    >
-      <SectionHeaderBlock label={capabilities.label} title={capabilities.title} />
-      <SectionIntro intro={capabilities.intro} />
-      <motion.div
-        className="mvp-cap-grid"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
+    CapabilitiesComponent ? (
+      <CapabilitiesComponent capabilities={capabilities} />
+    ) : (
+      <section
+        id={capabilities.id}
+        className="mvp-inner mvp-section"
+        aria-labelledby="service-cap-title"
       >
-        {capabilities.items.map((cap, i) => {
-          const Icon = SERVICE_ICONS[cap.icon];
-          const body = cap.paragraphs ?? (cap.description ? [cap.description] : []);
-          return (
-            <motion.article
-              key={cap.title}
-              className="mvp-glass-card mvp-cap-card"
-              custom={i}
-              variants={fadeUp}
-            >
-              <div className="mvp-feature-icon">
-                <Icon size={20} aria-hidden />
-              </div>
-              <h3>{cap.title}</h3>
-              {body.map((paragraph) => (
-                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-              ))}
-              {cap.enables && cap.enables.length > 0 && (
-                <div className="mvp-cap-enables">
-                  <p className="mvp-cap-enables-label">What it enables:</p>
-                  <ul>
-                    {cap.enables.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+        <SectionHeaderBlock label={capabilities.label ?? ""} title={capabilities.title} />
+        <SectionIntro intro={capabilities.intro} />
+        <motion.div
+          className="mvp-cap-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          {capabilities.items.map((cap, i) => {
+            const Icon = SERVICE_ICONS[cap.icon];
+            const body = cap.paragraphs ?? (cap.description ? [cap.description] : []);
+            return (
+              <motion.article
+                key={cap.title}
+                className="mvp-glass-card mvp-cap-card"
+                custom={i}
+                variants={fadeUp}
+              >
+                <div className="mvp-feature-icon">
+                  <Icon size={20} aria-hidden />
                 </div>
-              )}
-            </motion.article>
-          );
-        })}
-      </motion.div>
-    </section>
+                <h3>{cap.title}</h3>
+                {body.map((paragraph) => (
+                  <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+                ))}
+                {cap.enables && cap.enables.length > 0 && (
+                  <div className="mvp-cap-enables">
+                    <p className="mvp-cap-enables-label">What it enables:</p>
+                    <ul>
+                      {cap.enables.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </motion.article>
+            );
+          })}
+        </motion.div>
+      </section>
+    )
   ) : null;
 
   const workflowSection = workflow ? (
-    <section
-      id={workflow.id}
-      className="mvp-inner mvp-section"
-      aria-labelledby="service-workflow-title"
-    >
-      <SectionHeaderBlock label={workflow.label} title={workflow.title} />
-      <SectionIntro intro={workflow.intro} />
-      <div className="mvp-timeline">
-        {workflow.steps.map((step, i) => (
-          <motion.div
-            key={step.name}
-            className="mvp-timeline-step"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
-          >
-            <div className="mvp-glass-card mvp-timeline-step-inner">
-              <h3>{step.name}</h3>
-              <p>{step.description}</p>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+    WorkflowComponent ? (
+      <WorkflowComponent workflow={workflow} />
+    ) : (
+      <section
+        id={workflow.id}
+        className="mvp-inner mvp-section"
+        aria-labelledby="service-workflow-title"
+      >
+        <SectionHeaderBlock label={workflow.label ?? ""} title={workflow.title} />
+        <SectionIntro intro={workflow.intro} />
+        <div className="mvp-timeline">
+          {workflow.steps.map((step, i) => (
+            <motion.div
+              key={step.name}
+              className="mvp-timeline-step"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
+            >
+              <div className="mvp-glass-card mvp-timeline-step-inner">
+                <h3>{step.name}</h3>
+                <p>{step.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    )
   ) : null;
 
   const serviceOfferingsSection = serviceOfferings ? (
-    <section className="mvp-inner mvp-section" aria-labelledby="service-offerings-title">
-      <SectionHeaderBlock label={serviceOfferings.label} title={serviceOfferings.title} />
-      <SectionIntro intro={serviceOfferings.intro} />
-      <motion.div
-        className="mvp-offerings-table"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-      >
-        <div className="mvp-offerings-header" aria-hidden>
-          <span>Service</span>
-          <span>Business Outcome</span>
-        </div>
-        {serviceOfferings.items.map((item, i) => (
-          <motion.div
-            key={item.service}
-            className="mvp-glass-card mvp-offerings-row"
-            initial={{ opacity: 0, x: -12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.45, delay: i * 0.07, ease: EASE_PREMIUM }}
-          >
-            <h3 className="mvp-offerings-service">{item.service}</h3>
-            <p className="mvp-offerings-outcome">{item.outcome}</p>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
+    ServiceOfferingsComponent ? (
+      <ServiceOfferingsComponent serviceOfferings={serviceOfferings} />
+    ) : (
+      <section className="mvp-inner mvp-section" aria-labelledby="service-offerings-title">
+        <SectionHeaderBlock label={serviceOfferings.label} title={serviceOfferings.title} />
+        <SectionIntro intro={serviceOfferings.intro} />
+        <motion.div
+          className="mvp-offerings-table"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+        >
+          <div className="mvp-offerings-header" aria-hidden>
+            <span>Service</span>
+            <span>Business Outcome</span>
+          </div>
+          {serviceOfferings.items.map((item, i) => (
+            <motion.div
+              key={item.service}
+              className="mvp-glass-card mvp-offerings-row"
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: i * 0.07, ease: EASE_PREMIUM }}
+            >
+              <h3 className="mvp-offerings-service">{item.service}</h3>
+              <p className="mvp-offerings-outcome">{item.outcome}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+    )
   ) : null;
 
   const interventionsSection = interventions ? (
@@ -331,33 +360,37 @@ function ServicePageSections({ content }: { content: ServicePageContent }) {
       ) : null}
 
       {overview ? (
-      <section className="mvp-inner mvp-section" aria-labelledby="service-overview-title">
-        <div className="mvp-about-grid">
-          {overview.title ? (
-          <motion.h2
-            id="service-overview-title"
-            className="mvp-about-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-          >
-            {overview.title}
-          </motion.h2>
-          ) : null}
-          <motion.div
-            className={overview.title ? "mvp-about-text" : "mvp-about-text mvp-about-text-full"}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, delay: 0.1, ease: EASE_PREMIUM }}
-          >
-            {overview.paragraphs.map((p) => (
-              <p key={p.slice(0, 48)}>{p}</p>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+        OverviewComponent ? (
+          <OverviewComponent overview={overview} />
+        ) : (
+          <section className="mvp-inner mvp-section" aria-labelledby="service-overview-title">
+            <div className="mvp-about-grid">
+              {overview.title ? (
+                <motion.h2
+                  id="service-overview-title"
+                  className="mvp-about-title"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+                >
+                  {overview.title}
+                </motion.h2>
+              ) : null}
+              <motion.div
+                className={overview.title ? "mvp-about-text" : "mvp-about-text mvp-about-text-full"}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.55, delay: 0.1, ease: EASE_PREMIUM }}
+              >
+                {overview.paragraphs.map((p) => (
+                  <p key={p.slice(0, 48)}>{p}</p>
+                ))}
+              </motion.div>
+            </div>
+          </section>
+        )
       ) : null}
 
       {engineeringCapabilities && (

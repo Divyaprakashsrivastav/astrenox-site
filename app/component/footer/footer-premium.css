@@ -1,0 +1,679 @@
+/* ══════════════════════════════════════════
+   PREMIUM FOOTER
+   ══════════════════════════════════════════ */
+
+.ft-footer {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #fafafb;
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: clamp(9rem, 16vw, 13rem);
+  background: #060611;
+}
+
+.ft-footer--embedded {
+  background: transparent;
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* ── Background ── */
+.ft-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ft-bg-base {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #060611 0%, #08051a 55%, #0a0618 100%);
+}
+
+.ft-bg-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+.ft-bg-nebula--1 {
+  width: 55%;
+  height: 45%;
+  top: 10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(109, 40, 217, 0.18), transparent 70%);
+}
+
+.ft-bg-nebula--2 {
+  width: 45%;
+  height: 40%;
+  bottom: 15%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.12), transparent 72%);
+}
+
+.ft-bg-aurora {
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(ellipse 50% 35% at 30% 70%, rgba(139, 92, 246, 0.1), transparent 65%),
+    radial-gradient(ellipse 45% 30% at 70% 75%, rgba(99, 102, 241, 0.08), transparent 68%),
+    radial-gradient(ellipse 60% 25% at 50% 90%, rgba(167, 139, 250, 0.06), transparent 72%);
+  animation: ft-aurora-drift 22s ease-in-out infinite alternate;
+  opacity: 0.85;
+}
+
+.ft-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 70% at 50% 50%,
+    transparent 40%,
+    rgba(4, 2, 12, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.ft-bg-radial {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 80%,
+    rgba(139, 92, 246, 0.08),
+    transparent 70%
+  );
+}
+
+.ft-bg-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  animation: ft-noise-shift 20s linear infinite;
+}
+
+.ft-bg-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 44%,
+    rgba(139, 92, 246, 0.03) 50%,
+    transparent 56%
+  );
+  animation: ft-bg-sweep 16s ease-in-out infinite;
+}
+
+.ft-bg-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.ft-bg-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(196, 181, 253, 0.45);
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.25);
+}
+
+@keyframes ft-noise-shift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-32px, -24px, 0); }
+}
+
+@keyframes ft-bg-sweep {
+  0%, 80%, 100% { transform: translateX(-6%); opacity: 0; }
+  40% { transform: translateX(6%); opacity: 1; }
+}
+
+@keyframes ft-aurora-drift {
+  from { transform: translate3d(-1%, 0, 0) scale(1); }
+  to { transform: translate3d(1%, -1%, 0) scale(1.03); }
+}
+
+/* ── Glass wordmark — multi-layer frosted typography ── */
+.ft-wordmark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: clamp(1.25rem, 3.5vw, 2.75rem);
+  pointer-events: none;
+  user-select: none;
+  overflow: visible;
+}
+
+.ft-wordmark-fog {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(92%, 1100px);
+  height: 55%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 100% 80% at 50% 100%,
+    rgba(139, 92, 246, 0.14),
+    rgba(109, 40, 217, 0.04) 45%,
+    transparent 72%
+  );
+  filter: blur(28px);
+}
+
+.ft-wordmark-bloom {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: min(75%, 900px);
+  height: 48%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 80%,
+    rgba(167, 139, 250, 0.2),
+    rgba(103, 232, 249, 0.04) 40%,
+    transparent 68%
+  );
+  filter: blur(36px);
+}
+
+.ft-wordmark-radial {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  width: min(65%, 780px);
+  height: 42%;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at 50% 70%,
+    rgba(255, 255, 255, 0.06),
+    transparent 65%
+  );
+  filter: blur(20px);
+}
+
+.ft-wordmark-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.ft-wordmark-stack {
+  position: relative;
+  display: inline-block;
+  transform: perspective(900px) rotateX(3deg);
+  transform-origin: center bottom;
+}
+
+.ft-wordmark-glass-pane {
+  position: absolute;
+  inset: -0.06em -0.03em;
+  border-radius: 0.04em;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(139, 92, 246, 0.03) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -12px 32px rgba(0, 0, 0, 0.12),
+    0 0 60px rgba(139, 92, 246, 0.1);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  z-index: 0;
+}
+
+.ft-wordmark-sizer {
+  visibility: hidden;
+  display: block;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-size: clamp(4.5rem, 17vw, 13.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.ft-wm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+  font-size: clamp(4.5rem, 17vw, 13.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Deep ambient shadow */
+.ft-wm--shadow {
+  transform: translateY(8px) scale(1.008);
+  color: rgba(109, 40, 217, 0.35);
+  filter: blur(14px);
+  opacity: 0.55;
+}
+
+/* Blurred depth duplicate */
+.ft-wm--depth {
+  transform: translateY(3px);
+  color: rgba(255, 255, 255, 0.06);
+  filter: blur(2px);
+  opacity: 0.9;
+}
+
+/* Soft bevel underside */
+.ft-wm--bevel {
+  transform: translateY(1px);
+  color: transparent;
+  -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.25);
+  opacity: 0.35;
+}
+
+/* Main frosted glass fill */
+.ft-wm--fill {
+  background:
+    linear-gradient(
+      105deg,
+      transparent 36%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 64%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.14) 28%,
+      rgba(216, 180, 254, 0.16) 55%,
+      rgba(139, 92, 246, 0.08) 82%,
+      rgba(99, 102, 241, 0.05) 100%
+    );
+  background-size: 220% 100%, 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: ft-glass-sweep 9s ease-in-out infinite;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.2))
+    drop-shadow(0 2px 8px rgba(139, 92, 246, 0.15))
+    drop-shadow(0 0 40px rgba(167, 139, 250, 0.12));
+}
+
+/* Glass edge highlight */
+.ft-wm--edge {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+  paint-order: stroke fill;
+}
+
+/* Inner carved highlight */
+.ft-wm--inner {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.08) 22%,
+    transparent 45%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.55;
+}
+
+/* Top specular reflection */
+.ft-wm--specular {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    transparent 18%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.45;
+  mix-blend-mode: overlay;
+}
+
+/* Moving light beam across letters */
+.ft-wordmark-sweep {
+  position: absolute;
+  inset: -8% -12%;
+  z-index: 2;
+  background: linear-gradient(
+    105deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(196, 181, 253, 0.08) 52%,
+    transparent 58%
+  );
+  mix-blend-mode: overlay;
+  animation: ft-wordmark-beam 9.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ft-wordmark-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 8px rgba(196, 181, 253, 0.45);
+}
+
+@keyframes ft-glass-sweep {
+  0%, 100% { background-position: 130% 0, 0 0; }
+  50% { background-position: -30% 0, 0 0; }
+}
+
+@keyframes ft-wordmark-beam {
+  0%, 18%, 100% {
+    transform: translateX(-35%) skewX(-8deg);
+    opacity: 0;
+  }
+  28%, 38% {
+    opacity: 0.85;
+  }
+  48% {
+    transform: translateX(35%) skewX(-8deg);
+    opacity: 0;
+  }
+}
+
+/* Legacy selectors removed — wordmark uses .ft-wm layers */
+
+/* ── Inner layout ── */
+.ft-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.ft-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 4vw, 2.75rem);
+}
+
+@media (min-width: 768px) {
+  .ft-main {
+    grid-template-columns: 1.25fr 1fr 1fr 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+}
+
+/* Brand column */
+.ft-brand {
+  max-width: 22rem;
+}
+
+.ft-brand .ax-logo-wrap--footer,
+.ft-brand .ax-logo-link--footer {
+  margin-bottom: 1.125rem;
+}
+
+.ft-brand-copy {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.52);
+}
+
+/* Columns */
+.ft-col-title {
+  margin-bottom: 1.125rem;
+  font-family: var(--font-heading);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(196, 181, 253, 0.55);
+}
+
+.ft-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.ft-link {
+  position: relative;
+  display: inline-block;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(250, 250, 251, 0.62);
+  text-decoration: none;
+  transition:
+    color 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ft-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #a78bfa, rgba(103, 232, 249, 0.6));
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ft-link:hover {
+  color: rgba(233, 213, 255, 0.92);
+  transform: translateX(4px);
+}
+
+.ft-link:hover::after {
+  width: 100%;
+}
+
+/* Connect column */
+.ft-connect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.ft-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.ft-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: rgba(250, 250, 251, 0.78);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-decoration: none;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+.ft-social-btn:hover {
+  transform: scale(1.08) rotate(6deg);
+  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(167, 139, 250, 0.32);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+  color: #e9d5ff;
+}
+
+.ft-email {
+  font-size: 0.875rem;
+  color: rgba(250, 250, 251, 0.48);
+  text-decoration: none;
+  transition: color 0.35s ease;
+}
+
+.ft-email:hover {
+  color: rgba(196, 181, 253, 0.85);
+}
+
+.ft-schedule-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fafafb;
+  text-decoration: none;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.55), rgba(109, 40, 217, 0.35));
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 8px 24px rgba(0, 0, 0, 0.25);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+.ft-schedule-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.65), rgba(124, 58, 237, 0.45));
+  border-color: rgba(196, 181, 253, 0.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 14px 36px rgba(0, 0, 0, 0.32),
+    0 0 32px rgba(139, 92, 246, 0.18);
+}
+
+/* Bottom bar */
+.ft-bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: 1.375rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (min-width: 768px) {
+  .ft-bottom {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+  }
+
+  .ft-bottom-nav {
+    justify-self: center;
+  }
+
+  .ft-bottom-tagline {
+    justify-self: end;
+    text-align: right;
+  }
+}
+
+.ft-bottom-copy {
+  font-size: 0.8125rem;
+  color: rgba(250, 250, 251, 0.4);
+}
+
+.ft-bottom-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.25rem;
+}
+
+.ft-bottom-nav a {
+  position: relative;
+  font-size: 0.8125rem;
+  color: rgba(250, 250, 251, 0.42);
+  text-decoration: none;
+  transition: color 0.35s ease;
+}
+
+.ft-bottom-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: rgba(167, 139, 250, 0.55);
+  transition: width 0.35s ease;
+}
+
+.ft-bottom-nav a:hover {
+  color: rgba(196, 181, 253, 0.8);
+}
+
+.ft-bottom-nav a:hover::after {
+  width: 100%;
+}
+
+.ft-bottom-tagline {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(167, 139, 250, 0.45);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .ft-footer {
+    padding-bottom: clamp(7rem, 22vw, 10rem);
+  }
+
+  .ft-wordmark-sizer,
+  .ft-wm {
+    font-size: clamp(3.25rem, 20vw, 6.5rem);
+    letter-spacing: 0.04em;
+  }
+
+  .ft-bottom-tagline {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft-bg-noise,
+  .ft-bg-sweep,
+  .ft-bg-aurora,
+  .ft-wm--fill,
+  .ft-wordmark-sweep {
+    animation: none;
+  }
+
+  .ft-link:hover,
+  .ft-social-btn:hover,
+  .ft-schedule-btn:hover {
+    transform: none;
+  }
+}

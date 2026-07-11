@@ -65,7 +65,13 @@
   gap: 0.625rem;
 }
 
-/* ── Brand ── */
+.dock-zone--brand {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+}
+
+/* Legacy text brand — replaced by AstrenoxLogo */
 .dock-brand {
   font-family: var(--font-heading, ui-serif, Georgia, serif);
   font-size: 1.125rem;
