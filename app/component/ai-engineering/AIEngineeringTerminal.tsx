@@ -1,8 +1,18 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { EASE_PREMIUM } from "../v2/motion";
 
-const LINES = [
+const HERO_LINES = [
+  "Initializing Runtime...",
+  "Loading LLM...",
+  "Connecting APIs...",
+  "Deploying Services...",
+  "Inference Ready ✓",
+];
+
+const SECTION_LINES = [
   "$ astrenox deploy --env production",
   "→ Building container image...",
   "→ Running eval suite (Langfuse)...",
@@ -13,25 +23,32 @@ const LINES = [
   "✓ Inference ready",
 ];
 
-function AIEngineeringTerminal() {
+type Props = {
+  variant?: "hero" | "section";
+};
+
+function AIEngineeringTerminal({ variant = "section" }: Props) {
+  const lines = variant === "hero" ? HERO_LINES : SECTION_LINES;
   const [visible, setVisible] = useState<string[]>([]);
   const [cursor, setCursor] = useState(true);
+  const done = visible.length >= lines.length && visible[lines.length - 1] === lines[lines.length - 1];
 
   useEffect(() => {
+    setVisible([]);
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) {
-      setVisible(LINES);
+      setVisible(lines);
       return;
     }
 
     let lineIdx = 0;
     let charIdx = 0;
     const interval = setInterval(() => {
-      if (lineIdx >= LINES.length) {
+      if (lineIdx >= lines.length) {
         clearInterval(interval);
         return;
       }
-      const line = LINES[lineIdx];
+      const line = lines[lineIdx];
       charIdx += 1;
       setVisible((prev) => {
         const next = [...prev];
@@ -42,15 +59,52 @@ function AIEngineeringTerminal() {
         lineIdx += 1;
         charIdx = 0;
       }
-    }, 28);
+    }, variant === "hero" ? 32 : 28);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [lines, variant]);
 
   useEffect(() => {
     const blink = setInterval(() => setCursor((c) => !c), 530);
     return () => clearInterval(blink);
   }, []);
+
+  const isOk = (line: string) => line.includes("✓") || line.startsWith("✓");
+
+  if (variant === "hero") {
+    return (
+      <motion.div
+        className="aie-hero-terminal-wrap"
+        initial={{ opacity: 0, y: 28 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.75, delay: 0.15, ease: EASE_PREMIUM }}
+      >
+        <div className="aie-hero-terminal-glow" aria-hidden />
+        <div className="aie-terminal aie-terminal--hero">
+          <div className="aie-terminal-chrome">
+            <span />
+            <span />
+            <span />
+            <p>production — deploy console</p>
+          </div>
+          <div className="aie-terminal-body aie-terminal-body--hero">
+            {visible.map((line, i) => (
+              <p key={i} className={isOk(line) ? "aie-terminal-ok" : undefined}>
+                {line}
+              </p>
+            ))}
+            {!done && (
+              <span className={`aie-terminal-cursor ${cursor ? "is-on" : ""}`}>▋</span>
+            )}
+          </div>
+          <div className="aie-terminal-status" aria-hidden>
+            <span className="aie-terminal-status-dot" />
+            Live
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <div className="aie-terminal" aria-hidden>
@@ -62,13 +116,11 @@ function AIEngineeringTerminal() {
       </div>
       <div className="aie-terminal-body">
         {visible.map((line, i) => (
-          <p key={i} className={line.startsWith("✓") ? "aie-terminal-ok" : undefined}>
+          <p key={i} className={isOk(line) ? "aie-terminal-ok" : undefined}>
             {line}
           </p>
         ))}
-        {visible.length < LINES.length && (
-          <span className={`aie-terminal-cursor ${cursor ? "is-on" : ""}`}>▋</span>
-        )}
+        {!done && <span className={`aie-terminal-cursor ${cursor ? "is-on" : ""}`}>▋</span>}
       </div>
     </div>
   );

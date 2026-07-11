@@ -6,7 +6,9 @@ import Link from "next/link";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { aiEngineeringPageContent as c } from "@/app/content/ai-engineering-content";
 import { EASE_PREMIUM } from "../v2/motion";
-import AIEngineeringHeroNetwork from "./AIEngineeringHeroNetwork";
+import AIEngineeringFailurePipeline from "./AIEngineeringFailurePipeline";
+import AIEngineeringTechStack from "./AIEngineeringTechStack";
+import AIEngineeringHeroBackdrop from "./AIEngineeringHeroBackdrop";
 import AIEngineeringStackVisual from "./AIEngineeringStackVisual";
 import AIEngineeringTerminal from "./AIEngineeringTerminal";
 import "./ai-engineering.css";
@@ -85,11 +87,12 @@ export default function AIEngineeringPageClient() {
 
   return (
     <Shell>
-      {/* Hero — full-bleed network, content overlay */}
+      {/* Hero — cinematic backdrop + deployment console */}
       <section className="aie-hero" aria-labelledby="aie-hero-title">
-        <AIEngineeringHeroNetwork />
-        <div className="aie-inner aie-hero-content">
+        <AIEngineeringHeroBackdrop />
+        <div className="aie-inner aie-hero-grid">
           <motion.div
+            className="aie-hero-copy"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE_PREMIUM }}
@@ -115,44 +118,30 @@ export default function AIEngineeringPageClient() {
               </Link>
             </div>
           </motion.div>
+          <AIEngineeringTerminal variant="hero" />
         </div>
       </section>
 
-      {/* Section 1 — Split overview */}
+      {/* Section 1 — Overview + failure pipeline */}
       <section className="aie-inner aie-block aie-overview" aria-labelledby="aie-overview-title">
-        <div className="aie-split">
+        <div className="aie-split aie-overview-split">
           <motion.div
-            className="aie-split-copy"
+            className="aie-overview-copy"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
           >
-            <motion.h2 id="aie-overview-title" variants={fadeUp} custom={0}>
+            <motion.h2 id="aie-overview-title" className="aie-overview-title" variants={fadeUp} custom={0}>
               {c.overview.title}
             </motion.h2>
             {c.overview.paragraphs.map((p, i) => (
-              <motion.p key={i} className="aie-body" variants={fadeUp} custom={i + 1}>
+              <motion.p key={i} className="aie-overview-body" variants={fadeUp} custom={i + 1}>
                 {p}
               </motion.p>
             ))}
           </motion.div>
-          <motion.div
-            className="aie-split-visual aie-gap-visual"
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, ease: EASE_PREMIUM }}
-            aria-hidden
-          >
-            <div className="aie-gap-ring aie-gap-ring--1" />
-            <div className="aie-gap-ring aie-gap-ring--2" />
-            <div className="aie-gap-core">
-              <span>PoC</span>
-              <span className="aie-gap-arrow">→</span>
-              <span>Production</span>
-            </div>
-          </motion.div>
+          <AIEngineeringFailurePipeline />
         </div>
       </section>
 
@@ -338,28 +327,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 9 — Tech stack chips */}
-      <section className="aie-inner aie-block aie-tech" aria-labelledby="aie-tech-title">
-        <h2 id="aie-tech-title" className="aie-sr-only">
-          Technologies referenced in our architecture
-        </h2>
-        <p className="aie-tech-lead">Production stack technologies from our engineering architecture</p>
-        <div className="aie-chip-cloud">
-          {c.techStack.map((tech, i) => (
-            <motion.span
-              key={tech}
-              className="aie-chip"
-              initial={{ opacity: 0, scale: 0.92 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: (i % 8) * 0.03, ease: EASE_PREMIUM }}
-              whileHover={{ scale: 1.04 }}
-            >
-              {tech}
-            </motion.span>
-          ))}
-        </div>
-      </section>
+      <AIEngineeringTechStack />
 
       {/* Section 10 — Engagement comparison */}
       <section className="aie-block aie-block--alt" aria-labelledby="aie-engage-title">
