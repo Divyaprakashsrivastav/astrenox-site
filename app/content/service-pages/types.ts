@@ -54,6 +54,9 @@ export type ServicePageChapter = {
   overview?: {
     title?: string;
     paragraphs: string[];
+    layout?: "fan" | "grid" | "timeline";
+    cards?: Array<{ heading: string; body: string }>;
+    steps?: Array<{ name: string; description: string }>;
   };
   contentSections?: Array<{
     title?: string;
@@ -129,7 +132,16 @@ export type ServicePageContent = {
   };
   overview?: {
     title?: string;
-    paragraphs: string[];
+    label?: string;
+    intro?: string;
+    paragraphs?: string[];
+    items?: Array<{
+      title: string;
+      description?: string;
+      paragraphs?: string[];
+      enables?: string[];
+      icon: ServiceIconName;
+    }>;
   };
   engineeringCapabilities?: {
     label: string;
@@ -232,4 +244,8 @@ export type ServicePageContent = {
     primaryHref: string;
     secondaryHref?: string;
   };
+  /** When true, interventions renders before capabilities on standard service pages. */
+  capabilitiesAfterInterventions?: boolean;
+  /** When true, service offerings renders after impact on standard service pages. */
+  serviceOfferingsAfterImpact?: boolean;
 };

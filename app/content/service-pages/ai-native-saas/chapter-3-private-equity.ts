@@ -6,13 +6,33 @@ export const chapter3PrivateEquity: ServicePageChapter = {
   subtitle: "Institutional Intelligence for Deal Execution and Portfolio Value Creation",
   overview: {
     title: "Solution Brief",
-    paragraphs: [
-      "Private equity firms do not lack information.",
-      "They lack a system that can turn scattered deal knowledge into repeatable conviction.",
-      "Most private equity knowledge is trapped across deal rooms, CIMs, financial models, expert calls, CRM notes, IC memos, portfolio reports, and individual partner memory. This creates friction across sourcing, diligence, investment committee preparation, portfolio monitoring, and post-merger value creation.",
-      "We engineer secure AI intelligence layers for private equity firms that unify these fragmented sources into one structured execution system. The platform organizes firm knowledge around companies, sectors, metrics, risks, people, funds, historical decisions, and value creation patterns.",
-      "Instead of treating AI as simple document search, the system acts as a private-capital intelligence layer. Every new document, call note, memo, model, and portfolio update enriches the firm's knowledge base, improving future diligence, sourcing, decision-making, and portfolio oversight.",
-      "The result is faster diligence, stronger investment consistency, better portfolio monitoring, and a firm-wide memory that compounds with every deal reviewed.",
+    layout: "fan",
+    paragraphs: [],
+    cards: [
+      {
+        heading: "The real gap",
+        body: "Private equity firms do not lack information.",
+      },
+      {
+        heading: "Conviction system",
+        body: "They lack a system that can turn scattered deal knowledge into repeatable conviction.",
+      },
+      {
+        heading: "Scattered knowledge",
+        body: "Most private equity knowledge is trapped across deal rooms, CIMs, financial models, expert calls, CRM notes, IC memos, portfolio reports, and individual partner memory. This creates friction across sourcing, diligence, investment committee preparation, portfolio monitoring, and post-merger value creation.",
+      },
+      {
+        heading: "Unified platform",
+        body: "We engineer secure AI intelligence layers for private equity firms that unify these fragmented sources into one structured execution system. The platform organizes firm knowledge around companies, sectors, metrics, risks, people, funds, historical decisions, and value creation patterns.",
+      },
+      {
+        heading: "Intelligence layer",
+        body: "Instead of treating AI as simple document search, the system acts as a private-capital intelligence layer. Every new document, call note, memo, model, and portfolio update enriches the firm's knowledge base, improving future diligence, sourcing, decision-making, and portfolio oversight.",
+      },
+      {
+        heading: "Compounding memory",
+        body: "The result is faster diligence, stronger investment consistency, better portfolio monitoring, and a firm-wide memory that compounds with every deal reviewed.",
+      },
     ],
   },
   capabilities: {

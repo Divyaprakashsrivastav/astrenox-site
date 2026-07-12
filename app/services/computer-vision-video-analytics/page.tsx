@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ComputerVisionPage() {
   return (
     <SiteLayout>
-      <ServicePage content={computerVisionContent} visual="vision" />
+      <ServicePage content={computerVisionContent} visual="vision" heroVisual={null} />
     </SiteLayout>
   );
 }

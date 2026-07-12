@@ -26,14 +26,16 @@ const fadeUp = {
 
 type ServicePageHeroProps = {
   hero: ServicePageContent["hero"];
+  intro?: ServicePageContent["intro"];
   visual: HeroVisualVariant;
-  HeroVisualComponent?: ComponentType;
+  HeroVisualComponent?: ComponentType | null;
   HeroAmbientComponent?: ComponentType;
   heroSectionClassName?: string;
 };
 
 function ServicePageHero({
   hero,
+  intro,
   visual,
   HeroVisualComponent,
   HeroAmbientComponent,
@@ -41,10 +43,11 @@ function ServicePageHero({
 }: ServicePageHeroProps) {
   const titleLines = hero.title.split("\n");
   const visualConfig = heroVisualConfigs[visual];
+  const showHeroVisual = HeroVisualComponent !== null;
 
   return (
     <section
-      className={`mvp-inner mvp-hero-section${heroSectionClassName ? ` ${heroSectionClassName}` : ""}`}
+      className={`mvp-inner mvp-hero-section${!showHeroVisual ? " mvp-hero-section--copy-only" : ""}${heroSectionClassName ? ` ${heroSectionClassName}` : ""}`}
       aria-labelledby="service-hero-title"
     >
       {HeroAmbientComponent ? <HeroAmbientComponent /> : null}
@@ -82,6 +85,14 @@ function ServicePageHero({
             </MagneticText>
           ) : null}
 
+          {intro && intro.paragraphs.length > 0 ? (
+            <motion.div className="mvp-hero-intro" variants={fadeUp}>
+              {intro.paragraphs.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+              ))}
+            </motion.div>
+          ) : null}
+
           <motion.div className="mvp-hero-ctas" variants={fadeUp}>
             <Link href={hero.primaryHref} className="mvp-btn-primary">
               {hero.primaryCta}
@@ -99,17 +110,19 @@ function ServicePageHero({
           )}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.85, delay: 0.2, ease: EASE_PREMIUM }}
-        >
-          {HeroVisualComponent ? (
-            <HeroVisualComponent />
-          ) : (
-            <HeroVisual cards={visualConfig.cards} connections={[...visualConfig.connections]} />
-          )}
-        </motion.div>
+        {showHeroVisual ? (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.85, delay: 0.2, ease: EASE_PREMIUM }}
+          >
+            {HeroVisualComponent ? (
+              <HeroVisualComponent />
+            ) : (
+              <HeroVisual cards={visualConfig.cards} connections={[...visualConfig.connections]} />
+            )}
+          </motion.div>
+        ) : null}
       </div>
     </section>
   );

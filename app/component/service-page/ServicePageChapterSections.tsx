@@ -6,7 +6,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ServicePageChapter } from "@/app/content/service-pages/types";
 import { EASE_PREMIUM } from "../v2/motion";
-import { SERVICE_ICONS } from "./service-icons";
+import CapabilitiesShowcase from "./CapabilitiesShowcase";
+import DeliverablesCarousel3D from "./DeliverablesCarousel3D";
+import FanOverviewCards from "./FanOverviewCards";
+import InteractiveOverviewGrid from "./InteractiveOverviewGrid";
+import OverviewTimeline from "./OverviewTimeline";
+import TagMarquee from "./TagMarquee";
+import "./service-page-extra.css";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -35,6 +41,98 @@ function SectionHeaderBlock({ label, title }: { label?: string; title?: string }
 function SectionIntro({ intro }: { intro?: string }) {
   if (!intro) return null;
   return <p className="mvp-section-intro">{intro}</p>;
+}
+
+function isCompactChapterCta(cta: NonNullable<ServicePageChapter["cta"]>) {
+  return !cta.title && !cta.subtitle && !(cta.paragraphs && cta.paragraphs.length > 0);
+}
+
+function ChapterCtaCard({
+  cta,
+  index,
+}: {
+  cta: NonNullable<ServicePageChapter["cta"]>;
+  index: number;
+}) {
+  return (
+    <motion.article
+      className="mvp-glass-card mvp-cap-card mvp-deliverable-card mvp-impact-cta-card"
+      custom={index}
+      variants={fadeUp}
+    >
+      <div className="mvp-impact-cta-card-buttons mvp-cta-buttons mvp-cta-buttons-wrap">
+        <Link href={cta.primaryHref} className="mvp-btn-primary">
+          {cta.primaryCta}
+          <ArrowRight size={16} aria-hidden />
+        </Link>
+        {cta.secondaryCta && cta.secondaryHref ? (
+          <Link href={cta.secondaryHref} className="mvp-btn-secondary">
+            {cta.secondaryCta}
+          </Link>
+        ) : null}
+        {cta.tertiaryCta && cta.tertiaryHref ? (
+          <Link href={cta.tertiaryHref} className="mvp-btn-secondary">
+            {cta.tertiaryCta}
+          </Link>
+        ) : null}
+      </div>
+    </motion.article>
+  );
+}
+
+function ChapterImpactGrid({
+  items,
+  cta,
+}: {
+  items: Array<{ title: string; description: string }>;
+  cta?: NonNullable<ServicePageChapter["cta"]>;
+}) {
+  return (
+    <motion.div
+      className={`mvp-cap-grid mvp-deliverables-grid svc-stack-grid--compact${cta ? " svc-impact-grid-with-cta" : ""}`}
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+    >
+      {items.map((item, i) => (
+        <motion.article
+          key={item.title}
+          className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
+          custom={i}
+          variants={fadeUp}
+        >
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </motion.article>
+      ))}
+      {cta ? <ChapterCtaCard cta={cta} index={items.length} /> : null}
+    </motion.div>
+  );
+}
+
+function ChapterHeroCtas({ links }: { links: Array<{ label: string; href: string }> }) {
+  if (links.length === 0) return null;
+  return (
+    <motion.div
+      className="mvp-cta-buttons mvp-cta-buttons-wrap"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+    >
+      {links.map((link, i) => (
+        <Link
+          key={link.label}
+          href={link.href}
+          className={i === 0 ? "mvp-btn-primary" : "mvp-btn-secondary"}
+        >
+          {link.label}
+          {i === 0 ? <ArrowRight size={16} aria-hidden /> : null}
+        </Link>
+      ))}
+    </motion.div>
+  );
 }
 
 function ChapterCtaPanel({ cta }: { cta: NonNullable<ServicePageChapter["cta"]> }) {
@@ -90,6 +188,8 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
     cta,
   } = chapter;
 
+  const heroCtasInOverview = Boolean(heroCtas?.length && overview?.layout === "timeline");
+
   return (
     <div id={id} className="mvp-chapter">
       <section className="mvp-inner mvp-section mvp-chapter-hero" aria-labelledby={`${id}-title`}>
@@ -105,24 +205,40 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
           {title}
         </motion.h2>
         {subtitle ? <p className="mvp-chapter-subtitle">{subtitle}</p> : null}
-        {heroCtas && heroCtas.length > 0 ? (
-          <div className="mvp-cta-buttons mvp-cta-buttons-wrap">
-            {heroCtas.map((link, i) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={i === 0 ? "mvp-btn-primary" : "mvp-btn-secondary"}
-              >
-                {link.label}
-                {i === 0 ? <ArrowRight size={16} aria-hidden /> : null}
-              </Link>
-            ))}
-          </div>
+        {heroCtas && heroCtas.length > 0 && !heroCtasInOverview ? (
+          <ChapterHeroCtas links={heroCtas} />
         ) : null}
       </section>
 
       {overview ? (
-        <section className="mvp-inner mvp-section" aria-labelledby={`${id}-overview`}>
+        <section
+          className={`mvp-inner mvp-section mvp-chapter-overview${overview.layout === "timeline" ? " mvp-chapter-overview--timeline" : ""}`}
+          aria-labelledby={overview.title ? `${id}-overview` : undefined}
+        >
+          {overview.layout === "timeline" ? (
+            <>
+              <OverviewTimeline
+                title={overview.title}
+                titleId={overview.title ? `${id}-overview` : undefined}
+                steps={
+                  overview.steps ??
+                  overview.cards?.map((card) => ({
+                    name: card.heading,
+                    description: card.body,
+                  })) ??
+                  overview.paragraphs.map((description, i) => ({
+                    name: `Point ${i + 1}`,
+                    description,
+                  }))
+                }
+              />
+              {heroCtasInOverview && heroCtas ? (
+                <div className="mvp-overview-timeline-ctas">
+                  <ChapterHeroCtas links={heroCtas} />
+                </div>
+              ) : null}
+            </>
+          ) : (
           <div className="mvp-about-grid">
             {overview.title ? (
               <motion.h3
@@ -136,18 +252,52 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
                 {overview.title}
               </motion.h3>
             ) : null}
+            {overview.layout === "fan" ? (
+              <FanOverviewCards
+                cards={
+                  overview.cards ??
+                  overview.paragraphs.map((body, i) => ({
+                    heading: `Point ${i + 1}`,
+                    body,
+                  }))
+                }
+              />
+            ) : overview.layout === "grid" ? (
+              <InteractiveOverviewGrid
+                cards={
+                  overview.cards ??
+                  overview.paragraphs.map((body, i) => ({
+                    heading: `Point ${i + 1}`,
+                    body,
+                  }))
+                }
+              />
+            ) : (
             <motion.div
-              className={overview.title ? "mvp-about-text" : "mvp-about-text mvp-about-text-full"}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              className={
+                overview.title
+                  ? "mvp-about-text mvp-about-text-cards"
+                  : "mvp-about-text mvp-about-text-full mvp-about-text-cards"
+              }
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.55, delay: 0.1, ease: EASE_PREMIUM }}
             >
-              {overview.paragraphs.map((p) => (
-                <p key={p.slice(0, 48)}>{p}</p>
+              {overview.paragraphs.map((p, i) => (
+                <motion.article
+                  key={p.slice(0, 48)}
+                  className="mvp-glass-card mvp-about-paragraph-card"
+                  custom={i}
+                  variants={fadeUp}
+                >
+                  <p>{p}</p>
+                </motion.article>
               ))}
             </motion.div>
+            )}
           </div>
+          )}
         </section>
       ) : null}
 
@@ -167,21 +317,6 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
               {section.title}
             </motion.h3>
           ) : null}
-          {section.tags && section.tags.length > 0 ? (
-            <motion.div
-              className="mvp-pills"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-            >
-              {section.tags.map((tag, i) => (
-                <motion.span key={tag} className="mvp-pill" custom={i} variants={fadeUp}>
-                  {tag}
-                </motion.span>
-              ))}
-            </motion.div>
-          ) : null}
           {section.paragraphs && section.paragraphs.length > 0 ? (
             <motion.div
               className="mvp-about-text mvp-about-text-full"
@@ -195,31 +330,21 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
               ))}
             </motion.div>
           ) : null}
+          {section.tags && section.tags.length > 0 ? (
+            <TagMarquee tags={section.tags} label={section.title ?? "Topic tags"} />
+          ) : null}
         </section>
       ))}
 
       {tags && tags.length > 0 ? (
         <section className="mvp-inner mvp-section">
-          <motion.div
-            className="mvp-pills"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            {tags.map((tag, i) => (
-              <motion.span key={tag} className="mvp-pill" custom={i} variants={fadeUp}>
-                {tag}
-              </motion.span>
-            ))}
-          </motion.div>
+          <TagMarquee tags={tags} label="Topic tags" />
         </section>
       ) : null}
 
       {methodology ? (
         <section className="mvp-inner mvp-section" aria-labelledby={`${id}-methodology`}>
           <SectionHeaderBlock title={methodology.title} />
-          <SectionIntro intro={methodology.intro} />
           <motion.div
             className="mvp-cap-grid"
             variants={staggerContainer}
@@ -239,6 +364,7 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
               </motion.article>
             ))}
           </motion.div>
+          <SectionIntro intro={methodology.intro} />
         </section>
       ) : null}
 
@@ -278,44 +404,11 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
         >
           <SectionHeaderBlock label={capabilities.label} title={capabilities.title} />
           <SectionIntro intro={capabilities.intro} />
-          <motion.div
-            className="mvp-cap-grid"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            {capabilities.items.map((cap, i) => {
-              const Icon = SERVICE_ICONS[cap.icon];
-              const body = cap.paragraphs ?? (cap.description ? [cap.description] : []);
-              return (
-                <motion.article
-                  key={cap.title}
-                  className="mvp-glass-card mvp-cap-card"
-                  custom={i}
-                  variants={fadeUp}
-                >
-                  <div className="mvp-feature-icon">
-                    <Icon size={20} aria-hidden />
-                  </div>
-                  <h3>{cap.title}</h3>
-                  {body.map((paragraph) => (
-                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-                  ))}
-                  {cap.enables && cap.enables.length > 0 ? (
-                    <div className="mvp-cap-enables">
-                      <p className="mvp-cap-enables-label">What it enables:</p>
-                      <ul>
-                        {cap.enables.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </motion.article>
-              );
-            })}
-          </motion.div>
+          <CapabilitiesShowcase
+            items={capabilities.items}
+            icons={capabilities.items.map((cap) => cap.icon)}
+            navLabel={capabilities.title || "Capabilities"}
+          />
         </section>
       ) : null}
 
@@ -323,37 +416,7 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
         <section className="mvp-inner mvp-section" aria-labelledby={`${id}-integrations`}>
           <SectionHeaderBlock label={integrations.label} title={integrations.title} />
           <SectionIntro intro={integrations.intro} />
-          <motion.div
-            className="mvp-cap-grid mvp-deliverables-grid"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            {integrations.items.map((item, i) => (
-              <motion.article
-                key={item.title}
-                className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
-                custom={i}
-                variants={fadeUp}
-              >
-                <h3>{item.title}</h3>
-                {item.paragraphs?.map((p) => (
-                  <p key={p.slice(0, 48)}>{p}</p>
-                ))}
-                {item.bullets && item.bullets.length > 0 ? (
-                  <ul className="mvp-cap-enables-list">
-                    {item.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                ) : null}
-                {item.afterBullets?.map((p) => (
-                  <p key={p.slice(0, 48)}>{p}</p>
-                ))}
-              </motion.article>
-            ))}
-          </motion.div>
+          <DeliverablesCarousel3D items={integrations.items} />
         </section>
       ) : null}
 
@@ -365,7 +428,7 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
         >
           <SectionHeaderBlock label={workflow.label} title={workflow.title} />
           <SectionIntro intro={workflow.intro} />
-          <div className="mvp-timeline">
+          <div className="mvp-timeline mvp-timeline--roadmap">
             {workflow.steps.map((step, i) => (
               <motion.div
                 key={step.name}
@@ -389,29 +452,14 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
         <section className="mvp-inner mvp-section" aria-labelledby={`${id}-impact`}>
           <SectionHeaderBlock label={impact.label} title={impact.title} />
           <SectionIntro intro={impact.intro} />
-          <motion.div
-            className="mvp-cap-grid mvp-deliverables-grid"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            {impact.items.map((item, i) => (
-              <motion.article
-                key={item.title}
-                className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
-                custom={i}
-                variants={fadeUp}
-              >
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </motion.article>
-            ))}
-          </motion.div>
+          <ChapterImpactGrid
+            items={impact.items}
+            cta={cta && isCompactChapterCta(cta) ? cta : undefined}
+          />
         </section>
       ) : null}
 
-      {cta ? (
+      {cta && !isCompactChapterCta(cta) ? (
         <section className="mvp-inner mvp-section">
           <ChapterCtaPanel cta={cta} />
         </section>

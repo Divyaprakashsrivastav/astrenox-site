@@ -2,7 +2,6 @@ import type { ServicePageChapter } from "../types";
 
 export const chapter1ProductDevelopment: ServicePageChapter = {
   id: "section-1",
-  label: "Section 1",
   title: "Enterprise AI-Native Product Development",
   overview: {
     paragraphs: [
@@ -31,28 +30,36 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
       },
     ],
   },
-  featureItems: {
+  capabilities: {
     title: "Engineering Capabilities",
     items: [
       {
         title: "AI-Native SDLC Transformation",
-        description:
+        icon: "Workflow",
+        paragraphs: [
           "We inject specialized AI agents directly into your development lifecycle to eliminate process bottlenecks, enforce architectural standards, and radically accelerate code generation.",
+        ],
       },
       {
         title: "Agentic Legacy Modernization",
-        description:
+        icon: "Layers",
+        paragraphs: [
           "We safely untangle technical debt. Our teams utilize AI-assisted refactoring to rebuild outdated platforms at pace, recovering trapped value locked in legacy systems without operational disruption.",
+        ],
       },
       {
         title: "Internal Capability Transfer",
-        description:
+        icon: "Users",
+        paragraphs: [
           "We do not just deliver code; we upskill your engineering bench. By embedding AI-native workflows into your daily operations, your team becomes fully autonomous.",
+        ],
       },
       {
         title: "All Builders, Zero Overhead",
-        description:
+        icon: "Rocket",
+        paragraphs: [
           "Our technical consulting model eliminates the coordination tax. Everyone on your engagement writes code, designs systems, or shapes the product—deploying senior expertise as force multipliers rather than managers.",
+        ],
       },
     ],
   },

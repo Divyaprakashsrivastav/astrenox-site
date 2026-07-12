@@ -232,3 +232,30 @@
     animation: none;
   }
 }
+
+/* Compact variant — content-height cards (impact sections) */
+.carousel3d-wrap--compact {
+  --carousel3d-face-w: min(272px, 68vw);
+  --carousel3d-face-h: 128px;
+  height: calc(var(--carousel3d-face-h) + 96px);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.carousel3d-wrap--compact .carousel3d-face {
+  padding: 0.75rem 1rem;
+  justify-content: flex-start;
+}
+
+.carousel3d-wrap--compact .carousel3d-face-icon {
+  margin-bottom: 0.35rem;
+}
+
+.carousel3d-wrap--compact .carousel3d-face-title {
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 767px) {
+  .carousel3d-wrap--compact {
+    --carousel3d-face-h: 120px;
+  }
+}

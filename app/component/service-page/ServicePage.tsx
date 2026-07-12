@@ -21,7 +21,7 @@ type ServicePageProps = {
   WorkflowComponent?: ComponentType<{ workflow: WorkflowSection }>;
   CapabilitiesComponent?: ComponentType<{ capabilities: CapabilitiesSection }>;
   ServiceOfferingsComponent?: ComponentType<{ serviceOfferings: ServiceOfferingsSection }>;
-  heroVisual?: ComponentType;
+  heroVisual?: ComponentType | null;
   heroAmbient?: ComponentType;
   heroSectionClassName?: string;
 };
@@ -45,6 +45,7 @@ export default function ServicePage({
       ) : (
         <ServicePageHero
           hero={content.hero}
+          intro={content.intro}
           visual={visual}
           HeroVisualComponent={heroVisual}
           HeroAmbientComponent={heroAmbient}

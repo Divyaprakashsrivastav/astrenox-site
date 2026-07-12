@@ -10,6 +10,7 @@ import AnimatedCounter from "../mvp-studio/AnimatedCounter";
 import MVPStudioFAQ from "../mvp-studio/MVPStudioFAQ";
 import { SERVICE_ICONS } from "./service-icons";
 import StackCarousel3D from "./StackCarousel3D";
+import CapabilitiesShowcase from "./CapabilitiesShowcase";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -70,7 +71,6 @@ function ServicePageSections({
   ServiceOfferingsComponent?: ComponentType<{ serviceOfferings: ServiceOfferingsSection }>;
 }) {
   const {
-    intro,
     overview,
     engineeringCapabilities,
     capabilities,
@@ -86,6 +86,8 @@ function ServicePageSections({
     testimonials,
     faq,
     cta,
+    capabilitiesAfterInterventions,
+    serviceOfferingsAfterImpact,
   } = content;
 
   const isEngineeringLayout = Boolean(engineeringCapabilities);
@@ -135,46 +137,17 @@ function ServicePageSections({
         className="mvp-inner mvp-section"
         aria-labelledby="service-cap-title"
       >
-        <SectionHeaderBlock label={capabilities.label ?? ""} title={capabilities.title} />
+        <SectionHeaderBlock
+          label={capabilities.label ?? ""}
+          title={capabilities.title}
+          titleId="service-cap-title"
+        />
         <SectionIntro intro={capabilities.intro} />
-        <motion.div
-          className="mvp-cap-grid"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-        >
-          {capabilities.items.map((cap, i) => {
-            const Icon = SERVICE_ICONS[cap.icon];
-            const body = cap.paragraphs ?? (cap.description ? [cap.description] : []);
-            return (
-              <motion.article
-                key={cap.title}
-                className="mvp-glass-card mvp-cap-card"
-                custom={i}
-                variants={fadeUp}
-              >
-                <div className="mvp-feature-icon">
-                  <Icon size={20} aria-hidden />
-                </div>
-                <h3>{cap.title}</h3>
-                {body.map((paragraph) => (
-                  <p key={paragraph.slice(0, 48)}>{paragraph}</p>
-                ))}
-                {cap.enables && cap.enables.length > 0 && (
-                  <div className="mvp-cap-enables">
-                    <p className="mvp-cap-enables-label">What it enables:</p>
-                    <ul>
-                      {cap.enables.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </motion.article>
-            );
-          })}
-        </motion.div>
+        <CapabilitiesShowcase
+          items={capabilities.items}
+          icons={capabilities.items.map((cap) => cap.icon)}
+          navLabel={capabilities.title || "Capabilities"}
+        />
       </section>
     )
   ) : null;
@@ -313,49 +286,30 @@ function ServicePageSections({
     <section className="mvp-inner mvp-section" aria-labelledby="service-impact-title">
       <SectionHeaderBlock label={impact.label ?? ""} title={impact.title} />
       <SectionIntro intro={impact.intro} />
-      <motion.div
-        className="mvp-cap-grid mvp-deliverables-grid"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-      >
-        {impact.items.map((item, i) => (
-          <motion.article
-            key={item.title}
-            className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
-            custom={i}
-            variants={fadeUp}
-          >
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </motion.article>
-        ))}
-      </motion.div>
+      <StackCarousel3D items={impact.items} variant="compact" />
     </section>
   ) : null;
 
   return (
     <>
-      {intro ? (
-        <section className="mvp-inner mvp-section" aria-labelledby="service-intro-title">
-          <motion.div
-            className="mvp-about-text mvp-about-text-full"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-          >
-            {intro.paragraphs.map((p) => (
-              <p key={p.slice(0, 48)}>{p}</p>
-            ))}
-          </motion.div>
-        </section>
-      ) : null}
-
       {overview ? (
         OverviewComponent ? (
           <OverviewComponent overview={overview} />
+        ) : overview.items && overview.items.length > 0 ? (
+          <section className="mvp-inner mvp-section" aria-labelledby="service-overview-title">
+            <SectionHeaderBlock
+              label={overview.label ?? ""}
+              title={overview.title ?? ""}
+              titleId="service-overview-title"
+            />
+            <SectionIntro intro={overview.intro} />
+            <CapabilitiesShowcase
+              items={overview.items}
+              icons={overview.items.map((item) => item.icon)}
+              navLabel={overview.title || "Product brief"}
+              compact
+            />
+          </section>
         ) : (
           <section className="mvp-inner mvp-section" aria-labelledby="service-overview-title">
             <div className="mvp-about-grid">
@@ -372,14 +326,25 @@ function ServicePageSections({
                 </motion.h2>
               ) : null}
               <motion.div
-                className={overview.title ? "mvp-about-text" : "mvp-about-text mvp-about-text-full"}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className={
+                  overview.title
+                    ? "mvp-about-text mvp-about-text-cards"
+                    : "mvp-about-text mvp-about-text-full mvp-about-text-cards"
+                }
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: 0.1, ease: EASE_PREMIUM }}
               >
-                {overview.paragraphs.map((p) => (
-                  <p key={p.slice(0, 48)}>{p}</p>
+                {(overview.paragraphs ?? []).map((p, i) => (
+                  <motion.article
+                    key={p.slice(0, 48)}
+                    className="mvp-glass-card mvp-about-paragraph-card"
+                    custom={i}
+                    variants={fadeUp}
+                  >
+                    <p>{p}</p>
+                  </motion.article>
                 ))}
               </motion.div>
             </div>
@@ -435,11 +400,30 @@ function ServicePageSections({
         </>
       ) : (
         <>
-          {capabilitiesSection}
-          {interventionsSection}
-          {serviceOfferingsSection}
-          {workflowSection}
-          {impactSection}
+          {capabilitiesAfterInterventions ? (
+            <>
+              {interventionsSection}
+              {capabilitiesSection}
+            </>
+          ) : (
+            <>
+              {capabilitiesSection}
+              {interventionsSection}
+            </>
+          )}
+          {serviceOfferingsAfterImpact ? (
+            <>
+              {workflowSection}
+              {impactSection}
+              {serviceOfferingsSection}
+            </>
+          ) : (
+            <>
+              {serviceOfferingsSection}
+              {workflowSection}
+              {impactSection}
+            </>
+          )}
           {stackSection}
           {deliverablesSection}
         </>

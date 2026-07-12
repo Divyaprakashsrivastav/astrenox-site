@@ -6,11 +6,28 @@ export const chapter2SupplyChain: ServicePageChapter = {
   title: "Engineering AI for Supply Chain Operations",
   subtitle: "From Supply Chain Visibility to Autonomous Execution",
   overview: {
-    paragraphs: [
-      "Dashboards tell you what happened.",
-      "Modern supply chains need systems that can decide what should happen next.",
-      "We engineer AI-powered supply chain execution layers that connect demand signals, inventory positions, supplier performance, purchase orders, logistics events, and ERP data into one operational intelligence system.",
-      "Instead of adding another reporting dashboard, we build AI pipelines and autonomous agents that work inside your existing ERP, WMS, TMS, procurement tools, and planning workflows — helping teams act faster, reduce manual follow-ups, and respond to disruptions before they become expensive.",
+    layout: "timeline",
+    paragraphs: [],
+    steps: [
+      {
+        name: "The visibility gap",
+        description: "Dashboards tell you what happened.",
+      },
+      {
+        name: "Decision over reporting",
+        description:
+          "Modern supply chains need systems that can decide what should happen next.",
+      },
+      {
+        name: "Connected execution layer",
+        description:
+          "We engineer AI-powered supply chain execution layers that connect demand signals, inventory positions, supplier performance, purchase orders, logistics events, and ERP data into one operational intelligence system.",
+      },
+      {
+        name: "Agents inside your stack",
+        description:
+          "Instead of adding another reporting dashboard, we build AI pipelines and autonomous agents that work inside your existing ERP, WMS, TMS, procurement tools, and planning workflows — helping teams act faster, reduce manual follow-ups, and respond to disruptions before they become expensive.",
+      },
     ],
   },
   heroCtas: [

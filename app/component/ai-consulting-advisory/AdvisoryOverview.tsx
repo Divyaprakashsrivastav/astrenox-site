@@ -76,7 +76,7 @@ function AdvisoryOverview({ overview }: { overview: OverviewSection }) {
               transition={{ duration: 0.65, delay: 0.12, ease: EASE_PREMIUM }}
             >
               <div className="adv-overview-editorial-sheen" aria-hidden />
-              {overview.paragraphs.map((paragraph, i) => (
+              {(overview.paragraphs ?? []).map((paragraph, i) => (
                 <motion.p
                   key={paragraph.slice(0, 48)}
                   initial={{ opacity: 0, y: 12 }}

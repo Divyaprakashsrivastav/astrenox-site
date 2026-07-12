@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AINativeSaasPage() {
   return (
     <SiteLayout>
-      <ServicePage content={aiNativeSaasContent} visual="saas" />
+      <ServicePage content={aiNativeSaasContent} visual="saas" heroVisual={null} />
     </SiteLayout>
   );
 }

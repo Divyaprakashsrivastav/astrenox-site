@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function IntelligentAutomationsPage() {
   return (
     <SiteLayout>
-      <ServicePage content={intelligentAutomationsContent} visual="automations" />
+      <ServicePage content={intelligentAutomationsContent} visual="automations" heroVisual={null} />
     </SiteLayout>
   );
 }

@@ -42,10 +42,10 @@ function useMinWidth(minWidth: number) {
   return matches;
 }
 
-function StackGrid({ items }: { items: StackCarouselItem[] }) {
+function StackGrid({ items, compact }: { items: StackCarouselItem[]; compact?: boolean }) {
   return (
     <motion.div
-      className="mvp-cap-grid mvp-deliverables-grid"
+      className={`mvp-cap-grid mvp-deliverables-grid${compact ? " svc-stack-grid--compact" : ""}`}
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
@@ -74,13 +74,20 @@ function StackGrid({ items }: { items: StackCarouselItem[] }) {
   );
 }
 
-function StackCarousel3D({ items }: { items: StackCarouselItem[] }) {
+function StackCarousel3D({
+  items,
+  variant = "default",
+}: {
+  items: StackCarouselItem[];
+  variant?: "default" | "compact" | "grid";
+}) {
   const reducedMotion = useReducedMotion();
   const isDesktop = useMinWidth(768);
-  const showCarousel = isDesktop && !reducedMotion;
+  const compact = variant === "compact" || variant === "grid";
+  const showCarousel = variant !== "grid" && isDesktop && !reducedMotion;
 
   if (!showCarousel) {
-    return <StackGrid items={items} />;
+    return <StackGrid items={items} compact={compact} />;
   }
 
   const radius = items.length <= 4 ? 280 : items.length <= 6 ? 325 : 365;
@@ -110,7 +117,11 @@ function StackCarousel3D({ items }: { items: StackCarouselItem[] }) {
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.65, ease: EASE_PREMIUM }}
     >
-      <Carousel3D faces={faces} radius={radius} />
+      <Carousel3D
+        faces={faces}
+        radius={radius}
+        className={compact ? "carousel3d-wrap--compact" : undefined}
+      />
     </motion.div>
   );
 }

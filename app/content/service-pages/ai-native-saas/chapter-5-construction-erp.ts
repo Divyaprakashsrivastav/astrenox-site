@@ -6,12 +6,29 @@ export const chapter5ConstructionErp: ServicePageChapter = {
   subtitle: "Operational Intelligence for Pre-Construction and Project Execution",
   overview: {
     title: "Product Brief",
-    paragraphs: [
-      "Construction teams do not struggle because they lack documents.",
-      "They struggle because drawings, RFIs, estimates, contracts, change orders, schedules, procurement updates, field reports, labour plans, and cost records rarely stay aligned while the project is moving.",
-      "We build AI-powered ERP intelligence systems as custom execution layers designed around your construction workflow. The system connects project documents, cost data, material movement, labour planning, scope changes, and field updates into a structured operational model that teams can search, track, validate, and act on.",
-      "Instead of functioning as another static dashboard, the system helps project teams coordinate what needs to happen next. It continuously aligns materials, labour, cost, scope, constraints, and decisions across pre-construction and execution workflows.",
-      "The result is a construction operating layer where estimating, scope control, RFI response, procurement tracking, risk analysis, and field-to-office coordination work from the same source of truth.",
+    layout: "grid",
+    paragraphs: [],
+    cards: [
+      {
+        heading: "Not a document problem",
+        body: "Construction teams do not struggle because they lack documents.",
+      },
+      {
+        heading: "Misaligned execution",
+        body: "They struggle because drawings, RFIs, estimates, contracts, change orders, schedules, procurement updates, field reports, labour plans, and cost records rarely stay aligned while the project is moving.",
+      },
+      {
+        heading: "Connected operating model",
+        body: "We build AI-powered ERP intelligence systems as custom execution layers designed around your construction workflow. The system connects project documents, cost data, material movement, labour planning, scope changes, and field updates into a structured operational model that teams can search, track, validate, and act on.",
+      },
+      {
+        heading: "Beyond dashboards",
+        body: "Instead of functioning as another static dashboard, the system helps project teams coordinate what needs to happen next. It continuously aligns materials, labour, cost, scope, constraints, and decisions across pre-construction and execution workflows.",
+      },
+      {
+        heading: "Single source of truth",
+        body: "The result is a construction operating layer where estimating, scope control, RFI response, procurement tracking, risk analysis, and field-to-office coordination work from the same source of truth.",
+      },
     ],
   },
   capabilities: {
