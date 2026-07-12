@@ -1,0 +1,49 @@
+.gradient-headline {
+  position: relative;
+}
+
+.gradient-headline-fallback {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gradient-headline-mask {
+  display: inline;
+  background: linear-gradient(
+    115deg,
+    #ffffff 0%,
+    #e9d5ff 18%,
+    #a78bfa 36%,
+    #22d3ee 54%,
+    #f472b6 72%,
+    #ffffff 100%
+  );
+  background-size: 280% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-headline-flow 10s ease-in-out infinite;
+}
+
+.gradient-headline-static .gradient-headline-mask {
+  animation: none;
+  background: linear-gradient(135deg, #ffffff 20%, rgba(196, 181, 253, 0.95));
+  background-size: 100% 100%;
+}
+
+@keyframes gradient-headline-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}

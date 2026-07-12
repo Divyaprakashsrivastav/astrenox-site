@@ -1,0 +1,17 @@
+.magnetic-text {
+  cursor: default;
+}
+
+.magnetic-text-word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.magnetic-text-contents {
+  display: contents;
+}
+
+.magnetic-text-reveal {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}

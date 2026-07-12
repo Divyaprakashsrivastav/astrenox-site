@@ -9,6 +9,7 @@ import { EASE_PREMIUM } from "../v2/motion";
 import AnimatedCounter from "../mvp-studio/AnimatedCounter";
 import MVPStudioFAQ from "../mvp-studio/MVPStudioFAQ";
 import { SERVICE_ICONS } from "./service-icons";
+import StackCarousel3D from "./StackCarousel3D";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -24,11 +25,23 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-function SectionHeaderBlock({ label, title }: { label: string; title: string }) {
+function SectionHeaderBlock({
+  label,
+  title,
+  titleId,
+}: {
+  label: string;
+  title: string;
+  titleId?: string;
+}) {
   return (
     <div className="mvp-section-header">
       {label ? <p className="mvp-eyebrow">{label}</p> : null}
-      {title ? <h2 className="mvp-section-title">{title}</h2> : null}
+      {title ? (
+        <h2 id={titleId} className="mvp-section-title">
+          {title}
+        </h2>
+      ) : null}
     </div>
   );
 }
@@ -79,7 +92,11 @@ function ServicePageSections({
 
   const stackSection = stack ? (
     <section className="mvp-inner mvp-section" aria-labelledby="service-stack-title">
-      <SectionHeaderBlock label={stack.label} title={stack.title} />
+      <SectionHeaderBlock
+        label={stack.label}
+        title={stack.title}
+        titleId="service-stack-title"
+      />
       <SectionIntro intro={stack.intro} />
       {typeof stack.items[0] === "string" ? (
         <motion.div
@@ -96,34 +113,15 @@ function ServicePageSections({
           ))}
         </motion.div>
       ) : (
-        <motion.div
-          className="mvp-cap-grid mvp-deliverables-grid"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-        >
-          {stack.items.map((item, i) => {
-            const deliverable = item as { title: string; description: string; icon?: ServiceIconName };
-            const Icon = deliverable.icon ? SERVICE_ICONS[deliverable.icon] : null;
-            return (
-              <motion.article
-                key={deliverable.title}
-                className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
-                custom={i}
-                variants={fadeUp}
-              >
-                {Icon && (
-                  <div className="mvp-feature-icon">
-                    <Icon size={20} aria-hidden />
-                  </div>
-                )}
-                <h3>{deliverable.title}</h3>
-                <p>{deliverable.description}</p>
-              </motion.article>
-            );
-          })}
-        </motion.div>
+        <StackCarousel3D
+          items={
+            stack.items as Array<{
+              title: string;
+              description: string;
+              icon?: ServiceIconName;
+            }>
+          }
+        />
       )}
     </section>
   ) : null;
@@ -190,7 +188,7 @@ function ServicePageSections({
         className="mvp-inner mvp-section"
         aria-labelledby="service-workflow-title"
       >
-        <SectionHeaderBlock label={workflow.label ?? ""} title={workflow.title} />
+        <SectionHeaderBlock label={workflow.label ?? ""} title={workflow.title} titleId="service-workflow-title" />
         <SectionIntro intro={workflow.intro} />
         <div className="mvp-timeline">
           {workflow.steps.map((step, i) => (
@@ -218,33 +216,29 @@ function ServicePageSections({
       <ServiceOfferingsComponent serviceOfferings={serviceOfferings} />
     ) : (
       <section className="mvp-inner mvp-section" aria-labelledby="service-offerings-title">
-        <SectionHeaderBlock label={serviceOfferings.label} title={serviceOfferings.title} />
+        <SectionHeaderBlock
+          label={serviceOfferings.label}
+          title={serviceOfferings.title}
+          titleId="service-offerings-title"
+        />
         <SectionIntro intro={serviceOfferings.intro} />
-        <motion.div
-          className="mvp-offerings-table"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-        >
-          <div className="mvp-offerings-header" aria-hidden>
-            <span>Service</span>
-            <span>Business Outcome</span>
-          </div>
+        <div className="mvp-timeline mvp-timeline--roadmap">
           {serviceOfferings.items.map((item, i) => (
             <motion.div
               key={item.service}
-              className="mvp-glass-card mvp-offerings-row"
-              initial={{ opacity: 0, x: -12 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              className="mvp-timeline-step"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.07, ease: EASE_PREMIUM }}
+              transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
             >
-              <h3 className="mvp-offerings-service">{item.service}</h3>
-              <p className="mvp-offerings-outcome">{item.outcome}</p>
+              <div className="mvp-glass-card mvp-timeline-step-inner">
+                <h3>{item.service}</h3>
+                <p>{item.outcome}</p>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </section>
     )
   ) : null;

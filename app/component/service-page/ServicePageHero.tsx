@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ServicePageContent } from "@/app/content/service-pages/types";
 import { EASE_PREMIUM } from "../v2/motion";
+import GradientHeadline from "../ui/GradientHeadline";
+import MagneticText from "../ui/MagneticText";
 import HeroVisual from "./HeroVisual";
 import type { HeroVisualVariant } from "./hero-visual-configs";
 import { heroVisualConfigs } from "./hero-visual-configs";
@@ -58,19 +60,26 @@ function ServicePageHero({
             {hero.label}
           </motion.p>
 
-          <motion.h1 id="service-hero-title" className="mvp-hero-headline" variants={fadeUp}>
-            {titleLines.map((line, i) => (
-              <span key={line}>
-                {line}
-                {i < titleLines.length - 1 && <br />}
-              </span>
-            ))}
-          </motion.h1>
+          <motion.div variants={fadeUp}>
+            <GradientHeadline id="service-hero-title" className="mvp-hero-headline">
+              {titleLines.map((line, i) => (
+                <span key={line}>
+                  {line}
+                  {i < titleLines.length - 1 && <br />}
+                </span>
+              ))}
+            </GradientHeadline>
+          </motion.div>
 
           {hero.subtitle ? (
-            <motion.p className="mvp-hero-subtitle" variants={fadeUp}>
+            <MagneticText
+              className="mvp-hero-subtitle"
+              strength={0.14}
+              radius={130}
+              scrollReveal
+            >
               {hero.subtitle}
-            </motion.p>
+            </MagneticText>
           ) : null}
 
           <motion.div className="mvp-hero-ctas" variants={fadeUp}>

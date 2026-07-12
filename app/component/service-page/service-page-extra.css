@@ -213,6 +213,12 @@
   line-height: 1.35;
 }
 
+/* Longer roadmap phase outcomes in timeline */
+.mvp-timeline--roadmap .mvp-timeline-step:hover p,
+.mvp-timeline--roadmap .mvp-timeline-step:focus-within p {
+  max-height: 32rem;
+}
+
 /* Longer framework step descriptions */
 .mvp-timeline-step:hover p,
 .mvp-timeline-step:focus-within p {
