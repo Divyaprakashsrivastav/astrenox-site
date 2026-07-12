@@ -1,5 +1,17 @@
-import { createPlaceholderRoute } from "@/app/lib/placeholder-route";
+import type { Metadata } from "next";
+import SiteLayout from "@/app/component/layout/SiteLayout";
+import WhitelabelCommercePageClient from "@/app/component/whitelabel-commerce/WhitelabelCommercePageClient";
+import { whitelabelCommerceContent } from "@/app/content/whitelabel-commerce-content";
 
-const route = createPlaceholderRoute("/inside-astrenox/whitelabel-commerce-platforms");
-export const metadata = route.metadata;
-export default route.Page;
+export const metadata: Metadata = {
+  title: whitelabelCommerceContent.metadata.title,
+  description: whitelabelCommerceContent.metadata.description,
+};
+
+export default function WhitelabelCommercePlatformsPage() {
+  return (
+    <SiteLayout>
+      <WhitelabelCommercePageClient />
+    </SiteLayout>
+  );
+}

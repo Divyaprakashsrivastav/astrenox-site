@@ -1,30 +1,7 @@
-import type { LucideIcon } from "lucide-react";
-import {
-  Brain,
-  Code2,
-  GraduationCap,
-  Workflow,
-  Cloud,
-  ScanEye,
-  ShieldCheck,
-  Rocket,
-  Users,
-  Blocks,
-  Server,
-  Layers,
-  TestTube2,
-  Building2,
-  Package,
-  Sparkles,
-  Factory,
-  Store,
-} from "lucide-react";
-
 export type NavMegaItem = {
   label: string;
   href: string;
   description: string;
-  icon: LucideIcon;
 };
 
 export type NavMegaLayout = "grid" | "stack" | "catalog";
@@ -45,43 +22,36 @@ export const navAiServices: NavMegaGroup = {
       label: "AI Consulting & Advisory",
       href: "/services/ai-consulting-advisory",
       description: "Strategy, roadmaps, and executive advisory for enterprise AI adoption.",
-      icon: Brain,
     },
     {
       label: "AI Engineering & Development",
       href: "/services/ai-engineering",
       description: "Production-ready AI systems built by senior engineering squads.",
-      icon: Code2,
     },
     {
       label: "AI Transformation, Engineering & AI Enablement Training",
       href: "/services/ai-transformation",
       description: "Organization-wide AI transformation programs and enablement.",
-      icon: GraduationCap,
     },
     {
       label: "Intelligent Enterprise Automation Builder",
       href: "/services/intelligent-automations",
       description: "Agentic workflows and intelligent automation at enterprise scale.",
-      icon: Workflow,
     },
     {
       label: "AI Native Software as a Service",
       href: "/services/ai-native-saas",
       description: "Deployable AI-native SaaS modules for rapid enterprise rollout.",
-      icon: Cloud,
     },
     {
       label: "Custom-Built Computer Vision & Video Analytics",
       href: "/services/computer-vision-video-analytics",
       description: "Vision pipelines for inspection, surveillance, and analytics.",
-      icon: ScanEye,
     },
     {
       label: "Enterprise AI Ops & Governance",
       href: "/services/enterprise-ai-ops-governance",
       description: "MLOps, observability, compliance, and model governance frameworks.",
-      icon: ShieldCheck,
     },
   ],
 };
@@ -94,43 +64,36 @@ export const navDigitalConsulting: NavMegaGroup = {
       label: "MVP Studio",
       href: "/services/mvp-studio",
       description: "Investor-ready MVPs shipped in weeks, not quarters.",
-      icon: Rocket,
     },
     {
       label: "Hire Tech Talent & Embedded Teams",
       href: "/careers",
       description: "Embedded engineers, ML specialists, and DevOps squads on demand.",
-      icon: Users,
     },
     {
       label: "Blockchain & Web3 Consulting",
       href: "/services/blockchain-web3-consulting",
       description: "Enterprise blockchain architecture and smart contract engineering.",
-      icon: Blocks,
     },
     {
       label: "IT Services & Consulting",
       href: "/services/digital-it-consulting",
       description: "Digital transformation, cloud, and IT strategy consulting.",
-      icon: Server,
     },
     {
       label: "AI-Native Product Engineering",
       href: "/services/ai-native-product-engineering",
       description: "End-to-end product engineering for AI-first software.",
-      icon: Layers,
     },
     {
       label: "Quality Engineering & Software Testing",
       href: "/services/quality-engineering",
       description: "Automated QA, performance testing, and release governance.",
-      icon: TestTube2,
     },
     {
       label: "CoE",
       href: "/services/center-of-excellence",
       description: "Dedicated CoE setup for AI, data, and platform engineering.",
-      icon: Building2,
     },
   ],
 };
@@ -142,7 +105,6 @@ export const navProducts: NavMegaGroup = {
       label: "Our Products",
       href: "/products",
       description: "Enterprise AI infrastructure, platforms, and product suite.",
-      icon: Package,
     },
   ],
   sections: [
@@ -153,13 +115,11 @@ export const navProducts: NavMegaGroup = {
           label: "Engineered White-Label Commerce Platforms",
           href: "/inside-astrenox/whitelabel-commerce-platforms",
           description: "100% whitelabel commerce architectures under your brand.",
-          icon: Store,
         },
         {
           label: "AI Native Software Factory",
           href: "/products/ai-native-software-factory",
           description: "Autonomous SDLC control plane for regulated enterprises.",
-          icon: Factory,
         },
       ],
     },
@@ -167,6 +127,31 @@ export const navProducts: NavMegaGroup = {
 };
 
 export const navInfrastructureHref = "/infrastructure-solutions";
+
+export const navInfrastructure: NavMegaGroup = {
+  label: "Infrastructure Solutions",
+  layout: "stack",
+  items: [
+    {
+      label: "Enterprise Cloud & Managed Services",
+      href: "/infrastructure-solutions/enterprise-cloud-managed-services",
+      description:
+        "Resilient, AI-ready cloud architecture with proactive managed services and DevOps automation.",
+    },
+    {
+      label: "Building Management System (BMS) Integration",
+      href: "/infrastructure-solutions/building-management-system-integration",
+      description:
+        "Enterprise BMS implementation bridging facility infrastructure with centralized digital control.",
+    },
+    {
+      label: "Smart Parking & Traffic Solutions",
+      href: "/infrastructure-solutions/smart-parking-traffic-solutions",
+      description:
+        "AI-driven parking and traffic systems with IoT sensors, computer vision, and real-time analytics.",
+    },
+  ],
+};
 
 export const navIndustriesHref = "/services/industries";
 
@@ -188,5 +173,8 @@ export function isMegaGroupActive(pathname: string, group: NavMegaGroup): boolea
 }
 
 export function isInfrastructureActive(pathname: string): boolean {
-  return pathname === navInfrastructureHref || pathname.startsWith(`${navInfrastructureHref}/`);
+  if (pathname === navInfrastructureHref || pathname.startsWith(`${navInfrastructureHref}/`)) {
+    return true;
+  }
+  return isMegaGroupActive(pathname, navInfrastructure);
 }

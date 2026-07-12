@@ -152,7 +152,7 @@
 
 /* ── Unified glass cards ── */
 .metrics-flow-card,
-.svc-flow-card,
+.service-card,
 .ind-holo-card,
 .mission-card,
 .moat-panel,
@@ -165,8 +165,7 @@
 }
 
 .mission-card,
-.ind-holo-card,
-.svc-flow-link {
+.ind-holo-card {
   padding: var(--scale-card-padding);
 }
 
@@ -196,46 +195,20 @@
 }
 
 /* ── Services ── */
-#services .flow-header {
-  margin-bottom: var(--scale-desc-content);
-}
-
 #services .flow-title {
-  max-width: 650px !important;
+  max-width: 42rem !important;
 }
 
 #services .flow-description {
-  max-width: 650px;
+  max-width: 42rem;
 }
 
-.svc-flow-card {
-  height: 300px;
-}
-
-.svc-flow-link {
-  padding: var(--scale-card-padding);
-}
-
-.svc-flow-icon {
-  width: 48px;
-  height: 48px;
-}
-
-.svc-flow-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.svc-flow-title {
+.service-card-title {
   font-size: var(--scale-card-title);
 }
 
-.svc-flow-desc {
+.service-card-description {
   font-size: var(--scale-body);
-}
-
-.svc-flow-outcome {
-  font-size: var(--scale-label);
 }
 
 /* ── Methodology ── */

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import type { NavMegaGroup, NavMegaItem, NavMegaLayout } from "@/app/content/nav-config";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -28,20 +28,26 @@ type NavMegaMenuProps = {
   menuId: string;
   layout?: NavMegaLayout;
   onNavigate?: () => void;
+  panelVariant?: "infra";
 };
+
+function isItemActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 function MegaCard({
   item,
   onNavigate,
   compact,
   featured,
+  active,
 }: {
   item: NavMegaItem;
   onNavigate?: () => void;
   compact?: boolean;
   featured?: boolean;
+  active?: boolean;
 }) {
-  const Icon = item.icon;
   return (
     <motion.div variants={cardMotion} className={featured ? "dock-mega-featured-wrap" : undefined}>
       <Link
@@ -51,19 +57,20 @@ function MegaCard({
           "dock-mega-card",
           compact ? "dock-mega-card--compact" : "",
           featured ? "dock-mega-card--featured" : "",
+          active ? "dock-mega-card--active" : "",
         ]
           .filter(Boolean)
           .join(" ")}
         onClick={onNavigate}
+        aria-current={active ? "page" : undefined}
       >
-        <span className="dock-mega-card-icon" aria-hidden>
-          <Icon size={20} strokeWidth={1.65} />
-        </span>
         <span className="dock-mega-card-copy">
           <span className="dock-mega-card-title">{item.label}</span>
           <span className="dock-mega-card-desc">{item.description}</span>
         </span>
-        <ArrowRight size={15} strokeWidth={2} className="dock-mega-card-arrow" aria-hidden />
+        <span className="dock-mega-card-arrow" aria-hidden>
+          →
+        </span>
       </Link>
     </motion.div>
   );
@@ -74,7 +81,9 @@ export default function NavMegaMenu({
   menuId,
   layout = "grid",
   onNavigate,
+  panelVariant,
 }: NavMegaMenuProps) {
+  const pathname = usePathname();
   const stack = layout === "stack";
   const catalog = layout === "catalog";
   const catalogGridItems = catalog ? group.items.slice(0, -1) : [];
@@ -89,6 +98,7 @@ export default function NavMegaMenu({
         "dock-mega-panel",
         stack ? "dock-mega-panel--stack" : "",
         catalog ? "dock-mega-panel--catalog" : "",
+        panelVariant === "infra" ? "dock-mega-panel--infra" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -101,18 +111,34 @@ export default function NavMegaMenu({
         <div className="dock-mega-catalog">
           <div className="dock-mega-grid dock-mega-grid--catalog">
             {catalogGridItems.map((item) => (
-              <MegaCard key={item.href} item={item} onNavigate={onNavigate} />
+              <MegaCard
+                key={item.href}
+                item={item}
+                onNavigate={onNavigate}
+                active={isItemActive(pathname, item.href)}
+              />
             ))}
           </div>
           {catalogFeatured && (
-            <MegaCard item={catalogFeatured} onNavigate={onNavigate} featured />
+            <MegaCard
+              item={catalogFeatured}
+              onNavigate={onNavigate}
+              featured
+              active={isItemActive(pathname, catalogFeatured.href)}
+            />
           )}
         </div>
       ) : (
         group.items.length > 0 && (
           <div className={`dock-mega-grid ${stack ? "dock-mega-grid--single" : ""}`}>
             {group.items.map((item) => (
-              <MegaCard key={item.href} item={item} onNavigate={onNavigate} compact={stack} />
+              <MegaCard
+                key={item.href}
+                item={item}
+                onNavigate={onNavigate}
+                compact={stack}
+                active={isItemActive(pathname, item.href)}
+              />
             ))}
           </div>
         )
@@ -124,7 +150,13 @@ export default function NavMegaMenu({
           </motion.p>
           <div className="dock-mega-grid dock-mega-grid--single">
             {section.items.map((item) => (
-              <MegaCard key={item.href} item={item} onNavigate={onNavigate} compact />
+              <MegaCard
+                key={item.href}
+                item={item}
+                onNavigate={onNavigate}
+                compact
+                active={isItemActive(pathname, item.href)}
+              />
             ))}
           </div>
         </div>

@@ -5,7 +5,7 @@ import TriFlywheel from "./component/home/TriFlywheel";
 import EnterpriseEcosystem from "./component/home/EnterpriseEcosystem";
 import HomeIndustries from "./component/home/HomeIndustries";
 import HomeMetrics from "./component/home/HomeMetrics";
-import HomeServices from "./component/home/HomeServices";
+import ServicesSection from "./component/home/ServicesSection";
 import TechnologyEcosystem from "./component/home/TechnologyEcosystem";
 import ProjectsSection from "./component/home/ProjectsSection";
 import HomeTestimonials from "./component/home/HomeTestimonials";
@@ -22,7 +22,7 @@ export default function Home() {
         <EnterpriseEcosystem />
         <HomeIndustries />
         <HomeMetrics />
-        <HomeServices />
+        <ServicesSection />
         <TechnologyEcosystem />
         <ProjectsSection />
         <HomeTestimonials />

@@ -11,7 +11,7 @@ import {
   navAiServices,
   navDigitalConsulting,
   navProducts,
-  navInfrastructureHref,
+  navInfrastructure,
   navIndustriesHref,
   navContactHref,
   isMegaGroupActive,
@@ -24,7 +24,7 @@ import NavMegaBackdrop from "./nav/NavMegaBackdrop";
 import NavActiveLink from "./nav/NavActiveLink";
 import { useMegaMenuDelay } from "./nav/useMegaMenuDelay";
 
-type MegaKey = "ai" | "digital" | "products";
+type MegaKey = "ai" | "digital" | "products" | "infra";
 
 const LABEL = {
   ai: "AI Services",
@@ -44,18 +44,29 @@ function allItems(group: NavMegaGroup): NavMegaItem[] {
   return [...group.items, ...(group.sections?.flatMap((s) => s.items) ?? [])];
 }
 
-function DrawerRow({ item, onNavigate }: { item: NavMegaItem; onNavigate: () => void }) {
-  const Icon = item.icon;
+function DrawerRow({
+  item,
+  onNavigate,
+  active,
+}: {
+  item: NavMegaItem;
+  onNavigate: () => void;
+  active?: boolean;
+}) {
   return (
-    <Link href={item.href} onClick={onNavigate} className="dock-drawer-card">
-      <span className="dock-drawer-card-icon" aria-hidden>
-        <Icon size={18} strokeWidth={1.6} />
-      </span>
-      <span>
+    <Link
+      href={item.href}
+      onClick={onNavigate}
+      className={`dock-drawer-card${active ? " dock-drawer-card--active" : ""}`}
+      aria-current={active ? "page" : undefined}
+    >
+      <span className="dock-drawer-card-copy">
         <span className="dock-drawer-card-title">{item.label}</span>
         <span className="dock-drawer-card-desc">{item.description}</span>
       </span>
-      <ArrowRight size={14} className="dock-drawer-card-arrow" aria-hidden />
+      <span className="dock-drawer-card-arrow" aria-hidden>
+        →
+      </span>
     </Link>
   );
 }
@@ -72,6 +83,7 @@ export default function Navbar() {
     ai: navAiServices,
     digital: navDigitalConsulting,
     products: navProducts,
+    infra: navInfrastructure,
   };
 
   const closeMega = useCallback(() => setMegaOpen(null), []);
@@ -162,13 +174,23 @@ export default function Navbar() {
             >
               <div className="dock-drawer-cards">
                 {group.items.map((item) => (
-                  <DrawerRow key={item.href} item={item} onNavigate={closeDrawer} />
+                  <DrawerRow
+                    key={item.href}
+                    item={item}
+                    onNavigate={closeDrawer}
+                    active={routeActive(pathname, item.href)}
+                  />
                 ))}
                 {group.sections?.map((section) => (
                   <div key={section.title}>
                     <p className="dock-drawer-section-label">{section.title}</p>
                     {section.items.map((item) => (
-                      <DrawerRow key={item.href} item={item} onNavigate={closeDrawer} />
+                      <DrawerRow
+                        key={item.href}
+                        item={item}
+                        onNavigate={closeDrawer}
+                        active={routeActive(pathname, item.href)}
+                      />
                     ))}
                   </div>
                 ))}
@@ -209,9 +231,11 @@ export default function Navbar() {
                     active={isMegaGroupActive(pathname, navDigitalConsulting)}
                   />
                   <MegaTrigger id="products" label={LABEL.products} active={isMegaGroupActive(pathname, navProducts)} />
-                  <NavActiveLink href={navInfrastructureHref} active={isInfrastructureActive(pathname)}>
-                    {LABEL.infra}
-                  </NavActiveLink>
+                  <MegaTrigger
+                    id="infra"
+                    label={LABEL.infra}
+                    active={isInfrastructureActive(pathname)}
+                  />
                   <NavActiveLink href={navIndustriesHref} active={routeActive(pathname, navIndustriesHref)}>
                     {LABEL.industries}
                   </NavActiveLink>
@@ -252,7 +276,7 @@ export default function Navbar() {
             <div
               className={[
                 "dock-mega-float",
-                megaOpen === "products" ? "dock-mega-float--narrow" : "",
+                megaOpen === "products" || megaOpen === "infra" ? "dock-mega-float--narrow" : "",
                 megaOpen === "digital" ? "dock-mega-float--catalog" : "",
               ]
                 .filter(Boolean)
@@ -261,7 +285,11 @@ export default function Navbar() {
               <NavMegaMenu
                 group={groups[megaOpen]}
                 menuId={`dock-mega-${megaOpen}`}
-                layout={groups[megaOpen].layout ?? (megaOpen === "products" ? "stack" : "grid")}
+                layout={
+                  groups[megaOpen].layout ??
+                  (megaOpen === "products" || megaOpen === "infra" ? "stack" : "grid")
+                }
+                panelVariant={megaOpen === "infra" ? "infra" : undefined}
               />
             </div>
           </div>
@@ -305,31 +333,35 @@ export default function Navbar() {
                   <Accordion id="ai" label={LABEL.ai} />
                   <Accordion id="digital" label={LABEL.digital} />
                   <Accordion id="products" label={LABEL.products} />
+                  <Accordion id="infra" label={LABEL.infra} />
                 </div>
 
                 <div className="dock-drawer-tablet">
                   {(Object.keys(groups) as MegaKey[]).map((key) => (
                     <div key={key} className="dock-drawer-block">
                       <p className="dock-drawer-block-label">
-                        {key === "ai" ? LABEL.ai : key === "digital" ? LABEL.digital : LABEL.products}
+                        {key === "ai"
+                          ? LABEL.ai
+                          : key === "digital"
+                            ? LABEL.digital
+                            : key === "products"
+                              ? LABEL.products
+                              : LABEL.infra}
                       </p>
                       <div className="dock-drawer-cards">
                         {allItems(groups[key]).map((item) => (
-                          <DrawerRow key={item.href} item={item} onNavigate={closeDrawer} />
+                          <DrawerRow
+                            key={item.href}
+                            item={item}
+                            onNavigate={closeDrawer}
+                            active={routeActive(pathname, item.href)}
+                          />
                         ))}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                <NavActiveLink
-                  href={navInfrastructureHref}
-                  active={isInfrastructureActive(pathname)}
-                  className="dock-drawer-link"
-                  onClick={closeDrawer}
-                >
-                  {LABEL.infra}
-                </NavActiveLink>
                 <NavActiveLink
                   href={navIndustriesHref}
                   active={routeActive(pathname, navIndustriesHref)}

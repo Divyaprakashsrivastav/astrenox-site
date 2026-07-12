@@ -394,18 +394,12 @@ body:not(.dock-mega-open) footer {
   width: min(100%, 28rem);
   min-height: 4.75rem;
   padding: 0.875rem 1.125rem;
-  grid-template-columns: 42px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 0.875rem;
   border-color: rgba(255, 255, 255, 0.09);
   background:
     linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%),
     rgba(255, 255, 255, 0.04);
-}
-
-.dock-mega-card--featured .dock-mega-card-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
 }
 
 .dock-mega-card--featured .dock-mega-card-title {
@@ -450,19 +444,27 @@ body:not(.dock-mega-open) footer {
 /* ── Mega cards ── */
 .dock-mega-card {
   display: grid;
-  grid-template-columns: 40px 1fr auto;
-  gap: 0.8125rem;
+  grid-template-columns: 1fr auto;
+  gap: 0.875rem;
   align-items: center;
-  padding: 0.8125rem 0.9375rem;
+  padding: 0.9375rem 1rem;
   border-radius: 17px;
   border: 1px solid rgba(255, 255, 255, 0.07);
   background: rgba(255, 255, 255, 0.035);
   text-decoration: none;
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    background 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.dock-mega-panel--infra .dock-mega-card {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .dock-mega-panel--catalog .dock-mega-card {
@@ -471,8 +473,8 @@ body:not(.dock-mega-open) footer {
 }
 
 .dock-mega-card--compact {
-  grid-template-columns: 36px 1fr auto;
-  padding: 0.625rem 0.75rem;
+  grid-template-columns: 1fr auto;
+  padding: 0.75rem 0.875rem;
 }
 
 .dock-mega-card:hover {
@@ -488,29 +490,6 @@ body:not(.dock-mega-open) footer {
   box-shadow:
     0 14px 38px rgba(0, 0, 0, 0.28),
     0 0 32px rgba(124, 58, 237, 0.16);
-}
-
-.dock-mega-card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background: rgba(124, 58, 237, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.22);
-  color: #c4b5fd;
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    background 0.35s ease;
-}
-
-.dock-mega-card:hover .dock-mega-card-icon {
-  transform: scale(1.05);
-  background: rgba(124, 58, 237, 0.18);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.26);
 }
 
 .dock-mega-card-copy {
@@ -543,6 +522,8 @@ body:not(.dock-mega-open) footer {
 }
 
 .dock-mega-card-arrow {
+  font-size: 1rem;
+  line-height: 1;
   color: rgba(196, 181, 253, 0.32);
   flex-shrink: 0;
   transition:
@@ -554,6 +535,25 @@ body:not(.dock-mega-open) footer {
 .dock-mega-card:hover .dock-mega-card-arrow {
   transform: translateX(5px);
   color: #c4b5fd;
+}
+
+.dock-mega-card--active {
+  border-color: rgba(168, 85, 247, 0.55);
+  background: rgba(124, 58, 237, 0.14);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.22),
+    0 0 24px rgba(124, 58, 237, 0.18);
+}
+
+.dock-mega-card--active .dock-mega-card-arrow {
+  color: #c4b5fd;
+  transform: translateX(3px);
+}
+
+.dock-mega-panel--infra .dock-mega-card:hover {
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.24),
+    0 0 32px rgba(124, 58, 237, 0.2);
 }
 
 /* ── Mobile / tablet drawer ── */
@@ -682,10 +682,10 @@ body:not(.dock-mega-open) footer {
 
 .dock-drawer-card {
   display: grid;
-  grid-template-columns: 36px 1fr auto;
-  gap: 0.65rem;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
   align-items: center;
-  padding: 0.65rem;
+  padding: 0.75rem 0.875rem;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
   background: rgba(255, 255, 255, 0.025);
@@ -699,16 +699,8 @@ body:not(.dock-mega-open) footer {
   transform: translateX(3px);
 }
 
-.dock-drawer-card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(124, 58, 237, 0.12);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  color: #c4b5fd;
+.dock-drawer-card-copy {
+  min-width: 0;
 }
 
 .dock-drawer-card-title {
@@ -727,6 +719,8 @@ body:not(.dock-mega-open) footer {
 }
 
 .dock-drawer-card-arrow {
+  font-size: 0.9375rem;
+  line-height: 1;
   color: rgba(196, 181, 253, 0.35);
   transition: transform 0.25s ease;
 }
@@ -734,6 +728,12 @@ body:not(.dock-mega-open) footer {
 .dock-drawer-card:hover .dock-drawer-card-arrow {
   transform: translateX(3px);
   color: #c4b5fd;
+}
+
+.dock-drawer-card--active {
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(124, 58, 237, 0.12);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.14);
 }
 
 .dock-drawer-section-label,
@@ -796,7 +796,6 @@ body:not(.dock-mega-open) footer {
 @media (prefers-reduced-motion: reduce) {
   .dock-link-hover-bar,
   .dock-mega-card,
-  .dock-mega-card-icon,
   .dock-mega-card-arrow,
   .dock-cta,
   .dock-cta-icon {

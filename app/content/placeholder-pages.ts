@@ -65,4 +65,22 @@ export const placeholderPages: Record<string, PlaceholderMeta> = {
     description:
       "Enterprise cloud, data center, and AI-ready infrastructure solutions. Full capabilities page under development.",
   },
+  "/infrastructure-solutions/enterprise-cloud-managed-services": {
+    title: "Enterprise Cloud & Managed Services",
+    section: "Infrastructure Solutions",
+    description:
+      "We engineer resilient, AI-ready infrastructure to replace legacy frameworks. Dedicated capability page is in progress.",
+  },
+  "/infrastructure-solutions/building-management-system-integration": {
+    title: "Building Management System (BMS) Integration",
+    section: "Infrastructure Solutions",
+    description:
+      "Enterprise BMS integration for unified facility operations. Full documentation coming soon.",
+  },
+  "/infrastructure-solutions/smart-parking-traffic-solutions": {
+    title: "Smart Parking & Traffic Solutions",
+    section: "Infrastructure Solutions",
+    description:
+      "AI-driven parking and traffic management systems. Dedicated page content is in progress.",
+  },
 };
