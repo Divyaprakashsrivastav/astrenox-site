@@ -84,6 +84,8 @@ export type ServicePageChapter = {
       description?: string;
       paragraphs?: string[];
       enables?: string[];
+      enablesLabel?: string;
+      afterEnables?: string[];
       icon: ServiceIconName;
     }>;
   };

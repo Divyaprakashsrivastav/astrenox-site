@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import SiteLayout from "@/app/component/layout/SiteLayout";
-import IndustriesPageClient from "@/app/component/industries-page/IndustriesPageClient";
-import { industriesPageContent } from "@/app/content/industries-page-content";
+import IndustriesPageClient from "@/app/component/industries/IndustriesPageClient";
+import { industriesContent } from "@/app/content/industries-content";
 
 export const metadata: Metadata = {
-  title: industriesPageContent.metadata.title,
-  description: industriesPageContent.metadata.description,
+  title: "Industries | Astrenox",
+  description: industriesContent.intro.paragraphs[0],
 };
 
 export default function IndustriesPage() {

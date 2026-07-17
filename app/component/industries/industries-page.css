@@ -1,0 +1,161 @@
+/* Industries page — extends MVP Studio + home industries showcase */
+
+.ind-page-showcase {
+  width: 100%;
+}
+
+.ind-page-sectors-wrap {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+.ind-page-sectors-header {
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+.ind-page-showcase-grid .ind-showcase-panel {
+  min-height: clamp(28rem, 52vh, 36rem);
+}
+
+.ind-page-panel .ind-panel-scroll {
+  gap: 1.25rem;
+}
+
+.ind-page-tagline {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: rgba(168, 85, 247, 0.92);
+}
+
+.ind-page-intro p,
+.ind-page-block-copy p,
+.ind-page-impact-copy {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(250, 250, 251, 0.62);
+}
+
+.ind-page-intro p:last-child,
+.ind-page-block-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.ind-page-block {
+  margin-top: 0.25rem;
+}
+
+.ind-page-impact {
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ind-page-impact-copy {
+  color: rgba(250, 250, 251, 0.78);
+  font-weight: 500;
+}
+
+/* Transformation model */
+.ind-page-model-timeline {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.ind-page-pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .ind-page-pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ind-page-pillar {
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.ind-page-pillar h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #fafafb;
+}
+
+.ind-page-pillar p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(250, 250, 251, 0.62);
+}
+
+/* Delivery capabilities */
+.ind-page-cap-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .ind-page-cap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .ind-page-cap-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ind-page-cap-card {
+  padding: clamp(1.35rem, 2.5vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ind-page-cap-card h3 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #fafafb;
+}
+
+.ind-page-cap-card p {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 251, 0.58);
+}
+
+.ind-page-cap-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: rgba(139, 92, 246, 0.95);
+}
+
+/* Sector nav labels — allow wrapping on long titles */
+.ind-page-showcase .ind-nav-label {
+  line-height: 1.35;
+}
+
+@media (max-width: 1023px) {
+  .ind-page-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ind-page-showcase-grid .ind-showcase-panel {
+    min-height: auto;
+  }
+}

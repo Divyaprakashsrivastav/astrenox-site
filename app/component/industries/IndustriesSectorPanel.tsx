@@ -5,37 +5,27 @@ import type { LucideIcon } from "lucide-react";
 import { EASE_PREMIUM } from "../v2/motion";
 import { useReducedMotion } from "../features/useReducedMotion";
 import IndustryPanelAmbient from "../home/IndustryPanelAmbient";
+import type { IndustriesSector } from "@/app/content/industries-content";
 
-export type CapabilityShowcaseItem = {
-  title: string;
-  description?: string;
-  paragraphs?: string[];
-  enables?: string[];
-  enablesLabel?: string;
-  afterEnables?: string[];
-};
-
-type CapabilitiesShowcasePanelProps = {
-  item: CapabilityShowcaseItem;
+type IndustriesSectorPanelProps = {
+  sector: IndustriesSector;
   icon: LucideIcon;
   index: number;
 };
 
-export default function CapabilitiesShowcasePanel({
-  item,
+export default function IndustriesSectorPanel({
+  sector,
   icon: Icon,
   index,
-}: CapabilitiesShowcasePanelProps) {
+}: IndustriesSectorPanelProps) {
   const reduced = useReducedMotion();
-  const body = item.paragraphs ?? (item.description ? [item.description] : []);
 
   return (
     <div className="ind-showcase-panel-shell">
-      <div className="ind-showcase-panel-track">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={item.title}
-            className="ind-showcase-panel"
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={sector.id}
+          className="ind-showcase-panel ind-page-panel"
           initial={{ opacity: 0, x: reduced ? 0 : 28 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: reduced ? 0 : -20 }}
@@ -72,54 +62,62 @@ export default function CapabilitiesShowcasePanel({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1, ease: EASE_PREMIUM }}
             >
-              {item.title}
+              {sector.title}
             </motion.h3>
 
-            {body.map((paragraph, i) => (
-              <motion.p
-                key={paragraph.slice(0, 48)}
-                className="ind-panel-desc"
-                initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.12 + i * 0.04, ease: EASE_PREMIUM }}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
+            <motion.p
+              className="ind-page-tagline"
+              initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.12, ease: EASE_PREMIUM }}
+            >
+              {sector.tagline}
+            </motion.p>
 
-            {item.enables && item.enables.length > 0 ? (
+            <motion.div
+              className="ind-page-intro"
+              initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.14, ease: EASE_PREMIUM }}
+            >
+              {sector.intro.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)}>{paragraph}</p>
+              ))}
+            </motion.div>
+
+            {sector.blocks.map((block, blockIndex) => (
               <motion.div
-                className="ind-panel-block"
+                key={block.title}
+                className="ind-panel-block ind-page-block"
                 initial={{ opacity: 0, y: reduced ? 0 : 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.42, delay: 0.18, ease: EASE_PREMIUM }}
+                transition={{
+                  duration: 0.42,
+                  delay: 0.16 + blockIndex * 0.04,
+                  ease: EASE_PREMIUM,
+                }}
               >
-                <p className="ind-panel-label">{item.enablesLabel ?? "What it enables"}</p>
-                <ul className="ind-panel-list">
-                  {item.enables.map((entry) => (
-                    <li key={entry} className="ind-panel-list-item">
-                      {entry}
-                    </li>
+                <p className="ind-panel-label">{block.title}</p>
+                <div className="ind-page-block-copy">
+                  {block.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                   ))}
-                </ul>
+                </div>
               </motion.div>
-            ) : null}
-
-            {item.afterEnables?.map((paragraph, i) => (
-              <motion.p
-                key={paragraph.slice(0, 48)}
-                className="ind-panel-desc"
-                initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.22 + i * 0.04, ease: EASE_PREMIUM }}
-              >
-                {paragraph}
-              </motion.p>
             ))}
+
+            <motion.div
+              className="ind-page-impact"
+              initial={{ opacity: 0, y: reduced ? 0 : 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.42, delay: 0.28, ease: EASE_PREMIUM }}
+            >
+              <p className="ind-panel-label">{sector.impact.label}</p>
+              <p className="ind-page-impact-copy">{sector.impact.description}</p>
+            </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
-      </div>
     </div>
   );
 }

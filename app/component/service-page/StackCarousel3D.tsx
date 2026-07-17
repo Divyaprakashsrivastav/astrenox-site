@@ -23,7 +23,7 @@ const staggerContainer = {
 };
 
 export type StackCarouselItem = {
-  title: string;
+  title?: string;
   description: string;
   icon?: ServiceIconName;
 };
@@ -55,7 +55,7 @@ function StackGrid({ items, compact }: { items: StackCarouselItem[]; compact?: b
         const Icon = item.icon ? SERVICE_ICONS[item.icon] : null;
         return (
           <motion.article
-            key={item.title}
+            key={item.title ?? item.description.slice(0, 48)}
             className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
             custom={i}
             variants={fadeUp}
@@ -65,7 +65,7 @@ function StackGrid({ items, compact }: { items: StackCarouselItem[]; compact?: b
                 <Icon size={20} aria-hidden />
               </div>
             )}
-            <h3>{item.title}</h3>
+            {item.title ? <h3>{item.title}</h3> : null}
             <p>{item.description}</p>
           </motion.article>
         );
@@ -79,11 +79,12 @@ function StackCarousel3D({
   variant = "default",
 }: {
   items: StackCarouselItem[];
-  variant?: "default" | "compact" | "grid";
+  variant?: "default" | "compact" | "grid" | "prose";
 }) {
   const reducedMotion = useReducedMotion();
   const isDesktop = useMinWidth(768);
   const compact = variant === "compact" || variant === "grid";
+  const prose = variant === "prose";
   const showCarousel = variant !== "grid" && isDesktop && !reducedMotion;
 
   if (!showCarousel) {
@@ -95,7 +96,7 @@ function StackCarousel3D({
   const faces = items.map((item) => {
     const Icon = item.icon ? SERVICE_ICONS[item.icon] : null;
     return {
-      id: item.title,
+      id: item.title ?? item.description.slice(0, 48),
       content: (
         <>
           {Icon ? (
@@ -103,7 +104,7 @@ function StackCarousel3D({
               <Icon size={14} aria-hidden />
             </div>
           ) : null}
-          <h3 className="carousel3d-face-title">{item.title}</h3>
+          {item.title ? <h3 className="carousel3d-face-title">{item.title}</h3> : null}
           <p className="carousel3d-face-desc">{item.description}</p>
         </>
       ),
@@ -120,7 +121,13 @@ function StackCarousel3D({
       <Carousel3D
         faces={faces}
         radius={radius}
-        className={compact ? "carousel3d-wrap--compact" : undefined}
+        className={
+          prose
+            ? "carousel3d-wrap--prose"
+            : compact
+              ? "carousel3d-wrap--compact"
+              : undefined
+        }
       />
     </motion.div>
   );

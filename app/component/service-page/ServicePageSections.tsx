@@ -312,7 +312,7 @@ function ServicePageSections({
           </section>
         ) : (
           <section className="mvp-inner mvp-section" aria-labelledby="service-overview-title">
-            <div className="mvp-about-grid">
+            <div className="mvp-about-stack">
               {overview.title ? (
                 <motion.h2
                   id="service-overview-title"
@@ -325,28 +325,10 @@ function ServicePageSections({
                   {overview.title}
                 </motion.h2>
               ) : null}
-              <motion.div
-                className={
-                  overview.title
-                    ? "mvp-about-text mvp-about-text-cards"
-                    : "mvp-about-text mvp-about-text-full mvp-about-text-cards"
-                }
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-80px" }}
-              >
-                {(overview.paragraphs ?? []).map((p, i) => (
-                  <motion.article
-                    key={p.slice(0, 48)}
-                    className="mvp-glass-card mvp-about-paragraph-card"
-                    custom={i}
-                    variants={fadeUp}
-                  >
-                    <p>{p}</p>
-                  </motion.article>
-                ))}
-              </motion.div>
+              <StackCarousel3D
+                variant="prose"
+                items={(overview.paragraphs ?? []).map((description) => ({ description }))}
+              />
             </div>
           </section>
         )

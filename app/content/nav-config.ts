@@ -61,11 +61,6 @@ export const navDigitalConsulting: NavMegaGroup = {
   layout: "catalog",
   items: [
     {
-      label: "MVP Studio",
-      href: "/services/mvp-studio",
-      description: "Investor-ready MVPs shipped in weeks, not quarters.",
-    },
-    {
       label: "Hire Tech Talent & Embedded Teams",
       href: "/careers",
       description: "Embedded engineers, ML specialists, and DevOps squads on demand.",
@@ -106,6 +101,11 @@ export const navProducts: NavMegaGroup = {
       href: "/products",
       description: "Enterprise AI infrastructure, platforms, and product suite.",
     },
+    {
+      label: "MVP Studio",
+      href: "/services/mvp-studio",
+      description: "Investor-ready MVPs shipped in weeks, not quarters.",
+    },
   ],
   sections: [
     {
@@ -133,22 +133,19 @@ export const navInfrastructure: NavMegaGroup = {
   layout: "stack",
   items: [
     {
-      label: "Enterprise Cloud & Managed Services",
-      href: "/infrastructure-solutions/enterprise-cloud-managed-services",
-      description:
-        "Resilient, AI-ready cloud architecture with proactive managed services and DevOps automation.",
+      label: "Cloud, Network Infrastructure & GCC Solutions",
+      href: "/infrastructure-solutions/cloud-network-gcc",
+      description: "Enterprise cloud, network transformation, EPC delivery, and GCC establishment.",
     },
     {
-      label: "Building Management System (BMS) Integration",
-      href: "/infrastructure-solutions/building-management-system-integration",
-      description:
-        "Enterprise BMS implementation bridging facility infrastructure with centralized digital control.",
+      label: "Building Management & Smart Parking Solutions",
+      href: "/infrastructure-solutions/bms-smart-parking",
+      description: "Integrated BMS, facility automation, and smart parking systems.",
     },
     {
-      label: "Smart Parking & Traffic Solutions",
-      href: "/infrastructure-solutions/smart-parking-traffic-solutions",
-      description:
-        "AI-driven parking and traffic systems with IoT sensors, computer vision, and real-time analytics.",
+      label: "Enterprise Compute Cloud & Data Centre Managed Services",
+      href: "/infrastructure-solutions/data-centre-compute-cloud",
+      description: "Compute cloud, LLM infrastructure, and data centre operations.",
     },
   ],
 };

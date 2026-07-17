@@ -789,6 +789,22 @@
   margin: 0;
 }
 
+.mvp-about-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.mvp-about-stack .mvp-about-title {
+  max-width: 720px;
+}
+
+.mvp-about-stack .carousel3d-wrap--prose {
+  margin-inline: auto;
+  width: min(100%, 620px);
+}
+
 /* Interactive overview grid */
 .mvp-about-text-cards-grid {
   display: flex;
