@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { useRef, useState, type CSSProperties } from "react";
 import { useInView } from "framer-motion";
 import { useReducedMotion } from "../features/useReducedMotion";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import ProjectBentoVisual from "./ProjectBentoVisual";
 
@@ -98,7 +99,7 @@ export default function ProjectBentoCard({
       {effect === "sweep" ? <span className="prj-bento-sweep" aria-hidden /> : null}
       {effect === "particles" && hovered ? (
         <span className="prj-bento-particles" aria-hidden>
-          {Array.from({ length: 8 }).map((_, i) => (
+          {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="prj-bento-particle" style={{ "--i": i } as CSSProperties} />
           ))}
         </span>
@@ -120,12 +121,12 @@ export default function ProjectBentoCard({
         <div className="prj-bento-scroll">
           {descriptionParagraphs.map((p) => (
             <p key={p} className="prj-bento-desc">
-              {p}
+              <FormattedText text={p} />
             </p>
           ))}
           {outcomeParagraphs.map((p) => (
             <p key={p} className="prj-bento-outcome">
-              {p}
+              <FormattedText text={p} />
             </p>
           ))}
           <div className="prj-bento-metrics" aria-label="Key capabilities">

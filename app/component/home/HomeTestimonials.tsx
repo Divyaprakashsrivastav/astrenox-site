@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useCallback, useRef, useState, type TouchEvent } from "react";
 import { homeTestimonials } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import TestimonialsAmbient from "./TestimonialsAmbient";
 import TestimonialShowcasePanel from "./TestimonialShowcasePanel";
@@ -94,7 +95,11 @@ export default function HomeTestimonials() {
         >
           <p className="tst-eyebrow">{homeTestimonials.label}</p>
           <h2 className="tst-title">{homeTestimonials.title}</h2>
-          {description ? <p className="tst-description">{description}</p> : null}
+          {description ? (
+            <p className="tst-description">
+              <FormattedText text={description} />
+            </p>
+          ) : null}
         </motion.header>
 
         <motion.ul

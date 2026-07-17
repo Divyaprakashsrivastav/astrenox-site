@@ -13,7 +13,7 @@ function AIEngineeringTechStack() {
         <div className="aie-tech-grid" />
         <div className="aie-tech-glow" />
         <div className="aie-tech-particles">
-          {Array.from({ length: 18 }).map((_, i) => (
+          {Array.from({ length: 9 }).map((_, i) => (
             <span
               key={i}
               className="aie-tech-particle"

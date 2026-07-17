@@ -72,7 +72,7 @@ function AdvisoryServiceOfferings({
       <div className="adv-offerings-bg" aria-hidden>
         <div className="adv-offerings-bg-glow" />
         <div className="adv-offerings-bg-noise" />
-        {Array.from({ length: 8 }, (_, i) => (
+        {Array.from({ length: 4 }, (_, i) => (
           <span
             key={i}
             className="adv-offerings-bg-particle"

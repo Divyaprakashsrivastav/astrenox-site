@@ -65,7 +65,7 @@ function AdvisoryCapabilityMap({ capabilities }: { capabilities: CapabilitiesSec
       <div className="adv-cap-section-bg" aria-hidden>
         <div className="adv-cap-section-bg-gradient" />
         <div className="adv-cap-section-bg-grid" />
-        {Array.from({ length: 10 }, (_, i) => (
+        {Array.from({ length: 5 }, (_, i) => (
           <span
             key={i}
             className="adv-cap-section-bg-particle"

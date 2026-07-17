@@ -189,7 +189,7 @@ export default function FloatingArchitectureLayers({ active }: FloatingArchitect
 
   const particles = useMemo(
     () =>
-      Array.from({ length: 28 }, (_, i) => ({
+      Array.from({ length: 14 }, (_, i) => ({
         id: i,
         x: 8 + ((i * 37) % 84),
         y: 6 + ((i * 53) % 88),

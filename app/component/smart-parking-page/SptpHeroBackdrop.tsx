@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 type Vehicle = { x: number; y: number; vx: number; vy: number; lane: "h" | "v"; color: string };
 type Signal = { x: number; y: number; phase: number };
@@ -10,8 +12,10 @@ type Detection = { x: number; y: number; w: number; h: number; phase: number };
 export default function SptpHeroBackdrop() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -53,7 +57,7 @@ export default function SptpHeroBackdrop() {
         { x: 0, y: h * 0.68, w: w, h: h * 0.05 },
       ];
 
-      vehicles = Array.from({ length: 14 }, (_, i) => {
+      vehicles = Array.from({ length: 7 }, (_, i) => {
         const horizontal = i % 2 === 0;
         const colors = ["#38bdf8", "#a78bfa", "#34d399", "#f472b6"];
         return {
@@ -86,6 +90,10 @@ export default function SptpHeroBackdrop() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
       g.clearRect(0, 0, w, h);
 
@@ -211,7 +219,7 @@ export default function SptpHeroBackdrop() {
       ro.disconnect();
       canvas.remove();
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="sptp-hero-backdrop" aria-hidden>

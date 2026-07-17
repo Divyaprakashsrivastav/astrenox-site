@@ -9,6 +9,8 @@ import {
 } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 // Elegant flowing connection paths (viewBox 0 0 1000 600)
 const FLOW_PATHS = [
@@ -21,6 +23,7 @@ export default function HeroAmbient() {
   const reduced = useReducedMotion();
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const activeRef = useAnimationActiveRef(wrapRef);
 
   // ── Mouse parallax (max ~10px) ──
   const mx = useMotionValue(0);
@@ -50,6 +53,7 @@ export default function HeroAmbient() {
 
   // ── Particle field (canvas + rAF) ──
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -70,7 +74,7 @@ export default function HeroAmbient() {
       canvas.width = Math.max(1, Math.floor(w * dpr));
       canvas.height = Math.max(1, Math.floor(h * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(90, Math.max(40, Math.floor((w * h) / 15000)));
+      const count = Math.min(23, Math.max(10, Math.ceil((w * h) / 30000)));
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -91,6 +95,10 @@ export default function HeroAmbient() {
 
     const CONNECT = 118;
     const render = () => {
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(render);
+        return;
+      }
       ctx.clearRect(0, 0, w, h);
 
       for (let i = 0; i < particles.length; i++) {
@@ -135,7 +143,7 @@ export default function HeroAmbient() {
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   // ── Pointer tracking ──
   useEffect(() => {

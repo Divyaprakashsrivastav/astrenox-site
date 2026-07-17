@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 
 type NavActiveLinkProps = {
   href: string;
@@ -13,7 +12,7 @@ type NavActiveLinkProps = {
   "aria-label"?: string;
 };
 
-export default function NavActiveLink({
+function NavActiveLink({
   href,
   active,
   children,
@@ -31,13 +30,9 @@ export default function NavActiveLink({
     >
       <span className="dock-link-text">{children}</span>
       <span className="dock-link-hover-bar" aria-hidden />
-      {active && (
-        <motion.span
-          layoutId="dock-active-bar"
-          className="dock-link-active-bar"
-          transition={{ type: "spring", stiffness: 400, damping: 34 }}
-        />
-      )}
+      {active && <span className="dock-link-active-bar" aria-hidden />}
     </Link>
   );
 }
+
+export default memo(NavActiveLink);

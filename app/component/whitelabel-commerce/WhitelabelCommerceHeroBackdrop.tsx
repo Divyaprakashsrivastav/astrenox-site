@@ -19,7 +19,7 @@ const PATHS = [
   "M 720 88 L 720 200 L 880 168",
 ] as const;
 
-const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 9 }, (_, i) => ({
   id: i,
   path: PATHS[i % PATHS.length],
   dur: 3.2 + (i % 5) * 0.6,
@@ -105,7 +105,7 @@ export default function WhitelabelCommerceHeroBackdrop() {
       </svg>
 
       <div className="wlc-hero-backdrop-particles">
-        {Array.from({ length: 24 }, (_, i) => (
+        {Array.from({ length: 12 }, (_, i) => (
           <motion.span
             key={i}
             className="wlc-hero-ambient-dot"

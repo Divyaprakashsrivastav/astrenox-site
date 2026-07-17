@@ -217,7 +217,7 @@ function AdvisoryStrategyJourney({ workflow }: { workflow: WorkflowSection }) {
             transition={{ pathLength: { duration: 3, ease: "easeInOut", delay: 0.4 }, opacity: { duration: 5, repeat: Infinity, delay: 0.5 } }}
           />
         </svg>
-        {Array.from({ length: 20 }, (_, i) => (
+        {Array.from({ length: 10 }, (_, i) => (
           <motion.span
             key={i}
             className="adv-journey-bg-particle"

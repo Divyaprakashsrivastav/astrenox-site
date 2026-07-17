@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 type Region = { x: number; y: number; r: number; pulse: number };
 type Packet = { x: number; y: number; tx: number; ty: number; t: number; speed: number };
@@ -9,8 +11,10 @@ type Packet = { x: number; y: number; tx: number; ty: number; t: number; speed: 
 export default function EnterpriseCloudHeroBackdrop() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -51,7 +55,7 @@ export default function EnterpriseCloudHeroBackdrop() {
         { x: w * 0.68, y: h * 0.68, r: 40, pulse: 1.7 },
       ];
 
-      packets = Array.from({ length: 18 }, (_, i) => {
+      packets = Array.from({ length: 9 }, (_, i) => {
         const a = regions[i % regions.length];
         const b = regions[(i + 2) % regions.length];
         return {
@@ -67,6 +71,10 @@ export default function EnterpriseCloudHeroBackdrop() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
       g.clearRect(0, 0, w, h);
 
@@ -175,7 +183,7 @@ export default function EnterpriseCloudHeroBackdrop() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="ecms-hero-backdrop" aria-hidden>

@@ -34,12 +34,8 @@ export default function HomeMetrics() {
           <motion.div
             key={stat.label}
             className="metrics-flow-card"
-            initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-            animate={
-              inView
-                ? { opacity: 1, y: 0, filter: "blur(0px)" }
-                : { opacity: 0, y: 40, filter: "blur(8px)" }
-            }
+            initial={{ opacity: 0, y: 40 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8, delay: i * 0.08, ease: EASE_PREMIUM }}
             data-cursor-hover
           >

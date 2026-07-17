@@ -17,7 +17,7 @@
 }
 
 .coe-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
@@ -199,6 +199,35 @@
   inset: 8% 6% 14%;
   width: 88%;
   height: 78%;
+}
+
+.coe-orbit-ring {
+  animation: coe-orbit-ring-spin 30s linear infinite;
+  will-change: transform;
+}
+
+.coe-orbit-ring--reverse {
+  animation-direction: reverse;
+}
+
+@keyframes coe-orbit-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.coe-node-link--active {
+  animation: coe-node-link-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes coe-node-link-pulse {
+  0%,
+  100% {
+    stroke-opacity: 0.45;
+  }
+  50% {
+    stroke-opacity: 0.85;
+  }
 }
 
 .coe-visual-core-label {

@@ -1,7 +1,8 @@
 "use client";
 
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
 
 /** Stage names drawn from document testing concepts only. */
 const PIPE_STAGES = [
@@ -21,19 +22,22 @@ const COVERAGE = [
 ] as const;
 
 function QaCommandCenterVisual() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const activeRef = useAnimationActiveRef(rootRef);
   const [stage, setStage] = useState(0);
   const [pulse, setPulse] = useState(0);
 
   useEffect(() => {
     const id = window.setInterval(() => {
+      if (!activeRef.current) return;
       setStage((s) => (s + 1) % PIPE_STAGES.length);
       setPulse((p) => (p + 7) % 100);
     }, 1300);
     return () => window.clearInterval(id);
-  }, []);
+  }, [activeRef]);
 
   return (
-    <div className="qe-dash" aria-hidden>
+    <div ref={rootRef} className="qe-dash" aria-hidden>
       <div className="qe-dash-scan" />
       <div className="qe-dash-grid" />
 
@@ -97,7 +101,7 @@ function QaCommandCenterVisual() {
 
         <div className="qe-matrix">
           <div className="qe-matrix-grid">
-            {Array.from({ length: 16 }).map((_, i) => (
+            {Array.from({ length: 8 }).map((_, i) => (
               <motion.div
                 key={i}
                 className={`qe-matrix-cell ${i % 7 === 0 ? "is-warn" : "is-ok"}`}

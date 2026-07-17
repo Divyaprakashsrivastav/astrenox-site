@@ -5,6 +5,7 @@ import HeroCta from "./HeroCta";
 import HeroKpis from "./HeroKpis";
 import { homeHero } from "@/app/content/homepage-content";
 import { ExpandableBlock } from "../home/disclosure/HomeDisclosure";
+import FormattedText from "../ui/FormattedText";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -35,11 +36,11 @@ export default function HeroContent() {
       </motion.h1>
 
       <motion.div className="hero-description" {...fadeUp(0.3)}>
-        <p>{lead}</p>
+        <p><FormattedText text={lead} /></p>
         {rest.length > 0 && (
           <ExpandableBlock expandLabel="Continue reading" collapseLabel="Show less">
             {rest.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
+              <p key={paragraph}><FormattedText text={paragraph} /></p>
             ))}
           </ExpandableBlock>
         )}

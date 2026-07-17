@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const COLORS = ["#A855F7", "#7C3AED", "#8B5CF6", "#4F8CFF"];
 
@@ -37,8 +39,10 @@ function createParticles(w: number, h: number, count: number): Particle[] {
 export default function ProductsAmbient() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -68,11 +72,15 @@ export default function ProductsAmbient() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = createParticles(w, h, w < 768 ? 18 : 32);
+      particles = createParticles(w, h, w < 768 ? 5 : 8);
     }
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       g.clearRect(0, 0, w, h);
       for (const p of particles) {
         p.x += p.vx;
@@ -103,7 +111,7 @@ export default function ProductsAmbient() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="products-ambient" aria-hidden="true">

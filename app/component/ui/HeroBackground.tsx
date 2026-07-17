@@ -58,7 +58,7 @@ export default function HeroBackground() {
           }}
         />
 
-        <ParticleField count={35} />
+        <ParticleField count={18} />
       </motion.div>
 
       <div

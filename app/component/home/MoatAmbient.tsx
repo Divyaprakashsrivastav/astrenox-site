@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const COLORS = ["#A855F7", "#7C3AED", "#C084FC", "#6366F1", "#E879F9"];
 
@@ -37,8 +39,10 @@ function createParticles(w: number, h: number, count: number): Particle[] {
 export default function MoatAmbient() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -70,11 +74,15 @@ export default function MoatAmbient() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = createParticles(w, h, w < 640 ? 14 : w < 1024 ? 22 : 30);
+      particles = createParticles(w, h, w < 640 ? 4 : w < 1024 ? 6 : 8);
     }
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       g.clearRect(0, 0, w, h);
 
       for (const p of particles) {
@@ -108,7 +116,7 @@ export default function MoatAmbient() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="moat-ambient" aria-hidden="true">

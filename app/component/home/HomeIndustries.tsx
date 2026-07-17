@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useCallback, useState } from "react";
 import { homeIndustries } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import IndustriesAmbient from "./IndustriesAmbient";
 import IndustryShowcasePanel from "./IndustryShowcasePanel";
@@ -64,7 +65,7 @@ export default function HomeIndustries() {
           <div className="ind-description">
             {descriptionParagraphs.map((paragraph) => (
               <p key={paragraph} className="ind-description-p">
-                {paragraph}
+                <FormattedText text={paragraph} />
               </p>
             ))}
           </div>

@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { homeTechnology } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import { TECH_ECOSYSTEM_LOGOS } from "./technology-ecosystem-config";
 import TechEcosystemAmbient from "./TechEcosystemAmbient";
@@ -63,7 +64,7 @@ export default function TechnologyEcosystem() {
           <div className="tech-eco-description">
             {descriptionParagraphs.map((paragraph) => (
               <p key={paragraph} className="tech-eco-description-p">
-                {paragraph}
+                <FormattedText text={paragraph} />
               </p>
             ))}
           </div>

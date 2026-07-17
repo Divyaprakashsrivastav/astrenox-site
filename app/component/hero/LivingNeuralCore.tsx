@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const PALETTE = [
   { r: 180, g: 108, b: 255 },
@@ -9,8 +11,8 @@ const PALETTE = [
   { r: 255, g: 107, b: 214 },
 ] as const;
 
-const NODE_COUNT = 58;
-const MAX_EDGES = 95;
+const NODE_COUNT = 29;
+const MAX_EDGES = 48;
 const CONNECT_DIST = 0.52;
 const MOUSE_RADIUS = 140;
 
@@ -128,8 +130,10 @@ function rebuildEdges(nodes: Node3D[], edges: Edge[]) {
 export default function LivingNeuralCore() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     const mount = mountRef.current;
     if (!mount) return;
 
@@ -176,6 +180,10 @@ export default function LivingNeuralCore() {
 
     function draw() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(draw);
+        return;
+      }
       const w = mount!.clientWidth;
       const h = mount!.clientHeight;
       if (w < 2 || h < 2) {
@@ -378,7 +386,7 @@ export default function LivingNeuralCore() {
       mount.removeEventListener("mouseleave", onMouseLeave);
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return <div ref={mountRef} className="living-neural-core" aria-hidden />;
 }

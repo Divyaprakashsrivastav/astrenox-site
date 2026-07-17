@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 
 const PREVIEW_MIN_CHARS = 180;
@@ -60,7 +61,7 @@ export default function TechCategoryContent({ items, categoryKey }: TechCategory
       <ul className="tech-eco-content-list">
         {items.map((item) => (
           <li key={item} className={itemClassName(item)}>
-            {item}
+            <FormattedText text={item} />
           </li>
         ))}
       </ul>
@@ -82,7 +83,7 @@ export default function TechCategoryContent({ items, categoryKey }: TechCategory
           <ul ref={previewRef} className="tech-eco-content-list">
             {previewItems.map((item) => (
               <li key={item} className={itemClassName(item)}>
-                {item}
+                <FormattedText text={item} />
               </li>
             ))}
           </ul>
@@ -96,7 +97,7 @@ export default function TechCategoryContent({ items, categoryKey }: TechCategory
           >
             {restItems.map((item) => (
               <li key={item} className={itemClassName(item)}>
-                {item}
+                <FormattedText text={item} />
               </li>
             ))}
           </motion.ul>

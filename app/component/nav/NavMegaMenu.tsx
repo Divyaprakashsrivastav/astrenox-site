@@ -2,26 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { memo } from "react";
 import type { NavMegaGroup, NavMegaItem, NavMegaLayout } from "@/app/content/nav-config";
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-const panelMotion = {
-  hidden: { opacity: 0, y: 14, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.3, ease: EASE, staggerChildren: 0.032, delayChildren: 0.04 },
-  },
-  exit: { opacity: 0, y: 10, scale: 0.98, transition: { duration: 0.22, ease: EASE } },
-};
-
-const cardMotion = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: EASE } },
-};
 
 type NavMegaMenuProps = {
   group: NavMegaGroup;
@@ -35,7 +17,7 @@ function isItemActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function MegaCard({
+const MegaCard = memo(function MegaCard({
   item,
   onNavigate,
   compact,
@@ -49,7 +31,7 @@ function MegaCard({
   active?: boolean;
 }) {
   return (
-    <motion.div variants={cardMotion} className={featured ? "dock-mega-featured-wrap" : undefined}>
+    <div className={featured ? "dock-mega-featured-wrap" : undefined}>
       <Link
         href={item.href}
         role="menuitem"
@@ -72,11 +54,11 @@ function MegaCard({
           →
         </span>
       </Link>
-    </motion.div>
+    </div>
   );
-}
+});
 
-export default function NavMegaMenu({
+function NavMegaMenu({
   group,
   menuId,
   layout = "grid",
@@ -90,7 +72,7 @@ export default function NavMegaMenu({
   const catalogFeatured = catalog && group.items.length > 0 ? group.items[group.items.length - 1] : null;
 
   return (
-    <motion.div
+    <div
       id={menuId}
       role="menu"
       aria-label={group.label}
@@ -102,10 +84,6 @@ export default function NavMegaMenu({
       ]
         .filter(Boolean)
         .join(" ")}
-      variants={panelMotion}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
     >
       {catalog ? (
         <div className="dock-mega-catalog">
@@ -145,9 +123,7 @@ export default function NavMegaMenu({
       )}
       {group.sections?.map((section) => (
         <div key={section.title} className="dock-mega-section">
-          <motion.p className="dock-mega-section-label" variants={cardMotion}>
-            {section.title}
-          </motion.p>
+          <p className="dock-mega-section-label">{section.title}</p>
           <div className="dock-mega-grid dock-mega-grid--single">
             {section.items.map((item) => (
               <MegaCard
@@ -161,6 +137,8 @@ export default function NavMegaMenu({
           </div>
         </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
+
+export default memo(NavMegaMenu);

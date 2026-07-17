@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef, type ReactNode } from "react";
 import AstrenoxLogo from "./brand/AstrenoxLogo";
 import { homeFooter } from "@/app/content/homepage-content";
+import FormattedText from "./ui/FormattedText";
 import {
   navContactHref,
   navIndustriesHref,
@@ -116,7 +117,9 @@ function FooterContent({ inView }: { inView: boolean }) {
         >
           <motion.div variants={fadeUp} className="ft-brand">
             <AstrenoxLogo variant="footer" showWordmark={false} />
-            <p className="ft-brand-copy">{homeFooter.about}</p>
+            <p className="ft-brand-copy">
+              <FormattedText text={homeFooter.about} />
+            </p>
           </motion.div>
 
           <motion.nav variants={fadeUp} className="ft-col" aria-label="Quick links">

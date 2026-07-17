@@ -98,16 +98,25 @@ export default function IndustriesPageClient() {
   useEffect(() => {
     const el = journeyRef.current;
     if (!el) return;
-    const onScroll = () => {
+    let raf = 0;
+    const measure = () => {
+      raf = 0;
       const rect = el.getBoundingClientRect();
       const total = el.offsetHeight - window.innerHeight;
       if (total <= 0) return;
       const scrolled = Math.min(Math.max(-rect.top, 0), total);
       setJourneyProgress(scrolled / total);
     };
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(measure);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    measure();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (

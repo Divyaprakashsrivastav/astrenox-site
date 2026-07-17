@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useReducedMotion } from "../../features/useReducedMotion";
 
-const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 14 }, (_, i) => ({
   id: i,
   left: `${6 + ((i * 17) % 88)}%`,
   top: `${8 + ((i * 23) % 84)}%`,

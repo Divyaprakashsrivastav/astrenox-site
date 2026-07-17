@@ -4,6 +4,7 @@ import "./projects-showcase.css";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { homeFlagshipProjects } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import ProjectsAmbient from "./ProjectsAmbient";
 import ProjectBentoCard from "./ProjectBentoCard";
@@ -40,7 +41,7 @@ export default function ProjectsSection() {
           <div className="prj-description">
             {descriptionParagraphs.map((paragraph) => (
               <p key={paragraph} className="prj-description-p">
-                {paragraph}
+                <FormattedText text={paragraph} />
               </p>
             ))}
           </div>

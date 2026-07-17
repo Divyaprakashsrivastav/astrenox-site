@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FormattedText from "../ui/FormattedText";
 
 export type ServiceCardProps = {
   title: string;
@@ -16,7 +17,9 @@ export default function ServiceCard({ title, description, href }: ServiceCardPro
             →
           </span>
         </div>
-        <p className="service-card-description">{description}</p>
+        <p className="service-card-description">
+          <FormattedText text={description} />
+        </p>
       </div>
     </Link>
   );

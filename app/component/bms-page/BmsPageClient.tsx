@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { bmsPageContent as c } from "@/app/content/bms-page-content";
 import { EASE_PREMIUM } from "../v2/motion";
+import { useScrollActiveIndex } from "../features/useScrollActiveIndex";
 import BmsHero from "./BmsHero";
 import BmsArchitectureFlow from "./BmsArchitectureFlow";
 import BmsTechMarquee from "./BmsTechMarquee";
@@ -90,33 +91,12 @@ export default function BmsPageClient() {
     c.buildingModules.find((m) => m.id === activeModule) ?? c.buildingModules[0];
 
   const [activeCompare, setActiveCompare] = useState(0);
-  const [activeWorkflow, setActiveWorkflow] = useState(0);
   const [expandedApp, setExpandedApp] = useState<number | null>(null);
 
   const workflowRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = workflowRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const cards = el.querySelectorAll<HTMLElement>("[data-workflow]");
-      const center = window.innerHeight * 0.42;
-      let closest = 0;
-      let min = Infinity;
-      cards.forEach((card, i) => {
-        const rect = card.getBoundingClientRect();
-        const dist = Math.abs(rect.top + rect.height / 2 - center);
-        if (dist < min) {
-          min = dist;
-          closest = i;
-        }
-      });
-      setActiveWorkflow(closest);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const activeWorkflow = useScrollActiveIndex(workflowRef, c.integrationWorkflow.length, {
+    itemSelector: "[data-workflow]",
+  });
 
   const compare = c.legacyComparisons[activeCompare];
 

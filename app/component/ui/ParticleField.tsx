@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useMemo, type CSSProperties } from "react";
 
 interface Particle {
   id: number;
@@ -12,41 +11,39 @@ interface Particle {
   delay: number;
 }
 
-export default function ParticleField({ count = 40 }: { count?: number }) {
+function seededValue(index: number, salt: number) {
+  const value = Math.sin(index * 12.9898 + salt * 78.233) * 43758.5453;
+  return value - Math.floor(value);
+}
+
+export default function ParticleField({ count = 20 }: { count?: number }) {
   const particles = useMemo<Particle[]>(() => {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2.5 + 0.5,
-      duration: Math.random() * 8 + 6,
-      delay: Math.random() * 4,
+      x: seededValue(i, 1) * 100,
+      y: seededValue(i, 2) * 100,
+      size: seededValue(i, 3) * 2.5 + 0.5,
+      duration: seededValue(i, 4) * 8 + 6,
+      delay: seededValue(i, 5) * 4,
     }));
   }, [count]);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
       {particles.map((p) => (
-        <motion.div
+        <span
           key={p.id}
-          className="absolute rounded-full bg-primary/35"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: p.size,
-            height: p.size,
-          }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [0.15, 0.45, 0.15],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="ambient-css-particle absolute rounded-full bg-primary/35"
+          style={
+            {
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: p.size,
+              height: p.size,
+              "--particle-duration": `${p.duration}s`,
+              "--particle-delay": `${p.delay}s`,
+            } as CSSProperties
+          }
         />
       ))}
     </div>

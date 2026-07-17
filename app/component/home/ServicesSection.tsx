@@ -4,6 +4,7 @@ import "./services-section.css";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { homeServices } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import DesignSection, { DesignHeader } from "../design/DesignSection";
 import { EASE_PREMIUM } from "../v2/motion";
 import ServiceCard from "./ServiceCard";
@@ -19,7 +20,11 @@ export default function ServicesSection() {
           flow
           label={homeServices.label}
           title={homeServices.title}
-          description={homeServices.description.trim() || undefined}
+          description={
+            homeServices.description.trim() ? (
+              <FormattedText text={homeServices.description} />
+            ) : undefined
+          }
         />
 
         <ul ref={listRef} className="services-section-list">

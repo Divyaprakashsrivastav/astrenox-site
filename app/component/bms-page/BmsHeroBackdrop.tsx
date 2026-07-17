@@ -2,14 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 type Room = { x: number; y: number; w: number; h: number; pulse: number };
 
 export default function BmsHeroBackdrop() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -65,6 +69,10 @@ export default function BmsHeroBackdrop() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
       g.clearRect(0, 0, w, h);
 
@@ -154,7 +162,7 @@ export default function BmsHeroBackdrop() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="bmsp-hero-backdrop" aria-hidden>

@@ -2,14 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 import { smartParkingPageContent as c } from "@/app/content/smart-parking-page-content";
 
 export default function SptpVisionPipeline() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(canvasRef);
   const stages = c.visionPipeline;
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -54,6 +58,10 @@ export default function SptpVisionPipeline() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
       g.clearRect(0, 0, w, h);
 
@@ -135,7 +143,7 @@ export default function SptpVisionPipeline() {
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [reduced, stages]);
+  }, [activeRef, reduced, stages]);
 
   return (
     <div className="sptp-vision">

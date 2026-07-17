@@ -1,8 +1,16 @@
 "use client";
 
-import HexGridBackground from "@/components/backgrounds/HexGridBackground";
-import HeroParticles from "./backgrounds/HeroParticles";
+import dynamic from "next/dynamic";
 import HeroContent from "./hero/HeroContent";
+
+const HexGridBackground = dynamic(
+  () => import("@/components/backgrounds/HexGridBackground"),
+  { ssr: false }
+);
+
+const HeroParticles = dynamic(() => import("./backgrounds/HeroParticles"), {
+  ssr: false,
+});
 
 export default function Hero() {
   return (

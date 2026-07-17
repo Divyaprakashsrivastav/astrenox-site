@@ -8,7 +8,7 @@ interface EcosystemParticleFieldProps {
   active: boolean;
 }
 
-const PARTICLE_COUNT = 18;
+const PARTICLE_COUNT = 9;
 
 function buildParticles() {
   return Array.from({ length: PARTICLE_COUNT }, (_, i) => ({
@@ -24,9 +24,7 @@ function buildParticles() {
 const LINKS = [
   [0, 3],
   [2, 7],
-  [5, 11],
-  [8, 14],
-  [4, 16],
+  [4, 8],
 ] as const;
 
 export default function EcosystemParticleField({ active }: EcosystemParticleFieldProps) {

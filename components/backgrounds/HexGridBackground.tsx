@@ -9,6 +9,7 @@
 import { useEffect, useRef } from "react";
 import { Color } from "three";
 import { useReducedMotion } from "@/app/component/features/useReducedMotion";
+import { useAnimationActiveRef } from "@/app/component/features/useAnimationActiveRef";
 
 const GRID_CDN =
   "https://cdn.jsdelivr.net/npm/threejs-components@0.0.16/build/backgrounds/grid1.cdn.min.js";
@@ -17,7 +18,6 @@ const C_PRIMARY = 0xb46cff;
 const C_SECONDARY = 0x8a2be2;
 const C_ACCENT = 0x5b8cff;
 const C_SOFT = 0xd8c4ff;
-const C_MID = 0x9b5cff;
 
 const PULSE_COLORS = [0xc084fc, 0x8b5cf6, 0x60a5fa, 0xd8b4fe, 0x93c5fd];
 const BASE_LIGHT1 = 950;
@@ -83,6 +83,7 @@ function pulseStrength(t: number) {
 export default function HexGridBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(containerRef);
 
   useEffect(() => {
     if (reduced) return;
@@ -95,6 +96,8 @@ export default function HexGridBackground() {
     let resizeObserver: ResizeObserver | null = null;
     let initRaf = 0;
     let pulseTimer: ReturnType<typeof setTimeout> | null = null;
+    let unsubscribeActivity: (() => void) | null = null;
+    let mounting = false;
     let baseCellColors: Color[] = [];
     const activePulses: CellPulse[] = [];
     const mixColor = new Color();
@@ -144,11 +147,15 @@ export default function HexGridBackground() {
     }
 
     async function mountGrid() {
+      if (disposed || mounting || bg || !activeRef.current) return;
+      mounting = true;
+      if (!root!.contains(canvas)) root!.appendChild(canvas);
       const { default: Grid1Background } = (await import(
         /* webpackIgnore: true */ GRID_CDN
       )) as { default: Grid1Factory };
 
-      if (disposed) return;
+      mounting = false;
+      if (disposed || !activeRef.current) return;
 
       bg = Grid1Background(canvas, {
         type: "hexagon",
@@ -172,6 +179,7 @@ export default function HexGridBackground() {
 
       const libraryBeforeRender = bg.three.onBeforeRender;
       bg.three.onBeforeRender = (time) => {
+        if (!activeRef.current) return;
         libraryBeforeRender(time);
 
         if (!bg?.grid.instanceColor || baseCellColors.length === 0) return;
@@ -214,8 +222,20 @@ export default function HexGridBackground() {
       resize();
     }
 
+    function disposeGrid() {
+      if (pulseTimer) {
+        clearTimeout(pulseTimer);
+        pulseTimer = null;
+      }
+      window.removeEventListener("pointermove", onPointerMove);
+      activePulses.length = 0;
+      baseCellColors = [];
+      bg?.dispose();
+      bg = null;
+    }
+
     const waitForSize = () => {
-      if (disposed) return;
+      if (disposed || !activeRef.current) return;
       if (root.clientWidth < 2 || root.clientHeight < 2) {
         initRaf = requestAnimationFrame(waitForSize);
         return;
@@ -229,19 +249,36 @@ export default function HexGridBackground() {
 
     resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(root);
+    unsubscribeActivity = activeRef.subscribe((active) => {
+      cancelAnimationFrame(initRaf);
+      if (active) {
+        if (!bg) {
+          waitForSize();
+        } else if (pulseTimer == null) {
+          pulseTimer = setTimeout(schedulePulse, 3200 + Math.random() * 1500);
+        }
+        return;
+      }
+
+      // Pause pulses while off-screen — keep WebGL instance mounted so
+      // scrolling back to the hero does not flash a blank canvas.
+      if (pulseTimer) {
+        clearTimeout(pulseTimer);
+        pulseTimer = null;
+      }
+    });
 
     return () => {
       disposed = true;
       cancelAnimationFrame(initRaf);
-      if (pulseTimer) clearTimeout(pulseTimer);
-      window.removeEventListener("pointermove", onPointerMove);
+      unsubscribeActivity?.();
       resizeObserver?.disconnect();
-      bg?.dispose();
+      disposeGrid();
       if (root.contains(canvas)) {
         root.removeChild(canvas);
       }
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   if (reduced) return null;
 

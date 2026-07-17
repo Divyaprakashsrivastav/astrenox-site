@@ -51,7 +51,7 @@ const MESH_LINKS: [string, string][] = [
   ["innovation", "transformation"],
 ];
 
-const PARTICLES = Array.from({ length: 48 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 24 }, (_, i) => ({
   id: i,
   left: `${(i * 19 + 5) % 100}%`,
   top: `${(i * 27 + 9) % 100}%`,

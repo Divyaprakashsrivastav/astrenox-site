@@ -1,12 +1,12 @@
 "use client";
 
 import "./nav/nav.css";
-import { useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
-import AstrenoxLogo from "./brand/AstrenoxLogo";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import AstrenoxLogo from "./brand/AstrenoxLogo";
 import {
   navAiServices,
   navDigitalConsulting,
@@ -22,9 +22,11 @@ import {
 import NavMegaMenu from "./nav/NavMegaMenu";
 import NavMegaBackdrop from "./nav/NavMegaBackdrop";
 import NavActiveLink from "./nav/NavActiveLink";
-import { useMegaMenuDelay } from "./nav/useMegaMenuDelay";
 
 type MegaKey = "ai" | "digital" | "products" | "infra";
+
+const OPEN_DELAY_MS = 90;
+const CLOSE_DELAY_MS = 140;
 
 const LABEL = {
   ai: "AI Services",
@@ -35,16 +37,77 @@ const LABEL = {
   contact: "Contact Us",
 } as const;
 
+const GROUPS: Record<MegaKey, NavMegaGroup> = {
+  ai: navAiServices,
+  digital: navDigitalConsulting,
+  products: navProducts,
+  infra: navInfrastructure,
+};
+
+const MEGA_KEYS = Object.keys(GROUPS) as MegaKey[];
+
 function routeActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 function allItems(group: NavMegaGroup): NavMegaItem[] {
-  return [...group.items, ...(group.sections?.flatMap((s) => s.items) ?? [])];
+  return [...group.items, ...(group.sections?.flatMap((section) => section.items) ?? [])];
 }
 
-function DrawerRow({
+type MegaTriggerProps = {
+  id: MegaKey;
+  label: string;
+  active: boolean;
+  open: boolean;
+  onPointerEnter: (event: PointerEvent<HTMLDivElement>) => void;
+  onPointerLeave: () => void;
+  onFocus: (id: MegaKey) => void;
+  onClick: (id: MegaKey) => void;
+};
+
+const MegaTrigger = memo(function MegaTrigger({
+  id,
+  label,
+  active,
+  open,
+  onPointerEnter,
+  onPointerLeave,
+  onFocus,
+  onClick,
+}: MegaTriggerProps) {
+  return (
+    <div
+      className="dock-mega-anchor"
+      data-mega={id}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+    >
+      <button
+        type="button"
+        className={`dock-link dock-link--mega ${active ? "dock-link--active" : ""} ${
+          open ? "dock-link--mega-open" : ""
+        }`}
+        aria-expanded={open}
+        aria-haspopup="menu"
+        aria-controls={`dock-mega-${id}`}
+        onFocus={() => onFocus(id)}
+        onClick={() => onClick(id)}
+      >
+        <span className="dock-link-text">{label}</span>
+        <ChevronDown
+          size={12}
+          className={`dock-chevron ${open ? "dock-chevron--open" : ""}`}
+          aria-hidden
+        />
+        <span className="dock-link-hover-bar" aria-hidden />
+        {active && <span className="dock-link-active-bar" aria-hidden />}
+      </button>
+    </div>
+  );
+});
+
+const DrawerRow = memo(function DrawerRow({
   item,
   onNavigate,
   active,
@@ -69,325 +132,412 @@ function DrawerRow({
       </span>
     </Link>
   );
-}
+});
 
-export default function Navbar() {
-  const pathname = usePathname();
-  const { cancelClose, scheduleClose } = useMegaMenuDelay();
-
-  const [megaOpen, setMegaOpen] = useState<MegaKey | null>(null);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [accordion, setAccordion] = useState<MegaKey | null>(null);
-
-  const groups: Record<MegaKey, NavMegaGroup> = {
-    ai: navAiServices,
-    digital: navDigitalConsulting,
-    products: navProducts,
-    infra: navInfrastructure,
-  };
-
-  const closeMega = useCallback(() => setMegaOpen(null), []);
-  const openMega = useCallback(
-    (key: MegaKey) => {
-      cancelClose();
-      setMegaOpen(key);
-    },
-    [cancelClose]
+const DesktopMegaLayer = memo(function DesktopMegaLayer({
+  activeKey,
+  onPointerEnter,
+  onPointerLeave,
+}: {
+  activeKey: MegaKey | null;
+  onPointerEnter: () => void;
+  onPointerLeave: () => void;
+}) {
+  return (
+    <div
+      className={`dock-mega-layer${activeKey ? " is-open" : ""}`}
+      onPointerEnter={onPointerEnter}
+      onPointerLeave={onPointerLeave}
+    >
+      {MEGA_KEYS.map((key) => {
+        const group = GROUPS[key];
+        const layout =
+          group.layout ?? (key === "products" || key === "infra" ? "stack" : "grid");
+        return (
+          <div
+            key={key}
+            className={[
+              "dock-mega-shell",
+              activeKey === key ? "is-open" : "",
+            ].join(" ")}
+            aria-hidden={activeKey !== key}
+          >
+            <div
+              className={[
+                "dock-mega-float",
+                key === "products" || key === "infra" ? "dock-mega-float--narrow" : "",
+                key === "digital" ? "dock-mega-float--catalog" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <NavMegaMenu
+                group={group}
+                menuId={`dock-mega-${key}`}
+                layout={layout}
+                panelVariant={key === "infra" ? "infra" : undefined}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
   );
-  const deferCloseMega = useCallback(() => scheduleClose(closeMega), [scheduleClose, closeMega]);
+});
 
-  useEffect(() => {
-    document.body.style.overflow = drawerOpen || megaOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [drawerOpen, megaOpen]);
+function DesktopMenu({ pathname }: { pathname: string }) {
+  const [megaOpen, setMegaOpen] = useState<MegaKey | null>(null);
+  const openTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearOpenTimer = useCallback(() => {
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current);
+      openTimerRef.current = null;
+    }
+  }, []);
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
+  const cancelHoverTimers = useCallback(() => {
+    clearOpenTimer();
+    clearCloseTimer();
+  }, [clearOpenTimer, clearCloseTimer]);
+
+  const openMegaNow = useCallback(
+    (key: MegaKey) => {
+      cancelHoverTimers();
+      setMegaOpen((current) => (current === key ? current : key));
+    },
+    [cancelHoverTimers]
+  );
+
+  const scheduleOpen = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      if (event.pointerType === "touch") return;
+      const key = event.currentTarget.dataset.mega as MegaKey;
+      clearCloseTimer();
+      clearOpenTimer();
+      openTimerRef.current = setTimeout(() => {
+        setMegaOpen((current) => (current === key ? current : key));
+        openTimerRef.current = null;
+      }, OPEN_DELAY_MS);
+    },
+    [clearCloseTimer, clearOpenTimer]
+  );
+
+  const scheduleClose = useCallback(() => {
+    clearOpenTimer();
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => {
+      setMegaOpen(null);
+      closeTimerRef.current = null;
+    }, CLOSE_DELAY_MS);
+  }, [clearCloseTimer, clearOpenTimer]);
+
+  const closeMega = useCallback(() => {
+    cancelHoverTimers();
+    setMegaOpen(null);
+  }, [cancelHoverTimers]);
+
+  const toggleMega = useCallback(
+    (key: MegaKey) => {
+      cancelHoverTimers();
+      setMegaOpen((current) => (current === key ? null : key));
+    },
+    [cancelHoverTimers]
+  );
 
   useEffect(() => {
     document.body.classList.toggle("dock-mega-open", Boolean(megaOpen));
     return () => document.body.classList.remove("dock-mega-open");
   }, [megaOpen]);
 
-  useEffect(() => {
-    setMegaOpen(null);
-    setDrawerOpen(false);
-    setAccordion(null);
-  }, [pathname]);
-
-  const closeDrawer = () => setDrawerOpen(false);
-
-  const megaBtnClass = (active: boolean, open: boolean) =>
-    `dock-link dock-link--mega ${active ? "dock-link--active" : ""} ${open ? "dock-link--mega-open" : ""}`;
-
-  const MegaTrigger = ({ id, label, active }: { id: MegaKey; label: string; active: boolean }) => {
-    const open = megaOpen === id;
-    return (
-      <div
-        className="dock-mega-anchor"
-        onMouseEnter={() => openMega(id)}
-        onMouseLeave={deferCloseMega}
-      >
-        <button
-          type="button"
-          className={megaBtnClass(active, open)}
-          aria-expanded={open}
-          aria-haspopup="menu"
-          aria-controls={`dock-mega-${id}`}
-        >
-          <span className="dock-link-text">{label}</span>
-          <ChevronDown size={12} className={`dock-chevron ${open ? "dock-chevron--open" : ""}`} aria-hidden />
-          <span className="dock-link-hover-bar" aria-hidden />
-          {active && (
-            <motion.span
-              layoutId="dock-active-bar"
-              className="dock-link-active-bar"
-              transition={{ type: "spring", stiffness: 400, damping: 34 }}
-            />
-          )}
-        </button>
-      </div>
-    );
-  };
-
-  const Accordion = ({ id, label }: { id: MegaKey; label: string }) => {
-    const open = accordion === id;
-    const group = groups[id];
-    return (
-      <div className="dock-drawer-accordion">
-        <button
-          type="button"
-          className="dock-drawer-accordion-btn"
-          onClick={() => setAccordion(open ? null : id)}
-          aria-expanded={open}
-        >
-          <span>{label}</span>
-          <ChevronDown size={18} className={open ? "rotate-180" : ""} aria-hidden />
-        </button>
-        <AnimatePresence initial={false}>
-          {open && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="overflow-hidden"
-            >
-              <div className="dock-drawer-cards">
-                {group.items.map((item) => (
-                  <DrawerRow
-                    key={item.href}
-                    item={item}
-                    onNavigate={closeDrawer}
-                    active={routeActive(pathname, item.href)}
-                  />
-                ))}
-                {group.sections?.map((section) => (
-                  <div key={section.title}>
-                    <p className="dock-drawer-section-label">{section.title}</p>
-                    {section.items.map((item) => (
-                      <DrawerRow
-                        key={item.href}
-                        item={item}
-                        onNavigate={closeDrawer}
-                        active={routeActive(pathname, item.href)}
-                      />
-                    ))}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    );
-  };
+  useEffect(() => cancelHoverTimers, [cancelHoverTimers]);
 
   return (
     <>
-      <AnimatePresence>{megaOpen && <NavMegaBackdrop onClose={closeMega} onHover={cancelClose} />}</AnimatePresence>
+      <div className="dock-menu">
+        <NavActiveLink href="/" active={routeActive(pathname, "/")}>
+          Home
+        </NavActiveLink>
+        <MegaTrigger
+          id="ai"
+          label={LABEL.ai}
+          active={isMegaGroupActive(pathname, navAiServices)}
+          open={megaOpen === "ai"}
+          onPointerEnter={scheduleOpen}
+          onPointerLeave={scheduleClose}
+          onFocus={openMegaNow}
+          onClick={toggleMega}
+        />
+        <MegaTrigger
+          id="digital"
+          label={LABEL.digital}
+          active={isMegaGroupActive(pathname, navDigitalConsulting)}
+          open={megaOpen === "digital"}
+          onPointerEnter={scheduleOpen}
+          onPointerLeave={scheduleClose}
+          onFocus={openMegaNow}
+          onClick={toggleMega}
+        />
+        <MegaTrigger
+          id="products"
+          label={LABEL.products}
+          active={isMegaGroupActive(pathname, navProducts)}
+          open={megaOpen === "products"}
+          onPointerEnter={scheduleOpen}
+          onPointerLeave={scheduleClose}
+          onFocus={openMegaNow}
+          onClick={toggleMega}
+        />
+        <MegaTrigger
+          id="infra"
+          label={LABEL.infra}
+          active={isInfrastructureActive(pathname)}
+          open={megaOpen === "infra"}
+          onPointerEnter={scheduleOpen}
+          onPointerLeave={scheduleClose}
+          onFocus={openMegaNow}
+          onClick={toggleMega}
+        />
+        <NavActiveLink href={navIndustriesHref} active={routeActive(pathname, navIndustriesHref)}>
+          {LABEL.industries}
+        </NavActiveLink>
+        <NavActiveLink href={navContactHref} active={routeActive(pathname, navContactHref)}>
+          {LABEL.contact}
+        </NavActiveLink>
+      </div>
 
-      <motion.div
-        className="dock-shell"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <header className="dock-header">
-          <nav aria-label="Main navigation" className="dock-bar">
-            <div className="dock-grid">
-              <div className="dock-zone dock-zone--brand">
-                <AstrenoxLogo variant="nav" height={40} />
-              </div>
-
-              <div className="dock-zone dock-zone--menu">
-                <div className="dock-menu">
-                  <NavActiveLink href="/" active={routeActive(pathname, "/")}>
-                    Home
-                  </NavActiveLink>
-                  <MegaTrigger id="ai" label={LABEL.ai} active={isMegaGroupActive(pathname, navAiServices)} />
-                  <MegaTrigger
-                    id="digital"
-                    label={LABEL.digital}
-                    active={isMegaGroupActive(pathname, navDigitalConsulting)}
-                  />
-                  <MegaTrigger id="products" label={LABEL.products} active={isMegaGroupActive(pathname, navProducts)} />
-                  <MegaTrigger
-                    id="infra"
-                    label={LABEL.infra}
-                    active={isInfrastructureActive(pathname)}
-                  />
-                  <NavActiveLink href={navIndustriesHref} active={routeActive(pathname, navIndustriesHref)}>
-                    {LABEL.industries}
-                  </NavActiveLink>
-                  <NavActiveLink href={navContactHref} active={routeActive(pathname, navContactHref)}>
-                    {LABEL.contact}
-                  </NavActiveLink>
-                </div>
-              </div>
-
-              <div className="dock-zone dock-zone--cta">
-                <Link href={navContactHref} className="dock-cta" aria-label="Schedule a call with Astrenox">
-                  <span>Schedule Call</span>
-                  <ArrowRight size={15} strokeWidth={2.25} className="dock-cta-icon" aria-hidden />
-                </Link>
-                <button
-                  type="button"
-                  className="dock-burger"
-                  aria-label={drawerOpen ? "Close menu" : "Open menu"}
-                  aria-expanded={drawerOpen}
-                  aria-controls="dock-drawer"
-                  onClick={() => setDrawerOpen((v) => !v)}
-                >
-                  {drawerOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
-              </div>
-            </div>
-          </nav>
-        </header>
-      </motion.div>
-
-      <AnimatePresence>
-        {megaOpen && (
-          <div
-            className="dock-mega-shell"
-            onMouseEnter={cancelClose}
-            onMouseLeave={deferCloseMega}
-          >
-            <div
-              className={[
-                "dock-mega-float",
-                megaOpen === "products" || megaOpen === "infra" ? "dock-mega-float--narrow" : "",
-                megaOpen === "digital" ? "dock-mega-float--catalog" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <NavMegaMenu
-                group={groups[megaOpen]}
-                menuId={`dock-mega-${megaOpen}`}
-                layout={
-                  groups[megaOpen].layout ??
-                  (megaOpen === "products" || megaOpen === "infra" ? "stack" : "grid")
-                }
-                panelVariant={megaOpen === "infra" ? "infra" : undefined}
-              />
-            </div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {drawerOpen && (
+      {typeof document !== "undefined" &&
+        createPortal(
           <>
-            <motion.div
-              className="dock-drawer-scrim"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={closeDrawer}
-              aria-hidden
+            <NavMegaBackdrop
+              open={Boolean(megaOpen)}
+              onClose={closeMega}
+              onPointerEnter={clearCloseTimer}
             />
-            <motion.aside
-              id="dock-drawer"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Navigation menu"
-              className="dock-drawer"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="dock-drawer-head">
-                <AstrenoxLogo variant="drawer" onClick={closeDrawer} />
-                <button type="button" className="dock-drawer-close" onClick={closeDrawer} aria-label="Close menu">
-                  <X size={20} />
-                </button>
-              </div>
-              <div className="dock-drawer-body">
-                <NavActiveLink href="/" active={routeActive(pathname, "/")} className="dock-drawer-link" onClick={closeDrawer}>
-                  Home
-                </NavActiveLink>
+            <DesktopMegaLayer
+              activeKey={megaOpen}
+              onPointerEnter={cancelHoverTimers}
+              onPointerLeave={scheduleClose}
+            />
+          </>,
+          document.body
+        )}
+    </>
+  );
+}
 
-                <div className="dock-drawer-mobile">
-                  <Accordion id="ai" label={LABEL.ai} />
-                  <Accordion id="digital" label={LABEL.digital} />
-                  <Accordion id="products" label={LABEL.products} />
-                  <Accordion id="infra" label={LABEL.infra} />
-                </div>
+function MobileDrawer({
+  pathname,
+  open,
+  accordion,
+  onClose,
+  onAccordion,
+}: {
+  pathname: string;
+  open: boolean;
+  accordion: MegaKey | null;
+  onClose: () => void;
+  onAccordion: (key: MegaKey) => void;
+}) {
+  return (
+    <>
+      <div
+        className={`dock-drawer-scrim${open ? " is-open" : ""}`}
+        onClick={onClose}
+        aria-hidden
+      />
+      <aside
+        id="dock-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
+        className={`dock-drawer${open ? " is-open" : ""}`}
+        aria-hidden={!open}
+      >
+        <div className="dock-drawer-head">
+          <AstrenoxLogo variant="drawer" onClick={onClose} />
+          <button type="button" className="dock-drawer-close" onClick={onClose} aria-label="Close menu">
+            <X size={20} />
+          </button>
+        </div>
+        <div className="dock-drawer-body">
+          <NavActiveLink href="/" active={routeActive(pathname, "/")} className="dock-drawer-link" onClick={onClose}>
+            Home
+          </NavActiveLink>
 
-                <div className="dock-drawer-tablet">
-                  {(Object.keys(groups) as MegaKey[]).map((key) => (
-                    <div key={key} className="dock-drawer-block">
-                      <p className="dock-drawer-block-label">
-                        {key === "ai"
-                          ? LABEL.ai
-                          : key === "digital"
-                            ? LABEL.digital
-                            : key === "products"
-                              ? LABEL.products
-                              : LABEL.infra}
-                      </p>
+          <div className="dock-drawer-mobile">
+            {MEGA_KEYS.map((key) => {
+              const expanded = accordion === key;
+              const group = GROUPS[key];
+              return (
+                <div key={key} className={`dock-drawer-accordion${expanded ? " is-open" : ""}`}>
+                  <button
+                    type="button"
+                    className="dock-drawer-accordion-btn"
+                    onClick={() => onAccordion(key)}
+                    aria-expanded={expanded}
+                  >
+                    <span>{LABEL[key]}</span>
+                    <ChevronDown size={18} className={expanded ? "rotate-180" : ""} aria-hidden />
+                  </button>
+                  <div className="dock-drawer-accordion-panel">
+                    <div>
                       <div className="dock-drawer-cards">
-                        {allItems(groups[key]).map((item) => (
+                        {group.items.map((item) => (
                           <DrawerRow
                             key={item.href}
                             item={item}
-                            onNavigate={closeDrawer}
+                            onNavigate={onClose}
                             active={routeActive(pathname, item.href)}
                           />
                         ))}
+                        {group.sections?.map((section) => (
+                          <div key={section.title}>
+                            <p className="dock-drawer-section-label">{section.title}</p>
+                            {section.items.map((item) => (
+                              <DrawerRow
+                                key={item.href}
+                                item={item}
+                                onNavigate={onClose}
+                                active={routeActive(pathname, item.href)}
+                              />
+                            ))}
+                          </div>
+                        ))}
                       </div>
                     </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="dock-drawer-tablet">
+            {MEGA_KEYS.map((key) => (
+              <div key={key} className="dock-drawer-block">
+                <p className="dock-drawer-block-label">{LABEL[key]}</p>
+                <div className="dock-drawer-cards">
+                  {allItems(GROUPS[key]).map((item) => (
+                    <DrawerRow
+                      key={item.href}
+                      item={item}
+                      onNavigate={onClose}
+                      active={routeActive(pathname, item.href)}
+                    />
                   ))}
                 </div>
-
-                <NavActiveLink
-                  href={navIndustriesHref}
-                  active={routeActive(pathname, navIndustriesHref)}
-                  className="dock-drawer-link"
-                  onClick={closeDrawer}
-                >
-                  {LABEL.industries}
-                </NavActiveLink>
-                <NavActiveLink
-                  href={navContactHref}
-                  active={routeActive(pathname, navContactHref)}
-                  className="dock-drawer-link"
-                  onClick={closeDrawer}
-                >
-                  {LABEL.contact}
-                </NavActiveLink>
-
-                <Link href={navContactHref} onClick={closeDrawer} className="dock-cta dock-cta--drawer">
-                  <span>Schedule Call</span>
-                  <ArrowRight size={15} strokeWidth={2.25} className="dock-cta-icon" aria-hidden />
-                </Link>
               </div>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+            ))}
+          </div>
+
+          <NavActiveLink
+            href={navIndustriesHref}
+            active={routeActive(pathname, navIndustriesHref)}
+            className="dock-drawer-link"
+            onClick={onClose}
+          >
+            {LABEL.industries}
+          </NavActiveLink>
+          <NavActiveLink
+            href={navContactHref}
+            active={routeActive(pathname, navContactHref)}
+            className="dock-drawer-link"
+            onClick={onClose}
+          >
+            {LABEL.contact}
+          </NavActiveLink>
+
+          <Link href={navContactHref} onClick={onClose} className="dock-cta dock-cta--drawer">
+            <span>Schedule Call</span>
+            <ArrowRight size={15} strokeWidth={2.25} className="dock-cta-icon" aria-hidden />
+          </Link>
+        </div>
+      </aside>
     </>
+  );
+}
+
+function MobileNavControls({ pathname }: { pathname: string }) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerReady, setDrawerReady] = useState(false);
+  const [accordion, setAccordion] = useState<MegaKey | null>(null);
+
+  const closeDrawer = useCallback(() => setDrawerOpen(false), []);
+  const toggleDrawer = useCallback(() => {
+    setDrawerReady(true);
+    setDrawerOpen((current) => !current);
+  }, []);
+  const toggleAccordion = useCallback((key: MegaKey) => {
+    setAccordion((current) => (current === key ? null : key));
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = drawerOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [drawerOpen]);
+
+  return (
+    <>
+      <Link href={navContactHref} className="dock-cta" aria-label="Schedule a call with Astrenox">
+        <span>Schedule Call</span>
+        <ArrowRight size={15} strokeWidth={2.25} className="dock-cta-icon" aria-hidden />
+      </Link>
+      <button
+        type="button"
+        className="dock-burger"
+        aria-label={drawerOpen ? "Close menu" : "Open menu"}
+        aria-expanded={drawerOpen}
+        aria-controls="dock-drawer"
+        onClick={toggleDrawer}
+      >
+        {drawerOpen ? <X size={20} /> : <Menu size={20} />}
+      </button>
+
+      {drawerReady && (
+        <MobileDrawer
+          pathname={pathname}
+          open={drawerOpen}
+          accordion={accordion}
+          onClose={closeDrawer}
+          onAccordion={toggleAccordion}
+        />
+      )}
+    </>
+  );
+}
+
+export default function Navbar() {
+  const pathname = usePathname();
+
+  return (
+    <div className="dock-shell">
+      <header className="dock-header">
+        <nav aria-label="Main navigation" className="dock-bar">
+          <div className="dock-grid">
+            <div className="dock-zone dock-zone--brand">
+              <AstrenoxLogo variant="nav" height={40} />
+            </div>
+
+            <div className="dock-zone dock-zone--menu">
+              <DesktopMenu key={pathname} pathname={pathname} />
+            </div>
+
+            <div className="dock-zone dock-zone--cta">
+              <MobileNavControls key={pathname} pathname={pathname} />
+            </div>
+          </div>
+        </nav>
+      </header>
+    </div>
   );
 }

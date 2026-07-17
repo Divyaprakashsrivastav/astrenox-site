@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { enterpriseCloudPageContent as c } from "@/app/content/enterprise-cloud-page-content";
 import { EASE_PREMIUM } from "../v2/motion";
+import { useScrollActiveIndex } from "../features/useScrollActiveIndex";
 import EnterpriseCloudHero from "./EnterpriseCloudHero";
 import EnterpriseCloudTechMarquee from "./EnterpriseCloudTechMarquee";
 import ArchitectureFlow from "./ArchitectureFlow";
@@ -83,33 +84,13 @@ function CountUp({
 
 export default function EnterpriseCloudPageClient() {
   const [activeChallenge, setActiveChallenge] = useState(0);
-  const [activeLifecycle, setActiveLifecycle] = useState(0);
   const [expandedOffering, setExpandedOffering] = useState<number | null>(null);
 
   const lifecycleRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = lifecycleRef.current;
-    if (!el) return;
-    const onScroll = () => {
-      const cards = el.querySelectorAll<HTMLElement>("[data-lifecycle]");
-      const center = window.innerHeight * 0.45;
-      let closest = 0;
-      let minDist = Infinity;
-      cards.forEach((card, i) => {
-        const rect = card.getBoundingClientRect();
-        const dist = Math.abs(rect.top + rect.height / 2 - center);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = i;
-        }
-      });
-      setActiveLifecycle(closest);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const activeLifecycle = useScrollActiveIndex(lifecycleRef, c.lifecycleStages.length, {
+    itemSelector: "[data-lifecycle]",
+    focusRatio: 0.45,
+  });
 
   const capabilityPanels = [
     {

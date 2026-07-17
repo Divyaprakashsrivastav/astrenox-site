@@ -2,12 +2,16 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 export default function FlywheelStoryAmbient() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(canvasRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -35,7 +39,7 @@ export default function FlywheelStoryAmbient() {
       canvas!.style.width = `${w}px`;
       canvas!.style.height = `${h}px`;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = Array.from({ length: w < 640 ? 20 : 36 }, () => ({
+      particles = Array.from({ length: w < 640 ? 5 : 9 }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.025,
@@ -46,6 +50,10 @@ export default function FlywheelStoryAmbient() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       ctx!.clearRect(0, 0, w, h);
       for (const p of particles) {
         p.x += p.vx;
@@ -72,7 +80,7 @@ export default function FlywheelStoryAmbient() {
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div className="flywheel-story-ambient" aria-hidden>

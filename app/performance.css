@@ -1,0 +1,120 @@
+/* Global performance helpers — keep interactions intact */
+
+.ambient-css-particle {
+  animation: ambient-css-particle-float var(--particle-duration, 10s)
+    ease-in-out var(--particle-delay, 0s) infinite;
+}
+
+@keyframes ambient-css-particle-float {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: translate3d(0, -30px, 0) scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* GPU-friendly page enter (replaces Framer on route shell).
+   Opacity only — transform on this wrapper breaks GSAP position:fixed pinning. */
+.page-enter {
+  animation: page-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: none;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll progress bar — transform only */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.scroll-progress > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--color-primary, #7c3aed);
+}
+
+/*
+  content-visibility is OPT-IN only.
+  Never apply to main section catch-alls — it breaks sticky scroll scenes,
+  Framer whileInView, IntersectionObserver measurements, and tall sections.
+*/
+.aie-block,
+.bmsp-section,
+.ecms-section,
+.sptp-block,
+.indp-section:not(.indp-section--journey),
+.qe-block,
+.coe-block,
+.aipe-block {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Always paint interactive / scroll-driven surfaces */
+.method-story,
+.hero-section,
+.flywheel-story,
+.flow-section,
+.prj-section,
+.ind-section,
+.tst-section,
+.cta-section,
+.eco-section,
+.tech-ecosystem-section,
+.indp-section--journey,
+.products-explorer,
+.products-factory-sticky,
+.asf-sdlc,
+.wlc-framework,
+.mission-pipeline-section,
+.adv-journey {
+  content-visibility: visible;
+}
+
+/* Marquees & infinite loops — promote layer without changing look */
+.sptp-tech-track,
+.bmsp-tech-track,
+.ecms-tech-track,
+[class*="marquee"],
+[class*="tech-track"] {
+  transform: translate3d(0, 0, 0);
+}

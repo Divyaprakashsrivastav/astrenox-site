@@ -2,21 +2,10 @@
 
 import { motion } from "framer-motion";
 import { homeTriFlywheel } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 
 type Flywheel = (typeof homeTriFlywheel.flywheels)[number];
-
-function parseDescription(description: string) {
-  const marker = ":- ";
-  const idx = description.indexOf(marker);
-  if (idx === -1) {
-    return { preamble: "", body: description };
-  }
-  return {
-    preamble: description.slice(0, idx + marker.length),
-    body: description.slice(idx + marker.length).trim(),
-  };
-}
 
 interface FlywheelPillarProps {
   flywheel: Flywheel;
@@ -25,18 +14,13 @@ interface FlywheelPillarProps {
 }
 
 export default function FlywheelPillar({ flywheel, index, inView }: FlywheelPillarProps) {
-  const { preamble, body } = parseDescription(flywheel.description);
   const num = String(index + 1).padStart(2, "0");
 
   return (
     <motion.article
       className={`flywheel-pillar flywheel-pillar--${flywheel.id}`}
-      initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-      animate={
-        inView
-          ? { opacity: 1, y: 0, filter: "blur(0px)" }
-          : { opacity: 0, y: 40, filter: "blur(8px)" }
-      }
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
       transition={{
         duration: 0.75,
         delay: 0.15 + index * 0.12,
@@ -56,14 +40,17 @@ export default function FlywheelPillar({ flywheel, index, inView }: FlywheelPill
           <h3 className="flywheel-pillar-title">{flywheel.title}</h3>
 
           <div className="flywheel-pillar-copy">
-            {preamble ? <p className="flywheel-pillar-lead">{preamble}</p> : null}
-            {body ? <p className="flywheel-pillar-body">{body}</p> : null}
+            <p className="flywheel-pillar-body">
+              <FormattedText text={flywheel.description} />
+            </p>
           </div>
 
           {flywheel.steps.length > 0 ? (
             <ol className="flywheel-pillar-steps">
               {flywheel.steps.map((step) => (
-                <li key={step}>{step}</li>
+                <li key={step}>
+                  <FormattedText text={step} />
+                </li>
               ))}
             </ol>
           ) : null}

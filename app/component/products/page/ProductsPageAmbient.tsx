@@ -3,12 +3,16 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "../../features/useReducedMotion";
+import { useAnimationActiveRef } from "../../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../../features/animationScheduler";
 
 export default function ProductsPageAmbient() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -39,7 +43,7 @@ export default function ProductsPageAmbient() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = Array.from({ length: w < 768 ? 28 : 48 }, () => ({
+      particles = Array.from({ length: w < 768 ? 14 : 24 }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.04,
@@ -51,6 +55,10 @@ export default function ProductsPageAmbient() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       ctx!.clearRect(0, 0, w, h);
       for (const p of particles) {
         p.x += p.vx;
@@ -78,7 +86,7 @@ export default function ProductsPageAmbient() {
       ro.disconnect();
       canvas.remove();
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="pp-ambient" aria-hidden>

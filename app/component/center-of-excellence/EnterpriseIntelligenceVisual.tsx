@@ -1,7 +1,8 @@
 "use client";
 
-import { memo, useEffect, useState, type MouseEvent } from "react";
+import { memo, useEffect, useRef, useState, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
 
 type OrbitNode = {
   id: string;
@@ -46,7 +47,8 @@ function polar(angleDeg: number, radiusPct: number) {
 }
 
 function EnterpriseIntelligenceVisual() {
-  const [pulse, setPulse] = useState(0);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const activeRef = useAnimationActiveRef(rootRef);
   const [activeId, setActiveId] = useState("sap");
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.45);
@@ -64,18 +66,17 @@ function EnterpriseIntelligenceVisual() {
   }, [sx, sy]);
 
   useEffect(() => {
-    const pulseId = window.setInterval(() => setPulse((v) => (v + 1) % 360), 40);
     const nodeId = window.setInterval(() => {
+      if (!activeRef.current) return;
       setActiveId((prev) => {
         const idx = PLATFORMS.findIndex((n) => n.id === prev);
         return PLATFORMS[(idx + 1) % PLATFORMS.length].id;
       });
     }, 2200);
     return () => {
-      window.clearInterval(pulseId);
       window.clearInterval(nodeId);
     };
-  }, []);
+  }, [activeRef]);
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -84,7 +85,7 @@ function EnterpriseIntelligenceVisual() {
   };
 
   return (
-    <div className="coe-visual" onMouseMove={onMove} aria-hidden>
+    <div ref={rootRef} className="coe-visual" onMouseMove={onMove} aria-hidden>
       <div
         className="coe-visual-light"
         style={{
@@ -113,7 +114,7 @@ function EnterpriseIntelligenceVisual() {
         </defs>
 
         {[38, 58, 74].map((r, i) => (
-          <motion.circle
+          <circle
             key={r}
             cx="50"
             cy="50"
@@ -122,25 +123,17 @@ function EnterpriseIntelligenceVisual() {
             stroke="rgba(167, 139, 250, 0.12)"
             strokeWidth="0.15"
             strokeDasharray="1.2 2.4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.35 + i * 0.1, rotate: pulse * (i % 2 === 0 ? 1 : -1) }}
-            style={{ transformOrigin: "50px 50px" }}
+            opacity={0.35 + i * 0.1}
+            className={`coe-orbit-ring${i % 2 === 0 ? "" : " coe-orbit-ring--reverse"}`}
+            style={{ transformOrigin: "50px 50px", animationDuration: `${26 + i * 7}s` }}
           />
         ))}
 
         {ALL_NODES.map((node) => {
           const pos = polar(node.angle, node.radius);
           const active = node.id === activeId;
-          const stroke =
-            node.tier === "platform"
-              ? active
-                ? "rgba(56, 189, 248, 0.85)"
-                : "rgba(167, 139, 250, 0.45)"
-              : node.tier === "dept"
-                ? "rgba(96, 165, 250, 0.35)"
-                : "rgba(212, 175, 55, 0.28)";
           return (
-            <motion.line
+            <line
               key={`link-${node.id}`}
               x1="50"
               y1="50"
@@ -149,8 +142,7 @@ function EnterpriseIntelligenceVisual() {
               stroke="url(#coe-line-grad)"
               strokeWidth={active ? 0.22 : 0.12}
               strokeOpacity={active ? 0.75 : 0.35}
-              animate={{ strokeOpacity: active ? [0.45, 0.85, 0.45] : 0.3 }}
-              transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+              className={active ? "coe-node-link--active" : undefined}
             />
           );
         })}

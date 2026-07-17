@@ -20,7 +20,7 @@ export default function TrustedBackground() {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
       {!reducedMotion &&
-        Array.from({ length: 12 }).map((_, i) => (
+        Array.from({ length: 6 }).map((_, i) => (
           <motion.span
             key={i}
             className="trusted-bg-particle"

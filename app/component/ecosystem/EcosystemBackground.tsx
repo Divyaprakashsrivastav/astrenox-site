@@ -10,7 +10,7 @@ export default function EcosystemBackground({ active }: { active: boolean }) {
     <div className="eco-network-bg" aria-hidden>
       <div className="eco-network-grid mesh-grid opacity-30" />
       <svg className="eco-network-topology" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
-        {Array.from({ length: 12 }).map((_, i) => {
+        {Array.from({ length: 6 }).map((_, i) => {
           const x1 = 100 + (i % 4) * 180;
           const y1 = 80 + Math.floor(i / 4) * 200;
           const x2 = x1 + 120;
@@ -33,7 +33,7 @@ export default function EcosystemBackground({ active }: { active: boolean }) {
           );
         })}
       </svg>
-      {Array.from({ length: 16 }).map((_, i) => (
+      {Array.from({ length: 8 }).map((_, i) => (
         <motion.span
           key={i}
           className="eco-network-particle"

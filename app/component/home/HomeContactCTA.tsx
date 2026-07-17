@@ -14,6 +14,7 @@ import {
   Shield,
 } from "lucide-react";
 import { homeContactCta } from "@/app/content/homepage-content";
+import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import ContactCTAAmbient from "./ContactCTAAmbient";
 import HomeContactForm from "./HomeContactForm";
@@ -51,9 +52,7 @@ const actionLinkChannel = homeContactCta.channels.find((c) => c.label === "Actio
 export default function HomeContactCTA() {
   const descriptionParagraphs = homeContactCta.description.split("\n\n").filter(Boolean);
   const supportingParagraph = descriptionParagraphs[0] ?? "";
-  const primaryActionLine = descriptionParagraphs[1] ?? "";
-  const secondaryActionLine = descriptionParagraphs[2] ?? "";
-  const advisoryParagraph = descriptionParagraphs[3] ?? "";
+  const advisoryParagraph = descriptionParagraphs[1] ?? "";
 
   return (
     <section id="contact" className="cta-section scroll-mt-28">
@@ -78,7 +77,7 @@ export default function HomeContactCTA() {
 
             {supportingParagraph ? (
               <motion.p className="cta-supporting" variants={ITEM}>
-                {supportingParagraph}
+                <FormattedText text={supportingParagraph} />
               </motion.p>
             ) : null}
 
@@ -87,7 +86,9 @@ export default function HomeContactCTA() {
                 <span className="cta-protocol-icon" aria-hidden>
                   <Shield size={18} strokeWidth={1.75} />
                 </span>
-                <p className="cta-protocol-text">{advisoryParagraph}</p>
+                <p className="cta-protocol-text">
+                  <FormattedText text={advisoryParagraph} />
+                </p>
               </motion.div>
             ) : null}
 
@@ -159,9 +160,6 @@ export default function HomeContactCTA() {
             </motion.ul>
 
             <motion.div className="cta-actions" variants={ITEM}>
-              {primaryActionLine ? (
-                <p className="cta-action-line">{primaryActionLine}</p>
-              ) : null}
               <motion.a
                 href={homeContactCta.primaryHref}
                 className="cta-btn-primary group"
@@ -173,9 +171,6 @@ export default function HomeContactCTA() {
                 <ArrowRight size={17} className="cta-btn-arrow" aria-hidden />
               </motion.a>
 
-              {secondaryActionLine ? (
-                <p className="cta-action-line cta-action-line--secondary">{secondaryActionLine}</p>
-              ) : null}
               <motion.a
                 href={homeContactCta.secondaryHref}
                 className="cta-btn-secondary"

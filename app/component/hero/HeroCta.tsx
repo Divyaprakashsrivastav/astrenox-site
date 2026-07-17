@@ -38,11 +38,10 @@ export default function HeroCta({ href, variant, children }: HeroCtaProps) {
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.28, ease: MOTION.lineReveal.ease }}
       variants={{
-        hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+        hidden: { opacity: 0, y: 10 },
         visible: {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           transition: { duration: MOTION.lineReveal.duration, ease: MOTION.lineReveal.ease },
         },
       }}

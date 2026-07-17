@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const INDUSTRY_NODES = [
   "Healthcare",
@@ -21,8 +23,10 @@ type Node = { x: number; y: number; vx: number; vy: number; label: string; pulse
 export default function IndustriesHeroBackdrop() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -65,6 +69,10 @@ export default function IndustriesHeroBackdrop() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
       g.clearRect(0, 0, w, h);
 
@@ -142,7 +150,7 @@ export default function IndustriesHeroBackdrop() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="indp-hero-backdrop" aria-hidden>

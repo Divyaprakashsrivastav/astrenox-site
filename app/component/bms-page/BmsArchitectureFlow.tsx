@@ -2,14 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 import { bmsPageContent as c } from "@/app/content/bms-page-content";
 
 export default function BmsArchitectureFlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(canvasRef);
   const layers = c.architectureLayers;
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -46,6 +50,10 @@ export default function BmsArchitectureFlow() {
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       tick += 1;
       g.clearRect(0, 0, w, h);
 
@@ -102,7 +110,7 @@ export default function BmsArchitectureFlow() {
       cancelAnimationFrame(raf);
       ro.disconnect();
     };
-  }, [reduced, layers]);
+  }, [activeRef, reduced, layers]);
 
   return (
     <div className="bmsp-arch">

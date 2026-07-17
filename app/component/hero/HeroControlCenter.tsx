@@ -36,7 +36,7 @@ export default function HeroControlCenter() {
 
   const particles = useMemo(
     () =>
-      Array.from({ length: 18 }, (_, i) => ({
+      Array.from({ length: 9 }, (_, i) => ({
         id: i,
         x: 12 + ((i * 41) % 76),
         y: 10 + ((i * 29) % 80),

@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useId, useState, type ReactNode } from "react";
+import FormattedText from "../../ui/FormattedText";
 import { EASE_PREMIUM } from "../../v2/motion";
 
 const EASE = EASE_PREMIUM;
@@ -85,7 +86,7 @@ export function ParagraphExpand({
       <div className={className}>
         {paragraphs.map((p) => (
           <p key={p} className={paragraphClassName}>
-            {p}
+            <FormattedText text={p} />
           </p>
         ))}
       </div>
@@ -104,7 +105,7 @@ export function ParagraphExpand({
         <>
           {visible.map((p) => (
             <p key={p} className={paragraphClassName}>
-              {p}
+              <FormattedText text={p} />
             </p>
           ))}
         </>
@@ -112,7 +113,7 @@ export function ParagraphExpand({
     >
       {hidden.map((p) => (
         <p key={p} className={paragraphClassName}>
-          {p}
+          <FormattedText text={p} />
         </p>
       ))}
     </ExpandableBlock>

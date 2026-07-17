@@ -43,7 +43,7 @@ function AIEngineeringHeroBackdrop() {
       <div className="aie-hero-ray aie-hero-ray--2" />
 
       <div className="aie-hero-particles">
-        {Array.from({ length: 24 }).map((_, i) => (
+        {Array.from({ length: 12 }).map((_, i) => (
           <span
             key={i}
             className="aie-hero-particle"

@@ -30,44 +30,42 @@ type Props = {
 function AIEngineeringTerminal({ variant = "section" }: Props) {
   const lines = variant === "hero" ? HERO_LINES : SECTION_LINES;
   const [visible, setVisible] = useState<string[]>([]);
-  const [cursor, setCursor] = useState(true);
   const done = visible.length >= lines.length && visible[lines.length - 1] === lines[lines.length - 1];
 
   useEffect(() => {
-    setVisible([]);
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setVisible(lines);
-      return;
-    }
-
     let lineIdx = 0;
     let charIdx = 0;
-    const interval = setInterval(() => {
-      if (lineIdx >= lines.length) {
-        clearInterval(interval);
-        return;
-      }
-      const line = lines[lineIdx];
-      charIdx += 1;
-      setVisible((prev) => {
-        const next = [...prev];
-        next[lineIdx] = line.slice(0, charIdx);
-        return next;
-      });
-      if (charIdx >= line.length) {
-        lineIdx += 1;
-        charIdx = 0;
-      }
-    }, variant === "hero" ? 32 : 28);
+    let interval: ReturnType<typeof setInterval> | null = null;
 
-    return () => clearInterval(interval);
+    const start = window.setTimeout(() => {
+      setVisible(reduced ? lines : []);
+      if (reduced) return;
+
+      interval = setInterval(() => {
+        if (lineIdx >= lines.length) {
+          if (interval) clearInterval(interval);
+          return;
+        }
+        const line = lines[lineIdx];
+        charIdx += 1;
+        setVisible((prev) => {
+          const next = [...prev];
+          next[lineIdx] = line.slice(0, charIdx);
+          return next;
+        });
+        if (charIdx >= line.length) {
+          lineIdx += 1;
+          charIdx = 0;
+        }
+      }, variant === "hero" ? 32 : 28);
+    }, 0);
+
+    return () => {
+      window.clearTimeout(start);
+      if (interval) clearInterval(interval);
+    };
   }, [lines, variant]);
-
-  useEffect(() => {
-    const blink = setInterval(() => setCursor((c) => !c), 530);
-    return () => clearInterval(blink);
-  }, []);
 
   const isOk = (line: string) => line.includes("✓") || line.startsWith("✓");
 
@@ -94,7 +92,7 @@ function AIEngineeringTerminal({ variant = "section" }: Props) {
               </p>
             ))}
             {!done && (
-              <span className={`aie-terminal-cursor ${cursor ? "is-on" : ""}`}>▋</span>
+              <span className="aie-terminal-cursor">▋</span>
             )}
           </div>
           <div className="aie-terminal-status" aria-hidden>
@@ -120,7 +118,7 @@ function AIEngineeringTerminal({ variant = "section" }: Props) {
             {line}
           </p>
         ))}
-        {!done && <span className={`aie-terminal-cursor ${cursor ? "is-on" : ""}`}>▋</span>}
+        {!done && <span className="aie-terminal-cursor">▋</span>}
       </div>
     </div>
   );

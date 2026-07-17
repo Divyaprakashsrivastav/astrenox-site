@@ -1,23 +1,19 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
 
 type NavMegaBackdropProps = {
+  open: boolean;
   onClose: () => void;
-  onHover: () => void;
+  onPointerEnter: () => void;
 };
 
-function NavMegaBackdrop({ onClose, onHover }: NavMegaBackdropProps) {
+function NavMegaBackdrop({ open, onClose, onPointerEnter }: NavMegaBackdropProps) {
   return (
-    <motion.div
-      className="dock-backdrop"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      className={`dock-backdrop${open ? " is-open" : ""}`}
       onClick={onClose}
-      onMouseEnter={onHover}
+      onPointerEnter={onPointerEnter}
       aria-hidden
     />
   );

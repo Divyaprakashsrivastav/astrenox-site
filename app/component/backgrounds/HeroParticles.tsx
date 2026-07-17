@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const PARTICLE_COLORS = ["#B46CFF", "#8A2BE2", "#5B8CFF", "#C084FC"];
 
@@ -24,7 +26,7 @@ function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
 
-function createParticles(w: number, h: number, count = 48): Particle[] {
+function createParticles(w: number, h: number, count = 12): Particle[] {
   return Array.from({ length: count }, () => {
     const cx = w * 0.5 + (Math.random() - 0.5) * w * 0.85;
     const cy = h * 0.45 + (Math.random() - 0.5) * h * 0.55;
@@ -45,29 +47,26 @@ function createParticles(w: number, h: number, count = 48): Particle[] {
 export default function HeroParticles() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
 
     const mount = mountRef.current;
     if (!mount) return;
 
-    const glowCanvas = document.createElement("canvas");
-    glowCanvas.className = "hero-particles-glow-canvas";
-    glowCanvas.setAttribute("aria-hidden", "true");
-
-    const particleCanvas = document.createElement("canvas");
-    particleCanvas.className = "hero-particles-canvas";
-    particleCanvas.setAttribute("aria-hidden", "true");
-
-    mount.appendChild(glowCanvas);
-    mount.appendChild(particleCanvas);
+    const canvas = document.createElement("canvas");
+    canvas.className = "hero-particles-glow-canvas hero-particles-canvas";
+    canvas.setAttribute("aria-hidden", "true");
+    mount.appendChild(canvas);
 
     let disposed = false;
     let animRaf = 0;
     let particles: Particle[] = [];
     let elapsed = 0;
     let sweepT = 0;
+    let lastTs = 0;
 
     let cursorX = 0;
     let cursorY = 0;
@@ -75,8 +74,7 @@ export default function HeroParticles() {
     let smoothY = 0;
     let hasCursor = false;
 
-    const glowCtx = glowCanvas.getContext("2d");
-    const pCtx = particleCanvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
 
     function resize() {
       const w = mount!.clientWidth;
@@ -84,14 +82,11 @@ export default function HeroParticles() {
       if (w < 2 || h < 2) return;
 
       const dpr = Math.min(window.devicePixelRatio, 2);
-      for (const c of [glowCanvas, particleCanvas]) {
-        c.width = w * dpr;
-        c.height = h * dpr;
-        c.style.width = `${w}px`;
-        c.style.height = `${h}px`;
-      }
-      glowCtx?.setTransform(dpr, 0, 0, dpr, 0, 0);
-      pCtx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       if (particles.length === 0) particles = createParticles(w, h);
       if (!hasCursor) {
@@ -101,44 +96,34 @@ export default function HeroParticles() {
     }
 
     function drawGlow(w: number, h: number) {
-      if (!glowCtx) return;
-      glowCtx.clearRect(0, 0, w, h);
+      if (!ctx) return;
 
       sweepT += 0.007;
       const sweepX = (Math.sin(sweepT) * 0.5 + 0.5) * w;
       const sweepY = h * (0.4 + Math.sin(sweepT * 0.65) * 0.1);
 
-      glowCtx.save();
-      glowCtx.filter = "blur(80px)";
-      const sweep = glowCtx.createRadialGradient(sweepX, sweepY, 0, sweepX, sweepY, 240);
-      sweep.addColorStop(0, "rgba(180, 108, 255, 0.18)");
-      sweep.addColorStop(0.55, "rgba(180, 108, 255, 0.08)");
+      const sweep = ctx.createRadialGradient(sweepX, sweepY, 0, sweepX, sweepY, 320);
+      sweep.addColorStop(0, "rgba(180, 108, 255, 0.16)");
+      sweep.addColorStop(0.45, "rgba(180, 108, 255, 0.07)");
       sweep.addColorStop(1, "rgba(180, 108, 255, 0)");
-      glowCtx.fillStyle = sweep;
-      glowCtx.fillRect(0, 0, w, h);
-      glowCtx.restore();
+      ctx.fillStyle = sweep;
+      ctx.fillRect(0, 0, w, h);
 
       if (!hasCursor) return;
 
-      glowCtx.save();
-      glowCtx.filter = "blur(90px)";
-      const bloom = glowCtx.createRadialGradient(
+      const bloom = ctx.createRadialGradient(
         smoothX, smoothY, 0,
-        smoothX, smoothY, 360
+        smoothX, smoothY, 420
       );
       bloom.addColorStop(0, `rgba(180, 108, 255, ${GLOW_OPACITY})`);
-      bloom.addColorStop(0.5, "rgba(180, 108, 255, 0.08)");
+      bloom.addColorStop(0.45, "rgba(180, 108, 255, 0.06)");
       bloom.addColorStop(1, "rgba(180, 108, 255, 0)");
-      glowCtx.fillStyle = bloom;
-      glowCtx.fillRect(0, 0, w, h);
-      glowCtx.restore();
+      ctx.fillStyle = bloom;
+      ctx.fillRect(0, 0, w, h);
     }
 
     function drawParticles(time: number) {
-      if (!pCtx) return;
-      const w = mount!.clientWidth;
-      const h = mount!.clientHeight;
-      pCtx.clearRect(0, 0, w, h);
+      if (!ctx) return;
 
       for (const p of particles) {
         const ox = Math.sin(time * p.drift + p.phase) * 14;
@@ -166,29 +151,38 @@ export default function HeroParticles() {
         const r = parseInt(p.color.slice(1, 3), 16);
         const g = parseInt(p.color.slice(3, 5), 16);
         const b = parseInt(p.color.slice(5, 7), 16);
-        const grad = pCtx.createRadialGradient(px, py, 0, px, py, drawSize * 2.4);
+        const grad = ctx.createRadialGradient(px, py, 0, px, py, drawSize * 2.4);
         grad.addColorStop(0, `rgba(${r},${g},${b},${alpha})`);
         grad.addColorStop(0.45, `rgba(${r},${g},${b},${alpha * 0.35})`);
         grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
 
-        pCtx.beginPath();
-        pCtx.fillStyle = grad;
-        pCtx.arc(px, py, drawSize, 0, Math.PI * 2);
-        pCtx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = grad;
+        ctx.arc(px, py, drawSize, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
 
-    function animate() {
+    function animate(timestamp: number) {
       if (disposed) return;
-      const w = mount!.clientWidth;
-      const h = mount!.clientHeight;
 
-      smoothX = lerp(smoothX, cursorX, CURSOR_LERP);
-      smoothY = lerp(smoothY, cursorY, CURSOR_LERP);
+      if (activeRef.current) {
+        const w = mount!.clientWidth;
+        const h = mount!.clientHeight;
+        ctx?.clearRect(0, 0, w, h);
 
-      elapsed += 0.016;
-      drawGlow(w, h);
-      drawParticles(elapsed);
+        const dt = lastTs ? Math.min((timestamp - lastTs) / 1000, 0.05) : 0.016;
+        lastTs = timestamp;
+
+        smoothX = lerp(smoothX, cursorX, CURSOR_LERP);
+        smoothY = lerp(smoothY, cursorY, CURSOR_LERP);
+
+        elapsed += dt;
+        drawGlow(w, h);
+        drawParticles(elapsed);
+      } else {
+        lastTs = 0;
+      }
 
       animRaf = requestAnimationFrame(animate);
     }
@@ -197,7 +191,11 @@ export default function HeroParticles() {
       const rect = mount!.getBoundingClientRect();
       cursorX = e.clientX - rect.left;
       cursorY = e.clientY - rect.top;
-      hasCursor = true;
+      hasCursor =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
     }
 
     function onMouseLeave() {
@@ -207,21 +205,20 @@ export default function HeroParticles() {
     const ro = new ResizeObserver(resize);
     ro.observe(mount);
     resize();
-    animate();
+    animRaf = requestAnimationFrame(animate);
 
-    window.addEventListener("mousemove", onMouseMove, { passive: true });
-    window.addEventListener("mouseleave", onMouseLeave);
+    mount.addEventListener("mousemove", onMouseMove, { passive: true });
+    mount.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
       disposed = true;
       cancelAnimationFrame(animRaf);
       ro.disconnect();
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseleave", onMouseLeave);
-      if (mount.contains(glowCanvas)) mount.removeChild(glowCanvas);
-      if (mount.contains(particleCanvas)) mount.removeChild(particleCanvas);
+      mount.removeEventListener("mousemove", onMouseMove);
+      mount.removeEventListener("mouseleave", onMouseLeave);
+      if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   if (reduced) return null;
 

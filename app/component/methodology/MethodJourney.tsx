@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { homeMethodology } from "@/app/content/homepage-content";
 import { useReducedMotion } from "../features/useReducedMotion";
+import FormattedText from "../ui/FormattedText";
 import MethodStoryAtmosphere, { useMethodStoryParallax } from "./MethodStoryAtmosphere";
 
 type Stage = (typeof homeMethodology.stages)[number];
@@ -39,6 +40,13 @@ function MethodJourneyHorizontal() {
     const panelCount = panels.length;
 
     const getScrollDistance = () => Math.max(track.scrollWidth - window.innerWidth, 0);
+
+    inners.forEach((inner, i) => {
+      if (!inner) return;
+      if (i === 0) {
+        gsap.set(inner, { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 });
+      }
+    });
 
     const horizontalTween = gsap.to(track, {
       x: () => -getScrollDistance(),
@@ -83,15 +91,9 @@ function MethodJourneyHorizontal() {
       },
     });
 
-    inners.forEach((inner, i) => {
-      if (!inner) return;
-      if (i === 0) {
-        gsap.set(inner, { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 });
-      }
-    });
-
     const onResize = () => ScrollTrigger.refresh();
     window.addEventListener("resize", onResize);
+    requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => {
       window.removeEventListener("resize", onResize);
@@ -164,7 +166,7 @@ function IntroContent() {
     <div className="method-story-inner">
       <p className="method-story-eyebrow">{homeMethodology.label}</p>
       <h2 className="method-story-title">{homeMethodology.title}</h2>
-      <p className="method-story-desc">{homeMethodology.description}</p>
+      <p className="method-story-desc"><FormattedText text={homeMethodology.description} /></p>
     </div>
   );
 }
@@ -178,11 +180,11 @@ function StageContent({ stage }: { stage: Stage }) {
       <h3 id={`${stage.id}-heading`} className="method-story-stage-title">
         {stage.title}
       </h3>
-      <p className="method-story-stage-tagline">{stage.tagline}</p>
+      <p className="method-story-stage-tagline"><FormattedText text={stage.tagline} /></p>
       <ul className="method-story-stage-list">
         {stage.items.map((item) => (
           <li key={item} className="method-story-stage-item">
-            {item}
+            <FormattedText text={item} />
           </li>
         ))}
       </ul>

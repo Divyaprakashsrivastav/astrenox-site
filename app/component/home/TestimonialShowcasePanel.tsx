@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { BadgeCheck, Quote } from "lucide-react";
 import { EASE_PREMIUM } from "../v2/motion";
+import FormattedText from "../ui/FormattedText";
 import { useReducedMotion } from "../features/useReducedMotion";
 
 type TestimonialItem = {
@@ -61,7 +62,7 @@ export default function TestimonialShowcasePanel({
               </motion.div>
 
               <blockquote className="tst-panel-quote">
-                &ldquo;{item.quote}&rdquo;
+                &ldquo;<FormattedText text={item.quote} />&rdquo;
               </blockquote>
 
               <footer className="tst-panel-footer">

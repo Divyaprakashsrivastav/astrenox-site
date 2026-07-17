@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const COLORS = ["#A855F7", "#7C3AED", "#C084FC", "#6366F1"];
 
@@ -28,8 +30,10 @@ export default function MethodStoryAtmosphere() {
   const gridRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -69,11 +73,15 @@ export default function MethodStoryAtmosphere() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = createParticles(w < 640 ? 20 : 34);
+      particles = createParticles(w < 640 ? 10 : 17);
     }
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       g.clearRect(0, 0, w, h);
       for (const p of particles) {
         p.x += p.vx;
@@ -105,7 +113,7 @@ export default function MethodStoryAtmosphere() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div className="method-story-atmosphere" aria-hidden>

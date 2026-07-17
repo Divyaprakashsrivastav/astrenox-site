@@ -20,12 +20,11 @@
     #080517 75%,
     #09061a 100%
   );
-  background-attachment: fixed;
   color: #fafafb;
 }
 
 .home-flow-ambient {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
@@ -368,6 +367,12 @@
 .home-flow .ax-label {
   color: #a855f7;
   letter-spacing: 0.35em;
+}
+
+.home-flow strong,
+.site-ending-shell strong {
+  color: rgba(250, 250, 251, 0.96);
+  font-weight: 600;
 }
 
 @media (prefers-reduced-motion: reduce) {

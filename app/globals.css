@@ -45,9 +45,7 @@ html {
 }
 
 body {
-  /* Soft lilac-lavender field ΓÇö sampled from the design reference.
-     background-attachment: fixed pins it to the viewport so every section
-     shows the exact same hue regardless of scroll depth. */
+  /* Soft lilac-lavender field sampled from the design reference. */
   background:
     linear-gradient(
       150deg,
@@ -57,7 +55,6 @@ body {
       #e8dff6 68%,
       #eee9f9 100%
     );
-  background-attachment: fixed;
   color: var(--color-text);
   font-family: var(--font-body);
   overflow-x: hidden;
@@ -7624,6 +7621,7 @@ body {
   pointer-events: none;
   z-index: 10001;
   transform: translate(-50%, -50%);
+  opacity: 0;
 }
 
 .ax-cursor-dot {
@@ -7659,7 +7657,8 @@ button,
 
   body,
   a,
-  button {
+  button,
+  [data-cursor-hover] {
     cursor: auto;
   }
 }
@@ -10226,7 +10225,10 @@ a.contact-split-channel-value:hover {
     animation: none;
   }
 
-  body {
+  body,
+  a,
+  button,
+  [data-cursor-hover] {
     cursor: auto;
   }
 

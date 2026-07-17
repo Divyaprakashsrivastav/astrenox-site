@@ -1,7 +1,8 @@
 "use client";
 
-import { memo, useEffect, useState, type MouseEvent } from "react";
+import { memo, useEffect, useRef, useState, type MouseEvent } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
 
 type NodeDef = {
   id: string;
@@ -47,6 +48,8 @@ function nodeById(id: string) {
 }
 
 function AiEngineeringCanvas() {
+  const rootRef = useRef<HTMLDivElement>(null);
+  const activeRef = useAnimationActiveRef(rootRef);
   const [active, setActive] = useState(0);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.4);
@@ -65,10 +68,11 @@ function AiEngineeringCanvas() {
 
   useEffect(() => {
     const id = window.setInterval(() => {
+      if (!activeRef.current) return;
       setActive((v) => (v + 1) % PIPELINE.length);
     }, 1500);
     return () => window.clearInterval(id);
-  }, []);
+  }, [activeRef]);
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -78,6 +82,7 @@ function AiEngineeringCanvas() {
 
   return (
     <div
+      ref={rootRef}
       className="aipe-canvas"
       onMouseMove={onMove}
       onMouseLeave={() => {

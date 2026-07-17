@@ -23,11 +23,10 @@ export const MOTION = {
 } as const;
 
 export const lineRevealVariant = {
-  hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 14 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: {
       duration: MOTION.lineReveal.duration,
       delay,
@@ -40,12 +39,10 @@ export const sectionRevealVariant = {
   hidden: {
     opacity: 0,
     y: MOTION.section.y,
-    filter: `blur(${MOTION.section.blur}px)`,
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: MOTION.section.duration, ease: MOTION.section.ease },
   },
 };

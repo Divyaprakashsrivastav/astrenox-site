@@ -8,7 +8,7 @@ interface FooterBackgroundProps {
   active?: boolean;
 }
 
-const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
+const PARTICLES = Array.from({ length: 9 }, (_, i) => ({
   id: i,
   left: `${8 + ((i * 17) % 84)}%`,
   top: `${10 + ((i * 23) % 75)}%`,

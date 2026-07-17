@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "../features/useReducedMotion";
+import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
+import { createAnimationScheduler } from "../features/animationScheduler";
 
 const COLORS = ["#A855F7", "#7C3AED", "#C084FC"];
 
@@ -37,8 +39,10 @@ function createParticles(w: number, h: number, count: number): Particle[] {
 export default function IndustryPanelAmbient() {
   const mountRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -68,11 +72,15 @@ export default function IndustryPanelAmbient() {
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = createParticles(w, h, Math.min(22, Math.floor((w * h) / 12000)));
+      particles = createParticles(w, h, Math.min(6, Math.ceil((w * h) / 24000)));
     }
 
     function frame() {
       if (disposed) return;
+      if (!activeRef.current) {
+        raf = requestAnimationFrame(frame);
+        return;
+      }
       g.clearRect(0, 0, w, h);
 
       for (const p of particles) {
@@ -106,7 +114,7 @@ export default function IndustryPanelAmbient() {
       ro.disconnect();
       if (mount.contains(canvas)) mount.removeChild(canvas);
     };
-  }, [reduced]);
+  }, [activeRef, reduced]);
 
   return (
     <div ref={mountRef} className="ind-panel-ambient" aria-hidden="true">

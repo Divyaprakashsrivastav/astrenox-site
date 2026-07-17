@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { EASE_PREMIUM } from "../v2/motion";
+import FormattedText from "../ui/FormattedText";
 import { useReducedMotion } from "../features/useReducedMotion";
 import IndustryPanelAmbient from "./IndustryPanelAmbient";
 
@@ -79,7 +80,7 @@ export default function IndustryShowcasePanel({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.14, ease: EASE_PREMIUM }}
             >
-              {industry.description}
+              <FormattedText text={industry.description} />
             </motion.p>
 
             <motion.div
@@ -92,7 +93,7 @@ export default function IndustryShowcasePanel({
               <ul className="ind-panel-list">
                 {industry.useCases.map((useCase) => (
                   <li key={useCase} className="ind-panel-list-item">
-                    {useCase}
+                    <FormattedText text={useCase} />
                   </li>
                 ))}
               </ul>

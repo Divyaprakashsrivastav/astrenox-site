@@ -81,7 +81,7 @@ export default function SoftwareFactoryHeroBackdrop() {
       </div>
 
       <div className="asf-hero-particles">
-        {Array.from({ length: 20 }, (_, i) => (
+        {Array.from({ length: 10 }, (_, i) => (
           <motion.span
             key={i}
             className="asf-hero-particle"

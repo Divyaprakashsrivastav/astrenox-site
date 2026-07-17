@@ -8,11 +8,10 @@ import { useReducedMotion } from "../features/useReducedMotion";
 export const EASE_PREMIUM = [0.22, 1, 0.36, 1] as const;
 
 export const sectionReveal = {
-  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.55, ease: EASE_PREMIUM },
   },
 };

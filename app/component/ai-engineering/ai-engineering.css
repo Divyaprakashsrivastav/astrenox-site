@@ -9,7 +9,7 @@
 }
 
 .aie-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
@@ -833,11 +833,13 @@
 }
 
 .aie-terminal-cursor {
-  opacity: 0;
+  animation: aie-terminal-cursor-blink 1.06s step-end infinite;
 }
 
-.aie-terminal-cursor.is-on {
-  opacity: 1;
+@keyframes aie-terminal-cursor-blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Use cases grid */

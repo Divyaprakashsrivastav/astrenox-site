@@ -30,7 +30,7 @@ function AdvisoryOverview({ overview }: { overview: OverviewSection }) {
         <div className="adv-overview-bg-glow" />
         <div className="adv-overview-bg-grid" />
         <div className="adv-overview-bg-sweep" />
-        {Array.from({ length: 8 }, (_, i) => (
+        {Array.from({ length: 4 }, (_, i) => (
           <span
             key={i}
             className="adv-overview-bg-particle"
