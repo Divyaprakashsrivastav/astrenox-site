@@ -324,15 +324,19 @@ function AdvisoryImmersiveHero({ hero }: AdvisoryImmersiveHeroProps) {
             </motion.p>
           ) : null}
 
-          <motion.div className="mvp-hero-ctas" variants={fadeUp}>
-            <Link href={hero.primaryHref} className="mvp-btn-primary">
-              {hero.primaryCta}
-              <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href={hero.secondaryHref} className="mvp-btn-secondary">
-              {hero.secondaryCta}
-            </Link>
-          </motion.div>
+          {hero.primaryCta && hero.primaryHref ? (
+            <motion.div className="mvp-hero-ctas" variants={fadeUp}>
+              <Link href={hero.primaryHref} className="mvp-btn-primary">
+                {hero.primaryCta}
+                <ArrowRight size={16} aria-hidden />
+              </Link>
+              {hero.secondaryCta && hero.secondaryHref ? (
+                <Link href={hero.secondaryHref} className="mvp-btn-secondary">
+                  {hero.secondaryCta}
+                </Link>
+              ) : null}
+            </motion.div>
+          ) : null}
 
           {hero.trustLine ? (
             <motion.p className="mvp-hero-trust" variants={fadeUp}>

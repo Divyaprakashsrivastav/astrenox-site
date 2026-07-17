@@ -126,18 +126,14 @@ export default function ContactPageClient() {
               {contactPage.channels.map((channel) => (
                 <li key={channel.label}>
                   <span className="cp-channel-label">{channel.label}</span>
-                  {channel.href ? (
-                    <a href={channel.href} className="cp-channel-value">
-                      {channel.label === "Number" ? (
-                        <Phone size={14} aria-hidden />
-                      ) : (
-                        <Mail size={14} aria-hidden />
-                      )}
-                      {channel.value}
-                    </a>
-                  ) : (
-                    <span className="cp-channel-value">{channel.value}</span>
-                  )}
+                  <a href={channel.href} className="cp-channel-value">
+                    {channel.label === "Number" ? (
+                      <Phone size={14} aria-hidden />
+                    ) : (
+                      <Mail size={14} aria-hidden />
+                    )}
+                    {channel.value}
+                  </a>
                 </li>
               ))}
             </ul>
