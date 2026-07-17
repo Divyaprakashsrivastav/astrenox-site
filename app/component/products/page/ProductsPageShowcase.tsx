@@ -10,6 +10,8 @@ import {
   productsPageBrief,
   productsPageGuidelines,
   productsOverviewTitle,
+  productOfferingsTitle,
+  productOfferings,
   productsInfrastructureHeading,
   productsInfrastructureIntro,
   productsInfrastructurePlatforms,
@@ -45,11 +47,7 @@ function BentoCard({
   const reduced = useReducedMotion();
   const reveal = REVEAL[index] ?? REVEAL[0];
 
-  const paragraphs = [
-    item.guidelineLine,
-    item.description,
-    ...("extraDescription" in item && item.extraDescription ? [item.extraDescription] : []),
-  ].filter((p, i, arr) => arr.indexOf(p) === i);
+  const paragraphs = [item.description];
 
   const hasLongContent = paragraphs.length > 1 || item.bullets.length > 0;
 
@@ -82,7 +80,6 @@ function BentoCard({
       whileHover={reduced ? undefined : { y: -4 }}
     >
       <span className="pp-bento-border" aria-hidden />
-      {item.effect === "sweep" ? <span className="pp-bento-sweep" aria-hidden /> : null}
 
       <div className="pp-bento-visual-wrap">
         <ProductPageVisual visual={item.visual} active={hovered && !reduced} />
@@ -94,8 +91,8 @@ function BentoCard({
         <h3 className="pp-bento-title">{item.productLine}</h3>
 
         <div className={`pp-bento-content${expanded ? " is-expanded" : ""}`}>
-          {paragraphs.map((p) => (
-            <p key={p} className="pp-bento-desc">
+          {paragraphs.map((p, pi) => (
+            <p key={`${item.id}-p-${pi}`} className="pp-bento-desc">
               {p}
             </p>
           ))}
@@ -189,6 +186,38 @@ export default function ProductsPageShowcase() {
           </AnimatePresence>
         </section>
 
+        {/* Product Offerings */}
+        <section id="product-offerings" className="pp-offerings-section" aria-label="Product offerings">
+          <motion.h2
+            className="pp-section-title"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+          >
+            {productOfferingsTitle}
+          </motion.h2>
+          <div className="pp-offerings-grid">
+            {productOfferings.map((offering, i) => (
+              <motion.article
+                key={offering.id}
+                className="pp-offering-card"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: EASE_PREMIUM }}
+              >
+                <h3 className="pp-offering-title">{offering.title}</h3>
+                <p className="pp-offering-desc">{offering.description}</p>
+                <Link href={offering.href} className="pp-bento-cta">
+                  Learn More
+                  <ArrowRight size={14} aria-hidden />
+                </Link>
+              </motion.article>
+            ))}
+          </div>
+        </section>
+
         {/* Bento */}
         <section id="products-bento" className="pp-bento-section" aria-label="Products showcase">
           <motion.h2
@@ -198,7 +227,7 @@ export default function ProductsPageShowcase() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease: EASE_PREMIUM }}
           >
-            {productsPageBrief}
+            Flagship Products
           </motion.h2>
           <div className="pp-bento-grid">
             {productsBentoItems.map((item, i) => (
@@ -240,7 +269,9 @@ export default function ProductsPageShowcase() {
                         ? "knowledge"
                         : platform.id === "astrenai"
                           ? "workflow"
-                          : "pipeline"
+                          : platform.id === "orzora"
+                            ? "rfx"
+                            : "pipeline"
                     }
                     active
                   />

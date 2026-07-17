@@ -30,10 +30,6 @@ export const chapter2SupplyChain: ServicePageChapter = {
       },
     ],
   },
-  heroCtas: [
-    { label: "Request a Supply Chain Audit", href: "/contact" },
-    { label: "Explore Agentic Orchestration", href: "/platform" },
-  ],
   contentSections: [
     {
       title: "Built for Real Supply Chain Complexity",

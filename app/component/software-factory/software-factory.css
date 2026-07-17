@@ -30,7 +30,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #3b82f6;
+  color: #8b5cf6;
 }
 
 .asf-section-title {
@@ -67,14 +67,14 @@
 
 .asf-btn--primary {
   color: #0d1117;
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #3b82f6 130%);
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #3b82f6 130%);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 28px rgba(34, 197, 94, 0.25);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
 }
 
 .asf-btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(34, 197, 94, 0.35);
+  box-shadow: 0 12px 36px rgba(139, 92, 246, 0.35);
 }
 
 .asf-btn--ghost {
@@ -126,9 +126,9 @@
   inset: -30%;
   background: conic-gradient(
     from 140deg at 55% 45%,
-    rgba(34, 197, 94, 0.08),
+    rgba(139, 92, 246, 0.08),
     rgba(59, 130, 246, 0.06),
-    rgba(34, 197, 94, 0.08)
+    rgba(139, 92, 246, 0.08)
   );
   filter: blur(72px);
 }
@@ -157,8 +157,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 12px rgba(34, 197, 94, 0.6);
+  background: #8b5cf6;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
 }
 
 .asf-hero-stage-label {
@@ -179,7 +179,7 @@
   left: calc(50% + 6px);
   width: 64px;
   height: 1px;
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.6), rgba(59, 130, 246, 0.4));
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.4));
 }
 
 .asf-hero-code-stream {
@@ -195,7 +195,7 @@
   white-space: nowrap;
   font-family: ui-monospace, "Cascadia Code", "SF Mono", monospace;
   font-size: 0.6875rem;
-  color: rgba(34, 197, 94, 0.75);
+  color: rgba(139, 92, 246, 0.75);
 }
 
 .asf-hero-code-line:nth-child(1) {
@@ -220,7 +220,7 @@
   display: inline-block;
   margin-left: 2px;
   animation: asf-blink 1.1s step-end infinite;
-  color: #22c55e;
+  color: #8b5cf6;
 }
 
 @keyframes asf-blink {
@@ -286,7 +286,7 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #22c55e;
+  color: #8b5cf6;
 }
 
 .asf-hero-title {
@@ -337,25 +337,6 @@
   }
 }
 
-.asf-sdlc-rail {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 2rem;
-}
-
-.asf-sdlc-rail-step {
-  height: 3px;
-  border-radius: 2px;
-  background: rgba(59, 130, 246, 0.15);
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-}
-
-.asf-sdlc-rail-step.is-active {
-  background: linear-gradient(90deg, #22c55e, #3b82f6);
-  box-shadow: 0 0 12px rgba(34, 197, 94, 0.35);
-}
-
 .asf-sdlc-bullets {
   display: flex;
   flex-direction: column;
@@ -374,14 +355,14 @@
 }
 
 .asf-sdlc-bullet-card:hover {
-  border-color: rgba(34, 197, 94, 0.22);
+  border-color: rgba(139, 92, 246, 0.22);
   transform: translateX(3px);
 }
 
 .asf-bullet-index {
   font-size: 0.6875rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: #8b5cf6;
   letter-spacing: 0.1em;
   padding-top: 0.2rem;
 }
@@ -408,8 +389,8 @@
 .asf-workflow-progress-bar {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #22c55e, #3b82f6);
-  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
 }
 
 .asf-workflow-scroll {
@@ -465,7 +446,7 @@
 .asf-infra-panel-glow {
   position: absolute;
   inset: -30%;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.08), transparent 55%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 55%);
   pointer-events: none;
 }
 
@@ -493,7 +474,7 @@
   margin-inline: auto;
   padding: clamp(2rem, 4vw, 3rem);
   border-radius: 20px;
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   background: rgba(13, 17, 23, 0.85);
   text-align: center;
   overflow: hidden;
@@ -505,7 +486,7 @@
   background: linear-gradient(
     105deg,
     transparent 40%,
-    rgba(34, 197, 94, 0.08) 50%,
+    rgba(139, 92, 246, 0.08) 50%,
     transparent 60%
   );
   animation: asf-sweep 5s ease-in-out infinite;
@@ -547,4 +528,21 @@
   .asf-cta-sweep {
     animation: none;
   }
+}
+
+.asf-sdlc--alt {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.asf-closing {
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.asf-closing-text {
+  max-width: 72ch;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
 }

@@ -47,12 +47,6 @@ export const placeholderPages: Record<string, PlaceholderMeta> = {
     description:
       "Quality engineering and automated testing for mission-critical systems. Details coming soon.",
   },
-  "/inside-astrenox/whitelabel-commerce-platforms": {
-    title: "Engineered White-Label Commerce Platforms",
-    section: "Inside Astrenox",
-    description:
-      "Whitelabel commerce platforms deployed entirely under your brand. Dedicated page content is in progress.",
-  },
   "/products/ai-native-software-factory": {
     title: "AI Native Software Factory",
     section: "Products",

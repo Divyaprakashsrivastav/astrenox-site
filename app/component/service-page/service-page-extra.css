@@ -248,11 +248,15 @@
 }
 
 .mvp-hero-section--copy-only .mvp-hero-headline {
-  margin-bottom: clamp(2.25rem, 5vw, 3.25rem);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
 .mvp-hero-section--copy-only .mvp-hero-subtitle {
   margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+
+.mvp-hero-section--copy-only {
+  padding-block: clamp(6rem, 12vw, 9rem) clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .mvp-hero-intro {
@@ -664,7 +668,7 @@
 
 /* Multi-chapter service pages */
 .mvp-chapter-hero {
-  padding-block: clamp(4rem, 8vw, 6rem) clamp(2rem, 4vw, 3rem);
+  padding-block: clamp(1.25rem, 2.5vw, 2rem) clamp(2rem, 4vw, 3rem);
 }
 
 .mvp-chapter-overview {

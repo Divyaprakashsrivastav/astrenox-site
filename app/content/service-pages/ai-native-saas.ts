@@ -15,10 +15,6 @@ export const aiNativeSaasContent: ServicePageContent = {
     label: "AI Native Services",
     title: "AI Native Services as a Software",
     subtitle: "",
-    primaryCta: "Book a Discovery Session",
-    secondaryCta: "Explore Section 1",
-    primaryHref: "/contact",
-    secondaryHref: "#section-1",
   },
   chapters: [
     chapter1ProductDevelopment,

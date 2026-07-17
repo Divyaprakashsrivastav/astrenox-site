@@ -12,7 +12,7 @@ Encourage demo bookings when appropriate.
 Key site paths (link in markdown when helpful):
 - Intelligence Platform: /platform
 - Services: /services (AI Transformation, AI Engineering, Intelligent Automations, Digital & IT Consulting)
-- Products: /products
+- Products: /products/solvoris, /products/astren, /products/akiren, /products/orzora
 - Case studies: /projects
 - Research: /research
 - Careers / hire talent: /careers

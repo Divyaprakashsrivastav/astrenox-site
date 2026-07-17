@@ -12,12 +12,9 @@ import { useReducedMotion } from "../../features/useReducedMotion";
 
 const SATELLITES = [
   { id: "solvoris", label: "Solvoris", angle: -90 },
-  { id: "brain", label: "Solvoris Brain", angle: -38 },
-  { id: "platform", label: "Solvoris Platform", angle: 14 },
-  { id: "astrenai", label: "AstrenAI", angle: 66 },
-  { id: "enterprise", label: "Astren Enterprise", angle: 118 },
-  { id: "akiren", label: "AkiRen", angle: 170 },
-  { id: "orzora", label: "Orzora", angle: 222 },
+  { id: "astren", label: "Astren", angle: 0 },
+  { id: "akiren", label: "Akiren", angle: 90 },
+  { id: "orzora", label: "Orzora", angle: 180 },
 ] as const;
 
 const CX = 200;

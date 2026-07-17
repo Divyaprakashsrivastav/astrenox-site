@@ -1293,6 +1293,41 @@
   padding: clamp(3rem, 6vw, 5rem) 0 clamp(5rem, 8vw, 7rem);
 }
 
+.pp-offerings-section {
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+
+.pp-offerings-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .pp-offerings-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pp-offering-card {
+  padding: 1.35rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pp-offering-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.65rem;
+}
+
+.pp-offering-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 1rem;
+}
+
 .pp-cta-card {
   position: relative;
   padding: clamp(2rem, 4vw, 3rem);

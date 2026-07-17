@@ -95,31 +95,47 @@ export const navDigitalConsulting: NavMegaGroup = {
 
 export const navProducts: NavMegaGroup = {
   label: "Products",
+  layout: "stack",
   items: [
     {
-      label: "Our Products",
-      href: "/products",
-      description: "Enterprise AI infrastructure, platforms, and product suite.",
+      label: "Solvoris",
+      href: "/products/solvoris",
+      description: "Autonomous company brain and personal assistant.",
     },
     {
-      label: "MVP Studio",
-      href: "/services/mvp-studio",
-      description: "Investor-ready MVPs shipped in weeks, not quarters.",
+      label: "Astren",
+      href: "/products/astren",
+      description: "AI adoption and transformation engine.",
+    },
+    {
+      label: "Akiren",
+      href: "/products/akiren",
+      description: "AI-native company OS.",
+    },
+    {
+      label: "Orzora",
+      href: "/products/orzora",
+      description: "Deal desk and RFx pipeline.",
     },
   ],
   sections: [
     {
-      title: "Inside Astrenox",
+      title: "Product Offerings",
       items: [
         {
-          label: "Engineered White-Label Commerce Platforms",
-          href: "/inside-astrenox/whitelabel-commerce-platforms",
-          description: "100% whitelabel commerce architectures under your brand.",
+          label: "Ready-to-Deploy AI Solutions",
+          href: "/products/ready-to-deploy-ai-solutions",
+          description: "Applied AI platforms, Gen AI boilerplates, and custom CRM engineering.",
+        },
+        {
+          label: "MVP Studio & Custom SaaS",
+          href: "/services/mvp-studio",
+          description: "Launch your MVP in 3 weeks with AI-native production architecture.",
         },
         {
           label: "AI Native Software Factory",
           href: "/products/ai-native-software-factory",
-          description: "Autonomous SDLC control plane for regulated enterprises.",
+          description: "Governed, agentic engineering for the enterprise SDLC.",
         },
       ],
     },

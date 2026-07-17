@@ -307,7 +307,7 @@ export const homeServices = {
       description:
         "Designing bespoke software that addresses unique market gaps. We engineer proprietary platforms that leverage your internal data to create durable **competitive advantages**.",
       outcome: "Convert unique business logic into scalable IP.",
-      href: "/products",
+      href: "/products/solvoris",
     },
     {
       id: "infra",

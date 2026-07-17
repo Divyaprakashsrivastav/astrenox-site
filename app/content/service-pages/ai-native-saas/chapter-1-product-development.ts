@@ -85,12 +85,4 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
       },
     ],
   },
-  cta: {
-    primaryCta: "Initiate a Proof of Value",
-    secondaryCta: "Explore Agentic Delivery",
-    tertiaryCta: "Schedule a Technical Scoping Session",
-    primaryHref: "/contact",
-    secondaryHref: "/platform",
-    tertiaryHref: "/contact",
-  },
 };

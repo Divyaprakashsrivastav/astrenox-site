@@ -1,0 +1,220 @@
+/* Ready-to-Deploy AI Solutions page */
+
+.rtd-page {
+  --rtd-bg: #08060f;
+  --mvp-glass: rgba(255, 255, 255, 0.04);
+  --mvp-glass-border: rgba(255, 255, 255, 0.08);
+  --mvp-glow: rgba(124, 58, 237, 0.35);
+  position: relative;
+  background: var(--rtd-bg);
+  color: #fafafb;
+  overflow-x: clip;
+}
+
+.rtd-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 40% at 15% 8%, rgba(124, 58, 237, 0.12), transparent 65%),
+    radial-gradient(ellipse 45% 35% at 90% 60%, rgba(79, 140, 255, 0.07), transparent 70%);
+}
+
+.rtd-container {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.rtd-hero {
+  position: relative;
+  padding: clamp(5rem, 10vw, 7rem) 1rem clamp(3rem, 5vw, 4rem);
+}
+
+.rtd-hero-inner {
+  width: min(820px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.rtd-label,
+.rtd-section-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.65rem;
+}
+
+.rtd-title {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.rtd-lead,
+.rtd-section-intro {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 68ch;
+}
+
+.rtd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.rtd-actions--center {
+  justify-content: center;
+}
+
+.rtd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.72rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.rtd-btn--primary {
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: #fff;
+}
+
+.rtd-btn--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rtd-section {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) 1rem;
+}
+
+.rtd-section--genai {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.rtd-section-title {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 0.75rem;
+}
+
+.rtd-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1rem;
+}
+
+.rtd-platform-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .rtd-platform-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.rtd-platform-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.rtd-platform-name {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.rtd-platform-desc,
+.rtd-platform-consulting {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.rtd-platform-consulting {
+  margin-top: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.rtd-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #c4b5fd;
+}
+
+/* Gen AI industry showcase (shares .ind-* styles with the home industries section) */
+.rtd-industry-showcase {
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  .rtd-industry-showcase .ind-showcase-nav {
+    max-height: min(560px, 72vh);
+    overflow-y: auto;
+    padding-right: 0.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(168, 85, 247, 0.3) transparent;
+  }
+
+  .rtd-industry-showcase .ind-showcase-panel {
+    height: min(560px, 72vh);
+  }
+}
+
+/* CRM section — Integration Pipeline style (glass carousel) */
+.rtd-section--crm .mvp-section-intro {
+  text-align: center;
+  max-width: 68ch;
+  margin-inline: auto;
+}
+
+.rtd-section--crm .rtd-crm-description {
+  margin-top: 0.75rem;
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+  font-size: 1rem;
+}
+
+.rtd-section--crm .svc-deliverable-carousel-card,
+.rtd-section--crm .svc-deliverable-carousel-panel {
+  min-height: 420px;
+}
+
+.rtd-cta {
+  padding: clamp(3rem, 6vw, 5rem) 1rem clamp(5rem, 8vw, 6rem);
+}
+
+.rtd-cta-inner {
+  width: min(760px, calc(100% - 2rem));
+  margin-inline: auto;
+  text-align: center;
+  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.rtd-cta-title {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin-bottom: 0.75rem;
+}
+
+.rtd-cta-desc {
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}

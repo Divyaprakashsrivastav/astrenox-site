@@ -123,10 +123,10 @@ export type ServicePageContent = {
     label: string;
     title: string;
     subtitle: string;
-    primaryCta: string;
-    secondaryCta: string;
-    primaryHref: string;
-    secondaryHref: string;
+    primaryCta?: string;
+    secondaryCta?: string;
+    primaryHref?: string;
+    secondaryHref?: string;
     trustLine?: string;
   };
   intro?: {

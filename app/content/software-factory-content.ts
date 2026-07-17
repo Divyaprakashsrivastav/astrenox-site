@@ -1,63 +1,80 @@
 /**
- * Official content — AI Native Software Factory page.
- * Verbatim from Astrenox product content (softwareFactorySection).
+ * Page 3 — AI Native Software Factory
  */
 
 export const softwareFactoryContent = {
   metadata: {
     title: "AI Native Software Factory | Astrenox",
     description:
-      'As an AI-native software development and consulting firm, we deploy a centralized Software Development Life Cycle (SDLC) control plane designed specifically for regulated enterprises.',
+      "Governed, agentic engineering for the enterprise. Redesign how business requirements, architecture, development, validation, release and operations function together.",
   },
 
   label: "AI-Native Software Factory",
-  title: "The AI-Native Software Factory: Architecting Autonomous Enterprise Engineering",
+  title: "Governed, Agentic Engineering for the Enterprise",
   intro: [
-    "As an AI-native software development and consulting firm, we deploy a centralized Software Development Life Cycle (SDLC) control plane designed specifically for regulated enterprises.",
-    'The industry focus on pure "code generation" often results in fast but architecturally misaligned software. We reverse this paradigm. The Software Factory fundamentally redesigns the engineering pipeline by capturing strict business intent and system architecture before any code is written. By moving engineering judgment upstream, human leadership dictates the architectural boundaries, while specialized AI agents handle the deterministic execution of coding, testing, and deployment.',
+    "Enterprise AI adoption creates value only when it improves the complete engineering system—not when it simply generates more code. We work with enterprises to redesign how business requirements, architecture, development, validation, release and operations function together.",
+    "Our Software Factory supports existing Software Development Lifecycle (SDLC) workflows while enabling the AI-native Development Lifecycle (AIDLC). Specialized engineering agents execute structured work across planning, implementation, testing, review, deployment and operations, while human leaders define architecture, policies, quality standards and risk boundaries.",
+    "Human-on-the-loop governance allows validated workflows to operate with continuous oversight and exception-based intervention. Human-in-the-loop approvals remain mandatory for architectural decisions, security-sensitive changes and production releases.",
   ],
 
   sections: [
     {
       number: 1,
-      title: "Upstream SDLC Governance & Core Architecture",
+      title: "Consultative Transformation and Lifecycle Design",
       intro:
-        "Most AI development tools operate in silos without understanding the broader system, leading to technical debt and structural drift. Our architecture establishes a single, continuous source of truth, giving AI agents the exact structured context they need to produce correct, aligned code.",
+        "Every engagement begins with an assessment of the enterprise's current engineering environment. We review repositories, application architecture, documentation, testing maturity, delivery pipelines, security controls, operational dependencies and team workflows to identify where agentic automation can create measurable value.",
       bullets: [
-        "Full-SDLC Agentic Orchestration: We deploy a centralized SDLC control plane where human engineers define high-level business intent, while multi-agent systems autonomously execute planning, coding, testing, and deployment workflows.",
-        "Upstream Architecture & Requirements: We lock in strict product requirements, requirements definition pipelines, and system blueprints pre-execution. AI agents build directly from this canonical documentation rather than unstructured prompts, completely eliminating architectural guesswork.",
-        "Agentic Work Orders: Product requirements are translated into deterministic, machine-readable work orders. Specialized AI models operate across a unified workspace to sequence tasks and generate production-ready code with minimal manual syntax intervention.",
-        "Dynamic Knowledge Graphs: We maintain a living system map connecting your initial requirements directly to the active codebase. Context flows seamlessly across the pipeline, eliminating tribal knowledge, protecting against employee turnover, and preventing long-term architectural degradation.",
-        "Automated Validation & Drift Control: High-velocity code generation demands rigorous governance. We enforce automated PR evaluations and continuous drift detection, verifying all agent-written code against the original blueprints before any merge to production.",
-        "Automated Feedback Validation: Validation modules capture unstructured user feedback, bug reports, and customer signals, automatically converting them into clear, actionable development tasks that feed directly back into the structured work pipeline.",
+        "Responsibilities across product teams, engineers and AI agents",
+        "Lifecycle stages suitable for automation",
+        "Architecture, security and data-handling guardrails",
+        "Human approval and escalation points",
+        "Repository, ticketing, CI/CD and observability integrations",
+        "Measures for delivery velocity, quality, reliability and adoption",
+        "Implementation can begin with a focused pilot and expand across teams and repositories as governance, workflow reliability and business outcomes are validated. This consultative approach helps enterprises move from isolated coding assistants to a scalable engineering operating model.",
       ],
     },
     {
       number: 2,
-      title: "Agentic Execution: Autonomous Engineering Workflows",
+      title: "Unified AIDLC and SDLC Control Plane",
       intro:
-        'Once business intent is locked into structured blueprints, we augment your workforce with an integrated layer of specialized AI agents (or "Droids"). These agents operate continuously across your CLI, web interfaces, and CI/CD pipelines to close the SDLC loop.',
+        "The Software Factory coordinates work from intake and planning through implementation, validation, release and production operations.",
       bullets: [
-        "Ticket-to-Code Orchestration: Background AI agents autonomously ingest structured work orders, navigate your repository, and implement fully functional features. This encompasses generating necessary database migrations, resolving edge-case logic, and writing unit tests before autonomously opening a pull request.",
-        "Automated Pull Request & Code Review: Every pull request is autonomously reviewed in minutes. Specialized agents inspect the diff against the original blueprints, flagging architectural deviations, STRIDE-based security vulnerabilities, and logic flaws with zero false positives.",
-        "Legacy Modernization Assembly Lines: For monolithic architectures, we ingest entire codebases into the platform to map and document legacy behaviors. Once the system understands the operational patterns, AI agents systematically refactor, update, and migrate legacy components across modern technology stacks.",
+        "Structured Intent and Work Orchestration: Feature requests, defects, security findings, modernization initiatives, operational alerts and customer feedback enter through a common intake layer. The system prioritizes work, identifies dependencies and routes each request into the appropriate governed workflow. Approved requirements capture functional scope, acceptance criteria, architectural constraints, security expectations and release conditions. These requirements are converted into machine-readable work orders that give agents a clear execution contract instead of relying on unstructured prompts.",
+        "Persistent Engineering Context: A shared context layer connects requirements, architecture decisions, repositories, APIs, dependencies, documentation, tickets and operational history. This improves understanding across large codebases, reduces repeated discovery and preserves institutional knowledge across teams and agent sessions. Enterprise policies are enforced at runtime across model access, repository permissions, approved tools, secure coding rules, testing thresholds, autonomy levels and deployment gates.",
       ],
     },
     {
       number: 3,
-      title: "Enterprise Infrastructure: Security, Observability, and Control",
+      title: "Agentic Execution with Human Governance",
       intro:
-        "Built for high-stakes environments—including Healthcare, Financial Services, and the Federal Government—the Software Factory ensures that autonomous AI adoption strengthens your security posture rather than compromising it.",
+        "Within approved boundaries, specialized agents can analyze work orders, create implementation plans, modify application logic, build features, generate migrations, resolve defects, write tests, update documentation and open review-ready pull requests.",
       bullets: [
-        "Fully Air-Gapped & Compliant Deployments: The entire platform can be deployed on your private hardware or Virtual Private Cloud (VPC) with zero internet dependency. The system requires no external network calls, ensuring proprietary codebase telemetry never leaves your security perimeter. Our architecture strictly aligns with ISO 27001 and OWASP standards.",
-        "Native OpenTelemetry (OTEL) Integration: We export deep traces, metrics, and agent execution logs directly into your existing observability stack (e.g., Datadog, Grafana, Honeycomb). This provides absolute, real-time visibility into AI decision-making processes and system health.",
-        "Centralized Org Configuration & Cost Controls: We deploy a single administrative surface to manage AI model routing, agent permissions, and identity provisioning via SAML 2.0/OIDC. Engineering leadership can enforce strict token consumption budgets at the project level, utilizing automated cutoff thresholds to optimize spend and prevent runaway agent usage.",
+        "Multiple agents can work in parallel across independent tasks or lifecycle stages using the same organizational context and governance policies. Background workflows can support dependency upgrades, vulnerability remediation, test generation, documentation maintenance and recurring engineering operations.",
+        "Validation, Review and Security: Every change can pass through automated testing, code review, security analysis and policy validation before merge or release. Review agents assess architectural alignment, functional correctness, maintainability, test coverage, contract changes, regression risk and policy compliance. Security workflows can identify authentication issues, unsafe data handling, exposed secrets, vulnerable dependencies, insecure configurations and threat-model deviations. High-risk findings are routed to designated reviewers, while objective acceptance criteria reduce the risk of agents validating their own assumptions.",
+        "Modernization and Operations: The Software Factory can map legacy codebases, dependencies, undocumented business rules and operational behaviour before executing controlled modernization. Agents can support framework upgrades, monolith decomposition, cloud or database migration, API modernization, test-suite generation and technical-debt reduction through incremental, reviewable work orders. The same model extends into production operations. Agents can analyze alerts, logs, traces, recent deployments and repository history to support incident triage, root-cause analysis, remediation planning, patch generation and runbook updates—within enterprise-defined boundaries for autonomous action.",
+        "Oversight and Traceability: Autonomy is configured according to workflow maturity and business risk. Low-risk tasks may operate automatically or progress to pull-request creation, while architecture changes, security-sensitive modifications and production releases require explicit approval. Each workflow records business intent, approved requirements, agent actions, accessed systems, code changes, validation results, policy exceptions, approvals and deployment outcomes. Continuous drift checks compare changes against requirements, architecture standards, security policies and service contracts before release.",
+      ],
+    },
+    {
+      number: 4,
+      title: "Enterprise Security, Deployment and Control",
+      intro:
+        "The Software Factory is designed for regulated and security-sensitive environments where source code, intellectual property and engineering telemetry require strict control.",
+      bullets: [
+        "It can operate across enterprise cloud, hybrid cloud, private VPC, on-premises, customer-managed and fully air-gapped environments. Model endpoints, agent runtimes, code access and telemetry can remain within the organization's security boundary.",
+        "Enterprise identity and access controls can include SSO, SAML, OIDC, automated provisioning and role-based permissions. Administrators can govern who may launch agents, which repositories and environments agents can access, which models and tools are permitted, what autonomy level applies, and who approves sensitive actions.",
+        "Engineering leaders also receive centralized controls for model routing, project-level usage, workflow limits and spending thresholds.",
+        "OpenTelemetry-compatible logs, metrics and traces can integrate with existing observability and security platforms to monitor agent sessions, tool use, code changes, validation outcomes, policy violations, failures and deployments.",
+        "Comprehensive audit trails support internal governance and alignment with applicable security, software-assurance and AI-management requirements. The exact control framework is defined according to the client's industry, deployment model and regulatory obligations.",
       ],
     },
   ],
 
+  closing:
+    "The AI-Native Software Factory combines consultative transformation, structured lifecycle governance, persistent engineering context, specialized agents and enterprise controls within one coordinated delivery system. It helps organizations increase engineering capacity and modernize software delivery while preserving architectural integrity, security, traceability and human accountability.",
+
   cta: {
-    headline: "Build Software Like an AI Native Company",
+    headline: "From AI Assistance to an Enterprise Engineering System",
     primaryCta: "Book Engineering Workshop",
     primaryHref: "/contact?intent=workshop",
     secondaryCta: "Talk to Platform Architects",
@@ -66,13 +83,11 @@ export const softwareFactoryContent = {
 } as const;
 
 export const softwareFactorySdlcStages = [
-  "Source Code",
-  "AI Planning",
-  "Architecture",
-  "Code Generation",
-  "Testing",
-  "Security Scan",
-  "Build",
-  "Deployment",
-  "Monitoring",
+  "Intake",
+  "Planning",
+  "Implementation",
+  "Validation",
+  "Review",
+  "Release",
+  "Operations",
 ] as const;

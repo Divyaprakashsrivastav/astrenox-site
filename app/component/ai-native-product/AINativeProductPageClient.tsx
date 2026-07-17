@@ -5,8 +5,6 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import Link from "next/link";
 import {
@@ -53,7 +51,6 @@ import {
 } from "lucide-react";
 import { aiNativeProductPageContent } from "@/app/content/ai-native-product-content";
 import { EASE_PREMIUM } from "../v2/motion";
-import AiEngineeringCanvas from "./AiEngineeringCanvas";
 import "./ai-native-product.css";
 
 const S1_SERVICE_ICONS = [
@@ -176,21 +173,10 @@ function CircuitCard({
 
 export default function AINativeProductPageClient() {
   const { brand, hero, section1, section2 } = aiNativeProductPageContent;
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const canvasY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const canvasOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.35]);
 
   return (
     <Shell>
-      {/* Hero — full interactive AI Engineering Canvas */}
-      <section ref={heroRef} className="aipe-hero" aria-labelledby="aipe-brand">
-        <motion.div className="aipe-hero-stage" style={{ y: canvasY, opacity: canvasOpacity }}>
-          <AiEngineeringCanvas />
-        </motion.div>
+      <section className="aipe-hero" aria-labelledby="aipe-brand">
         <div className="aipe-inner aipe-hero-overlay">
           <motion.p
             className="aipe-chip"
@@ -217,20 +203,6 @@ export default function AINativeProductPageClient() {
           >
             {hero.description}
           </motion.p>
-          <motion.div
-            className="aipe-actions"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.18, ease: EASE_PREMIUM }}
-          >
-            <Link href="/contact" className="aipe-btn aipe-btn--primary">
-              {brand}
-              <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href="#section-2" className="aipe-btn aipe-btn--ghost">
-              {section2.heading}
-            </Link>
-          </motion.div>
         </div>
       </section>
 

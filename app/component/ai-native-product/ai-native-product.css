@@ -69,7 +69,7 @@
   padding-block: clamp(4.5rem, 9vw, 7.5rem);
 }
 
-/* ── Hero canvas (full-bleed OS stage) ── */
+/* ── Hero ── */
 
 .aipe-hero {
   position: relative;
@@ -78,12 +78,42 @@
   display: grid;
   align-items: end;
   padding-bottom: clamp(3rem, 7vw, 5rem);
+  overflow: hidden;
 }
 
-.aipe-hero-stage {
+.aipe-hero::before {
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.5;
+  mask-image:
+    radial-gradient(circle at 0% 0%, black 0 10%, transparent 32%),
+    radial-gradient(circle at 100% 0%, black 0 10%, transparent 32%),
+    radial-gradient(circle at 0% 100%, black 0 10%, transparent 32%),
+    radial-gradient(circle at 100% 100%, black 0 10%, transparent 32%),
+    linear-gradient(to right, black 0 7%, transparent 22% 78%, black 93% 100%),
+    linear-gradient(to bottom, black 0 8%, transparent 24% 76%, black 92% 100%);
+  mask-composite: add;
+  pointer-events: none;
+}
+
+.aipe-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(34, 211, 238, 0.22), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgba(34, 211, 238, 0.18), transparent 34%),
+    radial-gradient(circle at 0% 100%, rgba(96, 165, 250, 0.16), transparent 34%),
+    radial-gradient(circle at 100% 100%, rgba(34, 211, 238, 0.2), transparent 34%);
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .aipe-hero-overlay {

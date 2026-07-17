@@ -55,11 +55,13 @@ function StepCard({
   index: number;
   total: number;
 }) {
-  const [open, setOpen] = useState(index === 0);
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.article
       className="mvp-step"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -70,20 +72,20 @@ function StepCard({
         {index < total - 1 && <span className="mvp-line" />}
       </div>
 
-      <div className="mvp-glass mvp-step-card">
-        <button
-          type="button"
-          className="mvp-step-trigger"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
+      <div
+        className={`mvp-glass mvp-step-card${open ? " is-open" : ""}`}
+        tabIndex={0}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+      >
+        <div className="mvp-step-trigger" aria-expanded={open}>
           <h3 className="mvp-step-title">{step.heading}</h3>
           <ChevronDown
             size={18}
             className={`mvp-chevron ${open ? "is-open" : ""}`}
             aria-hidden
           />
-        </button>
+        </div>
 
         <AnimatePresence initial={false}>
           {open && (
@@ -160,12 +162,20 @@ function FAQ() {
 }
 
 export default function MVPStudioPageClient() {
-  const { brand, process, pricing, addons, advantages, faq } = mvpStudioContent;
+  const { brand, hero, valueProp, process, included, aiArchitecture, saasProducts, pricing, addons, faq, cta } =
+    mvpStudioContent;
 
   return (
     <Canvas>
-      {/* Hero — document brand + process intro only */}
       <section className="mvp-inner mvp-hero" aria-labelledby="mvp-brand">
+        <motion.p
+          className="mvp-hero-eyebrow"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+        >
+          {brand}
+        </motion.p>
         <motion.h1
           id="mvp-brand"
           className="mvp-hero-brand"
@@ -173,7 +183,7 @@ export default function MVPStudioPageClient() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: EASE_PREMIUM }}
         >
-          {brand}
+          {hero.title}
         </motion.h1>
         <motion.p
           className="mvp-hero-subtitle"
@@ -181,22 +191,41 @@ export default function MVPStudioPageClient() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: EASE_PREMIUM }}
         >
-          {process.intro}
+          {hero.description}
         </motion.p>
+        <motion.ul
+          className="mvp-hero-highlights"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.14, ease: EASE_PREMIUM }}
+        >
+          {hero.highlights.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </motion.ul>
         <motion.div
           className="mvp-hero-ctas"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.18, ease: EASE_PREMIUM }}
         >
-          <Link href="/contact" className="mvp-btn-primary">
-            {brand}
+          <Link href={hero.primaryHref} className="mvp-btn-primary">
+            {hero.primaryCta}
             <ArrowRight size={16} aria-hidden />
           </Link>
-          <Link href={`#${process.id}`} className="mvp-btn-secondary">
-            {process.title}
+          <Link href={hero.secondaryHref} className="mvp-btn-secondary">
+            {hero.secondaryCta}
           </Link>
         </motion.div>
+      </section>
+
+      <section className="mvp-inner mvp-section" aria-labelledby="mvp-value">
+        <div className="mvp-section-header">
+          <h2 id="mvp-value" className="mvp-section-title">
+            {valueProp.title}
+          </h2>
+          <p className="mvp-section-intro">{valueProp.description}</p>
+        </div>
       </section>
 
       {/* Process Timeline */}
@@ -273,7 +302,7 @@ export default function MVPStudioPageClient() {
           viewport={{ once: true }}
         >
           {addons.items.map((item, i) => {
-            const Icon = ADDON_ICONS[i];
+            const Icon = ADDON_ICONS[i % ADDON_ICONS.length];
             return (
               <motion.article key={item} className="mvp-glass mvp-card" custom={i} variants={fadeUp}>
                 <div className="mvp-icon">
@@ -286,8 +315,38 @@ export default function MVPStudioPageClient() {
         </motion.div>
       </section>
 
-      {/* AI-First advantage cards — titles/descriptions from document */}
-      <section className="mvp-inner mvp-section" aria-label={advantages.items[0].title}>
+      {/* What's Included */}
+      <section className="mvp-inner mvp-section" aria-labelledby="mvp-included">
+        <div className="mvp-section-header">
+          <h2 id="mvp-included" className="mvp-section-title">
+            {included.title}
+          </h2>
+        </div>
+        <motion.ul
+          className="mvp-included-list mvp-included-list--standalone"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {included.items.map((item, i) => (
+            <motion.li key={item} custom={i} variants={fadeUp}>
+              <span className="mvp-check" aria-hidden>
+                <Check size={14} />
+              </span>
+              <span>{item}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </section>
+
+      {/* AI Native Architecture */}
+      <section className="mvp-inner mvp-section" aria-labelledby="mvp-ai-arch">
+        <div className="mvp-section-header">
+          <h2 id="mvp-ai-arch" className="mvp-section-title">
+            {aiArchitecture.title}
+          </h2>
+        </div>
         <motion.div
           className="mvp-grid-2"
           variants={stagger}
@@ -295,28 +354,41 @@ export default function MVPStudioPageClient() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {advantages.items.map((item, i) => {
-            const Icon = ADV_ICONS[i];
-            const continuation =
-              "continuation" in item ? item.continuation : undefined;
+          {aiArchitecture.items.map((item, i) => {
+            const Icon = ADV_ICONS[i % ADV_ICONS.length];
             return (
-              <motion.article
-                key={item.title}
-                className="mvp-glass mvp-card"
-                custom={i}
-                variants={fadeUp}
-              >
+              <motion.article key={item.title} className="mvp-glass mvp-card" custom={i} variants={fadeUp}>
                 <div className="mvp-icon">
                   <Icon size={20} aria-hidden />
                 </div>
                 <h3>{item.title}</h3>
-                <p>
-                  {item.description}
-                  {continuation ? ` ${continuation}` : null}
-                </p>
+                <p>{item.description}</p>
               </motion.article>
             );
           })}
+        </motion.div>
+      </section>
+
+      {/* SaaS Products */}
+      <section className="mvp-inner mvp-section" aria-labelledby="mvp-saas">
+        <div className="mvp-section-header">
+          <h2 id="mvp-saas" className="mvp-section-title">
+            {saasProducts.title}
+          </h2>
+        </div>
+        <motion.div
+          className="mvp-grid-2"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {saasProducts.items.map((item, i) => (
+            <motion.article key={item.title} className="mvp-glass mvp-card" custom={i} variants={fadeUp}>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </motion.article>
+          ))}
         </motion.div>
       </section>
 
@@ -330,17 +402,18 @@ export default function MVPStudioPageClient() {
         <FAQ />
       </section>
 
-      {/* CTA — uses document brand + process heading only */}
-      <section className="mvp-inner mvp-section" aria-label={brand}>
+      {/* CTA */}
+      <section className="mvp-inner mvp-section" aria-labelledby="mvp-cta">
         <div className="mvp-glass mvp-cta">
-          <h2>{brand}</h2>
+          <h2 id="mvp-cta">{cta.title}</h2>
+          <p className="mvp-cta-desc">{cta.description}</p>
           <div className="mvp-cta-buttons">
-            <Link href="/contact" className="mvp-btn-primary">
-              {brand}
+            <Link href={cta.primaryHref} className="mvp-btn-primary">
+              {cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={`#${process.id}`} className="mvp-btn-secondary">
-              {process.title}
+            <Link href={cta.secondaryHref} className="mvp-btn-secondary">
+              {cta.secondaryCta}
             </Link>
           </div>
         </div>

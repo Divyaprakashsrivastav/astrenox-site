@@ -5,7 +5,7 @@ import { mvpStudioContent } from "@/app/content/mvp-studio-content";
 
 export const metadata: Metadata = {
   title: "MVP Studio | Astrenox",
-  description: mvpStudioContent.process.intro,
+  description: mvpStudioContent.hero.description,
 };
 
 export default function MVPStudioPage() {

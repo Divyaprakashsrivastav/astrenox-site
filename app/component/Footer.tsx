@@ -21,7 +21,7 @@ import "./footer/footer-premium.css";
 const QUICK_LINKS = [
   { label: "AI Services", href: "/services" },
   { label: "Digital Consulting", href: "/services/digital-it-consulting" },
-  { label: "Products", href: "/products" },
+  { label: "Products", href: "/products/solvoris" },
   { label: "Infrastructure", href: navInfrastructureHref },
   { label: "Industries", href: navIndustriesHref },
 ] as const;

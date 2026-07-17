@@ -25,8 +25,8 @@ import NavActiveLink from "./nav/NavActiveLink";
 
 type MegaKey = "ai" | "digital" | "products" | "infra";
 
-const OPEN_DELAY_MS = 90;
-const CLOSE_DELAY_MS = 140;
+const OPEN_DELAY_MS = 70;
+const CLOSE_DELAY_MS = 180;
 
 const LABEL = {
   ai: "AI Services",
@@ -136,57 +136,51 @@ const DrawerRow = memo(function DrawerRow({
 
 const DesktopMegaLayer = memo(function DesktopMegaLayer({
   activeKey,
-  onPointerEnter,
-  onPointerLeave,
+  onPanelEnter,
+  onPanelLeave,
 }: {
   activeKey: MegaKey | null;
-  onPointerEnter: () => void;
-  onPointerLeave: () => void;
+  onPanelEnter: () => void;
+  onPanelLeave: () => void;
 }) {
+  if (!activeKey) return null;
+
+  const group = GROUPS[activeKey];
+  const layout =
+    group.layout ?? (activeKey === "products" || activeKey === "infra" ? "stack" : "grid");
+
   return (
-    <div
-      className={`dock-mega-layer${activeKey ? " is-open" : ""}`}
-      onPointerEnter={onPointerEnter}
-      onPointerLeave={onPointerLeave}
-    >
-      {MEGA_KEYS.map((key) => {
-        const group = GROUPS[key];
-        const layout =
-          group.layout ?? (key === "products" || key === "infra" ? "stack" : "grid");
-        return (
-          <div
-            key={key}
-            className={[
-              "dock-mega-shell",
-              activeKey === key ? "is-open" : "",
-            ].join(" ")}
-            aria-hidden={activeKey !== key}
-          >
-            <div
-              className={[
-                "dock-mega-float",
-                key === "products" || key === "infra" ? "dock-mega-float--narrow" : "",
-                key === "digital" ? "dock-mega-float--catalog" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-            >
-              <NavMegaMenu
-                group={group}
-                menuId={`dock-mega-${key}`}
-                layout={layout}
-                panelVariant={key === "infra" ? "infra" : undefined}
-              />
-            </div>
-          </div>
-        );
-      })}
+    <div className="dock-mega-layer is-open" aria-hidden={false}>
+      <div
+        className="dock-mega-shell is-open"
+        onPointerEnter={onPanelEnter}
+        onPointerLeave={onPanelLeave}
+      >
+        <div
+          className={[
+            "dock-mega-float",
+            activeKey === "products" || activeKey === "infra" ? "dock-mega-float--narrow" : "",
+            activeKey === "digital" ? "dock-mega-float--catalog" : "",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
+          <NavMegaMenu
+            group={group}
+            menuId={`dock-mega-${activeKey}`}
+            layout={layout}
+            panelVariant={activeKey === "infra" ? "infra" : undefined}
+          />
+        </div>
+      </div>
     </div>
   );
 });
 
 function DesktopMenu({ pathname }: { pathname: string }) {
   const [megaOpen, setMegaOpen] = useState<MegaKey | null>(null);
+  const megaOpenRef = useRef<MegaKey | null>(null);
+  const suppressHoverRef = useRef(false);
   const openTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -209,54 +203,95 @@ function DesktopMenu({ pathname }: { pathname: string }) {
     clearCloseTimer();
   }, [clearOpenTimer, clearCloseTimer]);
 
+  const setMega = useCallback((key: MegaKey | null) => {
+    megaOpenRef.current = key;
+    setMegaOpen(key);
+  }, []);
+
   const openMegaNow = useCallback(
     (key: MegaKey) => {
+      suppressHoverRef.current = false;
       cancelHoverTimers();
-      setMegaOpen((current) => (current === key ? current : key));
+      setMega(key);
     },
-    [cancelHoverTimers]
+    [cancelHoverTimers, setMega]
   );
 
   const scheduleOpen = useCallback(
     (event: PointerEvent<HTMLDivElement>) => {
       if (event.pointerType === "touch") return;
+      if (suppressHoverRef.current) return;
+
       const key = event.currentTarget.dataset.mega as MegaKey;
       clearCloseTimer();
       clearOpenTimer();
+
+      if (megaOpenRef.current === key) return;
+
+      // Instant switch when another mega is already open
+      if (megaOpenRef.current) {
+        setMega(key);
+        return;
+      }
+
       openTimerRef.current = setTimeout(() => {
-        setMegaOpen((current) => (current === key ? current : key));
+        setMega(key);
         openTimerRef.current = null;
       }, OPEN_DELAY_MS);
     },
-    [clearCloseTimer, clearOpenTimer]
+    [clearCloseTimer, clearOpenTimer, setMega]
   );
 
   const scheduleClose = useCallback(() => {
     clearOpenTimer();
     clearCloseTimer();
     closeTimerRef.current = setTimeout(() => {
-      setMegaOpen(null);
+      setMega(null);
       closeTimerRef.current = null;
     }, CLOSE_DELAY_MS);
-  }, [clearCloseTimer, clearOpenTimer]);
+  }, [clearCloseTimer, clearOpenTimer, setMega]);
+
+  const onTriggerLeave = useCallback(() => {
+    suppressHoverRef.current = false;
+    scheduleClose();
+  }, [scheduleClose]);
 
   const closeMega = useCallback(() => {
+    suppressHoverRef.current = false;
     cancelHoverTimers();
-    setMegaOpen(null);
-  }, [cancelHoverTimers]);
+    setMega(null);
+  }, [cancelHoverTimers, setMega]);
 
   const toggleMega = useCallback(
     (key: MegaKey) => {
       cancelHoverTimers();
-      setMegaOpen((current) => (current === key ? null : key));
+      if (megaOpenRef.current === key) {
+        // Click-close while still hovering should not immediately reopen
+        suppressHoverRef.current = true;
+        setMega(null);
+        return;
+      }
+      suppressHoverRef.current = false;
+      setMega(key);
     },
-    [cancelHoverTimers]
+    [cancelHoverTimers, setMega]
   );
 
   useEffect(() => {
     document.body.classList.toggle("dock-mega-open", Boolean(megaOpen));
     return () => document.body.classList.remove("dock-mega-open");
   }, [megaOpen]);
+
+  useEffect(() => {
+    if (!megaOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMega();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [megaOpen, closeMega]);
 
   useEffect(() => cancelHoverTimers, [cancelHoverTimers]);
 
@@ -272,7 +307,7 @@ function DesktopMenu({ pathname }: { pathname: string }) {
           active={isMegaGroupActive(pathname, navAiServices)}
           open={megaOpen === "ai"}
           onPointerEnter={scheduleOpen}
-          onPointerLeave={scheduleClose}
+          onPointerLeave={onTriggerLeave}
           onFocus={openMegaNow}
           onClick={toggleMega}
         />
@@ -282,7 +317,7 @@ function DesktopMenu({ pathname }: { pathname: string }) {
           active={isMegaGroupActive(pathname, navDigitalConsulting)}
           open={megaOpen === "digital"}
           onPointerEnter={scheduleOpen}
-          onPointerLeave={scheduleClose}
+          onPointerLeave={onTriggerLeave}
           onFocus={openMegaNow}
           onClick={toggleMega}
         />
@@ -292,7 +327,7 @@ function DesktopMenu({ pathname }: { pathname: string }) {
           active={isMegaGroupActive(pathname, navProducts)}
           open={megaOpen === "products"}
           onPointerEnter={scheduleOpen}
-          onPointerLeave={scheduleClose}
+          onPointerLeave={onTriggerLeave}
           onFocus={openMegaNow}
           onClick={toggleMega}
         />
@@ -302,7 +337,7 @@ function DesktopMenu({ pathname }: { pathname: string }) {
           active={isInfrastructureActive(pathname)}
           open={megaOpen === "infra"}
           onPointerEnter={scheduleOpen}
-          onPointerLeave={scheduleClose}
+          onPointerLeave={onTriggerLeave}
           onFocus={openMegaNow}
           onClick={toggleMega}
         />
@@ -317,15 +352,11 @@ function DesktopMenu({ pathname }: { pathname: string }) {
       {typeof document !== "undefined" &&
         createPortal(
           <>
-            <NavMegaBackdrop
-              open={Boolean(megaOpen)}
-              onClose={closeMega}
-              onPointerEnter={clearCloseTimer}
-            />
+            <NavMegaBackdrop open={Boolean(megaOpen)} onClose={closeMega} />
             <DesktopMegaLayer
               activeKey={megaOpen}
-              onPointerEnter={cancelHoverTimers}
-              onPointerLeave={scheduleClose}
+              onPanelEnter={cancelHoverTimers}
+              onPanelLeave={scheduleClose}
             />
           </>,
           document.body

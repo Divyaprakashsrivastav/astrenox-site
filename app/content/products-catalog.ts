@@ -5,7 +5,6 @@
 import {
   flagshipProducts,
   customCrmSection,
-  whitelabelSection,
   genAiSection,
   softwareFactorySection,
   missionCriticalSection,
@@ -153,64 +152,6 @@ const customCrmItem: ProductCatalogItem = {
     { label: "Scope CRM Build", href: "/contact?intent=crm", primary: true },
     { label: "Services", href: "/services" },
   ],
-};
-
-const whitelabelItem: ProductCatalogItem = {
-  id: "whitelabel",
-  title: "Whitelabel Platforms",
-  summary: "100% whitelabel commerce architectures under your brand",
-  icon: "layers",
-  illustration: "whitelabel",
-  eyebrow: whitelabelSection.label,
-  subtitle: whitelabelSection.title,
-  overview: [whitelabelSection.description],
-  chips: [
-    ...chipsFromBullets(whitelabelSection.framework.items, "wl-fw"),
-    ...whitelabelSection.solutions.map((s, i) => ({
-      id: `wl-sol-${i}`,
-      label: s.title.split(" ")[0],
-      title: s.title,
-      text: s.description,
-    })),
-  ],
-  accordions: [
-    {
-      id: "wl-framework",
-      title: "Architecture",
-      paragraphs: [whitelabelSection.description],
-      bullets: [...whitelabelSection.framework.items],
-    },
-    {
-      id: "wl-solutions",
-      title: "Ready-to-Deploy Solutions",
-      paragraphs: [whitelabelSection.solutionsTitle],
-      bullets: whitelabelSection.solutions.map((s) => `${s.title}: ${s.description}`),
-    },
-    {
-      id: "wl-deploy",
-      title: "Deployment",
-      paragraphs: whitelabelSection.framework.items.filter((i) =>
-        i.toLowerCase().includes("deploy")
-      ),
-      bullets: whitelabelSection.framework.items,
-    },
-    {
-      id: "wl-security",
-      title: "Security",
-      paragraphs: whitelabelSection.framework.items.filter((i) =>
-        i.toLowerCase().includes("security") || i.toLowerCase().includes("compliance")
-      ),
-      bullets: [
-        "Enterprise Security & Compliance: The architecture integrates end-to-end payload encryption, granular role-based access control (RBAC), and continuous vulnerability monitoring compliant with strict regulatory standards (GDPR, HIPAA).",
-      ],
-    },
-    {
-      id: "wl-biz",
-      title: "Business Value",
-      paragraphs: [whitelabelSection.description],
-    },
-  ],
-  ctas: [{ label: "Discuss Whitelabel", href: "/contact", primary: true }],
 };
 
 const genAiItem: ProductCatalogItem = {
@@ -577,7 +518,6 @@ const ctaItem: ProductCatalogItem = {
 export const productsCatalog: ProductCatalogItem[] = [
   ...flagshipItems,
   customCrmItem,
-  whitelabelItem,
   genAiItem,
   softwareFactoryItem,
   missionCriticalItem,

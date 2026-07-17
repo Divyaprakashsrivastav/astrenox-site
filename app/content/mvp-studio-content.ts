@@ -1,120 +1,247 @@
-/** Verbatim from MVP studio.docx only. */
+/** Page 2 — MVP Studio and Custom SaaS Solutions */
 export const mvpStudioContent = {
   brand: "MVP Studio",
+  hero: {
+    title: "Launch Your MVP in 3 Weeks",
+    description:
+      "Turn a defined product idea into a live, testable application without extended planning cycles or unnecessary feature expansion. Astrenox combines product strategy, experience design and AI accelerated engineering to deliver a focused MVP ready for real users, measurable feedback and continued development.",
+    highlights: [
+      "Scope confirmed within 48 hours",
+      "Design, development and deployment within one focused sprint",
+      "Built in analytics, observability and structured handover",
+    ],
+    primaryCta: "Start Your MVP",
+    primaryHref: "/contact?intent=mvp",
+    secondaryCta: "View Process",
+    secondaryHref: "#process",
+  },
+
+  valueProp: {
+    title: "Built for Teams Ready to Validate and Launch",
+    description:
+      "An MVP should do more than demonstrate an idea. It should validate the underlying value proposition, reveal how users engage with the product and provide the evidence required to guide future investment. Astrenox translates a defined business problem into a functional application with essential user journeys, scalable technical foundations and product telemetry incorporated from the beginning.",
+  },
+
   process: {
     id: "process",
-    title: "How It Works: From Idea to Live Product in 21 Days",
+    title: "From Product Idea to Live Application in 21 Days",
     intro:
-      "We don’t do endless planning loops. Our process is engineered to remove uncertainty and get your product into users' hands fast so you can start gathering real data.",
+      "We don't do endless planning loops. Our process is engineered to remove uncertainty and get your product into users' hands fast so you can start gathering real data.",
     steps: [
       {
-        heading: "1.Define & Scope (Days 1-3):Workshop & Alignment.",
+        heading: "1. Define and Scope — Days 1 to 3",
         description:
-          'We align on your core problem and separate the "must-haves" from the "nice-to-haves."',
+          "We align the product around its core users, commercial objective and highest value workflows. Initial scope is confirmed within 48 hours, followed by detailed product and technical planning.",
         activities:
-          "Activities: Jobs-to-be-done framing, technical architecture planning, and UI/UX wireframing.",
+          "Activities: Jobs to be done and user journey definition, product and technical architecture planning, UI and UX wireframing, feature prioritisation and sprint planning, success metric definition.",
         deliverables:
-          "Deliverables: A confirmed one-page spec, screen map, and a prioritized sprint backlog.",
+          "Deliverables: Confirmed product specification, screen and user flow map, prioritised MVP backlog, defined validation and performance metrics.",
       },
       {
-        heading: "2.Build & Instrument (Days 4-16):Heads-down Engineering.",
+        heading: "2. Design, Build and Instrument — Days 4 to 16",
         description:
-          "Our team sets up the infrastructure and builds your core product features with clean, scalable code.",
+          "Our product, design and engineering teams develop the core application using modular architecture and reusable components. Infrastructure, integrations, analytics and monitoring are implemented alongside product development.",
         activities:
-          "Activities: Front-end/back-end development, API integrations, authentication, and setting up CI/CD pipelines.",
+          "Activities: Interface design and reusable component development, frontend and backend engineering, database and API implementation, authentication and user onboarding, third party and business system integrations, deployment pipelines, analytics and error monitoring.",
         deliverables:
-          "Deliverables: A fully functional, deployed MVP with built-in telemetry (logs, metrics, and error tracking) so you can see exactly how users interact with the app.",
+          "Deliverables: Functional, staging ready MVP, implemented core user journeys, connected integrations and data workflows, product analytics and operational monitoring, initial technical documentation.",
       },
       {
-        heading: "3.Launch & Handoff (Days 17-21):Beta Rollout & Next Steps.",
+        heading: "3. Launch, Learn and Handover — Days 17 to 21",
         description:
-          "We test, launch, and prepare your team to take the reins (or continue with us for the next iteration).",
+          "The application is tested, deployed and prepared for initial users. Early usage signals are reviewed to identify operational gaps, adoption patterns and the highest value priorities for the next release.",
         activities:
-          "Activities: Quality assurance, beta deployment to your first users, and handover sessions.",
+          "Activities: Quality assurance and production testing, production or beta deployment, usage, conversion and funnel monitoring, team training and operational handover, next sprint prioritisation.",
         deliverables:
-          "Deliverables: Live application URL, full source code access, an operational runbook, and a recommended v0.1 backlog based on initial usage signals.",
+          "Deliverables: Live application environment, source code and technical documentation, operational runbook, recommended next version backlog, structured handover session.",
       },
     ],
   },
+
+  included: {
+    title: "What Is Included",
+    items: [
+      "Product strategy workshop and prioritised roadmap",
+      "User journeys, wireframes and reusable interface components",
+      "Full stack application development",
+      "API and database architecture",
+      "Authentication and user onboarding",
+      "Payment, communication and analytics integrations where required",
+      "Application logs, metrics and error monitoring",
+      "Deployment on suitable cloud infrastructure",
+      "Technical documentation and structured handover",
+      "Two week warranty for critical post launch fixes",
+    ],
+  },
+
+  aiArchitecture: {
+    title: "AI Native, Production Ready Architecture",
+    items: [
+      {
+        title: "AI Capabilities Designed Around the Use Case",
+        description:
+          "AI is incorporated where it creates measurable operational or user value. Depending on the product requirement, this may include intelligent assistants, retrieval augmented generation, semantic search, conversational workflows, document intelligence and task based agents.",
+      },
+      {
+        title: "Built Beyond a Demonstration Prototype",
+        description:
+          "Accelerated delivery should not result in fragile engineering. Each MVP is developed using modular components, structured environments and scalable foundations so validated products can continue evolving without requiring a complete rebuild.",
+      },
+      {
+        title: "Product Telemetry from Day One",
+        description:
+          "Analytics, logs, performance metrics and error tracking provide visibility into user behaviour, workflow completion and product reliability. These insights support evidence based decisions for subsequent releases.",
+      },
+      {
+        title: "Controlled Scope and Structured Handover",
+        description:
+          "Defined outcomes, prioritised workflows and a clear decision making structure keep the engagement focused. Following launch, internal teams can take ownership through complete documentation or continue with Astrenox through structured product development sprints.",
+      },
+    ],
+  },
+
+  saasProducts: {
+    title: "SaaS Products and Business Solutions",
+    items: [
+      {
+        title: "Legal Practice Management Platform",
+        description:
+          "A centralised platform for managing legal matters, hearings, client records, documents, billing and internal workflows while improving visibility across legal operations.",
+      },
+      {
+        title: "Healthcare Management Platform",
+        description:
+          "A secure digital platform designed to streamline healthcare administration, coordinate operational workflows and improve visibility across authorised users and service functions.",
+      },
+      {
+        title: "Integrated Business Operations Suite",
+        description:
+          "A unified enterprise platform connecting procurement, customer management, inventory and human resources through centralised controls, real time reporting and automated operational workflows.",
+      },
+      {
+        title: "Exhibition and Event Engagement Platform",
+        description:
+          "A multi stakeholder platform enabling visitor engagement, exhibitor lead capture, event communication, promotions and performance analytics through centralised event administration.",
+      },
+      {
+        title: "B2B Partner Discovery Platform",
+        description:
+          "A business networking platform that helps organisations establish credible profiles, evaluate prospective partners and develop growth focused commercial relationships.",
+      },
+      {
+        title: "Retail and Showroom Engagement Platform",
+        description:
+          "A digital engagement solution that converts physical visitor interest into measurable leads through product discovery, targeted offers and campaign performance tracking.",
+      },
+      {
+        title: "Procure to Pay Platform",
+        description:
+          "An integrated procurement solution covering purchase requests, supplier management, quotations, purchase orders, goods receipt, invoice validation and payment scheduling.",
+      },
+      {
+        title: "Property Management Platform",
+        description:
+          "A role based solution for managing properties, units, leases, tenants, payments, maintenance requests and operational communication across property stakeholders.",
+      },
+      {
+        title: "Tendering and Bid Management Platform",
+        description:
+          "A structured platform for managing tender creation, bidder participation, evaluation, estimation, approvals and reporting through transparent and auditable workflows.",
+      },
+      {
+        title: "Asset Management Platform",
+        description:
+          "A centralised system for tracking assets, planning maintenance, managing breakdown tickets and monitoring lifecycle performance across distributed operations.",
+      },
+      {
+        title: "Document Management and Approval System",
+        description:
+          "A secure document platform supporting classification, version control, multi stage approvals, digital workflows, access permissions and compliance focused record management.",
+      },
+      {
+        title: "Invoice and Billing Application",
+        description:
+          "A configurable billing solution for customer records, invoice generation, tax calculations, payments, recurring billing, reporting and ledger reconciliation.",
+      },
+    ],
+  },
+
   pricing: {
     title: "Transparent Pricing",
     intro:
-      "We charge based on value and scope, not hourly estimates that creep up over time.",
-    cardTitle: "The 3-Week MVP Sprint",
-    price: "Starts from $1,500",
-    bestFor: "Best for well-scoped products with up to 3 core user flows.",
-    includedTitle: "What’s Included:",
+      "We use clearly defined scopes and fixed deliverables to reduce timeline uncertainty, control feature expansion and maintain accountability throughout the engagement.",
+    cardTitle: "The 3 Week MVP Sprint",
+    price: "Starting from $1,500",
+    bestFor:
+      "Designed for well scoped products with up to three core user flows. The engagement includes product strategy, experience design, full stack development, essential integrations, deployment, telemetry, documentation and a two week critical fix warranty.",
+    includedTitle: "What's Included:",
     included: [
-      "Product strategy workshop & UI kit",
-      "Full-stack development (App, API, Database)",
-      "Core infrastructure: Auth, Payments (e.g., Stripe), Email, and Analytics",
-      "Cloud or Vercel deployment with full handoff",
-      "Two-week post-launch warranty for critical bug fixes",
+      "Product strategy workshop and prioritised roadmap",
+      "User journeys, wireframes and reusable interface components",
+      "Full stack application development",
+      "API and database architecture",
+      "Authentication and user onboarding",
+      "Payment, communication and analytics integrations where required",
+      "Application logs, metrics and error monitoring",
+      "Deployment on suitable cloud infrastructure",
+      "Technical documentation and structured handover",
+      "Two week warranty for critical post launch fixes",
     ],
   },
+
   addons: {
-    title: "Fixed-Fee Add-ons:",
-    intro:
-      "Need more horsepower? We offer transparent, flat-rate pricing for complex requirements:",
+    title: "Fixed Fee Add Ons",
+    intro: "Additional requirements can be assessed and priced separately, including:",
     items: [
-      "Custom AI models, RAG systems, or intelligent agents",
-      "Complex data migrations",
-      "Additional 3rd-party software integrations",
-      "SOC 2-ready foundation and security compliance",
+      "Custom AI workflows, retrieval systems or intelligent agents",
+      "Additional software and API integrations",
+      "Complex data migration and transformation",
+      "Advanced roles and permission structures",
+      "Additional user journeys",
+      "Security and compliance foundations",
+      "Mobile applications",
+      "Administrative portals",
+      "Advanced reporting and analytics",
     ],
   },
-  advantages: {
-    items: [
-      {
-        title: "AI-First Architecture",
-        description:
-          "We do not bolt AI onto legacy frameworks. We natively integrate LLMs, RAG pipelines, and multi-agent orchestration directly into your application logic from day one.",
-      },
-      {
-        title: "Accelerated Go-to-Market (GTM)",
-        description:
-          "By leveraging our pre-configured compute infrastructure and QualityOps frameworks, we collapse standard development lifecycles. We transition from architectural scoping to a deployable, high-fidelity application in weeks through rigid sprint cycles.",
-      },
-      {
-        title: "Production-Ready Codebases",
-        description:
-          "Speed does not excuse fragile architecture. We deliver modular, containerized microservices equipped with automated CI/CD pipelines, robust unit testing, and integrated telemetry to absorb immediate user scale.",
-      },
-      {
-        title: "Strict Scoping & Seamless Handoff",
-        description: "We enforce deterministic scopes to pr.",
-        continuation:
-          "event feature creep. Once product-market fit is validated, we provide a clean transfer of the codebase, API documentation, and operational dashboards to your internal developers for continuous scaling",
-      },
-    ],
-  },
+
   faq: {
     title: "Frequently Asked Questions",
     items: [
       {
-        q: "Who owns the intellectual property (IP) and source code?",
-        a: "You do. 100%. Upon final payment and project handover, all code, designs, and assets are fully transferred to your company.",
+        q: "What do you need from us to begin?",
+        a: "We require focused participation during the initial scoping process, one primary decision maker and access to any existing brand assets, workflows, APIs or systems relevant to the product.",
       },
       {
-        q: "What do you need from us to get started?",
-        a: "We need focused time from the founder for our initial scoping workshop, a single decisive point of contact, and access to any existing brand assets, APIs, or tools you want us to integrate.",
+        q: "What technology stack do you use?",
+        a: "The technology stack is selected according to the product's functional, scalability, security and integration requirements. We prioritise widely supported frameworks and maintainable cloud native services that allow future teams to extend the application effectively.",
       },
       {
-        q: "What tech stack do you use?",
-        a: "We build on modern, scalable, and widely supported frameworks (like React/Next.js, Node, and cloud-native databases) ensuring that any future developer can easily pick up the codebase.",
+        q: "Can the MVP include AI capabilities?",
+        a: "Yes. AI capabilities may include retrieval augmented generation, semantic search, intelligent assistants, conversational interfaces, document processing and task based agents where they support a defined business outcome.",
       },
       {
-        q: "Will this MVP scale if we get a sudden spike in users?",
-        a: 'Absolutely. We don\'t build "throwaway" code. We engineer MVPs with clean modules, environment configurations, and production-ready CI/CD pipelines from the very first commit.',
+        q: "Will the MVP scale after launch?",
+        a: "The application is developed using modular architecture, structured deployment environments and automated delivery pipelines. This allows individual components and services to evolve as product usage and operational requirements increase.",
       },
       {
-        q: "What if my idea requires more than 3 core flows?",
-        a: 'If your product is too complex for a 3-week sprint, we will identify the absolute core value proposition to build first. Anything beyond that can be handled as a fixed-fee add-on or moved into an immediate "Phase 2" sprint after launch.',
+        q: "What happens when the product requires more than three core user flows?",
+        a: "We identify the smallest commercially meaningful version capable of validating the product's central value proposition. Additional journeys can be delivered through separately scoped add ons or prioritised for the next development sprint.",
       },
       {
-        q: "What happens after the MVP is launched?",
-        a: "You have options. We provide a complete handover with documentation if you want your internal team to take over. Alternatively, you can retain us on a month-to-month basis for continuous iteration and feature releases based on user feedback.",
+        q: "What happens after launch?",
+        a: "Your internal team can assume ownership using the source code, documentation and operational runbook. Astrenox can also continue through structured development sprints focused on user feedback, feature expansion, performance improvement and scale.",
       },
     ],
+  },
+
+  cta: {
+    title: "Ready to Turn Your Idea Into a Live Product?",
+    description:
+      "Bring your business problem, target users and intended outcome. Astrenox will help define the most valuable product scope, identify the essential user journeys and establish a clear delivery plan for launch.",
+    primaryCta: "Start Your MVP",
+    primaryHref: "/contact?intent=mvp",
+    secondaryCta: "View Process",
+    secondaryHref: "#process",
   },
 } as const;

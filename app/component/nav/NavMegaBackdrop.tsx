@@ -5,15 +5,13 @@ import { memo } from "react";
 type NavMegaBackdropProps = {
   open: boolean;
   onClose: () => void;
-  onPointerEnter: () => void;
 };
 
-function NavMegaBackdrop({ open, onClose, onPointerEnter }: NavMegaBackdropProps) {
+function NavMegaBackdrop({ open, onClose }: NavMegaBackdropProps) {
   return (
     <div
       className={`dock-backdrop${open ? " is-open" : ""}`}
       onClick={onClose}
-      onPointerEnter={onPointerEnter}
       aria-hidden
     />
   );

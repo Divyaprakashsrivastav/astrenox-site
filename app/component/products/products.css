@@ -490,7 +490,7 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* Whitelabel scroll */
+/* Horizontal scroll row */
 .products-scroll-row {
   display: flex;
   gap: 1rem;

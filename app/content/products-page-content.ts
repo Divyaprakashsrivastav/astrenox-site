@@ -1,24 +1,13 @@
 /**
- * Products page — verbatim content from official Content.docx (sole source of truth).
- * Do not paraphrase, summarize, or omit any line from the document.
+ * Products hub page content
  */
 
-export const productsPageBrief =
-  "OUR Products page -  ALL THE PRODUCTS brief in one page with redirection to respective product pages ( guideline below)";
+import { flagshipProducts } from "./products/flagship-products-content";
 
-export const productsPageGuidelines = [
-  "1-4 vercel",
-  "Solvoris - 2-4",
-  "Solvoris Brain ( Company brain as a service similar to heyhyper.ai )",
-  "Solvoris Platform -  (autonomous AI company runtime, ref -> matrix.build , cofounder.co,)",
-  "CTA",
-  "Astren- AI Transformation engine( inspired by -> foaster.ai , autostep.ai , ontora.ai and oximy ) 3-4",
-  "CTA",
-  "Astren Enterprise ( phase 2 and 3 services custom built",
-  "AkiRen ( Personal intelligence assistant)1-2",
-  "CTA",
-  "Orzora - Custom built AI workspace and RFx pipeline 1",
-] as const;
+export const productsPageBrief =
+  "Explore Astrenox enterprise AI products, ready-to-deploy solutions, and governed engineering platforms.";
+
+export const productsPageGuidelines = flagshipProducts.map((p) => `${p.name} — ${p.tagline}`);
 
 export const productsInfrastructureHeading = "Enterprise AI Infrastructure";
 
@@ -38,161 +27,124 @@ export const productsInfrastructurePlatforms = [
   },
   {
     id: "astrenai",
-    heading: "AstrenAI | Deterministic Autonomous Workflows",
+    heading: "Astren | AI Transformation Engine",
     description:
-      "AstrenAI bridges generative AI capabilities with strict operational logic, enabling the deployment of reliable, multi-step agents.",
+      "Astren bridges generative AI capabilities with strict operational logic, enabling governed transformation and reliable, multi-step agent workflows.",
     bullets: [
-      "Agentic Execution: Constructs and runs complex business workflows using structured prompt templates and verified data inputs.",
-      "Conditional Automation: Ensures generative outputs adhere to deterministic routing, executing API calls and data transformations reliably to prevent hallucination-induced drift.",
+      "Transformation Engine: Identifies use cases, assesses readiness and aligns AI adoption with business workflows.",
+      "Agentic Execution: Constructs and runs complex business workflows using structured templates and verified data inputs.",
     ],
   },
   {
-    id: "akiren",
-    heading: "AkiRen | Unified Data Pipelines & LLMOps",
+    id: "orzora",
+    heading: "Orzora | AI Workspace & RFx Pipeline",
     description:
-      "AkiRen solves infrastructure fragmentation by managing data engineering and prompt lifecycles through a shared, high-performance execution engine.",
+      "Orzora delivers a custom-built AI workspace and RFx pipeline for SMEs, built on PipesHub with ContraVault RFx agents.",
     bullets: [
-      "Aki (Pipeline Orchestration): A technical interface for building, routing, and monitoring complex data ingestion streams to feed AI models in real time.",
-      "Ren (Prompt Engineering): An LLMOps workspace for prompt version control, parameter tuning, and rigorous A/B testing against historical datasets prior to production deployment.",
+      "Unified Workspace: Collaborative AI environment for documents, tasks and procurement workflows.",
+      "RFx Automation: Intelligent document analysis, proposal drafting and pipeline management for SMEs.",
     ],
   },
 ] as const;
 
-/** Bento showcase — every product line from the document plus linked infrastructure copy where applicable */
+export const productOfferings = [
+  {
+    id: "ready-to-deploy",
+    title: "Ready-to-Deploy & Customised AI Solutions",
+    description:
+      "Applied AI platforms for KnowForth, enterprise Gen AI boilerplates across industries, and custom AI-powered CRM engineering.",
+    href: "/products/ready-to-deploy-ai-solutions",
+  },
+  {
+    id: "mvp-studio",
+    title: "MVP Studio & Custom SaaS Solutions",
+    description:
+      "Launch your MVP in 3 weeks with AI-native architecture, plus a portfolio of custom SaaS and business solutions.",
+    href: "/services/mvp-studio",
+  },
+  {
+    id: "software-factory",
+    title: "AI Native Software Factory",
+    description:
+      "Governed, agentic engineering for the enterprise — unified AIDLC and SDLC control plane with human governance.",
+    href: "/products/ai-native-software-factory",
+  },
+] as const;
+
+/** Bento showcase — flagship products with links to dedicated pages */
 export const productsBentoItems = [
   {
     id: "solvoris",
-    guidelineLine: "Solvoris - 2-4",
-    productLine: "Solvoris | Centralized Knowledge & Telemetry",
-    category: "Centralized Knowledge & Telemetry",
+    guidelineLine: "Solvoris",
+    productLine: "Solvoris",
+    category: "Autonomous company brain and personal assistant",
     description:
-      "Solvoris operates as the cognitive layer for enterprise environments, combining secure data indexing with comprehensive LLM observability.",
-    bullets: [
-      "Knowledge Orchestration: Utilizes advanced vector retrieval to synthesize internal enterprise data into secure, context-aware AI interactions.",
-      "Operational Telemetry: Features native integration for granular tracing, latency monitoring, token analytics, and prompt evaluation to maintain compliance and control compute costs.",
-    ],
-    ctaLine: "CTA",
-    href: "/products#infrastructure-solvoris",
-    layout: "wide" as const,
-    effect: "sweep" as const,
-    visual: "knowledge" as const,
-  },
-  {
-    id: "solvoris-brain",
-    guidelineLine: "Solvoris Brain ( Company brain as a service similar to heyhyper.ai )",
-    productLine: "Solvoris Brain ( Company brain as a service similar to heyhyper.ai )",
-    category: "Company brain as a service similar to heyhyper.ai",
-    description: "Solvoris Brain ( Company brain as a service similar to heyhyper.ai )",
+      "Autonomous company brain and personal assistant with unified institutional knowledge and context-aware AI reasoning.",
     bullets: [] as const,
-    ctaLine: "CTA",
-    href: "/contact?product=solvoris-brain",
-    layout: "medium" as const,
+    ctaLine: "Explore Solvoris",
+    href: "/products/solvoris",
+    layout: "wide" as const,
     effect: "glow" as const,
     visual: "brain" as const,
   },
   {
-    id: "solvoris-platform",
-    guidelineLine:
-      "Solvoris Platform -  (autonomous AI company runtime, ref -> matrix.build , cofounder.co,)",
-    productLine:
-      "Solvoris Platform -  (autonomous AI company runtime, ref -> matrix.build , cofounder.co,)",
-    category: "autonomous AI company runtime, ref -> matrix.build , cofounder.co,",
+    id: "astren",
+    guidelineLine: "Astren",
+    productLine: "Astren",
+    category: "AI adoption and transformation engine",
     description:
-      "Solvoris Platform -  (autonomous AI company runtime, ref -> matrix.build , cofounder.co,)",
+      "AI adoption and transformation engine for governed, scalable enterprise adoption.",
     bullets: [] as const,
-    ctaLine: "CTA",
-    href: "/contact?product=solvoris-platform",
-    layout: "medium" as const,
-    effect: "glass" as const,
-    visual: "platform" as const,
-  },
-  {
-    id: "astren-transformation",
-    guidelineLine:
-      "Astren- AI Transformation engine( inspired by -> foaster.ai , autostep.ai , ontora.ai and oximy ) 3-4",
-    productLine:
-      "Astren- AI Transformation engine( inspired by -> foaster.ai , autostep.ai , ontora.ai and oximy ) 3-4",
-    category: "inspired by -> foaster.ai , autostep.ai , ontora.ai and oximy ) 3-4",
-    description:
-      "Astren- AI Transformation engine( inspired by -> foaster.ai , autostep.ai , ontora.ai and oximy ) 3-4",
-    bullets: [] as const,
-    ctaLine: "CTA",
-    href: "/services/ai-transformation",
+    ctaLine: "Explore Astren",
+    href: "/products/astren",
     layout: "wide" as const,
     effect: "tilt" as const,
     visual: "workflow" as const,
   },
   {
-    id: "astren-enterprise",
-    guidelineLine: "Astren Enterprise ( phase 2 and 3 services custom built",
-    productLine: "Astren Enterprise ( phase 2 and 3 services custom built",
-    category: "phase 2 and 3 services custom built",
-    description: "Astren Enterprise ( phase 2 and 3 services custom built",
-    bullets: [] as const,
-    ctaLine: "CTA",
-    href: "/contact?product=astren-enterprise",
-    layout: "medium" as const,
-    effect: "layers" as const,
-    visual: "enterprise" as const,
-  },
-  {
     id: "akiren",
-    guidelineLine: "AkiRen ( Personal intelligence assistant)1-2",
-    productLine: "AkiRen | Unified Data Pipelines & LLMOps",
-    category: "Personal intelligence assistant)1-2",
+    guidelineLine: "Akiren",
+    productLine: "Akiren",
+    category: "AI-native company OS",
     description:
-      "AkiRen ( Personal intelligence assistant)1-2",
-    extraDescription:
-      "AkiRen solves infrastructure fragmentation by managing data engineering and prompt lifecycles through a shared, high-performance execution engine.",
-    bullets: [
-      "Aki (Pipeline Orchestration): A technical interface for building, routing, and monitoring complex data ingestion streams to feed AI models in real time.",
-      "Ren (Prompt Engineering): An LLMOps workspace for prompt version control, parameter tuning, and rigorous A/B testing against historical datasets prior to production deployment.",
-    ],
-    ctaLine: "CTA",
-    href: "/products#infrastructure-akiren",
-    layout: "medium" as const,
-    effect: "particles" as const,
-    visual: "pipeline" as const,
+      "AI-native company operating system connecting workflows, data, agents, and operational controls.",
+    bullets: [] as const,
+    ctaLine: "Explore Akiren",
+    href: "/products/akiren",
+    layout: "wide" as const,
+    effect: "glass" as const,
+    visual: "platform" as const,
   },
   {
     id: "orzora",
-    guidelineLine: "Orzora - Custom built AI workspace and RFx pipeline 1",
-    productLine: "Orzora - Custom built AI workspace and RFx pipeline 1",
-    category: "Custom built AI workspace and RFx pipeline 1",
-    description: "Orzora - Custom built AI workspace and RFx pipeline 1",
+    guidelineLine: "Orzora",
+    productLine: "Orzora",
+    category: "Deal desk and RFx pipeline",
+    description:
+      "AI-powered deal desk and RFx pipeline for qualification, proposals, and collaborative deal execution.",
     bullets: [] as const,
-    ctaLine: "CTA",
-    href: "/contact?product=orzora",
+    ctaLine: "Explore Orzora",
+    href: "/products/orzora",
     layout: "wide" as const,
     effect: "slide" as const,
     visual: "rfx" as const,
   },
 ] as const;
 
-export const productsPageDesignNote = "1-4 vercel";
-
-/** Hero UI copy — marketing layer only; product content remains in document sections below */
 export const productsPageHero = {
   label: "ASTRENOX AI PLATFORM SUITE",
   titleLine1: "Enterprise AI Products",
   titleLine2: "Built for Production,",
   titleLine3: "Not Prototypes.",
   description:
-    "Astrenox builds enterprise-grade AI platforms for knowledge orchestration, autonomous workflows, enterprise intelligence, and AI infrastructure—designed to run in production, not stop at proof-of-concept.",
+    "Astrenox builds enterprise-grade AI platforms for knowledge orchestration, autonomous workflows, transformation engines, and AI infrastructure—designed to run in production, not stop at proof-of-concept.",
   primaryCta: "Explore Products",
   primaryHref: "#products-bento",
   secondaryCta: "Book Demo",
   secondaryHref: "/contact?intent=demo",
-  ribbon: [
-    "Solvoris",
-    "Solvoris Brain",
-    "Solvoris Platform",
-    "AstrenAI",
-    "Astren Enterprise",
-    "AkiRen",
-    "Orzora",
-  ],
+  ribbon: ["Solvoris", "Astren", "Akiren", "Orzora"],
   hubLabel: "ASTRENOX AI PLATFORM",
 } as const;
 
 export const productsOverviewTitle = "Products Overview";
+export const productOfferingsTitle = "Product Offerings";

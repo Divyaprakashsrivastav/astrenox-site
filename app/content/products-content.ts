@@ -127,63 +127,6 @@ export const customCrmSection = {
   ],
 } as const;
 
-export const whitelabelSection = {
-  label: "Engineered Whitelabel Commerce Platforms",
-  title: "Engineered Whitelabel Commerce Platforms",
-  description:
-    "We engineer high-performance, readymade architectures deployed entirely under your brand. By bypassing the traditional development boilerplate, our 100% whitelabel solutions accelerate time-to-market while ensuring you retain absolute structural control and codebase ownership.",
-  framework: {
-    title: "Core Architectural Framework",
-    items: [
-      "High-Performance B2B & B2C Frameworks: We deploy pre-audited, modular mobile and web architectures that eliminate baseline setup while retaining complete structural ownership.",
-      "Complete Brand Sovereignty: We deeply customize core UI layouts and engineer custom API endpoints to integrate the platform with your legacy systems under your exclusive domain.",
-      "Centralized Management & Routing: A high-throughput administrative dashboard centralizes complex business logic, enabling multi-vendor routing, real-time inventory synchronization, and dynamic payment orchestration.",
-      "Predictive Telemetry & Automation: We embed advanced telemetry into the application core to capture granular behavioral data, driving automated churn prevention and predictive analytics.",
-      "Enterprise Security & Compliance: The architecture integrates end-to-end payload encryption, granular role-based access control (RBAC), and continuous vulnerability monitoring compliant with strict regulatory standards (GDPR, HIPAA).",
-      "Accelerated Deployment Lifecycles: Utilizing a microservices-driven foundation allows engineering resources to bypass boilerplate and focus strictly on deep performance tuning and tailored feature integration.",
-    ],
-  },
-  solutionsTitle: "Ready-to-Deploy Solutions",
-  solutions: [
-    {
-      id: "p2p",
-      title: "Peer-to-Peer (P2P) Solutions",
-      description:
-        "We deploy secure, multi-tenant decentralized exchange infrastructure featuring customizable smart escrow and real-time, multi-gateway transaction engines.",
-    },
-    {
-      id: "property",
-      title: "Property Management",
-      description:
-        "A centralized system orchestrating tenant lifecycles, digital leasing, and automated maintenance routing through isolated, role-based portals and predictive telemetry.",
-    },
-    {
-      id: "tendering",
-      title: "Tendering Solutions",
-      description:
-        "We architect secure e-tendering pipelines that digitize the procurement lifecycle, enforcing bidding transparency via encrypted document submission and immutable audit trails.",
-    },
-    {
-      id: "asset",
-      title: "Asset Management",
-      description:
-        "A robust monitoring architecture tracking real-time depreciation and lifecycle analytics, seamlessly integrating with external IoT sensors and existing ERPs.",
-    },
-    {
-      id: "dms",
-      title: "Document Management System (DMS)",
-      description:
-        "We provision secure, intelligent vaults for enterprise knowledge, featuring advanced version control, automated compliance archival, and AI-enhanced semantic retrieval.",
-    },
-    {
-      id: "invoice",
-      title: "Invoice & Billing Application",
-      description:
-        "A customized billing engine engineered to execute dynamic tax calculations, recurring subscription models, and real-time ledger reconciliation without manual administrative overhead.",
-    },
-  ],
-} as const;
-
 export const genAiSection = {
   label: "Enterprise Gen AI Boilerplates",
   title: "Enterprise Gen AI Boilerplates",

@@ -310,12 +310,7 @@
   transition-delay: 0s;
 }
 
-body.dock-mega-open main,
-body.dock-mega-open footer {
-  pointer-events: none;
-}
-
-/* ── Floating mega panel — centered under dock, 16px gap ── */
+/* ── Floating mega panel — centered under dock ── */
 .dock-mega-layer {
   position: fixed;
   inset: 0;
@@ -330,30 +325,44 @@ body.dock-mega-open footer {
   left: 0;
   right: 0;
   z-index: 450;
-  padding-top: 16px;
+  padding: 0 24px 24px;
   justify-content: center;
+  align-items: flex-start;
+  max-height: calc(100vh - 20px - 64px);
+  box-sizing: border-box;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate3d(0, 10px, 0) scale(0.98);
+  transform: translate3d(0, 8px, 0);
   transform-origin: top center;
   transition:
-    opacity 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 0.24s;
+    opacity 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.2s;
   will-change: opacity, transform;
 }
 
+/* Invisible bridge so pointer can travel from dock → panel without dropping */
+.dock-mega-shell.is-open::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -12px;
+  height: 12px;
+}
+
 .dock-mega-shell.is-open {
+  display: flex;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0);
   transition-delay: 0s;
 }
 
 @media (min-width: 1200px) {
-  .dock-mega-shell {
+  .dock-mega-shell.is-open {
     display: flex;
   }
 }
@@ -361,11 +370,19 @@ body.dock-mega-open footer {
 .dock-mega-float {
   width: min(1150px, calc(100vw - 48px));
   margin: 0 auto;
+  padding-top: 12px;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dock-mega-float > .dock-mega-panel {
+  width: 100%;
 }
 
 .dock-mega-float--narrow {
-  width: min(560px, calc(100vw - 48px));
+  width: min(520px, calc(100vw - 48px));
 }
 
 .dock-mega-float--catalog {
@@ -403,7 +420,50 @@ body.dock-mega-open footer {
 }
 
 .dock-mega-panel--stack {
-  padding: 1.25rem 1.375rem 1.375rem;
+  padding: 0.875rem;
+  max-height: calc(100vh - 20px - 64px - 36px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.35) transparent;
+}
+
+.dock-mega-panel--stack .dock-mega-grid {
+  gap: 0.375rem;
+}
+
+.dock-mega-panel--stack .dock-mega-card {
+  width: 100%;
+  align-items: flex-start;
+  padding: 0.7rem 0.85rem;
+  gap: 0.75rem;
+  border-radius: 14px;
+}
+
+.dock-mega-panel--stack .dock-mega-card--compact {
+  padding: 0.65rem 0.8rem;
+}
+
+.dock-mega-panel--stack .dock-mega-card-copy {
+  justify-content: flex-start;
+}
+
+.dock-mega-panel--stack .dock-mega-card-arrow {
+  margin-top: 0.1rem;
+  align-self: flex-start;
+}
+
+.dock-mega-panel--stack .dock-mega-card:hover {
+  transform: translateY(-2px);
+}
+
+.dock-mega-panel--stack .dock-mega-section {
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+}
+
+.dock-mega-panel--stack .dock-mega-section-label {
+  margin-bottom: 0.45rem;
 }
 
 .dock-mega-grid {

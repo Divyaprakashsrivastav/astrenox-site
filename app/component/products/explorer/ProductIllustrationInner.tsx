@@ -289,7 +289,7 @@ function ProductIllustrationInner({ illustrationId }: Props) {
     );
   }
 
-  if (illustrationId === "crm" || illustrationId === "whitelabel" || illustrationId === "genai") {
+  if (illustrationId === "crm" || illustrationId === "genai") {
     return (
       <svg viewBox="0 0 320 160" className="w-full h-auto" aria-hidden>
         <motion.circle

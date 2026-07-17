@@ -1,17 +1,22 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { contactPage } from "@/app/content/site-pages";
 import { site } from "@/app/content/astrenox-content";
 
 interface ContactFormProps {
   variant?: "default" | "premium";
+  defaultInquiry?: string;
 }
 
-export default function ContactForm({ variant = "default" }: ContactFormProps) {
+export default function ContactForm({
+  variant = "default",
+  defaultInquiry,
+}: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const formId = useId();
   const isPremium = variant === "premium";
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -25,21 +30,11 @@ export default function ContactForm({ variant = "default" }: ContactFormProps) {
     const message = data.get("message");
     const subject = encodeURIComponent(`[${inquiry}] ${company} — Astrenox inquiry`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry: ${inquiry}\n\n${message}`
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry: ${inquiry}\n\n${message}`,
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
-
-  const inputClass = isPremium
-    ? "contact-form-input"
-    : "mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30";
-
-  const labelClass = isPremium
-    ? "contact-form-label"
-    : "text-xs font-medium text-muted uppercase tracking-wide";
-
-  const fieldClass = isPremium ? "contact-form-field" : "block";
 
   if (isPremium) {
     return (
@@ -52,50 +47,67 @@ export default function ContactForm({ variant = "default" }: ContactFormProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.45, ease: [0, 0, 0.2, 1] }}
           >
-            <CheckCircle2 size={32} className="text-emerald-400 mb-3 mx-auto" />
-            <p className="font-heading text-lg font-semibold text-white">Request prepared</p>
-            <p className="text-sm mt-2">Your email client is opening with your message.</p>
+            <CheckCircle2 size={32} className="contact-form-success-icon" aria-hidden />
+            <p className="contact-form-success-title">Request prepared</p>
+            <p className="contact-form-success-desc">
+              Your email client is opening with your message.
+            </p>
           </motion.div>
         ) : (
           <motion.form
             key="form"
+            id={formId}
             onSubmit={handleSubmit}
-            className="contact-form-premium contact-form-stack"
+            className="contact-form-premium"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="contact-form-grid contact-form-grid--2">
-              <label className={fieldClass}>
-                <span className={labelClass}>Full Name</span>
+            <div className="contact-form-row">
+              <label className="contact-form-field" htmlFor={`${formId}-name`}>
+                <span className="contact-form-label">Full Name</span>
                 <input
+                  id={`${formId}-name`}
                   name="name"
                   required
+                  autoComplete="name"
                   placeholder="Your name"
-                  className={inputClass}
+                  className="contact-form-input"
                 />
               </label>
-              <label className={fieldClass}>
-                <span className={labelClass}>Work Email</span>
+              <label className="contact-form-field" htmlFor={`${formId}-email`}>
+                <span className="contact-form-label">Work Email</span>
                 <input
+                  id={`${formId}-email`}
                   name="email"
                   type="email"
                   required
+                  autoComplete="email"
                   placeholder="you@company.com"
-                  className={inputClass}
+                  className="contact-form-input"
                 />
               </label>
             </div>
-            <label className={fieldClass}>
-              <span className={labelClass}>Company</span>
+
+            <label className="contact-form-field" htmlFor={`${formId}-company`}>
+              <span className="contact-form-label">Company</span>
               <input
+                id={`${formId}-company`}
                 name="company"
+                autoComplete="organization"
                 placeholder="Organization"
-                className={inputClass}
+                className="contact-form-input"
               />
             </label>
-            <label className={fieldClass}>
-              <span className={labelClass}>Inquiry Type</span>
-              <select name="inquiry" required className={inputClass}>
+
+            <label className="contact-form-field" htmlFor={`${formId}-inquiry`}>
+              <span className="contact-form-label">Inquiry Type</span>
+              <select
+                id={`${formId}-inquiry`}
+                name="inquiry"
+                required
+                defaultValue={defaultInquiry ?? contactPage.inquiryTypes[1]}
+                className="contact-form-input contact-form-select"
+              >
                 {contactPage.inquiryTypes.map((type) => (
                   <option key={type} value={type}>
                     {type}
@@ -103,16 +115,19 @@ export default function ContactForm({ variant = "default" }: ContactFormProps) {
                 ))}
               </select>
             </label>
-            <label className={fieldClass}>
-              <span className={labelClass}>Your Message</span>
+
+            <label className="contact-form-field" htmlFor={`${formId}-message`}>
+              <span className="contact-form-label">Your Message</span>
               <textarea
+                id={`${formId}-message`}
                 name="message"
                 required
-                rows={7}
-                placeholder="Tell us about your architecture, timeline, and goals…"
-                className={`${inputClass} contact-form-textarea`}
+                rows={5}
+                placeholder="Share project docs, technical specs, timeline, and goals…"
+                className="contact-form-input contact-form-textarea"
               />
             </label>
+
             <button type="submit" className="contact-form-submit">
               Send Message
             </button>
@@ -121,6 +136,10 @@ export default function ContactForm({ variant = "default" }: ContactFormProps) {
       </AnimatePresence>
     );
   }
+
+  const inputClass =
+    "mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary/30";
+  const labelClass = "text-xs font-medium text-muted uppercase tracking-wide";
 
   return (
     <AnimatePresence mode="wait">
@@ -145,22 +164,22 @@ export default function ContactForm({ variant = "default" }: ContactFormProps) {
           animate={{ opacity: 1 }}
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <label className={fieldClass}>
+            <label className="block">
               <span className={labelClass}>Full Name</span>
               <input name="name" required className={inputClass} />
             </label>
-            <label className={fieldClass}>
+            <label className="block">
               <span className={labelClass}>Work Email</span>
               <input name="email" type="email" required className={inputClass} />
             </label>
           </div>
-          <label className={fieldClass}>
+          <label className="block">
             <span className={labelClass}>Company</span>
             <input name="company" className={inputClass} />
           </label>
-          <label className={fieldClass}>
+          <label className="block">
             <span className={labelClass}>Inquiry Type</span>
-            <select name="inquiry" required className={inputClass}>
+            <select name="inquiry" required className={inputClass} defaultValue={defaultInquiry}>
               {contactPage.inquiryTypes.map((type) => (
                 <option key={type} value={type}>
                   {type}
@@ -168,7 +187,7 @@ export default function ContactForm({ variant = "default" }: ContactFormProps) {
               ))}
             </select>
           </label>
-          <label className={fieldClass}>
+          <label className="block">
             <span className={labelClass}>Your Message</span>
             <textarea name="message" required rows={5} className={`${inputClass} resize-y`} />
           </label>

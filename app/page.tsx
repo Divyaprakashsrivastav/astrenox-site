@@ -7,6 +7,7 @@ import HomeIndustries from "./component/home/HomeIndustries";
 import HomeMetrics from "./component/home/HomeMetrics";
 import ServicesSection from "./component/home/ServicesSection";
 import TechnologyEcosystem from "./component/home/TechnologyEcosystem";
+import HomeProducts from "./component/home/HomeProducts";
 import ProjectsSection from "./component/home/ProjectsSection";
 import HomeTestimonials from "./component/home/HomeTestimonials";
 import HomeSiteEnding from "./component/home/HomeSiteEnding";
@@ -24,6 +25,7 @@ export default function Home() {
         <HomeMetrics />
         <ServicesSection />
         <TechnologyEcosystem />
+        <HomeProducts />
         <ProjectsSection />
         <HomeTestimonials />
       </HomeFlow>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useRef, type ReactNode } from "react";
+import { motion, useInView } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { softwareFactoryContent as c } from "@/app/content/software-factory-content";
@@ -46,145 +46,52 @@ function Bullet({ text }: { text: string }) {
 }
 
 export default function SoftwareFactoryPageClient() {
-  const [activeSection, setActiveSection] = useState(0);
-  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
-  const workflowRef = useRef<HTMLDivElement>(null);
-  const { scrollXProgress } = useScroll({ container: workflowRef });
-  const workflowBar = useTransform(scrollXProgress, [0, 1], ["0%", "100%"]);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    sectionRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(i);
-        },
-        { threshold: 0.35, rootMargin: "-15% 0px -15% 0px" },
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
-
-  const section1 = c.sections[0];
-  const section2 = c.sections[1];
-  const section3 = c.sections[2];
-
   return (
     <div className="asf-page">
       <SoftwareFactoryHero />
 
-      <section
-        id="asf-sdlc"
-        className="asf-sdlc"
-        aria-labelledby="asf-sdlc-title"
-        ref={(el) => {
-          sectionRefs.current[0] = el;
-        }}
-      >
-        <div className="asf-container asf-sdlc-grid">
-          <div className="asf-sdlc-rail-col">
-            <div className="asf-sdlc-rail-sticky">
-              <Reveal>
-                <span className="asf-section-num">{section1.number}</span>
-                <h2 id="asf-sdlc-title" className="asf-section-title">
-                  {section1.title}
-                </h2>
-                <p className="asf-section-intro">{section1.intro}</p>
-              </Reveal>
-              <div className="asf-sdlc-rail" aria-hidden>
-                {section1.bullets.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`asf-sdlc-rail-step${activeSection === 0 ? " is-active" : ""}`}
-                    style={{ "--asf-step": i } as CSSProperties}
-                  />
-                ))}
+      {c.sections.map((section, sectionIndex) => (
+        <section
+          key={section.number}
+          id={`asf-section-${section.number}`}
+          className={`asf-sdlc${sectionIndex % 2 === 1 ? " asf-sdlc--alt" : ""}`}
+          aria-labelledby={`asf-section-${section.number}-title`}
+        >
+          <div className="asf-container asf-sdlc-grid">
+            <div className="asf-sdlc-rail-col">
+              <div className="asf-sdlc-rail-sticky">
+                <Reveal>
+                  <span className="asf-section-num">{section.number}</span>
+                  <h2 id={`asf-section-${section.number}-title`} className="asf-section-title">
+                    {section.title}
+                  </h2>
+                  <p className="asf-section-intro">{section.intro}</p>
+                </Reveal>
               </div>
             </div>
+            <div className="asf-sdlc-bullets">
+              {section.bullets.map((bullet, i) => (
+                <Reveal key={bullet} delay={i * 0.04}>
+                  <article className="asf-sdlc-bullet-card">
+                    <span className="asf-bullet-index">{String(i + 1).padStart(2, "0")}</span>
+                    <Bullet text={bullet} />
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
-          <div className="asf-sdlc-bullets">
-            {section1.bullets.map((bullet, i) => (
-              <Reveal key={bullet} delay={i * 0.04}>
-                <article className="asf-sdlc-bullet-card">
-                  <span className="asf-bullet-index">{String(i + 1).padStart(2, "0")}</span>
-                  <Bullet text={bullet} />
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      <section
-        id="asf-execution"
-        className="asf-execution"
-        aria-labelledby="asf-execution-title"
-        ref={(el) => {
-          sectionRefs.current[1] = el;
-        }}
-      >
-        <div className="asf-container">
-          <Reveal>
-            <span className="asf-section-num">{section2.number}</span>
-            <h2 id="asf-execution-title" className="asf-section-title">
-              {section2.title}
-            </h2>
-            <p className="asf-section-intro">{section2.intro}</p>
-          </Reveal>
-        </div>
-        <div className="asf-workflow-wrap">
-          <div className="asf-workflow-progress" aria-hidden>
-            <motion.span className="asf-workflow-progress-bar" style={{ width: workflowBar }} />
+      {"closing" in c && c.closing ? (
+        <section className="asf-closing">
+          <div className="asf-container">
+            <Reveal>
+              <p className="asf-closing-text">{c.closing}</p>
+            </Reveal>
           </div>
-          <div ref={workflowRef} className="asf-workflow-scroll">
-            {section2.bullets.map((bullet, i) => (
-              <motion.article
-                key={bullet}
-                className="asf-workflow-card"
-                initial={{ opacity: 0, x: 36 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: EASE_PREMIUM }}
-              >
-                <Bullet text={bullet} />
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="asf-infrastructure"
-        className="asf-infra"
-        aria-labelledby="asf-infra-title"
-        ref={(el) => {
-          sectionRefs.current[2] = el;
-        }}
-      >
-        <div className="asf-container">
-          <Reveal>
-            <span className="asf-section-num">{section3.number}</span>
-            <h2 id="asf-infra-title" className="asf-section-title">
-              {section3.title}
-            </h2>
-            <p className="asf-section-intro">{section3.intro}</p>
-          </Reveal>
-
-          <div className="asf-infra-panels">
-            {section3.bullets.map((bullet, i) => (
-              <Reveal key={bullet} delay={i * 0.06}>
-                <article className="asf-infra-panel">
-                  <div className="asf-infra-panel-glow" aria-hidden />
-                  <Bullet text={bullet} />
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="asf-cta" aria-labelledby="asf-cta-title">
         <div className="asf-cta-backdrop">

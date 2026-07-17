@@ -19,7 +19,7 @@ export const navSolutions = [
 export const primaryNav = [
   { label: "Home", href: "/" },
   { label: "Platform", href: "/platform" },
-  { label: "Products", href: "/products" },
+  { label: "Products", href: "/products/solvoris" },
   { label: "Industries", href: "/services/industries" },
   { label: "Research", href: "/research" },
   { label: "About Us", href: "/about" },
@@ -37,7 +37,7 @@ export const footerQuickLinks = [
   { label: "MVP Studio", href: "/services/mvp-studio" },
   { label: "About Us", href: "/about" },
   { label: "Industries", href: "/services/industries" },
-  { label: "Products", href: "/products" },
+  { label: "Products", href: "/products/solvoris" },
   { label: "Research", href: "/research" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -46,7 +46,7 @@ export const footerNav = [
   { label: "Platform", href: "/platform" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Products", href: "/products" },
+  { label: "Products", href: "/products/solvoris" },
   { label: "Research", href: "/research" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
@@ -762,23 +762,60 @@ export const careersPage = {
 
 export const contactPage = {
   hero: {
-    title: "Let's build the future together",
+    eyebrow: "CONTACT US",
+    title: "Transition from Architecture to Production",
     description:
-      "Whether you're exploring a new initiative, need expert advice, or want to partner with us—we're here to help you navigate the AI frontier.",
+      "Partner with our engineers to evaluate your system requirements, audit data dependencies, and deploy secure AI infrastructure tailored to your core business operations.",
+  },
+  protocol:
+    "Enterprise Advisory Protocol: Every discovery session is led directly by a senior architect, not a sales representative. All technical audits and system disclosures are strictly protected by a mutual NDA.",
+  primaryCta: "Schedule Architecture Scoping",
+  secondaryCta: "Submit Technical Requirements Specs",
+  discovery: {
+    title: "Technical Discovery",
+    description:
+      "Direct Calendar Sync — Book a 30-minute scoping session to analyze your infrastructure challenges and outline specific engineering requirements.",
+    durationLabel: "30-minute scoping session",
+  },
+  inbound: {
+    title: "Submit Technical Requirements Specs",
   },
   channels: [
-    { label: "General Inquiries", value: "hello@astrenox.com", href: "mailto:hello@astrenox.com" },
-    { label: "Partnerships", value: "partners@astrenox.com", href: "mailto:partners@astrenox.com" },
-    { label: "MVP Studio", value: "prajwal@astrentech.com", href: "mailto:prajwal@astrentech.com" },
-    { label: "Phone", value: "+91 8384016763", href: "tel:+918384016763" },
-    { label: "Office (Noida)", value: "Noida, Uttar Pradesh, India", href: "https://maps.google.com/?q=Noida%20UP" },
-    { label: "Office (Ghaziabad)", value: "Ghaziabad, Uttar Pradesh, India", href: undefined },
+    {
+      label: "Contact",
+      value: "prajwal@astrentech.com",
+      href: "mailto:prajwal@astrentech.com",
+    },
+    {
+      label: "Number",
+      value: "+91 8384016763",
+      href: "tel:+918384016763",
+    },
+  ],
+  headquarters: {
+    title: "Address",
+    address: "C-18, Sector 105, Noida",
+    hours: "IST (UTC+5:30) | Monday – Friday",
+  },
+  timeSlots: [
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "12:00",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
   ],
   inquiryTypes: [
-    "Start a New Project",
-    "Explore a Partnership",
+    "Architecture Scoping",
+    "Submit Technical Requirements Specs",
+    "Partnership",
     "General Inquiry",
-    "Press / Media",
   ],
 } as const;
 

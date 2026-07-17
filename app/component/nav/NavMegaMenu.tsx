@@ -30,32 +30,34 @@ const MegaCard = memo(function MegaCard({
   featured?: boolean;
   active?: boolean;
 }) {
-  return (
-    <div className={featured ? "dock-mega-featured-wrap" : undefined}>
-      <Link
-        href={item.href}
-        role="menuitem"
-        className={[
-          "dock-mega-card",
-          compact ? "dock-mega-card--compact" : "",
-          featured ? "dock-mega-card--featured" : "",
-          active ? "dock-mega-card--active" : "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
-        onClick={onNavigate}
-        aria-current={active ? "page" : undefined}
-      >
-        <span className="dock-mega-card-copy">
-          <span className="dock-mega-card-title">{item.label}</span>
-          <span className="dock-mega-card-desc">{item.description}</span>
-        </span>
-        <span className="dock-mega-card-arrow" aria-hidden>
-          →
-        </span>
-      </Link>
-    </div>
+  const card = (
+    <Link
+      href={item.href}
+      role="menuitem"
+      className={[
+        "dock-mega-card",
+        compact ? "dock-mega-card--compact" : "",
+        featured ? "dock-mega-card--featured" : "",
+        active ? "dock-mega-card--active" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
+    >
+      <span className="dock-mega-card-copy">
+        <span className="dock-mega-card-title">{item.label}</span>
+        <span className="dock-mega-card-desc">{item.description}</span>
+      </span>
+      <span className="dock-mega-card-arrow" aria-hidden>
+        →
+      </span>
+    </Link>
   );
+
+  if (!featured) return card;
+
+  return <div className="dock-mega-featured-wrap">{card}</div>;
 });
 
 function NavMegaMenu({
