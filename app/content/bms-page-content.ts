@@ -1,5 +1,5 @@
 /**
- * BMS Integration page — verbatim from official Content.docx.
+ * BMS Integration page, verbatim from official Content.docx.
  * Single source of truth. Do not rewrite.
  */
 

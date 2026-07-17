@@ -44,7 +44,7 @@ export default function SptpPageClient() {
     <Shell>
       <SptpHero />
 
-      {/* 2 — Challenges */}
+      {/* 2, Challenges */}
       <section className="sptp-block sptp-block--alt" aria-labelledby="sptp-challenges-label">
         <div className="sptp-inner">
           <motion.div
@@ -86,7 +86,7 @@ export default function SptpPageClient() {
         </div>
       </section>
 
-      {/* 3 — Solutions */}
+      {/* 3, Solutions */}
       <section className="sptp-block" aria-labelledby="sptp-solutions-label">
         <div className="sptp-inner">
           <Label id="sptp-solutions-label">Smart Parking Platform</Label>
@@ -113,7 +113,7 @@ export default function SptpPageClient() {
         </div>
       </section>
 
-      {/* 4 — Architecture */}
+      {/* 4, Architecture */}
       <section className="sptp-block sptp-block--alt" aria-labelledby="sptp-arch-label">
         <div className="sptp-inner">
           <Label id="sptp-arch-label">System Architecture</Label>
@@ -197,7 +197,7 @@ export default function SptpPageClient() {
         </div>
       </section>
 
-      {/* 5 — Technology */}
+      {/* 5, Technology */}
       <section className="sptp-block" aria-labelledby="sptp-tech-label">
         <div className="sptp-inner">
           <Label id="sptp-tech-label">Technology Ecosystem</Label>
@@ -220,7 +220,7 @@ export default function SptpPageClient() {
         </div>
       </section>
 
-      {/* 6 — CTA */}
+      {/* 6, CTA */}
       <section className="sptp-block sptp-cta-block" aria-labelledby="sptp-cta-title">
         <div className="sptp-inner">
           <motion.div

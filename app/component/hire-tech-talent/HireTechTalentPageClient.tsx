@@ -214,7 +214,7 @@ export default function HireTechTalentPageClient() {
         </div>
       </section>
 
-      {/* Seamless Workflow Integration — Core Services */}
+      {/* Seamless Workflow Integration, Core Services */}
       <section className="mvp-inner mvp-section" aria-labelledby="htt-capabilities">
         <div className="mvp-section-header">
           <h2 id="htt-capabilities" className="mvp-section-title">
@@ -249,7 +249,7 @@ export default function HireTechTalentPageClient() {
         </motion.div>
       </section>
 
-      {/* Elastic Resource Scaling — Why Choose */}
+      {/* Elastic Resource Scaling, Why Choose */}
       <section className="mvp-inner mvp-section" aria-labelledby="htt-advantages">
         <div className="mvp-section-header">
           <h2 id="htt-advantages" className="mvp-section-title">
@@ -284,7 +284,7 @@ export default function HireTechTalentPageClient() {
         </motion.div>
       </section>
 
-      {/* Engagement Models — timeline comparison */}
+      {/* Engagement Models, timeline comparison */}
       <section
         id={engagement.id}
         className="mvp-inner mvp-section"

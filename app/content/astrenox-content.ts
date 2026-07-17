@@ -1,5 +1,5 @@
 /**
- * Migrated from https://astrean.vercel.app/ — copy only, not legacy design.
+ * Migrated from https://astrean.vercel.app/, copy only, not legacy design.
  */
 
 export const site = {
@@ -12,7 +12,7 @@ export const hero = {
   eyebrow: "Astrenox · Enterprise AI Operating System",
   headline: "Creating engineering disruption with AI-first transformation.",
   subheadline:
-    "Powered by the Astrenox Intelligence Platform—unified search, knowledge graphs, and autonomous agents that turn fragmented systems into intelligent operations.",
+    "Powered by the Astrenox Intelligence Platform, unified search, knowledge graphs, and autonomous agents that turn fragmented systems into intelligent operations.",
   primaryCta: "Request a consult",
   primaryHref: "/contact",
   secondaryCta: "Intelligence Platform",
@@ -56,7 +56,7 @@ export const talkToExperts = {
 } as const;
 
 export const disruptionHome = {
-  title: "You have a choice. Disrupt yourself—or be disrupted.",
+  title: "You have a choice. Disrupt yourself, or be disrupted.",
   description:
     "The cost of intelligence is falling to zero. Those who wait for perfect will be outpaced by those who build for flow. Astrenox ensures you end up on the right side of history.",
 } as const;
@@ -88,7 +88,7 @@ export const capabilitiesSection = {
   label: "Capabilities",
   title: "Ship AI that holds up in production.",
   description:
-    "Discovery, engineering, and automation—sequenced for maximum leverage and measurable ROI across your stack.",
+    "Discovery, engineering, and automation, sequenced for maximum leverage and measurable ROI across your stack.",
 } as const;
 
 export const capabilities = [
@@ -97,7 +97,7 @@ export const capabilities = [
     category: "AI Engineering",
     title: "AI Engineering",
     description:
-      "Production-ready systems with evaluation, safety, and scalable architecture—MLOps, RAG, fine-tuning, and agentic workflows built by senior builders.",
+      "Production-ready systems with evaluation, safety, and scalable architecture: MLOps, RAG, fine-tuning, and agentic workflows built by senior builders.",
     cta: "Explore engineering",
     ctaHref: "/contact",
     colSpan: "col-span-12 lg:col-span-8",
@@ -108,7 +108,7 @@ export const capabilities = [
     category: "Intelligent Automations",
     title: "Intelligent Automations",
     description:
-      "AI chatbots, co-pilots, autonomous agents, and workflow automations that plug into your tools, data, and teams—value from day one.",
+      "AI chatbots, co-pilots, autonomous agents, and workflow automations that plug into your tools, data, and teams, value from day one.",
     cta: "Scope automations",
     ctaHref: "/projects",
     colSpan: "col-span-12 lg:col-span-4",
@@ -119,7 +119,7 @@ export const capabilities = [
     category: "Transformation",
     title: "AI Transformation",
     description:
-      "30/60/90-day audits, adoption roadmaps, and practitioner-led execution across product, process, and people—strategy that ships systems, not slides.",
+      "30/60/90-day audits, adoption roadmaps, and practitioner-led execution across product, process, and people, strategy that ships systems, not slides.",
     cta: "Transformation framework",
     ctaHref: "/services/ai-transformation",
     colSpan: "col-span-12 sm:col-span-6 lg:col-span-4",
@@ -130,7 +130,7 @@ export const capabilities = [
     category: "Discovery",
     title: "Discovery & Roadmap",
     description:
-      "Priorities, timelines, and success metrics grounded in your constraints—use cases ranked by impact, feasibility, and time-to-value.",
+      "Priorities, timelines, and success metrics grounded in your constraints, use cases ranked by impact, feasibility, and time-to-value.",
     cta: "Start discovery",
     ctaHref: "/contact",
     colSpan: "col-span-12 sm:col-span-6 lg:col-span-4",
@@ -152,7 +152,7 @@ export const capabilities = [
     category: "Talent",
     title: "Hire Elite Engineering Talent",
     description:
-      "Pre-vetted AI, data, and product builders—individual experts or managed squads with outcome-based delivery and security-first onboarding.",
+      "Pre-vetted AI, data, and product builders, individual experts or managed squads with outcome-based delivery and security-first onboarding.",
     cta: "Get a shortlist",
     ctaHref: "/careers",
     colSpan: "col-span-12 lg:col-span-6",
@@ -164,7 +164,7 @@ export const capabilities = [
     category: "Platform",
     title: "Astrenox Intelligence Platform",
     description:
-      "The AI operating system behind every engagement—enterprise search, knowledge graph, agents, and workflow automation with explainable decisions.",
+      "The AI operating system behind every engagement, enterprise search, knowledge graph, agents, and workflow automation with explainable decisions.",
     cta: "Explore platform",
     ctaHref: "/platform",
     colSpan: "col-span-12 lg:col-span-6",
@@ -177,7 +177,7 @@ export const processSection = {
   label: "Methodology",
   title: "Think → Align → Execute",
   description:
-    "A practical, eight-anchor framework that turns strategy into shipped outcomes—sequenced for maximum leverage and measurable ROI.",
+    "A practical, eight-anchor framework that turns strategy into shipped outcomes, sequenced for maximum leverage and measurable ROI.",
   partBLabel: "Methodology · Part B",
 } as const;
 
@@ -192,7 +192,7 @@ export const processSteps = [
     step: "Think · 02",
     title: "Readiness",
     description:
-      "Assess people, processes, and technology—surface gaps and build a priority plan grounded in constraints.",
+      "Assess people, processes, and technology, surface gaps and build a priority plan grounded in constraints.",
   },
   {
     step: "Align · 03",
@@ -204,13 +204,13 @@ export const processSteps = [
     step: "Align · 04",
     title: "Orchestration",
     description:
-      "Compose resilient platforms across OpenAI, Anthropic, Google, Llama, Gemini, LangGraph, CrewAI, and n8n—observable and governable.",
+      "Compose resilient platforms across OpenAI, Anthropic, Google, Llama, Gemini, LangGraph, CrewAI, and n8n, observable and governable.",
   },
   {
     step: "Execute · 05",
     title: "Scale & ROI",
     description:
-      "Maximize leverage at the constraint—production deployments, automation at scale, and step-change ROI unlocked.",
+      "Maximize leverage at the constraint, production deployments, automation at scale, and step-change ROI unlocked.",
   },
 ] as const;
 
@@ -218,7 +218,7 @@ export const projectsSection = {
   label: "Success Stories",
   title: "Real stories, real results.",
   description:
-    "How Astrenox helps leaders transform engineering and operations with AI-first thinking—from flagship platforms to production rollouts.",
+    "How Astrenox helps leaders transform engineering and operations with AI-first thinking, from flagship platforms to production rollouts.",
 } as const;
 
 export type ProjectVisualId =
@@ -235,7 +235,7 @@ export const projects = [
     title: "Solvoris",
     category: "Enterprise AI Platform",
     description:
-      "The enterprise AI orchestration layer—unify data, models, and workflows into a single, governable ecosystem built for scale and security.",
+      "The enterprise AI orchestration layer, unify data, models, and workflows into a single, governable ecosystem built for scale and security.",
     tags: ["Orchestration", "Governance", "MLOps", "Enterprise"],
     stats: [
       { value: "30+", label: "Data connectors" },
@@ -250,7 +250,7 @@ export const projects = [
     title: "Orzo",
     category: "AI Business Copilot",
     description:
-      "The AI business copilot—amplify team productivity with instant search, proactive insights, and agentic workflows across your organization.",
+      "The AI business copilot, amplify team productivity with instant search, proactive insights, and agentic workflows across your organization.",
     tags: ["Copilot", "RAG", "Agents", "Knowledge"],
     stats: [
       { value: "Live", label: "Knowledge sync" },
@@ -265,7 +265,7 @@ export const projects = [
     title: "Delivery Velocity Program",
     category: "AI Transformation",
     description:
-      "Outcome-based product transformation with unicorn PMs and engineers accelerating roadmaps—not adding tickets, shipping outcomes.",
+      "Outcome-based product transformation with unicorn PMs and engineers accelerating roadmaps, not adding tickets, shipping outcomes.",
     tags: ["Product", "Outcomes", "Sprints", "AI-native"],
     stats: [
       { value: "25%", label: "Fewer person-hours" },
@@ -273,7 +273,7 @@ export const projects = [
       { value: "Step-change", label: "ROI unlocked" },
     ],
     outcome:
-      "The speed of delivery shifted almost overnight—we aren't just shipping more, we're shipping better.",
+      "The speed of delivery shifted almost overnight, we aren't just shipping more, we're shipping better.",
     href: "/services/ai-transformation",
   },
   {
@@ -281,7 +281,7 @@ export const projects = [
     title: "Enterprise Support Copilot",
     category: "Intelligent Automations",
     description:
-      "Retrieval-augmented GenAI workflows for support—permission-aware answers synced across enterprise knowledge sources.",
+      "Retrieval-augmented GenAI workflows for support, permission-aware answers synced across enterprise knowledge sources.",
     tags: ["RAG", "Support", "GenAI", "Automation"],
     stats: [
       { value: "30%", label: "Faster resolution" },
@@ -296,7 +296,7 @@ export const projects = [
     title: "Modern Data Stack Revamp",
     category: "AI Engineering",
     description:
-      "Migrated analytics to modern ELT and a semantic layer—pipelines and RAG architectures that fuel intelligent insights.",
+      "Migrated analytics to modern ELT and a semantic layer, pipelines and RAG architectures that fuel intelligent insights.",
     tags: ["Data Engineering", "ELT", "Analytics", "RAG"],
     stats: [
       { value: "30+", label: "Sources connected" },
@@ -311,7 +311,7 @@ export const projects = [
     title: "AI-First Frontend Push",
     category: "Application Development",
     description:
-      "High-velocity full-stack delivery with React, Next.js, and robust Python backends—Lighthouse 95+ after a focused two-week sprint.",
+      "High-velocity full-stack delivery with React, Next.js, and robust Python backends: Lighthouse 95+ after a focused two-week sprint.",
     tags: ["Next.js", "React", "Python", "Performance"],
     stats: [
       { value: "95+", label: "Lighthouse score" },
@@ -325,9 +325,9 @@ export const projects = [
 
 export const researchSection = {
   label: "Research & Ecosystem",
-  title: "We orchestrate the ecosystem—not just use it.",
+  title: "We orchestrate the ecosystem, not just use it.",
   description:
-    "Astrenox as systems integrator across leading models and orchestration frameworks—resilient, observable, and governable by design.",
+    "Astrenox as systems integrator across leading models and orchestration frameworks, resilient, observable, and governable by design.",
 } as const;
 
 export const researchPillars = [
@@ -348,7 +348,7 @@ export const researchPillars = [
   {
     title: "Model & Platform Research",
     description:
-      "OpenAI, Anthropic, Google, Meta, Llama, Gemini—matched to the right task with LangGraph, CrewAI, and n8n orchestration.",
+      "OpenAI, Anthropic, Google, Meta, Llama, Gemini, matched to the right task with LangGraph, CrewAI, and n8n orchestration.",
   },
   {
     title: "Applied Engineering",
@@ -371,7 +371,7 @@ export const statisticsSection = {
   label: "Outcomes",
   title: "Trusted at enterprise scale",
   description:
-    "Proof over slides—production deployments, outcome-based ownership, and measurable leverage at the constraint.",
+    "Proof over slides, production deployments, outcome-based ownership, and measurable leverage at the constraint.",
 } as const;
 
 export const statistics = [
@@ -424,7 +424,7 @@ export const faqItems = [
   {
     question: "What kinds of companies do you work with?",
     answer:
-      "We partner with mid-market and enterprise organizations serious about AI-first transformation—especially teams that need both strategy and hands-on execution.",
+      "We partner with mid-market and enterprise organizations serious about AI-first transformation, especially teams that need both strategy and hands-on execution.",
   },
   {
     question: "How do you identify the right AI use cases?",
@@ -434,7 +434,7 @@ export const faqItems = [
   {
     question: "Do you build, or only advise?",
     answer:
-      "We do both. We align on strategy and deliver production-ready solutions with strong engineering practices—MLOps, data pipelines, evaluation, and governance.",
+      "We do both. We align on strategy and deliver production-ready solutions with strong engineering practices: MLOps, data pipelines, evaluation, and governance.",
   },
   {
     question: "How long does an engagement typically take?",
@@ -444,7 +444,7 @@ export const faqItems = [
   {
     question: "Can you work with our internal teams?",
     answer:
-      "Yes—collaboration is our default. We integrate with your engineering and business stakeholders, transfer knowledge, and set up repeatable processes.",
+      "Yes, collaboration is our default. We integrate with your engineering and business stakeholders, transfer knowledge, and set up repeatable processes.",
   },
   {
     question: "How do you handle security and compliance?",
@@ -454,12 +454,12 @@ export const faqItems = [
   {
     question: "How is Astrenox different from a traditional consultancy?",
     answer:
-      "Traditional consultancies sell slides. We ship systems—outcome-based milestones, senior-only builders, and production or it didn't happen.",
+      "Traditional consultancies sell slides. We ship systems, outcome-based milestones, senior-only builders, and production or it didn't happen.",
   },
   {
     question: "Do you support staff augmentation or managed squads?",
     answer:
-      "Yes. We offer individuals, managed squads, fractional leadership, and build-operate-transfer models—with shortlists in days and security-first onboarding.",
+      "Yes. We offer individuals, managed squads, fractional leadership, and build-operate-transfer models, with shortlists in days and security-first onboarding.",
   },
 ];
 
@@ -467,14 +467,14 @@ export const ctaBanner = {
   eyebrow: "Stay on the right side of history",
   title: "Ready to build what's next?",
   description:
-    "Deploy the Astrenox Intelligence Platform or engage our teams to ship search, agents, and automation—weeks to launch, we ship with you.",
+    "Deploy the Astrenox Intelligence Platform or engage our teams to ship search, agents, and automation, weeks to launch, we ship with you.",
   primaryCta: "Get started",
   secondaryCta: "View platform",
 } as const;
 
 export const footer = {
   headline: "Transition from architecture to production.",
-  headlineAccent: "Ship systems—not slides.",
+  headlineAccent: "Ship systems, not slides.",
   tagline: "System Transformation Engine",
   description:
     "AI-first strategy and engineering partners helping teams modernize operations, build AI-native products, and deliver measurable outcomes at velocity.",
@@ -539,7 +539,7 @@ export const careerHighlights = [
   { title: "Shortlists in days", detail: "Always-warm bench across AI, data, and product." },
   { title: "Vetted for outcomes", detail: "Graded on delivery patterns, not LeetCode alone." },
   { title: "Pods or individuals", detail: "One specialist or a managed squad with PM and QA." },
-  { title: "Outcome-based models", detail: "Tied to features and milestones—not hours alone." },
+  { title: "Outcome-based models", detail: "Tied to features and milestones, not hours alone." },
 ];
 
 export const navLinks = [

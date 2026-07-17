@@ -83,7 +83,7 @@ function AIEngineeringTerminal({ variant = "section" }: Props) {
             <span />
             <span />
             <span />
-            <p>production — deploy console</p>
+            <p>production, deploy console</p>
           </div>
           <div className="aie-terminal-body aie-terminal-body--hero">
             {visible.map((line, i) => (
@@ -110,7 +110,7 @@ function AIEngineeringTerminal({ variant = "section" }: Props) {
         <span />
         <span />
         <span />
-        <p>astrenox-engineering — deploy</p>
+        <p>astrenox-engineering, deploy</p>
       </div>
       <div className="aie-terminal-body">
         {visible.map((line, i) => (

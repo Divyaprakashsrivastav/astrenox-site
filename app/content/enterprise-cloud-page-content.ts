@@ -1,5 +1,5 @@
 /**
- * Enterprise Cloud & Managed Services — verbatim from official Content.docx.
+ * Enterprise Cloud & Managed Services, verbatim from official Content.docx.
  * Single source of truth. Do not rewrite.
  */
 
@@ -57,7 +57,7 @@ export const enterpriseCloudPageContent = {
 
   consultativeEngineering: {
     title: "Consultative Engineering",
-    body: "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry—from secure financial gateways to healthcare data pipelines.",
+    body: "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry, from secure financial gateways to healthcare data pipelines.",
   },
 
   networkInfrastructure: {
@@ -171,7 +171,7 @@ export const enterpriseCloudPageContent = {
     },
   },
 
-  /** Problem → solution pairs — verbatim intros paired with solution items from the document. */
+  /** Problem → solution pairs, verbatim intros paired with solution items from the document. */
   challengePairs: [
     {
       problem:
@@ -301,14 +301,14 @@ export const enterpriseCloudPageContent = {
     },
   ],
 
-  /** Managed operations lifecycle — stage labels from design brief; content verbatim from document. */
+  /** Managed operations lifecycle, stage labels from design brief; content verbatim from document. */
   lifecycleStages: [
     {
       id: "discover",
       label: "Discover",
       paragraphs: [
         "We engineer resilient, AI-ready infrastructure to replace legacy frameworks. By handling architectural design and proactive IT management, we offload operational complexities so your engineering teams can focus on core product development.",
-        "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry—from secure financial gateways to healthcare data pipelines.",
+        "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry, from secure financial gateways to healthcare data pipelines.",
         "We architect and manage Global Capability Centers (GCCs) from the ground up. By handling the underlying administrative and infrastructure complexities, we enable your technical leadership to focus entirely on core product development.",
       ],
     },
@@ -400,7 +400,7 @@ export const enterpriseCloudPageContent = {
       ],
       footer: {
         title: "Consultative Engineering",
-        body: "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry—from secure financial gateways to healthcare data pipelines.",
+        body: "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry, from secure financial gateways to healthcare data pipelines.",
       },
       items: [
         {

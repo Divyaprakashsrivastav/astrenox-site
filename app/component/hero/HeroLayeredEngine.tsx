@@ -146,14 +146,14 @@ export default function HeroLayeredEngine() {
       aria-label="Living intelligence engine"
     >
       <div className="hero-engine-frame">
-        {/* Layer 1 — gradient mesh */}
+        {/* Layer 1, gradient mesh */}
         <motion.div className="hero-engine-mesh" style={{ x: meshX, y: meshY }} aria-hidden>
           <div className="hero-engine-blob hero-engine-blob--1" />
           <div className="hero-engine-blob hero-engine-blob--2" />
           <div className="hero-engine-blob hero-engine-blob--3" />
         </motion.div>
 
-        {/* Layer 3 — intelligence flow */}
+        {/* Layer 3, intelligence flow */}
         <motion.svg
           className="hero-engine-flows"
           viewBox="0 0 100 100"
@@ -203,7 +203,7 @@ export default function HeroLayeredEngine() {
           <span>ASTRENOX</span>
         </div>
 
-        {/* Layer 2 — floating glass cards */}
+        {/* Layer 2, floating glass cards */}
         {CARDS.map((card) => (
           <EngineCard key={card.id} card={card} mx={mx} my={my} reduced={reduced} />
         ))}

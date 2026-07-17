@@ -34,7 +34,7 @@ function AstrenoxLogo({
   const h = height ?? VARIANT_HEIGHT[variant];
 
   const mark = (
-    // Plain img — no optimization, filters, or transforms applied to the asset
+    // Plain img, no optimization, filters, or transforms applied to the asset
     <img
       src={LOGO_SRC}
       alt="Astrenox"

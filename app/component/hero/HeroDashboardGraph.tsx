@@ -21,7 +21,7 @@ const TYPE_COLOR: Record<NodeType, string> = {
   workflows: "#9B6B8F",
 };
 
-/** 25 nodes — hub + ring layers */
+/** 25 nodes, hub + ring layers */
 function buildNodes(): GraphNode[] {
   const hub: GraphNode = { id: "hub", x: 200, y: 130, type: "systems", hub: true };
   const nodes: GraphNode[] = [hub];
@@ -33,7 +33,7 @@ function buildNodes(): GraphNode[] {
       id: `o-${i}`,
       x: 200 + Math.cos(a) * 72,
       y: 130 + Math.sin(a) * 52,
-      type: types[i % 4]!,
+      type: types[i % 4]!
     });
   }
 
@@ -43,7 +43,7 @@ function buildNodes(): GraphNode[] {
       id: `m-${i}`,
       x: 200 + Math.cos(a) * 118,
       y: 130 + Math.sin(a) * 78,
-      type: types[(i + 1) % 4]!,
+      type: types[(i + 1) % 4]!
     });
   }
 
@@ -53,7 +53,7 @@ function buildNodes(): GraphNode[] {
       id: `p-${i}`,
       x: 200 + Math.cos(a) * 42,
       y: 130 + Math.sin(a) * 30,
-      type: types[(i + 2) % 4]!,
+      type: types[(i + 2) % 4]!
     });
   }
 
@@ -74,15 +74,15 @@ function buildEdges(): [GraphNode, GraphNode][] {
   }
 
   for (let i = 0; i < mid.length; i++) {
-    edges.push([mid[i]!, mid[(i + 1) % mid.length]!]);
+    edges.push([mid[i]! mid[(i + 1) % mid.length]!]);
   }
 
   for (let i = 0; i < outer.length; i++) {
-    if (i % 2 === 0) edges.push([outer[i]!, mid[i % mid.length]!]);
+    if (i % 2 === 0) edges.push([outer[i]! mid[i % mid.length]!]);
   }
 
   for (let i = 0; i < inner.length; i++) {
-    edges.push([inner[i]!, mid[i % mid.length]!]);
+    edges.push([inner[i]! mid[i % mid.length]!]);
   }
 
   return edges;

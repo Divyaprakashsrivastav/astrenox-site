@@ -70,7 +70,7 @@ export function DroneVisual({ active, reducedMotion }: VisualProps) {
         </linearGradient>
       </defs>
 
-      {/* Static layer — always visible */}
+      {/* Static layer, always visible */}
       <g>
         {Array.from({ length: 9 }).map((_, i) => (
           <line

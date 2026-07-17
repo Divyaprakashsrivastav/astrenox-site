@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════
-   Astrenox Dock Navigation — rebuilt from scratch
+   Astrenox Dock Navigation - rebuilt from scratch
    ═══════════════════════════════════════════════════════════ */
 
 /* ── Centered viewport wrapper (no translateX centering) ── */
@@ -84,7 +84,7 @@
   min-height: 40px;
 }
 
-/* Legacy text brand — replaced by AstrenoxLogo */
+/* Legacy text brand - replaced by AstrenoxLogo */
 .dock-brand {
   font-family: var(--font-heading, ui-serif, Georgia, serif);
   font-size: 1.125rem;
@@ -102,7 +102,7 @@
   text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
 }
 
-/* ── Center menu — 14px / 18px gaps, never clip ── */
+/* ── Center menu - 14px / 18px gaps, never clip ── */
 .dock-menu {
   display: none;
   align-items: center;
@@ -310,7 +310,7 @@
   transition-delay: 0s;
 }
 
-/* ── Floating mega panel — centered under dock ── */
+/* ── Floating mega panel - centered under dock ── */
 .dock-mega-layer {
   position: fixed;
   inset: 0;

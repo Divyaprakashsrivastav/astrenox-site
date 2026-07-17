@@ -1,5 +1,5 @@
 /**
- * Unified product catalog — maps verbatim products-content into explorer nav + showcase.
+ * Unified product catalog, maps verbatim products-content into explorer nav + showcase.
  */
 
 import {
@@ -111,7 +111,7 @@ function flagshipItem(
       {
         id: `${product.id}-biz`,
         title: "Business Value",
-        paragraphs: product.features.map((f) => `${f.label} — ${f.text}`),
+        paragraphs: product.features.map((f) => `${f.label}: ${f.text}`),
       },
     ],
     ctas: [
@@ -164,8 +164,7 @@ const genAiItem: ProductCatalogItem = {
   subtitle: genAiSection.title,
   overview: [genAiSection.description],
   chips: [
-    ...chipsFromBullets(genAiSection.pillars.items, "gen-pillar"),
-    ...genAiSection.industries.flatMap((ind, ii) =>
+    ...chipsFromBullets(genAiSection.pillars.items, "gen-pillar")...genAiSection.industries.flatMap((ind, ii) =>
       ind.solutions.map((s, si) => chipFromBullet(s, si, `gen-${ii}`))
     ),
   ],
@@ -187,8 +186,7 @@ const genAiItem: ProductCatalogItem = {
       bullets: genAiSection.industries.flatMap((ind) =>
         ind.solutions.map((s) => `[${ind.title}] ${s}`)
       ),
-    },
-    ...genAiSection.industries.map((ind) => ({
+    }...genAiSection.industries.map((ind) => ({
       id: `gen-${ind.id}`,
       title: ind.title,
       paragraphs: [...ind.solutions],
@@ -306,7 +304,7 @@ const publicSectorItem: ProductCatalogItem = {
     ]),
   },
   useCases: publicSectorSection.table.map(
-    (r) => `${r.domain}: ${r.aiApplication} — ${r.operationalImpact}`
+    (r) => `${r.domain}: ${r.aiApplication}: ${r.operationalImpact}`
   ),
   chips: publicSectorSection.challenges.barriers.map((b, i) =>
     chipFromBullet(b, i, "ps")
@@ -456,7 +454,7 @@ function industryOverviewItem(
 function industryDetailedItem(
   detail: (typeof industrySolutionsSection.detailed)[number]
 ): ProductCatalogItem {
-  const allBullets = [...detail.aiSolutions.items, ...detail.customDev.items];
+  const allBullets = [...detail.aiSolutions.items...detail.customDev.items];
   return {
     id: detail.id,
     title: detail.title,
@@ -521,10 +519,7 @@ export const productsCatalog: ProductCatalogItem[] = [
   genAiItem,
   softwareFactoryItem,
   missionCriticalItem,
-  publicSectorItem,
-  ...infrastructureSection.panels.map(infrastructureItem),
-  ...industrySolutionsSection.overviews.map(industryOverviewItem),
-  ...industrySolutionsSection.detailed.map(industryDetailedItem),
+  publicSectorItem...infrastructureSection.panels.map(infrastructureItem)...industrySolutionsSection.overviews.map(industryOverviewItem)...industrySolutionsSection.detailed.map(industryDetailedItem),
   ctaItem,
 ];
 

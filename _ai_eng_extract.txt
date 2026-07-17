@@ -27,7 +27,7 @@ Refinement: Track leading and lagging indicators through closed-loop feedback sy
 Architecting Defensibility: The Tri-Flywheel Model
 Building a business by simply wrapping an off-the-shelf AI model offers no long-term competitive edge. True market durability requires capturing a high-friction operational workflow and expanding that footprint through three distinct phases:
 1. The Product Delivery Flywheel:-  Capture proprietary insights by routing every unique customer interaction into your core architecture. This automated feedback makes your software smarter and highly specialized over time.
-2. The Internal AI-Operations Flywheel:- Accelerate development speed by embedding autonomous tools into the engineering lifecycle to minimize operational overhead. Simultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO)—ensuring you are natively indexed when users query AI search engines.
+2. The Internal AI-Operations Flywheel:- Accelerate development speed by embedding autonomous tools into the engineering lifecycle to minimize operational overhead. Simultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO), ensuring you are natively indexed when users query AI search engines.
 3. The Ecosystem Alignment Flywheel:- Convert early success into industry dominance through seamless compatibility with Cloud Service Providers (CSPs), major vendors, and Systems Integrators (SIs). This structural integration unlocks massive, built-in distribution channels that return fresh enterprise insights to the start, compounding overall growth.
 4. INDUSTRIES SECTION
 Application Modernization*, and *Product Engineering*. Dropping these terms makes the firm sound like a generic agency rather than a high-end technical consultancy.
@@ -349,8 +349,8 @@ Technical Discovery
 Direct Calendar Sync Book a 30-minute scoping session to analyze your infrastructure challenges and outline specific engineering requirements.
 Action Link: [Insert Calendly Portal]
 Targeted Inbound Route your project documentation or RFPs directly to our engineering queues for a rapid evaluation.
-Architecture & RFPs: [Insert Email, e.g., architecture@astrenox.com]
-Partnerships: [Insert Email, e.g., networks@astrenox.com]
+Architecture & RFPs: [Insert Email, e.g. architecture@astrenox.com]
+Partnerships: [Insert Email, e.g. networks@astrenox.com]
 Direct Line: [Insert Phone Number]
 Engineering Headquarters
 Corporate Address: [Insert Street Address / Suite] [Insert City, State, ZIP] Operating Hours: [Timezone] | Monday – Friday

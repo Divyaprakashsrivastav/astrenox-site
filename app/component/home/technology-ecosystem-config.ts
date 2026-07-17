@@ -1,5 +1,5 @@
 /**
- * Technology ecosystem logos — local SVG files in /public/tech/.
+ * Technology ecosystem logos, local SVG files in /public/tech/.
  * Used by homepage Technology Ecosystem marquee.
  */
 export type TechLogoDef = {

@@ -1,4 +1,4 @@
-/* AI Engineering & Development — enterprise engineering surface */
+/* AI Engineering & Development - enterprise engineering surface */
 
 .aie-shell {
   position: relative;
@@ -118,7 +118,7 @@
   border: 0;
 }
 
-/* Hero — cinematic backdrop + deployment console */
+/* Hero - cinematic backdrop + deployment console */
 .aie-hero {
   position: relative;
   z-index: 1;
@@ -479,7 +479,7 @@
   }
 }
 
-/* Overview — typography + failure pipeline */
+/* Overview - typography + failure pipeline */
 .aie-overview-split {
   align-items: start;
   gap: clamp(2.5rem, 5vw, 4.5rem);
@@ -1057,7 +1057,7 @@
   color: rgba(228, 225, 255, 0.65);
 }
 
-/* Technology stack — official brand logos */
+/* Technology stack - official brand logos */
 .aie-tech {
   position: relative;
   z-index: 1;

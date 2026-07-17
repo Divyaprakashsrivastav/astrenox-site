@@ -82,8 +82,7 @@ export default function PlatformHero() {
               , and{" "}
               <Link href="/research" className="text-primary hover:underline">
                 research
-              </Link>
-              —one platform, no bolt-ons.
+              </Link>, one platform, no bolt-ons.
             </motion.p>
           </motion.div>
 

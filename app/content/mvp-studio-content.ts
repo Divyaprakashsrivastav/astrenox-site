@@ -1,4 +1,4 @@
-/** Page 2 — MVP Studio and Custom SaaS Solutions */
+/** Page 2, MVP Studio and Custom SaaS Solutions */
 export const mvpStudioContent = {
   brand: "MVP Studio",
   hero: {
@@ -29,7 +29,7 @@ export const mvpStudioContent = {
       "We don't do endless planning loops. Our process is engineered to remove uncertainty and get your product into users' hands fast so you can start gathering real data.",
     steps: [
       {
-        heading: "1. Define and Scope — Days 1 to 3",
+        heading: "1. Define and Scope, Days 1 to 3",
         description:
           "We align the product around its core users, commercial objective and highest value workflows. Initial scope is confirmed within 48 hours, followed by detailed product and technical planning.",
         activities:
@@ -38,7 +38,7 @@ export const mvpStudioContent = {
           "Deliverables: Confirmed product specification, screen and user flow map, prioritised MVP backlog, defined validation and performance metrics.",
       },
       {
-        heading: "2. Design, Build and Instrument — Days 4 to 16",
+        heading: "2. Design, Build and Instrument, Days 4 to 16",
         description:
           "Our product, design and engineering teams develop the core application using modular architecture and reusable components. Infrastructure, integrations, analytics and monitoring are implemented alongside product development.",
         activities:
@@ -47,7 +47,7 @@ export const mvpStudioContent = {
           "Deliverables: Functional, staging ready MVP, implemented core user journeys, connected integrations and data workflows, product analytics and operational monitoring, initial technical documentation.",
       },
       {
-        heading: "3. Launch, Learn and Handover — Days 17 to 21",
+        heading: "3. Launch, Learn and Handover, Days 17 to 21",
         description:
           "The application is tested, deployed and prepared for initial users. Early usage signals are reviewed to identify operational gaps, adoption patterns and the highest value priorities for the next release.",
         activities:

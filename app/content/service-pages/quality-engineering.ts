@@ -19,7 +19,7 @@ export const qualityEngineeringContent: ServicePageContent = {
   overview: {
     title: "Quality engineering for modern delivery",
     paragraphs: [
-      "Astrenox helps engineering organizations build quality into the delivery pipeline—not bolt it on before release. We design test automation frameworks, performance benchmarks, and release gates that accelerate shipping while reducing production incidents.",
+      "Astrenox helps engineering organizations build quality into the delivery pipeline, not bolt it on before release. We design test automation frameworks, performance benchmarks, and release gates that accelerate shipping while reducing production incidents.",
       "Our practice covers test strategy, automation engineering, performance and load testing, accessibility compliance, and release governance. We work as an extension of your engineering team with the same sprint cadence and accountability.",
       "Every engagement establishes measurable quality metrics: defect escape rate, test coverage, mean time to detect, and release confidence scores. Dashboards make quality visible to engineering managers and executives alike.",
       "From Series B startups establishing QA discipline to enterprises modernizing legacy test suites, we deliver frameworks your team can maintain and extend independently.",
@@ -175,7 +175,7 @@ export const qualityEngineeringContent: ServicePageContent = {
       },
       {
         quote:
-          "They didn't just write tests—they redesigned our quality culture. Developers now own test automation as part of their definition of done.",
+          "They didn't just write tests, they redesigned our quality culture. Developers now own test automation as part of their definition of done.",
         author: "Sandra Mitchell",
         role: "QA Lead, HealthBridge",
       },
@@ -191,11 +191,11 @@ export const qualityEngineeringContent: ServicePageContent = {
       },
       {
         q: "Do you replace our internal QA team?",
-        a: "No. We augment your team—building frameworks, training engineers, and establishing practices your organization sustains independently.",
+        a: "No. We augment your team, building frameworks, training engineers, and establishing practices your organization sustains independently.",
       },
       {
         q: "What types of testing do you cover?",
-        a: "Functional, integration, API, performance, security, accessibility, and visual regression—with prioritization based on business risk.",
+        a: "Functional, integration, API, performance, security, accessibility, and visual regression, with prioritization based on business risk.",
       },
       {
         q: "How do you handle test data management?",

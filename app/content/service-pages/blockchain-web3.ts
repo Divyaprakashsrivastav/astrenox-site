@@ -20,7 +20,7 @@ export const blockchainWeb3Content: ServicePageContent = {
     title: "Blockchain consulting for regulated enterprises",
     paragraphs: [
       "Astrenox helps enterprises move beyond blockchain experiments to production systems that satisfy security auditors, compliance officers, and engineering teams alike. We bridge the gap between Web3 innovation and enterprise governance requirements.",
-      "Our practice covers permissioned ledgers, public chain integrations, tokenization platforms, and cross-chain interoperability. Every engagement begins with a clear business case—not technology for its own sake.",
+      "Our practice covers permissioned ledgers, public chain integrations, tokenization platforms, and cross-chain interoperability. Every engagement begins with a clear business case, not technology for its own sake.",
       "Smart contract development follows formal verification practices, comprehensive test coverage, and third-party audit preparation. We design for upgradeability, key management, and incident response from the architecture phase.",
       "Whether you're tokenizing real-world assets, building supply chain traceability, or modernizing settlement infrastructure, we deliver systems your board can approve and your engineers can maintain.",
     ],
@@ -163,7 +163,7 @@ export const blockchainWeb3Content: ServicePageContent = {
     items: [
       {
         quote:
-          "Astrenox translated our tokenization strategy into an architecture our compliance team approved. The smart contracts passed audit on the first cycle—rare in this space.",
+          "Astrenox translated our tokenization strategy into an architecture our compliance team approved. The smart contracts passed audit on the first cycle, rare in this space.",
         author: "Priya Nair",
         role: "Head of Digital Assets, Summit Capital",
       },
@@ -187,7 +187,7 @@ export const blockchainWeb3Content: ServicePageContent = {
     items: [
       {
         q: "Do you work with public or private blockchains?",
-        a: "Both. We select ledger technology based on your use case—permissioned chains for regulated workflows, public chains for open ecosystems, and hybrid models where needed.",
+        a: "Both. We select ledger technology based on your use case, permissioned chains for regulated workflows, public chains for open ecosystems, and hybrid models where needed.",
       },
       {
         q: "How do you handle smart contract security?",
@@ -199,7 +199,7 @@ export const blockchainWeb3Content: ServicePageContent = {
       },
       {
         q: "What regulatory frameworks do you support?",
-        a: "We map architectures to SEC, MiCA, FATF, and industry-specific requirements. Compliance is designed in—not bolted on after development.",
+        a: "We map architectures to SEC, MiCA, FATF, and industry-specific requirements. Compliance is designed in, not bolted on after development.",
       },
       {
         q: "Do you provide ongoing protocol maintenance?",

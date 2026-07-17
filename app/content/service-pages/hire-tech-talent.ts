@@ -4,13 +4,13 @@ export const hireTechTalentContent: ServicePageContent = {
   metadata: {
     title: "Hire Tech Talent & Embedded Teams | Astrenox",
     description:
-      "Senior engineers, ML specialists, and DevOps squads embedded in your team—vetted, accountable, and production-ready from week one.",
+      "Senior engineers, ML specialists, and DevOps squads embedded in your team, vetted, accountable, and production-ready from week one.",
   },
   hero: {
     label: "Digital Consulting",
     title: "Elite Engineers,\nEmbedded On Demand.",
     subtitle:
-      "Scale your engineering capacity with senior talent that integrates into your workflows, standards, and delivery cadence—not a disconnected vendor bench.",
+      "Scale your engineering capacity with senior talent that integrates into your workflows, standards, and delivery cadence, not a disconnected vendor bench.",
     primaryCta: "Request Talent Shortlist",
     secondaryCta: "View Engagement Model",
     primaryHref: "/contact",
@@ -20,7 +20,7 @@ export const hireTechTalentContent: ServicePageContent = {
     title: "Embedded teams built for enterprise velocity",
     paragraphs: [
       "Astrenox provides embedded engineering squads for organizations that need senior capacity without the overhead of a six-month hiring cycle. Our practitioners join your standups, PR reviews, and architecture forums as an extension of your team.",
-      "Every engineer is vetted through live technical assessments, system design interviews, and reference checks focused on production experience—not algorithm trivia. We staff frontend, backend, ML, data, and platform roles at staff and principal levels.",
+      "Every engineer is vetted through live technical assessments, system design interviews, and reference checks focused on production experience, not algorithm trivia. We staff frontend, backend, ML, data, and platform roles at staff and principal levels.",
       "Engagements are structured with clear SLAs, timezone alignment, and knowledge transfer milestones. Whether you need a single principal architect or a full product squad, we match skills to your stack and domain.",
       "From fintech compliance workflows to healthcare data platforms, our embedded teams have supported Fortune 500 transformations and high-growth scale-ups with the same rigor and accountability.",
     ],
@@ -72,7 +72,7 @@ export const hireTechTalentContent: ServicePageContent = {
       },
       {
         name: "Shortlist",
-        description: "Receive curated profiles within five business days—each vetted for domain fit and communication standards.",
+        description: "Receive curated profiles within five business days, each vetted for domain fit and communication standards.",
       },
       {
         name: "Interview",
@@ -169,7 +169,7 @@ export const hireTechTalentContent: ServicePageContent = {
       },
       {
         quote:
-          "The embedded squad felt like our own team—they adopted our coding standards, participated in on-call, and left comprehensive documentation when we transitioned to internal hires.",
+          "The embedded squad felt like our own team, they adopted our coding standards, participated in on-call, and left comprehensive documentation when we transitioned to internal hires.",
         author: "Rachel Morrison",
         role: "CTO, NovaHealth Systems",
       },
@@ -203,7 +203,7 @@ export const hireTechTalentContent: ServicePageContent = {
       },
       {
         q: "Can we convert embedded engineers to full-time hires?",
-        a: "Yes. Conversion terms are outlined upfront with transparent fee structures—many clients use embedded engagements as a trial period for permanent hires.",
+        a: "Yes. Conversion terms are outlined upfront with transparent fee structures, many clients use embedded engagements as a trial period for permanent hires.",
       },
     ],
   },

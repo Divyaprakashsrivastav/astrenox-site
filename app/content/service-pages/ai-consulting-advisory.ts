@@ -4,13 +4,13 @@ export const aiConsultingAdvisoryContent: ServicePageContent = {
   metadata: {
     title: "AI Consulting & Advisory | Astrenox",
     description:
-      "Production-grade AI strategy for the enterprise stack—actionable, technically validated roadmaps that align data architecture with business objectives.",
+      "Production-grade AI strategy for the enterprise stack, actionable, technically validated roadmaps that align data architecture with business objectives.",
   },
   hero: {
     label: "AI Consulting & Advisory",
     title: "Production-Grade AI Strategy\nfor the Enterprise Stack",
     subtitle:
-      "Move from fragmented pilots to scalable deployments. We build actionable, technically validated AI roadmaps that align data architecture with business objectives—reducing execution risk before you write code.",
+      "Move from fragmented pilots to scalable deployments. We build actionable, technically validated AI roadmaps that align data architecture with business objectives, reducing execution risk before you write code.",
     primaryCta: "Book an AI Strategy Workshop",
     secondaryCta: "View Engineering Capabilities",
     primaryHref: "/contact",
@@ -22,7 +22,7 @@ export const aiConsultingAdvisoryContent: ServicePageContent = {
     title: "What AI Advisory Means at Astrenox",
     paragraphs: [
       "We engineer AI strategies rooted in technical reality. We focus purely on identifying use cases that can actually be built, governed, and deployed into your existing stack.",
-      "Our advisory practice bridges the gap between executive ambition and engineering feasibility—so capital flows to initiatives your teams can ship, not pilots that stall in PowerPoint.",
+      "Our advisory practice bridges the gap between executive ambition and engineering feasibility, so capital flows to initiatives your teams can ship, not pilots that stall in PowerPoint.",
     ],
   },
   capabilities: {

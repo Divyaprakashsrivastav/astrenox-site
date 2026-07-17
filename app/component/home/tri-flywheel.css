@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════
-   Tri-Flywheel — premium storytelling
+   Tri-Flywheel - premium storytelling
    No diagrams. Glass pillars only.
    ══════════════════════════════════════════ */
 
@@ -149,7 +149,7 @@
   color: rgba(228, 225, 255, 0.72);
 }
 
-/* Core bridge — typography only, not a diagram node */
+/* Core bridge - typography only, not a diagram node */
 .flywheel-story-core {
   display: flex;
   justify-content: center;

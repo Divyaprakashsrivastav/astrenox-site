@@ -1,5 +1,5 @@
 /**
- * Industries page — verbatim from official Content.docx.
+ * Industries page, verbatim from official Content.docx.
  * Single source of truth. Do not rewrite.
  */
 
@@ -7,7 +7,7 @@ export const industriesPageContent = {
   metadata: {
     title: "Industries | Astrenox",
     description:
-      "For AI solutions of  industry — Healthcare, Financial Services, Manufacturing, Retail, Banking, Logistics, and more.",
+      "For AI solutions of  industry, Healthcare, Financial Services, Manufacturing, Retail, Banking, Logistics, and more.",
   },
 
   pageTitle: "For AI solutions of  industry",
@@ -29,7 +29,7 @@ export const industriesPageContent = {
           },
           {
             title: "Predictive Patient Analytics:",
-            body: "Machine learning models that continuously ingest real-time biometric data and patient history to predict critical risks—such as hospital readmissions or the onset of sepsis. This enables preemptive intervention and highly optimized ICU resource allocation.",
+            body: "Machine learning models that continuously ingest real-time biometric data and patient history to predict critical risks, such as hospital readmissions or the onset of sepsis. This enables preemptive intervention and highly optimized ICU resource allocation.",
           },
           {
             title: "Accelerated Drug Discovery:",
@@ -62,7 +62,7 @@ export const industriesPageContent = {
           },
           {
             title: "Quantitative Risk & Alpha Generation:",
-            body: "Predictive pipelines that analyze alternative data streams—such as geospatial imagery, global supply chain telemetry, and market sentiment—alongside traditional financial data to refine credit scoring and optimize investment portfolios.",
+            body: "Predictive pipelines that analyze alternative data streams, such as geospatial imagery, global supply chain telemetry, and market sentiment, alongside traditional financial data to refine credit scoring and optimize investment portfolios.",
           },
         ],
       },

@@ -12,7 +12,7 @@ type InternalAnimationActivityRef = AnimationActivityRef & {
 };
 
 /**
- * Mutable ref — true when element is in view, tab is visible, and motion is allowed.
+ * Mutable ref, true when element is in view, tab is visible, and motion is allowed.
  * Subscribers allow the shared scheduler to fully stop off-screen loops and
  * resume them without polling.
  */

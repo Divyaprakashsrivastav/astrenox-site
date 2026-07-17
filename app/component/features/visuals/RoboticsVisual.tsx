@@ -71,7 +71,7 @@ export function RoboticsVisual({ active, reducedMotion }: VisualProps) {
         />
       </motion.g>
 
-      {/* Robotic arm — pick and place */}
+      {/* Robotic arm, pick and place */}
       <g transform={`translate(${BASE_X}, ${BASE_Y})`}>
         <rect
           x={-14}

@@ -1,5 +1,5 @@
 /**
- * Page 1 — Ready to Deploy & Customised AI Solutions
+ * Page 1, Ready to Deploy & Customised AI Solutions
  */
 
 export const readyToDeployContent = {
@@ -13,7 +13,7 @@ export const readyToDeployContent = {
     label: "Ready to Deploy & Customised AI Solutions",
     title: "Applied AI Platforms and Enterprise-Ready Solutions",
     description:
-      "From KnowForth platform consulting to industry Gen AI boilerplates and custom CRM engineering — Astrenox helps organisations adopt focused AI capabilities aligned with existing business workflows.",
+      "From KnowForth platform consulting to industry Gen AI boilerplates and custom CRM engineering, Astrenox helps organisations adopt focused AI capabilities aligned with existing business workflows.",
     primaryCta: "Book a Demo",
     primaryHref: "/contact?intent=demo",
     secondaryCta: "Explore Platforms",

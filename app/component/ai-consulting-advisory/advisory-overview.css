@@ -1,4 +1,4 @@
-/* AI Consulting — Editorial overview */
+/* AI Consulting - Editorial overview */
 
 .adv-overview {
   position: relative;
@@ -123,7 +123,7 @@
   transform-origin: bottom center;
 }
 
-/* Right column — editorial block */
+/* Right column - editorial block */
 .adv-overview-right {
   display: flex;
   flex-direction: column;

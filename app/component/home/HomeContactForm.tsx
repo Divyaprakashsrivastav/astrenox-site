@@ -37,7 +37,7 @@ export default function HomeContactForm() {
     const company = data.get("company");
     const inquiry = data.get("inquiry");
     const message = data.get("message");
-    const subject = encodeURIComponent(`[${inquiry}] ${company} — Astrenox inquiry`);
+    const subject = encodeURIComponent(`[${inquiry}] ${company}, Astrenox inquiry`);
     const body = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry: ${inquiry}\n\n${message}`,
     );

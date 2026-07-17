@@ -99,8 +99,7 @@ export default function MissionControlDashboard({
     const logInterval = setInterval(() => {
       const msg = MISSION_LOG[cursor % MISSION_LOG.length]!;
       setLogs((prev) => [
-        { id: cursor, message: msg, time: formatTime(new Date()) },
-        ...prev.slice(0, 5),
+        { id: cursor, message: msg, time: formatTime(new Date()) }...prev.slice(0, 5),
       ]);
       cursor += 1;
       setLogCursor(cursor);
@@ -130,7 +129,7 @@ export default function MissionControlDashboard({
       animate={active ? { opacity: 1, y: 0 } : {}}
       transition={{ type: "spring", stiffness: 130, damping: 22 }}
     >
-      {/* Left — key metrics */}
+      {/* Left, key metrics */}
       <motion.aside
         className="mc-col mc-col-metrics"
         initial="hidden"
@@ -166,7 +165,7 @@ export default function MissionControlDashboard({
         ))}
       </motion.aside>
 
-      {/* Center — live operations */}
+      {/* Center, live operations */}
       <motion.div
         className="mc-col mc-col-ops"
         initial={{ opacity: 0, scale: 0.98 }}
@@ -180,7 +179,7 @@ export default function MissionControlDashboard({
                 <span className="mc-ops-live-dot" />
                 LIVE OPERATIONS
               </span>
-              <span className="mc-ops-ts tabular-nums">{active ? clock : "—"}</span>
+              <span className="mc-ops-ts tabular-nums">{active ? clock : ", "}</span>
             </header>
 
             <div className="mc-ops-body">
@@ -272,7 +271,7 @@ export default function MissionControlDashboard({
         </Card>
       </motion.div>
 
-      {/* Right — system status */}
+      {/* Right, system status */}
       <motion.aside
         className="mc-col mc-col-status"
         initial="hidden"

@@ -28,6 +28,6 @@ export const chatSuggestedPrompts = [
 ] as const;
 
 export const chatWelcomeMessage =
-  "Hello — I'm the Astrenox AI Assistant. Ask about our Intelligence Platform, services, products, or how we help enterprises ship AI. How can I help?";
+  "Hello, I'm the Astrenox AI Assistant. Ask about our Intelligence Platform, services, products, or how we help enterprises ship AI. How can I help?";
 
 export const chatAssistantName = "Astrenox AI";

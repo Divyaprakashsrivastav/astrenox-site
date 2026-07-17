@@ -20,7 +20,7 @@ export const itServicesContent: ServicePageContent = {
     title: "IT consulting for the AI era",
     paragraphs: [
       "Astrenox partners with CIOs and technology leaders to modernize IT estates without disrupting business continuity. We combine strategy, architecture, and hands-on delivery in a single accountable engagement model.",
-      "Our practice spans cloud migration, application rationalization, integration architecture, and IT operating model design. Every recommendation ties to a business metric—cost reduction, time-to-market, or risk mitigation.",
+      "Our practice spans cloud migration, application rationalization, integration architecture, and IT operating model design. Every recommendation ties to a business metric, cost reduction, time-to-market, or risk mitigation.",
       "We don't deliver shelfware strategy decks. Our consultants embed with your teams to execute roadmaps, transfer knowledge, and leave behind capabilities your organization can sustain independently.",
       "From mid-market firms outgrowing their infrastructure to global enterprises consolidating data centers, we bring the same rigor: assess, architect, implement, and optimize with clear governance.",
     ],
@@ -163,7 +163,7 @@ export const itServicesContent: ServicePageContent = {
     items: [
       {
         quote:
-          "Astrenox didn't just hand us a cloud strategy—they sat in our war rooms during migration weekends and owned outcomes alongside our internal team.",
+          "Astrenox didn't just hand us a cloud strategy, they sat in our war rooms during migration weekends and owned outcomes alongside our internal team.",
         author: "Catherine Walsh",
         role: "CIO, Guardian Insurance Group",
       },
@@ -187,7 +187,7 @@ export const itServicesContent: ServicePageContent = {
     items: [
       {
         q: "How do you approach legacy system modernization?",
-        a: "We use incremental patterns—API facades, event extraction, and phased migrations—that deliver value without big-bang risk. Each wave has clear rollback plans.",
+        a: "We use incremental patterns: API facades, event extraction, and phased migrations, that deliver value without big-bang risk. Each wave has clear rollback plans.",
       },
       {
         q: "Do you work with multi-cloud environments?",
@@ -199,7 +199,7 @@ export const itServicesContent: ServicePageContent = {
       },
       {
         q: "How do you measure transformation success?",
-        a: "Every engagement defines KPIs upfront—cost, velocity, reliability, and user satisfaction—with dashboards tracking progress monthly.",
+        a: "Every engagement defines KPIs upfront, cost, velocity, reliability, and user satisfaction, with dashboards tracking progress monthly.",
       },
       {
         q: "Do you integrate AI into IT transformation roadmaps?",

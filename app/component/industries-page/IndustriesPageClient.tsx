@@ -123,7 +123,7 @@ export default function IndustriesPageClient() {
     <div className="indp-page">
       <IndustriesHero />
 
-      {/* Industries We Transform — interactive selector */}
+      {/* Industries We Transform, interactive selector */}
       <section className="indp-section indp-section--transform">
         <div className="indp-wrap">
           <Reveal>
@@ -189,7 +189,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Custom solutions — section title */}
+      {/* Custom solutions, section title */}
       <section className="indp-section indp-section--custom-intro">
         <div className="indp-wrap">
           <Reveal>
@@ -198,7 +198,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Banking — alternating split */}
+      {/* Banking, alternating split */}
       <section className="indp-section indp-section--banking">
         <div className="indp-wrap">
           <Reveal className="indp-alt-split">
@@ -226,7 +226,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Logistics — horizontal scroll */}
+      {/* Logistics, horizontal scroll */}
       <section className="indp-section indp-section--logistics">
         <div className="indp-wrap">
           <Reveal>
@@ -254,7 +254,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Healthcare custom — sticky journey */}
+      {/* Healthcare custom, sticky journey */}
       <section ref={journeyRef} className="indp-section indp-section--journey">
         <div className="indp-journey-sticky">
           <div className="indp-wrap indp-journey-grid">
@@ -286,7 +286,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Retail — timeline horizontal */}
+      {/* Retail, timeline horizontal */}
       <section className="indp-section indp-section--retail">
         <div className="indp-wrap">
           <Reveal>
@@ -313,7 +313,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Manufacturing — glass panels + selector tabs */}
+      {/* Manufacturing, glass panels + selector tabs */}
       <section className="indp-section indp-section--manufacturing">
         <div className="indp-wrap">
           <Reveal>
@@ -360,7 +360,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Industry Outcomes — architectural value from each strategic industry */}
+      {/* Industry Outcomes, architectural value from each strategic industry */}
       <section className="indp-section indp-section--outcomes">
         <div className="indp-wrap">
           <Reveal>
@@ -393,7 +393,7 @@ export default function IndustriesPageClient() {
         </div>
       </section>
 
-      {/* Technology Ecosystem — verbatim technology references from the document */}
+      {/* Technology Ecosystem, verbatim technology references from the document */}
       <section className="indp-section indp-section--tech">
         <div className="indp-wrap">
           <Reveal>

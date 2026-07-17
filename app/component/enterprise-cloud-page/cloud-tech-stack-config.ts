@@ -1,4 +1,4 @@
-/** Technology stack logos for Enterprise Cloud page — files in /public/tech/ */
+/** Technology stack logos for Enterprise Cloud page, files in /public/tech/ */
 export const CLOUD_TECH_STACK = [
   { name: "AWS", file: "amazonaws.svg", brand: "#FF9900" },
   { name: "Microsoft Azure", file: "microsoftazure.svg", brand: "#0078D4" },

@@ -51,7 +51,7 @@ export default function ProductionProofSection() {
               &ldquo;{featured.quote}&rdquo;
             </p>
             <footer className="mt-4 text-sm text-muted">
-              <span className="text-text font-medium">{featured.author}</span> — {featured.role}
+              <span className="text-text font-medium">{featured.author}</span>, {featured.role}
             </footer>
           </motion.blockquote>
         </div>

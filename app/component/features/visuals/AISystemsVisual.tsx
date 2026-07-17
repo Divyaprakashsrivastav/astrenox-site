@@ -77,7 +77,7 @@ export function AISystemsVisual({ active, reducedMotion }: VisualProps) {
         </radialGradient>
       </defs>
 
-      {/* Static fallback — always visible */}
+      {/* Static fallback, always visible */}
       <g opacity={1}>
         {[32, 52, 72].map((r) => (
           <circle

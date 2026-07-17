@@ -16,7 +16,7 @@ A full comparison was run against the live site, the original `Header.tsx` / `Fo
 
 | Route | Status |
 |-------|--------|
-| `/` | Complete — all major home sections |
+| `/` | Complete - all major home sections |
 | `/about` | Complete |
 | `/services` | Complete |
 | `/services/ai-engineering` | Complete |
@@ -34,7 +34,7 @@ A full comparison was run against the live site, the original `Header.tsx` / `Fo
 
 ---
 
-## Home sections — audit vs live site
+## Home sections - audit vs live site
 
 | Original block | Status after audit |
 |----------------|-------------------|
@@ -60,7 +60,7 @@ A full comparison was run against the live site, the original `Header.tsx` / `Fo
 
 ---
 
-## Navigation — aligned with original IA
+## Navigation - aligned with original IA
 
 **Navbar (dropdowns):**
 
@@ -82,7 +82,7 @@ A full comparison was run against the live site, the original `Header.tsx` / `Fo
 
 | Item | Notes |
 |------|--------|
-| Repo home 8-anchor service grid (Vision, Capability Readiness, etc.) | Different IA from live marketing site; live uses 5-step Think/Align/Execute — **live version used** |
+| Repo home 8-anchor service grid (Vision, Capability Readiness, etc.) | Different IA from live marketing site; live uses 5-step Think/Align/Execute - **live version used** |
 | `/digital-it-consulting` on Vercel | Was 404; **page created** from `Astrenox-website` source |
 
 ---
@@ -100,7 +100,7 @@ A full comparison was run against the live site, the original `Header.tsx` / `Fo
 
 ## Build
 
-`npm run build` — **18 static routes**, passes.
+`npm run build` - **18 static routes**, passes.
 
 ---
 

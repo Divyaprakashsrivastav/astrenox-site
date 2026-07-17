@@ -4,7 +4,7 @@ export const intelligentAutomationsContent: ServicePageContent = {
   metadata: {
     title: "Intelligent Automation & AI BizOps | Astrenox",
     description:
-      "Enterprise automation that understands, executes, and improves workflows—combining workflow intelligence, process mining, multi-agent execution, and governed AI BizOps inside Astren AI.",
+      "Enterprise automation that understands, executes, and improves workflows, combining workflow intelligence, process mining, multi-agent execution, and governed AI BizOps inside Astren AI.",
   },
   hero: {
     label: "Intelligent Automation & AI BizOps",

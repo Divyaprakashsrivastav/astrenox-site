@@ -70,41 +70,41 @@ export const serviceLinks = [
     slug: "digital-it-consulting",
     title: "Digital & IT Consulting",
     description:
-      "Strategic IT and engineering—AI-based solutions with human-centered design to unleash digital transformation.",
+      "Strategic IT and engineering: AI-based solutions with human-centered design to unleash digital transformation.",
     href: "/services/digital-it-consulting",
   },
   {
     slug: "ai-engineering",
     title: "AI Engineering",
     description:
-      "High-velocity engineering-as-a-service—production-ready AI systems without sacrificing quality.",
+      "High-velocity engineering-as-a-service, production-ready AI systems without sacrificing quality.",
     href: "/services/ai-engineering",
   },
   {
     slug: "ai-transformation",
     title: "AI Transformation",
     description:
-      "Strategic oversight and technical execution from AI-absent to AI-native—without traditional consultancy overhead.",
+      "Strategic oversight and technical execution from AI-absent to AI-native, without traditional consultancy overhead.",
     href: "/services/ai-transformation",
   },
   {
     slug: "intelligent-automations",
     title: "Intelligent Automations",
     description:
-      "Production-ready automations that plug into your tools, data, and teams—value from day one.",
+      "Production-ready automations that plug into your tools, data, and teams, value from day one.",
     href: "/services/intelligent-automations",
   },
   {
     slug: "mvp-studio",
     title: "MVP Studio",
-    description: "Launch your MVP in three weeks—from idea to live product with observability and handoff.",
+    description: "Launch your MVP in three weeks, from idea to live product with observability and handoff.",
     href: "/services/mvp-studio",
   },
   {
     slug: "industries",
     title: "Industries",
     description:
-      "AI-first thinking for the world's most critical sectors—deep tech plus domain insight.",
+      "AI-first thinking for the world's most critical sectors, deep tech plus domain insight.",
     href: "/services/industries",
   },
 ] as const;
@@ -113,7 +113,7 @@ export const aboutPage = {
   hero: {
     eyebrow: "AI-first strategy & engineering",
     title:
-      "Our mission is to help your business reach its potential—and end up on the right side of history, post-AI.",
+      "Our mission is to help your business reach its potential, and end up on the right side of history, post-AI.",
     description:
       "Astrenox was founded on the belief that the AI supercycle is the most significant technological shift of our lifetime. We bridge the gap between strategic vision and production-grade execution.",
     primaryCta: "Request a consult",
@@ -193,7 +193,7 @@ export const servicesHub = {
     eyebrow: "Services",
     title: "AI-first delivery, enterprise-grade",
     description:
-      "Discovery, engineering, transformation, automations, and talent—sequenced for measurable outcomes across your stack.",
+      "Discovery, engineering, transformation, automations, and talent, sequenced for measurable outcomes across your stack.",
   },
 } as const;
 
@@ -205,10 +205,10 @@ export const aiEngineeringPage = {
       "High-velocity engineering-as-a-service, without sacrificing quality. Astrenox engineers are builders first, specialized in deploying production-ready AI systems that scale.",
   },
   pillars: [
-    { title: "Hire the best", description: "Top 1% engineering talent—senior builders who understand the full stack." },
-    { title: "Use AI (a lot)", description: "We leverage AI to build AI—internal velocity multiplied by the same tools we deploy for you." },
+    { title: "Hire the best", description: "Top 1% engineering talent, senior builders who understand the full stack." },
+    { title: "Use AI (a lot)", description: "We leverage AI to build AI, internal velocity multiplied by the same tools we deploy for you." },
     { title: "Charge on outcomes", description: "We bill for milestones. If the code doesn't work, we don't win." },
-    { title: "Pay on outcomes", description: "Engineers are incentivized by your project's success—aligned culture, aligned goals." },
+    { title: "Pay on outcomes", description: "Engineers are incentivized by your project's success, aligned culture, aligned goals." },
   ],
   whyNeedUs: [
     { title: "Hiring risks", description: "Avoid the 6-month hiring cycle and the risk of a bad technical fit." },
@@ -236,23 +236,23 @@ export const aiTransformationPage = {
   hero: {
     title: "AI Transformation",
     description:
-      "The cost of intelligence is falling toward zero. Astrenox provides strategic oversight and technical execution to move from AI-absent to AI-native—without traditional consultancy overhead.",
+      "The cost of intelligence is falling toward zero. Astrenox provides strategic oversight and technical execution to move from AI-absent to AI-native, without traditional consultancy overhead.",
   },
   strategy: {
     title: "Strategy",
     description:
-      "We conduct 30/60/90-day holistic and function-specific audits. The output is a comprehensive AI-Adoption Report and technical appendix—your implementation bible.",
+      "We conduct 30/60/90-day holistic and function-specific audits. The output is a comprehensive AI-Adoption Report and technical appendix, your implementation bible.",
   },
   framework: [
     {
       title: "Product Transformation",
       description:
-        "Unicorn PMs and engineers build AI-first products. Outcome-based engagements accelerate your roadmap—not just add tickets.",
+        "Unicorn PMs and engineers build AI-first products. Outcome-based engagements accelerate your roadmap, not just add tickets.",
     },
     {
       title: "Process Transformation",
       description:
-        "Surveys and stakeholder interviews identify high-friction processes—we implement intelligent automation with change management.",
+        "Surveys and stakeholder interviews identify high-friction processes, we implement intelligent automation with change management.",
     },
     {
       title: "People Transformation",
@@ -286,7 +286,7 @@ export const automationsPage = {
       "Production-ready AI automations that plug directly into your existing tools, data, and teams to drive value from day one.",
   },
   builds: [
-    { title: "AI Chatbots", description: "Support, onboarding, leads, or advisory—web, Slack, WhatsApp, or SMS." },
+    { title: "AI Chatbots", description: "Support, onboarding, leads, or advisory, web, Slack, WhatsApp, or SMS." },
     { title: "AI Assistants / Co-pilots", description: "Internal assistants on your knowledge base enforcing SOPs across sales, ops, and compliance." },
     { title: "Autonomous Agents", description: "Task decomposition via search, APIs, and databases for complex multi-step goals." },
     { title: "Workflow Automations", description: "Content generation, outbound sequencing, call summaries, and analytics pipelines." },
@@ -403,7 +403,7 @@ export const mvpStudioPage = {
     },
     {
       quote:
-        "Fast and precise—they push for clarity and make the right trade-offs for pre-seed teams.",
+        "Fast and precise, they push for clarity and make the right trade-offs for pre-seed teams.",
       author: "CTO, Creator Tools",
     },
   ],
@@ -414,7 +414,7 @@ export const mvpStudioPage = {
     },
     {
       q: "Will it scale?",
-      a: "Yes—clean modules, environment configuration, and CI from the first commit.",
+      a: "Yes, clean modules, environment configuration, and CI from the first commit.",
     },
     {
       q: "What happens after launch?",
@@ -422,7 +422,7 @@ export const mvpStudioPage = {
     },
     {
       q: "Do you support AI features?",
-      a: "RAG, search, chat, assistants, and lightweight agents—the simplest path that proves value quickly.",
+      a: "RAG, search, chat, assistants, and lightweight agents, the simplest path that proves value quickly.",
     },
   ],
 } as const;
@@ -509,7 +509,7 @@ export const researchLibrary = [
     id: "future-proof-architecture",
     title: "Future-Proof Architecture",
     abstract:
-      "Building systems that evolve with the rapidly changing AI landscape—vendor-agnostic by design.",
+      "Building systems that evolve with the rapidly changing AI landscape, vendor-agnostic by design.",
     field: "Platform Strategy",
     status: "Active",
     cta: "Discuss architecture",
@@ -535,7 +535,7 @@ export const researchLibrary = [
     id: "orchestration",
     title: "Ecosystem Orchestration",
     abstract:
-      "LangGraph, CrewAI, and n8n composed into observable platforms—not isolated model calls.",
+      "LangGraph, CrewAI, and n8n composed into observable platforms, not isolated model calls.",
     field: "Systems Integration",
     status: "Active",
     cta: "Integration plan",
@@ -595,12 +595,12 @@ export const researchLibrary = [
 export const researchPage = {
   hero: {
     eyebrow: "Research & Ecosystem",
-    title: "We orchestrate the ecosystem—not just use it.",
+    title: "We orchestrate the ecosystem, not just use it.",
     description:
       "Astrenox as systems integrator: OpenAI, Anthropic, Llama, Gemini, LangGraph, CrewAI, n8n → resilient, observable, governable platforms.",
   },
   disruption: {
-    title: "You have a choice. Disrupt yourself—or be disrupted.",
+    title: "You have a choice. Disrupt yourself, or be disrupted.",
     description:
       "The cost of intelligence is falling to zero. Those who wait for perfect will be outpaced by those who build for flow.",
   },
@@ -611,7 +611,7 @@ export const projectsPage = {
     eyebrow: "Success Stories & Products",
     title: "Real stories, real results.",
     description:
-      "Flagship platforms and production rollouts—how Astrenox helps leaders transform engineering and operations with AI-first thinking.",
+      "Flagship platforms and production rollouts, how Astrenox helps leaders transform engineering and operations with AI-first thinking.",
   },
   flagship: [
     {
@@ -632,7 +632,7 @@ export const projectsPage = {
       metric: "25%",
       label: "Decrease in per-project person hours",
       quote:
-        "The speed of delivery shifted almost overnight. We aren't just shipping more—we're shipping better.",
+        "The speed of delivery shifted almost overnight. We aren't just shipping more, we're shipping better.",
     },
     {
       metric: "20%",
@@ -648,7 +648,7 @@ export const digitalItConsultingPage = {
   hero: {
     title: "Digital & IT Consulting",
     description:
-      "Strategic IT & engineering, data engineering—we combine cutting-edge AI-based solutions with human-centered design to unleash your digital transformation.",
+      "Strategic IT & engineering, data engineering, we combine cutting-edge AI-based solutions with human-centered design to unleash your digital transformation.",
   },
   dilemmas: [
     { title: "Technical Debt", description: "Accumulated debt hinders innovation and agility in responding to market changes." },
@@ -726,12 +726,12 @@ export const careersPage = {
     { step: "04", title: "Onboard & Scale", description: "Seamless ramp-up as your roadmap grows." },
   ],
   vetting: [
-    "Technical screen — systems thinking under constraints",
-    "Hands-on build — repo-based domain challenges",
-    "Pair programming — collaboration and framing",
-    "Code review — maintainability and observability",
-    "Delivery behaviors — estimation and PR discipline",
-    "References — verified manager track record",
+    "Technical screen, systems thinking under constraints",
+    "Hands-on build, repo-based domain challenges",
+    "Pair programming, collaboration and framing",
+    "Code review, maintainability and observability",
+    "Delivery behaviors, estimation and PR discipline",
+    "References, verified manager track record",
   ],
   engagementModels: [
     { title: "Staff Augmentation", description: "1–3 experts embedded into your team." },
@@ -752,7 +752,7 @@ export const careersPage = {
   ],
   faq: [
     { q: "How fast can we start?", a: "Often within a week after intake. Complex roles may need longer." },
-    { q: "Can you match our stack and rituals?", a: "Yes—your tracker, your stand-ups, plus our quality gates." },
+    { q: "Can you match our stack and rituals?", a: "Yes, your tracker, your stand-ups, plus our quality gates." },
     { q: "Do you provide time-zone overlap?", a: "We staff to your overlap requirement during intake." },
     { q: "What if the fit isn't right?", a: "We replace quickly and help stabilize the roadmap." },
     { q: "Can you help define the role?", a: "Most requests start with outcomes, then skills." },
@@ -774,7 +774,7 @@ export const contactPage = {
   discovery: {
     title: "Technical Discovery",
     description:
-      "Direct Calendar Sync — Book a 30-minute scoping session to analyze your infrastructure challenges and outline specific engineering requirements.",
+      "Direct Calendar Sync, Book a 30-minute scoping session to analyze your infrastructure challenges and outline specific engineering requirements.",
     durationLabel: "30-minute scoping session",
   },
   inbound: {
@@ -823,7 +823,7 @@ export const methodology = {
   partA: {
     title: "Find the bottleneck. Focus the force.",
     description:
-      "We don't just add AI—we solve for flow. By analyzing your whole system—from latency to failure modes—we identify constraints holding you back. Maximizing leverage at the constraint unlocks step-change ROI.",
+      "We don't just add AI, we solve for flow. By analyzing your whole system, from latency to failure modes, we identify constraints holding you back. Maximizing leverage at the constraint unlocks step-change ROI.",
     quote: "Maximizing leverage at the constraint is how we unlock ROI.",
   },
 } as const;

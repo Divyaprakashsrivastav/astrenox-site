@@ -26,7 +26,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
       {
         name: "Agents inside your stack",
         description:
-          "Instead of adding another reporting dashboard, we build AI pipelines and autonomous agents that work inside your existing ERP, WMS, TMS, procurement tools, and planning workflows — helping teams act faster, reduce manual follow-ups, and respond to disruptions before they become expensive.",
+          "Instead of adding another reporting dashboard, we build AI pipelines and autonomous agents that work inside your existing ERP, WMS, TMS, procurement tools, and planning workflows , helping teams act faster, reduce manual follow-ups, and respond to disruptions before they become expensive.",
       },
     ],
   },
@@ -122,7 +122,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
         paragraphs: [
           "Supplier data is often scattered across quotes, contracts, delivery records, email threads, payment history, and performance logs.",
           "We create a unified supplier intelligence layer that tracks pricing, reliability, responsiveness, risk, contract terms, and approval constraints.",
-          "When teams need to select a vendor, the system compares suppliers against your own business rules — not generic scoring models.",
+          "When teams need to select a vendor, the system compares suppliers against your own business rules , not generic scoring models.",
           "It can evaluate price, lead time, past performance, quality issues, compliance requirements, and current operational risk before recommending the best-fit supplier.",
         ],
         enables: [
@@ -200,7 +200,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
         paragraphs: [
           "We connect fragmented supply chain data into a governed operational layer.",
           "This gives teams a shared view of demand, inventory, suppliers, orders, logistics movement, exceptions, and cost impact.",
-          "The system can support natural language querying, structured reporting, automated alerts, and agentic workflow execution — without requiring business teams to depend on data engineering teams for every question.",
+          "The system can support natural language querying, structured reporting, automated alerts, and agentic workflow execution , without requiring business teams to depend on data engineering teams for every question.",
         ],
       },
       {

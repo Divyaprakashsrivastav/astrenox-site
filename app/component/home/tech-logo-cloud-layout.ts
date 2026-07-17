@@ -1,4 +1,4 @@
-/** Radial positions for floating logo cloud — deterministic, no overflow */
+/** Radial positions for floating logo cloud, deterministic, no overflow */
 export function getLogoCloudLayout(count: number) {
   return Array.from({ length: count }, (_, i) => {
     const angle = (i / count) * Math.PI * 2 - Math.PI / 2 + (i % 2) * 0.15;

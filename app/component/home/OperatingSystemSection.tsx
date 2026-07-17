@@ -13,7 +13,7 @@ const operatingSystemContent = {
   label: "Architecture",
   title: "One Operating System. Four Layers.",
   description:
-    "A unified stack—perception, intelligence, orchestration, and physical execution.",
+    "A unified stack, perception, intelligence, orchestration, and physical execution.",
   id: "operating-system",
   layers: [
     {

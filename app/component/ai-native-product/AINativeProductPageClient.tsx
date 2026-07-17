@@ -206,7 +206,7 @@ export default function AINativeProductPageClient() {
         </div>
       </section>
 
-      {/* Section 1 — two-column intro */}
+      {/* Section 1, two-column intro */}
       <section className="aipe-inner aipe-block" aria-labelledby="aipe-s1">
         <div className="aipe-split">
           <motion.h2
@@ -230,7 +230,7 @@ export default function AINativeProductPageClient() {
           </motion.p>
         </div>
 
-        {/* Services — floating staggered masonry */}
+        {/* Services, floating staggered masonry */}
         <h3 className="aipe-h3">{section1.services.title}</h3>
         <div className="aipe-float-grid">
           {section1.services.items.map((item, i) => (
@@ -246,7 +246,7 @@ export default function AINativeProductPageClient() {
         </div>
       </section>
 
-      {/* How — horizontal engineering pipeline */}
+      {/* How, horizontal engineering pipeline */}
       <section className="aipe-block aipe-block--pipeline" aria-labelledby="aipe-how">
         <div className="aipe-inner">
           <h2 id="aipe-how" className="aipe-h2 aipe-h2--center">
@@ -280,7 +280,7 @@ export default function AINativeProductPageClient() {
         </div>
       </section>
 
-      {/* Why — code-inspired stacked panels */}
+      {/* Why, code-inspired stacked panels */}
       <section className="aipe-inner aipe-block" aria-labelledby="aipe-why">
         <h2 id="aipe-why" className="aipe-h2 aipe-h2--center">
           {section1.why.title}

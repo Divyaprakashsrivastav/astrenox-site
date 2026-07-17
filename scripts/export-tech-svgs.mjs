@@ -87,13 +87,13 @@ for (const [file, slug] of Object.entries(cdnSlugs)) {
   console.log("cdn wrote", file);
 }
 
-// LangSmith — LangChain variant
+// LangSmith - LangChain variant
 const langchain = icons.find((i) => i.slug === "langchain");
 if (langchain) {
   writeFromIcon("langsmith", { ...langchain, title: "LangSmith" });
 }
 
-// Pinecone — fetch from simple-icons GitHub history
+// Pinecone - fetch from simple-icons GitHub history
 const pineconeRes = await fetch(
   "https://raw.githubusercontent.com/simple-icons/simple-icons/9.21.0/icons/pinecone.svg",
 );
@@ -111,7 +111,7 @@ if (snRes.ok) {
   console.log("wrote servicenow");
 }
 
-// LlamaIndex — minimal wordmark from brand assets
+// LlamaIndex - minimal wordmark from brand assets
 if (!fs.existsSync(path.join(dir, "llamaindex.svg"))) {
   fs.writeFileSync(
     path.join(dir, "llamaindex.svg"),

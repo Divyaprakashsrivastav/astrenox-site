@@ -1,5 +1,5 @@
 /**
- * Homepage content — single source of truth for all homepage copy.
+ * Homepage content, single source of truth for all homepage copy.
  */
 
 export const homeHero = {
@@ -84,7 +84,7 @@ export const homeTriFlywheel = {
       tabLabel: "Internal AI-Operations",
       title: "The Internal AI-Operations Flywheel",
       description:
-        "Accelerate development speed by embedding **autonomous tools** into the engineering lifecycle to minimize operational overhead. Simultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO)—ensuring you are natively indexed when users query AI search engines.",
+        "Accelerate development speed by embedding **autonomous tools** into the engineering lifecycle to minimize operational overhead. Simultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO), ensuring you are natively indexed when users query AI search engines.",
       steps: [] as readonly string[],
     },
     {
@@ -125,7 +125,7 @@ export const homeIndustries = {
   label: "INDUSTRIES",
   title: "Industries We Serve",
   description:
-    "Astrenox delivers **Application Modernization** and **Product Engineering** across complex, regulated industries. These capabilities distinguish our practice as a high-end technical consultancy—not a generic agency.",
+    "Astrenox delivers **Application Modernization** and **Product Engineering** across complex, regulated industries. These capabilities distinguish our practice as a high-end technical consultancy, not a generic agency.",
   items: [
     {
       id: "manufacturing",

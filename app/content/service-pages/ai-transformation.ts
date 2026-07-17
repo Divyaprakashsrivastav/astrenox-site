@@ -4,7 +4,7 @@ export const aiTransformationContent: ServicePageContent = {
   metadata: {
     title: "AI Transformation Engineering and AI Enablement Training | Astrenox",
     description:
-      "Astren AI maps how your organization operates, identifies automation opportunities, deploys secure AI workflows, and trains your workforce—from discovery to ROI measurement in one governed platform.",
+      "Astren AI maps how your organization operates, identifies automation opportunities, deploys secure AI workflows, and trains your workforce, from discovery to ROI measurement in one governed platform.",
   },
   hero: {
     label: "AI Transformation Engineering and AI Enablement Training",
@@ -196,22 +196,22 @@ export const aiTransformationContent: ServicePageContent = {
     title: "The Astren AI Transformation Roadmap",
     items: [
       {
-        service: "Phase 1: Discover and Map — Days 1–30",
+        service: "Phase 1: Discover and Map, Days 1–30",
         outcome:
           "Astren AI begins by mapping the organization's actual workflows. This phase includes employee interviews, stakeholder discovery, workflow mapping, system analysis, and data readiness checks. Outputs: Operational workflow map; Bottleneck analysis; AI readiness report; Automation opportunity backlog; Prioritized transformation roadmap.",
       },
       {
-        service: "Phase 2: Align and Prototype — Days 30–60",
+        service: "Phase 2: Align and Prototype, Days 30–60",
         outcome:
           "We align leadership around the highest-value use cases and deploy early workflow prototypes inside Astren AI. This phase validates technical feasibility, employee usability, data availability, and governance requirements. Outputs: AI governance model; Functional workflow prototypes; Initial employee training paths; Department-level adoption plan; AI Champion identification.",
       },
       {
-        service: "Phase 3: Deploy and Enable — Days 60–90",
+        service: "Phase 3: Deploy and Enable, Days 60–90",
         outcome:
           "We engineer production-ready AI workflows and roll out department-specific enablement. Employees begin using Astren AI for real operational work while leadership monitors usage and ROI. Outputs: Production AI workflows; Role-specific bootcamps; Enterprise memory systems; Adoption dashboards; Workflow-level ROI tracking.",
       },
       {
-        service: "Phase 4: Optimize and Scale — Ongoing",
+        service: "Phase 4: Optimize and Scale, Ongoing",
         outcome:
           "Astren AI continuously identifies new opportunities, monitors workflow performance, and supports expansion across departments. The platform becomes a living transformation engine that improves as your organization changes. Outputs: Continuous workflow optimization; New automation recommendations; Expanded AI training modules; Updated governance policies; Long-term transformation intelligence.",
       },

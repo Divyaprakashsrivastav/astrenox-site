@@ -10,7 +10,7 @@ export const centerOfExcellenceContent: ServicePageContent = {
     label: "Digital Consulting",
     title: "Build Your Center\nof Excellence.",
     subtitle:
-      "Design and launch Centers of Excellence for AI, data, and platform engineering—with governance, standards, and enablement that transform how your organization innovates.",
+      "Design and launch Centers of Excellence for AI, data, and platform engineering, with governance, standards, and enablement that transform how your organization innovates.",
     primaryCta: "Start CoE Discovery",
     secondaryCta: "View Framework",
     primaryHref: "/contact",
@@ -19,9 +19,9 @@ export const centerOfExcellenceContent: ServicePageContent = {
   overview: {
     title: "Centers of Excellence that drive lasting change",
     paragraphs: [
-      "A Center of Excellence is more than a team—it's an organizational capability that sets standards, builds skills, and governs innovation at scale. Astrenox helps enterprises design and launch CoEs that outlast individual projects and leadership changes.",
+      "A Center of Excellence is more than a team, it's an organizational capability that sets standards, builds skills, and governs innovation at scale. Astrenox helps enterprises design and launch CoEs that outlast individual projects and leadership changes.",
       "Our practice covers CoE charter development, operating models, governance frameworks, technology standards, and enablement programs. We work with C-suite sponsors to align CoE missions with business strategy and measurable outcomes.",
-      "Whether you're establishing an AI CoE, a data platform guild, or an enterprise architecture board, we provide the structure, playbooks, and initial staffing to make it operational within quarters—not years.",
+      "Whether you're establishing an AI CoE, a data platform guild, or an enterprise architecture board, we provide the structure, playbooks, and initial staffing to make it operational within quarters, not years.",
       "From global banks building AI governance to manufacturers standardizing IoT platforms, we bring patterns that balance innovation velocity with enterprise risk management.",
     ],
   },
@@ -187,7 +187,7 @@ export const centerOfExcellenceContent: ServicePageContent = {
     items: [
       {
         q: "What types of CoEs do you help establish?",
-        a: "AI/ML, data platform, cloud/platform engineering, enterprise architecture, and DevOps CoEs—each tailored to your organizational context.",
+        a: "AI/ML, data platform, cloud/platform engineering, enterprise architecture, and DevOps CoEs, each tailored to your organizational context.",
       },
       {
         q: "How long does it take to launch a CoE?",
@@ -203,7 +203,7 @@ export const centerOfExcellenceContent: ServicePageContent = {
       },
       {
         q: "How do CoEs balance innovation and governance?",
-        a: "Our frameworks include innovation sandboxes, tiered approval processes, and exception paths—governance that enables speed rather than blocking it.",
+        a: "Our frameworks include innovation sandboxes, tiered approval processes, and exception paths, governance that enables speed rather than blocking it.",
       },
     ],
   },

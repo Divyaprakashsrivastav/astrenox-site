@@ -1,4 +1,4 @@
-/** Technology stack — local SVG files in /public/tech/ (currentColor-ready). */
+/** Technology stack, local SVG files in /public/tech/ (currentColor-ready). */
 export const AI_ENGINEERING_TECH_STACK = [
   { name: "Next.js", file: "nextjs.svg" },
   { name: "React", file: "react.svg" },

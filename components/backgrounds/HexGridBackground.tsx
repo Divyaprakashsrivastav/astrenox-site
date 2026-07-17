@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * WebGL hex grid — Kevin Levron CodePen MYgbRwg
+ * WebGL hex grid, Kevin Levron CodePen MYgbRwg
  * https://codepen.io/soju22/pen/MYgbRwg
  * via threejs-components Grid1Background (CC BY-NC-SA 4.0)
  */
@@ -260,7 +260,7 @@ export default function HexGridBackground() {
         return;
       }
 
-      // Pause pulses while off-screen — keep WebGL instance mounted so
+      // Pause pulses while off-screen, keep WebGL instance mounted so
       // scrolling back to the hero does not flash a blank canvas.
       if (pulseTimer) {
         clearTimeout(pulseTimer);

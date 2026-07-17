@@ -48,7 +48,7 @@ export default function IntegrationsHub() {
       </div>
 
       <p className="mt-6 text-center text-sm text-muted max-w-xl mx-auto">
-        Data flows into <strong className="text-text font-medium">{s.hubLabel}</strong>—not
+        Data flows into <strong className="text-text font-medium">{s.hubLabel}</strong>, not
         another vendor silo. Your teams search, graph, and automate from one Astrenox control plane.
       </p>
     </PlatformSection>

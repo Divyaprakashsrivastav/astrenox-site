@@ -87,7 +87,7 @@ export default function AIEngineeringPageClient() {
 
   return (
     <Shell>
-      {/* Hero — cinematic backdrop + deployment console */}
+      {/* Hero, cinematic backdrop + deployment console */}
       <section className="aie-hero" aria-labelledby="aie-hero-title">
         <AIEngineeringHeroBackdrop />
         <div className="aie-inner aie-hero-grid">
@@ -122,7 +122,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 1 — Overview + failure pipeline */}
+      {/* Section 1, Overview + failure pipeline */}
       <section className="aie-inner aie-block aie-overview" aria-labelledby="aie-overview-title">
         <div className="aie-split aie-overview-split">
           <motion.div
@@ -145,7 +145,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 2 — Horizontal capability cards */}
+      {/* Section 2, Horizontal capability cards */}
       <section className="aie-block aie-block--alt" aria-labelledby="aie-cap-title">
         <div className="aie-inner">
           <motion.div
@@ -188,7 +188,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 3 — Architecture stack + animated visual */}
+      {/* Section 3, Architecture stack + animated visual */}
       <section className="aie-inner aie-block aie-stack-section" aria-labelledby="aie-stack-title">
         <div className="aie-split aie-split--reverse">
           <div>
@@ -214,14 +214,14 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 4 — Code terminal */}
+      {/* Section 4, Code terminal */}
       <section className="aie-block aie-block--terminal" aria-hidden>
         <div className="aie-inner aie-terminal-wrap">
           <AIEngineeringTerminal />
         </div>
       </section>
 
-      {/* Section 5 — Use cases horizontal cards */}
+      {/* Section 5, Use cases horizontal cards */}
       <section className="aie-inner aie-block" aria-labelledby="aie-usecases-title">
         <SectionLabel>{c.interventions.label}</SectionLabel>
         <h2 id="aie-usecases-title">{c.interventions.title}</h2>
@@ -245,7 +245,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 6 — Deployment pipeline timeline */}
+      {/* Section 6, Deployment pipeline timeline */}
       <section
         ref={pipelineRef}
         className="aie-block aie-block--alt aie-pipeline-section"
@@ -275,7 +275,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 7 — Metrics dashboard */}
+      {/* Section 7, Metrics dashboard */}
       <section className="aie-inner aie-block aie-metrics" aria-labelledby="aie-security-title">
         <div className="aie-metrics-grid">
           <div className="aie-metrics-copy">
@@ -302,7 +302,7 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 8 — Deliverables */}
+      {/* Section 8, Deliverables */}
       <section className="aie-block aie-block--alt" aria-labelledby="aie-deliverables-title">
         <div className="aie-inner">
           <SectionLabel>{c.deliverables.label}</SectionLabel>
@@ -329,7 +329,7 @@ export default function AIEngineeringPageClient() {
 
       <AIEngineeringTechStack />
 
-      {/* Section 10 — Engagement comparison */}
+      {/* Section 10, Engagement comparison */}
       <section className="aie-block aie-block--alt" aria-labelledby="aie-engage-title">
         <div className="aie-inner">
           <SectionLabel>{c.serviceOfferings.label}</SectionLabel>

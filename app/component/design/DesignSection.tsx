@@ -10,7 +10,7 @@ interface DesignSectionProps {
   className?: string;
   dark?: boolean;
   border?: boolean;
-  /** Continuous dark flow canvas — no borders or section backgrounds */
+  /** Continuous dark flow canvas, no borders or section backgrounds */
   flow?: boolean;
   /** Subtle ambient blobs behind section (light sections only) */
   ambient?: boolean | "alt";

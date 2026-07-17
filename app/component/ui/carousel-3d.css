@@ -233,7 +233,7 @@
   }
 }
 
-/* Compact variant — content-height cards (impact sections) */
+/* Compact variant - content-height cards (impact sections) */
 .carousel3d-wrap--compact {
   --carousel3d-face-w: min(272px, 68vw);
   --carousel3d-face-h: 128px;
@@ -260,7 +260,7 @@
   }
 }
 
-/* Prose variant — overview brief paragraphs */
+/* Prose variant - overview brief paragraphs */
 .carousel3d-wrap--prose {
   --carousel3d-face-w: min(340px, 82vw);
   --carousel3d-face-h: 272px;

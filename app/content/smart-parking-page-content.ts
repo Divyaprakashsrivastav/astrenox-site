@@ -1,5 +1,5 @@
 /**
- * Smart Parking & Traffic Solutions — verbatim from official Content.docx.
+ * Smart Parking & Traffic Solutions, verbatim from official Content.docx.
  * Single source of truth. Do not rewrite.
  */
 

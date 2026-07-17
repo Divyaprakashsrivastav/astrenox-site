@@ -18,7 +18,7 @@ def doc_paragraphs():
         ]
         line = "".join(texts).strip()
         if line:
-            paras.append(line.replace("\ufffd", "—"))
+            paras.append(line.replace("\ufffd", "-"))
     return paras
 
 

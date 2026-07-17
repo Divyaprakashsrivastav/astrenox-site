@@ -1,4 +1,4 @@
-/* Services section — typography-first cards, no icons */
+/* Services section - typography-first cards, no icons */
 
 .services-section {
   position: relative;
@@ -35,7 +35,7 @@
   min-width: 0;
 }
 
-/* Card — accent via pseudo-element only (not an icon slot) */
+/* Card - accent via pseudo-element only (not an icon slot) */
 .service-card {
   position: relative;
   display: block;

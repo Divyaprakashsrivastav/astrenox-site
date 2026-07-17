@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { EASE_PREMIUM } from "../v2/motion";
 
-/** Informational system map — not a live dashboard */
+/** Informational system map , not a live dashboard */
 const LAYERS = [
   {
     id: "signal",

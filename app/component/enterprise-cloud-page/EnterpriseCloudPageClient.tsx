@@ -97,8 +97,7 @@ export default function EnterpriseCloudPageClient() {
       title: c.cloudModernization.title,
       body: c.cloudModernization.intro,
       isHeading: true,
-    },
-    ...c.cloudModernization.items.map((item) => ({
+    }...c.cloudModernization.items.map((item) => ({
       title: item.title,
       body: item.body,
       isHeading: false,
@@ -107,8 +106,7 @@ export default function EnterpriseCloudPageClient() {
       title: c.managedServices.title,
       body: c.managedServices.intro,
       isHeading: true,
-    },
-    ...c.managedServices.items.map((item) => ({
+    }...c.managedServices.items.map((item) => ({
       title: item.title,
       body: item.body,
       isHeading: false,
@@ -121,7 +119,7 @@ export default function EnterpriseCloudPageClient() {
     <div className="ecms-page">
       <EnterpriseCloudHero />
 
-      {/* Cloud Capabilities — floating glass panels */}
+      {/* Cloud Capabilities, floating glass panels */}
       <section className="ecms-section ecms-section--capabilities">
         <div className="ecms-wrap">
           <Reveal>
@@ -154,7 +152,7 @@ export default function EnterpriseCloudPageClient() {
         </div>
       </section>
 
-      {/* Infrastructure Challenges — problem → solution */}
+      {/* Infrastructure Challenges, problem → solution */}
       <section className="ecms-section ecms-section--challenges">
         <div className="ecms-wrap">
           <Reveal>
@@ -201,7 +199,7 @@ export default function EnterpriseCloudPageClient() {
         </div>
       </section>
 
-      {/* Managed Operations — horizontal lifecycle */}
+      {/* Managed Operations, horizontal lifecycle */}
       <section ref={lifecycleRef} className="ecms-section ecms-section--lifecycle">
         <div className="ecms-wrap">
           <Reveal>

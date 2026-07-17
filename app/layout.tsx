@@ -20,7 +20,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Astrenox | The AI Operating System for the Physical World",
   description:
-    "Astrenox connects enterprise intelligence to autonomous systems—robotics, aerospace, logistics, and industrial operations through one production-grade control plane.",
+    "Astrenox connects enterprise intelligence to autonomous systems, robotics, aerospace, logistics, and industrial operations through one production-grade control plane.",
   keywords: [
     "enterprise AI",
     "autonomous systems",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Astrenox | The AI Operating System for the Physical World",
     description:
-      "Enterprise AI, autonomous systems, and production-grade engineering—unified under one operating system for the physical world.",
+      "Enterprise AI, autonomous systems, and production-grade engineering, unified under one operating system for the physical world.",
     type: "website",
   },
 };

@@ -151,7 +151,7 @@ export default function ITServicesPageClient() {
 
   return (
     <Canvas>
-      {/* Hero — NOC topology */}
+      {/* Hero, NOC topology */}
       <section className="mvp-inner it-hero" aria-labelledby="it-brand">
         <div className="it-hero-grid">
           <div className="it-hero-copy">
@@ -249,7 +249,7 @@ export default function ITServicesPageClient() {
         </motion.div>
       </section>
 
-      {/* Architecture & Modernization — Blueprint / Build */}
+      {/* Architecture & Modernization, Blueprint / Build */}
       <section className="mvp-inner mvp-section" aria-labelledby="it-solutions">
         <div className="mvp-section-header">
           <h2 id="it-solutions" className="mvp-section-title">
@@ -427,7 +427,7 @@ export default function ITServicesPageClient() {
           </motion.div>
         </div>
 
-        {/* How Astrenox Does It — horizontal process rail */}
+        {/* How Astrenox Does It, horizontal process rail */}
         <div className="it-capability-block">
           <h3 className="it-subhead">{section2.how.title}</h3>
           <div className="it-process-rail">
@@ -489,7 +489,7 @@ export default function ITServicesPageClient() {
         </div>
       </section>
 
-      {/* Enterprise CTA — document brand + intros only */}
+      {/* Enterprise CTA, document brand + intros only */}
       <section className="mvp-inner mvp-section" aria-label={brand}>
         <div className="mvp-glass mvp-cta it-cta">
           <h2>{brand}</h2>

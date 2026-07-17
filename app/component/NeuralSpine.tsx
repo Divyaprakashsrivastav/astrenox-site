@@ -57,7 +57,7 @@ const SPINE_D = buildSpinePath();
 // ─── Section nodes ────────────────────────────────────────
 // `sectionId` must match the id="" on the corresponding section.
 // `scrollAt`  is the normalised scroll progress (0–1) at which
-//              this node should activate — calibrated to the page order.
+//              this node should activate, calibrated to the page order.
 
 const NODES = [
   { sectionId: "hero",             label: "Intelligence Core",  scrollAt: 0.000 },
@@ -182,7 +182,7 @@ export default function NeuralSpine() {
           </filter>
         </defs>
 
-        {/* ── Branch lines — faint dashed horizontals ── */}
+        {/* ── Branch lines, faint dashed horizontals ── */}
         {BRANCH_NODES.map((ni) => (
           <line
             key={`branch-${ni}`}
@@ -297,7 +297,7 @@ export default function NeuralSpine() {
                 filter={isActive ? "url(#ns-node-glow)" : undefined}
               />
 
-              {/* Label chip — slides in from right on hover */}
+              {/* Label chip, slides in from right on hover */}
               {isHovered && (
                 <g>
                   {/* Pill background */}
@@ -330,7 +330,7 @@ export default function NeuralSpine() {
           );
         })}
 
-        {/* Invisible path for measuring — same d, opacity 0 */}
+        {/* Invisible path for measuring, same d, opacity 0 */}
         <path
           ref={spinePathRef}
           d={SPINE_D}

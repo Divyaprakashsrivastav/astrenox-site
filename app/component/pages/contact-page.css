@@ -1,4 +1,4 @@
-/* Contact page — calendar-led discovery + inbound */
+/* Contact page - calendar-led discovery + inbound */
 
 .cp-page {
   --cp-bg: #08060f;
@@ -75,7 +75,7 @@
   background: rgba(124, 58, 237, 0.1);
 }
 
-/* Scoped under .cp-page — globals .cp-section (Control Plane) zeros padding with !important */
+/* Scoped under .cp-page - globals .cp-section (Control Plane) zeros padding with !important */
 .cp-page .cp-section {
   padding: clamp(3.25rem, 7vw, 5.5rem) 0 !important;
   border-top: none;

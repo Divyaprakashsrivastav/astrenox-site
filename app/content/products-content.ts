@@ -1,12 +1,12 @@
 /**
- * Products page — verbatim content from Astrenox_Product_Content.txt
+ * Products page, verbatim content from Astrenox_Product_Content.txt
  */
 
 export const productsHero = {
   title: "Enterprise AI Infrastructure",
   headlineAccent: "for Modern Businesses",
   description:
-    "Our proprietary suite provides the foundational architecture to build, deploy, and monitor AI systems at scale—unifying orchestration, agents, and telemetry across your enterprise stack.",
+    "Our proprietary suite provides the foundational architecture to build, deploy, and monitor AI systems at scale, unifying orchestration, agents, and telemetry across your enterprise stack.",
   primaryCta: "Explore Products",
   primaryHref: "#product-explorer",
   secondaryCta: "Book Architecture Call",
@@ -165,7 +165,7 @@ export const genAiSection = {
       title: "Real Estate Operations",
       solutions: [
         "Autonomous Leasing Assistant: An LLM-driven conversational agent engineered for high-volume property management. It fully automates tenant inquiry routing, qualification filtering, and calendar scheduling, reducing response latency by 40% and boosting conversions by 60%.",
-        "Visual Asset Processing Pipeline: An automated computer vision and metadata workflow for property listings. The system executes bulk image enhancements, watermark removal, and generative descriptions—eliminating 85% of substandard imagery and cutting manual review time by 75%.",
+        "Visual Asset Processing Pipeline: An automated computer vision and metadata workflow for property listings. The system executes bulk image enhancements, watermark removal, and generative descriptions, eliminating 85% of substandard imagery and cutting manual review time by 75%.",
       ],
     },
     {
@@ -216,10 +216,10 @@ export const softwareFactorySection = {
       number: 3,
       title: "Enterprise Infrastructure: Security, Observability, and Control",
       intro:
-        "Built for high-stakes environments—including Healthcare, Financial Services, and the Federal Government—the Software Factory ensures that autonomous AI adoption strengthens your security posture rather than compromising it.",
+        "Built for high-stakes environments, including Healthcare, Financial Services, and the Federal Government, the Software Factory ensures that autonomous AI adoption strengthens your security posture rather than compromising it.",
       bullets: [
         "Fully Air-Gapped & Compliant Deployments: The entire platform can be deployed on your private hardware or Virtual Private Cloud (VPC) with zero internet dependency. The system requires no external network calls, ensuring proprietary codebase telemetry never leaves your security perimeter. Our architecture strictly aligns with ISO 27001 and OWASP standards.",
-        "Native OpenTelemetry (OTEL) Integration: We export deep traces, metrics, and agent execution logs directly into your existing observability stack (e.g., Datadog, Grafana, Honeycomb). This provides absolute, real-time visibility into AI decision-making processes and system health.",
+        "Native OpenTelemetry (OTEL) Integration: We export deep traces, metrics, and agent execution logs directly into your existing observability stack (e.g. Datadog, Grafana, Honeycomb). This provides absolute, real-time visibility into AI decision-making processes and system health.",
         "Centralized Org Configuration & Cost Controls: We deploy a single administrative surface to manage AI model routing, agent permissions, and identity provisioning via SAML 2.0/OIDC. Engineering leadership can enforce strict token consumption budgets at the project level, utilizing automated cutoff thresholds to optimize spend and prevent runaway agent usage.",
       ],
     },
@@ -323,7 +323,7 @@ export const infrastructureSection = {
         {
           title: "Consultative Engineering",
           intro:
-            "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry—from secure financial gateways to healthcare data pipelines.",
+            "As an AI-native partner, we align cloud architecture with your business logic. Our agile methodology delivers scalable, compliant infrastructure tailored to your industry, from secure financial gateways to healthcare data pipelines.",
           bullets: [] as string[],
         },
       ],
@@ -589,7 +589,7 @@ export const industrySolutionsSection = {
         title: "AI Solutions Portfolio",
         items: [
           "Clinical Decision Support: Using advanced Natural Language Processing (NLP) to analyze unstructured Electronic Health Records (EHR) and medical literature. This accelerates the diagnostic process by mapping complex medical data and surfacing evidence-based recommendations directly to clinicians.",
-          "Predictive Patient Analytics: Machine learning models that continuously ingest real-time biometric data and patient history to predict critical risks—such as hospital readmissions or the onset of sepsis. This enables preemptive intervention and highly optimized ICU resource allocation.",
+          "Predictive Patient Analytics: Machine learning models that continuously ingest real-time biometric data and patient history to predict critical risks, such as hospital readmissions or the onset of sepsis. This enables preemptive intervention and highly optimized ICU resource allocation.",
           "Accelerated Drug Discovery: Generative AI and structural modeling algorithms simulate molecular interactions at scale. This computational approach significantly cuts down the time and capital expenditure required to move novel therapeutics from early research to clinical trials.",
         ],
       },
@@ -610,7 +610,7 @@ export const industrySolutionsSection = {
         items: [
           "Real-Time Fraud Detection & AML: Advanced anomaly detection models analyze complex transaction networks in real time to isolate synthetic identity fraud and money laundering vectors. This approach drastically reduces false positives compared to legacy, rule-based systems.",
           "Automated Compliance (RegTech): Tailored Large Language Models (LLMs) continuously cross-reference internal institutional policies against changing global regulations. This ensures real-time audit readiness, automates regulatory reporting, and minimizes exposure to compliance infractions.",
-          "Quantitative Risk & Alpha Generation: Predictive pipelines that analyze alternative data streams—such as geospatial imagery, global supply chain telemetry, and market sentiment—alongside traditional financial data to refine credit scoring and optimize investment portfolios.",
+          "Quantitative Risk & Alpha Generation: Predictive pipelines that analyze alternative data streams, such as geospatial imagery, global supply chain telemetry, and market sentiment, alongside traditional financial data to refine credit scoring and optimize investment portfolios.",
         ],
       },
       businessValue: {
@@ -785,5 +785,5 @@ export const productsCta = {
   secondaryHref: "#product-explorer",
 } as const;
 
-/** @deprecated Use genAiSection — kept for type compatibility during migration */
+/** @deprecated Use genAiSection, kept for type compatibility during migration */
 export const genAiTimeline = genAiSection;

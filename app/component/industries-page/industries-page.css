@@ -1,4 +1,4 @@
-/* Industries page — unique enterprise identity (indp-) */
+/* Industries page - unique enterprise identity (indp-) */
 
 .indp-page {
   --indp-bg: #06050f;
@@ -174,7 +174,7 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* ── Transform section — interactive selector ── */
+/* ── Transform section - interactive selector ── */
 .indp-section--transform {
   background: linear-gradient(180deg, var(--indp-bg) 0%, rgba(12, 10, 24, 0.98) 100%);
 }

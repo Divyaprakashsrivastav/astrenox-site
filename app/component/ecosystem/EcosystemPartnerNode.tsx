@@ -72,7 +72,7 @@ export default function EcosystemPartnerNode({
             : {}
         }
         transition={{ duration: 5 + floatOffset, repeat: Infinity, ease: "easeInOut" }}
-        aria-label={`${partner.name} — ${partner.category}`}
+        aria-label={`${partner.name}: ${partner.category}`}
       >
         <span className="eco-partner-logo">{partnerMonogram(partner.name)}</span>
         <span className="eco-partner-name">{partner.name}</span>

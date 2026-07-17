@@ -137,7 +137,7 @@
   to { transform: translate3d(1%, -1%, 0) scale(1.03); }
 }
 
-/* ── Glass wordmark — multi-layer frosted typography ── */
+/* ── Glass wordmark - multi-layer frosted typography ── */
 .ft-wordmark {
   position: absolute;
   left: 0;
@@ -391,7 +391,7 @@
   }
 }
 
-/* Legacy selectors removed — wordmark uses .ft-wm layers */
+/* Legacy selectors removed - wordmark uses .ft-wm layers */
 
 /* ── Inner layout ── */
 .ft-inner {

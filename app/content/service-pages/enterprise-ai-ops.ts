@@ -4,13 +4,13 @@ export const enterpriseAiOpsContent: ServicePageContent = {
   metadata: {
     title: "Enterprise AI Ops & Governance | Astrenox",
     description:
-      "MLOps, governance, and observability for production AI—controls that satisfy risk, finance, and engineering together.",
+      "MLOps, governance, and observability for production AI, controls that satisfy risk, finance, and engineering together.",
   },
   hero: {
     label: "AI Services",
     title: "Govern AI in\nProduction.",
     subtitle:
-      "MLOps, governance, and observability for production AI—so models stay reliable, auditable, and within cost and risk bounds.",
+      "MLOps, governance, and observability for production AI, so models stay reliable, auditable, and within cost and risk bounds.",
     primaryCta: "Assess AI Ops Maturity",
     secondaryCta: "View Capabilities",
     primaryHref: "/contact",
@@ -19,10 +19,10 @@ export const enterpriseAiOpsContent: ServicePageContent = {
   overview: {
     title: "Operate intelligence like critical infrastructure",
     paragraphs: [
-      "Enterprises don't fail AI at the demo—they fail at operations. Astrenox builds the control planes that keep models evaluated, monitored, versioned, and accountable after launch.",
+      "Enterprises don't fail AI at the demo, they fail at operations. Astrenox builds the control planes that keep models evaluated, monitored, versioned, and accountable after launch.",
       "We connect engineering, risk, and finance: eval suites, incident response, access policies, spend attribution, and audit evidence that regulators and boards can inspect.",
       "From prompt and model registries to runtime guardrails and human escalation, we make production AI visible and manageable across teams and business units.",
-      "Whether you run a single copilot or a fleet of agents, we leave you with platforms and playbooks your teams own—not a black box consultant dependency.",
+      "Whether you run a single copilot or a fleet of agents, we leave you with platforms and playbooks your teams own, not a black box consultant dependency.",
     ],
   },
   capabilities: {
@@ -187,7 +187,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
     items: [
       {
         q: "Do you replace our ML platform team?",
-        a: "No. We install controls and transfer ownership—accelerating your team rather than creating a permanent dependency.",
+        a: "No. We install controls and transfer ownership, accelerating your team rather than creating a permanent dependency.",
       },
       {
         q: "Does this work with multiple model providers?",
@@ -195,7 +195,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
       },
       {
         q: "How do you handle regulated industries?",
-        a: "We align artifacts and gates to your existing model risk, privacy, and audit processes—not a one-size policy deck.",
+        a: "We align artifacts and gates to your existing model risk, privacy, and audit processes, not a one-size policy deck.",
       },
       {
         q: "Can you start with one production system?",
@@ -210,7 +210,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
   cta: {
     title: "Make Production AI Auditable.",
     subtitle:
-      "Schedule a maturity assessment. We'll map gaps across ops, risk, and cost—and outline a control-tower path you can staff and own.",
+      "Schedule a maturity assessment. We'll map gaps across ops, risk, and cost, and outline a control-tower path you can staff and own.",
     primaryCta: "Book AI Ops Review",
     secondaryCta: "Explore AI Transformation",
     primaryHref: "/contact",

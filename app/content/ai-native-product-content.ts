@@ -1,4 +1,4 @@
-/** Verbatim from Content.docx — AI-Native Product Engineering (Section 1) + Application Modernization (Section 2). */
+/** Verbatim from Content.docx, AI-Native Product Engineering (Section 1) + Application Modernization (Section 2). */
 export const aiNativeProductPageContent = {
   brand: "AI-Native Product Engineering",
   hero: {
@@ -178,7 +178,7 @@ export const aiNativeProductPageContent = {
         {
           title: "Technical Debt & Architecture Assessment",
           description:
-            "Conduct rigorous infrastructure audits to define a risk-prioritized modernization roadmap—evaluating rehosting, replatforming, or complete architectural rebuilding.",
+            "Conduct rigorous infrastructure audits to define a risk-prioritized modernization roadmap, evaluating rehosting, replatforming, or complete architectural rebuilding.",
         },
         {
           title: "Microservices Decoupling",

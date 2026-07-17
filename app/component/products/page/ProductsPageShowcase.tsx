@@ -146,7 +146,7 @@ export default function ProductsPageShowcase() {
       <div className="pp-inner">
         <ProductsPageHero />
 
-        {/* Products Overview — document brief + guidelines */}
+        {/* Products Overview, document brief + guidelines */}
         <section id="products-overview" className="pp-overview" aria-label="Products overview">
           <motion.h2
             className="pp-section-title"

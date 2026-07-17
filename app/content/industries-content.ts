@@ -1,4 +1,4 @@
-/** Industries page — verbatim industry transformation content. */
+/** Industries page, verbatim industry transformation content. */
 
 export const industriesContent = {
   hero: {

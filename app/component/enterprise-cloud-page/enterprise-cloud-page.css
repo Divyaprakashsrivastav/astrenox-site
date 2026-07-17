@@ -1,4 +1,4 @@
-/* Enterprise Cloud & Managed Services — unique identity (ecms-) */
+/* Enterprise Cloud & Managed Services - unique identity (ecms-) */
 
 .ecms-page {
   --ecms-bg: #04060f;
@@ -144,7 +144,7 @@
   color: rgba(248, 250, 252, 0.92);
 }
 
-/* ── Capabilities — floating glass panels ── */
+/* ── Capabilities - floating glass panels ── */
 .ecms-section--capabilities {
   background: linear-gradient(180deg, var(--ecms-bg) 0%, rgba(8, 14, 28, 0.98) 100%);
 }
@@ -200,7 +200,7 @@
   background: rgba(255, 255, 255, 0.02);
 }
 
-/* ── Challenges — problem → solution ── */
+/* ── Challenges - problem → solution ── */
 .ecms-section--challenges {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -289,7 +289,7 @@
   }
 }
 
-/* ── Lifecycle — horizontal scroll ── */
+/* ── Lifecycle - horizontal scroll ── */
 .ecms-section--lifecycle {
   overflow: hidden;
   background: rgba(59, 130, 246, 0.02);

@@ -20,7 +20,7 @@ export const aiEngineeringPageContent = {
   overview: {
     title: "The Enterprise AI Gap: Why Proof-of-Concepts Fail",
     paragraphs: [
-      "Most companies are stuck in the prototyping phase. A script that works beautifully in a sandbox often collapses under real-world enterprise constraints—breaking due to API rate limits, model hallucinations, latency spikes, or security blockers.",
+      "Most companies are stuck in the prototyping phase. A script that works beautifully in a sandbox often collapses under real-world enterprise constraints, breaking due to API rate limits, model hallucinations, latency spikes, or security blockers.",
       "We bridge the gap between AI theory and software engineering reality. Our team operates at the intersection of traditional system architecture and modern machine learning. We don't just prompt models; we engineer robust systems built for massive scale, low latency, and deterministic execution.",
     ],
   },
@@ -266,7 +266,7 @@ export const aiEngineeringPageContent = {
     primaryHref: "/contact",
     secondaryHref: "/services/ai-consulting-advisory",
   },
-  /** Technologies named in the approved content — visual chips only */
+  /** Technologies named in the approved content, visual chips only */
   techStack: [
     "Next.js",
     "React",

@@ -1,4 +1,4 @@
-/* AI Consulting & Advisory — full-bleed immersive hero (no cards) */
+/* AI Consulting & Advisory - full-bleed immersive hero (no cards) */
 
 .adv-immersive-hero {
   position: relative;
@@ -21,7 +21,7 @@
   z-index: 0;
 }
 
-/* Layer 1 — nebula */
+/* Layer 1 - nebula */
 .adv-immersive-nebula {
   position: absolute;
   inset: -15%;
@@ -49,7 +49,7 @@
     radial-gradient(ellipse 80% 60% at 50% 100%, rgba(8, 6, 15, 0.5), transparent 70%);
 }
 
-/* Layer 2 — particles */
+/* Layer 2 - particles */
 .adv-immersive-particle {
   position: absolute;
   border-radius: 50%;
@@ -64,7 +64,7 @@
   mix-blend-mode: screen;
 }
 
-/* Layer 3 — network */
+/* Layer 3 - network */
 .adv-immersive-network {
   position: absolute;
   inset: 0;
@@ -73,7 +73,7 @@
   opacity: 0.9;
 }
 
-/* Layer 4 — core glow */
+/* Layer 4 - core glow */
 .adv-immersive-core-glow {
   position: absolute;
   width: min(28vw, 320px);
@@ -159,7 +159,7 @@
   z-index: 2;
 }
 
-/* Layer 5 — foreground content */
+/* Layer 5 - foreground content */
 .adv-immersive-content {
   position: relative;
   z-index: 3;

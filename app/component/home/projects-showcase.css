@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════
-   Flagship Projects — premium bento showcase
+   Flagship Projects - premium bento showcase
    ══════════════════════════════════════════ */
 
 @property --prj-card-border-angle {
@@ -382,7 +382,7 @@
   transition: transform 0.6s ease;
 }
 
-/* CareLink — calendar */
+/* CareLink - calendar */
 .prj-visual-care {
   display: flex;
   gap: 1rem;
@@ -440,7 +440,7 @@
   width: 80px;
 }
 
-/* EstateFlow — heatmap */
+/* EstateFlow - heatmap */
 .prj-visual-estate {
   display: flex;
   flex-direction: column;
@@ -495,7 +495,7 @@
   }
 }
 
-/* BuildSync — blueprint */
+/* BuildSync - blueprint */
 .prj-visual-build-svg {
   width: 100%;
   max-width: 200px;
@@ -517,7 +517,7 @@
   }
 }
 
-/* TenderVault — pipeline */
+/* TenderVault - pipeline */
 .prj-visual-tender-pipe {
   display: flex;
   gap: 0.375rem;
@@ -555,7 +555,7 @@
   }
 }
 
-/* VisionOps — scan */
+/* VisionOps - scan */
 .prj-visual-vision-frame {
   position: relative;
   width: 120px;
@@ -608,7 +608,7 @@
   }
 }
 
-/* FlowChain — logistics */
+/* FlowChain - logistics */
 .prj-visual-flow-svg {
   width: 100%;
   max-width: 200px;
@@ -640,7 +640,7 @@
   }
 }
 
-/* DealCore — floating windows */
+/* DealCore - floating windows */
 .prj-visual-deal {
   position: relative;
   width: 140px;

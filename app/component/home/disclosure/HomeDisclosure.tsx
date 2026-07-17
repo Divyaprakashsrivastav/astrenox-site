@@ -74,7 +74,7 @@ type ParagraphExpandProps = {
   paragraphClassName?: string;
 };
 
-/** Splits document paragraphs — first N visible, rest behind expand. All text preserved. */
+/** Splits document paragraphs, first N visible, rest behind expand. All text preserved. */
 export function ParagraphExpand({
   paragraphs,
   visibleCount = 1,
@@ -241,7 +241,7 @@ type ExpandCardProps = {
   className?: string;
 };
 
-/** Click-to-expand card — title and icon visible; body revealed on interaction. */
+/** Click-to-expand card, title and icon visible; body revealed on interaction. */
 export function ExpandCard({
   id,
   icon,

@@ -1,4 +1,4 @@
-/* Blockchain & Web3 — Astrenox design system, network personality */
+/* Blockchain & Web3 - Astrenox design system, network personality */
 
 .bc-page {
   --bc-cyan: #34d399;
@@ -117,7 +117,7 @@
   margin-bottom: 0;
 }
 
-/* Core Services — masonry-like expand panels */
+/* Core Services - masonry-like expand panels */
 .bc-services-grid {
   display: grid;
   gap: 1rem;

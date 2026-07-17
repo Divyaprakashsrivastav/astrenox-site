@@ -1,4 +1,4 @@
-/** Verbatim from Content.docx — Quality Engineering & Software Testing only. */
+/** Verbatim from Content.docx, Quality Engineering & Software Testing only. */
 export const qualityEngineeringPageContent = {
   brand: "Quality Engineering & Software Testing",
   hero: {

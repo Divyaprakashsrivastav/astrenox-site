@@ -36,7 +36,7 @@ export default function Research() {
             <>
               We{" "}
               <span className="text-highlight-primary">orchestrate</span> the
-              ecosystem—not just use it.
+              ecosystem, not just use it.
             </>
           }
           description={researchSection.description}

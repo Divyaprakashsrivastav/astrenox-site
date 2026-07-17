@@ -9,7 +9,7 @@ export const placeholderPages: Record<string, PlaceholderMeta> = {
     title: "AI Consulting & Advisory",
     section: "AI Services",
     description:
-      "Executive advisory, AI strategy, and enterprise roadmaps. This capability page is being prepared—contact us to discuss your consulting engagement.",
+      "Executive advisory, AI strategy, and enterprise roadmaps. This capability page is being prepared, contact us to discuss your consulting engagement.",
   },
   "/services/ai-native-saas": {
     title: "AI Native Software as a Service",

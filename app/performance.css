@@ -1,4 +1,4 @@
-/* Global performance helpers — keep interactions intact */
+/* Global performance helpers - keep interactions intact */
 
 .ambient-css-particle {
   animation: ambient-css-particle-float var(--particle-duration, 10s)
@@ -29,7 +29,7 @@
 }
 
 /* GPU-friendly page enter (replaces Framer on route shell).
-   Opacity only — transform on this wrapper breaks GSAP position:fixed pinning. */
+   Opacity only - transform on this wrapper breaks GSAP position:fixed pinning. */
 .page-enter {
   animation: page-enter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   transform: none;
@@ -52,7 +52,7 @@
   }
 }
 
-/* Scroll progress bar — transform only */
+/* Scroll progress bar - transform only */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -74,7 +74,7 @@
 
 /*
   content-visibility is OPT-IN only.
-  Never apply to main section catch-alls — it breaks sticky scroll scenes,
+  Never apply to main section catch-alls - it breaks sticky scroll scenes,
   Framer whileInView, IntersectionObserver measurements, and tall sections.
 */
 .aie-block,
@@ -110,7 +110,7 @@
   content-visibility: visible;
 }
 
-/* Marquees & infinite loops — promote layer without changing look */
+/* Marquees & infinite loops - promote layer without changing look */
 .sptp-tech-track,
 .bmsp-tech-track,
 .ecms-tech-track,

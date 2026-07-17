@@ -1,4 +1,4 @@
-/* Products page — unique premium showcase (pp- prefix) */
+/* Products page - unique premium showcase (pp- prefix) */
 @property --pp-border-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -95,7 +95,7 @@
   background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(168, 85, 247, 0.08), transparent 70%);
 }
 
-/* Hero — premium platform showcase */
+/* Hero - premium platform showcase */
 .pp-hero {
   position: relative;
   min-height: min(100vh, 920px);
@@ -532,7 +532,7 @@
   opacity: 0.85;
 }
 
-/* Legacy hero aliases — keep for buttons elsewhere */
+/* Legacy hero aliases - keep for buttons elsewhere */
 .pp-eyebrow {
   margin: 0 0 0.875rem;
   font-size: 0.6875rem;

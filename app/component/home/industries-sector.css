@@ -1,4 +1,4 @@
-/* Industries — split showcase (nav + panel) */
+/* Industries - split showcase (nav + panel) */
 @property --ind-panel-border-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -111,7 +111,7 @@
   }
 }
 
-/* Left nav — 30% */
+/* Left nav - 30% */
 .ind-showcase-nav {
   flex-shrink: 0;
 }
@@ -245,7 +245,7 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* Right panel — 70% */
+/* Right panel - 70% */
 .ind-showcase-panel-shell {
   flex: 1;
   min-width: 0;

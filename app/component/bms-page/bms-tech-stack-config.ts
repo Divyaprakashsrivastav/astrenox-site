@@ -1,4 +1,4 @@
-/** BMS technology ecosystem — files in /public/tech/ */
+/** BMS technology ecosystem, files in /public/tech/ */
 export const BMS_TECH_STACK = [
   { name: "Siemens", file: "siemens.svg", brand: "#009999" },
   { name: "Honeywell", file: "honeywell.svg", brand: "#E60000" },

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <div className="max-w-3xl mx-auto px-6 lg:px-8 premium-card p-6 text-sm text-muted leading-relaxed space-y-4">
           <p>
             We process contact details and project information you submit voluntarily. Data is used
-            to respond to inquiries, deliver services, and improve our offerings—not sold to third
+            to respond to inquiries, deliver services, and improve our offerings, not sold to third
             parties.
           </p>
           <p>

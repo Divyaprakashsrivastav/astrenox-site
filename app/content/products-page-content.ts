@@ -7,7 +7,7 @@ import { flagshipProducts } from "./products/flagship-products-content";
 export const productsPageBrief =
   "Explore Astrenox enterprise AI products, ready-to-deploy solutions, and governed engineering platforms.";
 
-export const productsPageGuidelines = flagshipProducts.map((p) => `${p.name} — ${p.tagline}`);
+export const productsPageGuidelines = flagshipProducts.map((p) => `${p.name}: ${p.tagline}`);
 
 export const productsInfrastructureHeading = "Enterprise AI Infrastructure";
 
@@ -66,12 +66,12 @@ export const productOfferings = [
     id: "software-factory",
     title: "AI Native Software Factory",
     description:
-      "Governed, agentic engineering for the enterprise — unified AIDLC and SDLC control plane with human governance.",
+      "Governed, agentic engineering for the enterprise , unified AIDLC and SDLC control plane with human governance.",
     href: "/products/ai-native-software-factory",
   },
 ] as const;
 
-/** Bento showcase — flagship products with links to dedicated pages */
+/** Bento showcase, flagship products with links to dedicated pages */
 export const productsBentoItems = [
   {
     id: "solvoris",
@@ -137,7 +137,7 @@ export const productsPageHero = {
   titleLine2: "Built for Production,",
   titleLine3: "Not Prototypes.",
   description:
-    "Astrenox builds enterprise-grade AI platforms for knowledge orchestration, autonomous workflows, transformation engines, and AI infrastructure—designed to run in production, not stop at proof-of-concept.",
+    "Astrenox builds enterprise-grade AI platforms for knowledge orchestration, autonomous workflows, transformation engines, and AI infrastructure, designed to run in production, not stop at proof-of-concept.",
   primaryCta: "Explore Products",
   primaryHref: "#products-bento",
   secondaryCta: "Book Demo",

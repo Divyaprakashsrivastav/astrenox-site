@@ -1,4 +1,4 @@
-/* AI Consulting — Strategy Journey framework section */
+/* AI Consulting - Strategy Journey framework section */
 
 .adv-journey {
   position: relative;
@@ -354,7 +354,7 @@
   }
 }
 
-/* Mobile — spine left, cards full width */
+/* Mobile - spine left, cards full width */
 @media (max-width: 767px) {
   .adv-journey-spine {
     left: 1.625rem;

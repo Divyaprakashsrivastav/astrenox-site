@@ -9,7 +9,7 @@ export const aiNativeSaasContent: ServicePageContent = {
   metadata: {
     title: "AI Native Services as a Software | Astrenox",
     description:
-      "AI-native product development, supply chain execution, private equity intelligence, RFP automation, and construction ERP systems—engineered as deployable software inside your enterprise stack.",
+      "AI-native product development, supply chain execution, private equity intelligence, RFP automation, and construction ERP systems, engineered as deployable software inside your enterprise stack.",
   },
   hero: {
     label: "AI Native Services",

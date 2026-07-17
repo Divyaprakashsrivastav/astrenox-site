@@ -7,7 +7,7 @@ type Options = {
   focusRatio?: number;
   /** Selector for items inside container. Default "[data-scroll-item]" */
   itemSelector?: string;
-  /** data attribute written on items if missing — use data-scroll-item */
+  /** data attribute written on items if missing, use data-scroll-item */
 };
 
 /**

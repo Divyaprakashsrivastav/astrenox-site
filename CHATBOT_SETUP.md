@@ -1,4 +1,4 @@
-# Astrenox AI Chatbot — Setup
+# Astrenox AI Chatbot - Setup
 
 The chatbot calls OpenAI **only from the server** (`app/api/chat/route.ts`). The API key is never sent to the browser or bundled in client code.
 
@@ -50,7 +50,7 @@ Open [http://localhost:3000](http://localhost:3000). Use the **Ask Astrenox** bu
 
 If the key is missing, the API returns `503` and the UI shows a configuration error.
 
-**Restart the dev server** after creating or editing `.env.local` — Next.js only loads env files at startup.
+**Restart the dev server** after creating or editing `.env.local` - Next.js only loads env files at startup.
 
 ### Troubleshooting
 
@@ -81,7 +81,7 @@ Errors return `{ "success": false, "error": "..." }` with the real OpenAI messag
 
 Optional: add `OPENAI_MODEL` the same way.
 
-Never add `NEXT_PUBLIC_OPENAI_API_KEY` — that would expose the key to the client.
+Never add `NEXT_PUBLIC_OPENAI_API_KEY` - that would expose the key to the client.
 
 ## Architecture
 

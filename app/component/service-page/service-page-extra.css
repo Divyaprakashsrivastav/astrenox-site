@@ -3,7 +3,7 @@
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-/* Chapter deliverables carousel — single card with bottom arrow controls */
+/* Chapter deliverables carousel - single card with bottom arrow controls */
 .svc-deliverable-carousel {
   max-width: 52rem;
   margin-inline: auto;
@@ -68,7 +68,7 @@
   white-space: normal;
 }
 
-/* Compact showcase — content-height panel (product brief overview) */
+/* Compact showcase - content-height panel (product brief overview) */
 .svc-cap-showcase--compact .ind-showcase-panel-shell {
   min-height: 0;
 }
@@ -179,7 +179,7 @@
   }
 }
 
-/* Industries grid — extends MVP Studio design system */
+/* Industries grid - extends MVP Studio design system */
 .mvp-industries-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -235,7 +235,7 @@
   border-left: 2px solid rgba(139, 92, 246, 0.35);
 }
 
-/* Hero without side visual — copy + CTAs left aligned */
+/* Hero without side visual - copy + CTAs left aligned */
 .mvp-hero-section--copy-only .mvp-hero-grid {
   grid-template-columns: minmax(0, 1fr);
   justify-items: start;
@@ -416,7 +416,7 @@
   margin: clamp(1.5rem, 3vw, 2rem) 0 0;
 }
 
-/* Engineering capabilities table — 3 columns */
+/* Engineering capabilities table - 3 columns */
 .mvp-capabilities-table {
   display: flex;
   flex-direction: column;
@@ -489,14 +489,14 @@
   }
 }
 
-/* Interventions — 2×2 on desktop */
+/* Interventions - 2×2 on desktop */
 @media (min-width: 1024px) {
   .mvp-interventions-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Deliverables — 2×2 artifact cards */
+/* Deliverables - 2×2 artifact cards */
 @media (min-width: 1024px) {
   .mvp-deliverables-grid {
     grid-template-columns: repeat(2, 1fr);

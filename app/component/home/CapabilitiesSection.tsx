@@ -158,15 +158,15 @@ function OrbitVisual() {
         <circle cx="100" cy="70" r="9" fill="rgba(139,61,125,0.35)" />
         <circle cx="100" cy="70" r="5.5" fill="rgba(139,61,125,0.58)" />
         <circle cx="100" cy="70" r="2.5" fill="rgba(183,110,157,0.8)" />
-        {/* Orbiting dot 1 — outermost ellipse */}
+        {/* Orbiting dot 1, outermost ellipse */}
         <g className="cap3d-orbit-dot1">
           <circle cx="160" cy="70" r="4.5" fill="rgba(183,110,157,0.82)" />
         </g>
-        {/* Orbiting dot 2 — circular orbit */}
+        {/* Orbiting dot 2, circular orbit */}
         <g className="cap3d-orbit-dot2">
           <circle cx="100" cy="32" r="3.5" fill="rgba(139,61,125,0.72)" />
         </g>
-        {/* Orbiting dot 3 — inner circular orbit */}
+        {/* Orbiting dot 3, inner circular orbit */}
         <g className="cap3d-orbit-dot3">
           <circle cx="122" cy="70" r="3" fill="rgba(183,110,157,0.60)" />
         </g>

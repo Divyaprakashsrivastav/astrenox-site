@@ -1,4 +1,4 @@
-/** Verbatim from Content.docx — Enterprise Technology & SAP Centre of Excellence. */
+/** Verbatim from Content.docx, Enterprise Technology & SAP Centre of Excellence. */
 export const centerOfExcellencePageContent = {
   brand: "Enterprise Technology & SAP Centre of Excellence",
   hero: {
@@ -58,7 +58,7 @@ export const centerOfExcellencePageContent = {
       "We manage the enterprise technology lifecycle through a business-first delivery model, evaluating current workloads and data dependencies before technical execution.",
     items: [
       "Strategy, Consulting, and Advisory: Assessing infrastructure, workflows, master data, and compliance to define precise cloud and SAP implementation roadmaps.",
-      "Implementations and Rollouts: Executing greenfield deployments, re-implementations, and template rollouts—including new module deployment and geographical expansion—without disrupting business continuity.",
+      "Implementations and Rollouts: Executing greenfield deployments, re-implementations, and template rollouts, including new module deployment and geographical expansion, without disrupting business continuity.",
       "Migration and Cloud Modernization: Transitioning on-premise or fragmented environments to scalable infrastructure (Azure, OCI), encompassing serverless re-architecture, database migrations, and SAP S/4HANA transitions.",
       "Process Automation: Automating repetitive workflows across operations and service desks via ServiceNow (ITOM/ITSM), Salesforce, and digitized goods movement (RF scanners/barcodes).",
       "Enterprise Integration: Engineering a single operating view by connecting CRM, ERP, cloud workloads, third-party apps, weighbridges, biometrics, e-commerce, and POS systems.",

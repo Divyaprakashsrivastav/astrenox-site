@@ -152,7 +152,7 @@ export default function BlockchainWeb3PageClient() {
 
   return (
     <Canvas>
-      {/* Hero — network visualization personality */}
+      {/* Hero, network visualization personality */}
       <section className="mvp-inner bc-hero" aria-labelledby="bc-brand">
         <div className="bc-hero-grid">
           <div className="bc-hero-copy">
@@ -206,7 +206,7 @@ export default function BlockchainWeb3PageClient() {
         </div>
       </section>
 
-      {/* Solution Brief — stacked brief layout */}
+      {/* Solution Brief, stacked brief layout */}
       <section className="mvp-inner mvp-section" aria-labelledby="bc-brief">
         <div className="bc-brief-layout">
           <motion.h2
@@ -233,7 +233,7 @@ export default function BlockchainWeb3PageClient() {
         </div>
       </section>
 
-      {/* Core Services — expandable service panels */}
+      {/* Core Services, expandable service panels */}
       <section className="mvp-inner mvp-section" aria-labelledby="bc-services">
         <div className="mvp-section-header">
           <h2 id="bc-services" className="mvp-section-title">
@@ -247,7 +247,7 @@ export default function BlockchainWeb3PageClient() {
         </div>
       </section>
 
-      {/* How Astrenox Executes — chain / timeline */}
+      {/* How Astrenox Executes, chain / timeline */}
       <section
         id={execution.id}
         className="mvp-inner mvp-section"
@@ -349,7 +349,7 @@ export default function BlockchainWeb3PageClient() {
         </motion.ul>
       </section>
 
-      {/* Final CTA — document brand + hero description only */}
+      {/* Final CTA, document brand + hero description only */}
       <section className="mvp-inner mvp-section" aria-label={brand}>
         <div className="mvp-glass mvp-cta bc-cta">
           <h2>{brand}</h2>

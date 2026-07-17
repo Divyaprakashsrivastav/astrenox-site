@@ -4,13 +4,13 @@ export const aiNativeProductContent: ServicePageContent = {
   metadata: {
     title: "AI-Native Product Engineering | Astrenox",
     description:
-      "End-to-end product engineering for AI-first software—architecture, UX, ML pipelines, and production deployment in one accountable team.",
+      "End-to-end product engineering for AI-first software, architecture, UX, ML pipelines, and production deployment in one accountable team.",
   },
   hero: {
     label: "Digital Consulting",
     title: "Engineer Products\nBorn AI-Native.",
     subtitle:
-      "Build software where intelligence is core infrastructure—not a bolt-on feature. From architecture to deployment, we engineer AI-native products for enterprise scale.",
+      "Build software where intelligence is core infrastructure, not a bolt-on feature. From architecture to deployment, we engineer AI-native products for enterprise scale.",
     primaryCta: "Start Product Discovery",
     secondaryCta: "View Engineering Process",
     primaryHref: "/contact",
@@ -19,7 +19,7 @@ export const aiNativeProductContent: ServicePageContent = {
   overview: {
     title: "Product engineering for the intelligence era",
     paragraphs: [
-      "AI-native product engineering means designing systems where models, agents, and data pipelines are first-class citizens—not afterthoughts layered onto traditional architectures. Astrenox builds products with this philosophy from day one.",
+      "AI-native product engineering means designing systems where models, agents, and data pipelines are first-class citizens, not afterthoughts layered onto traditional architectures. Astrenox builds products with this philosophy from day one.",
       "Our teams combine product managers, UX designers, full-stack engineers, and ML practitioners in unified squads. We ship features that leverage LLMs, computer vision, and predictive analytics with governance and observability built in.",
       "Every product engagement includes a design system, API contracts, model evaluation frameworks, and cost controls. We engineer for the reality that AI features evolve rapidly and need continuous iteration.",
       "From copilot interfaces to autonomous workflow agents, we help enterprises move from AI experiments to products their customers and employees rely on daily.",
@@ -169,7 +169,7 @@ export const aiNativeProductContent: ServicePageContent = {
       },
       {
         quote:
-          "Our previous vendor delivered a prototype. Astrenox delivered a product—with a design system, API docs, and an MLOps pipeline our team now owns.",
+          "Our previous vendor delivered a prototype. Astrenox delivered a product, with a design system, API docs, and an MLOps pipeline our team now owns.",
         author: "Dr. Emily Hart",
         role: "VP Digital Health, MedCore Systems",
       },
@@ -187,11 +187,11 @@ export const aiNativeProductContent: ServicePageContent = {
     items: [
       {
         q: "How is AI-native engineering different from adding AI to existing products?",
-        a: "AI-native means intelligence is designed into the architecture—data flows, UX patterns, and infrastructure are built for models and agents from the start, not retrofitted.",
+        a: "AI-native means intelligence is designed into the architecture, data flows, UX patterns, and infrastructure are built for models and agents from the start, not retrofitted.",
       },
       {
         q: "Which LLM providers do you support?",
-        a: "We're provider-agnostic—OpenAI, Anthropic, Azure OpenAI, and open-source models. We design abstraction layers so you can switch providers as needed.",
+        a: "We're provider-agnostic: OpenAI, Anthropic, Azure OpenAI, and open-source models. We design abstraction layers so you can switch providers as needed.",
       },
       {
         q: "How do you handle AI governance and safety?",
@@ -199,7 +199,7 @@ export const aiNativeProductContent: ServicePageContent = {
       },
       {
         q: "Can you work with our existing product team?",
-        a: "Yes. We embed alongside your PMs, designers, and engineers—accelerating delivery while transferring AI engineering practices.",
+        a: "Yes. We embed alongside your PMs, designers, and engineers, accelerating delivery while transferring AI engineering practices.",
       },
       {
         q: "What does ongoing model improvement look like?",

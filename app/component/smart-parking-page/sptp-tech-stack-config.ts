@@ -1,4 +1,4 @@
-/** Smart Parking technology ecosystem — files in /public/tech/ */
+/** Smart Parking technology ecosystem, files in /public/tech/ */
 export const SPTP_TECH_STACK = [
   { name: "NVIDIA", file: "nvidia.svg", brand: "#76B900" },
   { name: "OpenCV", file: "opencv.svg", brand: "#5C3EE8" },

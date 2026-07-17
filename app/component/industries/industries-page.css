@@ -1,4 +1,4 @@
-/* Industries page — extends MVP Studio + home industries showcase */
+/* Industries page - extends MVP Studio + home industries showcase */
 
 .ind-page-showcase {
   width: 100%;
@@ -145,7 +145,7 @@
   color: rgba(139, 92, 246, 0.95);
 }
 
-/* Sector nav labels — allow wrapping on long titles */
+/* Sector nav labels - allow wrapping on long titles */
 .ind-page-showcase .ind-nav-label {
   line-height: 1.35;
 }

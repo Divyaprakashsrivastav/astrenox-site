@@ -4,7 +4,7 @@ export const bmsSmartParkingContent: ServicePageContent = {
   metadata: {
     title: "Building Management and Smart Parking Solutions | Astrenox",
     description:
-      "We help organisations assess their physical environment, define the required digital architecture and implement integrated building, parking and mobility systems—from solution design through commissioning and lifecycle optimisation.",
+      "We help organisations assess their physical environment, define the required digital architecture and implement integrated building, parking and mobility systems, from solution design through commissioning and lifecycle optimisation.",
   },
   hero: {
     label: "Infrastructure Solutions",
@@ -18,7 +18,7 @@ export const bmsSmartParkingContent: ServicePageContent = {
   intro: {
     paragraphs: [
       "Buildings and parking environments are often managed through disconnected systems, manual processes and limited real-time visibility. This increases operating costs, slows incident response and creates an inconsistent experience for facility teams, occupants and visitors.",
-      "We help organisations assess their physical environment, define the required digital architecture and implement integrated building, parking and mobility systems—from solution design through commissioning and lifecycle optimisation.",
+      "We help organisations assess their physical environment, define the required digital architecture and implement integrated building, parking and mobility systems, from solution design through commissioning and lifecycle optimisation.",
     ],
   },
   chapters: [

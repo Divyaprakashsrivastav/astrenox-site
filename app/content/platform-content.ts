@@ -1,18 +1,18 @@
 /**
- * Astrenox Intelligence Platform — native enterprise AI operating system content.
+ * Astrenox Intelligence Platform, native enterprise AI operating system content.
  */
 
 export const intelligencePlatform = {
   name: "Astrenox Intelligence Platform",
   shortName: "Intelligence Platform",
   positioning:
-    "The AI operating system powering every Astrenox solution—search, graph, agents, and automation in one governable layer.",
+    "The AI operating system powering every Astrenox solution, search, graph, agents, and automation in one governable layer.",
 
   hero: {
     eyebrow: "Astrenox Intelligence Platform",
     title: "Enterprise AI with explainable decisions and workflow automation.",
     description:
-      "Transform enterprise knowledge into autonomous action. From fragmented systems to intelligent operations—unified search, a live knowledge graph, and agents that execute with full observability.",
+      "Transform enterprise knowledge into autonomous action. From fragmented systems to intelligent operations, unified search, a live knowledge graph, and agents that execute with full observability.",
     taglines: [
       "Transform enterprise knowledge into autonomous action.",
       "From fragmented systems to intelligent operations.",
@@ -29,7 +29,7 @@ export const intelligencePlatform = {
     label: "Enterprise Search",
     title: "Natural language across your entire stack",
     description:
-      "One query surface across workspace, collaboration, engineering, and internal systems—grounded answers with citations, access controls, and audit trails.",
+      "One query surface across workspace, collaboration, engineering, and internal systems, grounded answers with citations, access controls, and audit trails.",
     queryPlaceholder: "Which customer escalations in Slack tie to open Jira blockers this quarter?",
     capabilities: [
       "Semantic retrieval across structured and unstructured data",
@@ -53,7 +53,7 @@ export const intelligencePlatform = {
     label: "Knowledge Graph",
     title: "From siloed data to decision-ready context",
     description:
-      "Astrenox continuously maps entities, relationships, and policies across your estate—so agents and leaders operate on the same live truth.",
+      "Astrenox continuously maps entities, relationships, and policies across your estate, so agents and leaders operate on the same live truth.",
     pipeline: [
       { id: "sources", title: "Enterprise Data Sources", subtitle: "Connectors · APIs · Warehouses" },
       { id: "graph", title: "Knowledge Graph", subtitle: "Entities · Relationships · Policies" },
@@ -72,7 +72,7 @@ export const intelligencePlatform = {
     label: "AI Agents",
     title: "Autonomous operators for the enterprise",
     description:
-      "Deploy governed agents that retrieve knowledge, run research, execute workflows, analyze data, generate reports, and automate operations—with human-in-the-loop where it matters.",
+      "Deploy governed agents that retrieve knowledge, run research, execute workflows, analyze data, generate reports, and automate operations, with human-in-the-loop where it matters.",
     agents: [
       {
         id: "retrieval",
@@ -112,7 +112,7 @@ export const intelligencePlatform = {
     label: "Workflow Automation",
     title: "Autonomous systems for complex operations",
     description:
-      "Pre-built patterns and custom playbooks for high-stakes environments—manufacturing floors, fleets, aerospace, robotics, and enterprise decision intelligence.",
+      "Pre-built patterns and custom playbooks for high-stakes environments, manufacturing floors, fleets, aerospace, robotics, and enterprise decision intelligence.",
     useCases: [
       {
         id: "manufacturing",
@@ -146,7 +146,7 @@ export const intelligencePlatform = {
         id: "decision",
         title: "Enterprise Decision Intelligence",
         description:
-          "Executive dashboards fed by live graph traversals—scenarios, approvals, and outcome tracking.",
+          "Executive dashboards fed by live graph traversals, scenarios, approvals, and outcome tracking.",
         metric: "Faster decisions",
       },
     ],
@@ -157,7 +157,7 @@ export const intelligencePlatform = {
     label: "Integrations",
     title: "Your stack, connected to one intelligence layer",
     description:
-      "Bi-directional connectors sync context into the Astrenox Knowledge Graph—agents and search stay current without rip-and-replace.",
+      "Bi-directional connectors sync context into the Astrenox Knowledge Graph, agents and search stay current without rip-and-replace.",
     hubLabel: "Astrenox Intelligence Platform",
     connectors: [
       { id: "google", name: "Google Workspace", accent: "#4285F4" },
@@ -175,7 +175,7 @@ export const intelligencePlatform = {
     label: "Security",
     title: "Enterprise-grade trust by design",
     description:
-      "Built for regulated industries—identity-bound access, encryption everywhere, and explainable automation your security team can approve.",
+      "Built for regulated industries, identity-bound access, encryption everywhere, and explainable automation your security team can approve.",
     pillars: [
       {
         title: "Identity & access",

@@ -108,7 +108,7 @@ export default function ContactPageClient() {
       return;
     }
 
-    const subject = encodeURIComponent("Architecture Scoping — 30-minute session");
+    const subject = encodeURIComponent("Architecture Scoping, 30-minute session");
     const body = encodeURIComponent(
       `I'd like to book a 30-minute architecture scoping session.\n\nPreferred date: ${formatDateLabel(selectedDay)}\nPreferred time: ${selectedSlot} IST\n\nInfrastructure challenges / context:\n`
     );
