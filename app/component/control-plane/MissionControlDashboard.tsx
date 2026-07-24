@@ -99,7 +99,8 @@ export default function MissionControlDashboard({
     const logInterval = setInterval(() => {
       const msg = MISSION_LOG[cursor % MISSION_LOG.length]!;
       setLogs((prev) => [
-        { id: cursor, message: msg, time: formatTime(new Date()) }...prev.slice(0, 5),
+        { id: cursor, message: msg, time: formatTime(new Date()) },
+        ...prev.slice(0, 5),
       ]);
       cursor += 1;
       setLogCursor(cursor);

@@ -1,7 +1,7 @@
 "use client";
 
 import "./nav/nav.css";
-import { memo, useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
+import { memo, useCallback, useEffect, useRef, useState, useSyncExternalStore, type PointerEvent } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -27,6 +27,12 @@ type MegaKey = "ai" | "digital" | "products" | "infra";
 
 const OPEN_DELAY_MS = 70;
 const CLOSE_DELAY_MS = 180;
+
+/** Server + first client hydrate both return false; after hydrate returns true. */
+const subscribeNoop = () => () => {};
+function useIsClient() {
+  return useSyncExternalStore(subscribeNoop, () => true, () => false);
+}
 
 const LABEL = {
   ai: "AI Services",
@@ -179,6 +185,8 @@ const DesktopMegaLayer = memo(function DesktopMegaLayer({
 
 function DesktopMenu({ pathname }: { pathname: string }) {
   const [megaOpen, setMegaOpen] = useState<MegaKey | null>(null);
+  // Portal mounts only after hydrate so SSR HTML matches the first client render.
+  const portalReady = useIsClient();
   const megaOpenRef = useRef<MegaKey | null>(null);
   const suppressHoverRef = useRef(false);
   const openTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -349,7 +357,7 @@ function DesktopMenu({ pathname }: { pathname: string }) {
         </NavActiveLink>
       </div>
 
-      {typeof document !== "undefined" &&
+      {portalReady &&
         createPortal(
           <>
             <NavMegaBackdrop open={Boolean(megaOpen)} onClose={closeMega} />

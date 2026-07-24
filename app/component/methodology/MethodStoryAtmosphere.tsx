@@ -7,7 +7,7 @@ import { useReducedMotion } from "../features/useReducedMotion";
 import { useAnimationActiveRef } from "../features/useAnimationActiveRef";
 import { createAnimationScheduler } from "../features/animationScheduler";
 
-const COLORS = ["#A855F7", "#7C3AED", "#C084FC", "#6366F1"];
+const COLORS = ["#A855F7", "#7C3AED", "#C084FC", "#6366F1"] as const;
 
 interface Particle {
   x: number;
@@ -16,6 +16,7 @@ interface Particle {
   vy: number;
   r: number;
   alpha: number;
+  color: string;
 }
 
 function hexToRgba(hex: string, alpha: number) {
@@ -33,7 +34,7 @@ export default function MethodStoryAtmosphere() {
   const activeRef = useAnimationActiveRef(mountRef);
 
   useEffect(() => {
-    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 30);
+    const { requestAnimationFrame, cancelAnimationFrame } = createAnimationScheduler(activeRef, 24);
     if (reduced) return;
     const mount = mountRef.current;
     if (!mount) return;
@@ -42,7 +43,7 @@ export default function MethodStoryAtmosphere() {
     canvas.setAttribute("aria-hidden", "true");
     mount.appendChild(canvas);
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
     const g = ctx;
@@ -53,13 +54,14 @@ export default function MethodStoryAtmosphere() {
     let particles: Particle[] = [];
 
     function createParticles(count: number): Particle[] {
-      return Array.from({ length: count }, () => ({
+      return Array.from({ length: count }, (_, i) => ({
         x: Math.random() * w,
         y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.1,
         vy: (Math.random() - 0.5) * 0.07,
         r: 0.7 + Math.random() * 1.6,
         alpha: 0.06 + Math.random() * 0.14,
+        color: COLORS[i % COLORS.length],
       }));
     }
 
@@ -67,13 +69,13 @@ export default function MethodStoryAtmosphere() {
       const rect = mount!.getBoundingClientRect();
       w = Math.max(rect.width, 1);
       h = Math.max(rect.height, 1);
-      const dpr = Math.min(window.devicePixelRatio, 2);
+      const dpr = Math.min(window.devicePixelRatio, 1.5);
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
       g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      particles = createParticles(w < 640 ? 10 : 17);
+      particles = createParticles(w < 640 ? 8 : 12);
     }
 
     function frame() {
@@ -90,12 +92,9 @@ export default function MethodStoryAtmosphere() {
         if (p.x > w + 10) p.x = -10;
         if (p.y < -10) p.y = h + 10;
         if (p.y > h + 10) p.y = -10;
-        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-        const grad = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        grad.addColorStop(0, hexToRgba(color, p.alpha));
-        grad.addColorStop(1, hexToRgba(color, 0));
-        g.fillStyle = grad;
+        // Solid fill - no per-frame radial gradient allocation
         g.beginPath();
+        g.fillStyle = hexToRgba(p.color, p.alpha);
         g.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         g.fill();
       }
@@ -136,19 +135,26 @@ export function useMethodStoryParallax(
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const grid = sectionRef.current.querySelector(".method-story-atmosphere-grid");
-    const glow = sectionRef.current.querySelector(".method-story-atmosphere-glow");
-
+    const section = sectionRef.current;
+    const grid = section.querySelector(".method-story-atmosphere-grid");
+    const glow = section.querySelector(".method-story-atmosphere-glow");
     const triggers: ScrollTrigger[] = [];
 
+    // Match horizontal scrub (0.35) so parallax stays in sync without lag stacking
     if (grid) {
       triggers.push(
         ScrollTrigger.create({
-          trigger: sectionRef.current,
+          trigger: section,
           start: "top top",
-          end: "bottom bottom",
-          scrub: 1.2,
-          animation: gsap.to(grid, { x: -120, ease: "none" }),
+          end: () => {
+            const track = section.querySelector(".method-story-track") as HTMLElement | null;
+            const distance = track
+              ? Math.max(track.scrollWidth - window.innerWidth, 0)
+              : section.offsetHeight;
+            return `+=${distance}`;
+          },
+          scrub: 0.35,
+          animation: gsap.to(grid, { x: -120, ease: "none", force3D: true }),
         })
       );
     }
@@ -156,14 +162,20 @@ export function useMethodStoryParallax(
     if (glow) {
       triggers.push(
         ScrollTrigger.create({
-          trigger: sectionRef.current,
+          trigger: section,
           start: "top top",
-          end: "bottom bottom",
-          scrub: 0.8,
+          end: () => {
+            const track = section.querySelector(".method-story-track") as HTMLElement | null;
+            const distance = track
+              ? Math.max(track.scrollWidth - window.innerWidth, 0)
+              : section.offsetHeight;
+            return `+=${distance}`;
+          },
+          scrub: 0.35,
           animation: gsap.fromTo(
             glow,
             { x: 0, y: 0 },
-            { x: 60, y: -40, ease: "none" }
+            { x: 60, y: -40, ease: "none", force3D: true }
           ),
         })
       );

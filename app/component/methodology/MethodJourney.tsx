@@ -1,7 +1,7 @@
 "use client";
 
 import "./method-journey.css";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { homeMethodology } from "@/app/content/homepage-content";
@@ -24,6 +24,7 @@ export default function MethodJourney() {
 function MethodJourneyHorizontal() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const progressFillRef = useRef<HTMLDivElement>(null);
   const panelRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useMethodStoryParallax(sectionRef, true);
@@ -38,67 +39,71 @@ function MethodJourneyHorizontal() {
     const panels = panelRefs.current.filter(Boolean) as HTMLDivElement[];
     const inners = panels.map((p) => p.querySelector<HTMLElement>(".method-story-inner"));
     const panelCount = panels.length;
+    const easeOut = gsap.parseEase("power2.out");
+    const fill = progressFillRef.current;
 
     const getScrollDistance = () => Math.max(track.scrollWidth - window.innerWidth, 0);
 
+    // Initial focus on first panel - transform + opacity only (no filter)
     inners.forEach((inner, i) => {
       if (!inner) return;
       if (i === 0) {
-        gsap.set(inner, { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 });
+        gsap.set(inner, { opacity: 1, scale: 1, x: 0, force3D: true });
+      } else {
+        gsap.set(inner, { opacity: 0.35, scale: 0.95, x: 48, force3D: true });
       }
     });
 
+    if (fill) {
+      gsap.set(fill, { scaleX: 0, transformOrigin: "left center", force3D: true });
+    }
+
+    // Single ScrollTrigger: pin + horizontal scrub + panel focus in one onUpdate
     const horizontalTween = gsap.to(track, {
       x: () => -getScrollDistance(),
       ease: "none",
+      force3D: true,
       scrollTrigger: {
         trigger: section,
         pin: true,
-        scrub: 0.85,
+        scrub: 0.35,
         end: () => `+=${getScrollDistance()}`,
         invalidateOnRefresh: true,
         anticipatePin: 1,
-      },
-    });
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const focus = progress * (panelCount - 1);
 
-    const progressTrigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: () => `+=${getScrollDistance()}`,
-      scrub: 0.85,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const focus = progress * (panelCount - 1);
+          if (fill) {
+            fill.style.transform = `scaleX(${progress})`;
+          }
 
-        const fill = section.querySelector<HTMLElement>(".method-story-progress-fill");
-        if (fill) {
-          gsap.set(fill, { scaleX: progress, transformOrigin: "left center" });
-        }
+          for (let i = 0; i < inners.length; i++) {
+            const inner = inners[i];
+            if (!inner) continue;
 
-        inners.forEach((inner, i) => {
-          if (!inner) return;
-          const dist = Math.abs(focus - i);
-          const t = Math.max(0, 1 - dist * 1.15);
-          const eased = gsap.parseEase("power2.out")(t);
+            const dist = Math.abs(focus - i);
+            const t = Math.max(0, 1 - dist * 1.15);
+            const eased = easeOut(t);
+            const opacity = 0.35 + eased * 0.65;
+            const scale = 0.95 + eased * 0.05;
+            const x = (1 - eased) * (i < focus ? -48 : 48);
 
-          gsap.set(inner, {
-            opacity: 0.35 + eased * 0.65,
-            scale: 0.95 + eased * 0.05,
-            filter: `blur(${(1 - eased) * 10}px)`,
-            x: (1 - eased) * (i < focus ? -48 : 48),
-          });
-        });
+            // One compositor write: translate3d + scale. No filter blur.
+            inner.style.opacity = String(opacity);
+            inner.style.transform = `translate3d(${x}px,0,0) scale(${scale})`;
+          }
+        },
       },
     });
 
     const onResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", onResize, { passive: true });
     requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => {
       window.removeEventListener("resize", onResize);
       horizontalTween.scrollTrigger?.kill();
-      progressTrigger.kill();
       horizontalTween.kill();
     };
   }, []);
@@ -137,7 +142,7 @@ function MethodJourneyHorizontal() {
         <div className="method-story-progress" aria-hidden>
           <span className="method-story-progress-label">Methodology</span>
           <div className="method-story-progress-track">
-            <div className="method-story-progress-fill" />
+            <div ref={progressFillRef} className="method-story-progress-fill" />
           </div>
         </div>
       </div>
@@ -161,7 +166,7 @@ function MethodJourneyStatic() {
   );
 }
 
-function IntroContent() {
+const IntroContent = memo(function IntroContent() {
   return (
     <div className="method-story-inner">
       <p className="method-story-eyebrow">{homeMethodology.label}</p>
@@ -169,9 +174,9 @@ function IntroContent() {
       <p className="method-story-desc"><FormattedText text={homeMethodology.description} /></p>
     </div>
   );
-}
+});
 
-function StageContent({ stage }: { stage: Stage }) {
+const StageContent = memo(function StageContent({ stage }: { stage: Stage }) {
   return (
     <div className="method-story-inner">
       <p className="method-story-stage-num" aria-hidden>
@@ -190,4 +195,4 @@ function StageContent({ stage }: { stage: Stage }) {
       </ul>
     </div>
   );
-}
+});

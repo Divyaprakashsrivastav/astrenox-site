@@ -97,7 +97,8 @@ export default function EnterpriseCloudPageClient() {
       title: c.cloudModernization.title,
       body: c.cloudModernization.intro,
       isHeading: true,
-    }...c.cloudModernization.items.map((item) => ({
+    },
+    ...c.cloudModernization.items.map((item) => ({
       title: item.title,
       body: item.body,
       isHeading: false,
@@ -106,7 +107,8 @@ export default function EnterpriseCloudPageClient() {
       title: c.managedServices.title,
       body: c.managedServices.intro,
       isHeading: true,
-    }...c.managedServices.items.map((item) => ({
+    },
+    ...c.managedServices.items.map((item) => ({
       title: item.title,
       body: item.body,
       isHeading: false,

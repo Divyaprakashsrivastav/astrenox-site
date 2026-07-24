@@ -74,15 +74,15 @@ function buildEdges(): [GraphNode, GraphNode][] {
   }
 
   for (let i = 0; i < mid.length; i++) {
-    edges.push([mid[i]! mid[(i + 1) % mid.length]!]);
+    edges.push([mid[i]!, mid[(i + 1) % mid.length]!]);
   }
 
   for (let i = 0; i < outer.length; i++) {
-    if (i % 2 === 0) edges.push([outer[i]! mid[i % mid.length]!]);
+    if (i % 2 === 0) edges.push([outer[i]!, mid[i % mid.length]!]);
   }
 
   for (let i = 0; i < inner.length; i++) {
-    edges.push([inner[i]! mid[i % mid.length]!]);
+    edges.push([inner[i]!, mid[i % mid.length]!]);
   }
 
   return edges;

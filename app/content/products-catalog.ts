@@ -164,7 +164,8 @@ const genAiItem: ProductCatalogItem = {
   subtitle: genAiSection.title,
   overview: [genAiSection.description],
   chips: [
-    ...chipsFromBullets(genAiSection.pillars.items, "gen-pillar")...genAiSection.industries.flatMap((ind, ii) =>
+    ...chipsFromBullets(genAiSection.pillars.items, "gen-pillar"),
+    ...genAiSection.industries.flatMap((ind, ii) =>
       ind.solutions.map((s, si) => chipFromBullet(s, si, `gen-${ii}`))
     ),
   ],
@@ -186,7 +187,8 @@ const genAiItem: ProductCatalogItem = {
       bullets: genAiSection.industries.flatMap((ind) =>
         ind.solutions.map((s) => `[${ind.title}] ${s}`)
       ),
-    }...genAiSection.industries.map((ind) => ({
+    },
+    ...genAiSection.industries.map((ind) => ({
       id: `gen-${ind.id}`,
       title: ind.title,
       paragraphs: [...ind.solutions],
@@ -454,7 +456,7 @@ function industryOverviewItem(
 function industryDetailedItem(
   detail: (typeof industrySolutionsSection.detailed)[number]
 ): ProductCatalogItem {
-  const allBullets = [...detail.aiSolutions.items...detail.customDev.items];
+  const allBullets = [...detail.aiSolutions.items, ...detail.customDev.items];
   return {
     id: detail.id,
     title: detail.title,
@@ -519,7 +521,10 @@ export const productsCatalog: ProductCatalogItem[] = [
   genAiItem,
   softwareFactoryItem,
   missionCriticalItem,
-  publicSectorItem...infrastructureSection.panels.map(infrastructureItem)...industrySolutionsSection.overviews.map(industryOverviewItem)...industrySolutionsSection.detailed.map(industryDetailedItem),
+  publicSectorItem,
+  ...infrastructureSection.panels.map(infrastructureItem),
+  ...industrySolutionsSection.overviews.map(industryOverviewItem),
+  ...industrySolutionsSection.detailed.map(industryDetailedItem),
   ctaItem,
 ];
 
