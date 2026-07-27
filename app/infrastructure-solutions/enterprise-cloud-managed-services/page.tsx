@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import EnterpriseCloudPageClient from "@/app/component/enterprise-cloud-page/EnterpriseCloudPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const EnterpriseCloudPageClient = dynamic(() => import("@/components/enterprise-cloud-page/EnterpriseCloudPageClient"));
 import { enterpriseCloudPageContent } from "@/app/content/enterprise-cloud-page-content";
 
 export const metadata: Metadata = {

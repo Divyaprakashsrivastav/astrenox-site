@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const configPath = path.join("app/component/home/technology-ecosystem-config.ts");
+const configPath = path.join("components/home/technology-ecosystem-config.ts");
 const src = fs.readFileSync(configPath, "utf8");
 const files = [...src.matchAll(/file:\s*"([^"]+\.svg)"/g)].map((m) => m[1]);
 const techDir = path.join("public/tech");

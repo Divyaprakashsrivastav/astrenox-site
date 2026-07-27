@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import ServicePage from "@/app/component/service-page/ServicePage";
-import AdvisoryImmersiveHero from "@/app/component/ai-consulting-advisory/AdvisoryImmersiveHero";
-import AdvisoryOverview from "@/app/component/ai-consulting-advisory/AdvisoryOverview";
-import AdvisoryStrategyJourney from "@/app/component/ai-consulting-advisory/AdvisoryStrategyJourney";
-import AdvisoryCapabilityMap from "@/app/component/ai-consulting-advisory/AdvisoryCapabilityMap";
-import AdvisoryServiceOfferings from "@/app/component/ai-consulting-advisory/AdvisoryServiceOfferings";
+import SiteLayout from "@/components/layout/SiteLayout";
+import ServicePage from "@/components/service-page/ServicePage";
+import AdvisoryImmersiveHero from "@/components/ai-consulting-advisory/AdvisoryImmersiveHero";
+import AdvisoryOverview from "@/components/ai-consulting-advisory/AdvisoryOverview";
+import AdvisoryStrategyJourney from "@/components/ai-consulting-advisory/AdvisoryStrategyJourney";
+import AdvisoryCapabilityMap from "@/components/ai-consulting-advisory/AdvisoryCapabilityMap";
+import AdvisoryServiceOfferings from "@/components/ai-consulting-advisory/AdvisoryServiceOfferings";
 import { aiConsultingAdvisoryContent } from "@/app/content/service-pages";
-import "@/app/component/ai-consulting-advisory/ai-consulting-advisory-hero.css";
-import "@/app/component/ai-consulting-advisory/advisory-overview.css";
-import "@/app/component/ai-consulting-advisory/advisory-strategy-journey.css";
-import "@/app/component/ai-consulting-advisory/advisory-capability-map.css";
-import "@/app/component/ai-consulting-advisory/advisory-service-offerings.css";
+import "@/components/ai-consulting-advisory/ai-consulting-advisory-hero.css";
+import "@/components/ai-consulting-advisory/advisory-overview.css";
+import "@/components/ai-consulting-advisory/advisory-strategy-journey.css";
+import "@/components/ai-consulting-advisory/advisory-capability-map.css";
+import "@/components/ai-consulting-advisory/advisory-service-offerings.css";
 
 export const metadata: Metadata = {
   title: aiConsultingAdvisoryContent.metadata.title,

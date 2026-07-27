@@ -1,17 +1,20 @@
-import SiteLayout from "./component/layout/SiteLayout";
-import Hero from "./component/Hero";
-import ProcessSection from "./component/home/ProcessSection";
-import TriFlywheel from "./component/home/TriFlywheel";
-import EnterpriseEcosystem from "./component/home/EnterpriseEcosystem";
-import HomeIndustries from "./component/home/HomeIndustries";
-import HomeMetrics from "./component/home/HomeMetrics";
-import ServicesSection from "./component/home/ServicesSection";
-import TechnologyEcosystem from "./component/home/TechnologyEcosystem";
-import HomeProducts from "./component/home/HomeProducts";
-import ProjectsSection from "./component/home/ProjectsSection";
-import HomeTestimonials from "./component/home/HomeTestimonials";
-import HomeSiteEnding from "./component/home/HomeSiteEnding";
-import HomeFlow from "./component/home/HomeFlow";
+import dynamic from "next/dynamic";
+import SiteLayout from "@/components/layout/SiteLayout";
+import Hero from "@/components/Hero";
+import HomeFlow from "@/components/home/HomeFlow";
+
+/* Below-fold sections: split into separate chunks so first paint stays light */
+const ProcessSection = dynamic(() => import("@/components/home/ProcessSection"));
+const TriFlywheel = dynamic(() => import("@/components/home/TriFlywheel"));
+const EnterpriseEcosystem = dynamic(() => import("@/components/home/EnterpriseEcosystem"));
+const HomeIndustries = dynamic(() => import("@/components/home/HomeIndustries"));
+const HomeMetrics = dynamic(() => import("@/components/home/HomeMetrics"));
+const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"));
+const TechnologyEcosystem = dynamic(() => import("@/components/home/TechnologyEcosystem"));
+const HomeProducts = dynamic(() => import("@/components/home/HomeProducts"));
+const ProjectsSection = dynamic(() => import("@/components/home/ProjectsSection"));
+const HomeTestimonials = dynamic(() => import("@/components/home/HomeTestimonials"));
+const HomeSiteEnding = dynamic(() => import("@/components/home/HomeSiteEnding"));
 
 export default function Home() {
   return (

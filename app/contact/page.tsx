@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import ContactPageClient from "@/app/component/pages/ContactPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const ContactPageClient = dynamic(() => import("@/components/pages/ContactPageClient"));
 import { contactPage } from "@/app/content/site-pages";
 
 export const metadata: Metadata = {

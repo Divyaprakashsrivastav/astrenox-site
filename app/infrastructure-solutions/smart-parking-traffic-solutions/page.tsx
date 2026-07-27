@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import SptpPageClient from "@/app/component/smart-parking-page/SptpPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const SptpPageClient = dynamic(() => import("@/components/smart-parking-page/SptpPageClient"));
 import { smartParkingPageContent } from "@/app/content/smart-parking-page-content";
 
 export const metadata: Metadata = {

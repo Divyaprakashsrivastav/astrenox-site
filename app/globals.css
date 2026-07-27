@@ -107,22 +107,20 @@ body {
 .premium-card,
 .glass-card,
 .enterprise-card {
-  background: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  transition:
-    transform 0.25s var(--ease-premium),
-    box-shadow 0.25s var(--ease-premium),
-    border-color 0.25s var(--ease-premium);
+  padding: 1.35rem;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .premium-card:hover,
 .glass-card:hover,
 .enterprise-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-  border-color: rgba(139, 61, 125, 0.16);
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 28px rgba(129, 140, 248, 0.15);
 }
 
 .glass-card {
@@ -6395,10 +6393,17 @@ body {
 
 .method-stage {
   position: relative;
-  padding: 1.25rem;
-  background: #fff;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-card);
+  padding: 1.35rem;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.method-stage:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 28px rgba(129, 140, 248, 0.15);
 }
 
 .method-stage-marker {

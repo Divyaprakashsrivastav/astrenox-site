@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import SoftwareFactoryPageClient from "@/app/component/software-factory/SoftwareFactoryPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const SoftwareFactoryPageClient = dynamic(() => import("@/components/software-factory/SoftwareFactoryPageClient"));
 import { softwareFactoryContent } from "@/app/content/software-factory-content";
 
 export const metadata: Metadata = {

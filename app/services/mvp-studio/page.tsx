@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import MVPStudioPageClient from "@/app/component/mvp-studio/MVPStudioPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const MVPStudioPageClient = dynamic(() => import("@/components/mvp-studio/MVPStudioPageClient"));
 import { mvpStudioContent } from "@/app/content/mvp-studio-content";
 
 export const metadata: Metadata = {

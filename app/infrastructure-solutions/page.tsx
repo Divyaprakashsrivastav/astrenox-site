@@ -1,4 +1,4 @@
-import { createPlaceholderRoute } from "@/app/lib/placeholder-route";
+import { createPlaceholderRoute } from "@/lib/placeholder-route";
 
 const route = createPlaceholderRoute("/infrastructure-solutions");
 export const metadata = route.metadata;

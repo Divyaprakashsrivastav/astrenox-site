@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import PageHero from "@/app/component/pages/PageHero";
-import PageCTA from "@/app/component/pages/PageCTA";
-import ResearchLibraryGrid from "@/app/component/pages/ResearchLibraryGrid";
-import Research from "@/app/component/Research";
-import SectionHeader from "@/app/component/ui/SectionHeader";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const PageHero = dynamic(() => import("@/components/pages/PageHero"));
+const PageCTA = dynamic(() => import("@/components/pages/PageCTA"));
+const ResearchLibraryGrid = dynamic(() => import("@/components/pages/ResearchLibraryGrid"));
+const Research = dynamic(() => import("@/components/Research"));
+const SectionHeader = dynamic(() => import("@/components/ui/SectionHeader"));
 import { researchPage } from "@/app/content/site-pages";
 
 export const metadata: Metadata = {

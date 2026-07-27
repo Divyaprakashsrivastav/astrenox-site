@@ -1,8 +1,3 @@
-/* ═══════════════════════════════════════════════════════════
-   SITE SCALE - typography, spacing, proportions
-   Theme, colors, animations unchanged - sizing only
-   ═══════════════════════════════════════════════════════════ */
-
 :root {
   --scale-hero: clamp(3.4rem, 5vw, 5rem);
   --scale-section: clamp(2.2rem, 3vw, 3.2rem);
@@ -400,4 +395,28 @@
   .metrics-flow-card {
     animation: none !important;
   }
+}
+
+/* Emphasized terms in body copy (FormattedText / auto-emphasis) */
+main strong,
+.page-enter strong,
+.mvp-canvas strong,
+.home-flow strong,
+.fp-page strong,
+.pp-page strong,
+.rtd-page strong,
+.asf-page strong,
+.aie-page strong,
+.indp-page strong,
+.ecms-page strong,
+.bmsp-page strong,
+.sptp-page strong,
+.adv-overview-editorial strong,
+.adv-cap-card strong,
+.adv-offering-row strong,
+.adv-journey-card strong,
+.ind-panel-desc strong,
+.hp-card-desc strong {
+  color: rgba(250, 250, 251, 0.95);
+  font-weight: 650;
 }

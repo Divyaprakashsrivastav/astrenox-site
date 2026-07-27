@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import PageHero from "@/app/component/pages/PageHero";
-import PageCTA from "@/app/component/pages/PageCTA";
-import Features from "@/app/component/Features";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const PageHero = dynamic(() => import("@/components/pages/PageHero"));
+const PageCTA = dynamic(() => import("@/components/pages/PageCTA"));
+const Features = dynamic(() => import("@/components/Features"));
 import { servicesHub, serviceLinks } from "@/app/content/site-pages";
 
 export const metadata: Metadata = {

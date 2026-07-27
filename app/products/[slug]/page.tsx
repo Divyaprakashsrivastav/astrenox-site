@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import FlagshipProductPageClient from "@/app/component/products/FlagshipProductPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const FlagshipProductPageClient = dynamic(() => import("@/components/products/FlagshipProductPageClient"));
 import {
   flagshipProducts,
   getFlagshipProduct,

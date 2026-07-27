@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import AIEngineeringPageClient from "@/app/component/ai-engineering/AIEngineeringPageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const AIEngineeringPageClient = dynamic(() => import("@/components/ai-engineering/AIEngineeringPageClient"));
 import { aiEngineeringPageContent } from "@/app/content/ai-engineering-content";
 
 export const metadata: Metadata = {

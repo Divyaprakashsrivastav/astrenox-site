@@ -84,7 +84,13 @@
 .indp-section:not(.indp-section--journey),
 .qe-block,
 .coe-block,
-.aipe-block {
+.aipe-block,
+.asf-block,
+.rtd-block,
+.mvp-block,
+.hp-section,
+.svc-section,
+.home-flow > section:not(.hero-section):not(.hero) {
   content-visibility: auto;
   contain-intrinsic-size: auto 900px;
 }

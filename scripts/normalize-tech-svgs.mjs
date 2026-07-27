@@ -1,12 +1,12 @@
 /**
  * Normalizes /public/tech/*.svg for currentColor rendering on dark backgrounds.
- * Also generates app/component/home/tech-logo-assets.ts for inline SVG usage.
+ * Also generates components/home/tech-logo-assets.ts for inline SVG usage.
  */
 import fs from "fs";
 import path from "path";
 
 const SVG_DIR = "public/tech";
-const OUT_FILE = "app/component/home/tech-logo-assets.ts";
+const OUT_FILE = "components/home/tech-logo-assets.ts";
 
 /** Official brand hex for hover (null = hover to pure white) */
 const BRAND_HEX = {

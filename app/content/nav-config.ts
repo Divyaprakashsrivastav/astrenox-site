@@ -58,18 +58,7 @@ export const navAiServices: NavMegaGroup = {
 
 export const navDigitalConsulting: NavMegaGroup = {
   label: "Digital Consulting & IT Services",
-  layout: "catalog",
   items: [
-    {
-      label: "Hire Tech Talent & Embedded Teams",
-      href: "/careers",
-      description: "Embedded engineers, ML specialists, and DevOps squads on demand.",
-    },
-    {
-      label: "Blockchain & Web3 Consulting",
-      href: "/services/blockchain-web3-consulting",
-      description: "Enterprise blockchain architecture and smart contract engineering.",
-    },
     {
       label: "IT Services & Consulting",
       href: "/services/digital-it-consulting",
@@ -81,12 +70,22 @@ export const navDigitalConsulting: NavMegaGroup = {
       description: "End-to-end product engineering for AI-first software.",
     },
     {
+      label: "Hire Tech Talent & Embedded Teams",
+      href: "/careers",
+      description: "Embedded engineers, ML specialists, and DevOps squads on demand.",
+    },
+    {
       label: "Quality Engineering & Software Testing",
       href: "/services/quality-engineering",
       description: "Automated QA, performance testing, and release governance.",
     },
     {
-      label: "CoE",
+      label: "Blockchain & Web3 Consulting",
+      href: "/services/blockchain-web3-consulting",
+      description: "Enterprise blockchain architecture and smart contract engineering.",
+    },
+    {
+      label: "Center of Excellence",
       href: "/services/center-of-excellence",
       description: "Dedicated CoE setup for AI, data, and platform engineering.",
     },

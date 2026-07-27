@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import PlatformHero from "@/app/component/platform/PlatformHero";
-import EnterpriseSearchSection from "@/app/component/platform/EnterpriseSearchSection";
-import KnowledgeGraphPipeline from "@/app/component/platform/KnowledgeGraphPipeline";
-import AIAgentsSection from "@/app/component/platform/AIAgentsSection";
-import WorkflowAutomationSection from "@/app/component/platform/WorkflowAutomationSection";
-import IntegrationsHub from "@/app/component/platform/IntegrationsHub";
-import PlatformSecuritySection from "@/app/component/platform/PlatformSecuritySection";
-import PlatformDemoCTA from "@/app/component/platform/PlatformDemoCTA";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const PlatformHero = dynamic(() => import("@/components/platform/PlatformHero"));
+const EnterpriseSearchSection = dynamic(() => import("@/components/platform/EnterpriseSearchSection"));
+const KnowledgeGraphPipeline = dynamic(() => import("@/components/platform/KnowledgeGraphPipeline"));
+const AIAgentsSection = dynamic(() => import("@/components/platform/AIAgentsSection"));
+const WorkflowAutomationSection = dynamic(() => import("@/components/platform/WorkflowAutomationSection"));
+const IntegrationsHub = dynamic(() => import("@/components/platform/IntegrationsHub"));
+const PlatformSecuritySection = dynamic(() => import("@/components/platform/PlatformSecuritySection"));
+const PlatformDemoCTA = dynamic(() => import("@/components/platform/PlatformDemoCTA"));
 import { intelligencePlatform } from "@/app/content/platform-content";
 
 export const metadata: Metadata = {

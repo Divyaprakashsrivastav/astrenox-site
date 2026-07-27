@@ -213,22 +213,27 @@ export const readyToDeployContent = {
       {
         title: "Configurable CRM Architecture",
         body: "The CRM can be structured around your organization rather than requiring teams to adapt to predefined processes. Custom objects, fields and relationships can be developed for accounts, contacts, leads, opportunities, deals, projects, subscriptions, service requests or other industry-specific records. Teams can operate through configurable table, pipeline, Kanban and activity views with advanced filtering, saved views, search, notes, tasks, attachments and complete interaction histories. Role-specific dashboards and workspaces can be created for sales, marketing, customer success, operations and leadership teams. Email and calendar synchronization can connect customer conversations and meetings directly with the relevant CRM records.",
+        photo: "/images/rtd-crm/configurable-crm-architecture.jpg",
       },
       {
         title: "Workflow Automation and AI Intelligence",
         body: "Visual workflows can automate business processes using record changes, schedules, manual actions or incoming webhooks. These workflows can handle lead assignment, approval sequences, follow-ups, notifications, data updates, account escalations and other multi-step processes. Secure AI capabilities can be integrated to provide contextual record and interaction summaries, semantic search across customer information, automated email and response drafting, data extraction from emails, tickets and documents, lead scoring, opportunity prioritization and forecasting, account-health monitoring and next-best-action recommendations, and AI agents for executing approved CRM tasks and workflows. AI functionality can be configured around enterprise permissions and approval controls to prevent unauthorized actions or access to restricted information.",
+        photo: "/images/rtd-crm/workflow-automation-ai-intelligence.jpg",
       },
       {
         title: "Integrations and Extensibility",
         body: "REST and GraphQL APIs, webhooks and custom integration services enable the CRM to connect with ERP systems, billing platforms, communication tools, support systems, marketing platforms and proprietary databases. Custom applications, server-side logic, branded interfaces and industry-specific modules can be developed as operational requirements evolve. Existing customer data can also be cleaned, mapped and migrated from legacy CRM systems, spreadsheets or internal databases.",
+        photo: "/images/rtd-crm/integrations-extensibility.jpg",
       },
       {
         title: "Enterprise Deployment, Security and Compliance",
         body: "The CRM can be deployed within a dedicated VPC, private cloud or on-premise environment according to data-residency, governance and infrastructure requirements. Containerized deployment supports controlled scaling, workload isolation, backup management and reliable system upgrades. Enterprise security can include granular role-based and record-level permissions, SSO, MFA, encryption in transit and at rest, audit logs, secrets management, session controls and configurable data-retention policies. Security testing, vulnerability management and deployment controls can also be implemented to support the organization's applicable GDPR, ISO 27001, SOC 2, HIPAA or internal compliance requirements.",
+        photo: "/images/rtd-crm/enterprise-deployment-security-compliance.jpg",
       },
       {
         title: "Implementation and Lifecycle Support",
         body: "Our implementation engineers manage solution design, configuration, custom development, integrations, data migration, testing, deployment and user enablement. A dedicated Key Account Manager coordinates requirements, milestones, stakeholder communication and service delivery throughout implementation and after go-live. Post-deployment services include system monitoring, incident resolution, security patching, dependency and version upgrades, performance optimization, backup verification, workflow improvements and development of additional CRM features. Support and maintenance plans can be structured around defined response times, operational priorities and enterprise service requirements.",
+        photo: "/images/rtd-crm/implementation-lifecycle-support.jpg",
       },
     ],
   },

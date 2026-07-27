@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import CenterOfExcellencePageClient from "@/app/component/center-of-excellence/CenterOfExcellencePageClient";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const CenterOfExcellencePageClient = dynamic(() => import("@/components/center-of-excellence/CenterOfExcellencePageClient"));
 import { centerOfExcellencePageContent } from "@/app/content/center-of-excellence-content";
 
 export const metadata: Metadata = {

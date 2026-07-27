@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import SiteLayout from "@/app/component/layout/SiteLayout";
-import PageHero from "@/app/component/pages/PageHero";
-import PageCTA from "@/app/component/pages/PageCTA";
-import SectionHeader from "@/app/component/ui/SectionHeader";
+import SiteLayout from "@/components/layout/SiteLayout";
+import dynamic from "next/dynamic";
+const PageHero = dynamic(() => import("@/components/pages/PageHero"));
+const PageCTA = dynamic(() => import("@/components/pages/PageCTA"));
+const SectionHeader = dynamic(() => import("@/components/ui/SectionHeader"));
 import { aboutPage, partnerLogos } from "@/app/content/site-pages";
 
 export const metadata: Metadata = {
