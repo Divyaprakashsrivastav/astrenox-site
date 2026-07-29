@@ -57,10 +57,6 @@ function routeActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function allItems(group: NavMegaGroup): NavMegaItem[] {
-  return [...group.items, ...(group.sections?.flatMap((section) => section.items) ?? [])];
-}
-
 type MegaTriggerProps = {
   id: MegaKey;
   label: string;
@@ -110,33 +106,6 @@ const MegaTrigger = memo(function MegaTrigger({
         {active && <span className="dock-link-active-bar" aria-hidden />}
       </button>
     </div>
-  );
-});
-
-const DrawerRow = memo(function DrawerRow({
-  item,
-  onNavigate,
-  active,
-}: {
-  item: NavMegaItem;
-  onNavigate: () => void;
-  active?: boolean;
-}) {
-  return (
-    <Link
-      href={item.href}
-      onClick={onNavigate}
-      className={`dock-drawer-card${active ? " dock-drawer-card--active" : ""}`}
-      aria-current={active ? "page" : undefined}
-    >
-      <span className="dock-drawer-card-copy">
-        <span className="dock-drawer-card-title">{item.label}</span>
-        <span className="dock-drawer-card-desc">{item.description}</span>
-      </span>
-      <span className="dock-drawer-card-arrow" aria-hidden>
-        →
-      </span>
-    </Link>
   );
 });
 
@@ -372,7 +341,28 @@ function DesktopMenu({ pathname }: { pathname: string }) {
   );
 }
 
-function MobileDrawer({
+function MobileDropdownLink({
+  item,
+  onNavigate,
+  active,
+}: {
+  item: NavMegaItem;
+  onNavigate: () => void;
+  active?: boolean;
+}) {
+  return (
+    <Link
+      href={item.href}
+      onClick={onNavigate}
+      className={`dock-dd-link${active ? " dock-dd-link--active" : ""}`}
+      aria-current={active ? "page" : undefined}
+    >
+      {item.label}
+    </Link>
+  );
+}
+
+function MobileDropdown({
   pathname,
   open,
   accordion,
@@ -388,98 +378,73 @@ function MobileDrawer({
   return (
     <>
       <div
-        className={`dock-drawer-scrim${open ? " is-open" : ""}`}
+        className={`dock-dd-scrim${open ? " is-open" : ""}`}
         onClick={onClose}
         aria-hidden
       />
-      <aside
-        id="dock-drawer"
+      <div
+        id="dock-mobile-dropdown"
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`dock-drawer${open ? " is-open" : ""}`}
+        className={`dock-dd${open ? " is-open" : ""}`}
         aria-hidden={!open}
+        inert={!open ? true : undefined}
       >
-        <div className="dock-drawer-head">
-          <AstrenoxLogo variant="drawer" onClick={onClose} />
-          <button type="button" className="dock-drawer-close" onClick={onClose} aria-label="Close menu">
-            <X size={20} />
-          </button>
-        </div>
-        <div className="dock-drawer-body">
-          <NavActiveLink href="/" active={routeActive(pathname, "/")} className="dock-drawer-link" onClick={onClose}>
+        <div className="dock-dd-body">
+          <NavActiveLink href="/" active={routeActive(pathname, "/")} className="dock-dd-top" onClick={onClose}>
             Home
           </NavActiveLink>
 
-          <div className="dock-drawer-mobile">
-            {MEGA_KEYS.map((key) => {
-              const expanded = accordion === key;
-              const group = GROUPS[key];
-              return (
-                <div key={key} className={`dock-drawer-accordion${expanded ? " is-open" : ""}`}>
-                  <button
-                    type="button"
-                    className="dock-drawer-accordion-btn"
-                    onClick={() => onAccordion(key)}
-                    aria-expanded={expanded}
-                  >
-                    <span>{LABEL[key]}</span>
-                    <ChevronDown size={18} className={expanded ? "rotate-180" : ""} aria-hidden />
-                  </button>
-                  <div className="dock-drawer-accordion-panel">
-                    <div>
-                      <div className="dock-drawer-cards">
-                        {group.items.map((item) => (
-                          <DrawerRow
+          {MEGA_KEYS.map((key) => {
+            const expanded = accordion === key;
+            const group = GROUPS[key];
+            const panelId = `dock-dd-panel-${key}`;
+            return (
+              <div key={key} className={`dock-dd-item${expanded ? " is-open" : ""}`}>
+                <button
+                  type="button"
+                  className="dock-dd-trigger"
+                  onClick={() => onAccordion(key)}
+                  aria-expanded={expanded}
+                  aria-controls={panelId}
+                >
+                  <span>{LABEL[key]}</span>
+                  <ChevronDown size={16} className="dock-dd-chevron" aria-hidden />
+                </button>
+                <div id={panelId} className="dock-dd-panel" role="region">
+                  <div className="dock-dd-panel-inner">
+                    {group.items.map((item) => (
+                      <MobileDropdownLink
+                        key={item.href}
+                        item={item}
+                        onNavigate={onClose}
+                        active={routeActive(pathname, item.href)}
+                      />
+                    ))}
+                    {group.sections?.map((section) => (
+                      <div key={section.title} className="dock-dd-section">
+                        <p className="dock-dd-section-label">{section.title}</p>
+                        {section.items.map((item) => (
+                          <MobileDropdownLink
                             key={item.href}
                             item={item}
                             onNavigate={onClose}
                             active={routeActive(pathname, item.href)}
                           />
                         ))}
-                        {group.sections?.map((section) => (
-                          <div key={section.title}>
-                            <p className="dock-drawer-section-label">{section.title}</p>
-                            {section.items.map((item) => (
-                              <DrawerRow
-                                key={item.href}
-                                item={item}
-                                onNavigate={onClose}
-                                active={routeActive(pathname, item.href)}
-                              />
-                            ))}
-                          </div>
-                        ))}
                       </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
-          </div>
-
-          <div className="dock-drawer-tablet">
-            {MEGA_KEYS.map((key) => (
-              <div key={key} className="dock-drawer-block">
-                <p className="dock-drawer-block-label">{LABEL[key]}</p>
-                <div className="dock-drawer-cards">
-                  {allItems(GROUPS[key]).map((item) => (
-                    <DrawerRow
-                      key={item.href}
-                      item={item}
-                      onNavigate={onClose}
-                      active={routeActive(pathname, item.href)}
-                    />
-                  ))}
-                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
 
           <NavActiveLink
             href={navIndustriesHref}
             active={routeActive(pathname, navIndustriesHref)}
-            className="dock-drawer-link"
+            className="dock-dd-top"
             onClick={onClose}
           >
             {LABEL.industries}
@@ -487,7 +452,7 @@ function MobileDrawer({
           <NavActiveLink
             href={navContactHref}
             active={routeActive(pathname, navContactHref)}
-            className="dock-drawer-link"
+            className="dock-dd-top"
             onClick={onClose}
           >
             {LABEL.contact}
@@ -498,32 +463,18 @@ function MobileDrawer({
             <ArrowRight size={15} strokeWidth={2.25} className="dock-cta-icon" aria-hidden />
           </Link>
         </div>
-      </aside>
+      </div>
     </>
   );
 }
 
-function MobileNavControls({ pathname }: { pathname: string }) {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [drawerReady, setDrawerReady] = useState(false);
-  const [accordion, setAccordion] = useState<MegaKey | null>(null);
-
-  const closeDrawer = useCallback(() => setDrawerOpen(false), []);
-  const toggleDrawer = useCallback(() => {
-    setDrawerReady(true);
-    setDrawerOpen((current) => !current);
-  }, []);
-  const toggleAccordion = useCallback((key: MegaKey) => {
-    setAccordion((current) => (current === key ? null : key));
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = drawerOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [drawerOpen]);
-
+function MobileNavControls({
+  open,
+  onToggle,
+}: {
+  open: boolean;
+  onToggle: () => void;
+}) {
   return (
     <>
       <Link href={navContactHref} className="dock-cta" aria-label="Schedule a call with Astrenox">
@@ -533,29 +484,57 @@ function MobileNavControls({ pathname }: { pathname: string }) {
       <button
         type="button"
         className="dock-burger"
-        aria-label={drawerOpen ? "Close menu" : "Open menu"}
-        aria-expanded={drawerOpen}
-        aria-controls="dock-drawer"
-        onClick={toggleDrawer}
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="dock-mobile-dropdown"
+        onClick={onToggle}
       >
-        {drawerOpen ? <X size={20} /> : <Menu size={20} />}
+        {open ? <X size={20} /> : <Menu size={20} />}
       </button>
-
-      {drawerReady && (
-        <MobileDrawer
-          pathname={pathname}
-          open={drawerOpen}
-          accordion={accordion}
-          onClose={closeDrawer}
-          onAccordion={toggleAccordion}
-        />
-      )}
     </>
   );
 }
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [accordion, setAccordion] = useState<MegaKey | null>(null);
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    setAccordion(null);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    setMenuOpen((current) => {
+      if (current) setAccordion(null);
+      return !current;
+    });
+  }, []);
+
+  const toggleAccordion = useCallback((key: MegaKey) => {
+    setAccordion((current) => (current === key ? null : key));
+  }, []);
+
+  useEffect(() => {
+    closeMenu();
+  }, [pathname, closeMenu]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeMenu();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen, closeMenu]);
 
   return (
     <div className="dock-shell">
@@ -571,10 +550,18 @@ export default function Navbar() {
             </div>
 
             <div className="dock-zone dock-zone--cta">
-              <MobileNavControls key={pathname} pathname={pathname} />
+              <MobileNavControls open={menuOpen} onToggle={toggleMenu} />
             </div>
           </div>
         </nav>
+
+        <MobileDropdown
+          pathname={pathname}
+          open={menuOpen}
+          accordion={accordion}
+          onClose={closeMenu}
+          onAccordion={toggleAccordion}
+        />
       </header>
     </div>
   );
