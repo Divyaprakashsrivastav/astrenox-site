@@ -19,7 +19,7 @@ const PRODUCTS = [
     description:
       "Solvoris brings company knowledge, conversations, documents, and contextual memory into one intelligent assistant. It helps teams find reliable answers, understand past decisions, manage priorities, and act with greater speed and clarity.",
     visual: "brain" as const,
-    image: "/images/products/solvoris.jpg",
+    image: "/images/products/solvoris.png",
   },
   {
     id: "astren",
@@ -28,7 +28,7 @@ const PRODUCTS = [
     description:
       "Astren helps organisations assess AI readiness, identify high-value opportunities, and create a practical roadmap for adoption. It aligns business goals, technology, data, people, and governance to move AI initiatives from planning to measurable execution.",
     visual: "workflow" as const,
-    image: "/images/products/astren.jpg",
+    image: "/images/products/astren.png",
   },
   {
     id: "akiren",
@@ -37,7 +37,7 @@ const PRODUCTS = [
     description:
       "Akiren connects workflows, business systems, data, teams, and AI agents in one operating environment. It enables companies to build, manage, govern, and scale agents that support daily operations and execute work across departments.",
     visual: "platform" as const,
-    image: "/images/products/akiren.jpg",
+    image: "/images/products/akiren.png",
   },
   {
     id: "orzora",
@@ -46,7 +46,7 @@ const PRODUCTS = [
     description:
       "Orzora brings documents, opportunities, tenders, proposals, and team collaboration into one AI-powered workspace. It helps teams qualify opportunities, analyse requirements, prepare responses, coordinate approvals, and manage the complete RFx process.",
     visual: "rfx" as const,
-    image: "/images/products/orzora.jpg",
+    image: "/images/products/orzora.png",
   },
 ] as const;
 

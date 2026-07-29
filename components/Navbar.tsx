@@ -563,7 +563,7 @@ export default function Navbar() {
         <nav aria-label="Main navigation" className="dock-bar">
           <div className="dock-grid">
             <div className="dock-zone dock-zone--brand">
-              <AstrenoxLogo variant="nav" height={40} />
+              <AstrenoxLogo variant="nav" height={36} />
             </div>
 
             <div className="dock-zone dock-zone--menu">

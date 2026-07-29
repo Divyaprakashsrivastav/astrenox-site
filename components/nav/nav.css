@@ -65,6 +65,17 @@
 
 .dock-zone--brand {
   justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.dock-zone--brand .ax-logo-link--nav {
+  height: 36px;
+}
+
+.dock-zone--brand .ax-brand-word {
+  font-size: 1.05rem;
 }
 
 .dock-zone--menu {
@@ -75,13 +86,8 @@
 
 .dock-zone--cta {
   justify-content: flex-end;
-  gap: 0.625rem;
-}
-
-.dock-zone--brand {
-  display: flex;
-  align-items: center;
-  min-height: 40px;
+  gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 /* Legacy text brand - replaced by AstrenoxLogo */
@@ -102,19 +108,19 @@
   text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
 }
 
-/* ── Center menu - 14px / 18px gaps, never clip ── */
+/* ── Center menu - full labels, denser on mid widths ── */
 .dock-menu {
   display: none;
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: 18px;
+  gap: clamp(0.4rem, 0.85vw, 1.125rem);
   width: 100%;
   min-width: 0;
   overflow: visible;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .dock-menu {
     display: flex;
   }
@@ -129,12 +135,12 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.12rem;
   padding: 0.2rem 0;
   font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
   color: rgba(255, 255, 255, 0.58);
   border: none;
   background: transparent;
@@ -143,6 +149,12 @@
   white-space: nowrap;
   flex-shrink: 0;
   transition: color 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 1200px) {
+  .dock-link {
+    font-size: 13px;
+  }
 }
 
 @media (min-width: 1500px) {
@@ -221,10 +233,10 @@
 .dock-cta {
   display: none;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.5625rem 1.05rem;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
   font-family: var(--font-body, ui-sans-serif, system-ui, sans-serif);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.1px;
   color: #fff;
@@ -236,9 +248,42 @@
   transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (min-width: 1200px) {
+/* Compact CTA on tablet / short widths where the burger is still visible */
+@media (min-width: 640px) {
   .dock-cta {
     display: inline-flex;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1199px) {
+  .dock-cta {
+    padding: 0.45rem 0.75rem;
+    font-size: 11.5px;
+  }
+
+  .dock-grid {
+    padding: 0 0.75rem 0 0.85rem;
+    column-gap: 0.5rem;
+  }
+
+  .dock-zone--brand .ax-brand-word {
+    font-size: 0.95rem;
+  }
+
+  .dock-zone--brand .ax-logo-link--nav,
+  .dock-zone--brand .ax-logo-mark {
+    height: 30px;
+  }
+
+  .dock-zone--brand .ax-brand-lockup {
+    gap: 7px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .dock-cta {
+    padding: 0.5625rem 1.05rem;
+    font-size: 13px;
   }
 }
 
@@ -267,25 +312,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 11px;
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.95);
   cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .dock-burger {
     display: none;
   }
 }
 
 .dock-burger:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(124, 58, 237, 0.18);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.2);
 }
 
 /* ── Mega menu backdrop ── */
@@ -361,7 +408,7 @@
   transition-delay: 0s;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .dock-mega-shell.is-open {
     display: flex;
   }
@@ -679,7 +726,7 @@
   transition-delay: 0s;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .dock-drawer-scrim {
     display: none;
   }
@@ -713,7 +760,7 @@
   transition-delay: 0s;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 960px) {
   .dock-drawer {
     display: none;
   }
@@ -769,7 +816,7 @@
   display: none;
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
+@media (min-width: 768px) and (max-width: 959px) {
   .dock-drawer-mobile {
     display: none;
   }
@@ -895,26 +942,53 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ── Tablet compact dock ── */
-@media (min-width: 768px) and (max-width: 1199px) {
+/* ── Compact dock (hamburger mode) ── */
+@media (max-width: 959px) {
   .dock-shell {
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .dock-header {
-    width: min(1600px, calc(100vw - 32px));
+    width: min(1600px, calc(100vw - 28px));
+  }
+
+  .dock-bar {
+    height: 58px;
+  }
+
+  /* Drop empty middle column so brand + actions sit clearly */
+  .dock-grid {
+    grid-template-columns: 1fr auto;
+    padding: 0 0.75rem 0 0.875rem;
+    column-gap: 0.625rem;
   }
 
   .dock-zone--menu {
     display: none;
   }
+
+  .dock-zone--brand .ax-brand-word {
+    font-size: 1rem;
+  }
+
+  .dock-zone--brand .ax-logo-link--nav {
+    height: 32px;
+  }
+
+  .dock-zone--brand .ax-logo-mark {
+    height: 32px;
+  }
+
+  .dock-zone--brand .ax-brand-lockup {
+    gap: 8px;
+  }
 }
 
 /* ── Mobile ── */
-@media (max-width: 767px) {
+@media (max-width: 639px) {
   .dock-shell {
-    top: 12px;
-    padding: 0 12px;
+    top: 10px;
+    padding: 0 10px;
   }
 
   .dock-header {
@@ -922,17 +996,66 @@
   }
 
   .dock-bar {
-    height: 58px;
-    border-radius: 18px;
+    height: 54px;
+    border-radius: 16px;
   }
 
   .dock-grid {
-    grid-template-columns: 1fr auto;
-    padding: 0 0.875rem;
+    padding: 0 0.65rem 0 0.75rem;
   }
 
-  .dock-zone--menu {
+  /* Hide wordmark on very narrow screens — mark alone is enough */
+  .dock-zone--brand .ax-brand-word {
     display: none;
+  }
+
+  .dock-burger {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ── Short viewport height (laptops / landscape tablets) ── */
+@media (max-height: 720px) {
+  .dock-shell {
+    top: 10px;
+  }
+
+  .dock-bar {
+    height: 52px;
+  }
+
+  .dock-mega-shell {
+    top: calc(10px + 52px);
+    max-height: calc(100vh - 10px - 52px);
+    padding-bottom: 12px;
+  }
+
+  .dock-mega-panel {
+    max-height: calc(100vh - 10px - 52px - 28px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 1rem 1.15rem 1.15rem;
+  }
+
+  .dock-mega-grid {
+    gap: 0.55rem;
+  }
+}
+
+@media (max-height: 560px) {
+  .dock-shell {
+    top: 6px;
+  }
+
+  .dock-bar {
+    height: 48px;
+    border-radius: 14px;
+  }
+
+  .dock-mega-shell {
+    top: calc(6px + 48px);
+    max-height: calc(100vh - 6px - 48px);
   }
 }
 

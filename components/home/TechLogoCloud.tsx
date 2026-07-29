@@ -40,10 +40,10 @@ export default function TechLogoCloud({ logos }: TechLogoCloudProps) {
               viewport={{ once: true, margin: "-40px" }}
               transition={{
                 duration: 0.5,
-                delay: 0.02 + i * 0.025,
+                delay: 0.02 + i * 0.02,
                 ease: EASE_PREMIUM,
               }}
-              whileHover={reduced ? undefined : { scale: 1.1, zIndex: 10 }}
+              whileHover={reduced ? undefined : { scale: 1.12, zIndex: 10 }}
             >
               <motion.div
                 className="tech-cloud-item-inner"
@@ -51,8 +51,7 @@ export default function TechLogoCloud({ logos }: TechLogoCloudProps) {
                   reduced
                     ? undefined
                     : {
-                        y: [0, -6 - (i % 3) * 2, 0],
-                        x: [0, i % 2 === 0 ? 3 : -3, 0],
+                        y: [0, -3 - (i % 2), 0],
                       }
                 }
                 transition={
