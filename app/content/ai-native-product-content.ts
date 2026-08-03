@@ -1,14 +1,14 @@
 /** Verbatim from Content.docx, AI-Native Product Engineering (Section 1) + Application Modernization (Section 2). */
 export const aiNativeProductPageContent = {
-  brand: "AI-Native Product Engineering",
+  brand: "AI Native Product Engineering",
   hero: {
-    label: "Section 1 - AI-Native Product Engineering",
-    title: "AI-Native Product Engineering",
+    label: "AI Native Product Engineering",
+    title: "AI Native Product Engineering",
     description:
       "We build software where artificial intelligence is the core engine, not an afterthought. By integrating machine learning and large language models directly into the product foundation, we engineer systems that automate complex reasoning, process unstructured data at scale, and deliver highly adaptive user experiences.",
   },
   section1: {
-    title: "Section 1 - AI-Native Product Engineering",
+    title: "AI Native Product Engineering",
     intro:
       "We build software where artificial intelligence is the core engine, not an afterthought. By integrating machine learning and large language models directly into the product foundation, we engineer systems that automate complex reasoning, process unstructured data at scale, and deliver highly adaptive user experiences.",
     services: {
@@ -143,7 +143,7 @@ export const aiNativeProductPageContent = {
     },
   },
   section2: {
-    title: "Section 2 - Application Modernization & Platform Migration",
+    title: "Application Modernization & Platform Migration",
     heading: "Application Modernization & Platform Migration",
     intro:
       "Astrenox transforms legacy monolithic platforms into scalable, cloud-native ecosystems. By systematically eliminating technical debt, we empower enterprises to modernize aging architectures without operational disruption.",

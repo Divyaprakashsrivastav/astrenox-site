@@ -8,7 +8,7 @@ export const chapter4RfpIntelligence: ServicePageChapter = {
     paragraphs: [
       "Tendering teams do not lose time only because documents are long.",
       "They lose time because requirements, eligibility criteria, technical specifications, commercial terms, forms, annexures, risks, and clarifications are spread across hundreds or thousands of pages.",
-      "We build AI-native RFP intelligence systems that help teams identify the right tenders, analyze tender packs faster, prepare submission-ready bid documents, and manage claims-related communication with better control.",
+      "We build AI-native RFP intelligence systems that help teams identify relevant tenders, analyze tender packs faster, prepare review-ready bid documents, and manage claims-related communication with greater control.",
       "The system converts complex tender and contract documents into structured, reviewable, and action-ready outputs for bid, legal, finance, and project teams.",
       "Our AI workflows help teams move from manual tender reading to structured bid intelligence.",
     ],
@@ -185,6 +185,7 @@ export const chapter4RfpIntelligence: ServicePageChapter = {
         paragraphs: [
           "After project award, claims-related communication can become difficult to manage across emails, letters, notices, contract clauses, delay records, and supporting documents.",
           "The system organizes claims-related material into a structured workspace so teams can find relevant correspondence, track claim context, and respond with better clarity.",
+          "All claims-related outputs remain subject to legal, commercial, and project review before use.",
         ],
         enables: [
           "Better claims visibility",

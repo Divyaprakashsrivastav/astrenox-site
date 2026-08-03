@@ -176,7 +176,8 @@ export default function AIEngineeringPageClient() {
                   <strong>Technical Focus:</strong> {item.technicalFocus}
                 </p>
                 <p className="aie-hcard-outcome">
-                  <strong>Business Outcome:</strong> {item.businessOutcome}
+                  <strong className="aie-hcard-outcome-label">Business Outcome:</strong>
+                  <span className="aie-hcard-outcome-text">{item.businessOutcome}</span>
                 </p>
                 {item.businessOutcome.includes("70–90%") && (
                   <p className="aie-hcard-metric" aria-label="Reduce manual effort by 70 to 90 percent">

@@ -220,7 +220,7 @@ export const blockchainWeb3PageContent = {
     paragraphs: [
       "We begin by auditing the business workflow to determine whether blockchain genuinely improves the system.",
       "If a traditional database is better, we say so. If blockchain adds clear value through trust, traceability, decentralization, programmable transactions, data ownership, or asset transfer, we design the right architecture.",
-      "Our execution process includes:",
+      "Execution follows a structured path:",
     ],
     steps: [
       "Business and use-case assessment",

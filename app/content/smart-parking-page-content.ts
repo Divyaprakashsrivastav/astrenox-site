@@ -91,7 +91,7 @@ export const smartParkingPageContent = {
   ],
 
   parkingPlatform: {
-    title: "1 Core Architecture & Access Control",
+    title: "Core Architecture & Access Control",
     intro:
       "We deploy hybrid recognition technologies to automate entry, exit, and real-time space allocation without manual friction.",
     items: [
@@ -117,7 +117,7 @@ export const smartParkingPageContent = {
   },
 
   navigationBooking: {
-    title: "2 Navigation & Digital Booking",
+    title: "Navigation & Digital Booking",
     intro:
       "We implement precise guidance and tracking systems to optimize internal vehicle movement and reduce search times.",
     items: [
@@ -315,7 +315,7 @@ export const smartParkingPageContent = {
 
   industryApplications: [
     {
-      title: "1 Core Architecture & Access Control",
+      title: "Core Architecture & Access Control",
       intro:
         "We deploy hybrid recognition technologies to automate entry, exit, and real-time space allocation without manual friction.",
       items: [
@@ -334,7 +334,7 @@ export const smartParkingPageContent = {
       ],
     },
     {
-      title: "2 Navigation & Digital Booking",
+      title: "Navigation & Digital Booking",
       intro:
         "We implement precise guidance and tracking systems to optimize internal vehicle movement and reduce search times.",
       items: [
@@ -353,7 +353,7 @@ export const smartParkingPageContent = {
       ],
     },
     {
-      title: "3 Enterprise Security & Visitor Management",
+      title: "Enterprise Security & Visitor Management",
       intro:
         "We enforce strict perimeters at the parking layer to ensure only authorized vehicles and personnel access designated zones.",
       items: [
@@ -372,7 +372,7 @@ export const smartParkingPageContent = {
       ],
     },
     {
-      title: "4 Specialized Operational Modules",
+      title: "Specialized Operational Modules",
       intro:
         "We adapt deployments to handle distinct operational workflows across diverse real estate portfolios.",
       items: [
@@ -417,12 +417,12 @@ export const smartParkingPageContent = {
 
   ecosystemSectionIntros: [
     {
-      title: "3 Enterprise Security & Visitor Management",
+      title: "Enterprise Security & Visitor Management",
       intro:
         "We enforce strict perimeters at the parking layer to ensure only authorized vehicles and personnel access designated zones.",
     },
     {
-      title: "4 Specialized Operational Modules",
+      title: "Specialized Operational Modules",
       intro:
         "We adapt deployments to handle distinct operational workflows across diverse real estate portfolios.",
     },

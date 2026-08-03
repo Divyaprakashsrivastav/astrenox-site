@@ -8,7 +8,7 @@ export const aiNativeProductContent: ServicePageContent = {
   },
   hero: {
     label: "Digital Consulting",
-    title: "Engineer Products\nBorn AI-Native.",
+    title: "Engineer Products\nBorn AI Native.",
     subtitle:
       "Build software where intelligence is core infrastructure, not a bolt-on feature. From architecture to deployment, we engineer AI-native products for enterprise scale.",
     primaryCta: "Start Product Discovery",
@@ -208,7 +208,7 @@ export const aiNativeProductContent: ServicePageContent = {
     ],
   },
   cta: {
-    title: "Build Your AI-Native Product.",
+    title: "Build Your AI Native Product.",
     subtitle:
       "Schedule a product discovery session. We'll assess your use case, outline an engineering approach, and share relevant case studies from your industry.",
     primaryCta: "Book Discovery Call",

@@ -11,7 +11,7 @@ export const readyToDeployContent = {
 
   hero: {
     label: "Ready to Deploy & Customised AI Solutions",
-    title: "Applied AI Platforms and Enterprise-Ready Solutions",
+    title: "Applied AI Platforms and Enterprise\u2011Ready Solutions",
     description:
       "From KnowForth platform consulting to industry Gen AI boilerplates and custom CRM engineering, Astrenox helps organisations adopt focused AI capabilities aligned with existing business workflows.",
     primaryCta: "Book a Demo",
@@ -22,7 +22,7 @@ export const readyToDeployContent = {
 
   appliedPlatforms: {
     id: "rtd-platforms",
-    label: "Section 1",
+    label: "",
     title: "Applied AI Platforms for Business Execution",
     intro:
       "Astrenox works as the consulting partner for KnowForth's AI platforms, helping organisations identify relevant use cases, assess operational readiness and align platform adoption with existing business workflows.",
@@ -52,7 +52,7 @@ export const readyToDeployContent = {
 
   genAiBoilerplates: {
     id: "rtd-genai",
-    label: "Section 2",
+    label: "",
     title: "Enterprise Gen AI Boilerplates",
     industriesTitle: "Ready-to-Deploy Industry Solutions",
     industries: [
@@ -80,7 +80,7 @@ export const readyToDeployContent = {
         id: "life-sciences",
         title: "Life Sciences",
         solutions: [
-          "GenAI-Powered IT Audit and Compliance Automation Agent – Automates IT audit analysis, compliance documentation and risk assessment, reducing audit time by up to 70% and errors by 50%.",
+          "GenAI-Powered IT Audit and Compliance Automation Agent – The deployed solution automated IT audit analysis, compliance documentation and risk assessment, helping the organisation reduce audit time by up to 70% and documentation errors by 50%.",
         ],
       },
       {
@@ -204,7 +204,7 @@ export const readyToDeployContent = {
 
   customCrm: {
     id: "rtd-crm",
-    label: "Section 3",
+    label: "",
     title: "Custom AI-Powered CRM Engineering",
     subtitle: "Custom AI-Powered CRM: Architect Your Customer Intelligence Platform",
     description:
@@ -217,7 +217,7 @@ export const readyToDeployContent = {
       },
       {
         title: "Workflow Automation and AI Intelligence",
-        body: "Visual workflows can automate business processes using record changes, schedules, manual actions or incoming webhooks. These workflows can handle lead assignment, approval sequences, follow-ups, notifications, data updates, account escalations and other multi-step processes. Secure AI capabilities can be integrated to provide contextual record and interaction summaries, semantic search across customer information, automated email and response drafting, data extraction from emails, tickets and documents, lead scoring, opportunity prioritization and forecasting, account-health monitoring and next-best-action recommendations, and AI agents for executing approved CRM tasks and workflows. AI functionality can be configured around enterprise permissions and approval controls to prevent unauthorized actions or access to restricted information.",
+        body: "Visual workflows automate business processes through record changes, schedules, manual actions and incoming webhooks. They can manage lead assignments, approval sequences, follow-ups, notifications, data updates, account escalations and other multi-step CRM processes.\n\nIntegrated AI capabilities support contextual record summaries, semantic search across customer information, automated email and response drafting, data extraction from emails, tickets and documents, lead scoring, opportunity prioritisation, forecasting and next-best-action recommendations.\n\nAI agents can execute approved CRM tasks and workflows, while enterprise permissions and approval controls help prevent unauthorised actions and protect access to restricted information.",
         photo: "/images/rtd-crm/workflow-automation-ai-intelligence.jpg",
       },
       {
@@ -239,12 +239,12 @@ export const readyToDeployContent = {
   },
 
   cta: {
-    title: "Ready to deploy AI solutions aligned with your workflows?",
+    title: "Ready to Explore AI Solutions Aligned with Your Workflows?",
     description:
       "Astrenox helps organisations evaluate platforms, map use cases to existing processes, and deliver custom AI-powered systems at enterprise scale.",
     primaryCta: "Book a Demo",
     primaryHref: "/contact?intent=demo",
-    secondaryCta: "Talk to Consultants",
+    secondaryCta: "Speak with a Consultant",
     secondaryHref: "/contact?intent=consulting",
   },
 } as const;

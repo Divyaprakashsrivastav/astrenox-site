@@ -41,7 +41,6 @@ export default function CapabilitiesShowcasePanel({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: reduced ? 0 : -20 }}
           transition={{ duration: 0.42, ease: EASE_PREMIUM }}
-          layout
         >
           <span className="ind-panel-border" aria-hidden />
           <IndustryPanelAmbient />
@@ -62,7 +61,7 @@ export default function CapabilitiesShowcasePanel({
                   ease: "easeInOut",
                 }}
               >
-                <Icon size={28} strokeWidth={1.65} aria-hidden />
+                <Icon size={18} strokeWidth={1.65} aria-hidden />
               </motion.div>
               <span className="ind-panel-index">{String(index + 1).padStart(2, "0")}</span>
             </motion.div>

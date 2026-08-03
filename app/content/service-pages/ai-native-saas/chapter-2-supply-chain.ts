@@ -52,7 +52,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
       ],
     },
     {
-      title: "From Passive Visibility to Autonomous Execution",
+      title: "From Passive Visibility to Governed Execution",
       paragraphs: [
         "Most supply chain platforms stop at alerts, reports, or forecasts.",
         "We go further by engineering agentic systems that can recommend, draft, route, validate, and execute operational workflows within strict business rules.",
@@ -288,16 +288,5 @@ export const chapter2SupplyChain: ServicePageChapter = {
           "Every recommendation is linked to cost impact, service-level impact, and operational trade-offs, helping teams make decisions with financial clarity.",
       },
     ],
-  },
-  cta: {
-    title: "Scale Execution, Not Headcount",
-    paragraphs: [
-      "Bring us your highest-friction planning cycles, supplier workflows, procurement bottlenecks, inventory exceptions, or logistics reconciliation problems.",
-      "We will engineer a governed, AI-powered execution layer that works inside your current supply chain stack and turns operational complexity into controlled action.",
-      "Supply chain transformation should not take years before value appears.",
-      "It should start with one high-impact workflow, prove value quickly, and scale from there.",
-    ],
-    primaryCta: "Schedule a Technical Scoping Session",
-    primaryHref: "/contact",
   },
 };

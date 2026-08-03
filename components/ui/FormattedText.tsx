@@ -44,6 +44,26 @@ export default function FormattedText({
     autoEmphasize && text && !text.includes("**")
       ? emphasizeImportantWords(text)
       : text;
+
+  const outcomeMatch = /Business Outcome:\s*/.exec(resolved);
+  if (outcomeMatch && outcomeMatch.index != null) {
+    const before = resolved.slice(0, outcomeMatch.index).trimEnd();
+    const after = resolved.slice(outcomeMatch.index + outcomeMatch[0].length).trim();
+    if (after) {
+      return createElement(
+        Tag,
+        { className },
+        ...(before ? parseFormattedText(before) : []),
+        before ? <br key="bo-br" /> : null,
+        <strong key="bo-label" className="svc-business-outcome-label">
+          Business Outcome:
+        </strong>,
+        <br key="bo-br-2" />,
+        ...parseFormattedText(after),
+      );
+    }
+  }
+
   return createElement(Tag, { className }, ...parseFormattedText(resolved));
 }
 

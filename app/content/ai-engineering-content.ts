@@ -6,8 +6,8 @@ export const aiEngineeringPageContent = {
       "From prototype to production: enterprise-grade AI engineering with resilient LLM applications, multi-agent workflows, and secure data retrieval pipelines.",
   },
   hero: {
-    label: "Production-Grade AI Engineering & Workflow Automation",
-    title: "From Prototype to Production:\nEnterprise-Grade AI Engineering",
+    label: "Production Grade AI Engineering & Workflow Automation",
+    title: "From Prototype to Production:\nEnterprise Grade AI Engineering",
     subtitle:
       "Transition from isolated, fragile scripts to resilient, scalable AI infrastructure. We architect, build, and deploy custom LLM applications, multi-agent workflows, and secure data retrieval pipelines integrated directly into your enterprise stack. We build AI the way it's meant to be built: vendor-agnostic, cloud-agnostic, and tailored to your operational reality.",
     primaryCta: "Schedule a Technical Scoping Call",
@@ -20,8 +20,8 @@ export const aiEngineeringPageContent = {
   overview: {
     title: "The Enterprise AI Gap: Why Proof-of-Concepts Fail",
     paragraphs: [
-      "Most companies are stuck in the prototyping phase. A script that works beautifully in a sandbox often collapses under real-world enterprise constraints, breaking due to API rate limits, model hallucinations, latency spikes, or security blockers.",
-      "We bridge the gap between AI theory and software engineering reality. Our team operates at the intersection of traditional system architecture and modern machine learning. We don't just prompt models; we engineer robust systems built for massive scale, low latency, and deterministic execution.",
+      "Many organizations find that successful AI prototypes require additional engineering before they can operate reliably within enterprise environments. Production systems must account for API limitations, unreliable outputs, latency, security requirements, integrations, and operational governance.",
+      "We connect AI experimentation with production-grade software engineering. Our team combines system architecture and machine learning to build scalable, observable, and controlled AI systems designed around real operational requirements.",
     ],
   },
   engineeringCapabilities: {
@@ -42,7 +42,7 @@ export const aiEngineeringPageContent = {
         technicalFocus:
           "Architecting scalable infrastructure utilizing vector databases, hybrid search, and semantic re-ranking to ground models strictly in your proprietary data.",
         businessOutcome:
-          "Delivers highly accurate, auditable applications that eliminate AI hallucination and protect your IP.",
+          "Supports grounded, auditable applications designed to reduce unsupported outputs and strengthen control over proprietary information.",
       },
       {
         capability: "Enterprise Knowledge Graphs & Memory Systems",
@@ -96,7 +96,7 @@ export const aiEngineeringPageContent = {
       {
         title: "Observability & MLOps",
         description:
-          "Comprehensive real-time telemetry powered by Langfuse. We engineer deep trace visibility, LLM-as-a-judge evaluations combined with deterministic code evaluators, prompt versioning, and continuous CI/CD testing to debug complex multi-agent execution paths, track token economics, and guarantee output stability.",
+          "Comprehensive real-time telemetry supports trace visibility, model and workflow evaluations, deterministic code checks, prompt versioning, and continuous CI/CD testing. These controls help teams investigate multi-agent execution paths, monitor token economics, identify failures, and improve output stability over time.",
       },
     ],
   },
@@ -124,17 +124,17 @@ export const aiEngineeringPageContent = {
       {
         title: "EMR Automation",
         description:
-          "HIPAA-compliant extraction, structuring, and workflow routing for Electronic Medical Records (EMRs), eliminating manual data entry in high-compliance healthcare settings.",
+          "Secure extraction, structuring, and workflow routing for Electronic Medical Records, designed to support HIPAA-aligned controls and reduce repetitive manual data entry in healthcare environments.",
       },
       {
-        title: "AI-Native Outbound & Content Systems",
+        title: "AI Native Outbound & Content Systems",
         description:
           "Scalable infrastructure for generating hyper-personalized, context-driven outbound campaigns and marketing assets tailored dynamically to target account data and real-time buying signals.",
       },
       {
         title: "Deployment Automation Pipelines",
         description:
-          "Specialized MLOps architectures that automate the testing, evaluation, and safe deployment of updated AI models and prompts into your production environment without downtime.",
+          "Specialized MLOps architectures that automate the testing, evaluation, and controlled deployment of updated AI models and prompts while reducing release risk and potential service disruption.",
       },
     ],
   },
@@ -258,9 +258,9 @@ export const aiEngineeringPageContent = {
     ],
   },
   cta: {
-    title: "Stop prototyping and start deploying.",
+    title: "Move from prototyping to production.",
     subtitle:
-      "Whether you need an enterprise memory system, self-learning B2B agents, or a fully automated deployment pipeline, our engineering team is ready to execute.",
+      "Whether you need an enterprise memory system, governed B2B agents, or a controlled AI deployment pipeline, our engineering team can help define and implement the appropriate production architecture.",
     primaryCta: "Scope Your AI Engineering Build Today",
     secondaryCta: "Explore Our Consulting Services",
     primaryHref: "/contact",

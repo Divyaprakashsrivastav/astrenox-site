@@ -116,7 +116,7 @@ function FooterContent({ inView }: { inView: boolean }) {
           variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } } }}
         >
           <motion.div variants={fadeUp} className="ft-brand">
-            <AstrenoxLogo variant="footer" showWordmark={false} />
+            <AstrenoxLogo variant="footer" />
             <p className="ft-brand-copy">
               <FormattedText text={homeFooter.about} />
             </p>

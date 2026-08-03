@@ -1,14 +1,13 @@
-import type { ServicePageContent } from "./types";
-
-export const aiEngineeringContent: ServicePageContent = {
+/** Synced from live ai-engineering-content.ts */
+export const aiEngineeringPageContent = {
   metadata: {
     title: "AI Engineering & Workflow Automation | Astrenox",
     description:
       "From prototype to production: enterprise-grade AI engineering with resilient LLM applications, multi-agent workflows, and secure data retrieval pipelines.",
   },
   hero: {
-    label: "Production-Grade AI Engineering & Workflow Automation",
-    title: "From Prototype to Production:\nEnterprise-Grade AI Engineering",
+    label: "Production Grade AI Engineering & Workflow Automation",
+    title: "From Prototype to Production:\nEnterprise Grade AI Engineering",
     subtitle:
       "Transition from isolated, fragile scripts to resilient, scalable AI infrastructure. We architect, build, and deploy custom LLM applications, multi-agent workflows, and secure data retrieval pipelines integrated directly into your enterprise stack. We build AI the way it's meant to be built: vendor-agnostic, cloud-agnostic, and tailored to your operational reality.",
     primaryCta: "Schedule a Technical Scoping Call",
@@ -21,8 +20,8 @@ export const aiEngineeringContent: ServicePageContent = {
   overview: {
     title: "The Enterprise AI Gap: Why Proof-of-Concepts Fail",
     paragraphs: [
-      "Most companies are stuck in the prototyping phase. A script that works beautifully in a sandbox often collapses under real-world enterprise constraints, breaking due to API rate limits, model hallucinations, latency spikes, or security blockers.",
-      "We bridge the gap between AI theory and software engineering reality. Our team operates at the intersection of traditional system architecture and modern machine learning. We don't just prompt models; we engineer robust systems built for massive scale, low latency, and deterministic execution.",
+      "Many organizations find that successful AI prototypes require additional engineering before they can operate reliably within enterprise environments. Production systems must account for API limitations, unreliable outputs, latency, security requirements, integrations, and operational governance.",
+      "We connect AI experimentation with production-grade software engineering. Our team combines system architecture and machine learning to build scalable, observable, and controlled AI systems designed around real operational requirements.",
     ],
   },
   engineeringCapabilities: {
@@ -43,7 +42,7 @@ export const aiEngineeringContent: ServicePageContent = {
         technicalFocus:
           "Architecting scalable infrastructure utilizing vector databases, hybrid search, and semantic re-ranking to ground models strictly in your proprietary data.",
         businessOutcome:
-          "Delivers highly accurate, auditable applications that eliminate AI hallucination and protect your IP.",
+          "Supports grounded, auditable applications designed to reduce unsupported outputs and strengthen control over proprietary information.",
       },
       {
         capability: "Enterprise Knowledge Graphs & Memory Systems",
@@ -78,31 +77,26 @@ export const aiEngineeringContent: ServicePageContent = {
         title: "Frontend & Interface Layer",
         description:
           "Next.js and React web interfaces optimized for high-speed streaming text, dynamic component rendering, and stateful multi-session chat memory.",
-        icon: "Monitor",
       },
       {
         title: "Backend & API Layer",
         description:
           "Scalable Python (FastAPI) or Node.js microservices handling load balancing, API routing, rate limiting, and core business logic.",
-        icon: "Server",
       },
       {
         title: "Orchestration & Platforms",
         description:
           "Advanced agentic frameworks (LangGraph, LangChain, LlamaIndex) and intelligent workflow automation platforms (n8n). Deployed natively on enterprise-grade managed services like Google Vertex AI and AWS Bedrock.",
-        icon: "Workflow",
       },
       {
         title: "Vector & Semantic Infrastructure",
         description:
           "High-performance vector storage (Pinecone, Qdrant) paired with semantic routing for lightning-fast tool execution and data retrieval.",
-        icon: "Database",
       },
       {
         title: "Observability & MLOps",
         description:
-          "Comprehensive real-time telemetry powered by Langfuse. We engineer deep trace visibility, LLM-as-a-judge evaluations combined with deterministic code evaluators, prompt versioning, and continuous CI/CD testing to debug complex multi-agent execution paths, track token economics, and guarantee output stability.",
-        icon: "Gauge",
+          "Comprehensive real-time telemetry supports trace visibility, model and workflow evaluations, deterministic code checks, prompt versioning, and continuous CI/CD testing. These controls help teams investigate multi-agent execution paths, monitor token economics, identify failures, and improve output stability over time.",
       },
     ],
   },
@@ -116,42 +110,35 @@ export const aiEngineeringContent: ServicePageContent = {
         title: "Company Brain & Memory Systems",
         description:
           'Centralized, context-aware intelligence layers that ingest multi-format corporate data (Slack, wikis, codebases), retaining multi-session memory to serve as the definitive, permission-aware "source of truth" across the enterprise.',
-        icon: "Brain",
       },
       {
         title: "AI-Powered RFP & Contract Intelligence",
         description:
           "Automated parsing, risk-scoring, and dynamic generation of complex proposals, vendor questionnaires, and legal agreements to drastically reduce sales and procurement cycles.",
-        icon: "FileCheck",
       },
       {
         title: "Self-Learning B2B Agents",
         description:
           "Autonomous sales and support agents equipped with continuous feedback loops, allowing them to dynamically refine objection handling, adjust to new product docs, and update workflows autonomously over time.",
-        icon: "Workflow",
       },
       {
         title: "EMR Automation",
         description:
-          "HIPAA-compliant extraction, structuring, and workflow routing for Electronic Medical Records (EMRs), eliminating manual data entry in high-compliance healthcare settings.",
-        icon: "HeartPulse",
+          "Secure extraction, structuring, and workflow routing for Electronic Medical Records, designed to support HIPAA-aligned controls and reduce repetitive manual data entry in healthcare environments.",
       },
       {
-        title: "AI-Native Outbound & Content Systems",
+        title: "AI Native Outbound & Content Systems",
         description:
           "Scalable infrastructure for generating hyper-personalized, context-driven outbound campaigns and marketing assets tailored dynamically to target account data and real-time buying signals.",
-        icon: "Zap",
       },
       {
         title: "Deployment Automation Pipelines",
         description:
-          "Specialized MLOps architectures that automate the testing, evaluation, and safe deployment of updated AI models and prompts into your production environment without downtime.",
-        icon: "GitBranch",
+          "Specialized MLOps architectures that automate the testing, evaluation, and controlled deployment of updated AI models and prompts while reducing release risk and potential service disruption.",
       },
     ],
   },
   workflow: {
-    id: "lifecycle",
     label: "Lifecycle",
     title: "The Engineering Lifecycle",
     intro:
@@ -184,7 +171,7 @@ export const aiEngineeringContent: ServicePageContent = {
       },
     ],
   },
-  capabilities: {
+  security: {
     label: "Security",
     title: "Enterprise Security & Governance",
     intro:
@@ -194,19 +181,16 @@ export const aiEngineeringContent: ServicePageContent = {
         title: "Deployment Flexibility",
         description:
           "We deploy into your existing cloud infrastructure (VPC, Private Cloud, or On-Premise) so data never leaves your perimeter.",
-        icon: "Cloud",
       },
       {
         title: "Zero Data Retention Policies",
         description:
           "We configure LLM providers (via enterprise agreements) to ensure your data is never used to train foundational models.",
-        icon: "Lock",
       },
       {
         title: "Compliance Aligned",
         description:
           "Architectures built to support HIPAA, FERPA, and SOC2 compliance standards, complete with comprehensive audit logging and human-in-the-loop (HITL) review paths for critical actions.",
-        icon: "ShieldCheck",
       },
     ],
   },
@@ -220,25 +204,21 @@ export const aiEngineeringContent: ServicePageContent = {
         title: "Production Codebase",
         description:
           "Fully deployed, containerized frontend and backend code repositories.",
-        icon: "Code",
       },
       {
         title: "Infrastructure Blueprints",
         description:
           "System diagrams detailing foundation models, vector database configurations, and custom API layers.",
-        icon: "Layers",
       },
       {
         title: "Agent Logic Flows",
         description:
           "Documented state machines and security boundaries for autonomous operations.",
-        icon: "Workflow",
       },
       {
         title: "Testing & Evaluation Reports",
         description:
           "Concrete data detailing system latency, hallucination rates, and automated benchmark test results via our MLOps suite.",
-        icon: "FileCheck",
       },
     ],
   },
@@ -278,12 +258,33 @@ export const aiEngineeringContent: ServicePageContent = {
     ],
   },
   cta: {
-    title: "Stop prototyping and start deploying.",
+    title: "Move from prototyping to production.",
     subtitle:
-      "Whether you need an enterprise memory system, self-learning B2B agents, or a fully automated deployment pipeline, our engineering team is ready to execute.",
+      "Whether you need an enterprise memory system, governed B2B agents, or a controlled AI deployment pipeline, our engineering team can help define and implement the appropriate production architecture.",
     primaryCta: "Scope Your AI Engineering Build Today",
     secondaryCta: "Explore Our Consulting Services",
     primaryHref: "/contact",
     secondaryHref: "/services/ai-consulting-advisory",
   },
-};
+  /** Technologies named in the approved content, visual chips only */
+  techStack: [
+    "Next.js",
+    "React",
+    "Python",
+    "FastAPI",
+    "Node.js",
+    "LangGraph",
+    "LangChain",
+    "LlamaIndex",
+    "n8n",
+    "Google Vertex AI",
+    "AWS Bedrock",
+    "Pinecone",
+    "Qdrant",
+    "Langfuse",
+    "Docker",
+    "Kubernetes",
+  ],
+} as const;
+
+export const aiEngineeringContent = aiEngineeringPageContent;

@@ -62,7 +62,6 @@ export default function SoftwareFactoryPageClient() {
             <div className="asf-sdlc-rail-col">
               <div className="asf-sdlc-rail-sticky">
                 <Reveal>
-                  <span className="asf-section-num">{section.number}</span>
                   <h2 id={`asf-section-${section.number}-title`} className="asf-section-title">
                     {section.title}
                   </h2>
@@ -74,7 +73,6 @@ export default function SoftwareFactoryPageClient() {
               {section.bullets.map((bullet, i) => (
                 <Reveal key={bullet} delay={i * 0.04}>
                   <article className="asf-sdlc-bullet-card">
-                    <span className="asf-bullet-index">{String(i + 1).padStart(2, "0")}</span>
                     <Bullet text={bullet} />
                   </article>
                 </Reveal>

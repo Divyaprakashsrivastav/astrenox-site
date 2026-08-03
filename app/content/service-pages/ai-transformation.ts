@@ -8,7 +8,7 @@ export const aiTransformationContent: ServicePageContent = {
   },
   hero: {
     label: "AI Transformation Engineering and AI Enablement Training",
-    title: "Astren AI:\nThe Transformation Engine for Becoming AI-Native",
+    title: "Astren AI:\nThe Transformation Engine for Becoming AI Native",
     subtitle:
       "Most enterprises do not fail at AI because they lack tools. They fail because they do not know how work actually happens inside the organization. Processes live across people, spreadsheets, CRMs, ERPs, inboxes, SOPs, calls, undocumented handoffs, and tribal knowledge. Before AI can automate work, the enterprise first needs to understand the work. Astren AI is our enterprise agent platform that maps how your organization operates, identifies the highest-value automation opportunities, deploys secure AI workflows, and trains your workforce to adopt them. All transformation happens through Astren AI: discovery, workflow mapping, automation deployment, employee enablement, governance, and ROI measurement.",
     primaryCta: "Book a Transformation & Capability Audit",
@@ -196,31 +196,31 @@ export const aiTransformationContent: ServicePageContent = {
     title: "The Astren AI Transformation Roadmap",
     items: [
       {
-        service: "Phase 1: Discover and Map, Days 1–30",
+        service: "Step 1: Discover and Assess",
         outcome:
-          "Astren AI begins by mapping the organization's actual workflows. This phase includes employee interviews, stakeholder discovery, workflow mapping, system analysis, and data readiness checks. Outputs: Operational workflow map; Bottleneck analysis; AI readiness report; Automation opportunity backlog; Prioritized transformation roadmap.",
+          "Astren AI develops a clear view of the organization's teams, workflows, systems, operational dependencies, and data readiness.",
       },
       {
-        service: "Phase 2: Align and Prototype, Days 30–60",
+        service: "Step 2: Map and Prioritize",
         outcome:
-          "We align leadership around the highest-value use cases and deploy early workflow prototypes inside Astren AI. This phase validates technical feasibility, employee usability, data availability, and governance requirements. Outputs: AI governance model; Functional workflow prototypes; Initial employee training paths; Department-level adoption plan; AI Champion identification.",
+          "Astren AI translates the findings into an organizational map, AI-readiness assessment, prioritized opportunity backlog, and practical transformation roadmap.\n\n**Initial Audit Timeline:** The discovery, assessment, mapping, and prioritization process is completed within 10 working days.",
       },
       {
-        service: "Phase 3: Deploy and Enable, Days 60–90",
+        service: "Step 3: Build and Deploy",
         outcome:
-          "We engineer production-ready AI workflows and roll out department-specific enablement. Employees begin using Astren AI for real operational work while leadership monitors usage and ROI. Outputs: Production AI workflows; Role-specific bootcamps; Enterprise memory systems; Adoption dashboards; Workflow-level ROI tracking.",
+          "Validated opportunities move into implementation through a scope-based build and deployment process shaped around workflow complexity, integrations, security requirements, and organizational priorities.",
       },
       {
-        service: "Phase 4: Optimize and Scale, Ongoing",
+        service: "Step 4: Optimize and Scale",
         outcome:
-          "Astren AI continuously identifies new opportunities, monitors workflow performance, and supports expansion across departments. The platform becomes a living transformation engine that improves as your organization changes. Outputs: Continuous workflow optimization; New automation recommendations; Expanded AI training modules; Updated governance policies; Long-term transformation intelligence.",
+          "Performance, adoption, governance, and workflow effectiveness are continuously reviewed to improve existing capabilities and expand validated use cases.",
       },
     ],
   },
   cta: {
     title: "Start Your Enterprise Transformation Audit",
     subtitle:
-      "Stop treating AI as an isolated side project. Use Astren AI to map how your organization works, identify what should be automated first, deploy secure AI workflows, train your workforce, and measure transformation outcomes from one governed platform.",
+      "Move from isolated AI initiatives to a coordinated enterprise transformation model. Use Astren AI to understand how your organization works, identify what should be prioritized first, deploy secure AI workflows, enable your workforce, and measure transformation outcomes through one governed platform.",
     primaryCta: "Start Your Enterprise Transformation Audit",
     secondaryCta: "Explore the Astren AI Platform",
     primaryHref: "/contact",

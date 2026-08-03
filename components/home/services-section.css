@@ -40,7 +40,8 @@
   position: relative;
   display: block;
   height: 100%;
-  border-radius: 22px;
+  border-radius: 18px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   text-decoration: none;
   color: inherit;
   overflow: hidden;

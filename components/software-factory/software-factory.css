@@ -25,12 +25,7 @@
 }
 
 .asf-section-num {
-  display: block;
-  margin-bottom: 0.625rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #8b5cf6;
+  display: none;
 }
 
 .asf-section-title {
@@ -286,7 +281,7 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #8b5cf6;
+  color: rgba(250, 250, 251, 0.45);
 }
 
 .asf-hero-title {
@@ -344,11 +339,10 @@
 }
 
 .asf-sdlc-bullet-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  display: block;
   gap: 1rem;
-  padding: 1.35rem;
-  border-radius: 18px;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(167, 139, 250, 0.2);
   clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
@@ -408,6 +402,7 @@
   scroll-snap-align: start;
   padding: 1.5rem;
   border-radius: 16px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(22, 27, 34, 0.8);
 }
@@ -435,6 +430,7 @@
   position: relative;
   padding: 1.5rem;
   border-radius: 16px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(22, 27, 34, 0.65);
   overflow: hidden;
@@ -476,6 +472,7 @@
   margin-inline: auto;
   padding: clamp(2rem, 4vw, 3rem);
   border-radius: 20px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   border: 1px solid rgba(139, 92, 246, 0.2);
   background: rgba(13, 17, 23, 0.85);
   text-align: center;

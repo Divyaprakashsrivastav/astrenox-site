@@ -195,6 +195,7 @@
   position: relative;
   height: 100%;
   border-radius: 16px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   overflow: hidden;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);

@@ -14,7 +14,7 @@ export const softwareFactoryContent = {
   intro: [
     "Enterprise AI adoption creates value only when it improves the complete engineering system, not when it simply generates more code. We work with enterprises to redesign how business requirements, architecture, development, validation, release and operations function together.",
     "Our Software Factory supports existing Software Development Lifecycle (SDLC) workflows while enabling the AI-native Development Lifecycle (AIDLC). Specialized engineering agents execute structured work across planning, implementation, testing, review, deployment and operations, while human leaders define architecture, policies, quality standards and risk boundaries.",
-    "Human-on-the-loop governance allows validated workflows to operate with continuous oversight and exception-based intervention. Human-in-the-loop approvals remain mandatory for architectural decisions, security-sensitive changes and production releases.",
+    "Human-on-the-loop governance enables validated workflows to operate under continuous oversight, with human intervention triggered by defined exceptions. Human-in-the-loop approvals remain mandatory for architectural decisions, security-sensitive changes and production releases.",
   ],
 
   sections: [
@@ -75,7 +75,7 @@ export const softwareFactoryContent = {
 
   cta: {
     headline: "From AI Assistance to an Enterprise Engineering System",
-    primaryCta: "Book Engineering Workshop",
+    primaryCta: "Book an Engineering Workshop",
     primaryHref: "/contact?intent=workshop",
     secondaryCta: "Talk to Platform Architects",
     secondaryHref: "/contact?intent=architects",

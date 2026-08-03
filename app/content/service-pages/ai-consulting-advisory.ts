@@ -8,7 +8,7 @@ export const aiConsultingAdvisoryContent: ServicePageContent = {
   },
   hero: {
     label: "AI Consulting & Advisory",
-    title: "Production-Grade AI Strategy\nfor the Enterprise Stack",
+    title: "Production Grade AI Strategy\nfor the Enterprise Stack",
     subtitle:
       "Move from **fragmented pilots** to **scalable deployments**. We build actionable, **technically validated AI roadmaps** that align **data architecture** with business objectives, reducing **execution risk** before you write code.",
     primaryCta: "Book an AI Strategy Workshop",
@@ -21,13 +21,14 @@ export const aiConsultingAdvisoryContent: ServicePageContent = {
   overview: {
     title: "What AI Advisory Means at Astrenox",
     paragraphs: [
-      "We engineer AI strategies rooted in **technical reality**. We focus purely on identifying use cases that can actually be **built, governed, and deployed** into your existing stack.",
-      "Our advisory practice bridges the gap between **executive ambition** and **engineering feasibility**, so capital flows to initiatives your teams can ship, not pilots that stall in PowerPoint.",
+      "We engineer AI strategies rooted in **technical reality**. We identify and shape AI opportunities that can be **built, governed, adopted, and integrated** into your existing technology environment.",
+      "For enterprise transformation engagements, Astrenox delivers discovery, readiness assessment, and opportunity prioritization through **Astren AI**, our governed transformation platform.",
+      "Our advisory practice connects executive priorities with engineering feasibility, helping organizations direct investment towards initiatives that can move from planning into governed implementation.",
     ],
   },
   capabilities: {
     label: "Strategic Positioning",
-    title: "Technical advisory, not boardroom theater",
+    title: "Advisory Grounded in Engineering Feasibility",
     items: [
       {
         title: "AI Opportunity Discovery",
@@ -119,7 +120,7 @@ export const aiConsultingAdvisoryContent: ServicePageContent = {
       {
         service: "AI Governance & Risk",
         outcome:
-          "**Enterprise-grade risk mitigation** against **data leakage** and hallucinations.",
+          "Governance controls designed to reduce **data leakage**, model risk, and unreliable outputs.",
       },
     ],
   },

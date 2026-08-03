@@ -163,7 +163,6 @@ function CircuitCard({
         <span className="aipe-card-icon">
           <Icon size={18} aria-hidden />
         </span>
-        <span className="aipe-card-idx">{String(index + 1).padStart(2, "0")}</span>
       </div>
       <h3>{title}</h3>
       <p>{description}</p>
@@ -207,32 +206,9 @@ export default function AINativeProductPageClient() {
         </div>
       </section>
 
-      {/* Section 1, two-column intro */}
-      <section className="aipe-inner aipe-block" aria-labelledby="aipe-s1">
-        <div className="aipe-split">
-          <motion.h2
-            id="aipe-s1"
-            className="aipe-h2"
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-          >
-            {section1.title}
-          </motion.h2>
-          <motion.p
-            className="aipe-body"
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: 0.08, ease: EASE_PREMIUM }}
-          >
-            {section1.intro}
-          </motion.p>
-        </div>
-
-        {/* Services, floating staggered masonry */}
-        <h3 className="aipe-h3">{section1.services.title}</h3>
+      {/* Services */}
+      <section className="aipe-inner aipe-block" aria-labelledby="aipe-s1-services">
+        <h3 id="aipe-s1-services" className="aipe-h3">{section1.services.title}</h3>
         <div className="aipe-float-grid">
           {section1.services.items.map((item, i) => (
             <CircuitCard
@@ -323,9 +299,8 @@ export default function AINativeProductPageClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, ease: EASE_PREMIUM }}
           >
-            {section2.title}
+            {section2.heading}
           </motion.h2>
-          <h3 className="aipe-arch-sub">{section2.heading}</h3>
           <motion.p
             className="aipe-body"
             initial={{ opacity: 0, y: 14 }}
@@ -409,15 +384,10 @@ export default function AINativeProductPageClient() {
       <section className="aipe-inner aipe-block" aria-label={brand}>
         <div className="aipe-final">
           <h2>{brand}</h2>
-          <p><FormattedText text={section1.intro} /></p>
-          <p><FormattedText text={section2.intro} /></p>
           <div className="aipe-actions">
             <Link href="/contact" className="aipe-btn aipe-btn--primary">
-              {brand}
+              Contact Us
               <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href="#section-2" className="aipe-btn aipe-btn--ghost">
-              {section2.heading}
             </Link>
           </div>
         </div>

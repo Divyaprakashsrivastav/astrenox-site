@@ -8,7 +8,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
   },
   hero: {
     label: "AI Services",
-    title: "Govern AI in\nProduction.",
+    title: "Govern AI in\nProduction",
     subtitle:
       "MLOps, governance, and observability for production AI, so models stay reliable, auditable, and within cost and risk bounds.",
     primaryCta: "Assess AI Ops Maturity",
@@ -22,7 +22,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
       "Enterprises don't fail AI at the demo, they fail at operations. Astrenox builds the control planes that keep models evaluated, monitored, versioned, and accountable after launch.",
       "We connect engineering, risk, and finance: eval suites, incident response, access policies, spend attribution, and audit evidence that regulators and boards can inspect.",
       "From prompt and model registries to runtime guardrails and human escalation, we make production AI visible and manageable across teams and business units.",
-      "Whether you run a single copilot or a fleet of agents, we leave you with platforms and playbooks your teams own, not a black box consultant dependency.",
+      "Whether you operate a single copilot or a portfolio of AI agents, Astrenox provides documented platforms, governance controls, and operational playbooks that internal teams can manage and develop over time.",
     ],
   },
   capabilities: {

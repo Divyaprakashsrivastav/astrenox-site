@@ -6,9 +6,18 @@
   --cp-border: rgba(255, 255, 255, 0.08);
   --cp-text: #fafafb;
   --cp-muted: rgba(250, 250, 251, 0.62);
-  --cp-accent: #8b5cf6;
+  --cp-accent: #7c3aed;
   background: var(--cp-bg);
   color: var(--cp-text);
+  font-family: var(--font-body);
+}
+
+.cp-page h1,
+.cp-page h2,
+.cp-page h3,
+.cp-section-title,
+.cp-cal-embed-title {
+  font-family: var(--font-heading);
 }
 
 .cp-inner {
@@ -23,7 +32,7 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #c4b5fd;
+  color: rgba(250, 250, 251, 0.45);
 }
 
 .cp-desc {
@@ -148,12 +157,38 @@
 .cp-calendar-card,
 .cp-form-card {
   padding: 1.35rem;
-  border-radius: 22px;
+  border-radius: 18px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   border: 1px solid var(--cp-border);
   background:
     linear-gradient(160deg, rgba(255, 255, 255, 0.05), transparent 45%),
     rgba(12, 10, 22, 0.92);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.cp-calendly-wrap {
+  margin-bottom: 1.25rem;
+  padding: 0.35rem;
+  border-radius: 16px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  border: 1px solid var(--cp-border);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.cp-cal-embed-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.cp-calendly-frame {
+  display: block;
+  width: 100%;
+  min-height: 620px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
 }
 
 /* Premium contact form inside .cp-form-card */
@@ -188,7 +223,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(196, 181, 253, 0.75);
+  color: rgba(250, 250, 251, 0.45);
 }
 
 .contact-form-input {

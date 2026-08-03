@@ -2,7 +2,7 @@
 export const itServicesPageContent = {
   brand: "IT Services & Consulting",
   hero: {
-    label: "Digital Consulting & Core Services",
+    label: "IT Services & Consulting",
     title: "IT Services & Consulting",
     description:
       "We resolve technical debt and transition monolithic systems into scalable, modern frameworks. Our services focus on establishing reliable infrastructure tailored to complex operational realities, stripping away inefficiencies that hinder performance.",

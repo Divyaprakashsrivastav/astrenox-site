@@ -1,0 +1,77 @@
+/* Loaded after industries-sector.css to shrink service capability panels */
+
+.ind-showcase.svc-cap-showcase {
+  min-height: 0 !important;
+  align-items: flex-start !important;
+}
+
+.ind-showcase.svc-cap-showcase .ind-showcase-panel-shell {
+  min-height: 0 !important;
+  align-self: flex-start;
+}
+
+.ind-showcase.svc-cap-showcase .ind-showcase-panel-track {
+  flex: none;
+  height: auto;
+}
+
+.ind-showcase.svc-cap-showcase .ind-showcase-panel {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: 200px !important;
+  border-radius: 16px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-scroll {
+  height: auto !important;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.85rem 1rem !important;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-icon-wrap {
+  margin-bottom: 0.55rem;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 10px;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-title {
+  font-size: 1.05rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-desc {
+  font-size: 0.8125rem !important;
+  line-height: 1.55 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-block {
+  margin-bottom: 0.75rem;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-list-item {
+  padding: 0.45rem 0.65rem 0.45rem 0.9rem;
+  font-size: 0.75rem;
+}
+
+.ind-showcase.svc-cap-showcase .ind-nav-btn {
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+}
+
+@media (min-width: 900px) {
+  .ind-showcase.svc-cap-showcase {
+    min-height: 0 !important;
+  }
+}

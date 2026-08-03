@@ -7,8 +7,8 @@ import { ArrowRight } from "lucide-react";
 interface HeroButtonsProps {
   primaryCta: string;
   primaryHref: string;
-  secondaryCta: string;
-  secondaryHref: string;
+  secondaryCta?: string;
+  secondaryHref?: string;
 }
 
 export default function HeroButtons({
@@ -33,14 +33,16 @@ export default function HeroButtons({
           className="transition-transform duration-300 group-hover:translate-x-1"
         />
       </Link>
-      <Link href={secondaryHref} className="hero-btn hero-btn-ghost group">
-        {secondaryCta}
-        <ArrowRight
-          size={16}
-          strokeWidth={2}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 opacity-70"
-        />
-      </Link>
+      {secondaryCta && secondaryHref ? (
+        <Link href={secondaryHref} className="hero-btn hero-btn-ghost group">
+          {secondaryCta}
+          <ArrowRight
+            size={16}
+            strokeWidth={2}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 opacity-70"
+          />
+        </Link>
+      ) : null}
     </motion.div>
   );
 }

@@ -69,7 +69,7 @@ function StepCard({
       transition={{ duration: 0.5, delay: index * 0.1, ease: EASE_PREMIUM }}
     >
       <div className="mvp-rail" aria-hidden>
-        <span className="mvp-dot">{index + 1}</span>
+        <span className="mvp-dot" />
         {index < total - 1 && <span className="mvp-line" />}
       </div>
 
@@ -163,20 +163,12 @@ function FAQ() {
 }
 
 export default function MVPStudioPageClient() {
-  const { brand, hero, valueProp, process, included, aiArchitecture, saasProducts, pricing, addons, faq, cta } =
+  const { hero, valueProp, process, included, aiArchitecture, saasProducts, pricing, addons, faq, cta } =
     mvpStudioContent;
 
   return (
     <Canvas>
       <section className="mvp-inner mvp-hero" aria-labelledby="mvp-brand">
-        <motion.p
-          className="mvp-hero-eyebrow"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-        >
-          {brand}
-        </motion.p>
         <motion.h1
           id="mvp-brand"
           className="mvp-hero-brand"
@@ -194,21 +186,11 @@ export default function MVPStudioPageClient() {
         >
           {hero.description}
         </motion.p>
-        <motion.ul
-          className="mvp-hero-highlights"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.14, ease: EASE_PREMIUM }}
-        >
-          {hero.highlights.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </motion.ul>
         <motion.div
           className="mvp-hero-ctas"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.18, ease: EASE_PREMIUM }}
+          transition={{ duration: 0.55, delay: 0.14, ease: EASE_PREMIUM }}
         >
           <Link href={hero.primaryHref} className="mvp-btn-primary">
             {hero.primaryCta}
@@ -296,7 +278,7 @@ export default function MVPStudioPageClient() {
           <p className="mvp-section-intro"><FormattedText text={addons.intro} /></p>
         </div>
         <motion.div
-          className="mvp-grid-2"
+          className="mvp-grid-3"
           variants={stagger}
           initial="hidden"
           whileInView="visible"

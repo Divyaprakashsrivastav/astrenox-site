@@ -182,7 +182,7 @@ export default function AstrenoxChatbot() {
             <header className="chat-panel-header">
               <div className="chat-panel-brand">
                 <span className="chat-panel-logo" aria-hidden>
-                  <AstrenoxLogo height={28} href={null} showWordmark={false} />
+                  <AstrenoxLogo variant="compact" height={28} href={null} />
                 </span>
                 <div>
                   <h2 id={`${formId}-title`} className="chat-panel-title">

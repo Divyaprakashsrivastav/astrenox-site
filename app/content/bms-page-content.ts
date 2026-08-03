@@ -441,7 +441,7 @@ export const bmsPageContent = {
         "We engineer, operate, and modernize data center environments. By integrating AI automation, low-latency networking, and strategic facility lifecycle management, we transition complex infrastructure into high-availability ecosystems optimized for intense data workloads and enterprise AI.",
       sections: [
         {
-          heading: "1 AI-Driven Operations & Infrastructure Automation",
+          heading: "AI-Driven Operations & Infrastructure Automation",
           intro:
             "We deploy AIOps frameworks to transform infrastructure management from reactive to autonomous.",
           items: [
@@ -460,7 +460,7 @@ export const bmsPageContent = {
           ],
         },
         {
-          heading: "2 High-Performance Networking & Security",
+          heading: "High-Performance Networking & Security",
           intro:
             "We architect low-latency network fabrics to execute secure, rapid data processing across distributed architectures.",
           items: [
@@ -479,7 +479,7 @@ export const bmsPageContent = {
           ],
         },
         {
-          heading: "3 Continuous Managed IT Services",
+          heading: "Continuous Managed IT Services",
           intro:
             "We assume full operational accountability for your virtual and physical IT environments under ITIL-aligned governance.",
           items: [
@@ -498,7 +498,7 @@ export const bmsPageContent = {
           ],
         },
         {
-          heading: "4 Facility Strategy & Physical Lifecycle Management",
+          heading: "Facility Strategy & Physical Lifecycle Management",
           intro:
             "We provide end-to-end real estate and physical infrastructure advisory to scale operations and navigate deployment logistics.",
           items: [

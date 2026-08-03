@@ -49,12 +49,12 @@ export const hireTechTalentPageContent = {
   },
   engagement: {
     id: "engagement-models",
-    title: ".Strategic Talent & Engineering Delivery Models",
+    title: "Strategic Talent & Engineering Delivery Models",
     intro:
       "Scale your technical capabilities and leadership with flexible engagement models designed for modern enterprise environments. Whether you need to bridge a specific skill gap, deploy a self-sufficient engineering unit, or access executive-level technical strategy, our models adapt to your project lifecycle.",
     models: [
       {
-        heading: "1. IT Staff Augmentation",
+        heading: "IT Staff Augmentation",
         description:
           "Scale your engineering capacity rapidly with pre-vetted technical talent. We integrate specialized developers, cloud architects, and data engineers directly into your internal workflows and agile ceremonies.",
         points: [
@@ -73,7 +73,7 @@ export const hireTechTalentPageContent = {
         ],
       },
       {
-        heading: "2. On-Demand Development Team PODs",
+        heading: "On-Demand Development Team PODs",
         description:
           "Deploy a fully managed, cross-functional engineering ecosystem. A POD operates as a self-sufficient unit designed to take end-to-end ownership of a specific product module or application lifecycle.",
         points: [
@@ -92,7 +92,7 @@ export const hireTechTalentPageContent = {
         ],
       },
       {
-        heading: "3. Fractional CXO Advisory (CTO, CIO, CISO)",
+        heading: "Fractional CXO Advisory (CTO, CIO, CISO)",
         description:
           "Access enterprise-grade executive leadership on a flexible, part-time basis. Our Fractional CXOs provide the strategic governance required to navigate complex digital transformations, scale architecture, and mitigate risk.",
         points: [
@@ -111,7 +111,7 @@ export const hireTechTalentPageContent = {
         ],
       },
       {
-        heading: "4 On-Demand Development Team PODs",
+        heading: "Dedicated Product Delivery Squads",
         description:
           "Deploy fully autonomous, cross-functional engineering units designed to take ownership of end-to-end product delivery.",
         points: [

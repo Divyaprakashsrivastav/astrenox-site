@@ -162,7 +162,8 @@
 .it-why-card,
 .it-process-card {
   padding: 1.35rem 1.4rem;
-  border-radius: 16px;
+  border-radius: 18px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
 }
 
 .it-tile:hover,
@@ -283,9 +284,9 @@
   font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
-  color: rgba(147, 197, 253, 0.95);
+  color: rgba(250, 250, 251, 0.72);
   padding-left: 0.85rem;
-  border-left: 2px solid rgba(96, 165, 250, 0.55);
+  border-left: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 /* Process rail - unique to IT (horizontal scroll strip) */
@@ -295,9 +296,11 @@
   grid-auto-flow: column;
   grid-auto-columns: minmax(260px, 1fr);
   overflow-x: auto;
-  padding-bottom: 0.75rem;
+  padding: 0.5rem clamp(2rem, 6vw, 4rem) 1rem;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: clamp(2rem, 6vw, 4rem);
+  margin-inline: 0;
 }
 
 .it-process-rail::-webkit-scrollbar {

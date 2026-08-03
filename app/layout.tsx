@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   ],
   manifest: "/site.webmanifest",
   icons: {
-    icon: [{ url: "/brand/astrenox-logo.png", type: "image/png" }],
-    apple: [{ url: "/brand/astrenox-logo.png", type: "image/png" }],
+    icon: [{ url: "/brand/astrenox-mark.png", type: "image/png" }],
+    apple: [{ url: "/brand/astrenox-mark.png", type: "image/png" }],
   },
   openGraph: {
     title: "Astrenox | The AI Operating System for the Physical World",

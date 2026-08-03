@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { homeHero } from "@/app/content/homepage-content";
 import FormattedText from "../ui/FormattedText";
+import HeroButtons from "./HeroButtons";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -35,6 +36,10 @@ export default function HeroContent() {
             <FormattedText text={paragraph} />
           </p>
         ))}
+      </motion.div>
+
+      <motion.div className="hero-cta-row" {...fadeUp(0.45)}>
+        <HeroButtons primaryCta="Contact Us" primaryHref="/contact" />
       </motion.div>
     </div>
   );

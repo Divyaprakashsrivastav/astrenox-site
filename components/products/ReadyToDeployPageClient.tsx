@@ -130,7 +130,9 @@ export default function ReadyToDeployPageClient() {
       >
         <div className="rtd-container">
           <Reveal>
-            <p className="rtd-section-label">{c.appliedPlatforms.label}</p>
+            {c.appliedPlatforms.label ? (
+              <p className="rtd-section-label">{c.appliedPlatforms.label}</p>
+            ) : null}
             <h2 id="rtd-platforms-title" className="rtd-section-title">
               {c.appliedPlatforms.title}
             </h2>
@@ -161,7 +163,9 @@ export default function ReadyToDeployPageClient() {
       >
         <div className="rtd-container">
           <Reveal>
-            <p className="rtd-section-label">{c.genAiBoilerplates.label}</p>
+            {c.genAiBoilerplates.label ? (
+              <p className="rtd-section-label">{c.genAiBoilerplates.label}</p>
+            ) : null}
             <h2 id="rtd-genai-title" className="rtd-section-title">
               {c.genAiBoilerplates.title}
             </h2>
@@ -276,7 +280,9 @@ export default function ReadyToDeployPageClient() {
         <div className="mvp-inner">
           <Reveal>
             <div className="mvp-section-header">
-              <p className="mvp-eyebrow">{c.customCrm.label}</p>
+              {c.customCrm.label ? (
+                <p className="mvp-eyebrow">{c.customCrm.label}</p>
+              ) : null}
               <h2 id="rtd-crm-title" className="mvp-section-title">
                 {c.customCrm.title}
               </h2>

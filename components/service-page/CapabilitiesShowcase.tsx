@@ -7,6 +7,7 @@ import CapabilitiesShowcasePanel, {
   type CapabilityShowcaseItem,
 } from "./CapabilitiesShowcasePanel";
 import "../home/industries-sector.css";
+import "./capabilities-showcase.css";
 
 type CapabilitiesShowcaseProps = {
   items: CapabilityShowcaseItem[];

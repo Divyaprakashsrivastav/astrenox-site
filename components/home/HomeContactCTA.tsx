@@ -60,10 +60,25 @@ const BADGE = {
   },
 };
 
-/** Slim homepage closing CTA, full contact experience lives on /contact */
+function calendlyEmbedSrc(url: string) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("calendly.com")) {
+      const path = parsed.pathname.replace(/\/$/, "");
+      return `https://calendly.com${path}?hide_gdpr_banner=1&background_color=08060f&text_color=f4f4f5&primary_color=7c3aed`;
+    }
+  } catch {
+    /* fall through */
+  }
+  return url;
+}
+
+/** Slim homepage closing CTA + Calendly embed; full form lives on /contact */
 export default function HomeContactCTA() {
   const supporting =
     homeContactCta.description.split("\n\n").filter(Boolean)[0] ?? "";
+  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim();
+  const embedSrc = calendlyUrl ? calendlyEmbedSrc(calendlyUrl) : null;
 
   return (
     <section id="contact" className="cta-section cta-section--slim scroll-mt-28">
@@ -79,7 +94,7 @@ export default function HomeContactCTA() {
           viewport={{ once: true, margin: "-8%" }}
         >
           <motion.p className="cta-eyebrow" variants={FADE_UP}>
-            {homeContactCta.eyebrow}
+            Book a Consultation
           </motion.p>
 
           <motion.h2 className="cta-title" variants={FADE_UP}>
@@ -108,19 +123,31 @@ export default function HomeContactCTA() {
               variants={BUTTON}
               data-cursor-hover
             >
-              Schedule Discovery Call
+              Contact Us
               <ArrowRight size={16} className="cta-btn-arrow" aria-hidden />
             </motion.a>
+          </motion.div>
+
+          {embedSrc ? (
+            <motion.div className="cta-calendly-embed" variants={SLIDE_UP}>
+              <iframe
+                title="Book a consultation"
+                src={embedSrc}
+                className="cta-calendly-frame"
+                loading="lazy"
+              />
+            </motion.div>
+          ) : (
             <motion.a
-              href="/contact"
+              href="/contact?intent=scoping"
               className="cta-btn-secondary group"
               variants={BUTTON}
               data-cursor-hover
             >
-              Contact Our Team
+              Book a Consultation
               <ArrowRight size={16} className="cta-btn-arrow" aria-hidden />
             </motion.a>
-          </motion.div>
+          )}
 
           <motion.ul
             className="cta-trust-row"

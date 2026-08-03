@@ -8,7 +8,6 @@ const ProcessSection = dynamic(() => import("@/components/home/ProcessSection"))
 const TriFlywheel = dynamic(() => import("@/components/home/TriFlywheel"));
 const EnterpriseEcosystem = dynamic(() => import("@/components/home/EnterpriseEcosystem"));
 const HomeIndustries = dynamic(() => import("@/components/home/HomeIndustries"));
-const HomeMetrics = dynamic(() => import("@/components/home/HomeMetrics"));
 const ServicesSection = dynamic(() => import("@/components/home/ServicesSection"));
 const TechnologyEcosystem = dynamic(() => import("@/components/home/TechnologyEcosystem"));
 const HomeProducts = dynamic(() => import("@/components/home/HomeProducts"));
@@ -25,7 +24,6 @@ export default function Home() {
         <TriFlywheel />
         <EnterpriseEcosystem />
         <HomeIndustries />
-        <HomeMetrics />
         <ServicesSection />
         <TechnologyEcosystem />
         <HomeProducts />

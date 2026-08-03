@@ -75,10 +75,6 @@
   height: 36px;
 }
 
-.dock-zone--brand .ax-brand-word {
-  font-size: 1.05rem;
-}
-
 .dock-zone--menu {
   justify-content: center;
   min-width: 0;
@@ -267,17 +263,9 @@
     column-gap: 0.5rem;
   }
 
-  .dock-zone--brand .ax-brand-word {
-    font-size: 0.95rem;
-  }
-
   .dock-zone--brand .ax-logo-link--nav,
   .dock-zone--brand .ax-logo-mark {
     height: 30px;
-  }
-
-  .dock-zone--brand .ax-brand-lockup {
-    gap: 7px;
   }
 }
 
@@ -908,20 +896,12 @@
     display: none;
   }
 
-  .dock-zone--brand .ax-brand-word {
-    font-size: 1rem;
-  }
-
   .dock-zone--brand .ax-logo-link--nav {
     height: 32px;
   }
 
   .dock-zone--brand .ax-logo-mark {
     height: 32px;
-  }
-
-  .dock-zone--brand .ax-brand-lockup {
-    gap: 8px;
   }
 }
 
@@ -943,11 +923,6 @@
 
   .dock-grid {
     padding: 0 0.65rem 0 0.75rem;
-  }
-
-  /* Hide wordmark on very narrow screens — mark alone is enough */
-  .dock-zone--brand .ax-brand-word {
-    display: none;
   }
 
   .dock-burger {

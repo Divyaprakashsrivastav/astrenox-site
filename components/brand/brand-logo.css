@@ -1,4 +1,4 @@
-/* Astrenox official logo - asset used exactly as provided */
+/* Astrenox official logos — full lockup or icon mark (logo2) */
 
 .ax-logo-link,
 .ax-logo-wrap {
@@ -10,22 +10,6 @@
   text-decoration: none;
 }
 
-.ax-brand-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.ax-brand-word {
-  font-family: var(--font-heading, ui-serif, Georgia, serif);
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #ffffff;
-  line-height: 1;
-  white-space: nowrap;
-}
-
 .ax-logo-link--nav {
   height: 40px;
 }
@@ -34,7 +18,8 @@
   height: 36px;
 }
 
-.ax-logo-wrap--footer {
+.ax-logo-wrap--footer,
+.ax-logo-link--footer {
   display: block;
   margin-bottom: 1.125rem;
 }
@@ -43,20 +28,22 @@
   display: block;
   height: var(--ax-logo-h, 40px);
   width: auto;
+  max-width: 100%;
   flex-shrink: 0;
   object-fit: contain;
 }
 
+.ax-logo-mark--icon {
+  aspect-ratio: 1 / 1;
+}
+
 .ax-logo-link--footer .ax-logo-mark,
 .ax-logo-wrap--footer .ax-logo-mark {
-  height: 64px;
+  height: var(--ax-logo-h, 56px);
+  max-width: min(280px, 100%);
 }
 
 .ax-logo-link--nav .ax-logo-mark,
 .ax-logo-link--drawer .ax-logo-mark {
   height: var(--ax-logo-h, 40px);
-}
-
-.ax-logo-link:hover .ax-brand-word {
-  color: #f5f3ff;
 }

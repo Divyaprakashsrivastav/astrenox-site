@@ -186,7 +186,8 @@
   flex-direction: column;
   max-height: 420px;
   min-height: 340px;
-  border-radius: 24px;
+  border-radius: 18px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   background: rgba(14, 14, 24, 0.55);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
@@ -731,12 +732,7 @@
 }
 
 .prj-bento-num {
-  flex-shrink: 0;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.06em;
-  color: #a855f7;
+  display: none;
 }
 
 .prj-bento-category {

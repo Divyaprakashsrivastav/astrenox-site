@@ -163,6 +163,21 @@ export default function ContactPageClient() {
           </div>
 
           <div className="cp-calendar-card">
+            {calendlyUrl ? (
+              <div className="cp-calendly-wrap">
+                <h3 className="cp-cal-embed-title">Book a Consultation</h3>
+                <iframe
+                  title="Book a consultation with Calendly"
+                  src={
+                    calendlyUrl.includes("calendly.com")
+                      ? `${calendlyUrl.replace(/\/$/, "")}?hide_gdpr_banner=1&background_color=08060f&text_color=f4f4f5&primary_color=7c3aed`
+                      : calendlyUrl
+                  }
+                  className="cp-calendly-frame"
+                  loading="lazy"
+                />
+              </div>
+            ) : null}
             <div className="cp-cal-header">
               <button
                 type="button"

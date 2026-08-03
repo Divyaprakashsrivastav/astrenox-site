@@ -576,7 +576,7 @@ export const infrastructureSection = {
 
 export const industrySolutionsSection = {
   label: "Industry page -header",
-  subtitle: ".For AI solutions of  industry ",
+  subtitle: "Industry AI solutions tailored to operational workflows",
   overviews: [
     {
       id: "healthcare-overview",

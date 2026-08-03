@@ -207,22 +207,14 @@
 
 .method-story-stage-item {
   position: relative;
-  padding-left: 1.375rem;
+  padding-left: 0;
   font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
   line-height: 1.75;
   color: rgba(228, 225, 255, 0.84);
 }
 
 .method-story-stage-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.72em;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #a855f7;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.45);
+  content: none;
 }
 
 /* Progress hint */

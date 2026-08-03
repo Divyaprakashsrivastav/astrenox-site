@@ -16,7 +16,7 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
       {
         title: "Diagnose via Code",
         description:
-          "We bypass outdated documentation. Our systems scan your active codebases, git history, and CI/CD pipelines to map the actual architecture and establish a factual operational baseline.",
+          "We validate available documentation against active codebases, Git history, and CI/CD pipelines to establish a factual view of the current architecture and delivery environment.",
       },
       {
         title: "Dissect & Delegate",
@@ -26,7 +26,7 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
       {
         title: "Automated Governance",
         description:
-          "Quality, security, and compliance controls are embedded directly into the execution flow, allowing development to accelerate without introducing deployment risk.",
+          "Quality, security, and compliance controls are embedded directly into the execution flow, helping teams accelerate delivery while managing deployment risk.",
       },
     ],
   },
@@ -44,14 +44,14 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
         title: "Agentic Legacy Modernization",
         icon: "Layers",
         paragraphs: [
-          "We safely untangle technical debt. Our teams utilize AI-assisted refactoring to rebuild outdated platforms at pace, recovering trapped value locked in legacy systems without operational disruption.",
+          "We use AI-assisted analysis and refactoring to modernize selected components, reduce technical debt, and protect continuity across critical operations.",
         ],
       },
       {
         title: "Internal Capability Transfer",
         icon: "Users",
         paragraphs: [
-          "We do not just deliver code; we upskill your engineering bench. By embedding AI-native workflows into your daily operations, your team becomes fully autonomous.",
+          "We combine delivery with capability transfer, helping internal engineering teams operate and improve AI-native workflows after implementation.",
         ],
       },
       {
@@ -65,8 +65,7 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
   },
   impact: {
     title: "Business Impact",
-    intro:
-      "We operate on a strict, proof-of-value methodology, demonstrating deterministic throughput gains on live work before scaling:",
+    intro: "",
     items: [
       {
         title: "30% to 70% sustained productivity gains",
@@ -81,7 +80,7 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
       {
         title: "Defensible ROI",
         description:
-          "Output scales without proportional headcount increases. By leveraging AI to handle low-leverage work, senior engineers increase their impact, directly improving the commercial valuation of your digital products.",
+          "AI is applied to repeatable, lower-leverage work so senior engineers can focus on architecture, product decisions, and higher-value delivery. Results are evaluated against agreed productivity, quality, and delivery metrics.",
       },
     ],
   },

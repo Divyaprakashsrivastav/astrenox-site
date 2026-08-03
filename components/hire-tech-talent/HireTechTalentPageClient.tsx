@@ -69,7 +69,7 @@ function ModelCard({
       transition={{ duration: 0.5, delay: index * 0.1, ease: EASE_PREMIUM }}
     >
       <div className="mvp-rail" aria-hidden>
-        <span className="mvp-dot">{index + 1}</span>
+        <span className="mvp-dot" />
         {index < hireTechTalentPageContent.engagement.models.length - 1 && (
           <span className="mvp-line" />
         )}

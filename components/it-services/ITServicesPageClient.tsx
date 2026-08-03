@@ -188,7 +188,7 @@ export default function ITServicesPageClient() {
               transition={{ duration: 0.5, delay: 0.18, ease: EASE_PREMIUM }}
             >
               <Link href="/contact" className="mvp-btn-primary">
-                {brand}
+                Contact Us
                 <ArrowRight size={16} aria-hidden />
               </Link>
               <Link href="#section-2" className="mvp-btn-secondary">
@@ -373,7 +373,6 @@ export default function ITServicesPageClient() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.08, ease: EASE_PREMIUM }}
           >
-            <h3 className="it-inline-heading">{section2.heading}</h3>
             <p className="it-split-text"><FormattedText text={section2.intro} /></p>
           </motion.div>
         </div>
@@ -447,7 +446,6 @@ export default function ITServicesPageClient() {
                     ease: EASE_PREMIUM,
                   }}
                 >
-                  <span className="it-process-num">{String(i + 1).padStart(2, "0")}</span>
                   <div className="mvp-icon it-tile-icon">
                     <Icon size={16} aria-hidden />
                   </div>
@@ -494,15 +492,10 @@ export default function ITServicesPageClient() {
       <section className="mvp-inner mvp-section" aria-label={brand}>
         <div className="mvp-glass mvp-cta it-cta">
           <h2>{brand}</h2>
-          <p className="it-cta-text"><FormattedText text={section1.intro} /></p>
-          <p className="it-cta-text"><FormattedText text={section2.intro} /></p>
           <div className="mvp-cta-buttons">
             <Link href="/contact" className="mvp-btn-primary">
-              {brand}
+              Contact Us
               <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href="#it-how-why" className="mvp-btn-secondary">
-              {section1.howWhy.title}
             </Link>
           </div>
         </div>

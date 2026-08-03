@@ -26,10 +26,10 @@ export const mvpStudioContent = {
     id: "process",
     title: "From Product Idea to Live Application in 21 Days",
     intro:
-      "We don't do endless planning loops. Our process is engineered to remove uncertainty and get your product into users' hands fast so you can start gathering real data.",
+      "Our focused delivery process reduces unnecessary planning cycles and moves the product into users’ hands quickly, enabling teams to begin gathering meaningful usage data.",
     steps: [
       {
-        heading: "1. Define and Scope, Days 1 to 3",
+        heading: "Define and Scope, Days 1 to 3",
         description:
           "We align the product around its core users, commercial objective and highest value workflows. Initial scope is confirmed within 48 hours, followed by detailed product and technical planning.",
         activities:
@@ -38,7 +38,7 @@ export const mvpStudioContent = {
           "Deliverables: Confirmed product specification, screen and user flow map, prioritised MVP backlog, defined validation and performance metrics.",
       },
       {
-        heading: "2. Design, Build and Instrument, Days 4 to 16",
+        heading: "Design, Build and Instrument, Days 4 to 16",
         description:
           "Our product, design and engineering teams develop the core application using modular architecture and reusable components. Infrastructure, integrations, analytics and monitoring are implemented alongside product development.",
         activities:
@@ -47,7 +47,7 @@ export const mvpStudioContent = {
           "Deliverables: Functional, staging ready MVP, implemented core user journeys, connected integrations and data workflows, product analytics and operational monitoring, initial technical documentation.",
       },
       {
-        heading: "3. Launch, Learn and Handover, Days 17 to 21",
+        heading: "Launch, Learn and Handover, Days 17 to 21",
         description:
           "The application is tested, deployed and prepared for initial users. Early usage signals are reviewed to identify operational gaps, adoption patterns and the highest value priorities for the next release.",
         activities:

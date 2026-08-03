@@ -47,9 +47,9 @@
 }
 
 .ind-page-impact {
-  margin-top: 0.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 1rem;
+  padding-top: 0;
+  border-top: none;
 }
 
 .ind-page-impact-copy {

@@ -90,8 +90,8 @@ function SoftwareFactorySticky() {
               }}
               className={`products-glass products-factory-stage ${activeStage === i ? "products-factory-stage--active" : ""}`}
             >
-              <span className="text-xs font-semibold text-[#4f8cff]">
-                {section.number}. {section.title}
+              <span className="products-factory-stage-label">
+                {section.title}
               </span>
               <p className="products-body mt-3 text-sm"><FormattedText text={section.intro} /></p>
               <ul className="products-detail-list mt-4">
