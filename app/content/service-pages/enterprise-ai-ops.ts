@@ -126,6 +126,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
         timeline: "14 weeks",
         stack: ["MLflow", "Grafana", "Policy Engine"],
         outcome: "Central registry and promotion gates for 40+ models with audit evidence packs.",
+        photo: "/images/projects/control-tower.jpg",
       },
       {
         name: "Agent Observability Layer",
@@ -133,6 +134,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
         timeline: "9 weeks",
         stack: ["OpenTelemetry", "LangSmith", "PagerDuty"],
         outcome: "MTTR on agent failures dropped from hours to under 25 minutes.",
+        photo: "/images/projects/observability.jpg",
       },
       {
         name: "FinOps for GenAI",
@@ -140,6 +142,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
         timeline: "6 weeks",
         stack: ["Cost Telemetry", "Budgets", "SSO"],
         outcome: "Product-level spend visibility cut runaway token usage 37% in one quarter.",
+        photo: "/images/projects/finops.jpg",
       },
     ],
   },

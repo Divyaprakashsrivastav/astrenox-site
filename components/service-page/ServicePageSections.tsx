@@ -2,6 +2,7 @@
 
 import { memo, type ComponentType } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import type { ServicePageContent, ServiceIconName } from "@/app/content/service-pages/types";
@@ -11,7 +12,16 @@ import MVPStudioFAQ from "../mvp-studio/MVPStudioFAQ";
 import { SERVICE_ICONS } from "./service-icons";
 import StackCarousel3D from "./StackCarousel3D";
 import CapabilitiesShowcase from "./CapabilitiesShowcase";
+import OverviewMediaCards from "./OverviewMediaCards";
+import StrategyJourneyTimeline from "./StrategyJourneyTimeline";
 import FormattedText from "../ui/FormattedText";
+import "./service-page-extra.css";
+
+const DEFAULT_PROJECT_PHOTOS = [
+  "/images/projects/control-tower.jpg",
+  "/images/projects/observability.jpg",
+  "/images/projects/finops.jpg",
+] as const;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -161,33 +171,14 @@ function ServicePageSections({
     WorkflowComponent ? (
       <WorkflowComponent workflow={workflow} />
     ) : (
-      <section
+      <StrategyJourneyTimeline
         id={workflow.id}
-        className="mvp-inner mvp-section"
-        aria-labelledby="service-workflow-title"
-      >
-        <SectionHeaderBlock label={workflow.label ?? ""} title={workflow.title} titleId="service-workflow-title" />
-        <SectionIntro intro={workflow.intro} />
-        <div className="mvp-timeline">
-          {workflow.steps.map((step, i) => (
-            <motion.div
-              key={step.name}
-              className="mvp-timeline-step"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
-            >
-              <div className="mvp-glass-card mvp-timeline-step-inner">
-                <h3>{step.name}</h3>
-                <p>
-                  <FormattedText text={step.description} />
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+        label={workflow.label}
+        title={workflow.title}
+        intro={workflow.intro}
+        steps={workflow.steps}
+        titleId="service-workflow-title"
+      />
     )
   ) : null;
 
@@ -195,33 +186,17 @@ function ServicePageSections({
     ServiceOfferingsComponent ? (
       <ServiceOfferingsComponent serviceOfferings={serviceOfferings} />
     ) : (
-      <section className="mvp-inner mvp-section" aria-labelledby="service-offerings-title">
-        <SectionHeaderBlock
-          label={serviceOfferings.label}
-          title={serviceOfferings.title}
-          titleId="service-offerings-title"
-        />
-        <SectionIntro intro={serviceOfferings.intro} />
-        <div className="mvp-timeline mvp-timeline--roadmap">
-          {serviceOfferings.items.map((item, i) => (
-            <motion.div
-              key={item.service}
-              className="mvp-timeline-step"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
-            >
-              <div className="mvp-glass-card mvp-timeline-step-inner">
-                <h3>{item.service}</h3>
-                <p>
-                  <FormattedText text={item.outcome} />
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <StrategyJourneyTimeline
+        id="service-offerings"
+        label={serviceOfferings.label}
+        title={serviceOfferings.title}
+        intro={serviceOfferings.intro}
+        titleId="service-offerings-title"
+        steps={serviceOfferings.items.map((item) => ({
+          name: item.service,
+          description: item.outcome,
+        }))}
+      />
     )
   ) : null;
 
@@ -338,10 +313,23 @@ function ServicePageSections({
                   {overview.title}
                 </motion.h2>
               ) : null}
-              <StackCarousel3D
-                variant="prose"
-                items={(overview.paragraphs ?? []).map((description) => ({ description }))}
-              />
+              {(overview.paragraphImages?.length ?? 0) > 0 ? (
+                <OverviewMediaCards
+                  blocks={(overview.paragraphs ?? []).map((text, index) => ({
+                    text,
+                    image: overview.paragraphImages![index] ?? overview.paragraphImages![0],
+                    label: overview.paragraphLabels?.[index],
+                  }))}
+                />
+              ) : (
+                <div className="mvp-about-text mvp-about-text-full">
+                  {(overview.paragraphs ?? []).map((paragraph) => (
+                    <p key={paragraph.slice(0, 48)}>
+                      <FormattedText text={paragraph} />
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           </section>
         )
@@ -455,35 +443,48 @@ function ServicePageSections({
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
         >
-          {projects.items.map((project, i) => (
-            <motion.article
-              key={project.name}
-              className="mvp-glass-card mvp-project-card"
-              custom={i}
-              variants={fadeUp}
-            >
-              <div className="mvp-project-shot">
-                <span className="mvp-project-shot-label">Case Study Preview</span>
-              </div>
-              <div className="mvp-project-body">
-                <h3>{project.name}</h3>
-                <p className="mvp-project-meta">{project.industry}</p>
-                <p className="mvp-project-detail">
-                  <strong>Timeline:</strong> {project.timeline}
-                </p>
-                <p className="mvp-project-detail">
-                  <strong>Tech:</strong> {project.stack.join(", ")}
-                </p>
-                <p className="mvp-project-outcome">
-                  <FormattedText text={project.outcome} />
-                </p>
-                <Link href="/contact" className="mvp-project-link">
-                  View Case Study
-                  <ArrowRight size={14} aria-hidden />
-                </Link>
-              </div>
-            </motion.article>
-          ))}
+          {projects.items.map((project, i) => {
+            const photo =
+              project.photo ?? DEFAULT_PROJECT_PHOTOS[i % DEFAULT_PROJECT_PHOTOS.length];
+
+            return (
+              <motion.article
+                key={project.name}
+                className="mvp-glass-card mvp-project-card"
+                custom={i}
+                variants={fadeUp}
+              >
+                <div className="mvp-project-shot mvp-project-shot--photo">
+                  <Image
+                    src={photo}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 92vw, 360px"
+                    className="mvp-project-shot-img"
+                  />
+                  <span className="mvp-project-shot-veil" aria-hidden />
+                  <span className="mvp-project-shot-label">Case Study Preview</span>
+                </div>
+                <div className="mvp-project-body">
+                  <h3>{project.name}</h3>
+                  <p className="mvp-project-meta">{project.industry}</p>
+                  <p className="mvp-project-detail">
+                    <strong>Timeline:</strong> {project.timeline}
+                  </p>
+                  <p className="mvp-project-detail">
+                    <strong>Tech:</strong> {project.stack.join(", ")}
+                  </p>
+                  <p className="mvp-project-outcome">
+                    <FormattedText text={project.outcome} />
+                  </p>
+                  <Link href="/contact" className="mvp-project-link">
+                    View Case Study
+                    <ArrowRight size={14} aria-hidden />
+                  </Link>
+                </div>
+              </motion.article>
+            );
+          })}
         </motion.div>
       </section>
       )}

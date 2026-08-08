@@ -99,6 +99,7 @@ export type ServicePageChapter = {
       paragraphs?: string[];
       bullets?: string[];
       afterBullets?: string[];
+      photo?: string;
     }>;
   };
   workflow?: {
@@ -137,6 +138,10 @@ export type ServicePageContent = {
     label?: string;
     intro?: string;
     paragraphs?: string[];
+    /** Optional images paired with overview.paragraphs (same order) */
+    paragraphImages?: string[];
+    /** Optional short labels paired with overview.paragraphs */
+    paragraphLabels?: string[];
     items?: Array<{
       title: string;
       description?: string;
@@ -220,6 +225,7 @@ export type ServicePageContent = {
       timeline: string;
       stack: string[];
       outcome: string;
+      photo?: string;
     }>;
   };
   industries?: {

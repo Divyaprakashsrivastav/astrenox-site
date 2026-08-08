@@ -61,7 +61,7 @@
 .adv-offering-row {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   align-items: center;
   gap: 1.25rem;
   min-height: 5.5rem;
@@ -173,20 +173,6 @@
   font-weight: 650;
 }
 
-.adv-offering-row-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
-  margin-right: 0.375rem;
-  color: rgba(196, 181, 253, 0.45);
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    color 0.35s ease;
-}
-
 .adv-offering-row-sweep {
   position: absolute;
   inset: 0;
@@ -227,11 +213,6 @@
   animation: adv-offering-icon-pulse 1.2s ease-in-out infinite;
 }
 
-.adv-offering-row:hover .adv-offering-row-arrow {
-  transform: translateX(8px) rotate(4deg);
-  color: rgba(216, 180, 254, 0.75);
-}
-
 .adv-offering-row:hover .adv-offering-row-sweep {
   animation: adv-offering-sweep-once 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -259,13 +240,9 @@
 
 @media (max-width: 640px) {
   .adv-offering-row {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr;
     gap: 0.875rem;
     padding-block: 1.125rem;
-  }
-
-  .adv-offering-row-arrow {
-    align-self: center;
   }
 }
 
@@ -275,7 +252,6 @@
   }
 
   .adv-offering-row,
-  .adv-offering-row-arrow,
   .adv-offering-row-progress::after,
   .adv-offering-row-accent,
   .adv-offering-row-icon {

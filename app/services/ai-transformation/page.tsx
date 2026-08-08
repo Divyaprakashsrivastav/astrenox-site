@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import SiteLayout from "@/components/layout/SiteLayout";
 import dynamic from "next/dynamic";
 const ServicePage = dynamic(() => import("@/components/service-page/ServicePage"));
+import {
+  TransformationRoadmapJourney,
+  TransformationWorkflowJourney,
+} from "@/components/ai-transformation/TransformationJourney";
 import { aiTransformationContent } from "@/app/content/service-pages";
 
 export const metadata: Metadata = {
@@ -12,7 +16,13 @@ export const metadata: Metadata = {
 export default function AITransformationPage() {
   return (
     <SiteLayout>
-      <ServicePage content={aiTransformationContent} visual="aiTransformation" />
+      <ServicePage
+        content={aiTransformationContent}
+        visual="aiTransformation"
+        heroVisual={null}
+        WorkflowComponent={TransformationWorkflowJourney}
+        ServiceOfferingsComponent={TransformationRoadmapJourney}
+      />
     </SiteLayout>
   );
 }

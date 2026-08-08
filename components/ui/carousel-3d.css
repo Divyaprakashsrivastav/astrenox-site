@@ -142,7 +142,72 @@
     0 0 72px rgba(139, 92, 246, 0.16);
 }
 
-/* Footer social button glass for icon wells */
+/* Small inset image tile (not a full-bleed crop strip) */
+.carousel3d-wrap--photos {
+  --carousel3d-face-h: 248px;
+}
+
+.carousel3d-face-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  height: 100%;
+  min-height: 0;
+}
+
+.carousel3d-face-thumb,
+.stack-card-thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 6, 18, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.carousel3d-face-thumb-img {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.55) contrast(0.94) brightness(0.74);
+}
+
+.carousel3d-face-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+  height: 100%;
+}
+
+.stack-card-media-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.stack-card-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+}
+
+.stack-card-media-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.stack-card-media-copy .mvp-feature-icon {
+  margin-bottom: 0.5rem;
+}
+
+.stack-card-media-copy h3 {
+  margin: 0;
+}
+
 .carousel3d-face-icon {
   display: flex;
   align-items: center;
@@ -184,6 +249,10 @@
   line-height: 1.42;
   color: rgba(250, 250, 251, 0.58);
   margin: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
 }
 
 .carousel3d-hint {

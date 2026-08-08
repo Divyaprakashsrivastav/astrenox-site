@@ -112,6 +112,11 @@
   margin-top: 1.75rem;
 }
 
+/* Secondary CTA sits as a sibling under the actions row */
+.cta-slim > .cta-btn-secondary {
+  margin-top: 0.85rem;
+}
+
 .cta-calendly-embed {
   width: min(100%, 42rem);
   margin: 1.75rem auto 0;

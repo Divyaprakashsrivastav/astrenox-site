@@ -3,7 +3,7 @@ import { emphasizeImportantWords } from "@/lib/emphasize-text";
 
 const BOLD_PATTERN = /\*\*(.+?)\*\*/g;
 
-export function parseFormattedText(text: string): ReactNode[] {
+export function parseFormattedText(text: string, keyPrefix = "ft"): ReactNode[] {
   const parts: ReactNode[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
@@ -15,7 +15,9 @@ export function parseFormattedText(text: string): ReactNode[] {
     if (match.index > lastIndex) {
       parts.push(text.slice(lastIndex, match.index));
     }
-    parts.push(<strong key={key++}>{match[1]}</strong>);
+    // Prefix keeps keys unique when multiple parse passes are siblings
+    // (e.g. text before/after a "Business Outcome:" split).
+    parts.push(<strong key={`${keyPrefix}-${key++}`}>{match[1]}</strong>);
     lastIndex = match.index + match[0].length;
   }
 
@@ -53,18 +55,18 @@ export default function FormattedText({
       return createElement(
         Tag,
         { className },
-        ...(before ? parseFormattedText(before) : []),
+        ...(before ? parseFormattedText(before, "bo-pre") : []),
         before ? <br key="bo-br" /> : null,
         <strong key="bo-label" className="svc-business-outcome-label">
           Business Outcome:
         </strong>,
         <br key="bo-br-2" />,
-        ...parseFormattedText(after),
+        ...parseFormattedText(after, "bo-post"),
       );
     }
   }
 
-  return createElement(Tag, { className }, ...parseFormattedText(resolved));
+  return createElement(Tag, { className }, ...parseFormattedText(resolved, "ft"));
 }
 
 export function FormattedParagraphs({
@@ -78,8 +80,8 @@ export function FormattedParagraphs({
 }) {
   return (
     <div className={className}>
-      {paragraphs.map((paragraph) => (
-        <p key={paragraph} className={paragraphClassName}>
+      {paragraphs.map((paragraph, index) => (
+        <p key={`p-${index}-${paragraph.slice(0, 24)}`} className={paragraphClassName}>
           <FormattedText text={paragraph} />
         </p>
       ))}

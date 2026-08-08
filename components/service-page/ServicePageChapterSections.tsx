@@ -4,16 +4,28 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { ServicePageChapter } from "@/app/content/service-pages/types";
+import type { ServiceIconName, ServicePageChapter } from "@/app/content/service-pages/types";
 import { EASE_PREMIUM } from "../v2/motion";
 import CapabilitiesShowcase from "./CapabilitiesShowcase";
 import DeliverablesCarousel3D from "./DeliverablesCarousel3D";
 import FanOverviewCards from "./FanOverviewCards";
-import InteractiveOverviewGrid from "./InteractiveOverviewGrid";
 import OverviewTimeline from "./OverviewTimeline";
+import StackCarousel3D from "./StackCarousel3D";
+import StrategyJourneyTimeline from "./StrategyJourneyTimeline";
 import TagMarquee from "./TagMarquee";
 import FormattedText from "../ui/FormattedText";
 import "./service-page-extra.css";
+
+const OVERVIEW_GRID_ICONS: ServiceIconName[] = [
+  "FileCheck",
+  "Workflow",
+  "Layers",
+  "Monitor",
+  "Database",
+  "Target",
+  "ShieldCheck",
+  "Brain",
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -200,6 +212,13 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
   } = chapter;
 
   const heroCtasInOverview = Boolean(heroCtas?.length && overview?.layout === "timeline");
+  const overviewCards =
+    overview?.cards ??
+    overview?.paragraphs?.map((body, i) => ({
+      heading: `Point ${i + 1}`,
+      body,
+    })) ??
+    [];
 
   return (
     <div id={id} className="mvp-chapter">
@@ -268,24 +287,17 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
               </motion.h3>
             ) : null}
             {overview.layout === "fan" ? (
-              <FanOverviewCards
-                cards={
-                  overview.cards ??
-                  overview.paragraphs.map((body, i) => ({
-                    heading: `Point ${i + 1}`,
-                    body,
-                  }))
-                }
-              />
+              <FanOverviewCards cards={overviewCards} />
             ) : overview.layout === "grid" ? (
-              <InteractiveOverviewGrid
-                cards={
-                  overview.cards ??
-                  overview.paragraphs.map((body, i) => ({
-                    heading: `Point ${i + 1}`,
-                    body,
-                  }))
-                }
+              <CapabilitiesShowcase
+                items={overviewCards.map((card) => ({
+                  title: card.heading,
+                  paragraphs: [card.body],
+                }))}
+                icons={overviewCards.map(
+                  (_, i) => OVERVIEW_GRID_ICONS[i % OVERVIEW_GRID_ICONS.length]
+                )}
+                navLabel={overview.title || "Product brief"}
               />
             ) : (
             <motion.div
@@ -362,28 +374,12 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
       {methodology ? (
         <section className="mvp-inner mvp-section" aria-labelledby={`${id}-methodology`}>
           <SectionHeaderBlock title={methodology.title} />
-          <motion.div
-            className="mvp-cap-grid"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-          >
-            {methodology.items.map((item, i) => (
-              <motion.article
-                key={item.title}
-                className="mvp-glass-card mvp-cap-card"
-                custom={i}
-                variants={fadeUp}
-              >
-                <h3>{item.title}</h3>
-                <p>
-            <FormattedText text={item.description} />
-          </p>
-              </motion.article>
-            ))}
-          </motion.div>
-          <SectionIntro intro={methodology.intro} />
+          <StackCarousel3D
+            items={methodology.items.map((item) => ({
+              title: item.title,
+              description: item.description,
+            }))}
+          />
         </section>
       ) : null}
 
@@ -440,33 +436,14 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
       ) : null}
 
       {workflow ? (
-        <section
-          id={workflow.id}
-          className="mvp-inner mvp-section"
-          aria-labelledby={`${id}-workflow`}
-        >
-          <SectionHeaderBlock label={workflow.label} title={workflow.title} />
-          <SectionIntro intro={workflow.intro} />
-          <div className="mvp-timeline mvp-timeline--roadmap">
-            {workflow.steps.map((step, i) => (
-              <motion.div
-                key={step.name}
-                className="mvp-timeline-step"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
-              >
-                <div className="mvp-glass-card mvp-timeline-step-inner">
-                  <h3>{step.name}</h3>
-                  <p>
-                    <FormattedText text={step.description} />
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        <StrategyJourneyTimeline
+          id={workflow.id ?? `${id}-workflow`}
+          label={workflow.label}
+          title={workflow.title}
+          intro={workflow.intro}
+          steps={workflow.steps}
+          titleId={`${id}-workflow`}
+        />
       ) : null}
 
       {impact ? (

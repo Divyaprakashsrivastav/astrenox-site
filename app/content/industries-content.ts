@@ -238,36 +238,43 @@ export const industriesContent = {
         title: "Transformation and Technology Advisory",
         description:
           "Operating model assessment, AI readiness, opportunity prioritization, architecture planning, data strategy, security design, and transformation roadmaps.",
+        photo: "/images/delivery/advisory.jpg",
       },
       {
         title: "Astren AI Transformation",
         description:
           "Workflow discovery, process debt analysis, governance, employee adoption, AI enablement, performance monitoring, and value measurement.",
+        photo: "/images/delivery/ai-transformation.jpg",
       },
       {
         title: "Astren Enterprise Engineering",
         description:
           "Custom AI agents, intelligent automation, enterprise knowledge systems, digital products, integrations, data platforms, private AI environments, and industry specific software.",
+        photo: "/images/delivery/enterprise-eng.jpg",
       },
       {
         title: "Software Factory and MVP Studio",
         description:
           "Product discovery, rapid validation, interface design, full stack engineering, AI integration, quality assurance, deployment, and technical handover.",
+        photo: "/images/delivery/mvp-studio.jpg",
       },
       {
         title: "Agentic Managed Services",
         description:
           "Ongoing operation, monitoring, optimization, and maintenance of enterprise agents, workflows, models, applications, and supporting infrastructure.",
+        photo: "/images/delivery/managed-services.jpg",
       },
       {
         title: "Embedded Teams and Fractional Leadership",
         description:
           "Dedicated AI, data, product, cloud, security, and software professionals supported by fractional technology and product leadership where required.",
+        photo: "/images/delivery/embedded-teams.jpg",
       },
       {
         title: "Infrastructure and Managed Operations",
         description:
           "Cloud and data centre management, DevOps, observability, database operations, security monitoring, disaster recovery, testing, maintenance, and continuous optimization.",
+        photo: "/images/delivery/infrastructure.jpg",
       },
     ],
   },

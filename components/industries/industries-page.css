@@ -57,9 +57,9 @@
   font-weight: 500;
 }
 
-/* Transformation model */
-.ind-page-model-timeline {
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+/* Transformation model pillars */
+.ind-page-pillars-section {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .ind-page-pillars {

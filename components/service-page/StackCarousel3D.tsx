@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { ServiceIconName } from "@/app/content/service-pages/types";
 import { EASE_PREMIUM } from "../v2/motion";
@@ -27,7 +28,30 @@ export type StackCarouselItem = {
   title?: string;
   description: string;
   icon?: ServiceIconName;
+  photo?: string;
 };
+
+function FaceThumb({
+  src,
+  sizes = "96px",
+  className = "carousel3d-face-thumb",
+}: {
+  src: string;
+  sizes?: string;
+  className?: string;
+}) {
+  return (
+    <div className={className} aria-hidden>
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes={sizes}
+        className="carousel3d-face-thumb-img"
+      />
+    </div>
+  );
+}
 
 function useMinWidth(minWidth: number) {
   const [matches, setMatches] = useState(false);
@@ -61,12 +85,23 @@ function StackGrid({ items, compact }: { items: StackCarouselItem[]; compact?: b
             custom={i}
             variants={fadeUp}
           >
-            {Icon && (
-              <div className="mvp-feature-icon">
-                <Icon size={20} aria-hidden />
+            <div className="stack-card-media-row">
+              {item.photo ? (
+                <FaceThumb
+                  src={item.photo}
+                  className="stack-card-thumb"
+                  sizes="120px"
+                />
+              ) : null}
+              <div className="stack-card-media-copy">
+                {Icon && (
+                  <div className="mvp-feature-icon">
+                    <Icon size={20} aria-hidden />
+                  </div>
+                )}
+                {item.title ? <h3>{item.title}</h3> : null}
               </div>
-            )}
-            {item.title ? <h3>{item.title}</h3> : null}
+            </div>
             <p>
               <FormattedText text={item.description} />
             </p>
@@ -86,9 +121,10 @@ function StackCarousel3D({
 }) {
   const reducedMotion = useReducedMotion();
   const isDesktop = useMinWidth(768);
-  const compact = variant === "compact" || variant === "grid";
-  const prose = variant === "prose";
-  const showCarousel = variant !== "grid" && isDesktop && !reducedMotion;
+  const compact = variant === "compact" || variant === "grid" || variant === "prose";
+  // Prose / grid variants stay as simple stacked content — no 3D carousel
+  const showCarousel = variant !== "grid" && variant !== "prose" && isDesktop && !reducedMotion;
+  const hasPhotos = items.some((item) => Boolean(item.photo));
 
   if (!showCarousel) {
     return <StackGrid items={items} compact={compact} />;
@@ -101,17 +137,22 @@ function StackCarousel3D({
     return {
       id: item.title ?? item.description.slice(0, 48),
       content: (
-        <>
-          {Icon ? (
-            <div className="carousel3d-face-icon">
-              <Icon size={14} aria-hidden />
-            </div>
-          ) : null}
-          {item.title ? <h3 className="carousel3d-face-title">{item.title}</h3> : null}
-          <p className="carousel3d-face-desc">
-            <FormattedText text={item.description} />
-          </p>
-        </>
+        <div className="carousel3d-face-layout">
+          {item.photo ? <FaceThumb src={item.photo} /> : null}
+          <div className="carousel3d-face-copy">
+            {Icon ? (
+              <div className="carousel3d-face-icon">
+                <Icon size={14} aria-hidden />
+              </div>
+            ) : null}
+            {item.title ? (
+              <h3 className="carousel3d-face-title">{item.title}</h3>
+            ) : null}
+            <p className="carousel3d-face-desc">
+              <FormattedText text={item.description} />
+            </p>
+          </div>
+        </div>
       ),
     };
   });
@@ -126,13 +167,13 @@ function StackCarousel3D({
       <Carousel3D
         faces={faces}
         radius={radius}
-        className={
-          prose
-            ? "carousel3d-wrap--prose"
-            : compact
-              ? "carousel3d-wrap--compact"
-              : undefined
-        }
+        duration={28}
+        className={[
+          compact ? "carousel3d-wrap--compact" : "",
+          hasPhotos ? "carousel3d-wrap--photos" : "",
+        ]
+          .filter(Boolean)
+          .join(" ") || undefined}
       />
     </motion.div>
   );

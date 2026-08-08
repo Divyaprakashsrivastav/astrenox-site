@@ -10,9 +10,12 @@ export const chapter1ProductDevelopment: ServicePageChapter = {
   },
   methodology: {
     title: "Our Methodology",
-    intro:
-      "AI scaling is a coordination challenge, not a computation problem. We redesign product development to maximize speed by shifting from sequential handoffs to parallel, agentic execution. This methodology relies on a shared context engine that captures architecture decisions, dependencies, and governance rules, ensuring AI agents and senior engineers operate synchronously without code drift.",
     items: [
+      {
+        title: "Coordination Over Computation",
+        description:
+          "AI scaling is a coordination challenge, not a computation problem. We redesign product development to maximize speed by shifting from sequential handoffs to parallel, agentic execution. This methodology relies on a shared context engine that captures architecture decisions, dependencies, and governance rules, ensuring AI agents and senior engineers operate synchronously without code drift.",
+      },
       {
         title: "Diagnose via Code",
         description:

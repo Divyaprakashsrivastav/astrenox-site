@@ -684,16 +684,17 @@
 
 .aipe-zigzag {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
   max-width: 840px;
   margin-inline: auto;
 }
 
 .aipe-zig {
   display: grid;
-  grid-template-columns: 44px 1fr;
+  grid-template-columns: auto 1fr;
   gap: 1rem;
   align-items: start;
+  width: 100%;
 }
 
 @media (min-width: 800px) {
@@ -707,15 +708,34 @@
 }
 
 .aipe-zig-mark {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(103, 232, 249, 0.9);
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 .aipe-zig-body {
-  padding: 1.2rem 1.3rem;
+  min-width: 0;
+  width: 100%;
+  padding: 1.25rem 1.35rem;
   border-radius: 14px;
   clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   background: rgba(2, 8, 23, 0.7);
   border: 1px solid rgba(96, 165, 250, 0.16);
+}
+
+.aipe-zig-body h3 {
+  color: rgba(248, 250, 252, 0.95);
 }
 
 .aipe-zig-body svg {

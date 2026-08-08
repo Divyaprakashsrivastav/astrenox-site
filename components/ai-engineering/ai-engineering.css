@@ -773,15 +773,49 @@
   color: rgba(228, 225, 255, 0.65);
 }
 
+/* Fill the visual half of the architecture split */
+.aie-stack-section .aie-split {
+  align-items: stretch;
+}
+
 .aie-stack-visual {
   display: flex;
-  justify-content: center;
-  padding: 1rem;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+  min-height: min(100%, 560px);
+  padding: 0;
+  align-self: stretch;
 }
 
 .aie-stack-svg {
-  width: min(100%, 400px);
-  height: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  max-height: none;
+}
+
+@media (min-width: 900px) {
+  .aie-stack-visual {
+    min-height: 100%;
+  }
+
+  .aie-stack-svg {
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 899px) {
+  .aie-stack-visual {
+    min-height: 420px;
+    margin-top: 0.5rem;
+  }
+
+  .aie-stack-svg {
+    min-height: 420px;
+  }
 }
 
 /* Terminal */

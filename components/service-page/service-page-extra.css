@@ -26,14 +26,15 @@
 .svc-deliverable-carousel-photo {
   position: relative;
   width: 100%;
-  height: 170px;
+  height: clamp(180px, 28vw, 220px);
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background:
     radial-gradient(ellipse 65% 70% at 50% 20%, rgba(124, 58, 237, 0.22), transparent 60%),
     rgba(8, 6, 18, 0.6);
+  box-shadow: inset 0 -40px 48px rgba(4, 4, 12, 0.35);
 }
 
 .svc-deliverable-carousel-photo--fallback {
@@ -45,6 +46,19 @@
 .svc-deliverable-carousel-photo-img {
   object-fit: cover;
   object-position: center;
+  filter: saturate(0.88) contrast(0.98) brightness(0.96);
+}
+
+.svc-deliverable-carousel-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    rgba(8, 6, 18, 0.28) 100%
+  );
 }
 
 .svc-deliverable-carousel-controls {
@@ -98,194 +112,50 @@
   white-space: normal;
 }
 
-/* Smaller capability panels (scoped so home industries stay unchanged) */
-.svc-cap-showcase .ind-showcase-panel-shell {
-  min-height: 0;
-}
-
-.svc-cap-showcase .ind-showcase-panel {
-  min-height: 0;
-  max-height: min(360px, 52vh);
-  border-radius: 16px;
-}
-
-.svc-cap-showcase .ind-panel-scroll {
-  padding: 1.1rem 1.25rem;
-}
-
-.svc-cap-showcase .ind-panel-icon-wrap {
-  margin-bottom: 0.7rem;
-}
-
-.svc-cap-showcase .ind-panel-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 12px;
-}
-
-.svc-cap-showcase .ind-panel-icon svg {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.svc-cap-showcase .ind-panel-title {
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-  margin-bottom: 0.55rem;
-}
-
-.svc-cap-showcase .ind-panel-desc {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.svc-cap-showcase .ind-panel-block {
-  margin-bottom: 1rem;
-}
-
+/* Capability panel sizing lives in capabilities-showcase.css (stretch to nav height). */
 .svc-cap-showcase .ind-panel-list-item {
-  padding: 0.5rem 0.75rem 0.5rem 1rem;
-  font-size: 0.78rem;
   border-radius: 8px;
 }
 
-/* Compact showcase - content-height panel (product brief overview) */
-.svc-cap-showcase--compact .ind-showcase-panel-shell {
-  min-height: 0;
-}
-
-.svc-cap-showcase--compact .ind-showcase-panel {
-  min-height: 0;
-  max-height: none;
-}
-
-.svc-cap-showcase--compact .ind-panel-scroll {
-  padding: 1.125rem 1.375rem;
-}
-
-.svc-cap-showcase--compact .ind-panel-icon-wrap {
-  margin-bottom: 0.75rem;
-}
-
-.svc-cap-showcase--compact .ind-panel-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 12px;
-}
-
-.svc-cap-showcase--compact .ind-panel-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-.svc-cap-showcase--compact .ind-panel-title {
-  font-size: 1.125rem;
-  margin-bottom: 0.625rem;
-}
-
-.svc-cap-showcase--compact .ind-panel-desc {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
 @media (min-width: 900px) {
-  .svc-cap-showcase {
-    min-height: 0;
-    align-items: flex-start;
-  }
-
   .svc-cap-showcase .ind-nav-btn {
     align-items: flex-start;
     padding-top: 0.65rem;
     padding-bottom: 0.65rem;
   }
-
-  .svc-cap-showcase .ind-showcase-panel-shell {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
-    min-height: 0;
-  }
-
-  .svc-cap-showcase .ind-showcase-panel-track {
-    flex: none;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-  }
-
-  .svc-cap-showcase .ind-showcase-panel {
-    flex: none;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    min-height: 280px;
-    max-height: min(360px, 52vh);
-  }
-
-  .svc-cap-showcase .ind-showcase-panel .ind-panel-scroll {
-    flex: 1;
-    min-height: 0;
-  }
-
-  .svc-cap-showcase--compact.ind-showcase {
-    min-height: 0;
-    align-items: flex-start;
-  }
-
-  .svc-cap-showcase--compact .ind-showcase-panel-shell {
-    align-self: flex-start;
-    min-height: 0;
-  }
-
-  .svc-cap-showcase--compact .ind-showcase-panel-track {
-    flex: none;
-  }
-
-  .svc-cap-showcase--compact .ind-showcase-panel {
-    flex: none;
-    height: auto;
-    min-height: 0;
-    max-height: none;
-  }
-
-  .svc-cap-showcase--compact .ind-showcase-panel .ind-panel-scroll {
-    flex: none;
-    height: auto;
-  }
-
-  .svc-cap-showcase--compact .ind-nav-btn {
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-  }
 }
 
-/* Industries grid - extends MVP Studio design system */
+/* Industries grid - equal cells, responsive columns */
 .mvp-industries-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+  width: 100%;
+  align-items: stretch;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 700px) {
   .mvp-industries-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 960px) {
   .mvp-industries-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
   }
 }
 
 .mvp-industry-card {
-  padding: 1.75rem 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.875rem;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 8.5rem;
+  height: 100%;
+  padding: 1.5rem 1rem;
   text-align: center;
 }
 
@@ -295,6 +165,7 @@
   justify-content: center;
   width: 44px;
   height: 44px;
+  flex-shrink: 0;
   border-radius: 12px;
   background: rgba(124, 58, 237, 0.12);
   border: 1px solid rgba(139, 92, 246, 0.2);
@@ -304,6 +175,7 @@
 .mvp-industry-card span {
   font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.35;
   color: rgba(250, 250, 251, 0.8);
 }
 
@@ -799,19 +671,27 @@
   margin-bottom: 0;
 }
 
-.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan) {
+.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan),
+.mvp-chapter-overview .mvp-about-grid:has(.svc-cap-showcase) {
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
 }
 
-.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan) .mvp-about-title {
+.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan) .mvp-about-title,
+.mvp-chapter-overview .mvp-about-grid:has(.svc-cap-showcase) .mvp-about-title {
   grid-column: 1 / -1;
+  position: static;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
 }
 
-.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan) .mvp-about-text-cards-fan {
+.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan) .mvp-about-text-cards-fan,
+.mvp-chapter-overview .mvp-about-grid:has(.svc-cap-showcase) .svc-cap-showcase {
   grid-column: 1 / -1;
   width: 100%;
   margin-top: 0.25rem;
+}
+
+.mvp-chapter-overview .mvp-about-grid:has(.mvp-about-text-cards-fan) .mvp-about-text-cards-fan {
   padding-inline: clamp(0.25rem, 2vw, 1rem);
 }
 
@@ -924,9 +804,122 @@
   max-width: 720px;
 }
 
-.mvp-about-stack .carousel3d-wrap--prose {
-  margin-inline: auto;
-  width: min(100%, 620px);
+.mvp-about-stack .mvp-about-text-full {
+  max-width: 42rem;
+}
+
+.mvp-about-stack .mvp-about-text--media {
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mvp-about-media-card {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.95fr) minmax(0, 1.35fr);
+  gap: clamp(1.15rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+  padding: 1.05rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.012) 100%),
+    rgba(10, 8, 20, 0.5);
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  overflow: hidden;
+}
+
+.mvp-about-media-card--reverse {
+  grid-template-columns: minmax(0, 1.35fr) minmax(200px, 0.95fr);
+}
+
+.mvp-about-media-card--reverse .mvp-about-media-visual {
+  order: 2;
+}
+
+.mvp-about-media-card--reverse .mvp-about-media-body {
+  order: 1;
+}
+
+.mvp-about-media-visual {
+  position: relative;
+  min-height: 200px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 6, 18, 0.65);
+}
+
+.mvp-about-media-img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.mvp-about-media-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, rgba(12, 8, 28, 0.18), transparent 45%),
+    linear-gradient(0deg, rgba(4, 4, 12, 0.28), transparent 40%);
+}
+
+.mvp-about-media-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 0;
+  padding: 0.35rem 0.5rem 0.35rem 0.15rem;
+}
+
+.mvp-about-media-index {
+  display: inline-flex;
+  width: fit-content;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  color: rgba(196, 181, 253, 0.55);
+}
+
+.mvp-about-media-label {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: rgba(250, 250, 251, 0.94);
+}
+
+.mvp-about-media-copy {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.62);
+}
+
+.mvp-about-media-copy strong,
+.mvp-about-media-body strong {
+  color: rgba(250, 250, 251, 0.95);
+  font-weight: 650;
+}
+
+@media (max-width: 720px) {
+  .mvp-about-media-card,
+  .mvp-about-media-card--reverse {
+    grid-template-columns: 1fr;
+    gap: 0.95rem;
+    padding: 0.9rem;
+  }
+
+  .mvp-about-media-card--reverse .mvp-about-media-visual,
+  .mvp-about-media-card--reverse .mvp-about-media-body {
+    order: initial;
+  }
+
+  .mvp-about-media-visual {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 /* Interactive overview grid */

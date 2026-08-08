@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import Image from "next/image";
 import FormattedText from "../ui/FormattedText";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -367,9 +368,28 @@ export default function MVPStudioPageClient() {
           viewport={{ once: true }}
         >
           {saasProducts.items.map((item, i) => (
-            <motion.article key={item.title} className="mvp-glass mvp-card" custom={i} variants={fadeUp}>
-              <h3>{item.title}</h3>
-              <p><FormattedText text={item.description} /></p>
+            <motion.article
+              key={item.title}
+              className="mvp-glass mvp-card mvp-card--photo"
+              custom={i}
+              variants={fadeUp}
+            >
+              <div className="mvp-card-shot" aria-hidden>
+                <Image
+                  src={item.photo}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="mvp-card-shot-img"
+                />
+                <span className="mvp-card-shot-veil" />
+              </div>
+              <div className="mvp-card-body">
+                <h3>{item.title}</h3>
+                <p>
+                  <FormattedText text={item.description} />
+                </p>
+              </div>
             </motion.article>
           ))}
         </motion.div>

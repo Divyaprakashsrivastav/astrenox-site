@@ -3,7 +3,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Compass,
   Gauge,
   Search,
@@ -52,10 +51,6 @@ function OfferingRow({
           <FormattedText text={item.outcome} />
         </p>
       </div>
-
-      <span className="adv-offering-row-arrow" aria-hidden>
-        <ArrowRight size={18} strokeWidth={1.75} />
-      </span>
 
       <span className="adv-offering-row-sweep" aria-hidden />
     </motion.article>

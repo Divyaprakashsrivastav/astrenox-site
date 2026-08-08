@@ -5,9 +5,9 @@ import { memo, type CSSProperties, type MouseEventHandler } from "react";
 import "./brand-logo.css";
 
 /** Full lockup: icon + ASTRENOX + tagline */
-const LOGO_FULL = "/brand/astrenox-logo.png";
+const LOGO_FULL = "/brand/astrenox-logo.png?v=3";
 /** Icon-only mark for tight spaces (nav, drawer, chat, favicon) */
-const LOGO_MARK = "/brand/astrenox-mark.png";
+const LOGO_MARK = "/brand/astrenox-mark.png?v=3";
 
 export type AstrenoxLogoVariant = "nav" | "footer" | "drawer" | "compact";
 

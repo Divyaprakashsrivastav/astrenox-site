@@ -9,7 +9,6 @@ import AdvisoryServiceOfferings from "@/components/ai-consulting-advisory/Adviso
 import { aiConsultingAdvisoryContent } from "@/app/content/service-pages";
 import "@/components/ai-consulting-advisory/ai-consulting-advisory-hero.css";
 import "@/components/ai-consulting-advisory/advisory-overview.css";
-import "@/components/ai-consulting-advisory/advisory-strategy-journey.css";
 import "@/components/ai-consulting-advisory/advisory-capability-map.css";
 import "@/components/ai-consulting-advisory/advisory-service-offerings.css";
 

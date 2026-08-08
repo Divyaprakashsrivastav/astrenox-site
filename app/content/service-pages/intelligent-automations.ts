@@ -1,201 +1,215 @@
-import type { ServicePageContent } from "./types";
-
-export const intelligentAutomationsContent: ServicePageContent = {
-  metadata: {
-    title: "Intelligent Automation & AI BizOps | Astrenox",
-    description:
-      "Enterprise automation that understands, executes, and improves workflows, combining workflow intelligence, process mining, multi-agent execution, and governed AI BizOps inside Astren AI.",
-  },
-  hero: {
-    label: "Intelligent Automation & AI BizOps",
-    title: "Enterprise Automation That Understands, Executes, and Improves Workflows",
-    subtitle: "",
-    primaryCta: "Book an Automation Discovery Session",
-    secondaryCta: "See Core Modules",
-    primaryHref: "/contact",
-    secondaryHref: "#core-modules",
-  },
-  overview: {
-    title: "Solution Brief",
-    paragraphs: [
-      "Modern enterprises do not need more rigid automation scripts. They need intelligent operating systems that understand how work actually happens, identify where execution breaks, and deploy AI agents that can complete complex workflows across tools, teams, approvals, exceptions, and system updates.",
-      "Enterprise work rarely happens inside one clean system. It moves across CRMs, ERPs, ticketing tools, spreadsheets, inboxes, shared drives, internal databases, finance systems, HR platforms, compliance queues, approval layers, and human judgment. Off-the-shelf automation breaks when the workflow requires context, exception handling, decision logic, reconciliation, auditability, and cross-system coordination.",
-      "We engineer intelligent automation and AI BizOps systems inside Astren AI, combining workflow intelligence, process mining, multi-agent execution, human-in-the-loop governance, exception handling, enterprise system integration, orchestration monitoring, and auditable operational control.",
-      "Before automating a workflow, Astren AI maps how work actually moves across people, systems, documents, decisions, approvals, handoffs, and exceptions. It identifies the highest-friction execution loops, ranks automation opportunities by effort, risk, feasibility, data readiness, and operational value, and then deploys governed AI agent teams that can execute safely inside the organization's existing stack.",
-      "The result is an enterprise automation layer that moves beyond static rules. It helps teams increase workflow throughput, reduce manual operations load, resolve exceptions more consistently, improve auditability, and measure which automations are creating real operational value.",
-    ],
-  },
-  capabilities: {
-    id: "core-modules",
-    label: "",
-    title: "Core Modules",
-    items: [
-      {
-        title: "Workflow Intelligence and Process Mining",
-        paragraphs: [
-          "We map how operational work actually flows across teams, tools, systems, approvals, handoffs, and exception paths.",
-          "The system analyzes task movement, handoff delays, approval queues, manual rework, repeated data entry, exception volume, SLA drift, ownership gaps, tool-switching friction, and deviations from standard operating procedures.",
-          "This gives leaders visibility into where work slows down, where cost accumulates, where teams depend on informal workarounds, and which workflows should be automated or redesigned first.",
-        ],
-        enables: [
-          "Real-time workflow visibility",
-          "Bottleneck identification",
-          "SOP drift detection",
-          "Manual workload analysis",
-          "Automation prioritization based on ROI",
-          "Clearer understanding of how work actually happens",
-        ],
-        icon: "Workflow",
-      },
-      {
-        title: "AI BizOps System of Record",
-        paragraphs: [
-          "Once workflows are mapped, we create an operational system of record for complex business processes.",
-          "This system tracks each task, decision, status change, exception, approval, automated action, human intervention, and system update from start to finish.",
-          "For workflows such as vendor reconciliation, KYC review, claims processing, AP exception triage, customer onboarding, ticket escalation, procurement approvals, and demand sensing, the system provides a clear execution trail.",
-          "Every action is logged, every decision is traceable, and every exception can be reviewed, escalated, corrected, or improved over time.",
-        ],
-        enables: [
-          "Audit-ready workflow execution",
-          "Better operational accountability",
-          "Reduced manual status tracking",
-          "Clear ownership across teams",
-          "Faster rollback and issue investigation",
-          "Reliable execution history for compliance-heavy operations",
-        ],
-        icon: "Database",
-      },
-      {
-        title: "Multi-Agent Teams for Complex Workflows",
-        paragraphs: [
-          "Some enterprise workflows are too complex for a single AI agent.",
-          "We design multi-agent teams where specialized agents collaborate across different parts of the workflow. Each agent is assigned a defined role, tool access, data boundary, approval logic, and escalation path.",
-          "For example, a document extraction agent reads and structures incoming files. A validation agent checks extracted data against business rules. A reconciliation agent compares values across systems. A communication agent drafts updates or follow-ups. A supervisor agent decides whether the workflow can proceed or needs human review.",
-          "This allows complex business logic to be broken into smaller, more reliable execution units instead of depending on one large general-purpose agent.",
-        ],
-        enables: [
-          "More reliable automation of complex workflows",
-          "Clear separation of agent responsibilities",
-          "Better handling of multi-step tasks",
-          "Easier debugging and monitoring",
-          "Reduced failure risk compared to one large general-purpose agent",
-        ],
-        icon: "Users",
-      },
-      {
-        title: "Human-in-the-Loop Governance",
-        paragraphs: [
-          "Not every decision should be fully automated.",
-          "For high-value, low-confidence, regulated, or commercially sensitive actions, we insert human approval checkpoints directly into the workflow.",
-          "The system can pause execution when confidence is below an approved threshold, a compliance rule is triggered, a transaction exceeds a financial limit, a customer issue requires judgment, a policy exception is detected, or a workflow action creates legal, financial, or operational risk.",
-          "Human reviewers receive the relevant context, source documents, recommended action, confidence level, and risk explanation before approving, rejecting, or modifying the agent's output.",
-        ],
-        enables: [
-          "Safer AI automation",
-          "Human control over sensitive decisions",
-          "Reduced compliance risk",
-          "Better trust in autonomous workflows",
-          "Clear approval history for audit and governance",
-        ],
-        icon: "ShieldCheck",
-      },
-      {
-        title: "Agentic Development Life Cycle",
-        paragraphs: [
-          "Enterprise agents require the same discipline as enterprise software.",
-          "Inside Astren AI, the Agentic Development Life Cycle governs how agents move from workflow prototype to production deployment.",
-          "This lifecycle covers workflow scoping, agent role definition, tool and system access design, prompt and logic versioning, test cases, evaluation datasets, human approval checkpoints, production monitoring, rollback planning, and continuous improvement cycles.",
-          "Agents are not deployed as loose experiments. They are built, tested, versioned, monitored, and improved like production systems.",
-        ],
-        enables: [
-          "Controlled agent deployment",
-          "Safer transition from prototype to production",
-          "Better testing and validation",
-          "Prompt and workflow version control",
-          "Lower risk of unmanaged AI behavior",
-          "Continuous improvement after deployment",
-        ],
-        icon: "GitBranch",
-      },
-      {
-        title: "Zero-Migration Enterprise Deployment",
-        paragraphs: [
-          "We do not force teams to replace their existing enterprise stack.",
-          "Our automation layer deploys directly into the systems your organization already uses. This can include Salesforce, NetSuite, ServiceNow, Workday, SAP, HubSpot, ERP platforms, CRM systems, finance tools, ticketing systems, internal databases, email, and communication tools.",
-          "The AI agents can read, write, update, route, reconcile, classify, summarize, and trigger workflows across the current environment without requiring a disruptive platform migration.",
-          "This allows automation to work inside existing business processes instead of forcing employees to change tools before value is created.",
-        ],
-        enables: [
-          "Faster implementation",
-          "Lower adoption friction",
-          "Better use of existing systems",
-          "Reduced migration risk",
-          "Automation inside current workflows",
-          "Higher operational continuity",
-        ],
-        icon: "Layers",
-      },
-      {
-        title: "Exception Handling and Judgment-Based Routing",
-        paragraphs: [
-          "Traditional automation works only when every step is predictable.",
-          "Real operations involve missing fields, conflicting records, policy exceptions, unclear ownership, unusual customer requests, edge cases, incomplete documents, delayed approvals, and decisions that require judgment.",
-          "We build agents that can detect exceptions, gather context, apply business rules, route decisions, and escalate only when human judgment is required.",
-          "Examples include AP exception triage, claims review, KYC document mismatches, Tier-2 support escalation, vendor reconciliation issues, billing disputes, compliance review queues, procurement exceptions, and month-end close follow-ups.",
-        ],
-        enables: [
-          "Faster resolution of operational exceptions",
-          "Reduced manual routing",
-          "Less backlog accumulation",
-          "More consistent decision logic",
-          "Better coordination between operations, finance, legal, and support teams",
-        ],
-        icon: "Zap",
-      },
-      {
-        title: "Orchestration and MLOps Monitoring",
-        paragraphs: [
-          "Autonomous workflows need deep visibility.",
-          "Inside Astren AI, orchestration and telemetry systems track how agents, workflows, approvals, integrations, and business outcomes perform in production.",
-          "The system monitors every agent run, tool call, system update, approval event, error, token cost, latency issue, human override, output quality signal, and workflow outcome.",
-          "Teams can see which agents are active, which workflows are blocked, which approvals are pending, which steps create delays, which outputs were modified by humans, which automations are saving time, and which workflows need redesign.",
-        ],
-        enables: [
-          "Production-grade agent monitoring",
-          "Clear operational telemetry",
-          "Token and compute cost control",
-          "Faster debugging",
-          "Safer workflow scaling",
-          "Measurable automation ROI",
-        ],
-        icon: "BarChart3",
-      },
-      {
-        title: "Functional BizOps Automation Packs",
-        paragraphs: [
-          "This module applies the automation layer to high-friction enterprise functions.",
-          "It can support finance operations, customer operations, risk and compliance, HR and workforce operations, procurement, vendor operations, logistics, field operations, and internal support workflows.",
-          "Examples include AP exception triage, invoice reconciliation, vendor follow-ups, support ticket routing, KYC document review, employee request routing, supplier onboarding, contract review, shipment exception tracking, field update reconciliation, month-end close support, CRM updates, report generation, and operational follow-ups.",
-          "These automation packs can be customized inside Astren AI based on the organization's tools, approval rules, data access, operating model, and department-specific workflows.",
-        ],
-        enables: [
-          "Faster functional automation rollout",
-          "Reusable automation patterns across departments",
-          "Reduced repetitive operations work",
-          "Better process consistency",
-          "Scalable BizOps transformation across teams",
-        ],
-        icon: "Briefcase",
-      },
-    ],
-  },
-  cta: {
-    title: "Deploy Intelligent Automation Inside Your Stack.",
-    subtitle:
-      "Map how work actually moves, prioritize automation by operational value, and deploy governed AI agent teams that execute safely across your existing enterprise systems.",
-    primaryCta: "Book an Automation Discovery Session",
-    secondaryCta: "Explore Astren AI Platform",
-    primaryHref: "/contact",
-    secondaryHref: "/platform",
-  },
-};
+import type { ServicePageContent } from "./types";
+
+export const intelligentAutomationsContent: ServicePageContent = {
+  metadata: {
+    title: "Intelligent Automation & AI BizOps | Astrenox",
+    description:
+      "Enterprise automation that understands, executes, and improves workflows, combining workflow intelligence, process mining, multi-agent execution, and governed AI BizOps inside Astren AI.",
+  },
+  hero: {
+    label: "Intelligent Automation & AI BizOps",
+    title: "Enterprise Automation That Understands, Executes, and Improves Workflows",
+    subtitle: "",
+    primaryCta: "Book an Automation Discovery Session",
+    secondaryCta: "See Core Modules",
+    primaryHref: "/contact",
+    secondaryHref: "#core-modules",
+  },
+  overview: {
+    title: "Solution Brief",
+    paragraphs: [
+      "Modern enterprises do not need more rigid automation scripts. They need intelligent operating systems that understand how work actually happens, identify where execution breaks, and deploy AI agents that can complete complex workflows across tools, teams, approvals, exceptions, and system updates.",
+      "Enterprise work rarely happens inside one clean system. It moves across CRMs, ERPs, ticketing tools, spreadsheets, inboxes, shared drives, internal databases, finance systems, HR platforms, compliance queues, approval layers, and human judgment. Off-the-shelf automation breaks when the workflow requires context, exception handling, decision logic, reconciliation, auditability, and cross-system coordination.",
+      "We engineer intelligent automation and AI BizOps systems inside Astren AI, combining workflow intelligence, process mining, multi-agent execution, human-in-the-loop governance, exception handling, enterprise system integration, orchestration monitoring, and auditable operational control.",
+      "Before automating a workflow, Astren AI maps how work actually moves across people, systems, documents, decisions, approvals, handoffs, and exceptions. It identifies the highest-friction execution loops, ranks automation opportunities by effort, risk, feasibility, data readiness, and operational value, and then deploys governed AI agent teams that can execute safely inside the organization's existing stack.",
+      "The result is an enterprise automation layer that moves beyond static rules. It helps teams increase workflow throughput, reduce manual operations load, resolve exceptions more consistently, improve auditability, and measure which automations are creating real operational value.",
+    ],
+    paragraphLabels: [
+      "Intelligent Operating Systems",
+      "Cross-System Reality",
+      "AI BizOps Platform",
+      "Workflow Mapping First",
+      "Measurable Automation Value",
+    ],
+    paragraphImages: [
+      "/images/overview/01-ops.jpg",
+      "/images/overview/02-systems.jpg",
+      "/images/overview/03-platform.jpg",
+      "/images/overview/04-mapping.jpg",
+      "/images/overview/05-outcomes.jpg",
+    ],
+  },
+  capabilities: {
+    id: "core-modules",
+    label: "",
+    title: "Core Modules",
+    items: [
+      {
+        title: "Workflow Intelligence and Process Mining",
+        paragraphs: [
+          "We map how operational work actually flows across teams, tools, systems, approvals, handoffs, and exception paths.",
+          "The system analyzes task movement, handoff delays, approval queues, manual rework, repeated data entry, exception volume, SLA drift, ownership gaps, tool-switching friction, and deviations from standard operating procedures.",
+          "This gives leaders visibility into where work slows down, where cost accumulates, where teams depend on informal workarounds, and which workflows should be automated or redesigned first.",
+        ],
+        enables: [
+          "Real-time workflow visibility",
+          "Bottleneck identification",
+          "SOP drift detection",
+          "Manual workload analysis",
+          "Automation prioritization based on ROI",
+          "Clearer understanding of how work actually happens",
+        ],
+        icon: "Workflow",
+      },
+      {
+        title: "AI BizOps System of Record",
+        paragraphs: [
+          "Once workflows are mapped, we create an operational system of record for complex business processes.",
+          "This system tracks each task, decision, status change, exception, approval, automated action, human intervention, and system update from start to finish.",
+          "For workflows such as vendor reconciliation, KYC review, claims processing, AP exception triage, customer onboarding, ticket escalation, procurement approvals, and demand sensing, the system provides a clear execution trail.",
+          "Every action is logged, every decision is traceable, and every exception can be reviewed, escalated, corrected, or improved over time.",
+        ],
+        enables: [
+          "Audit-ready workflow execution",
+          "Better operational accountability",
+          "Reduced manual status tracking",
+          "Clear ownership across teams",
+          "Faster rollback and issue investigation",
+          "Reliable execution history for compliance-heavy operations",
+        ],
+        icon: "Database",
+      },
+      {
+        title: "Multi-Agent Teams for Complex Workflows",
+        paragraphs: [
+          "Some enterprise workflows are too complex for a single AI agent.",
+          "We design multi-agent teams where specialized agents collaborate across different parts of the workflow. Each agent is assigned a defined role, tool access, data boundary, approval logic, and escalation path.",
+          "For example, a document extraction agent reads and structures incoming files. A validation agent checks extracted data against business rules. A reconciliation agent compares values across systems. A communication agent drafts updates or follow-ups. A supervisor agent decides whether the workflow can proceed or needs human review.",
+          "This allows complex business logic to be broken into smaller, more reliable execution units instead of depending on one large general-purpose agent.",
+        ],
+        enables: [
+          "More reliable automation of complex workflows",
+          "Clear separation of agent responsibilities",
+          "Better handling of multi-step tasks",
+          "Easier debugging and monitoring",
+          "Reduced failure risk compared to one large general-purpose agent",
+        ],
+        icon: "Users",
+      },
+      {
+        title: "Human-in-the-Loop Governance",
+        paragraphs: [
+          "Not every decision should be fully automated.",
+          "For high-value, low-confidence, regulated, or commercially sensitive actions, we insert human approval checkpoints directly into the workflow.",
+          "The system can pause execution when confidence is below an approved threshold, a compliance rule is triggered, a transaction exceeds a financial limit, a customer issue requires judgment, a policy exception is detected, or a workflow action creates legal, financial, or operational risk.",
+          "Human reviewers receive the relevant context, source documents, recommended action, confidence level, and risk explanation before approving, rejecting, or modifying the agent's output.",
+        ],
+        enables: [
+          "Safer AI automation",
+          "Human control over sensitive decisions",
+          "Reduced compliance risk",
+          "Better trust in autonomous workflows",
+          "Clear approval history for audit and governance",
+        ],
+        icon: "ShieldCheck",
+      },
+      {
+        title: "Agentic Development Life Cycle",
+        paragraphs: [
+          "Enterprise agents require the same discipline as enterprise software.",
+          "Inside Astren AI, the Agentic Development Life Cycle governs how agents move from workflow prototype to production deployment.",
+          "This lifecycle covers workflow scoping, agent role definition, tool and system access design, prompt and logic versioning, test cases, evaluation datasets, human approval checkpoints, production monitoring, rollback planning, and continuous improvement cycles.",
+          "Agents are not deployed as loose experiments. They are built, tested, versioned, monitored, and improved like production systems.",
+        ],
+        enables: [
+          "Controlled agent deployment",
+          "Safer transition from prototype to production",
+          "Better testing and validation",
+          "Prompt and workflow version control",
+          "Lower risk of unmanaged AI behavior",
+          "Continuous improvement after deployment",
+        ],
+        icon: "GitBranch",
+      },
+      {
+        title: "Zero-Migration Enterprise Deployment",
+        paragraphs: [
+          "We do not force teams to replace their existing enterprise stack.",
+          "Our automation layer deploys directly into the systems your organization already uses. This can include Salesforce, NetSuite, ServiceNow, Workday, SAP, HubSpot, ERP platforms, CRM systems, finance tools, ticketing systems, internal databases, email, and communication tools.",
+          "The AI agents can read, write, update, route, reconcile, classify, summarize, and trigger workflows across the current environment without requiring a disruptive platform migration.",
+          "This allows automation to work inside existing business processes instead of forcing employees to change tools before value is created.",
+        ],
+        enables: [
+          "Faster implementation",
+          "Lower adoption friction",
+          "Better use of existing systems",
+          "Reduced migration risk",
+          "Automation inside current workflows",
+          "Higher operational continuity",
+        ],
+        icon: "Layers",
+      },
+      {
+        title: "Exception Handling and Judgment-Based Routing",
+        paragraphs: [
+          "Traditional automation works only when every step is predictable.",
+          "Real operations involve missing fields, conflicting records, policy exceptions, unclear ownership, unusual customer requests, edge cases, incomplete documents, delayed approvals, and decisions that require judgment.",
+          "We build agents that can detect exceptions, gather context, apply business rules, route decisions, and escalate only when human judgment is required.",
+          "Examples include AP exception triage, claims review, KYC document mismatches, Tier-2 support escalation, vendor reconciliation issues, billing disputes, compliance review queues, procurement exceptions, and month-end close follow-ups.",
+        ],
+        enables: [
+          "Faster resolution of operational exceptions",
+          "Reduced manual routing",
+          "Less backlog accumulation",
+          "More consistent decision logic",
+          "Better coordination between operations, finance, legal, and support teams",
+        ],
+        icon: "Zap",
+      },
+      {
+        title: "Orchestration and MLOps Monitoring",
+        paragraphs: [
+          "Autonomous workflows need deep visibility.",
+          "Inside Astren AI, orchestration and telemetry systems track how agents, workflows, approvals, integrations, and business outcomes perform in production.",
+          "The system monitors every agent run, tool call, system update, approval event, error, token cost, latency issue, human override, output quality signal, and workflow outcome.",
+          "Teams can see which agents are active, which workflows are blocked, which approvals are pending, which steps create delays, which outputs were modified by humans, which automations are saving time, and which workflows need redesign.",
+        ],
+        enables: [
+          "Production-grade agent monitoring",
+          "Clear operational telemetry",
+          "Token and compute cost control",
+          "Faster debugging",
+          "Safer workflow scaling",
+          "Measurable automation ROI",
+        ],
+        icon: "BarChart3",
+      },
+      {
+        title: "Functional BizOps Automation Packs",
+        paragraphs: [
+          "This module applies the automation layer to high-friction enterprise functions.",
+          "It can support finance operations, customer operations, risk and compliance, HR and workforce operations, procurement, vendor operations, logistics, field operations, and internal support workflows.",
+          "Examples include AP exception triage, invoice reconciliation, vendor follow-ups, support ticket routing, KYC document review, employee request routing, supplier onboarding, contract review, shipment exception tracking, field update reconciliation, month-end close support, CRM updates, report generation, and operational follow-ups.",
+          "These automation packs can be customized inside Astren AI based on the organization's tools, approval rules, data access, operating model, and department-specific workflows.",
+        ],
+        enables: [
+          "Faster functional automation rollout",
+          "Reusable automation patterns across departments",
+          "Reduced repetitive operations work",
+          "Better process consistency",
+          "Scalable BizOps transformation across teams",
+        ],
+        icon: "Briefcase",
+      },
+    ],
+  },
+  cta: {
+    title: "Deploy Intelligent Automation Inside Your Stack.",
+    subtitle:
+      "Map how work actually moves, prioritize automation by operational value, and deploy governed AI agent teams that execute safely across your existing enterprise systems.",
+    primaryCta: "Book an Automation Discovery Session",
+    secondaryCta: "Explore Astren AI Platform",
+    primaryHref: "/contact",
+    secondaryHref: "/platform",
+  },
+};

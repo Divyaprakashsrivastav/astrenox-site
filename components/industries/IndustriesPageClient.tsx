@@ -9,6 +9,7 @@ import type { ServiceIconName } from "@/app/content/service-pages/types";
 import MVPStudioCanvas from "../mvp-studio/MVPStudioCanvas";
 import GradientHeadline from "../ui/GradientHeadline";
 import StackCarousel3D from "../service-page/StackCarousel3D";
+import StrategyJourneyTimeline from "../service-page/StrategyJourneyTimeline";
 import { EASE_PREMIUM } from "../v2/motion";
 import IndustriesSectorShowcase from "./IndustriesSectorShowcase";
 import "../mvp-studio/mvp-studio.css";
@@ -79,36 +80,18 @@ export default function IndustriesPageClient() {
       </section>
 
       {/* Transformation Model */}
-      <section
+      <StrategyJourneyTimeline
         id={transformationModel.id}
-        className="mvp-inner mvp-section"
-        aria-labelledby="ind-model-title"
+        label={transformationModel.label}
+        title={transformationModel.title}
+        steps={transformationModel.steps}
+        titleId="ind-model-title"
+      />
+
+      <section
+        className="mvp-inner mvp-section ind-page-pillars-section"
+        aria-label="Transformation pillars"
       >
-        <div className="mvp-section-header">
-          <p className="mvp-eyebrow">{transformationModel.label}</p>
-          <h2 id="ind-model-title" className="mvp-section-title">
-            {transformationModel.title}
-          </h2>
-        </div>
-
-        <div className="mvp-timeline ind-page-model-timeline">
-          {transformationModel.steps.map((step, i) => (
-            <motion.div
-              key={step.name}
-              className="mvp-timeline-step"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
-            >
-              <div className="mvp-glass-card mvp-timeline-step-inner">
-                <h3>{step.name}</h3>
-                <p><FormattedText text={step.description} /></p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
         <motion.div
           className="ind-page-pillars"
           variants={staggerContainer}
@@ -124,7 +107,9 @@ export default function IndustriesPageClient() {
               variants={fadeUp}
             >
               <h3>{pillar.title}</h3>
-              <p><FormattedText text={pillar.description} /></p>
+              <p>
+                <FormattedText text={pillar.description} />
+              </p>
             </motion.article>
           ))}
         </motion.div>
@@ -147,6 +132,7 @@ export default function IndustriesPageClient() {
             title: item.title,
             description: item.description,
             icon: DELIVERY_CAPABILITY_ICONS[i],
+            photo: item.photo,
           }))}
         />
       </section>

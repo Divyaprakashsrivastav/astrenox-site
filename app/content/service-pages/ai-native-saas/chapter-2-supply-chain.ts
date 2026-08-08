@@ -175,6 +175,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
     items: [
       {
         title: "No Rip-and-Replace",
+        photo: "/images/deliverables/integration-stack.jpg",
         paragraphs: [
           "We do not force a multi-year platform migration.",
           "Our AI layer connects to your existing operational stack and automates the workflows around it.",
@@ -197,6 +198,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
       },
       {
         title: "Unified Data Layer",
+        photo: "/images/deliverables/data-layer.jpg",
         paragraphs: [
           "We connect fragmented supply chain data into a governed operational layer.",
           "This gives teams a shared view of demand, inventory, suppliers, orders, logistics movement, exceptions, and cost impact.",
@@ -205,6 +207,7 @@ export const chapter2SupplyChain: ServicePageChapter = {
       },
       {
         title: "Governed AI Outputs",
+        photo: "/images/deliverables/governed-ai.jpg",
         paragraphs: [
           "Enterprise supply chains require control, not black-box automation.",
           "Every AI action is constrained by explicit business logic, role-based access control, approval thresholds, audit trails, and human-in-the-loop checkpoints.",

@@ -190,29 +190,29 @@ export default function HireTechTalentPageClient() {
 
       {/* Service Overview */}
       <section className="mvp-inner mvp-section" aria-labelledby="htt-overview">
-        <div className="htt-overview-grid">
-          <motion.h2
-            id="htt-overview"
-            className="mvp-section-title htt-overview-title"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-          >
-            {overview.title}
-          </motion.h2>
-          <motion.div
-            className="htt-overview-text"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, delay: 0.1, ease: EASE_PREMIUM }}
-          >
-            {overview.paragraphs.map((p) => (
-              <p key={p.slice(0, 40)}><FormattedText text={p} /></p>
-            ))}
-          </motion.div>
-        </div>
+        <motion.article
+          className="htt-overview-box mvp-glass"
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+        >
+          <div className="htt-overview-grid">
+            <h2
+              id="htt-overview"
+              className="mvp-section-title htt-overview-title"
+            >
+              {overview.title}
+            </h2>
+            <div className="htt-overview-text">
+              {overview.paragraphs.map((p) => (
+                <p key={p.slice(0, 40)}>
+                  <FormattedText text={p} />
+                </p>
+              ))}
+            </div>
+          </div>
+        </motion.article>
       </section>
 
       {/* Seamless Workflow Integration, Core Services */}

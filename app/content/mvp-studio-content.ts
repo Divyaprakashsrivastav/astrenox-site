@@ -107,61 +107,73 @@ export const mvpStudioContent = {
         title: "Legal Practice Management Platform",
         description:
           "A centralised platform for managing legal matters, hearings, client records, documents, billing and internal workflows while improving visibility across legal operations.",
+        photo: "/images/saas/legal.jpg",
       },
       {
         title: "Healthcare Management Platform",
         description:
           "A secure digital platform designed to streamline healthcare administration, coordinate operational workflows and improve visibility across authorised users and service functions.",
+        photo: "/images/saas/healthcare.jpg",
       },
       {
         title: "Integrated Business Operations Suite",
         description:
           "A unified enterprise platform connecting procurement, customer management, inventory and human resources through centralised controls, real time reporting and automated operational workflows.",
+        photo: "/images/saas/operations.jpg",
       },
       {
         title: "Exhibition and Event Engagement Platform",
         description:
           "A multi stakeholder platform enabling visitor engagement, exhibitor lead capture, event communication, promotions and performance analytics through centralised event administration.",
+        photo: "/images/saas/events.jpg",
       },
       {
         title: "B2B Partner Discovery Platform",
         description:
           "A business networking platform that helps organisations establish credible profiles, evaluate prospective partners and develop growth focused commercial relationships.",
+        photo: "/images/saas/b2b.jpg",
       },
       {
         title: "Retail and Showroom Engagement Platform",
         description:
           "A digital engagement solution that converts physical visitor interest into measurable leads through product discovery, targeted offers and campaign performance tracking.",
+        photo: "/images/saas/retail.jpg",
       },
       {
         title: "Procure to Pay Platform",
         description:
           "An integrated procurement solution covering purchase requests, supplier management, quotations, purchase orders, goods receipt, invoice validation and payment scheduling.",
+        photo: "/images/saas/procure.jpg",
       },
       {
         title: "Property Management Platform",
         description:
           "A role based solution for managing properties, units, leases, tenants, payments, maintenance requests and operational communication across property stakeholders.",
+        photo: "/images/saas/property.jpg",
       },
       {
         title: "Tendering and Bid Management Platform",
         description:
           "A structured platform for managing tender creation, bidder participation, evaluation, estimation, approvals and reporting through transparent and auditable workflows.",
+        photo: "/images/saas/tendering.jpg",
       },
       {
         title: "Asset Management Platform",
         description:
           "A centralised system for tracking assets, planning maintenance, managing breakdown tickets and monitoring lifecycle performance across distributed operations.",
+        photo: "/images/saas/assets.jpg",
       },
       {
         title: "Document Management and Approval System",
         description:
           "A secure document platform supporting classification, version control, multi stage approvals, digital workflows, access permissions and compliance focused record management.",
+        photo: "/images/saas/documents.jpg",
       },
       {
         title: "Invoice and Billing Application",
         description:
           "A configurable billing solution for customer records, invoice generation, tax calculations, payments, recurring billing, reporting and ledger reconciliation.",
+        photo: "/images/saas/billing.jpg",
       },
     ],
   },

@@ -7,7 +7,6 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { centerOfExcellencePageContent } from "@/app/content/center-of-excellence-content";
 import { EASE_PREMIUM } from "../v2/motion";
-import EnterpriseIntelligenceVisual from "./EnterpriseIntelligenceVisual";
 import "./center-of-excellence.css";
 
 function Shell({ children }: { children: ReactNode }) {
@@ -98,13 +97,6 @@ export default function CenterOfExcellencePageClient() {
               {hero.body}
             </motion.p>
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
-          >
-            <EnterpriseIntelligenceVisual />
-          </motion.div>
         </div>
       </section>
 
