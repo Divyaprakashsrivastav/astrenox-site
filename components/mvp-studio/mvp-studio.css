@@ -1301,9 +1301,14 @@
 }
 
 .mvp-card-shot-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.55) contrast(0.92) brightness(0.72);
+  display: block;
+  filter: saturate(0.62) contrast(0.96) brightness(0.82);
 }
 
 .mvp-card-shot-veil {

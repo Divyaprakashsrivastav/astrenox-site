@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import type { ServiceIconName } from "@/app/content/service-pages/types";
 import { EASE_PREMIUM } from "../v2/motion";
@@ -33,22 +32,15 @@ export type StackCarouselItem = {
 
 function FaceThumb({
   src,
-  sizes = "96px",
   className = "carousel3d-face-thumb",
 }: {
   src: string;
-  sizes?: string;
   className?: string;
 }) {
   return (
     <div className={className} aria-hidden>
-      <Image
-        src={src}
-        alt=""
-        fill
-        sizes={sizes}
-        className="carousel3d-face-thumb-img"
-      />
+      {/* Native img: next/image fill often fails inside CSS 3D transforms */}
+      <img src={src} alt="" className="carousel3d-face-thumb-img" loading="lazy" />
     </div>
   );
 }
@@ -87,11 +79,7 @@ function StackGrid({ items, compact }: { items: StackCarouselItem[]; compact?: b
           >
             <div className="stack-card-media-row">
               {item.photo ? (
-                <FaceThumb
-                  src={item.photo}
-                  className="stack-card-thumb"
-                  sizes="120px"
-                />
+                <FaceThumb src={item.photo} className="stack-card-thumb" />
               ) : null}
               <div className="stack-card-media-copy">
                 {Icon && (

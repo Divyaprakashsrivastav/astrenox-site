@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import Image from "next/image";
 import FormattedText from "../ui/FormattedText";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -375,12 +374,11 @@ export default function MVPStudioPageClient() {
               variants={fadeUp}
             >
               <div className="mvp-card-shot" aria-hidden>
-                <Image
+                <img
                   src={item.photo}
                   alt=""
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="mvp-card-shot-img"
+                  loading="lazy"
                 />
                 <span className="mvp-card-shot-veil" />
               </div>

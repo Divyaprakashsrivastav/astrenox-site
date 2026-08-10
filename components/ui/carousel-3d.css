@@ -169,9 +169,14 @@
 }
 
 .carousel3d-face-thumb-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.55) contrast(0.94) brightness(0.74);
+  display: block;
+  filter: saturate(0.62) contrast(0.96) brightness(0.82);
 }
 
 .carousel3d-face-copy {
