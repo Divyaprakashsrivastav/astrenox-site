@@ -159,14 +159,6 @@ export default function IndustriesPageClient() {
               {cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            {"secondaryHref" in cta &&
-            isActionableCtaHref(cta.secondaryHref) &&
-            "secondaryCta" in cta &&
-            cta.secondaryCta ? (
-              <Link href={cta.secondaryHref} className="mvp-btn-secondary">
-                {cta.secondaryCta}
-              </Link>
-            ) : null}
           </div>
         </motion.div>
       </section>

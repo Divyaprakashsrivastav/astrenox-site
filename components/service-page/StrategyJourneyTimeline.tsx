@@ -26,7 +26,7 @@ import "@/components/ai-consulting-advisory/advisory-strategy-journey.css";
 export type StrategyJourneyStep = {
   name: string;
   description: string;
-  bullets?: string[];
+  bullets?: readonly string[];
   after?: string;
 };
 
@@ -35,7 +35,7 @@ export type StrategyJourneyTimelineProps = {
   label?: string;
   title: string;
   intro?: string;
-  steps: StrategyJourneyStep[];
+  steps: readonly StrategyJourneyStep[];
   titleId?: string;
 };
 
