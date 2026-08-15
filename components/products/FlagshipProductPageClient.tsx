@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import FormattedText from "../ui/FormattedText";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
@@ -41,6 +41,33 @@ const VISUAL_MAP: Record<string, "brain" | "platform" | "workflow" | "enterprise
   orzora: "rfx",
 };
 
+function ProductHeroPhoto({
+  name,
+  image,
+  visual,
+}: {
+  name: string;
+  image: string;
+  visual: "brain" | "platform" | "workflow" | "enterprise" | "rfx";
+}) {
+  const [photoFailed, setPhotoFailed] = useState(false);
+
+  if (photoFailed) {
+    return <ProductPageVisual visual={visual} active />;
+  }
+
+  return (
+    <div className="fp-hero-photo-frame">
+      <img
+        src={image}
+        alt={`${name} product preview`}
+        className="fp-hero-photo"
+        onError={() => setPhotoFailed(true)}
+      />
+    </div>
+  );
+}
+
 export default function FlagshipProductPageClient({ product }: { product: FlagshipProduct }) {
   const visual = VISUAL_MAP[product.id] ?? "brain";
 
@@ -61,12 +88,6 @@ export default function FlagshipProductPageClient({ product }: { product: Flagsh
               {product.name}
             </h1>
             <p className="fp-desc"><FormattedText text={product.description} /></p>
-            <div className="fp-actions">
-              <Link href={product.cta.href} className="fp-btn fp-btn--primary">
-                {product.cta.label}
-                <ArrowRight size={16} aria-hidden />
-              </Link>
-            </div>
           </motion.div>
           <motion.div
             className="fp-hero-visual"
@@ -74,7 +95,7 @@ export default function FlagshipProductPageClient({ product }: { product: Flagsh
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.12, ease: EASE_PREMIUM }}
           >
-            <ProductPageVisual visual={visual} active />
+            <ProductHeroPhoto name={product.name} image={product.image} visual={visual} />
           </motion.div>
         </div>
       </section>

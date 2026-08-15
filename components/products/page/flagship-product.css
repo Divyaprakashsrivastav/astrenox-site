@@ -65,13 +65,6 @@
   max-width: 52ch;
 }
 
-.fp-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
-}
-
 .fp-btn {
   display: inline-flex;
   align-items: center;
@@ -101,8 +94,27 @@
   min-height: 280px;
   border-radius: 1.25rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 20%, rgba(124, 58, 237, 0.18), transparent 65%),
+    rgba(8, 6, 18, 0.95);
   overflow: hidden;
+}
+
+.fp-hero-photo-frame {
+  position: relative;
+  width: 100%;
+  min-height: 280px;
+  aspect-ratio: 16 / 10;
+}
+
+.fp-hero-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
 }
 
 .fp-highlights {

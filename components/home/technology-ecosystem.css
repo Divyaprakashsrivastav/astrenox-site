@@ -184,7 +184,12 @@
 /* ── Hero header ── */
 .tech-eco-hero {
   max-width: 760px;
+  margin-inline: auto;
   margin-bottom: clamp(2.75rem, 5vw, 4rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tech-eco-eyebrow {
@@ -206,12 +211,14 @@
   margin: 0;
   hyphens: manual;
   overflow-wrap: break-word;
+  text-align: center;
 }
 
 .tech-eco-description {
   margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.875rem;
 }
 
@@ -222,6 +229,7 @@
   color: rgba(255, 255, 255, 0.64);
   hyphens: none;
   -webkit-hyphens: none;
+  text-align: center;
 }
 
 /* ── Logo cloud ── */

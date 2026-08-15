@@ -4,6 +4,7 @@ export type FlagshipProduct = {
   name: string;
   tagline: string;
   description: string;
+  image: string;
   highlights: readonly string[];
   cta: { label: string; href: string };
 };
@@ -16,6 +17,7 @@ export const flagshipProducts: readonly FlagshipProduct[] = [
     tagline: "Autonomous company brain and personal assistant",
     description:
       "Solvoris is an autonomous company brain and personal assistant that unifies institutional knowledge, contextual memory, and AI-assisted reasoning across your organisation.",
+    image: "/images/products/solvoris.png",
     highlights: [
       "Secure indexing and retrieval across documents, conversations, and operational data",
       "Context-aware AI interactions grounded in your organisation's knowledge base",
@@ -30,6 +32,7 @@ export const flagshipProducts: readonly FlagshipProduct[] = [
     tagline: "AI adoption and transformation engine",
     description:
       "Astren is an AI adoption and transformation engine that helps organisations move from isolated experiments to governed, scalable AI adoption.",
+    image: "/images/products/astren.png",
     highlights: [
       "Use-case discovery, readiness assessment, and transformation roadmapping",
       "Workflow design aligned with business objectives and governance requirements",
@@ -44,6 +47,7 @@ export const flagshipProducts: readonly FlagshipProduct[] = [
     tagline: "AI-native company OS",
     description:
       "Akiren is an AI-native company operating system that connects workflows, data, agents, and operational controls in one execution environment.",
+    image: "/images/products/akiren.png",
     highlights: [
       "Unified operating layer for AI-native teams and business workflows",
       "Agent orchestration with approvals, governance, and auditability",
@@ -58,6 +62,7 @@ export const flagshipProducts: readonly FlagshipProduct[] = [
     tagline: "Deal desk and RFx pipeline",
     description:
       "Orzora is an AI-powered deal desk and RFx pipeline that streamlines qualification, document analysis, proposal development, and collaborative deal execution.",
+    image: "/images/products/orzora.png",
     highlights: [
       "Centralised deal workspace for documents, tasks, and collaboration",
       "Automated RFx analysis, response drafting, and proposal workflows",
