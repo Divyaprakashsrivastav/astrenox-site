@@ -84,22 +84,37 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  padding: 1.15rem 1.15rem 0;
+  background: transparent;
+  border-bottom: none;
+}
+
+.hp-card-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   background:
-    radial-gradient(ellipse 70% 80% at 50% 20%, rgba(124, 58, 237, 0.22), transparent 65%),
+    radial-gradient(ellipse 70% 80% at 50% 20%, rgba(124, 58, 237, 0.18), transparent 65%),
     rgba(8, 6, 18, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .hp-card-photo {
-  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.45s ease;
 }
 
 .hp-card:hover .hp-card-photo {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 .hp-card-media-fallback {

@@ -28,6 +28,7 @@ export const enterpriseAiOpsContent: ServicePageContent = {
   capabilities: {
     label: "Capabilities",
     title: "AI ops & governance we install",
+    layout: "grid",
     items: [
       {
         title: "MLOps Pipelines",
@@ -158,30 +159,6 @@ export const enterpriseAiOpsContent: ServicePageContent = {
       { name: "Telecom", icon: "Network" },
       { name: "Energy", icon: "Gauge" },
       { name: "Professional Services", icon: "Briefcase" },
-    ],
-  },
-  testimonials: {
-    label: "Testimonials",
-    title: "What risk and platform leaders say",
-    items: [
-      {
-        quote:
-          "We finally have one place that answers who owns every model, what changed last week, and whether evals passed before production.",
-        author: "Diane Vos",
-        role: "Head of Model Risk, Summit Bank",
-      },
-      {
-        quote:
-          "On-call for AI used to mean guessing. Now we have traces, quality signals, and runbooks our SREs trust.",
-        author: "Omar Haddad",
-        role: "Director of Platform, Intacture",
-      },
-      {
-        quote:
-          "Finance stopped treating GenAI as a black hole. Cost attribution by product changed how we approve new launches.",
-        author: "Claire Ng",
-        role: "CFO Office, Brightlayer",
-      },
     ],
   },
   faq: {

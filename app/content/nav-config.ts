@@ -141,7 +141,7 @@ export const navProducts: NavMegaGroup = {
   ],
 };
 
-export const navInfrastructureHref = "/infrastructure-solutions";
+export const navInfrastructureHref = "/infrastructure-solutions/cloud-network-gcc";
 
 export const navInfrastructure: NavMegaGroup = {
   label: "Infrastructure Solutions",
@@ -185,7 +185,7 @@ export function isMegaGroupActive(pathname: string, group: NavMegaGroup): boolea
 }
 
 export function isInfrastructureActive(pathname: string): boolean {
-  if (pathname === navInfrastructureHref || pathname.startsWith(`${navInfrastructureHref}/`)) {
+  if (pathname === "/infrastructure-solutions" || pathname.startsWith("/infrastructure-solutions/")) {
     return true;
   }
   return isMegaGroupActive(pathname, navInfrastructure);

@@ -9,7 +9,7 @@ export const aiEngineeringPageContent = {
     label: "Production Grade AI Engineering & Workflow Automation",
     title: "From Prototype to Production:\nEnterprise Grade AI Engineering",
     subtitle:
-      "Transition from isolated, fragile scripts to resilient, scalable AI infrastructure. We architect, build, and deploy custom LLM applications, multi-agent workflows, and secure data retrieval pipelines integrated directly into your enterprise stack. We build AI the way it's meant to be built: vendor-agnostic, cloud-agnostic, and tailored to your operational reality.",
+      "Transition from isolated, fragile scripts to **resilient, scalable AI infrastructure**. We architect, build, and deploy **custom LLM applications**, **multi-agent workflows**, and **secure data retrieval pipelines** integrated directly into your enterprise stack. We build AI the way it's meant to be built: **vendor-agnostic**, **cloud-agnostic**, and tailored to your operational reality.",
     primaryCta: "Schedule a Technical Scoping Call",
     secondaryCta: "Explore Our Consulting Services",
     primaryHref: "/contact",
@@ -81,7 +81,7 @@ export const aiEngineeringPageContent = {
       {
         title: "Backend & API Layer",
         description:
-          "Scalable Python (FastAPI) or Node.js microservices handling load balancing, API routing, rate limiting, and core business logic.",
+          "Scalable Python or Node.js microservices handling load balancing, API routing, rate limiting, and core business logic.",
       },
       {
         title: "Orchestration & Platforms",

@@ -49,8 +49,10 @@
 }
 
 .adv-cap-section-header {
-  max-width: 36rem;
+  max-width: 40rem;
+  margin-inline: auto;
   margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  text-align: center;
 }
 
 /* 2×2 grid */

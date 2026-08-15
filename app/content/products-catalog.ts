@@ -150,7 +150,6 @@ const customCrmItem: ProductCatalogItem = {
   businessOutcomes: [customCrmSection.description],
   ctas: [
     { label: "Scope CRM Build", href: "/contact?intent=crm", primary: true },
-    { label: "Services", href: "/services" },
   ],
 };
 
@@ -511,7 +510,9 @@ const ctaItem: ProductCatalogItem = {
   accordions: [],
   ctas: [
     { label: productsCta.primaryCta, href: productsCta.primaryHref, primary: true },
-    { label: productsCta.secondaryCta, href: productsCta.secondaryHref },
+    ...(productsCta.secondaryHref.startsWith("#")
+      ? []
+      : [{ label: productsCta.secondaryCta, href: productsCta.secondaryHref }]),
   ],
 };
 

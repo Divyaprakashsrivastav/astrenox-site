@@ -26,49 +26,60 @@ export default function TechLogoCloud({ logos }: TechLogoCloudProps) {
         {logos.map((logo, i) => {
           const pos = layout[i];
           return (
-            <motion.li
+            // Keep layout styles on a plain <li> so Framer Motion cannot
+            // rewrite left/top/width during hydration (triggers nextjs-portal errors).
+            <li
               key={logo.id}
               className="tech-cloud-item"
               style={{
                 left: `${pos.x}%`,
                 top: `${pos.y}%`,
-                width: pos.size,
-                height: pos.size,
+                width: `${pos.size}px`,
+                height: `${pos.size}px`,
               }}
-              initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: 0.02 + i * 0.02,
-                ease: EASE_PREMIUM,
-              }}
-              whileHover={reduced ? undefined : { scale: 1.12, zIndex: 10 }}
             >
               <motion.div
                 className="tech-cloud-item-inner"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                whileHover={reduced ? undefined : { scale: 1.12, zIndex: 10 }}
                 animate={
                   reduced
-                    ? undefined
-                    : {
-                        y: [0, -3 - (i % 2), 0],
-                      }
+                    ? { opacity: 1, scale: 1 }
+                    : { opacity: 1, scale: 1, y: [0, -3 - (i % 2), 0] }
                 }
                 transition={
                   reduced
-                    ? undefined
+                    ? {
+                        duration: 0.5,
+                        delay: 0.02 + i * 0.02,
+                        ease: EASE_PREMIUM,
+                      }
                     : {
-                        duration: pos.duration,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                        delay: pos.delay,
+                        opacity: {
+                          duration: 0.5,
+                          delay: 0.02 + i * 0.02,
+                          ease: EASE_PREMIUM,
+                        },
+                        scale: {
+                          duration: 0.5,
+                          delay: 0.02 + i * 0.02,
+                          ease: EASE_PREMIUM,
+                        },
+                        y: {
+                          duration: pos.duration,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: pos.delay,
+                        },
                       }
                 }
               >
                 <span className="tech-cloud-item-glow" aria-hidden />
                 <TechSvgLogo file={logo.file} name={logo.name} size={pos.size} />
               </motion.div>
-            </motion.li>
+            </li>
           );
         })}
       </ul>

@@ -20,16 +20,34 @@
 }
 
 .bc-hero {
+  position: relative;
+  overflow: hidden;
   padding-block: clamp(5rem, 10vw, 8rem) clamp(3rem, 6vw, 5rem);
 }
 
 .bc-hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: clamp(2.5rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
   align-items: center;
+  min-height: clamp(22rem, 48vw, 28rem);
 }
 
 .bc-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bc-hero-copy .mvp-hero-brand {
   text-align: center;
 }
 
@@ -40,7 +58,8 @@
 .bc-hero-desc {
   margin-inline: auto;
   text-align: center;
-  max-width: 560px;
+  max-width: 40rem;
+  font-style: italic;
 }
 
 .bc-hero-label {
@@ -57,27 +76,29 @@
   border-radius: 999px;
 }
 
-@media (min-width: 960px) {
-  .bc-hero-grid {
-    grid-template-columns: 1fr 1.05fr;
-  }
+.bc-hero-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  pointer-events: none;
+  width: 100%;
+}
 
-  .bc-hero-copy {
-    text-align: left;
-  }
-
-  .bc-hero-copy .mvp-hero-ctas {
-    justify-content: flex-start;
-  }
-
-  .bc-hero-title {
-    text-align: left;
-  }
-
-  .bc-hero-desc {
-    margin-inline: 0;
-    text-align: left;
-  }
+.bc-hero-visual .bc-visual {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-height: 100%;
+  border-radius: 0;
+  opacity: 0.22;
+  filter: brightness(2.1) saturate(0.28);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 /* Solution Brief */
@@ -211,24 +232,43 @@
 
 .bc-exec-intro p {
   font-size: 1.125rem;
+  font-style: italic;
   line-height: 1.7;
   color: rgba(250, 250, 251, 0.62);
   margin-bottom: 0.85rem;
 }
 
-.bc-exec-timeline {
-  max-width: 720px;
+.bc-exec-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
-.bc-exec-step {
+@media (min-width: 720px) {
+  .bc-exec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.bc-exec-card {
   padding: 1.15rem 1.35rem;
 }
 
-.bc-exec-step p {
+.bc-exec-num {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(167, 139, 250, 0.65);
+}
+
+.bc-exec-card h3 {
+  margin: 0;
   font-size: 1.05rem;
   font-weight: 500;
+  line-height: 1.45;
   color: rgba(250, 250, 251, 0.88);
-  margin: 0;
 }
 
 /* Advantage */

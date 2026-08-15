@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useRef, useState, type CSSProperties } from "react";
 import { useInView } from "framer-motion";
@@ -146,11 +144,6 @@ export default function ProjectBentoCard({
             </span>
           ))}
         </div>
-
-        <Link href={project.href} className="prj-bento-cta group">
-          View case study
-          <ArrowRight size={14} className="prj-bento-cta-arrow" aria-hidden />
-        </Link>
       </div>
     </motion.article>
   );

@@ -4,17 +4,15 @@ export const aiTransformationContent: ServicePageContent = {
   metadata: {
     title: "AI Transformation Engineering and AI Enablement Training | Astrenox",
     description:
-      "Astren AI maps how your organization operates, identifies automation opportunities, deploys secure AI workflows, and trains your workforce, from discovery to ROI measurement in one governed platform.",
+      "Most enterprises struggle with AI because their workflows are fragmented across systems, teams, and undocumented processes. Astren AI maps how the organization operates, identifies high-value automation opportunities, deploys secure AI workflows, enables employee adoption, and manages governance and ROI across the transformation lifecycle.",
   },
   hero: {
     label: "AI Transformation Engineering and AI Enablement Training",
     title: "Astren AI:\nThe Transformation Engine for Becoming AI Native",
     subtitle:
-      "Most enterprises do not fail at AI because they lack tools. They fail because they do not know how work actually happens inside the organization. Processes live across people, spreadsheets, CRMs, ERPs, inboxes, SOPs, calls, undocumented handoffs, and tribal knowledge. Before AI can automate work, the enterprise first needs to understand the work. Astren AI is our enterprise agent platform that maps how your organization operates, identifies the highest-value automation opportunities, deploys secure AI workflows, and trains your workforce to adopt them. All transformation happens through Astren AI: discovery, workflow mapping, automation deployment, employee enablement, governance, and ROI measurement.",
+      "Most enterprises struggle with AI because their workflows are fragmented across systems, teams, and undocumented processes. Astren AI maps how the organization operates, identifies high-value automation opportunities, deploys secure AI workflows, enables employee adoption, and manages governance and ROI across the transformation lifecycle.",
     primaryCta: "Book a Transformation & Capability Audit",
-    secondaryCta: "Explore the Astren AI Platform",
     primaryHref: "/contact",
-    secondaryHref: "/platform",
     trustLine:
       "AI transformation powered by operational discovery, agentic automation, and workforce enablement inside one governed platform.",
   },
@@ -24,6 +22,7 @@ export const aiTransformationContent: ServicePageContent = {
       "Most organizations treat AI as a software rollout. But becoming AI-native is not only a tooling problem. It is an operating model problem.",
       "AI transformation requires a coordinated shift across strategy, workflows, people, data, governance, and execution.",
     ],
+    sideImage: "/images/overview/ai-reality-gap.png",
   },
   interventions: {
     label: "The Gaps",
@@ -57,35 +56,92 @@ export const aiTransformationContent: ServicePageContent = {
   },
   workflow: {
     id: "how-it-works",
-    label: "Process",
+    label: "PROCESS",
     title: "How Astren AI Works",
     intro:
       "Astren AI acts as the operational brain for enterprise transformation. It does not begin with generic AI use cases. It begins by understanding how your company actually works.",
     steps: [
       {
-        name: "Step 1: Discover How Work Really Happens",
+        name: "Step 1",
         description:
-          "Astren AI conducts structured discovery across teams, roles, workflows, tools, and operating constraints. This includes employee interviews, stakeholder inputs, document review, system mapping, and process analysis. The platform captures: What each team actually does; Which tools they use; Where handoffs occur; Where approvals slow down; Which tasks are repetitive; Which decisions require human judgment; Which workflows are ready for AI automation; Which workflows need process redesign first. The result is a live operational map of your organization.",
+          "Astren AI conducts structured discovery across teams, roles, workflows, tools, and operating constraints to build a clear view of how work actually happens across the organization.",
+        bullets: [
+          "What each team does and how work is performed",
+          "Tools, systems, and data used across workflows",
+          "Handoffs, dependencies, and approval bottlenecks",
+          "Repetitive and manual tasks suitable for automation",
+          "Decisions that require human judgment or oversight",
+          "Workflows ready for AI automation",
+          "Workflows that require process redesign first",
+          "A live operational map of the organization to guide transformation priorities",
+        ],
       },
       {
-        name: "Step 2: Identify Bottlenecks and Automation Opportunities",
+        name: "Step 2",
         description:
-          "Once workflows are mapped, Astren AI analyzes where time, cost, and execution quality are being lost. The platform identifies: Manual task volume; Approval delays; Repeated data entry; Knowledge gaps; Tool switching friction; High-error processes; Unclear ownership; Undocumented workarounds; Repetitive decision patterns. Each opportunity is ranked by feasibility, ROI potential, operational risk, data readiness, and implementation complexity. This helps leadership decide what to automate first instead of chasing AI hype.",
+          "Astren AI analyzes mapped workflows to identify where time, cost, and execution quality are being lost, then prioritizes the highest-value opportunities for automation.",
+        bullets: [
+          "Manual and repetitive task volume",
+          "Approval and decision-making delays",
+          "Repeated data entry and process duplication",
+          "Knowledge gaps and information bottlenecks",
+          "Tool-switching and workflow friction",
+          "High-error or inconsistent processes",
+          "Unclear ownership and process dependencies",
+          "Undocumented workarounds and manual interventions",
+          "Repetitive decision patterns suited for AI",
+        ],
+        after:
+          "Each opportunity is ranked by ROI potential, feasibility, operational risk, data readiness, and implementation complexity, helping leadership prioritize where AI can create the most measurable impact first.",
       },
       {
-        name: "Step 3: Engineer AI Workflows Inside Astren AI",
+        name: "Step 3",
         description:
-          "After prioritization, our engineering team builds secure AI workflows directly inside the Astren AI platform. These workflows can include: AI assistants for internal teams; Multi-agent workflow automation; Enterprise knowledge search; RAG-based document intelligence; Approval routing agents; CRM, ERP, and billing automations; Report generation workflows; Customer support agents; Finance, HR, operations, and sales copilots. Astren AI becomes the place where these workflows live, run, and improve.",
+          "After prioritization, Astren AI turns high-value opportunities into secure, production-ready AI workflows built directly into the platform.",
+        bullets: [
+          "Internal AI assistants and enterprise copilots",
+          "Multi-agent workflow automation",
+          "Enterprise knowledge search",
+          "RAG-based document intelligence",
+          "Approval and routing agents",
+          "CRM, ERP, billing, and back-office automations",
+          "Automated reporting and insight generation",
+          "Customer support agents",
+          "Finance, HR, operations, and sales workflows",
+        ],
+        after:
+          "Astren AI becomes the central environment where these workflows are deployed, managed, monitored, and continuously improved.",
       },
       {
-        name: "Step 4: Train Employees Inside the Platform",
+        name: "Step 4",
         description:
-          "AI enablement is not handled separately. It happens inside Astren AI. Employees receive role-specific training modules based on the workflows being deployed for their department. For example: Sales teams learn how to use AI for CRM updates, proposal drafting, objection handling, and pipeline intelligence. Finance teams learn how to use AI for reconciliation, reporting, close-cycle support, and anomaly review. HR teams learn how to use AI for employee support, policy search, onboarding, and workforce analytics. Operations teams learn how to use AI for process monitoring, exception routing, and workflow execution. Leadership teams learn how to govern AI adoption, review ROI, and prioritize the next transformation wave. This turns employees from passive tool users into confident AI operators.",
+          "Astren AI embeds workforce enablement directly into deployment, providing role-specific training aligned with the AI workflows introduced across each function.",
+        bullets: [
+          "Sales: CRM updates, proposal drafting, objection handling, and pipeline intelligence",
+          "Finance: Reconciliation, reporting, close-cycle support, and anomaly review",
+          "HR: Employee support, policy search, onboarding, and workforce analytics",
+          "Operations: Process monitoring, exception routing, and workflow execution",
+          "Leadership: AI governance, ROI tracking, adoption oversight, and transformation prioritization",
+        ],
+        after:
+          "This ensures employees are trained to use AI within their actual day-to-day workflows, accelerating adoption and measurable business impact.",
       },
       {
-        name: "Step 5: Track Adoption, ROI, and Governance",
+        name: "Step 5",
         description:
-          "Astren AI gives leadership a single view of transformation progress. The platform tracks: Which teams are using AI; Which workflows are active; How much manual work has been reduced; Where employees are getting stuck; Which automations are delivering ROI; Which outputs require human review; Which departments need additional training; Where new automation opportunities are emerging. This makes AI transformation measurable instead of theoretical.",
+          "Astren AI gives leadership a unified view of AI transformation, making adoption, performance, and business impact measurable across the organization.",
+        bullets: [
+          "AI adoption across teams and departments",
+          "Active workflows and automation usage",
+          "Reduction in manual work and process effort",
+          "Employee friction and adoption gaps",
+          "ROI delivered by deployed automations",
+          "Outputs requiring human review or approval",
+          "Teams requiring additional training or support",
+          "Emerging opportunities for further automation",
+        ],
+        after:
+          "This gives leadership a clear view of what is working, where intervention is needed, and where AI can create additional value.",
       },
     ],
   },
@@ -100,24 +156,28 @@ export const aiTransformationContent: ServicePageContent = {
         description:
           "Astren AI maps how work moves across people, tools, departments, and decision points. It identifies the highest-friction workflows and converts them into a ranked transformation roadmap. Business Outcome: A practical AI execution roadmap based on real operational bottlenecks, not assumptions.",
         icon: "Workflow",
+        image: "/images/overview/04-mapping.jpg",
       },
       {
         title: "Process Redesign and Automation",
         description:
           "We redesign manual workflows and convert them into AI-assisted or AI-executed processes. Astren AI agents can retrieve information, classify requests, draft outputs, route approvals, update systems, and escalate exceptions when human judgment is required. Business Outcome: Reduced manual effort across repetitive workflows while keeping human control over sensitive decisions.",
         icon: "Zap",
+        image: "/images/rtd-crm/workflow-automation-ai-intelligence.jpg",
       },
       {
         title: "Enterprise Memory Systems",
         description:
           "Astren AI creates a secure company memory layer by connecting documents, SOPs, policies, CRM data, project knowledge, and internal workflows. Employees can ask questions and receive grounded answers based on approved company knowledge. Business Outcome: Faster access to institutional knowledge and reduced dependency on scattered documents or individual memory.",
         icon: "Brain",
+        image: "/images/saas/documents.jpg",
       },
       {
         title: "Continuous MLOps and Improvement",
         description:
           "Every workflow inside Astren AI is monitored for usage, accuracy, latency, cost, human overrides, and output quality. This allows the system to improve continuously instead of becoming another static enterprise tool. Business Outcome: Stable AI workflows that can be measured, audited, and improved over time.",
         icon: "Gauge",
+        image: "/images/projects/observability.jpg",
       },
     ],
   },
@@ -222,8 +282,6 @@ export const aiTransformationContent: ServicePageContent = {
     subtitle:
       "Move from isolated AI initiatives to a coordinated enterprise transformation model. Use Astren AI to understand how your organization works, identify what should be prioritized first, deploy secure AI workflows, enable your workforce, and measure transformation outcomes through one governed platform.",
     primaryCta: "Start Your Enterprise Transformation Audit",
-    secondaryCta: "Explore the Astren AI Platform",
     primaryHref: "/contact",
-    secondaryHref: "/platform",
   },
 };

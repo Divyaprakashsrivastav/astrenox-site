@@ -55,7 +55,7 @@ export type ServicePageChapter = {
     title?: string;
     paragraphs: string[];
     layout?: "fan" | "grid" | "timeline";
-    cards?: Array<{ heading: string; body: string }>;
+    cards?: Array<{ heading: string; body: string; image?: string }>;
     steps?: Array<{ name: string; description: string }>;
   };
   contentSections?: Array<{
@@ -79,6 +79,7 @@ export type ServicePageChapter = {
     label?: string;
     title: string;
     intro?: string;
+    layout?: "grid";
     items: Array<{
       title: string;
       description?: string;
@@ -87,6 +88,7 @@ export type ServicePageChapter = {
       enablesLabel?: string;
       afterEnables?: string[];
       icon: ServiceIconName;
+      image?: string;
     }>;
   };
   tags?: string[];
@@ -107,7 +109,12 @@ export type ServicePageChapter = {
     label?: string;
     title: string;
     intro?: string;
-    steps: Array<{ name: string; description: string }>;
+    steps: Array<{
+      name: string;
+      description: string;
+      bullets?: string[];
+      after?: string;
+    }>;
   };
   impact?: {
     label?: string;
@@ -142,6 +149,8 @@ export type ServicePageContent = {
     paragraphImages?: string[];
     /** Optional short labels paired with overview.paragraphs */
     paragraphLabels?: string[];
+    /** Optional infographic shown beside overview copy */
+    sideImage?: string;
     items?: Array<{
       title: string;
       description?: string;
@@ -165,12 +174,14 @@ export type ServicePageContent = {
     label: string;
     title: string;
     intro?: string;
+    layout?: "grid";
     items: Array<{
       title: string;
       description?: string;
       paragraphs?: string[];
       enables?: string[];
       icon: ServiceIconName;
+      image?: string;
     }>;
   };
   chapters?: ServicePageChapter[];
@@ -179,18 +190,24 @@ export type ServicePageContent = {
     label: string;
     title: string;
     intro?: string;
-    steps: Array<{ name: string; description: string }>;
+    steps: Array<{
+      name: string;
+      description: string;
+      bullets?: string[];
+      after?: string;
+    }>;
   };
   stack?: {
     label: string;
     title: string;
     intro?: string;
-    items: Array<string | { title: string; description: string; icon?: ServiceIconName }>;
+    items: Array<string | { title: string; description: string; icon?: ServiceIconName; photo?: string }>;
   };
   serviceOfferings?: {
     label: string;
     title: string;
     intro?: string;
+    layout?: "grid";
     items: Array<{ service: string; outcome: string }>;
   };
   interventions?: {

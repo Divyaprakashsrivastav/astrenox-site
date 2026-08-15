@@ -146,9 +146,6 @@ export default function QualityEngineeringPageClient() {
                 {brand}
                 <ArrowRight size={16} aria-hidden />
               </Link>
-              <Link href="#qe-how" className="qe-btn qe-btn--ghost">
-                {how.title}
-              </Link>
             </motion.div>
           </div>
           <motion.div
@@ -248,9 +245,6 @@ export default function QualityEngineeringPageClient() {
             <Link href="/contact" className="qe-btn qe-btn--primary">
               {brand}
               <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href="#qe-how" className="qe-btn qe-btn--ghost">
-              {how.title}
             </Link>
           </div>
         </div>

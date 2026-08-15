@@ -154,8 +154,17 @@ export default function BlockchainWeb3PageClient() {
   return (
     <Canvas>
       {/* Hero, network visualization personality */}
-      <section className="mvp-inner bc-hero" aria-labelledby="bc-brand">
-        <div className="bc-hero-grid">
+      <section className="bc-hero" aria-labelledby="bc-brand">
+        <motion.div
+          className="bc-hero-visual"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.85, delay: 0.15, ease: EASE_PREMIUM }}
+          aria-hidden
+        >
+          <BlockchainNetworkVisual />
+        </motion.div>
+        <div className="mvp-inner bc-hero-grid">
           <div className="bc-hero-copy">
             <motion.p
               className="bc-hero-label"
@@ -192,18 +201,8 @@ export default function BlockchainWeb3PageClient() {
                 Schedule Consultation
                 <ArrowRight size={16} aria-hidden />
               </Link>
-              <Link href={`#${execution.id}`} className="mvp-btn-secondary">
-                Discuss Your Project
-              </Link>
             </motion.div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.85, delay: 0.2, ease: EASE_PREMIUM }}
-          >
-            <BlockchainNetworkVisual />
-          </motion.div>
         </div>
       </section>
 
@@ -248,7 +247,7 @@ export default function BlockchainWeb3PageClient() {
         </div>
       </section>
 
-      {/* How Astrenox Executes, chain / timeline */}
+      {/* How Astrenox Executes */}
       <section
         id={execution.id}
         className="mvp-inner mvp-section"
@@ -264,24 +263,21 @@ export default function BlockchainWeb3PageClient() {
             <p key={p.slice(0, 48)}><FormattedText text={p} /></p>
           ))}
         </div>
-        <div className="mvp-timeline bc-exec-timeline">
+        <div className="bc-exec-grid">
           {execution.steps.map((step, i) => (
-            <motion.div
+            <motion.article
               key={step}
-              className="mvp-step"
+              className="mvp-glass bc-exec-card"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: i * 0.05, ease: EASE_PREMIUM }}
+              transition={{ duration: 0.45, delay: i * 0.04, ease: EASE_PREMIUM }}
             >
-              <div className="mvp-rail" aria-hidden>
-                <span className="mvp-dot">{i + 1}</span>
-                {i < execution.steps.length - 1 && <span className="mvp-line" />}
-              </div>
-              <div className="mvp-glass mvp-step-card bc-exec-step">
-                <p>{step}</p>
-              </div>
-            </motion.div>
+              <span className="bc-exec-num" aria-hidden>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3>{step}</h3>
+            </motion.article>
           ))}
         </div>
       </section>

@@ -36,11 +36,11 @@ export function getLogoCloudLayout(count: number) {
     const y = cy + (hash01(i * 3.7 + 5) - 0.5) * 2 * jitterY;
 
     return {
-      x: Math.min(94, Math.max(6, x)),
-      y: Math.min(90, Math.max(10, y)),
+      x: Number(Math.min(94, Math.max(6, x)).toFixed(2)),
+      y: Number(Math.min(90, Math.max(10, y)).toFixed(2)),
       size,
-      duration: 5 + hash01(i + 23) * 2.5,
-      delay: hash01(i + 31) * 2,
+      duration: Number((5 + hash01(i + 23) * 2.5).toFixed(2)),
+      delay: Number((hash01(i + 31) * 2).toFixed(2)),
     };
   });
 }

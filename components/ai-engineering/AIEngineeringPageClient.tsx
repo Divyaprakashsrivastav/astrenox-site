@@ -107,17 +107,10 @@ export default function AIEngineeringPageClient() {
                 </span>
               ))}
             </h1>
-            <p className="aie-hero-sub">{c.hero.subtitle}</p>
+            <p className="aie-hero-sub">
+              <FormattedText text={c.hero.subtitle} />
+            </p>
             <p className="aie-hero-trust">{c.hero.trustLine}</p>
-            <div className="aie-hero-ctas">
-              <Link href={c.hero.primaryHref} className="aie-btn aie-btn--primary" onMouseMove={onCtaMove}>
-                {c.hero.primaryCta}
-                <ArrowRight size={16} aria-hidden />
-              </Link>
-              <Link href={c.hero.secondaryHref} className="aie-btn aie-btn--ghost">
-                {c.hero.secondaryCta}
-              </Link>
-            </div>
           </motion.div>
           <AIEngineeringTerminal variant="hero" />
         </div>
@@ -216,13 +209,6 @@ export default function AIEngineeringPageClient() {
         </div>
       </section>
 
-      {/* Section 4, Code terminal */}
-      <section className="aie-block aie-block--terminal" aria-hidden>
-        <div className="aie-inner aie-terminal-wrap">
-          <AIEngineeringTerminal />
-        </div>
-      </section>
-
       {/* Section 5, Use cases horizontal cards */}
       <section className="aie-inner aie-block" aria-labelledby="aie-usecases-title">
         <SectionLabel>{c.interventions.label}</SectionLabel>
@@ -300,12 +286,15 @@ export default function AIEngineeringPageClient() {
                 <p><FormattedText text={c.stack.items[4]?.description} /></p>
               </div>
             </div>
+            <div className="aie-dashboard-terminal">
+              <AIEngineeringTerminal />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section 8, Deliverables */}
-      <section className="aie-block aie-block--alt" aria-labelledby="aie-deliverables-title">
+      <section className="aie-block aie-block--alt aie-deliverables" aria-labelledby="aie-deliverables-title">
         <div className="aie-inner">
           <SectionLabel>{c.deliverables.label}</SectionLabel>
           <h2 id="aie-deliverables-title">{c.deliverables.title}</h2>

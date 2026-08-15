@@ -28,6 +28,20 @@ export function parseFormattedText(text: string, keyPrefix = "ft"): ReactNode[] 
   return parts.length ? parts : [text];
 }
 
+export function toCopyLines(text: string): string[] {
+  const explicit = text
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (explicit.length > 1) return explicit;
+
+  return (explicit[0] ?? text)
+    .split(/(?<=\.)\s+(?=[A-Z])/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+}
+
 type FormattedTextProps = {
   text: string;
   as?: "span" | "p" | "li" | "h3";

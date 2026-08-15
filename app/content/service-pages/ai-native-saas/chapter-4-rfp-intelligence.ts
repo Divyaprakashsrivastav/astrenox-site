@@ -3,14 +3,15 @@ import type { ServicePageChapter } from "../types";
 export const chapter4RfpIntelligence: ServicePageChapter = {
   id: "section-4",
   title: "AI-Native RFP Intelligence",
-  subtitle: "AI for Tender Analysis, Bid Preparation, and Contract Review",
   overview: {
+    title: "Product Brief",
     paragraphs: [
-      "Tendering teams do not lose time only because documents are long.",
-      "They lose time because requirements, eligibility criteria, technical specifications, commercial terms, forms, annexures, risks, and clarifications are spread across hundreds or thousands of pages.",
-      "We build AI-native RFP intelligence systems that help teams identify relevant tenders, analyze tender packs faster, prepare review-ready bid documents, and manage claims-related communication with greater control.",
-      "The system converts complex tender and contract documents into structured, reviewable, and action-ready outputs for bid, legal, finance, and project teams.",
-      "Our AI workflows help teams move from manual tender reading to structured bid intelligence.",
+      "AI-native tender intelligence for tender discovery, analysis, bid preparation, and contract review.",
+      "Converts large tender packs, annexures, technical specifications, commercial terms, eligibility criteria, and forms into structured, review-ready outputs.",
+      "Helps bid teams quickly identify requirements, compliance conditions, risks, clarifications, and submission obligations.",
+      "Supports preparation of review-ready bid documents across technical, commercial, legal, finance, and project functions.",
+      "Enables structured analysis of contracts, claims-related communication, and tender correspondence with stronger review control.",
+      "Replaces manual document reading with a connected bid intelligence workflow from tender identification through submission and contract review.",
     ],
   },
   capabilities: {

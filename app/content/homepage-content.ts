@@ -29,7 +29,7 @@ export const homeMethodology = {
     {
       id: "think",
       number: "01",
-      title: "STAGE 01: THINK",
+      title: "STAGE 01 THINK",
       tagline:
         "This phase establishes strategic direction, assesses **technical maturity**, and engineers the **architectural baseline** required for scalable integration.",
       items: [
@@ -41,7 +41,7 @@ export const homeMethodology = {
     {
       id: "align",
       number: "02",
-      title: "STAGE 02: ALIGN",
+      title: "STAGE 02 ALIGN",
       tagline:
         "This phase transitions foundational strategy into a mobilized, prioritized portfolio designed to deliver maximum short-term and long-term value.",
       items: [
@@ -52,7 +52,7 @@ export const homeMethodology = {
     {
       id: "execute",
       number: "03",
-      title: "STAGE 03: EXECUTE",
+      title: "STAGE 03 EXECUTE",
       tagline:
         "This phase builds the **deployment engine**, activates data pipelines, and implements continuous recalibration loops based on **real-time operational telemetry**.",
       items: [
@@ -76,7 +76,7 @@ export const homeTriFlywheel = {
       tabLabel: "Product Delivery",
       title: "The Product Delivery Flywheel",
       description:
-        "Capture proprietary insights by routing every unique customer interaction into your core architecture. This automated feedback makes your software smarter and highly specialized over time.",
+        "Capture proprietary insights by routing every unique customer interaction into your core architecture.\nThis automated feedback makes your software smarter and highly specialized over time.",
       steps: [] as readonly string[],
     },
     {
@@ -84,7 +84,7 @@ export const homeTriFlywheel = {
       tabLabel: "Internal AI-Operations",
       title: "The Internal AI-Operations Flywheel",
       description:
-        "Accelerate development speed by embedding **autonomous tools** into the engineering lifecycle to minimize operational overhead. Simultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO), ensuring you are natively indexed when users query AI search engines.",
+        "Accelerate development speed by embedding **autonomous tools** into the engineering lifecycle to minimize operational overhead.\nSimultaneously, pivot discovery strategies from traditional SEO to Model Recommendation Optimization (MRO), ensuring you are natively indexed when users query AI search engines.",
       steps: [] as readonly string[],
     },
     {
@@ -92,7 +92,7 @@ export const homeTriFlywheel = {
       tabLabel: "Ecosystem Alignment",
       title: "The Ecosystem Alignment Flywheel",
       description:
-        "Convert early success into industry dominance through seamless compatibility with Cloud Service Providers (CSPs), major vendors, and Systems Integrators (SIs). This structural integration unlocks massive, built-in distribution channels that return fresh enterprise insights to the start, compounding overall growth.",
+        "Convert early success into industry dominance through seamless compatibility with Cloud Service Providers (CSPs), major vendors, and Systems Integrators (SIs).\nThis structural integration unlocks massive, built-in distribution channels that return fresh enterprise insights to the start, compounding overall growth.",
       steps: [] as readonly string[],
     },
   ],
@@ -102,7 +102,7 @@ export const homeEnterpriseEcosystem = {
   label: "Technology Ecosystem",
   title: "Vendor-Agnostic Integration",
   description:
-    "We leverage strategic alliances with leading providers (OpenAI, Anthropic, Google, Meta) to route workloads to the optimal model, ensuring **architectural flexibility** without vendor lock-in.",
+    "We leverage strategic alliances with leading providers to route workloads to the optimal model, ensuring **architectural flexibility** without vendor lock-in.",
   marquee: [
     "OpenAI",
     "Anthropic",
@@ -315,7 +315,7 @@ export const homeServices = {
       description:
         "Governance of **multi-cloud environments** built for intensive AI inference. We provide proactive orchestration, **enterprise security**, and **observability** to manage compute costs.",
       outcome: "Reduce cloud infrastructure spend by 30%.",
-      href: "/infrastructure-solutions",
+      href: "/infrastructure-solutions/cloud-network-gcc",
     },
     {
       id: "mvp",

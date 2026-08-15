@@ -276,6 +276,119 @@
   line-height: 1.55;
 }
 
+.contact-form-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.contact-form-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.95rem 0.85rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(196, 181, 253, 0.28);
+  background: rgba(124, 58, 237, 0.06);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.contact-form-dropzone.is-dragging {
+  border-color: rgba(167, 139, 250, 0.7);
+  background: rgba(124, 58, 237, 0.14);
+}
+
+.contact-form-dropzone-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: rgba(250, 250, 251, 0.88);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.contact-form-dropzone-btn:hover {
+  color: #fff;
+}
+
+.contact-form-dropzone-hint {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(250, 250, 251, 0.42);
+  text-align: center;
+}
+
+.contact-form-file-list {
+  list-style: none;
+  margin: 0.15rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-form-file-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(196, 181, 253, 0.9);
+}
+
+.contact-form-file-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  color: rgba(250, 250, 251, 0.82);
+}
+
+.contact-form-file-size {
+  font-size: 0.6875rem;
+  color: rgba(250, 250, 251, 0.42);
+}
+
+.contact-form-file-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(250, 250, 251, 0.5);
+  cursor: pointer;
+}
+
+.contact-form-file-remove:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-form-file-error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #fca5a5;
+}
+
 .contact-form-submit {
   display: inline-flex;
   align-items: center;

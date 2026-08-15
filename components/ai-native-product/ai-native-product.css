@@ -158,6 +158,13 @@
   color: rgba(226, 232, 240, 0.7);
   max-width: 640px;
   margin: 0 auto 2rem;
+  font-style: italic;
+}
+
+.aipe-lede strong {
+  color: rgba(250, 250, 251, 0.95);
+  font-weight: 650;
+  font-style: italic;
 }
 
 .aipe-actions {
@@ -639,45 +646,6 @@
   font-weight: 600;
   color: rgba(196, 181, 253, 0.95);
   margin: 0.75rem 0 1rem;
-}
-
-.aipe-arch-diagram {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  margin-top: 1.75rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(165, 243, 252, 0.85);
-}
-
-.aipe-arch-node {
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #fff, #22d3ee);
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
-  animation: aipe-node-pulse 2.4s ease-in-out infinite;
-}
-
-.aipe-arch-arrow {
-  width: 28px;
-  height: 2px;
-  background: linear-gradient(90deg, #22d3ee, #818cf8);
-  position: relative;
-}
-
-.aipe-arch-arrow::after {
-  content: "";
-  position: absolute;
-  right: -1px;
-  top: -3px;
-  border: 4px solid transparent;
-  border-left-color: #818cf8;
 }
 
 /* Zigzag how */

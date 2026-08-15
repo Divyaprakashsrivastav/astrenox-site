@@ -12,9 +12,7 @@ export const computerVisionContent: ServicePageContent = {
     label: "",
     title: "Custom built Computer Vision & Video Analytics",
     subtitle: "",
-    primaryCta: "Request a Computer Vision Audit",
     secondaryCta: "Explore Vision Intelligence Architecture",
-    primaryHref: "/contact",
     secondaryHref: "#core-platform-capabilities",
   },
   intro: {
@@ -38,14 +36,16 @@ export const computerVisionContent: ServicePageContent = {
         title: "Flexible Intelligence Stack",
         icon: "Brain",
         paragraphs: [
-          "The system analyzes live or recorded video feeds using computer vision, deep learning, object detection, behavior recognition, crowd analytics, anomaly detection, OCR, and operational monitoring models. It can be deployed across edge devices, on-premise servers, private cloud, or hybrid infrastructure depending on latency, privacy, bandwidth, and governance requirements.",
+          "The system analyzes live or recorded video feeds using computer vision, deep learning, object detection, behavior recognition, crowd analytics, anomaly detection, OCR, and operational monitoring models.",
+          "It can be deployed across edge devices, on-premise servers, private cloud, or hybrid infrastructure depending on latency, privacy, bandwidth, and governance requirements.",
         ],
       },
       {
         title: "Real-Time Operational Visibility",
         icon: "Monitor",
         paragraphs: [
-          "The goal is not only to detect security risks. The goal is to help teams understand physical operations in real time: where safety violations occur, where queues build up, where production quality drops, where people or vehicles move, where assets are underutilized, and where abnormal activity needs immediate attention.",
+          "The goal is not only to detect security risks.",
+          "The goal is to help teams understand physical operations in real time: where safety violations occur, where queues build up, where production quality drops, where people or vehicles move, where assets are underutilized, and where abnormal activity needs immediate attention.",
         ],
       },
     ],
@@ -224,6 +224,7 @@ export const computerVisionContent: ServicePageContent = {
   serviceOfferings: {
     label: "",
     title: "Industry-Wise Use Cases",
+    layout: "grid",
     items: [
       {
         service: "Manufacturing",

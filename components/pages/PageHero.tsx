@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import LiquidButton from "../ui/LiquidButton";
 import FormattedText from "../ui/FormattedText";
+import { isActionableCtaHref } from "@/lib/cta";
 
 interface PageHeroProps {
   eyebrow?: string;
@@ -19,7 +20,7 @@ export default function PageHero({
   title,
   description,
   primaryCta = { label: "Request a consult", href: "/contact" },
-  secondaryCta = { label: "Explore services", href: "/services" },
+  secondaryCta,
 }: PageHeroProps) {
   return (
     <section className="relative pt-16 pb-10 lg:pt-20 lg:pb-12 overflow-hidden hero-gradient">
@@ -47,7 +48,7 @@ export default function PageHero({
               {primaryCta.label}
               <ArrowRight size={16} strokeWidth={2} />
             </LiquidButton>
-            {secondaryCta ? (
+            {secondaryCta && isActionableCtaHref(secondaryCta.href) ? (
               <LiquidButton href={secondaryCta.href} variant="outline">
                 {secondaryCta.label}
               </LiquidButton>

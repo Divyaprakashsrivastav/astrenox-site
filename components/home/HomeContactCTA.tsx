@@ -1,6 +1,7 @@
 "use client";
 
 import "./contact-ending.css";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Shield } from "lucide-react";
 import { homeContactCta } from "@/app/content/homepage-content";
@@ -117,15 +118,12 @@ export default function HomeContactCTA() {
           </motion.div>
 
           <motion.div className="cta-actions cta-actions--premium" variants={STAGGER}>
-            <motion.a
-              href="/contact"
-              className="cta-btn-primary group"
-              variants={BUTTON}
-              data-cursor-hover
-            >
-              Contact Us
-              <ArrowRight size={16} className="cta-btn-arrow" aria-hidden />
-            </motion.a>
+            <motion.div variants={BUTTON}>
+              <Link href="/contact" className="cta-btn-primary group" data-cursor-hover>
+                Contact Us
+                <ArrowRight size={16} className="cta-btn-arrow" aria-hidden />
+              </Link>
+            </motion.div>
           </motion.div>
 
           {embedSrc ? (
@@ -137,17 +135,7 @@ export default function HomeContactCTA() {
                 loading="lazy"
               />
             </motion.div>
-          ) : (
-            <motion.a
-              href="/contact?intent=scoping"
-              className="cta-btn-secondary group"
-              variants={BUTTON}
-              data-cursor-hover
-            >
-              Book a Consultation
-              <ArrowRight size={16} className="cta-btn-arrow" aria-hidden />
-            </motion.a>
-          )}
+          ) : null}
 
           <motion.ul
             className="cta-trust-row"

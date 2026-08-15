@@ -30,17 +30,10 @@ export type StackCarouselItem = {
   photo?: string;
 };
 
-function FaceThumb({
-  src,
-  className = "carousel3d-face-thumb",
-}: {
-  src: string;
-  className?: string;
-}) {
+function FacePhoto({ src, className = "carousel3d-face-photo" }: { src: string; className?: string }) {
   return (
     <div className={className} aria-hidden>
-      {/* Native img: next/image fill often fails inside CSS 3D transforms */}
-      <img src={src} alt="" className="carousel3d-face-thumb-img" loading="lazy" />
+      <img src={src} alt="" className="carousel3d-face-photo-img" loading="lazy" />
     </div>
   );
 }
@@ -73,26 +66,38 @@ function StackGrid({ items, compact }: { items: StackCarouselItem[]; compact?: b
         return (
           <motion.article
             key={item.title ?? item.description.slice(0, 48)}
-            className="mvp-glass-card mvp-cap-card mvp-deliverable-card"
+            className={`mvp-glass-card mvp-cap-card mvp-deliverable-card${item.photo ? " mvp-deliverable-card--split" : ""}`}
             custom={i}
             variants={fadeUp}
           >
-            <div className="stack-card-media-row">
-              {item.photo ? (
-                <FaceThumb src={item.photo} className="stack-card-thumb" />
-              ) : null}
-              <div className="stack-card-media-copy">
+            {item.photo ? (
+              <div className="stack-card-split">
+                <FacePhoto src={item.photo} className="stack-card-photo" />
+                <div className="stack-card-split-copy">
+                  {Icon && (
+                    <div className="mvp-feature-icon">
+                      <Icon size={20} aria-hidden />
+                    </div>
+                  )}
+                  {item.title ? <h3>{item.title}</h3> : null}
+                  <p>
+                    <FormattedText text={item.description} />
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
                 {Icon && (
                   <div className="mvp-feature-icon">
                     <Icon size={20} aria-hidden />
                   </div>
                 )}
                 {item.title ? <h3>{item.title}</h3> : null}
-              </div>
-            </div>
-            <p>
-              <FormattedText text={item.description} />
-            </p>
+                <p>
+                  <FormattedText text={item.description} />
+                </p>
+              </>
+            )}
           </motion.article>
         );
       })}
@@ -110,7 +115,6 @@ function StackCarousel3D({
   const reducedMotion = useReducedMotion();
   const isDesktop = useMinWidth(768);
   const compact = variant === "compact" || variant === "grid" || variant === "prose";
-  // Prose / grid variants stay as simple stacked content — no 3D carousel
   const showCarousel = variant !== "grid" && variant !== "prose" && isDesktop && !reducedMotion;
   const hasPhotos = items.some((item) => Boolean(item.photo));
 
@@ -118,15 +122,31 @@ function StackCarousel3D({
     return <StackGrid items={items} compact={compact} />;
   }
 
-  const radius = items.length <= 4 ? 280 : items.length <= 6 ? 325 : 365;
+  const radius = items.length <= 4 ? 260 : items.length <= 6 ? 300 : 340;
 
   const faces = items.map((item) => {
     const Icon = item.icon ? SERVICE_ICONS[item.icon] : null;
     return {
       id: item.title ?? item.description.slice(0, 48),
-      content: (
+      content: item.photo ? (
+        <div className="carousel3d-face-layout carousel3d-face-layout--split">
+          <FacePhoto src={item.photo} />
+          <div className="carousel3d-face-copy">
+            {Icon ? (
+              <div className="carousel3d-face-icon">
+                <Icon size={14} aria-hidden />
+              </div>
+            ) : null}
+            {item.title ? (
+              <h3 className="carousel3d-face-title">{item.title}</h3>
+            ) : null}
+            <p className="carousel3d-face-desc">
+              <FormattedText text={item.description} />
+            </p>
+          </div>
+        </div>
+      ) : (
         <div className="carousel3d-face-layout">
-          {item.photo ? <FaceThumb src={item.photo} /> : null}
           <div className="carousel3d-face-copy">
             {Icon ? (
               <div className="carousel3d-face-icon">
@@ -155,10 +175,10 @@ function StackCarousel3D({
       <Carousel3D
         faces={faces}
         radius={radius}
-        duration={28}
+        duration={60}
         className={[
           compact ? "carousel3d-wrap--compact" : "",
-          hasPhotos ? "carousel3d-wrap--photos" : "",
+          hasPhotos ? "carousel3d-wrap--photos carousel3d-wrap--split" : "",
         ]
           .filter(Boolean)
           .join(" ") || undefined}

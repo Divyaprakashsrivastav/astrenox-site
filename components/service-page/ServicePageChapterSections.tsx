@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ServiceIconName, ServicePageChapter } from "@/app/content/service-pages/types";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
 import CapabilitiesShowcase from "./CapabilitiesShowcase";
 import DeliverablesCarousel3D from "./DeliverablesCarousel3D";
 import FanOverviewCards from "./FanOverviewCards";
 import OverviewTimeline from "./OverviewTimeline";
-import StackCarousel3D from "./StackCarousel3D";
 import StrategyJourneyTimeline from "./StrategyJourneyTimeline";
 import TagMarquee from "./TagMarquee";
 import FormattedText from "../ui/FormattedText";
@@ -41,12 +41,27 @@ const staggerContainer = {
   visible: { transition: { staggerChildren: 0.08 } },
 };
 
-function SectionHeaderBlock({ label, title }: { label?: string; title?: string }) {
-  if (!label && !title) return null;
+function SectionHeaderBlock({
+  label,
+  title,
+  titleId,
+  intro,
+}: {
+  label?: string;
+  title?: string;
+  titleId?: string;
+  intro?: string;
+}) {
+  if (!label && !title && !intro) return null;
   return (
     <div className="mvp-section-header">
       {label ? <p className="mvp-eyebrow">{label}</p> : null}
-      {title ? <h2 className="mvp-section-title">{title}</h2> : null}
+      {title ? (
+        <h2 id={titleId} className="mvp-section-title">
+          {title}
+        </h2>
+      ) : null}
+      <SectionIntro intro={intro} />
     </div>
   );
 }
@@ -82,12 +97,12 @@ function ChapterCtaCard({
           {cta.primaryCta}
           <ArrowRight size={16} aria-hidden />
         </Link>
-        {cta.secondaryCta && cta.secondaryHref ? (
+        {cta.secondaryCta && isActionableCtaHref(cta.secondaryHref) ? (
           <Link href={cta.secondaryHref} className="mvp-btn-secondary">
             {cta.secondaryCta}
           </Link>
         ) : null}
-        {cta.tertiaryCta && cta.tertiaryHref ? (
+        {cta.tertiaryCta && isActionableCtaHref(cta.tertiaryHref) ? (
           <Link href={cta.tertiaryHref} className="mvp-btn-secondary">
             {cta.tertiaryCta}
           </Link>
@@ -131,7 +146,8 @@ function ChapterImpactGrid({
 }
 
 function ChapterHeroCtas({ links }: { links: Array<{ label: string; href: string }> }) {
-  if (links.length === 0) return null;
+  const actionable = links.filter((link) => isActionableCtaHref(link.href));
+  if (actionable.length === 0) return null;
   return (
     <motion.div
       className="mvp-cta-buttons mvp-cta-buttons-wrap"
@@ -140,7 +156,7 @@ function ChapterHeroCtas({ links }: { links: Array<{ label: string; href: string
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, ease: EASE_PREMIUM }}
     >
-      {links.map((link, i) => (
+      {actionable.map((link, i) => (
         <Link
           key={link.label}
           href={link.href}
@@ -177,12 +193,12 @@ function ChapterCtaPanel({ cta }: { cta: NonNullable<ServicePageChapter["cta"]> 
           {cta.primaryCta}
           <ArrowRight size={16} aria-hidden />
         </Link>
-        {cta.secondaryCta && cta.secondaryHref ? (
+        {cta.secondaryCta && isActionableCtaHref(cta.secondaryHref) ? (
           <Link href={cta.secondaryHref} className="mvp-btn-secondary">
             {cta.secondaryCta}
           </Link>
         ) : null}
-        {cta.tertiaryCta && cta.tertiaryHref ? (
+        {cta.tertiaryCta && isActionableCtaHref(cta.tertiaryHref) ? (
           <Link href={cta.tertiaryHref} className="mvp-btn-secondary">
             {cta.tertiaryCta}
           </Link>
@@ -192,7 +208,13 @@ function ChapterCtaPanel({ cta }: { cta: NonNullable<ServicePageChapter["cta"]> 
   );
 }
 
-function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
+function ServicePageChapterBlock({
+  chapter,
+  omitIntro = false,
+}: {
+  chapter: ServicePageChapter;
+  omitIntro?: boolean;
+}) {
   const {
     id,
     label,
@@ -212,7 +234,7 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
   } = chapter;
 
   const heroCtasInOverview = Boolean(heroCtas?.length && overview?.layout === "timeline");
-  const overviewCards =
+  const overviewCards: Array<{ heading: string; body: string; image?: string }> =
     overview?.cards ??
     overview?.paragraphs?.map((body, i) => ({
       heading: `Point ${i + 1}`,
@@ -222,6 +244,8 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
 
   return (
     <div id={id} className="mvp-chapter">
+      {!omitIntro ? (
+      <>
       <section className="mvp-inner mvp-section mvp-chapter-hero" aria-labelledby={`${id}-title`}>
         {label ? <p className="mvp-eyebrow">{label}</p> : null}
         <motion.h2
@@ -272,7 +296,7 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
                 </div>
               ) : null}
             </>
-          ) : (
+          ) : overview.layout === "fan" || overview.layout === "grid" ? (
           <div className="mvp-about-grid">
             {overview.title ? (
               <motion.h3
@@ -288,46 +312,45 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
             ) : null}
             {overview.layout === "fan" ? (
               <FanOverviewCards cards={overviewCards} />
-            ) : overview.layout === "grid" ? (
+            ) : (
               <CapabilitiesShowcase
                 items={overviewCards.map((card) => ({
                   title: card.heading,
                   paragraphs: [card.body],
+                  image: card.image,
                 }))}
                 icons={overviewCards.map(
                   (_, i) => OVERVIEW_GRID_ICONS[i % OVERVIEW_GRID_ICONS.length]
                 )}
                 navLabel={overview.title || "Product brief"}
+                compact
+                variant="grid"
               />
-            ) : (
-            <motion.div
-              className={
-                overview.title
-                  ? "mvp-about-text mvp-about-text-cards"
-                  : "mvp-about-text mvp-about-text-full mvp-about-text-cards"
-              }
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-            >
-              {overview.paragraphs.map((p, i) => (
-                <motion.article
-                  key={p.slice(0, 48)}
-                  className="mvp-glass-card mvp-about-paragraph-card"
-                  custom={i}
-                  variants={fadeUp}
-                >
-                  <p>
-                    <FormattedText text={p} />
-                  </p>
-                </motion.article>
-              ))}
-            </motion.div>
             )}
+          </div>
+          ) : (
+          <div className="svc-deliverable-carousel mvp-overview-brief">
+            <motion.article
+              className="mvp-glass-card mvp-cap-card mvp-deliverable-card svc-deliverable-carousel-panel mvp-overview-brief-panel"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+            >
+              {overview.title ? (
+                <h3 id={`${id}-overview`}>{overview.title}</h3>
+              ) : null}
+              {overview.paragraphs.map((p) => (
+                <p key={p.slice(0, 48)}>
+                  <FormattedText text={p} />
+                </p>
+              ))}
+            </motion.article>
           </div>
           )}
         </section>
+      ) : null}
+      </>
       ) : null}
 
       {contentSections?.map((section, index) => (
@@ -337,7 +360,7 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
         >
           {section.title ? (
             <motion.h3
-              className="mvp-about-title"
+              className="mvp-about-title mvp-chapter-copy-title"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -373,13 +396,31 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
 
       {methodology ? (
         <section className="mvp-inner mvp-section" aria-labelledby={`${id}-methodology`}>
-          <SectionHeaderBlock title={methodology.title} />
-          <StackCarousel3D
-            items={methodology.items.map((item) => ({
-              title: item.title,
-              description: item.description,
-            }))}
+          <SectionHeaderBlock
+            title={methodology.title}
+            titleId={`${id}-methodology`}
+            intro={methodology.intro}
           />
+          <div className="mvp-cap-grid mvp-methodology-grid">
+            {methodology.items.map((item, i) => (
+              <motion.article
+                key={item.title}
+                className="mvp-glass-card mvp-cap-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.07, ease: EASE_PREMIUM }}
+              >
+                <span className="mvp-methodology-num" aria-hidden>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3>{item.title}</h3>
+                <p>
+                  <FormattedText text={item.description} />
+                </p>
+              </motion.article>
+            ))}
+          </div>
         </section>
       ) : null}
 
@@ -423,6 +464,8 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
             items={capabilities.items}
             icons={capabilities.items.map((cap) => cap.icon)}
             navLabel={capabilities.title || "Capabilities"}
+            compact
+            variant={capabilities.layout === "grid" ? "grid" : "nav"}
           />
         </section>
       ) : null}
@@ -448,8 +491,12 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
 
       {impact ? (
         <section className="mvp-inner mvp-section" aria-labelledby={`${id}-impact`}>
-          <SectionHeaderBlock label={impact.label} title={impact.title} />
-          <SectionIntro intro={impact.intro} />
+          <SectionHeaderBlock
+            label={impact.label}
+            title={impact.title}
+            titleId={`${id}-impact`}
+            intro={impact.intro}
+          />
           <ChapterImpactGrid
             items={impact.items}
             cta={cta && isCompactChapterCta(cta) ? cta : undefined}
@@ -466,13 +513,19 @@ function ServicePageChapterBlock({ chapter }: { chapter: ServicePageChapter }) {
   );
 }
 
-function ServicePageChapterSections({ chapters }: { chapters: ServicePageChapter[] }) {
+function ServicePageChapterSections({
+  chapters,
+  omitFirstIntro = false,
+}: {
+  chapters: ServicePageChapter[];
+  omitFirstIntro?: boolean;
+}) {
   return (
     <>
       {chapters.map((chapter, i) => (
         <div key={chapter.id}>
           {i > 0 ? <div className="mvp-chapter-divider" aria-hidden /> : null}
-          <ServicePageChapterBlock chapter={chapter} />
+          <ServicePageChapterBlock chapter={chapter} omitIntro={omitFirstIntro && i === 0} />
         </div>
       ))}
     </>

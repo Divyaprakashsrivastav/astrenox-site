@@ -27,14 +27,16 @@ function SectionHead({
   title,
   description,
   center,
+  id,
 }: {
   title: string;
   description?: string;
   center?: boolean;
+  id?: string;
 }) {
   return (
     <div className={`coe-section-head ${center ? "coe-section-head--center" : ""}`}>
-      <h2>{title}</h2>
+      <h2 id={id}>{title}</h2>
       {description ? <p className="coe-section-desc">{description}</p> : null}
     </div>
   );
@@ -61,8 +63,13 @@ export default function CenterOfExcellencePageClient() {
 
   return (
     <Shell>
-      <section className="coe-inner coe-hero" aria-labelledby="coe-brand">
-        <div className="coe-hero-grid">
+      <section className="coe-hero" aria-labelledby="coe-brand">
+        <div className="coe-hero-visual" aria-hidden>
+          <div className="coe-hero-visual-wash" />
+          <div className="coe-hero-visual-grid" />
+          <div className="coe-hero-visual-rings" />
+        </div>
+        <div className="coe-inner coe-hero-grid">
           <div className="coe-hero-copy">
             <motion.p
               className="coe-eyebrow"
@@ -110,6 +117,7 @@ export default function CenterOfExcellencePageClient() {
           <SectionHead
             title={technologyPortfolio.title}
             description={technologyPortfolio.description}
+            center
           />
           <div className="coe-platform-matrix" role="table" aria-label={technologyPortfolio.title}>
             {technologyPortfolio.table.rows.map((row, index) => (
@@ -145,23 +153,25 @@ export default function CenterOfExcellencePageClient() {
       >
         <div className="coe-delivery-layout">
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.55, ease: EASE_PREMIUM }}
           >
             <SectionHead
+              id="coe-delivery"
               title={deliveryMethodology.title}
               description={deliveryMethodology.description}
+              center
             />
           </motion.div>
-          <div className="coe-roadmap" id="coe-delivery">
+          <div className="coe-roadmap">
             {deliveryMethodology.items.map((item, index) => (
               <motion.article
                 key={item}
                 className="coe-roadmap-item"
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.48, delay: index * 0.05, ease: EASE_PREMIUM }}
               >
@@ -184,7 +194,11 @@ export default function CenterOfExcellencePageClient() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.55, ease: EASE_PREMIUM }}
           >
-            <SectionHead title={sapCapabilities.title} description={sapCapabilities.description} />
+            <SectionHead
+              title={sapCapabilities.title}
+              description={sapCapabilities.description}
+              center
+            />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 28 }}

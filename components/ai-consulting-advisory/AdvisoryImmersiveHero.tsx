@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ServicePageContent } from "@/app/content/service-pages/types";
+import { isActionableCtaHref } from "@/lib/cta";
 import FormattedText from "../ui/FormattedText";
 import { EASE_PREMIUM } from "../v2/motion";
 import "../mvp-studio/mvp-studio.css";
@@ -331,7 +332,7 @@ function AdvisoryImmersiveHero({ hero }: AdvisoryImmersiveHeroProps) {
                 {hero.primaryCta}
                 <ArrowRight size={16} aria-hidden />
               </Link>
-              {hero.secondaryCta && hero.secondaryHref ? (
+              {hero.secondaryCta && isActionableCtaHref(hero.secondaryHref) ? (
                 <Link href={hero.secondaryHref} className="mvp-btn-secondary">
                   {hero.secondaryCta}
                 </Link>

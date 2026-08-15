@@ -7,6 +7,7 @@ import LiquidButton from "../ui/LiquidButton";
 import PlatformOpsVisual from "./PlatformOpsVisual";
 import FormattedText from "../ui/FormattedText";
 import { intelligencePlatform } from "@/app/content/platform-content";
+import { isActionableCtaHref } from "@/lib/cta";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 14 },
@@ -66,14 +67,16 @@ export default function PlatformHero() {
                 {hero.primaryCta}
                 <ArrowRight size={16} strokeWidth={2} />
               </LiquidButton>
-              <LiquidButton href={hero.secondaryHref} variant="outline">
-                {hero.secondaryCta}
-              </LiquidButton>
+              {hero.secondaryCta && isActionableCtaHref(hero.secondaryHref) ? (
+                <LiquidButton href={hero.secondaryHref} variant="outline">
+                  {hero.secondaryCta}
+                </LiquidButton>
+              ) : null}
             </motion.div>
 
             <motion.p variants={fadeUp} className="mt-5 text-xs text-muted">
               Powers{" "}
-              <Link href="/services" className="text-primary hover:underline">
+              <Link href="/services/ai-consulting-advisory" className="text-primary hover:underline">
                 Astrenox services
               </Link>
               ,{" "}
@@ -83,7 +86,8 @@ export default function PlatformHero() {
               , and{" "}
               <Link href="/research" className="text-primary hover:underline">
                 research
-              </Link>, one platform, no bolt-ons.
+              </Link>
+              , one platform, no bolt-ons.
             </motion.p>
           </motion.div>
 

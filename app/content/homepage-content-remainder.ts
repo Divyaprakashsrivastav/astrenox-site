@@ -4,7 +4,7 @@ export const homeFlagshipProjects = {
   label: "FLAGSHIP PROJECTS & PRODUCTS",
   title: "Applied AI Systems Built for Measurable Business Outcomes",
   description:
-    "Successful **AI adoption** is not defined by experiments, demos, or isolated features.\n\nIt is defined by whether the system solves a real operational problem, integrates into existing workflows, and produces measurable business value.\n\nAstrenox builds **AI-native platforms**, **automation engines**, and **enterprise intelligence systems** that move beyond proof-of-concept and into production. Each flagship system is designed around a clear business bottleneck, a secure technical architecture, and a measurable operational outcome.\n\n**What These Projects Prove:**\n\nAcross industries, Astrenox systems follow the same execution principle: AI should solve a specific operational bottleneck, integrate into existing workflows, and generate measurable business impact.\n\nOur flagship work demonstrates capability across:\n\n**healthcare access and care coordination**, **real estate operations and property management**, **construction ERP and project execution**, **tender intelligence and bid preparation**, **computer vision and facility analytics**, **supply chain execution and logistics coordination**, **private equity deal intelligence and portfolio monitoring**, **enterprise-grade workflow integration**, and **secure deployment and measurable ROI**.\n\nAstrenox does not build AI experiments. We build **applied intelligence systems** that move into production and compound business value.",
+    "Astrenox builds **AI-native systems** around real operational problems, not standalone demos.\n\nOur work combines domain workflows, enterprise data, automation, and secure system architecture to deliver solutions that can operate reliably in production.\n\nOur flagship projects span **healthcare access and care coordination**, **real estate operations and property management**, **construction ERP and project execution**, **tender intelligence and bid preparation**, **computer vision and facility analytics**, **supply chain execution and logistics coordination**, **private equity deal intelligence and portfolio monitoring**, **enterprise-grade workflow integration**, and **secure deployment with measurable ROI**.\n\nAstrenox approaches **AI transformation** by identifying real operational bottlenecks, integrating with existing enterprise systems and workflows, and building production-ready solutions that improve efficiency, decision-making, and measurable business outcomes.",
   items: [
     {
       id: "carelink" as const,
@@ -349,17 +349,13 @@ export const homeFooter = {
     { label: "Logistics", href: "/services/industries" },
     { label: "Technology", href: "/services/industries" },
   ],
-  servicesLink: { label: "Services", href: "/services" },
+  servicesLink: { label: "AI Consulting", href: "/services/ai-consulting-advisory" },
   industriesLink: { label: "Industries", href: "/services/industries" },
   github: { label: "GitHub", href: "https://github.com" },
   linkedin: { label: "LinkedIn", href: "https://www.linkedin.com/company/astrenox" },
+  instagram: { label: "Instagram", href: "https://www.instagram.com/astrenox" },
   x: { label: "X", href: "https://x.com" },
   email: "engineering@astrenox.com",
   copyright: "© 2026 Astrenox. All Rights Reserved.",
-  legalLinks: [
-    { label: "Privacy", href: "/privacy" },
-    { label: "Terms", href: "/legal" },
-    { label: "Cookies", href: "/legal" },
-  ],
   madeWith: "",
 } as const;

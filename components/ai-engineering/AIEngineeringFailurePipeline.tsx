@@ -30,12 +30,10 @@ function AIEngineeringFailurePipeline() {
 
   return (
     <div ref={rootRef} className="aie-failure-pipeline" aria-hidden>
-      <div className="aie-failure-rail-track">
-        <div className="aie-failure-rail-base" />
-        <motion.div className="aie-failure-rail-fill" style={{ scaleY: scrollYProgress }} />
-        {[0, 1, 2].map((i) => (
-          <span key={i} className="aie-failure-particle" style={{ animationDelay: `${i * 1.6}s` }} />
-        ))}
+      <div className="aie-failure-spine">
+        <div className="aie-failure-spine-track" />
+        <motion.div className="aie-failure-spine-fill" style={{ scaleY: scrollYProgress }} />
+        <motion.div className="aie-failure-spine-glow" style={{ scaleY: scrollYProgress }} />
       </div>
 
       <div className="aie-failure-rows">
@@ -44,7 +42,6 @@ function AIEngineeringFailurePipeline() {
             key={stage.id}
             stage={stage}
             index={i}
-            isLast={i === STAGES.length - 1}
             activeIndex={activeIndex}
             inView={inView}
           />
@@ -57,13 +54,11 @@ function AIEngineeringFailurePipeline() {
 function PipelineRow({
   stage,
   index,
-  isLast,
   activeIndex,
   inView,
 }: {
   stage: (typeof STAGES)[number];
   index: number;
-  isLast: boolean;
   activeIndex: ReturnType<typeof useTransform<number, number>>;
   inView: boolean;
 }) {
@@ -79,14 +74,6 @@ function PipelineRow({
             scale: useTransform(lit, (on) => (on ? 1 : 0.72)),
           }}
         />
-        {!isLast && (
-          <motion.span
-            className="aie-failure-segment"
-            style={{
-              opacity: useTransform(activeIndex, (a) => (a > index ? 1 : 0.2)),
-            }}
-          />
-        )}
       </div>
 
       <motion.article

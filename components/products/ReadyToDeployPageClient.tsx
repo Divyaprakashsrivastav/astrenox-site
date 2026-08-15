@@ -26,6 +26,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { readyToDeployContent as c } from "@/app/content/products/ready-to-deploy-content";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
 import { useReducedMotion } from "../features/useReducedMotion";
 import IndustryPanelAmbient from "../home/IndustryPanelAmbient";
@@ -116,9 +117,11 @@ export default function ReadyToDeployPageClient() {
               {c.hero.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={c.hero.secondaryHref} className="rtd-btn rtd-btn--ghost">
-              {c.hero.secondaryCta}
-            </Link>
+            {c.hero.secondaryCta && isActionableCtaHref(c.hero.secondaryHref) ? (
+              <Link href={c.hero.secondaryHref} className="rtd-btn rtd-btn--ghost">
+                {c.hero.secondaryCta}
+              </Link>
+            ) : null}
           </div>
         </motion.div>
       </section>
@@ -129,7 +132,7 @@ export default function ReadyToDeployPageClient() {
         aria-labelledby="rtd-platforms-title"
       >
         <div className="rtd-container">
-          <Reveal>
+          <Reveal className="rtd-section-copy">
             {c.appliedPlatforms.label ? (
               <p className="rtd-section-label">{c.appliedPlatforms.label}</p>
             ) : null}
@@ -291,6 +294,7 @@ export default function ReadyToDeployPageClient() {
             <p className="mvp-section-intro rtd-crm-description"><FormattedText text={c.customCrm.description} /></p>
           </Reveal>
           <DeliverablesCarousel3D
+            autoplayMs={2000}
             items={c.customCrm.subsections.map((sub) => ({
               title: sub.title,
               description: sub.body,
@@ -309,9 +313,11 @@ export default function ReadyToDeployPageClient() {
               {c.cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={c.cta.secondaryHref} className="rtd-btn rtd-btn--ghost">
-              {c.cta.secondaryCta}
-            </Link>
+            {c.cta.secondaryCta && isActionableCtaHref(c.cta.secondaryHref) ? (
+              <Link href={c.cta.secondaryHref} className="rtd-btn rtd-btn--ghost">
+                {c.cta.secondaryCta}
+              </Link>
+            ) : null}
           </div>
         </Reveal>
       </section>

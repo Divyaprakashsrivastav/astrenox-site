@@ -1,8 +1,46 @@
-/* Service capability panels — panel column matches full showcase/nav height */
+/* Service capability panels — larger equal-height nav + panel */
 
 .ind-showcase.svc-cap-showcase {
   min-height: 0 !important;
   align-items: stretch !important;
+}
+
+@media (min-width: 900px) {
+  .ind-showcase.svc-cap-showcase {
+    min-height: 560px !important;
+    align-items: stretch !important;
+  }
+
+  .ind-showcase.svc-cap-showcase.svc-cap-showcase--media {
+    min-height: 620px !important;
+  }
+
+  .ind-showcase.svc-cap-showcase .ind-showcase-nav {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    width: 34%;
+    min-width: 280px;
+    max-width: 380px;
+  }
+
+  .ind-showcase.svc-cap-showcase .ind-nav-list {
+    flex: 1;
+    height: 100%;
+    gap: 0.5rem;
+  }
+
+  .ind-showcase.svc-cap-showcase .ind-nav-item {
+    flex: 1 1 0;
+    display: flex;
+    min-height: 0;
+  }
+
+  .ind-showcase.svc-cap-showcase .ind-nav-btn {
+    height: 100%;
+    align-items: center;
+    padding: 1.05rem 1.1rem 1.05rem 1.15rem;
+  }
 }
 
 .ind-showcase.svc-cap-showcase .ind-showcase-panel-shell {
@@ -11,6 +49,12 @@
   display: flex;
   flex-direction: column;
   height: auto;
+}
+
+@media (min-width: 900px) {
+  .ind-showcase.svc-cap-showcase .ind-showcase-panel-shell {
+    min-height: 100% !important;
+  }
 }
 
 .ind-showcase.svc-cap-showcase .ind-showcase-panel-track {
@@ -29,7 +73,8 @@
   min-height: 100% !important;
   max-height: none !important;
   border-radius: 16px;
-  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  clip-path: none;
+  overflow: hidden;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-scroll {
@@ -37,92 +82,262 @@
   height: 100% !important;
   max-height: none !important;
   min-height: 0;
+  overflow-x: hidden;
   overflow-y: auto;
-  padding: 1.15rem 1.35rem !important;
+  padding: 1.6rem 1.7rem 1.9rem !important;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-icon-wrap {
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.85rem;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-icon {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.85rem;
+  height: 2.85rem;
   border-radius: 12px;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-icon svg {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-title {
-  font-size: 1.125rem !important;
-  margin-bottom: 0.55rem !important;
+  font-size: 1.25rem !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.7rem !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-desc {
-  font-size: 0.875rem !important;
-  line-height: 1.65 !important;
-  margin-bottom: 1rem !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1.15rem !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-block {
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .ind-showcase.svc-cap-showcase .ind-panel-list-item {
-  padding: 0.5rem 0.75rem 0.5rem 1rem;
-  font-size: 0.78rem;
+  padding: 0.65rem 0.9rem 0.65rem 1.1rem;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  clip-path: none;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-.ind-showcase.svc-cap-showcase .ind-nav-btn {
-  padding-top: 0.55rem;
-  padding-bottom: 0.55rem;
+.ind-showcase.svc-cap-showcase .ind-nav-label {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  white-space: normal;
+  font-size: 0.9375rem;
 }
 
-/* Compact: shrink-wrap to content (product brief overview) */
+.ind-showcase.svc-cap-showcase .ind-panel-img {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: 14rem;
+  margin: 0 0 1.5rem;
+  object-fit: contain;
+  object-position: center;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-scroll--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-scroll--centered .ind-panel-title,
+.ind-showcase.svc-cap-showcase .ind-panel-scroll--centered .ind-panel-desc,
+.ind-showcase.svc-cap-showcase .ind-panel-scroll--centered .ind-panel-block {
+  max-width: 36rem;
+}
+
+.ind-showcase.svc-cap-showcase .ind-panel-scroll--centered .ind-panel-list {
+  text-align: left;
+}
+
+/* Compact: smaller equal-height nav + panel */
 .ind-showcase.svc-cap-showcase--compact {
-  align-items: flex-start !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+
+@media (min-width: 900px) {
+  .ind-showcase.svc-cap-showcase--compact {
+    min-height: 360px !important;
+    align-items: stretch !important;
+  }
+
+  .ind-showcase.svc-cap-showcase--compact .ind-showcase-nav {
+    min-width: 240px;
+    max-width: 300px;
+  }
+
+  .ind-showcase.svc-cap-showcase--compact .ind-nav-btn {
+    padding: 0.7rem 0.85rem 0.7rem 0.9rem;
+  }
+
+  .ind-showcase.svc-cap-showcase--compact .ind-nav-label {
+    font-size: 0.8125rem;
+  }
 }
 
 .ind-showcase.svc-cap-showcase--compact .ind-showcase-panel-shell {
-  align-self: flex-start;
+  align-self: stretch;
   height: auto;
 }
 
 .ind-showcase.svc-cap-showcase--compact .ind-showcase-panel-track,
 .ind-showcase.svc-cap-showcase--compact .ind-showcase-panel {
-  flex: none;
-  height: auto !important;
-  min-height: 0 !important;
+  flex: 1 1 auto;
+  height: 100% !important;
+  min-height: 100% !important;
   max-height: none !important;
 }
 
 .ind-showcase.svc-cap-showcase--compact .ind-panel-scroll {
-  flex: none;
-  height: auto !important;
+  flex: 1 1 auto;
+  height: 100% !important;
   max-height: none !important;
+  overflow-y: auto;
+  padding: 1.1rem 1.2rem 1.25rem !important;
+}
+
+.ind-showcase.svc-cap-showcase--compact .ind-panel-title {
+  font-size: 1.25rem !important;
+  line-height: 1.3 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.ind-showcase.svc-cap-showcase--compact .ind-panel-desc {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 1rem !important;
+}
+
+.ind-showcase.svc-cap-showcase--compact .ind-panel-list-item {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.ind-showcase.svc-cap-showcase--compact .ind-panel-icon {
+  width: 2.25rem;
+  height: 2.25rem;
 }
 
 @media (min-width: 900px) {
-  .ind-showcase.svc-cap-showcase {
-    min-height: 0 !important;
+  .ind-showcase.svc-cap-showcase--compact {
+    min-height: 360px !important;
     align-items: stretch !important;
   }
+}
 
-  .ind-showcase.svc-cap-showcase--compact {
-    align-items: flex-start !important;
+@media (min-width: 900px) {
+  .ind-showcase.svc-cap-showcase--compact.svc-cap-showcase--media {
+    min-height: 460px !important;
   }
+}
+
+.ind-showcase.svc-cap-showcase--compact .ind-panel-img {
+  max-height: 8.75rem;
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 899px) {
   .ind-showcase.svc-cap-showcase .ind-showcase-panel {
-    min-height: 280px !important;
+    min-height: 340px !important;
     height: auto !important;
+    max-height: none !important;
   }
 
   .ind-showcase.svc-cap-showcase .ind-panel-scroll {
-    max-height: min(360px, 55vh) !important;
+    max-height: min(520px, 70vh) !important;
   }
+}
+
+.svc-cap-simple-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .svc-cap-simple-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .svc-cap-simple-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.625rem);
+    justify-self: center;
+    width: 100%;
+  }
+}
+
+.svc-cap-simple-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1.4rem 1.65rem;
+}
+
+.svc-cap-simple-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 8.75rem;
+  margin: 0 0 1.35rem;
+  object-fit: contain;
+  object-position: center;
+}
+
+.svc-cap-simple-title {
+  margin: 0 0 0.65rem;
+  width: 100%;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #fafafb;
+}
+
+.svc-cap-simple-copy {
+  margin: 0;
+  width: 100%;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  text-align: center;
+  color: rgba(250, 250, 251, 0.62);
+}
+
+.svc-cap-simple-copy + .svc-cap-simple-copy {
+  margin-top: 0.7rem;
+}
+
+.svc-cap-simple-list {
+  margin: 0.9rem 0 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+}
+
+.svc-cap-simple-list li {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(250, 250, 251, 0.58);
 }

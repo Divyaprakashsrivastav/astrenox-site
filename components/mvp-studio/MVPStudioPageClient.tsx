@@ -18,7 +18,10 @@ import {
   Handshake,
 } from "lucide-react";
 import { mvpStudioContent } from "@/app/content/mvp-studio-content";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
+import HeroVisual from "../service-page/HeroVisual";
+import { heroVisualConfigs } from "../service-page/hero-visual-configs";
 import "./mvp-studio.css";
 
 const fadeUp = {
@@ -69,8 +72,14 @@ function StepCard({
       transition={{ duration: 0.5, delay: index * 0.1, ease: EASE_PREMIUM }}
     >
       <div className="mvp-rail" aria-hidden>
-        <span className="mvp-dot" />
-        {index < total - 1 && <span className="mvp-line" />}
+        <span className="mvp-rail-node">
+          <span className="mvp-rail-diamond" />
+        </span>
+        {index < total - 1 ? (
+          <span className="mvp-rail-line">
+            <span className="mvp-rail-flow" />
+          </span>
+        ) : null}
       </div>
 
       <div
@@ -168,38 +177,50 @@ export default function MVPStudioPageClient() {
 
   return (
     <Canvas>
-      <section className="mvp-inner mvp-hero" aria-labelledby="mvp-brand">
-        <motion.h1
-          id="mvp-brand"
-          className="mvp-hero-brand"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: EASE_PREMIUM }}
-        >
-          {hero.title}
-        </motion.h1>
-        <motion.p
-          className="mvp-hero-subtitle"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: EASE_PREMIUM }}
-        >
-          {hero.description}
-        </motion.p>
-        <motion.div
-          className="mvp-hero-ctas"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.14, ease: EASE_PREMIUM }}
-        >
-          <Link href={hero.primaryHref} className="mvp-btn-primary">
-            {hero.primaryCta}
-            <ArrowRight size={16} aria-hidden />
-          </Link>
-          <Link href={hero.secondaryHref} className="mvp-btn-secondary">
-            {hero.secondaryCta}
-          </Link>
-        </motion.div>
+      <section className="mvp-hero" aria-labelledby="mvp-brand">
+        <div className="mvp-hero-visual" aria-hidden>
+          <HeroVisual
+            cards={heroVisualConfigs.aiProduct.cards}
+            connections={[...heroVisualConfigs.aiProduct.connections]}
+          />
+        </div>
+        <div className="mvp-inner">
+          <div className="mvp-hero-copy">
+            <motion.h1
+              id="mvp-brand"
+              className="mvp-hero-brand"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE_PREMIUM }}
+            >
+              {hero.title}
+            </motion.h1>
+            <motion.p
+              className="mvp-hero-subtitle"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: EASE_PREMIUM }}
+            >
+              {hero.description}
+            </motion.p>
+            <motion.div
+              className="mvp-hero-ctas"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.14, ease: EASE_PREMIUM }}
+            >
+              <Link href={hero.primaryHref} className="mvp-btn-primary">
+                {hero.primaryCta}
+                <ArrowRight size={16} aria-hidden />
+              </Link>
+              {hero.secondaryCta && isActionableCtaHref(hero.secondaryHref) ? (
+                <Link href={hero.secondaryHref} className="mvp-btn-secondary">
+                  {hero.secondaryCta}
+                </Link>
+              ) : null}
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       <section className="mvp-inner mvp-section" aria-labelledby="mvp-value">
@@ -413,9 +434,11 @@ export default function MVPStudioPageClient() {
               {cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={cta.secondaryHref} className="mvp-btn-secondary">
-              {cta.secondaryCta}
-            </Link>
+            {cta.secondaryCta && isActionableCtaHref(cta.secondaryHref) ? (
+              <Link href={cta.secondaryHref} className="mvp-btn-secondary">
+                {cta.secondaryCta}
+              </Link>
+            ) : null}
           </div>
         </div>
       </section>

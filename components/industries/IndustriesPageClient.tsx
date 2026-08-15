@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { industriesContent } from "@/app/content/industries-content";
 import type { ServiceIconName } from "@/app/content/service-pages/types";
+import { isActionableCtaHref } from "@/lib/cta";
 import MVPStudioCanvas from "../mvp-studio/MVPStudioCanvas";
 import GradientHeadline from "../ui/GradientHeadline";
 import StackCarousel3D from "../service-page/StackCarousel3D";
@@ -72,9 +73,11 @@ export default function IndustriesPageClient() {
               {hero.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={hero.secondaryHref} className="mvp-btn-secondary">
-              {hero.secondaryCta}
-            </Link>
+            {hero.secondaryCta && isActionableCtaHref(hero.secondaryHref) ? (
+              <Link href={hero.secondaryHref} className="mvp-btn-secondary">
+                {hero.secondaryCta}
+              </Link>
+            ) : null}
           </div>
         </motion.div>
       </section>
@@ -128,6 +131,7 @@ export default function IndustriesPageClient() {
         </div>
 
         <StackCarousel3D
+          variant="grid"
           items={deliveryCapabilities.items.map((item, i) => ({
             title: item.title,
             description: item.description,
@@ -155,9 +159,14 @@ export default function IndustriesPageClient() {
               {cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={cta.secondaryHref} className="mvp-btn-secondary">
-              {cta.secondaryCta}
-            </Link>
+            {"secondaryHref" in cta &&
+            isActionableCtaHref(cta.secondaryHref) &&
+            "secondaryCta" in cta &&
+            cta.secondaryCta ? (
+              <Link href={cta.secondaryHref} className="mvp-btn-secondary">
+                {cta.secondaryCta}
+              </Link>
+            ) : null}
           </div>
         </motion.div>
       </section>

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentType } from "react";
-import type { ServicePageContent } from "@/app/content/service-pages/types";
+import type { ServicePageChapter, ServicePageContent } from "@/app/content/service-pages/types";
 import MVPStudioCanvas from "../mvp-studio/MVPStudioCanvas";
 import ServicePageHero from "./ServicePageHero";
 import ServicePageSections from "./ServicePageSections";
@@ -12,6 +12,12 @@ type WorkflowSection = NonNullable<ServicePageContent["workflow"]>;
 type CapabilitiesSection = NonNullable<ServicePageContent["capabilities"]>;
 type OverviewSection = NonNullable<ServicePageContent["overview"]>;
 type ServiceOfferingsSection = NonNullable<ServicePageContent["serviceOfferings"]>;
+
+function isSimpleLeadChapter(chapter?: ServicePageChapter) {
+  const overview = chapter?.overview;
+  if (!chapter || !overview?.paragraphs?.length) return false;
+  return !overview.layout;
+}
 
 type ServicePageProps = {
   content: ServicePageContent;
@@ -38,6 +44,10 @@ export default function ServicePage({
   heroAmbient,
   heroSectionClassName,
 }: ServicePageProps) {
+  const leadChapter = isSimpleLeadChapter(content.chapters?.[0])
+    ? content.chapters?.[0]
+    : undefined;
+
   return (
     <MVPStudioCanvas>
       {HeroComponent ? (
@@ -50,10 +60,14 @@ export default function ServicePage({
           HeroVisualComponent={heroVisual}
           HeroAmbientComponent={heroAmbient}
           heroSectionClassName={heroSectionClassName}
+          leadChapter={leadChapter}
         />
       )}
       {content.chapters ? (
-        <ServicePageChapterSections chapters={content.chapters} />
+        <ServicePageChapterSections
+          chapters={content.chapters}
+          omitFirstIntro={Boolean(leadChapter)}
+        />
       ) : (
         <ServicePageSections
           content={content}

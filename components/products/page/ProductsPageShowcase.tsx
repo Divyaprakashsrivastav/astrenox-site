@@ -335,12 +335,9 @@ export default function ProductsPageShowcase() {
             <h2 className="pp-cta-title">{productsInfrastructureHeading}</h2>
             <p className="pp-cta-desc">{productsInfrastructureIntro}</p>
             <div className="pp-cta-actions">
-              <Link href="#products-bento" className="pp-btn-primary">
-                CTA
+              <Link href="/contact" className="pp-btn-primary">
+                Contact Us
                 <ArrowRight size={16} aria-hidden />
-              </Link>
-              <Link href="/contact" className="pp-btn-secondary">
-                CTA
               </Link>
             </div>
           </motion.div>

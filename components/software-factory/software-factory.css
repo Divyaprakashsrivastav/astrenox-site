@@ -98,6 +98,13 @@
   overflow: hidden;
 }
 
+.asf-hero .asf-hero-backdrop {
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+  filter: brightness(1.4) saturate(0.5);
+}
+
 .asf-hero-backdrop-noise {
   position: absolute;
   inset: 0;
@@ -256,10 +263,10 @@
   box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
 }
 
-.asf-hero-backdrop-vignette {
+.asf-hero .asf-hero-backdrop-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(13, 17, 23, 0.94) 0%, rgba(13, 17, 23, 0.6) 45%, rgba(13, 17, 23, 0.2) 100%);
+  background: radial-gradient(ellipse 72% 62% at 50% 42%, transparent 18%, rgba(13, 17, 23, 0.55) 100%);
 }
 
 .asf-hero-content {
@@ -269,10 +276,18 @@
   max-width: 1140px;
   margin-inline: auto;
   padding: clamp(5rem, 12vh, 7rem) clamp(1.25rem, 4vw, 2rem) clamp(3rem, 8vh, 4rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .asf-hero-copy {
-  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 48rem;
 }
 
 .asf-hero-label {
@@ -291,19 +306,24 @@
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
+  text-align: center;
 }
 
 .asf-hero-desc {
   margin: 1rem 0 0;
+  margin-inline: auto;
   font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-style: italic;
   line-height: 1.75;
   color: rgba(230, 237, 243, 0.64);
   max-width: 58ch;
+  text-align: center;
 }
 
 .asf-hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.875rem;
   margin-top: 2rem;
 }

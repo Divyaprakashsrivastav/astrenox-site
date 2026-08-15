@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 import type { ServicePageContent, ServiceIconName } from "@/app/content/service-pages/types";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
 import AnimatedCounter from "../mvp-studio/AnimatedCounter";
 import MVPStudioFAQ from "../mvp-studio/MVPStudioFAQ";
@@ -131,11 +132,13 @@ function ServicePageSections({
         </motion.div>
       ) : (
         <StackCarousel3D
+          variant="grid"
           items={
             stack.items as Array<{
               title: string;
               description: string;
               icon?: ServiceIconName;
+              photo?: string;
             }>
           }
         />
@@ -162,6 +165,7 @@ function ServicePageSections({
           items={capabilities.items}
           icons={capabilities.items.map((cap) => cap.icon)}
           navLabel={capabilities.title || "Capabilities"}
+          variant={capabilities.layout === "grid" ? "grid" : "nav"}
         />
       </section>
     )
@@ -185,6 +189,40 @@ function ServicePageSections({
   const serviceOfferingsSection = serviceOfferings ? (
     ServiceOfferingsComponent ? (
       <ServiceOfferingsComponent serviceOfferings={serviceOfferings} />
+    ) : serviceOfferings.layout === "grid" ? (
+      <section
+        id="service-offerings"
+        className="mvp-inner mvp-section"
+        aria-labelledby="service-offerings-title"
+      >
+        <SectionHeaderBlock
+          label={serviceOfferings.label}
+          title={serviceOfferings.title}
+          titleId="service-offerings-title"
+        />
+        <SectionIntro intro={serviceOfferings.intro} />
+        <motion.div
+          className="mvp-cap-grid svc-offerings-grid"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+        >
+          {serviceOfferings.items.map((item, i) => (
+            <motion.article
+              key={item.service}
+              className="mvp-glass-card mvp-cap-card"
+              custom={i}
+              variants={fadeUp}
+            >
+              <h3>{item.service}</h3>
+              <p>
+                <FormattedText text={item.outcome} />
+              </p>
+            </motion.article>
+          ))}
+        </motion.div>
+      </section>
     ) : (
       <StrategyJourneyTimeline
         id="service-offerings"
@@ -300,36 +338,56 @@ function ServicePageSections({
           </section>
         ) : (
           <section className="mvp-inner mvp-section" aria-labelledby="service-overview-title">
-            <div className="mvp-about-stack">
-              {overview.title ? (
-                <motion.h2
-                  id="service-overview-title"
-                  className="mvp-about-title"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+            <div className={`mvp-about-stack${overview.sideImage ? " mvp-about-stack--split" : ""}`}>
+              <div className="mvp-about-stack-copy">
+                {overview.title ? (
+                  <motion.h1
+                    id="service-overview-title"
+                    className="mvp-about-title"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+                  >
+                    {overview.title}
+                  </motion.h1>
+                ) : null}
+                {(overview.paragraphImages?.length ?? 0) > 0 ? (
+                  <OverviewMediaCards
+                    blocks={(overview.paragraphs ?? []).map((text, index) => ({
+                      text,
+                      image: overview.paragraphImages![index] ?? overview.paragraphImages![0],
+                      label: overview.paragraphLabels?.[index],
+                    }))}
+                  />
+                ) : (
+                  <div className="mvp-about-text mvp-about-text-full">
+                    {(overview.paragraphs ?? []).map((paragraph) => (
+                      <p key={paragraph.slice(0, 48)}>
+                        <FormattedText text={paragraph} />
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {overview.sideImage ? (
+                <motion.figure
+                  className="mvp-about-side-visual"
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.55, ease: EASE_PREMIUM }}
+                  transition={{ duration: 0.65, delay: 0.1, ease: EASE_PREMIUM }}
                 >
-                  {overview.title}
-                </motion.h2>
+                  <Image
+                    src={overview.sideImage}
+                    alt="Why the reality gap breaks AI ROI"
+                    width={1600}
+                    height={900}
+                    className="mvp-about-side-img"
+                    sizes="(max-width: 899px) 92vw, 56vw"
+                  />
+                </motion.figure>
               ) : null}
-              {(overview.paragraphImages?.length ?? 0) > 0 ? (
-                <OverviewMediaCards
-                  blocks={(overview.paragraphs ?? []).map((text, index) => ({
-                    text,
-                    image: overview.paragraphImages![index] ?? overview.paragraphImages![0],
-                    label: overview.paragraphLabels?.[index],
-                  }))}
-                />
-              ) : (
-                <div className="mvp-about-text mvp-about-text-full">
-                  {(overview.paragraphs ?? []).map((paragraph) => (
-                    <p key={paragraph.slice(0, 48)}>
-                      <FormattedText text={paragraph} />
-                    </p>
-                  ))}
-                </div>
-              )}
             </div>
           </section>
         )
@@ -477,10 +535,6 @@ function ServicePageSections({
                   <p className="mvp-project-outcome">
                     <FormattedText text={project.outcome} />
                   </p>
-                  <Link href="/contact" className="mvp-project-link">
-                    View Case Study
-                    <ArrowRight size={14} aria-hidden />
-                  </Link>
                 </div>
               </motion.article>
             );
@@ -581,7 +635,7 @@ function ServicePageSections({
               {cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            {cta.secondaryCta && cta.secondaryHref ? (
+            {cta.secondaryCta && isActionableCtaHref(cta.secondaryHref) ? (
             <Link href={cta.secondaryHref} className="mvp-btn-secondary">
               <Download size={16} aria-hidden />
               {cta.secondaryCta}

@@ -14,6 +14,8 @@
 
 .ind-page-showcase-grid .ind-showcase-panel {
   min-height: clamp(28rem, 52vh, 36rem);
+  clip-path: none;
+  max-height: min(640px, 78vh);
 }
 
 .ind-page-panel .ind-panel-scroll {

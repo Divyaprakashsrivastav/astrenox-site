@@ -400,11 +400,13 @@
 
 .tst-panel {
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   min-height: 420px;
-  max-height: min(580px, 75vh);
+  max-height: min(640px, 78vh);
   border-radius: 28px;
-  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  clip-path: none;
   background: rgba(14, 14, 24, 0.58);
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
@@ -445,15 +447,21 @@
 }
 
 .tst-panel-float {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  min-height: 0;
 }
 
 .tst-panel-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
   height: 100%;
-  max-height: min(580px, 75vh);
+  max-height: none;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: clamp(1.75rem, 3vw, 2.25rem);
+  padding: clamp(1.75rem, 3vw, 2.25rem) clamp(1.75rem, 3vw, 2.25rem)
+    clamp(2rem, 3.5vw, 2.75rem);
   scrollbar-width: thin;
   scrollbar-color: rgba(168, 85, 247, 0.3) transparent;
 }
@@ -485,6 +493,8 @@
   line-height: 1.72;
   letter-spacing: -0.01em;
   color: rgba(255, 255, 255, 0.9);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .tst-panel-footer {
@@ -736,7 +746,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: 1.25rem;
-  align-items: start;
+  align-items: stretch;
   min-height: 0;
 }
 
@@ -745,6 +755,7 @@
   flex-direction: column;
   gap: 0.45rem;
   min-width: 0;
+  height: 100%;
 }
 
 .tst-faq-q {
@@ -859,8 +870,10 @@
 
 .tst-faq-panel {
   position: relative;
-  height: 240px;
-  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
   border-radius: 18px;
   clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -930,6 +943,7 @@
 .tst-faq-panel-body {
   position: relative;
   z-index: 1;
+  flex: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -990,7 +1004,8 @@
   }
 
   .tst-faq-panel {
-    height: 240px;
+    height: auto;
+    min-height: 240px;
     order: -1;
   }
 

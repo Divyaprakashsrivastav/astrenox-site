@@ -842,9 +842,13 @@
   color: rgba(250, 250, 251, 0.62);
   width: 100%;
   max-width: 40rem;
-  margin: 1rem 0 0;
+  margin: 1rem auto 0;
   text-align: center;
   text-wrap: pretty;
+}
+
+.mvp-canvas > section[aria-labelledby="mvp-value"] .mvp-section-intro {
+  font-style: italic;
 }
 
 /* Keep title + intro in one centered column (matches timeline/pricing width) */
@@ -923,8 +927,93 @@
 
 /* Hero */
 .mvp-hero {
-  padding-block: clamp(6rem, 12vw, 9rem) clamp(3rem, 6vw, 5rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(6rem, 12vw, 9rem) clamp(3.5rem, 6vw, 5.25rem);
   text-align: center;
+  background:
+    radial-gradient(ellipse 85% 70% at 50% -15%, rgba(124, 58, 237, 0.34), transparent 58%),
+    radial-gradient(ellipse 45% 55% at 92% 85%, rgba(79, 140, 255, 0.14), transparent 52%),
+    radial-gradient(ellipse 40% 50% at 6% 90%, rgba(34, 211, 238, 0.1), transparent 48%),
+    linear-gradient(180deg, #120a28 0%, #0c081c 62%, #08060f 100%);
+}
+
+.mvp-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(196, 181, 253, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 181, 253, 0.07) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 72% 68% at 50% 38%, black 18%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 38%, black 18%, transparent 78%);
+}
+
+.mvp-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 5.5rem;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--mvp-bg));
+}
+
+.mvp-hero .mvp-hero-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.mvp-hero .mvp-hero-visual .mvp-dashboard {
+  max-width: min(46rem, 92%);
+  opacity: 0.22;
+  filter: brightness(1.55) saturate(0.35);
+}
+
+.mvp-hero .mvp-hero-visual .mvp-dashboard-card {
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+.mvp-hero .mvp-hero-visual .mvp-dashboard-card svg {
+  color: rgba(226, 232, 240, 0.7);
+}
+
+.mvp-hero .mvp-hero-visual .mvp-dashboard-line {
+  opacity: 0.35;
+}
+
+.mvp-hero .mvp-hero-visual .mvp-dashboard-dots {
+  display: none;
+}
+
+.mvp-hero .mvp-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  min-height: clamp(22rem, 42vw, 28rem);
+}
+
+.mvp-hero .mvp-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
 }
 
 .mvp-hero-eyebrow {
@@ -1000,11 +1089,12 @@
   -webkit-text-fill-color: transparent;
 }
 
-.mvp-hero-subtitle {
+.mvp-hero .mvp-hero-subtitle {
   font-size: 1.125rem;
+  font-style: italic;
   line-height: 1.7;
   color: rgba(250, 250, 251, 0.65);
-  max-width: 680px;
+  max-width: 40rem;
   margin: 0 auto 2rem;
 }
 
@@ -1038,7 +1128,78 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1.35rem;
+  padding-top: 1.55rem;
+}
+
+.mvp-rail-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.mvp-rail-diamond {
+  width: 9px;
+  height: 9px;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  background: rgba(12, 8, 24, 0.9);
+  border: 1px solid rgba(196, 181, 253, 0.7);
+  box-shadow:
+    0 0 0 3px rgba(8, 6, 15, 0.85),
+    0 0 14px rgba(167, 139, 250, 0.45);
+}
+
+.mvp-rail-line {
+  position: relative;
+  flex: 1;
+  width: 1px;
+  margin-top: 0.55rem;
+  min-height: 24px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    rgba(167, 139, 250, 0.55),
+    rgba(103, 232, 249, 0.18) 55%,
+    rgba(139, 92, 246, 0.06)
+  );
+}
+
+.mvp-rail-flow {
+  position: absolute;
+  left: 50%;
+  width: 3px;
+  height: 18px;
+  margin-left: -1.5px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, #c4b5fd, #67e8f9);
+  box-shadow: 0 0 10px rgba(103, 232, 249, 0.55);
+  animation: mvp-rail-flow 2.8s ease-in-out infinite;
+}
+
+@keyframes mvp-rail-flow {
+  0% {
+    top: -18px;
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% + 4px);
+    opacity: 0.12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mvp-rail-flow {
+    animation: none;
+    opacity: 0.35;
+    top: 30%;
+  }
 }
 
 .mvp-dot {

@@ -4,6 +4,7 @@ import { memo } from "react";
 import FormattedText from "../ui/FormattedText";
 import { motion } from "framer-motion";
 import { EASE_PREMIUM } from "../v2/motion";
+import { useReducedMotion } from "../features/useReducedMotion";
 
 export type OverviewTimelineStep = {
   name: string;
@@ -19,6 +20,8 @@ function OverviewTimeline({
   title?: string;
   titleId?: string;
 }) {
+  const reduced = useReducedMotion();
+
   return (
     <div className="mvp-overview-timeline-wrap">
       {title ? (
@@ -33,25 +36,37 @@ function OverviewTimeline({
           {title}
         </motion.h3>
       ) : null}
-      <div className="mvp-timeline mvp-timeline--overview">
-        {steps.map((step, i) => (
-          <motion.div
-            key={step.name}
-            className="mvp-timeline-step"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.45, delay: i * 0.1, ease: EASE_PREMIUM }}
-          >
-            <div className="mvp-glass-card mvp-timeline-step-inner">
-              <span className="mvp-overview-timeline-index" aria-hidden>
-                {String(i + 1).padStart(2, "0")}
+
+      <div className="mvp-ov-tl">
+        <span className="mvp-ov-tl-spine" aria-hidden>
+          <span className="mvp-ov-tl-spine-fill" />
+        </span>
+        <ol className="mvp-ov-tl-list">
+        {steps.map((step, i) => {
+          const side = i % 2 === 0 ? "left" : "right";
+          return (
+            <motion.li
+              key={step.name}
+              className={`mvp-ov-tl-item mvp-ov-tl-item--${side}`}
+              initial={{ opacity: 0, y: reduced ? 0 : 18, x: reduced ? 0 : side === "left" ? -16 : 16 }}
+              whileInView={{ opacity: 1, y: 0, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: EASE_PREMIUM }}
+            >
+              <span className="mvp-ov-tl-node" aria-hidden>
+                <span className="mvp-ov-tl-node-ring" />
+                <span className="mvp-ov-tl-node-num">{String(i + 1).padStart(2, "0")}</span>
               </span>
-              <h3>{step.name}</h3>
-              <p><FormattedText text={step.description} /></p>
-            </div>
-          </motion.div>
-        ))}
+              <article className="mvp-ov-tl-card">
+                <h3 className="mvp-ov-tl-heading">{step.name}</h3>
+                <p className="mvp-ov-tl-copy">
+                  <FormattedText text={step.description} />
+                </p>
+              </article>
+            </motion.li>
+          );
+        })}
+        </ol>
       </div>
     </div>
   );

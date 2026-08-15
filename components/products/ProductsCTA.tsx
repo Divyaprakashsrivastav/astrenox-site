@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { productsCta } from "@/app/content/products-content";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
 
 function ProductsCTA() {
@@ -26,9 +27,11 @@ function ProductsCTA() {
             {productsCta.primaryCta}
             <ArrowRight size={16} />
           </Link>
-          <Link href={productsCta.secondaryHref} className="products-btn-secondary">
-            {productsCta.secondaryCta}
-          </Link>
+          {productsCta.secondaryCta && isActionableCtaHref(productsCta.secondaryHref) ? (
+            <Link href={productsCta.secondaryHref} className="products-btn-secondary">
+              {productsCta.secondaryCta}
+            </Link>
+          ) : null}
         </div>
       </motion.div>
     </section>

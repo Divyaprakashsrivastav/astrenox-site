@@ -60,27 +60,9 @@
 .adv-overview-inner {
   position: relative;
   z-index: 1;
-}
-
-.adv-overview-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 3vw, 2.25rem);
-  align-items: start;
-}
-
-@media (min-width: 768px) {
-  .adv-overview-grid {
-    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
-    gap: clamp(2rem, 4vw, 3rem);
-  }
-}
-
-/* Left column */
-.adv-overview-left {
   display: flex;
   flex-direction: column;
-  gap: 1.125rem;
+  align-items: center;
 }
 
 .adv-overview-title {
@@ -89,16 +71,20 @@
   line-height: 1.18;
   letter-spacing: -0.022em;
   color: rgba(250, 250, 251, 0.97);
-  max-width: 16ch;
+  max-width: 22ch;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .adv-overview-accent {
   position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 3.5rem;
-  margin-top: 0.125rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: auto;
+  margin: 1.125rem auto 0;
 }
 
 .adv-overview-accent-dot {
@@ -109,29 +95,25 @@
   border-radius: 50%;
   background: #a78bfa;
   box-shadow: 0 0 12px rgba(167, 139, 250, 0.65);
-  margin-bottom: 0.375rem;
+  margin-right: 0.375rem;
   flex-shrink: 0;
 }
 
 .adv-overview-accent-line {
   display: block;
-  width: 2px;
+  height: 2px;
   flex: 1;
-  min-height: 2.5rem;
+  min-width: 2.5rem;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(167, 139, 250, 0.08), rgba(167, 139, 250, 0.7));
-  transform-origin: bottom center;
-}
-
-/* Right column - editorial block */
-.adv-overview-right {
-  display: flex;
-  flex-direction: column;
-  gap: 1.375rem;
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.7), rgba(167, 139, 250, 0.08));
+  transform-origin: left center;
 }
 
 .adv-overview-editorial {
   position: relative;
+  width: 100%;
+  max-width: 46rem;
+  margin: clamp(1.75rem, 4vw, 2.75rem) auto 0;
   padding: clamp(1.375rem, 2.5vw, 1.75rem) clamp(1.375rem, 2.5vw, 1.875rem);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -177,7 +159,11 @@
 .adv-overview-chips {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.625rem;
+  width: 100%;
+  max-width: 46rem;
+  margin: clamp(1.5rem, 3.5vw, 2.25rem) auto 0;
 }
 
 .adv-overview-chip {

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useId, useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { useId, useRef, useState, type ChangeEvent, type DragEvent } from "react";
+import { CheckCircle2, FileText, Upload, X } from "lucide-react";
 import { contactPage } from "@/app/content/site-pages";
 import { site } from "@/app/content/astrenox-content";
 
@@ -11,13 +11,67 @@ interface ContactFormProps {
   defaultInquiry?: string;
 }
 
+const FILE_ACCEPT =
+  ".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.csv,.zip,.png,.jpg,.jpeg,.webp";
+const MAX_FILE_BYTES = 10 * 1024 * 1024;
+const MAX_FILES = 5;
+
+function formatFileSize(bytes: number) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 export default function ContactForm({
   variant = "default",
   defaultInquiry,
 }: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const formId = useId();
   const isPremium = variant === "premium";
+
+  function addFiles(incoming: FileList | File[]) {
+    const next = [...files];
+    let error: string | null = null;
+
+    for (const file of Array.from(incoming)) {
+      if (file.size > MAX_FILE_BYTES) {
+        error = "Each file must be 10 MB or smaller.";
+        continue;
+      }
+      if (next.some((existing) => existing.name === file.name && existing.size === file.size)) {
+        continue;
+      }
+      if (next.length >= MAX_FILES) {
+        error = "You can attach up to 5 files.";
+        break;
+      }
+      next.push(file);
+    }
+
+    setFileError(error);
+    setFiles(next.slice(0, MAX_FILES));
+  }
+
+  function removeFile(name: string, size: number) {
+    setFiles((current) => current.filter((file) => !(file.name === name && file.size === size)));
+    setFileError(null);
+  }
+
+  function handleFileChange(event: ChangeEvent<HTMLInputElement>) {
+    if (event.target.files) addFiles(event.target.files);
+    event.target.value = "";
+  }
+
+  function handleDrop(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    setIsDragging(false);
+    if (event.dataTransfer.files.length) addFiles(event.dataTransfer.files);
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -28,9 +82,15 @@ export default function ContactForm({
     const company = data.get("company");
     const inquiry = data.get("inquiry");
     const message = data.get("message");
+    const attachments =
+      files.length > 0
+        ? `\n\nAttachments to include:\n${files
+            .map((file) => `- ${file.name} (${formatFileSize(file.size)})`)
+            .join("\n")}\n\nPlease attach the files listed above.`
+        : "";
     const subject = encodeURIComponent(`[${inquiry}] ${company}, Astrenox inquiry`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry: ${inquiry}\n\n${message}`,
+      `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nInquiry: ${inquiry}\n\n${message}${attachments}`,
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -50,7 +110,9 @@ export default function ContactForm({
             <CheckCircle2 size={32} className="contact-form-success-icon" aria-hidden />
             <p className="contact-form-success-title">Request prepared</p>
             <p className="contact-form-success-desc">
-              Your email client is opening with your message.
+              {files.length > 0
+                ? "Your email client is opening. Please attach the files you selected."
+                : "Your email client is opening with your message."}
             </p>
           </motion.div>
         ) : (
@@ -127,6 +189,64 @@ export default function ContactForm({
                 className="contact-form-input contact-form-textarea"
               />
             </label>
+
+            <div className="contact-form-field">
+              <span className="contact-form-label" id={`${formId}-files-label`}>
+                Attach files
+              </span>
+              <input
+                ref={fileInputRef}
+                id={`${formId}-files`}
+                type="file"
+                name="attachments"
+                multiple
+                accept={FILE_ACCEPT}
+                className="contact-form-file-input"
+                onChange={handleFileChange}
+                aria-labelledby={`${formId}-files-label`}
+              />
+              <div
+                className={`contact-form-dropzone${isDragging ? " is-dragging" : ""}`}
+                onDragOver={(event) => {
+                  event.preventDefault();
+                  setIsDragging(true);
+                }}
+                onDragLeave={() => setIsDragging(false)}
+                onDrop={handleDrop}
+              >
+                <button
+                  type="button"
+                  className="contact-form-dropzone-btn"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload size={16} aria-hidden />
+                  <span>Upload specs, decks, or diagrams</span>
+                </button>
+                <p className="contact-form-dropzone-hint">
+                  PDF, Office, images, or ZIP · up to 10 MB each
+                </p>
+              </div>
+              {files.length > 0 ? (
+                <ul className="contact-form-file-list">
+                  {files.map((file) => (
+                    <li key={`${file.name}-${file.size}`} className="contact-form-file-item">
+                      <FileText size={14} aria-hidden />
+                      <span className="contact-form-file-name">{file.name}</span>
+                      <span className="contact-form-file-size">{formatFileSize(file.size)}</span>
+                      <button
+                        type="button"
+                        className="contact-form-file-remove"
+                        onClick={() => removeFile(file.name, file.size)}
+                        aria-label={`Remove ${file.name}`}
+                      >
+                        <X size={14} aria-hidden />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+              {fileError ? <p className="contact-form-file-error">{fileError}</p> : null}
+            </div>
 
             <button type="submit" className="contact-form-submit">
               Send Message

@@ -12,7 +12,11 @@ export const metadata: Metadata = {
 export default function EnterpriseAiOpsPage() {
   return (
     <SiteLayout>
-      <ServicePage content={enterpriseAiOpsContent} visual="aiOps" />
+      <ServicePage
+        content={enterpriseAiOpsContent}
+        visual="aiOps"
+        heroSectionClassName="mvp-hero-section--visual-bg"
+      />
     </SiteLayout>
   );
 }

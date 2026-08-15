@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import FormattedText from "../ui/FormattedText";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -24,7 +24,14 @@ function DeliverableCardBody({ item }: { item: DeliverableCarouselItem }) {
   return (
     <>
       {paragraphs.map((p) => (
-        <p key={p.slice(0, 48)}><FormattedText text={p} /></p>
+        <p key={p.slice(0, 48)}>
+          {p.split("\n").filter((line) => line.trim().length > 0).map((line, i) => (
+            <span key={`${line.slice(0, 24)}-${i}`}>
+              {i > 0 ? <br /> : null}
+              <FormattedText text={line.trim()} />
+            </span>
+          ))}
+        </p>
       ))}
       {item.bullets && item.bullets.length > 0 ? (
         <ul className="mvp-cap-enables-list">
@@ -40,15 +47,17 @@ function DeliverableCardBody({ item }: { item: DeliverableCarouselItem }) {
   );
 }
 
-function DeliverablesCarousel3D({ items }: { items: DeliverableCarouselItem[] }) {
+function DeliverablesCarousel3D({
+  items,
+  autoplayMs,
+}: {
+  items: DeliverableCarouselItem[];
+  autoplayMs?: number;
+}) {
   const reduced = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const count = items.length;
-
-  if (count === 0) return null;
-
-  const safeIndex = activeIndex >= 0 && activeIndex < count ? activeIndex : 0;
-  const activeItem = items[safeIndex];
 
   const goPrev = useCallback(() => {
     setActiveIndex((i) => (i - 1 + count) % count);
@@ -58,6 +67,21 @@ function DeliverablesCarousel3D({ items }: { items: DeliverableCarouselItem[] })
     setActiveIndex((i) => (i + 1) % count);
   }, [count]);
 
+  const pause = useCallback(() => setIsPaused(true), []);
+  const resume = useCallback(() => setIsPaused(false), []);
+
+  useEffect(() => {
+    if (!autoplayMs || reduced || isPaused || count <= 1) return;
+
+    const timer = window.setInterval(goNext, autoplayMs);
+    return () => window.clearInterval(timer);
+  }, [autoplayMs, count, goNext, isPaused, reduced, activeIndex]);
+
+  if (count === 0) return null;
+
+  const safeIndex = activeIndex >= 0 && activeIndex < count ? activeIndex : 0;
+  const activeItem = items[safeIndex];
+
   return (
     <motion.div
       className="svc-deliverable-carousel"
@@ -65,6 +89,14 @@ function DeliverablesCarousel3D({ items }: { items: DeliverableCarouselItem[] })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.65, ease: EASE_PREMIUM }}
+      onMouseEnter={pause}
+      onMouseLeave={resume}
+      onFocus={pause}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          resume();
+        }
+      }}
     >
       <div className="svc-deliverable-carousel-card">
         <AnimatePresence mode="wait">

@@ -20,7 +20,6 @@ export default function AboutPage() {
         title={aboutPage.hero.title}
         description={aboutPage.hero.description}
         primaryCta={{ label: aboutPage.hero.primaryCta, href: "/contact" }}
-        secondaryCta={{ label: aboutPage.hero.secondaryCta, href: "/services" }}
       />
 
       <section className="section-shell relative bg-background">

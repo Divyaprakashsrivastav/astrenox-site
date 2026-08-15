@@ -45,7 +45,7 @@ export const footerQuickLinks = [
 export const footerNav = [
   { label: "Platform", href: "/platform" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "AI Consulting", href: "/services/ai-consulting-advisory" },
   { label: "Products", href: "/products/solvoris" },
   { label: "Research", href: "/research" },
   { label: "Careers", href: "/careers" },

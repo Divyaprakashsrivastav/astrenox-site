@@ -68,10 +68,15 @@ function ModelCard({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: EASE_PREMIUM }}
     >
-      <div className="mvp-rail" aria-hidden>
-        <span className="mvp-dot" />
+      <div className="mvp-rail htt-model-rail" aria-hidden>
+        <span className="mvp-dot htt-model-dot">
+          <span className="htt-model-dot-ring" />
+          <span className="htt-model-dot-num">{String(index + 1).padStart(2, "0")}</span>
+        </span>
         {index < hireTechTalentPageContent.engagement.models.length - 1 && (
-          <span className="mvp-line" />
+          <span className="mvp-line htt-model-line">
+            <span className="htt-model-line-flow" />
+          </span>
         )}
       </div>
 
@@ -128,7 +133,7 @@ function ModelCard({
 }
 
 export default function HireTechTalentPageClient() {
-  const { brand, hero, overview, capabilities, advantages, engagement } =
+  const { brand, hero, capabilities, advantages, engagement } =
     hireTechTalentPageContent;
 
   return (
@@ -172,9 +177,6 @@ export default function HireTechTalentPageClient() {
                 {brand}
                 <ArrowRight size={16} aria-hidden />
               </Link>
-              <Link href={`#${engagement.id}`} className="mvp-btn-secondary">
-                {engagement.title}
-              </Link>
             </motion.div>
           </div>
           <motion.div
@@ -186,33 +188,6 @@ export default function HireTechTalentPageClient() {
             <TalentOrgVisual />
           </motion.div>
         </div>
-      </section>
-
-      {/* Service Overview */}
-      <section className="mvp-inner mvp-section" aria-labelledby="htt-overview">
-        <motion.article
-          className="htt-overview-box mvp-glass"
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: EASE_PREMIUM }}
-        >
-          <div className="htt-overview-grid">
-            <h2
-              id="htt-overview"
-              className="mvp-section-title htt-overview-title"
-            >
-              {overview.title}
-            </h2>
-            <div className="htt-overview-text">
-              {overview.paragraphs.map((p) => (
-                <p key={p.slice(0, 40)}>
-                  <FormattedText text={p} />
-                </p>
-              ))}
-            </div>
-          </div>
-        </motion.article>
       </section>
 
       {/* Seamless Workflow Integration, Core Services */}
@@ -313,9 +288,6 @@ export default function HireTechTalentPageClient() {
             <Link href="/contact" className="mvp-btn-primary">
               {brand}
               <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href={`#${engagement.id}`} className="mvp-btn-secondary">
-              {engagement.title}
             </Link>
           </div>
         </div>

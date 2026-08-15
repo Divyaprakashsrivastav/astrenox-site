@@ -5,7 +5,7 @@ export const centerOfExcellencePageContent = {
     title: "Enterprise Technology & SAP Centre of Excellence",
     lead:
       "Build, modernize, and scale enterprise platforms with a single technology partner across SAP, Microsoft Azure, Oracle Cloud, Salesforce, and ServiceNow.",
-    body: "AppSierra’s Centre of Excellence (COE) transitions organizations from fragmented legacy systems to integrated, secure, and outcome-driven technology ecosystems. We consolidate advisory, implementation, migration, custom development, and managed services to maximize your operational efficiency and platform resilience.",
+    body: "We transition organizations from fragmented legacy systems to integrated, secure, and outcome-driven technology ecosystems. We consolidate advisory, implementation, migration, custom development, and managed services to maximize your operational efficiency and platform resilience.",
   },
   technologyPortfolio: {
     title: "Our Technology Portfolio",

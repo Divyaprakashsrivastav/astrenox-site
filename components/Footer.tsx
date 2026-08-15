@@ -5,12 +5,10 @@ import Link from "next/link";
 import { useRef, type ReactNode } from "react";
 import AstrenoxLogo from "./brand/AstrenoxLogo";
 import { homeFooter } from "@/app/content/homepage-content";
-import FormattedText from "./ui/FormattedText";
 import {
   navContactHref,
   navIndustriesHref,
   navInfrastructureHref,
-  navResearchHref,
 } from "@/app/content/nav-config";
 import { EASE_PREMIUM } from "./v2/motion";
 import FooterGlassWordmark from "./footer/FooterGlassWordmark";
@@ -19,27 +17,12 @@ import FooterLink from "./footer/FooterLink";
 import "./footer/footer-premium.css";
 
 const QUICK_LINKS = [
-  { label: "AI Services", href: "/services" },
+  { label: "AI Consulting", href: "/services/ai-consulting-advisory" },
   { label: "Digital Consulting", href: "/services/digital-it-consulting" },
   { label: "Products", href: "/products/solvoris" },
   { label: "Infrastructure", href: navInfrastructureHref },
   { label: "Industries", href: navIndustriesHref },
-] as const;
-
-const RESOURCE_LINKS = [
-  { label: "Blog", href: navResearchHref },
-  { label: "Case Studies", href: "/projects" },
-  { label: "Careers", href: "/careers" },
-  { label: "Documentation", href: navResearchHref },
   { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/legal" },
-] as const;
-
-const BOTTOM_LINKS = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/legal" },
-  { label: "Cookies", href: "/legal" },
-  { label: "Accessibility", href: "/legal" },
 ] as const;
 
 const fadeUp = {
@@ -75,6 +58,14 @@ function MailIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" width={16} height={16} aria-hidden>
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} aria-hidden>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
     </svg>
   );
 }
@@ -117,13 +108,9 @@ function FooterContent({ inView }: { inView: boolean }) {
         >
           <motion.div variants={fadeUp} className="ft-brand">
             <AstrenoxLogo variant="footer" />
-            <p className="ft-brand-copy">
-              <FormattedText text={homeFooter.about} />
-            </p>
           </motion.div>
 
           <motion.nav variants={fadeUp} className="ft-col" aria-label="Quick links">
-            <h3 className="ft-col-title">Quick Links</h3>
             <ul className="ft-links">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href + link.label}>
@@ -133,19 +120,7 @@ function FooterContent({ inView }: { inView: boolean }) {
             </ul>
           </motion.nav>
 
-          <motion.nav variants={fadeUp} className="ft-col" aria-label="Resources">
-            <h3 className="ft-col-title">Resources</h3>
-            <ul className="ft-links">
-              {RESOURCE_LINKS.map((link) => (
-                <li key={link.href + link.label}>
-                  <FooterLink href={link.href}>{link.label}</FooterLink>
-                </li>
-              ))}
-            </ul>
-          </motion.nav>
-
           <motion.div variants={fadeUp} className="ft-connect">
-            <h3 className="ft-col-title">Connect</h3>
             <div className="ft-socials">
               <SocialButton
                 href={homeFooter.linkedin.href}
@@ -160,15 +135,18 @@ function FooterContent({ inView }: { inView: boolean }) {
                 external
               />
               <SocialButton
+                href={homeFooter.instagram.href}
+                label="Instagram"
+                icon={<InstagramIcon />}
+                external
+              />
+              <SocialButton
                 href={`mailto:${homeFooter.email}`}
                 label="Email"
                 icon={<MailIcon />}
               />
               <SocialButton href={homeFooter.x.href} label="X" icon={<XIcon />} external />
             </div>
-            <a href={`mailto:${homeFooter.email}`} className="ft-email">
-              {homeFooter.email}
-            </a>
             <Link href={navContactHref} className="ft-schedule-btn">
               Schedule Call
             </Link>
@@ -182,13 +160,6 @@ function FooterContent({ inView }: { inView: boolean }) {
           transition={{ duration: 0.6, delay: 0.4, ease: EASE_PREMIUM }}
         >
           <span className="ft-bottom-copy">{homeFooter.copyright}</span>
-          <nav className="ft-bottom-nav" aria-label="Legal">
-            {BOTTOM_LINKS.map((link) => (
-              <Link key={link.label} href={link.href}>
-                {link.label}
-              </Link>
-            ))}
-          </nav>
           <span className="ft-bottom-tagline">Built for Enterprise AI</span>
         </motion.div>
       </div>

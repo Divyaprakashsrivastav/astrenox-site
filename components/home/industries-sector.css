@@ -260,11 +260,13 @@
 
 .ind-showcase-panel {
   position: relative;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   min-height: 420px;
-  max-height: min(560px, 72vh);
+  max-height: min(640px, 78vh);
   border-radius: 18px;
-  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  /* No clip-path — chamfers were cutting panel copy near the corners */
   background: rgba(255, 255, 255, 0.035);
   backdrop-filter: blur(20px) saturate(140%);
   -webkit-backdrop-filter: blur(20px) saturate(140%);
@@ -335,10 +337,14 @@
 .ind-panel-scroll {
   position: relative;
   z-index: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   height: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.5rem, 2.5vw, 2.25rem);
+  padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.5rem, 2.5vw, 2.25rem)
+    clamp(1.75rem, 3vw, 2.5rem);
   scrollbar-width: thin;
   scrollbar-color: rgba(168, 85, 247, 0.35) transparent;
 }
@@ -385,9 +391,12 @@
   font-family: var(--font-heading);
   font-size: clamp(1.375rem, 2vw, 1.75rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
   color: #fafafb;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .ind-panel-desc {
@@ -395,6 +404,8 @@
   font-size: 0.9375rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.74);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .ind-panel-block {
@@ -423,19 +434,20 @@
   position: relative;
   padding: 0.625rem 0.875rem 0.625rem 1.125rem;
   border-radius: 10px;
-  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   font-size: 0.8125rem;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.78);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .ind-panel-list-item::before {
   content: "";
   position: absolute;
   left: 0.5rem;
-  top: 0.95em;
+  top: 1.2em;
   width: 4px;
   height: 4px;
   border-radius: 50%;

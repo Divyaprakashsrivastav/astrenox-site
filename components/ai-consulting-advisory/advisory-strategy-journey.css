@@ -59,7 +59,27 @@
 
 .adv-journey-header {
   max-width: 40rem;
-  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  margin-inline: auto;
+  margin-bottom: clamp(3.25rem, 6.5vw, 5rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adv-journey-header .mvp-eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.adv-journey-header .mvp-section-title {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.adv-journey-header .mvp-section-intro {
+  max-width: 36rem;
+  margin: 1.15rem auto 0;
+  text-align: center;
 }
 
 /* Track + spine */
@@ -212,6 +232,9 @@
 
 .adv-journey-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
   padding: 1.5rem 1.625rem 1.375rem;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -306,18 +329,66 @@
 }
 
 .adv-journey-card h3 {
-  font-size: 1.0625rem;
+  font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.35;
   letter-spacing: -0.015em;
   color: rgba(250, 250, 251, 0.95);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
+  flex-shrink: 0;
+}
+
+.adv-journey-card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.4rem;
+  margin-right: -0.15rem;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 139, 250, 0.5) rgba(255, 255, 255, 0.06);
+}
+
+.adv-journey-card-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.adv-journey-card-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+
+.adv-journey-card-body::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.45);
+  border-radius: 999px;
 }
 
 .adv-journey-card p {
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: rgba(250, 250, 251, 0.58);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(250, 250, 251, 0.62);
+}
+
+.adv-journey-card-list {
+  margin: 0.85rem 0 0;
+  padding: 0 0 0 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.adv-journey-card-list li {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(250, 250, 251, 0.66);
+}
+
+.adv-journey-card-list li::marker {
+  color: rgba(167, 139, 250, 0.75);
+}
+
+.adv-journey-card-after {
+  margin-top: 0.75rem;
 }
 
 .adv-journey-card strong {
@@ -326,6 +397,7 @@
 }
 
 .adv-journey-card-progress {
+  flex-shrink: 0;
   margin-top: 1.125rem;
   height: 2px;
   border-radius: 999px;

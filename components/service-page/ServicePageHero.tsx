@@ -4,7 +4,8 @@ import { memo, type ComponentType } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { ServicePageContent } from "@/app/content/service-pages/types";
+import type { ServicePageChapter, ServicePageContent } from "@/app/content/service-pages/types";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
 import GradientHeadline from "../ui/GradientHeadline";
 import FormattedText from "../ui/FormattedText";
@@ -31,6 +32,7 @@ type ServicePageHeroProps = {
   HeroVisualComponent?: ComponentType | null;
   HeroAmbientComponent?: ComponentType;
   heroSectionClassName?: string;
+  leadChapter?: ServicePageChapter;
 };
 
 function ServicePageHero({
@@ -40,6 +42,7 @@ function ServicePageHero({
   HeroVisualComponent,
   HeroAmbientComponent,
   heroSectionClassName,
+  leadChapter,
 }: ServicePageHeroProps) {
   const titleLines = hero.title.split("\n");
   const visualConfig = heroVisualConfigs[visual];
@@ -80,6 +83,24 @@ function ServicePageHero({
             </motion.p>
           ) : null}
 
+          {leadChapter ? (
+            <motion.div className="mvp-hero-lead" variants={fadeUp}>
+              <h2 id={`${leadChapter.id}-title`} className="mvp-hero-lead-title">
+                {leadChapter.title}
+              </h2>
+              {leadChapter.subtitle ? (
+                <p className="mvp-hero-lead-subtitle">
+                  <FormattedText text={leadChapter.subtitle} />
+                </p>
+              ) : null}
+              {leadChapter.overview?.paragraphs?.map((paragraph) => (
+                <p key={paragraph.slice(0, 48)} className="mvp-hero-lead-copy">
+                  <FormattedText text={paragraph} />
+                </p>
+              ))}
+            </motion.div>
+          ) : null}
+
           {intro && intro.paragraphs.length > 0 ? (
             <motion.div className="mvp-hero-intro" variants={fadeUp}>
               {intro.paragraphs.map((paragraph) => (
@@ -90,13 +111,16 @@ function ServicePageHero({
             </motion.div>
           ) : null}
 
-          {hero.primaryCta && hero.primaryHref ? (
+          {hero.primaryCta && hero.primaryHref ||
+          (hero.secondaryCta && isActionableCtaHref(hero.secondaryHref)) ? (
             <motion.div className="mvp-hero-ctas" variants={fadeUp}>
-              <Link href={hero.primaryHref} className="mvp-btn-primary">
-                {hero.primaryCta}
-                <ArrowRight size={16} aria-hidden />
-              </Link>
-              {hero.secondaryCta && hero.secondaryHref ? (
+              {hero.primaryCta && hero.primaryHref ? (
+                <Link href={hero.primaryHref} className="mvp-btn-primary">
+                  {hero.primaryCta}
+                  <ArrowRight size={16} aria-hidden />
+                </Link>
+              ) : null}
+              {hero.secondaryCta && isActionableCtaHref(hero.secondaryHref) ? (
                 <Link href={hero.secondaryHref} className="mvp-btn-secondary">
                   {hero.secondaryCta}
                 </Link>
@@ -113,6 +137,7 @@ function ServicePageHero({
 
         {showHeroVisual ? (
           <motion.div
+            className="mvp-hero-visual"
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.2, ease: EASE_PREMIUM }}

@@ -6,28 +6,14 @@ export const chapter2SupplyChain: ServicePageChapter = {
   title: "Engineering AI for Supply Chain Operations",
   subtitle: "From Supply Chain Visibility to Autonomous Execution",
   overview: {
-    layout: "timeline",
-    paragraphs: [],
-    steps: [
-      {
-        name: "The visibility gap",
-        description: "Dashboards tell you what happened.",
-      },
-      {
-        name: "Decision over reporting",
-        description:
-          "Modern supply chains need systems that can decide what should happen next.",
-      },
-      {
-        name: "Connected execution layer",
-        description:
-          "We engineer AI-powered supply chain execution layers that connect demand signals, inventory positions, supplier performance, purchase orders, logistics events, and ERP data into one operational intelligence system.",
-      },
-      {
-        name: "Agents inside your stack",
-        description:
-          "Instead of adding another reporting dashboard, we build AI pipelines and autonomous agents that work inside your existing ERP, WMS, TMS, procurement tools, and planning workflows , helping teams act faster, reduce manual follow-ups, and respond to disruptions before they become expensive.",
-      },
+    title: "Solution Brief",
+    paragraphs: [
+      "Supply chain data is distributed across ERP, warehouse, transportation, procurement, supplier, finance, document, and communication systems, limiting end-to-end visibility and slowing operational decisions.",
+      "Astrenox builds secure AI intelligence layers that connect demand, inventory, suppliers, purchase orders, logistics events, operational constraints, and financial impact within a unified execution environment.",
+      "The system detects emerging risks, evaluates response options, recommends next actions, and automates approved workflows within enterprise-defined business rules and approval controls.",
+      "AI is integrated into the existing supply chain technology environment rather than requiring a complete platform replacement, preserving established systems, processes, and controls.",
+      "Routine, low-risk actions can be automated while high-value sourcing, procurement, supplier, and logistics decisions remain governed through permissions, thresholds, approvals, and human review.",
+      "The outcome is faster decision-making, stronger supply continuity, improved working-capital control, reduced manual coordination, and greater operational visibility across the supply chain.",
     ],
   },
   contentSections: [
@@ -64,107 +50,51 @@ export const chapter2SupplyChain: ServicePageChapter = {
     title: "Core Engineering Capabilities",
     items: [
       {
-        title: "Autonomous Replenishment",
+        title: "Supply Chain Context Graph & Operational Intelligence",
         paragraphs: [
-          "AI agents continuously monitor inventory levels, demand movement, supplier lead times, safety stock thresholds, and open purchase orders.",
-          "When inventory risk is detected, the system can recommend replenishment actions, draft purchase orders, validate them against business rules, and route them for approval.",
-          "For low-risk, predefined scenarios, replenishment workflows can be executed automatically. For higher-risk decisions, the system escalates to the right planner or procurement owner with full context.",
+          "Creates a connected operational layer across suppliers, materials, products, facilities, inventory, customer orders, purchase orders, contracts, logistics routes, and risk dependencies. This gives teams a unified view of how changes across the network affect production, service levels, customer commitments, working capital, and downstream operations.",
         ],
-        enables: [
-          "Faster replenishment decisions",
-          "Reduced stockout risk",
-          "Lower manual PO tracking",
-          "Better supplier follow-up discipline",
-          "Clear separation between auto-executable and human-approved actions",
-        ],
-        icon: "Truck",
+        icon: "Network",
       },
       {
-        title: "Predictive Demand Modeling",
+        title: "Predictive Demand & Inventory Intelligence",
         paragraphs: [
-          "Traditional forecasting often breaks when demand shifts suddenly due to promotions, seasonality, channel changes, supply shocks, pricing movement, or external market signals.",
-          "We deploy AI forecasting engines that combine historical sales, inventory movement, customer orders, market patterns, and operational constraints to generate more adaptive demand predictions.",
-          "The system does not only forecast demand. It highlights confidence levels, explains drivers, and shows where human review is required.",
-        ],
-        enables: [
-          "Better demand planning accuracy",
-          "Faster detection of demand shifts",
-          "Reduced overstock and understock risk",
-          "More informed production and procurement planning",
-          "Forecasting logic that improves as new operational signals enter the system",
+          "Combines historical demand, customer orders, promotions, seasonality, inventory movements, market signals, and operational constraints to continuously update forecasts and inventory requirements. The system identifies demand shifts, stockout or excess inventory risks, forecast drivers, confidence levels, and situations requiring planner intervention.",
         ],
         icon: "LineChart",
       },
       {
-        title: "Deterministic Scenario Simulation",
+        title: "Supplier Intelligence & Risk Monitoring",
         paragraphs: [
-          "Supply chains are affected by constant changes: supplier delays, freight disruptions, tariff shifts, warehouse constraints, demand spikes, and material shortages.",
-          "We build simulation engines that use live ERP, WMS, TMS, and procurement data to model the operational and financial impact of these changes.",
-          "Teams can ask practical questions such as:",
-          "What happens if this supplier is delayed by 10 days?",
-          "Which orders are at risk if this lane becomes unavailable?",
-          "How much working capital is locked in excess inventory?",
-          "Which alternate supplier protects service levels at the lowest cost?",
-          "What is the cost impact of expediting this shipment?",
-          "The system converts these questions into structured simulations, showing cost, service-level, and operational trade-offs before a decision is made.",
+          "Consolidates supplier quotations, contracts, purchase history, delivery performance, quality records, lead times, compliance documents, communications, and external risk signals into one intelligence layer. Suppliers can be evaluated against enterprise-specific sourcing criteria while the system identifies performance risks, sourcing dependencies, alternative vendors, and the operational impact of supplier changes.",
         ],
-        enables: [
-          "Faster response to supply shocks",
-          "Better trade-off visibility",
-          "Reduced emergency decision-making",
-          "More accurate cost-to-serve analysis",
-          "Stronger planning under uncertainty",
+        icon: "ShieldCheck",
+      },
+      {
+        title: "Scenario Simulation & Network Optimization",
+        paragraphs: [
+          "Models the operational and financial impact of supplier delays, demand shifts, material shortages, logistics disruptions, capacity constraints, and regulatory changes. Teams can compare alternative suppliers, inventory reallocations, expedited shipments, production adjustments, and route changes before committing resources.",
         ],
         icon: "Target",
       },
       {
-        title: "Supplier Intelligence and Vendor Selection",
+        title: "Autonomous Replenishment & Procurement",
         paragraphs: [
-          "Supplier data is often scattered across quotes, contracts, delivery records, email threads, payment history, and performance logs.",
-          "We create a unified supplier intelligence layer that tracks pricing, reliability, responsiveness, risk, contract terms, and approval constraints.",
-          "When teams need to select a vendor, the system compares suppliers against your own business rules , not generic scoring models.",
-          "It can evaluate price, lead time, past performance, quality issues, compliance requirements, and current operational risk before recommending the best-fit supplier.",
+          "Governed AI agents monitor inventory thresholds, demand movement, supplier lead times, open purchase orders, production requirements, and sourcing policies. When replenishment is required, the system can recommend quantities, identify suppliers, prepare procurement documentation, validate requests, and route approvals, while keeping higher-value or exceptional decisions under human review.",
         ],
-        enables: [
-          "Faster supplier comparison",
-          "Better vendor selection decisions",
-          "Reduced dependency on tribal knowledge",
-          "Clearer procurement approval logic",
-          "More consistent sourcing decisions across teams and sites",
-        ],
-        icon: "Users",
+        icon: "Truck",
       },
       {
-        title: "Unstructured Logistics and Procurement Data Extraction",
+        title: "Logistics & Procurement Document Intelligence",
         paragraphs: [
-          "A large amount of supply chain work still depends on messy, unstructured documents.",
-          "Freight invoices, bills of lading, compliance PDFs, supplier quotes, customs documents, delivery notes, and email attachments often require manual reading and reconciliation.",
-          "We use computer vision, OCR, and NLP pipelines to extract structured data from these documents and validate it against ERP, WMS, TMS, or procurement records.",
-          "The system flags missing fields, mismatched quantities, duplicate entries, unusual charges, and compliance gaps before they create downstream errors.",
-        ],
-        enables: [
-          "Reduced manual reconciliation",
-          "Cleaner logistics and procurement data",
-          "Faster invoice and document processing",
-          "Better compliance visibility",
-          "Fewer errors caused by spreadsheet-based operations",
+          "Extracts, classifies, validates, and reconciles information from supplier quotations, freight invoices, bills of lading, delivery notes, customs documents, contracts, compliance records, and email attachments against ERP, warehouse, transportation, and procurement data. It surfaces missing fields, quantity mismatches, duplicate invoices, unusual charges, contractual inconsistencies, and compliance gaps before they affect downstream operations.",
         ],
         icon: "FileCheck",
       },
       {
-        title: "Workflow Automation and Exception Routing",
+        title: "Governed Workflow Orchestration & Exception Management",
         paragraphs: [
-          "Many supply chain delays are not caused by lack of information.",
-          "They are caused by slow approvals, unclear ownership, manual follow-ups, and disconnected communication.",
-          "We build AI workflow agents that route requests, assign owners, track status, escalate exceptions, and push updates into the tools your team already uses.",
-          "For example, the system can detect a delayed shipment, identify affected orders, notify the planner, draft a supplier follow-up, check alternate inventory, and escalate only if the issue crosses a predefined risk threshold.",
-        ],
-        enables: [
-          "Faster exception management",
-          "Reduced approval latency",
-          "Less manual chasing",
-          "Better ownership visibility",
-          "More reliable movement from issue detection to resolution",
+          "Coordinates actions across planning, procurement, logistics, finance, suppliers, and operational teams when exceptions occur. The system identifies affected orders, assigns ownership, evaluates response options, prepares communications, initiates approved actions, and escalates high-risk decisions through role-based access, approval policies, confidence thresholds, audit trails, and human-review checkpoints.",
         ],
         icon: "Workflow",
       },

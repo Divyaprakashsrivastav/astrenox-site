@@ -4,7 +4,6 @@ import "./home-products.css";
 import FormattedText from "../ui/FormattedText";
 import "../products/page/products-page.css";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
@@ -63,21 +62,22 @@ function ProductCardMedia({
 
   return (
     <div className="hp-card-media">
-      {!photoFailed ? (
-        <Image
-          src={image}
-          alt={`${name} product preview`}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="hp-card-photo"
-          onError={() => setPhotoFailed(true)}
-        />
-      ) : null}
-      {photoFailed ? (
-        <div className="hp-card-media-fallback" aria-hidden>
-          <ProductPageVisual visual={visual} active />
-        </div>
-      ) : null}
+      <div className="hp-card-photo-frame">
+        {!photoFailed ? (
+          <img
+            src={image}
+            alt={`${name} product preview`}
+            className="hp-card-photo"
+            loading="lazy"
+            decoding="async"
+            onError={() => setPhotoFailed(true)}
+          />
+        ) : (
+          <div className="hp-card-media-fallback" aria-hidden>
+            <ProductPageVisual visual={visual} active />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -53,9 +53,9 @@ function NocInfrastructureVisual() {
             key={d}
             d={d}
             className="it-flow-line"
-            stroke="rgba(96, 165, 250, 0.35)"
+            stroke="rgba(96, 165, 250, 0.4)"
             strokeWidth="1.2"
-            strokeDasharray="4 6"
+            strokeLinecap="round"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{

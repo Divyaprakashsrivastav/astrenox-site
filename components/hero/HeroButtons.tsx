@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { isActionableCtaHref } from "@/lib/cta";
 
 interface HeroButtonsProps {
   primaryCta: string;
@@ -33,7 +34,7 @@ export default function HeroButtons({
           className="transition-transform duration-300 group-hover:translate-x-1"
         />
       </Link>
-      {secondaryCta && secondaryHref ? (
+      {secondaryCta && isActionableCtaHref(secondaryHref) ? (
         <Link href={secondaryHref} className="hero-btn hero-btn-ghost group">
           {secondaryCta}
           <ArrowRight

@@ -5,6 +5,7 @@ import FormattedText from "../../ui/FormattedText";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import type { ProductCatalogItem } from "@/app/content/products-catalog";
+import { isActionableCtaHref } from "@/lib/cta";
 import ProductIllustration from "./ProductIllustration";
 import FeatureChips from "./FeatureChips";
 import DetailAccordion from "./DetailAccordion";
@@ -216,7 +217,9 @@ function ShowcasePanel({ item }: ShowcasePanelProps) {
 
           {item.ctas && item.ctas.length > 0 && (
             <motion.div className="products-showcase-ctas" variants={fadeUp}>
-              {item.ctas.map((cta) => (
+              {item.ctas
+                .filter((cta) => isActionableCtaHref(cta.href))
+                .map((cta) => (
                 <RippleButton key={cta.label} href={cta.href} primary={cta.primary}>
                   {cta.label}
                   <ArrowRight size={14} aria-hidden />

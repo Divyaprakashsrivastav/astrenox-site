@@ -201,7 +201,7 @@ export default function AINativeProductPageClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.1, ease: EASE_PREMIUM }}
           >
-            {hero.description}
+            <FormattedText text={hero.description} />
           </motion.p>
         </div>
       </section>
@@ -310,15 +310,6 @@ export default function AINativeProductPageClient() {
           >
             {section2.intro}
           </motion.p>
-          <div className="aipe-arch-diagram" aria-hidden>
-            <span className="aipe-arch-node" />
-            <span className="aipe-arch-arrow" />
-            <span className="aipe-arch-node" />
-            <span className="aipe-arch-arrow" />
-            <span className="aipe-arch-node" />
-            <span className="aipe-arch-arrow" />
-            <span className="aipe-arch-node" />
-          </div>
         </div>
 
         <h3 className="aipe-h3">{section2.services.title}</h3>

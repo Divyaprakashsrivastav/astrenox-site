@@ -56,6 +56,14 @@ const nextConfig: NextConfig = {
       { source: "/mvp-studio", destination: "/services/mvp-studio", permanent: true },
       { source: "/industries", destination: "/services/industries", permanent: true },
       { source: "/digital-it-consulting", destination: "/services/digital-it-consulting", permanent: true },
+      // Generic /services hub was removed — send traffic to consulting
+      { source: "/services", destination: "/services/ai-consulting-advisory", permanent: false },
+      // Placeholder hub — send traffic to first real infrastructure solution
+      {
+        source: "/infrastructure-solutions",
+        destination: "/infrastructure-solutions/cloud-network-gcc",
+        permanent: false,
+      },
     ];
   },
 };

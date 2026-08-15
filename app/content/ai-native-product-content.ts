@@ -5,7 +5,7 @@ export const aiNativeProductPageContent = {
     label: "AI Native Product Engineering",
     title: "AI Native Product Engineering",
     description:
-      "We build software where artificial intelligence is the core engine, not an afterthought. By integrating machine learning and large language models directly into the product foundation, we engineer systems that automate complex reasoning, process unstructured data at scale, and deliver highly adaptive user experiences.",
+      "We build software where **artificial intelligence** is the **core engine**, not an afterthought. By integrating **machine learning** and **large language models** directly into the **product foundation**, we engineer systems that automate **complex reasoning**, process **unstructured data** at scale, and deliver highly **adaptive user experiences**.",
   },
   section1: {
     title: "AI Native Product Engineering",

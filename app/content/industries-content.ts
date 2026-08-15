@@ -18,8 +18,8 @@ export const industriesContent = {
   },
   transformationModel: {
     id: "transformation-model",
-    label: "Our Transformation Model",
-    title: "Diagnose operations → Prioritize opportunities → Engineer solutions → Scale and optimize",
+    label: "",
+    title: "Our Transformation Model",
     steps: [
       { name: "Diagnose operations", description: "Map workflows, systems, data dependencies, and operational bottlenecks." },
       { name: "Prioritize opportunities", description: "Rank initiatives by business value, feasibility, risk, and organizational readiness." },
@@ -286,8 +286,6 @@ export const industriesContent = {
     ],
     primaryCta: "Request a Consult",
     primaryHref: "/contact",
-    secondaryCta: "Explore Services",
-    secondaryHref: "/services",
   },
 } as const;
 

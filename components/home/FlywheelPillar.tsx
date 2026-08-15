@@ -41,7 +41,12 @@ export default function FlywheelPillar({ flywheel, index, inView }: FlywheelPill
 
           <div className="flywheel-pillar-copy">
             <p className="flywheel-pillar-body">
-              <FormattedText text={flywheel.description} />
+              {flywheel.description.split("\n").map((line, i, lines) => (
+                <span key={`${flywheel.id}-line-${i}`}>
+                  <FormattedText text={line} />
+                  {i < lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
             </p>
           </div>
 

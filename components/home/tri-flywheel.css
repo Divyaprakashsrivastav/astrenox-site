@@ -146,6 +146,7 @@
   margin-top: 1.25rem;
   font-size: clamp(1rem, 1.6vw, 1.125rem);
   line-height: 1.75;
+  font-style: italic;
   color: rgba(228, 225, 255, 0.72);
 }
 

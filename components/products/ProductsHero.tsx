@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { productsExplorerHero } from "@/app/content/products-catalog";
+import { isActionableCtaHref } from "@/lib/cta";
 import { EASE_PREMIUM } from "../v2/motion";
 import ProductsHeroNetwork from "./ProductsHeroNetwork";
 import ProductsHeroTrust from "./ProductsHeroTrust";
@@ -45,12 +46,15 @@ function ProductsHero() {
               {productsExplorerHero.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link
-              href={productsExplorerHero.secondaryHref}
-              className="products-btn-secondary products-hero-btn"
-            >
-              {productsExplorerHero.secondaryCta}
-            </Link>
+            {productsExplorerHero.secondaryCta &&
+            isActionableCtaHref(productsExplorerHero.secondaryHref) ? (
+              <Link
+                href={productsExplorerHero.secondaryHref}
+                className="products-btn-secondary products-hero-btn"
+              >
+                {productsExplorerHero.secondaryCta}
+              </Link>
+            ) : null}
           </motion.div>
 
           <motion.div variants={fadeUp}>

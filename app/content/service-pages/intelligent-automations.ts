@@ -4,7 +4,7 @@ export const intelligentAutomationsContent: ServicePageContent = {
   metadata: {
     title: "Intelligent Automation & AI BizOps | Astrenox",
     description:
-      "Enterprise automation that understands, executes, and improves workflows, combining workflow intelligence, process mining, multi-agent execution, and governed AI BizOps inside Astren AI.",
+      "Modern enterprises need more than rigid automation scripts. Astren AI maps how work moves across people, systems, approvals, and exceptions, identifies high-value automation opportunities, and deploys governed AI agents that execute complex workflows across the existing enterprise stack.",
   },
   hero: {
     label: "Intelligent Automation & AI BizOps",
@@ -18,25 +18,7 @@ export const intelligentAutomationsContent: ServicePageContent = {
   overview: {
     title: "Solution Brief",
     paragraphs: [
-      "Modern enterprises do not need more rigid automation scripts. They need intelligent operating systems that understand how work actually happens, identify where execution breaks, and deploy AI agents that can complete complex workflows across tools, teams, approvals, exceptions, and system updates.",
-      "Enterprise work rarely happens inside one clean system. It moves across CRMs, ERPs, ticketing tools, spreadsheets, inboxes, shared drives, internal databases, finance systems, HR platforms, compliance queues, approval layers, and human judgment. Off-the-shelf automation breaks when the workflow requires context, exception handling, decision logic, reconciliation, auditability, and cross-system coordination.",
-      "We engineer intelligent automation and AI BizOps systems inside Astren AI, combining workflow intelligence, process mining, multi-agent execution, human-in-the-loop governance, exception handling, enterprise system integration, orchestration monitoring, and auditable operational control.",
-      "Before automating a workflow, Astren AI maps how work actually moves across people, systems, documents, decisions, approvals, handoffs, and exceptions. It identifies the highest-friction execution loops, ranks automation opportunities by effort, risk, feasibility, data readiness, and operational value, and then deploys governed AI agent teams that can execute safely inside the organization's existing stack.",
-      "The result is an enterprise automation layer that moves beyond static rules. It helps teams increase workflow throughput, reduce manual operations load, resolve exceptions more consistently, improve auditability, and measure which automations are creating real operational value.",
-    ],
-    paragraphLabels: [
-      "Intelligent Operating Systems",
-      "Cross-System Reality",
-      "AI BizOps Platform",
-      "Workflow Mapping First",
-      "Measurable Automation Value",
-    ],
-    paragraphImages: [
-      "/images/overview/01-ops.jpg",
-      "/images/overview/02-systems.jpg",
-      "/images/overview/03-platform.jpg",
-      "/images/overview/04-mapping.jpg",
-      "/images/overview/05-outcomes.jpg",
+      "Modern enterprises need more than rigid automation scripts. Astren AI maps how work moves across people, systems, approvals, and exceptions, identifies high-value automation opportunities, and deploys governed AI agents that execute complex workflows across the existing enterprise stack. By combining process intelligence, multi-agent orchestration, human oversight, exception handling, system integration, and auditability, Astren AI helps reduce manual operations, improve workflow throughput, resolve exceptions consistently, and measure real operational value.",
     ],
   },
   capabilities: {
@@ -208,8 +190,6 @@ export const intelligentAutomationsContent: ServicePageContent = {
     subtitle:
       "Map how work actually moves, prioritize automation by operational value, and deploy governed AI agent teams that execute safely across your existing enterprise systems.",
     primaryCta: "Book an Automation Discovery Session",
-    secondaryCta: "Explore Astren AI Platform",
     primaryHref: "/contact",
-    secondaryHref: "/platform",
   },
 };

@@ -142,9 +142,16 @@
     0 0 72px rgba(139, 92, 246, 0.16);
 }
 
-/* Small inset image tile (not a full-bleed crop strip) */
+/* Equal image/text split — image fills the photo pane */
 .carousel3d-wrap--photos {
   --carousel3d-face-h: 248px;
+}
+
+.carousel3d-wrap--split {
+  --carousel3d-face-w: min(300px, 78vw);
+  --carousel3d-face-h: 176px;
+  max-width: 680px;
+  height: calc(var(--carousel3d-face-h) + 150px);
 }
 
 .carousel3d-face-layout {
@@ -155,20 +162,27 @@
   min-height: 0;
 }
 
-.carousel3d-face-thumb,
-.stack-card-thumb {
+.carousel3d-face-layout--split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  align-items: stretch;
+  height: 100%;
+}
+
+.carousel3d-face-photo,
+.stack-card-photo {
   position: relative;
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
+  min-height: 0;
+  height: 100%;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(8, 6, 18, 0.9);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: transparent;
 }
 
-.carousel3d-face-thumb-img {
+.carousel3d-face-photo-img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -176,7 +190,6 @@
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: saturate(0.62) contrast(0.96) brightness(0.82);
 }
 
 .carousel3d-face-copy {
@@ -185,31 +198,39 @@
   min-width: 0;
   flex: 1;
   height: 100%;
+  justify-content: center;
 }
 
-.stack-card-media-row {
+.stack-card-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: stretch;
+  min-height: 160px;
+}
+
+.stack-card-photo {
+  min-height: 160px;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.mvp-deliverable-card--split {
+  padding: 1rem;
+}
+
+.stack-card-split-copy {
   display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  margin-bottom: 0.75rem;
-}
-
-.stack-card-thumb {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
-}
-
-.stack-card-media-copy {
+  flex-direction: column;
+  justify-content: center;
   min-width: 0;
-  flex: 1;
 }
 
-.stack-card-media-copy .mvp-feature-icon {
-  margin-bottom: 0.5rem;
+.stack-card-split-copy h3 {
+  margin: 0 0 0.5rem;
 }
 
-.stack-card-media-copy h3 {
+.stack-card-split-copy p {
   margin: 0;
 }
 

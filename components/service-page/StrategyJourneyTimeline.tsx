@@ -26,6 +26,8 @@ import "@/components/ai-consulting-advisory/advisory-strategy-journey.css";
 export type StrategyJourneyStep = {
   name: string;
   description: string;
+  bullets?: string[];
+  after?: string;
 };
 
 export type StrategyJourneyTimelineProps = {
@@ -171,9 +173,25 @@ function JourneyMilestone({
             <span className="adv-journey-card-num">{number}</span>
           </div>
           <h3>{step.name}</h3>
-          <p>
-            <FormattedText text={step.description} />
-          </p>
+          <div className="adv-journey-card-body">
+            <p>
+              <FormattedText text={step.description} />
+            </p>
+            {step.bullets && step.bullets.length > 0 ? (
+              <ul className="adv-journey-card-list">
+                {step.bullets.map((bullet) => (
+                  <li key={bullet}>
+                    <FormattedText text={bullet} />
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {step.after ? (
+              <p className="adv-journey-card-after">
+                <FormattedText text={step.after} />
+              </p>
+            ) : null}
+          </div>
           <div className="adv-journey-card-progress" aria-hidden>
             <motion.span
               initial={{ width: 0 }}

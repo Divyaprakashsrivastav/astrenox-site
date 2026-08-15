@@ -153,8 +153,17 @@ export default function ITServicesPageClient() {
   return (
     <Canvas>
       {/* Hero, NOC topology */}
-      <section className="mvp-inner it-hero" aria-labelledby="it-brand">
-        <div className="it-hero-grid">
+      <section className="it-hero" aria-labelledby="it-brand">
+        <motion.div
+          className="it-hero-visual"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.85, delay: 0.15, ease: EASE_PREMIUM }}
+          aria-hidden
+        >
+          <NocInfrastructureVisual />
+        </motion.div>
+        <div className="mvp-inner it-hero-grid">
           <div className="it-hero-copy">
             <motion.p
               className="it-hero-label"
@@ -191,18 +200,8 @@ export default function ITServicesPageClient() {
                 Contact Us
                 <ArrowRight size={16} aria-hidden />
               </Link>
-              <Link href="#section-2" className="mvp-btn-secondary">
-                {section2.title}
-              </Link>
             </motion.div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.75, delay: 0.15, ease: EASE_PREMIUM }}
-          >
-            <NocInfrastructureVisual />
-          </motion.div>
         </div>
       </section>
 
@@ -356,7 +355,7 @@ export default function ITServicesPageClient() {
         className="mvp-inner mvp-section"
         aria-labelledby="it-s2"
       >
-        <div className="it-split">
+        <div className="it-split it-split--stack">
           <motion.h2
             id="it-s2"
             className="mvp-section-title it-split-title"

@@ -44,9 +44,7 @@
 .adv-immersive-fog {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(105deg, rgba(8, 6, 15, 0.55) 0%, transparent 45%),
-    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(8, 6, 15, 0.5), transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(8, 6, 15, 0.45), transparent 70%);
 }
 
 /* Layer 2 - particles */
@@ -70,7 +68,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.9;
+  opacity: 0.28;
+  filter: brightness(1.55) saturate(0.4);
 }
 
 /* Layer 4 - core glow */
@@ -128,7 +127,7 @@
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(245, 243, 255, 0.42);
+  color: rgba(245, 243, 255, 0.28);
   white-space: nowrap;
   transition: color 0.35s ease;
 }
@@ -141,12 +140,11 @@
 .adv-immersive-readability {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(8, 6, 15, 0.94) 0%,
-    rgba(8, 6, 15, 0.82) 32%,
-    rgba(8, 6, 15, 0.45) 52%,
-    transparent 68%
+  background: radial-gradient(
+    ellipse 72% 58% at 50% 42%,
+    rgba(8, 6, 15, 0.5) 0%,
+    rgba(8, 6, 15, 0.22) 48%,
+    transparent 76%
   );
   z-index: 2;
 }
@@ -165,19 +163,35 @@
   z-index: 3;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: clamp(380px, 55vh, 560px);
 }
 
 .adv-immersive-copy {
-  max-width: 640px;
+  max-width: 48rem;
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .adv-immersive-copy .mvp-hero-headline {
+  text-align: center;
   text-shadow: 0 2px 40px rgba(8, 6, 15, 0.6);
 }
 
-.adv-immersive-copy .mvp-hero-subtitle {
+.adv-immersive-copy .mvp-hero-subtitle,
+.adv-immersive-copy .mvp-hero-trust {
+  margin-inline: auto;
+  text-align: center;
+  font-style: italic;
   text-shadow: 0 1px 24px rgba(8, 6, 15, 0.5);
+}
+
+.adv-immersive-copy .mvp-hero-ctas {
+  justify-content: center;
 }
 
 @keyframes adv-immersive-nebula {
@@ -205,15 +219,15 @@
 
   .adv-immersive-content {
     min-height: auto;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .adv-immersive-readability {
-    background: linear-gradient(
-      180deg,
-      rgba(8, 6, 15, 0.88) 0%,
-      rgba(8, 6, 15, 0.72) 45%,
-      rgba(8, 6, 15, 0.55) 100%
+    background: radial-gradient(
+      ellipse 90% 70% at 50% 35%,
+      rgba(8, 6, 15, 0.62) 0%,
+      rgba(8, 6, 15, 0.32) 55%,
+      transparent 80%
     );
   }
 
