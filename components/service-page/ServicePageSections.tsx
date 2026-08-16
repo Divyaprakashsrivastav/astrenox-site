@@ -380,7 +380,7 @@ function ServicePageSections({
                 >
                   <Image
                     src={overview.sideImage}
-                    alt="Why the reality gap breaks AI ROI"
+                    alt="The Enterprise AI Gap between isolated tools and an AI-native operating model"
                     width={1600}
                     height={900}
                     className="mvp-about-side-img"

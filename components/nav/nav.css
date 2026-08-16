@@ -646,6 +646,10 @@
   letter-spacing: -0.012em;
 }
 
+#dock-mega-infra .dock-mega-card-copy {
+  font-style: italic;
+}
+
 .dock-mega-card-desc {
   display: block;
   margin-top: 0.2rem;

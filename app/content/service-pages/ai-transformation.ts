@@ -22,7 +22,7 @@ export const aiTransformationContent: ServicePageContent = {
       "Most organizations treat AI as a software rollout. But becoming AI-native is not only a tooling problem. It is an operating model problem.",
       "AI transformation requires a coordinated shift across strategy, workflows, people, data, governance, and execution.",
     ],
-    sideImage: "/images/overview/ai-reality-gap.png",
+    sideImage: "/images/overview/enterprise-ai-gap.png",
   },
   interventions: {
     label: "The Gaps",
@@ -156,28 +156,28 @@ export const aiTransformationContent: ServicePageContent = {
         description:
           "Astren AI maps how work moves across people, tools, departments, and decision points. It identifies the highest-friction workflows and converts them into a ranked transformation roadmap. Business Outcome: A practical AI execution roadmap based on real operational bottlenecks, not assumptions.",
         icon: "Workflow",
-        image: "/images/overview/04-mapping.jpg",
+        image: "/images/transformation/deep-workflow-audits.png",
       },
       {
         title: "Process Redesign and Automation",
         description:
           "We redesign manual workflows and convert them into AI-assisted or AI-executed processes. Astren AI agents can retrieve information, classify requests, draft outputs, route approvals, update systems, and escalate exceptions when human judgment is required. Business Outcome: Reduced manual effort across repetitive workflows while keeping human control over sensitive decisions.",
         icon: "Zap",
-        image: "/images/rtd-crm/workflow-automation-ai-intelligence.jpg",
+        image: "/images/transformation/process-redesign-automation.png",
       },
       {
         title: "Enterprise Memory Systems",
         description:
           "Astren AI creates a secure company memory layer by connecting documents, SOPs, policies, CRM data, project knowledge, and internal workflows. Employees can ask questions and receive grounded answers based on approved company knowledge. Business Outcome: Faster access to institutional knowledge and reduced dependency on scattered documents or individual memory.",
         icon: "Brain",
-        image: "/images/saas/documents.jpg",
+        image: "/images/transformation/enterprise-memory-systems.png",
       },
       {
         title: "Continuous MLOps and Improvement",
         description:
           "Every workflow inside Astren AI is monitored for usage, accuracy, latency, cost, human overrides, and output quality. This allows the system to improve continuously instead of becoming another static enterprise tool. Business Outcome: Stable AI workflows that can be measured, audited, and improved over time.",
         icon: "Gauge",
-        image: "/images/projects/observability.jpg",
+        image: "/images/transformation/continuous-mlops.png",
       },
     ],
   },

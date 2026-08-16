@@ -4,8 +4,8 @@ import { useRef, useState, type ReactNode } from "react";
 import FormattedText from "../ui/FormattedText";
 import { motion, useInView } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
-import type { FlagshipProduct } from "@/app/content/products/flagship-products-content";
+import { ArrowRight } from "lucide-react";
+import type { FlagshipCard, FlagshipProduct } from "@/app/content/products/flagship-products-content";
 import { EASE_PREMIUM } from "../v2/motion";
 import ProductPageVisual from "./page/ProductPageVisual";
 import "./page/flagship-product.css";
@@ -68,6 +68,39 @@ function ProductHeroPhoto({
   );
 }
 
+function CardSection({
+  id,
+  title,
+  items,
+}: {
+  id: string;
+  title: string;
+  items: readonly FlagshipCard[];
+}) {
+  const titleId = `${id}-title`;
+  return (
+    <section className="fp-section" aria-labelledby={titleId}>
+      <div className="fp-container">
+        <Reveal>
+          <h2 id={titleId} className="fp-section-title">
+            {title}
+          </h2>
+        </Reveal>
+        <div className="fp-card-grid">
+          {items.map((item, i) => (
+            <Reveal key={item.title} delay={i * 0.04}>
+              <article className="fp-text-card">
+                <h3 className="fp-text-card-title">{item.title}</h3>
+                <p className="fp-text-card-body">{item.body}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function FlagshipProductPageClient({ product }: { product: FlagshipProduct }) {
   const visual = VISUAL_MAP[product.id] ?? "brain";
 
@@ -100,27 +133,8 @@ export default function FlagshipProductPageClient({ product }: { product: Flagsh
         </div>
       </section>
 
-      <section className="fp-highlights" aria-labelledby="fp-highlights-title">
-        <div className="fp-container">
-          <Reveal>
-            <h2 id="fp-highlights-title" className="fp-section-title">
-              Key Capabilities
-            </h2>
-          </Reveal>
-          <ul className="fp-highlight-list">
-            {product.highlights.map((item, i) => (
-              <Reveal key={item} delay={i * 0.06}>
-                <li className="fp-highlight-item">
-                  <span className="fp-check" aria-hidden>
-                    <Check size={16} />
-                  </span>
-                  <span>{item}</span>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <CardSection id="fp-brief" title="Product Brief" items={product.brief} />
+      <CardSection id="fp-features" title="Key Features" items={product.features} />
 
       <section className="fp-cta">
         <Reveal className="fp-cta-inner">
