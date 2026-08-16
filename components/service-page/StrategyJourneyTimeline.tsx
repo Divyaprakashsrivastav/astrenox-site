@@ -181,7 +181,10 @@ function JourneyMilestone({
               <ul className="adv-journey-card-list">
                 {step.bullets.map((bullet) => (
                   <li key={bullet}>
-                    <FormattedText text={bullet} />
+                    <span className="adv-journey-card-pointer" aria-hidden />
+                    <span>
+                      <FormattedText text={bullet} />
+                    </span>
                   </li>
                 ))}
               </ul>
