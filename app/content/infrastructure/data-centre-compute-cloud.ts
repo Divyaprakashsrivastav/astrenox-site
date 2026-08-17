@@ -17,8 +17,7 @@ export const dataCentreComputeCloudContent: ServicePageContent = {
   },
   intro: {
     paragraphs: [
-      "AI, analytics and digital platforms are increasing the performance, security, resilience and availability demands placed on enterprise infrastructure. Meeting these requirements requires more than additional compute capacity. Enterprises need a coordinated strategy across workloads, storage, networking, facilities, security and ongoing operations.",
-      "We help organisations assess their existing infrastructure, define the appropriate deployment model and operate environments across private cloud, hybrid infrastructure, colocation facilities and enterprise data centres.",
+      "Astrenox helps enterprises design and operate secure, scalable infrastructure across private cloud, hybrid environments, colocation, and data centres, aligning compute, storage, networking, security, and operations with modern AI and digital workloads.",
     ],
   },
   chapters: [

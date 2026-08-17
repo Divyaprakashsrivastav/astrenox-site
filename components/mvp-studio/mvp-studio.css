@@ -542,6 +542,10 @@
   flex-direction: column;
 }
 
+.mvp-deliverable-card--split .mvp-project-body {
+  padding: 0;
+}
+
 .mvp-project-body h3 {
   font-size: 1.05rem;
   font-weight: 600;

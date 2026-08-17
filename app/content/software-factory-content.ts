@@ -12,9 +12,8 @@ export const softwareFactoryContent = {
   label: "AI-Native Software Factory",
   title: "Governed, Agentic Engineering for the Enterprise",
   intro: [
-    "Enterprise AI adoption creates value only when it improves the complete engineering system, not when it simply generates more code. We work with enterprises to redesign how business requirements, architecture, development, validation, release and operations function together.",
-    "Our Software Factory supports existing Software Development Lifecycle (SDLC) workflows while enabling the AI-native Development Lifecycle (AIDLC). Specialized engineering agents execute structured work across planning, implementation, testing, review, deployment and operations, while human leaders define architecture, policies, quality standards and risk boundaries.",
-    "Human-on-the-loop governance enables validated workflows to operate under continuous oversight, with human intervention triggered by defined exceptions. Human-in-the-loop approvals remain mandatory for architectural decisions, security-sensitive changes and production releases.",
+    "Enterprise AI creates value when it improves the full engineering lifecycle, not just code generation.",
+    "Astrenox combines AI-native development, specialized engineering agents, and human-governed controls across planning, build, testing, deployment, and operations to accelerate delivery while maintaining architectural, security, and production oversight.",
   ],
 
   sections: [
@@ -23,14 +22,42 @@ export const softwareFactoryContent = {
       title: "Consultative Transformation and Lifecycle Design",
       intro:
         "Every engagement begins with an assessment of the enterprise's current engineering environment. We review repositories, application architecture, documentation, testing maturity, delivery pipelines, security controls, operational dependencies and team workflows to identify where agentic automation can create measurable value.",
-      bullets: [
-        "Responsibilities across product teams, engineers and AI agents",
-        "Lifecycle stages suitable for automation",
-        "Architecture, security and data-handling guardrails",
-        "Human approval and escalation points",
-        "Repository, ticketing, CI/CD and observability integrations",
-        "Measures for delivery velocity, quality, reliability and adoption",
-        "Implementation can begin with a focused pilot and expand across teams and repositories as governance, workflow reliability and business outcomes are validated. This consultative approach helps enterprises move from isolated coding assistants to a scalable engineering operating model.",
+      items: [
+        {
+          title: "Operating Model Assessment",
+          description:
+            "Astrenox will map responsibilities across product teams, engineers, technical leaders, and AI agents to define clear ownership across the engineering lifecycle.",
+        },
+        {
+          title: "Automation Readiness Assessment",
+          description:
+            "Astrenox will identify lifecycle stages across planning, development, testing, review, deployment, and operations that are suitable for AI-assisted or agentic automation.",
+        },
+        {
+          title: "Architecture & Security Assessment",
+          description:
+            "Astrenox will define architecture standards, security controls, data-handling policies, and technical guardrails required for safe AI-native engineering.",
+        },
+        {
+          title: "Human Governance Assessment",
+          description:
+            "Astrenox will establish human approval, review, exception, and escalation points for architecture decisions, sensitive changes, and production releases.",
+        },
+        {
+          title: "Toolchain & Integration Assessment",
+          description:
+            "Astrenox will assess repositories, ticketing systems, CI/CD pipelines, observability platforms, and engineering tools required to integrate AI agents into existing workflows.",
+        },
+        {
+          title: "Performance & Adoption Assessment",
+          description:
+            "Astrenox will define measurable KPIs across delivery velocity, software quality, reliability, engineering productivity, and AI adoption.",
+        },
+        {
+          title: "Pilot & Scale Plan",
+          description:
+            "Astrenox will begin with a focused pilot, validate governance, workflow reliability, and business outcomes, then expand the operating model across additional teams, repositories, and engineering workflows.",
+        },
       ],
     },
     {
@@ -38,9 +65,62 @@ export const softwareFactoryContent = {
       title: "Unified AIDLC and SDLC Control Plane",
       intro:
         "The Software Factory coordinates work from intake and planning through implementation, validation, release and production operations.",
-      bullets: [
-        "Structured Intent and Work Orchestration: Feature requests, defects, security findings, modernization initiatives, operational alerts and customer feedback enter through a common intake layer. The system prioritizes work, identifies dependencies and routes each request into the appropriate governed workflow. Approved requirements capture functional scope, acceptance criteria, architectural constraints, security expectations and release conditions. These requirements are converted into machine-readable work orders that give agents a clear execution contract instead of relying on unstructured prompts.",
-        "Persistent Engineering Context: A shared context layer connects requirements, architecture decisions, repositories, APIs, dependencies, documentation, tickets and operational history. This improves understanding across large codebases, reduces repeated discovery and preserves institutional knowledge across teams and agent sessions. Enterprise policies are enforced at runtime across model access, repository permissions, approved tools, secure coding rules, testing thresholds, autonomy levels and deployment gates.",
+      items: [
+        {
+          title: "Unified Work Intake",
+          description:
+            "Astrenox will centralize feature requests, defects, security findings, modernization initiatives, operational alerts, and customer feedback through a common intake layer.",
+        },
+        {
+          title: "Work Prioritization",
+          description:
+            "Astrenox will assess business priority, urgency, dependencies, technical impact, and delivery constraints to determine execution order.",
+        },
+        {
+          title: "Dependency Mapping",
+          description:
+            "Astrenox will identify architectural, system, data, security, and team dependencies before work enters execution.",
+        },
+        {
+          title: "Governed Workflow Routing",
+          description:
+            "Astrenox will route each request into the appropriate engineering workflow based on scope, risk, ownership, and approval requirements.",
+        },
+        {
+          title: "Structured Requirement Definition",
+          description:
+            "Astrenox will convert approved requirements into clearly defined functional scope, acceptance criteria, architectural constraints, security expectations, and release conditions.",
+        },
+        {
+          title: "Machine-Readable Work Orders",
+          description:
+            "Astrenox will transform structured requirements into machine-readable execution contracts so AI agents operate against defined objectives and controls rather than unstructured prompts.",
+        },
+        {
+          title: "Unified Engineering Context",
+          description:
+            "Astrenox will connect requirements, architecture decisions, repositories, APIs, dependencies, documentation, tickets, and operational history into a shared context layer.",
+        },
+        {
+          title: "Codebase & Dependency Intelligence",
+          description:
+            "Astrenox will improve system understanding across large codebases by preserving relationships between services, components, APIs, dependencies, and prior engineering decisions.",
+        },
+        {
+          title: "Institutional Knowledge Retention",
+          description:
+            "Astrenox will capture and retain engineering context across teams and agent sessions, reducing repeated discovery and loss of technical knowledge.",
+        },
+        {
+          title: "Runtime Policy Enforcement",
+          description:
+            "Astrenox will enforce enterprise policies across model access, repository permissions, approved tools, secure coding standards, testing thresholds, and agent autonomy levels.",
+        },
+        {
+          title: "Controlled Deployment Gates",
+          description:
+            "Astrenox will define validation, approval, and release controls that govern how AI-generated changes progress from development through production.",
+        },
       ],
     },
     {
@@ -48,11 +128,67 @@ export const softwareFactoryContent = {
       title: "Agentic Execution with Human Governance",
       intro:
         "Within approved boundaries, specialized agents can analyze work orders, create implementation plans, modify application logic, build features, generate migrations, resolve defects, write tests, update documentation and open review-ready pull requests.",
-      bullets: [
-        "Multiple agents can work in parallel across independent tasks or lifecycle stages using the same organizational context and governance policies. Background workflows can support dependency upgrades, vulnerability remediation, test generation, documentation maintenance and recurring engineering operations.",
-        "Validation, Review and Security: Every change can pass through automated testing, code review, security analysis and policy validation before merge or release. Review agents assess architectural alignment, functional correctness, maintainability, test coverage, contract changes, regression risk and policy compliance. Security workflows can identify authentication issues, unsafe data handling, exposed secrets, vulnerable dependencies, insecure configurations and threat-model deviations. High-risk findings are routed to designated reviewers, while objective acceptance criteria reduce the risk of agents validating their own assumptions.",
-        "Modernization and Operations: The Software Factory can map legacy codebases, dependencies, undocumented business rules and operational behaviour before executing controlled modernization. Agents can support framework upgrades, monolith decomposition, cloud or database migration, API modernization, test-suite generation and technical-debt reduction through incremental, reviewable work orders. The same model extends into production operations. Agents can analyze alerts, logs, traces, recent deployments and repository history to support incident triage, root-cause analysis, remediation planning, patch generation and runbook updates, within enterprise-defined boundaries for autonomous action.",
-        "Oversight and Traceability: Autonomy is configured according to workflow maturity and business risk. Low-risk tasks may operate automatically or progress to pull-request creation, while architecture changes, security-sensitive modifications and production releases require explicit approval. Each workflow records business intent, approved requirements, agent actions, accessed systems, code changes, validation results, policy exceptions, approvals and deployment outcomes. Continuous drift checks compare changes against requirements, architecture standards, security policies and service contracts before release.",
+      items: [
+        {
+          title: "Parallel Agent Execution",
+          description:
+            "Astrenox will enable multiple AI agents to work concurrently across independent engineering tasks and lifecycle stages using the same organizational context, architecture standards, and governance policies.",
+        },
+        {
+          title: "Background Engineering Automation",
+          description:
+            "Astrenox will automate recurring engineering work such as dependency upgrades, vulnerability remediation, test generation, documentation maintenance, and routine operational tasks.",
+        },
+        {
+          title: "Automated Validation & Review",
+          description:
+            "Astrenox will route every change through testing, code review, security analysis, and policy validation before merge or release.",
+        },
+        {
+          title: "Architecture & Quality Review",
+          description:
+            "Astrenox will assess functional correctness, architectural alignment, maintainability, test coverage, contract changes, regression risk, and policy compliance through dedicated review workflows.",
+        },
+        {
+          title: "Security Validation",
+          description:
+            "Astrenox will identify authentication issues, exposed secrets, unsafe data handling, vulnerable dependencies, insecure configurations, and deviations from approved threat models.",
+        },
+        {
+          title: "Risk-Based Escalation",
+          description:
+            "Astrenox will route high-risk findings to designated reviewers while allowing low-risk, well-defined workflows to progress with greater automation.",
+        },
+        {
+          title: "Legacy Modernization Assessment",
+          description:
+            "Astrenox will map legacy codebases, dependencies, undocumented business rules, and operational behavior before defining controlled modernization workstreams.",
+        },
+        {
+          title: "Agentic Modernization Execution",
+          description:
+            "Astrenox will use AI agents to support framework upgrades, monolith decomposition, cloud and database migrations, API modernization, test-suite generation, and technical-debt reduction through incremental, reviewable work orders.",
+        },
+        {
+          title: "AI-Assisted Production Operations",
+          description:
+            "Astrenox will enable agents to analyze alerts, logs, traces, deployments, and repository history to support incident triage, root-cause analysis, remediation planning, patch generation, and runbook updates.",
+        },
+        {
+          title: "Configurable Autonomy",
+          description:
+            "Astrenox will define autonomy levels based on workflow maturity and business risk, allowing low-risk tasks to execute automatically while sensitive changes require explicit human approval.",
+        },
+        {
+          title: "End-to-End Traceability",
+          description:
+            "Astrenox will record business intent, approved requirements, agent actions, accessed systems, code changes, validation results, policy exceptions, approvals, and deployment outcomes across every workflow.",
+        },
+        {
+          title: "Continuous Drift Control",
+          description:
+            "Astrenox will continuously compare proposed changes against approved requirements, architecture standards, security policies, and service contracts before release.",
+        },
       ],
     },
     {
@@ -60,25 +196,68 @@ export const softwareFactoryContent = {
       title: "Enterprise Security, Deployment and Control",
       intro:
         "The Software Factory is designed for regulated and security-sensitive environments where source code, intellectual property and engineering telemetry require strict control.",
-      bullets: [
-        "It can operate across enterprise cloud, hybrid cloud, private VPC, on-premises, customer-managed and fully air-gapped environments. Model endpoints, agent runtimes, code access and telemetry can remain within the organization's security boundary.",
-        "Enterprise identity and access controls can include SSO, SAML, OIDC, automated provisioning and role-based permissions. Administrators can govern who may launch agents, which repositories and environments agents can access, which models and tools are permitted, what autonomy level applies, and who approves sensitive actions.",
-        "Engineering leaders also receive centralized controls for model routing, project-level usage, workflow limits and spending thresholds.",
-        "OpenTelemetry-compatible logs, metrics and traces can integrate with existing observability and security platforms to monitor agent sessions, tool use, code changes, validation outcomes, policy violations, failures and deployments.",
-        "Comprehensive audit trails support internal governance and alignment with applicable security, software-assurance and AI-management requirements. The exact control framework is defined according to the client's industry, deployment model and regulatory obligations.",
+      items: [
+        {
+          title: "Flexible Enterprise Deployment",
+          description:
+            "Astrenox Software Factory can operate across public cloud, hybrid cloud, private VPC, on-premises, customer-managed, and fully air-gapped environments while keeping model endpoints, agent runtimes, source code, and telemetry within the required security boundary.",
+        },
+        {
+          title: "Enterprise Identity & Access Management",
+          description:
+            "The platform supports SSO, SAML, OIDC, automated user provisioning, and role-based access controls to manage user, team, agent, repository, and environment permissions.",
+        },
+        {
+          title: "Agent Access Governance",
+          description:
+            "Administrators can define who can launch agents, which repositories and environments they can access, which tools and models are permitted, and what actions require human approval.",
+        },
+        {
+          title: "Configurable Autonomy Controls",
+          description:
+            "Astrenox will allow autonomy levels to be configured by workflow, project, risk profile, and environment so low-risk tasks can progress automatically while sensitive actions remain governed.",
+        },
+        {
+          title: "Model & Tool Governance",
+          description:
+            "Engineering leaders can centrally control approved models, routing policies, tool access, project-level usage, and execution boundaries across agent workflows.",
+        },
+        {
+          title: "Usage & Spend Controls",
+          description:
+            "The platform provides controls for workflow limits, model consumption, project-level usage, and spending thresholds to keep AI engineering costs measurable and predictable.",
+        },
+        {
+          title: "Enterprise Observability",
+          description:
+            "OpenTelemetry-compatible logs, metrics, and traces can integrate with existing observability and security platforms to monitor agent sessions, tool usage, code changes, validation results, failures, and deployments.",
+        },
+        {
+          title: "Policy & Security Monitoring",
+          description:
+            "The platform can surface policy violations, unauthorized access attempts, failed validations, abnormal agent behavior, and other security-relevant events during execution.",
+        },
+        {
+          title: "Comprehensive Audit Trails",
+          description:
+            "Astrenox will maintain detailed records of agent activity, accessed systems, code changes, approvals, validation outcomes, policy exceptions, and deployment history for governance and review.",
+        },
+        {
+          title: "Compliance-Aligned Control Framework",
+          description:
+            "Security, software-assurance, and AI-governance controls can be configured according to the client's industry, deployment model, internal policies, and regulatory obligations.",
+        },
       ],
     },
   ],
 
-  closing:
-    "The AI-Native Software Factory combines consultative transformation, structured lifecycle governance, persistent engineering context, specialized agents and enterprise controls within one coordinated delivery system. It helps organizations increase engineering capacity and modernize software delivery while preserving architectural integrity, security, traceability and human accountability.",
+  closingImage: "/images/software-factory/coordinated-delivery.png",
+  closingImageAlt: "AI-Native Software Factory coordinated delivery system",
 
   cta: {
     headline: "From AI Assistance to an Enterprise Engineering System",
     primaryCta: "Book an Engineering Workshop",
     primaryHref: "/contact?intent=workshop",
-    secondaryCta: "Talk to Platform Architects",
-    secondaryHref: "/contact?intent=architects",
   },
 } as const;
 

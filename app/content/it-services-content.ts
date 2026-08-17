@@ -128,7 +128,7 @@ export const itServicesPageContent = {
     title: "Custom Software Engineering & IT Infrastructure Consulting",
     heading: "Custom Software Engineering & IT Infrastructure Consulting",
     intro:
-      "Astrenox architects, builds, and maintains high-performance technology ecosystems. As an AI-native software development and consulting firm, we bridge custom application engineering with scalable IT operations. Unlike legacy providers such as KMS that rely on outdated, siloed strategies, we deliver unified, end-to-end technical execution, from writing code to provisioning the enterprise infrastructure that hosts it.",
+      "Astrenox architects, builds, and operates AI-native technology ecosystems, combining custom software engineering with scalable IT infrastructure to deliver unified, end-to-end technical execution from application development through production deployment.",
     servicesTitle: "Astrenox Services & Solutions",
     cloudEngineering: {
       title: "Custom Cloud Application Engineering",

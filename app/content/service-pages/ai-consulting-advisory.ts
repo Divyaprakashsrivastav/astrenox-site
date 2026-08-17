@@ -163,28 +163,28 @@ export const aiConsultingAdvisoryContent: ServicePageContent = {
         description:
           "A **technical audit** of your current **infrastructure** and **data quality**.",
         icon: "FileCheck",
-        photo: "/images/advisory/readiness.jpg",
+        photo: "/images/advisory/readiness.png",
       },
       {
         title: "Prioritized Use-Case Matrix",
         description:
           "**Feasibility rankings** to optimize **engineering resource allocation**.",
         icon: "BarChart3",
-        photo: "/images/advisory/usecase-matrix.jpg",
+        photo: "/images/advisory/usecase-matrix.png",
       },
       {
         title: "Infrastructure Blueprint",
         description:
           "System diagrams defining **foundation models**, **vector databases**, and **API layers**.",
         icon: "Layers",
-        photo: "/images/advisory/infra-blueprint.jpg",
+        photo: "/images/advisory/infra-blueprint.png",
       },
       {
         title: "Implementation Sequencing Plan",
         description:
           "A **sprint-by-sprint breakdown** prepared for immediate **developer handoff**.",
         icon: "GitBranch",
-        photo: "/images/advisory/sequencing.jpg",
+        photo: "/images/advisory/sequencing.png",
       },
     ],
   },

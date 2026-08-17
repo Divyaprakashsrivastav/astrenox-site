@@ -35,17 +35,6 @@ function Reveal({
   );
 }
 
-function Bullet({ text }: { text: string }) {
-  const colon = text.indexOf(":");
-  if (colon === -1) return <p className="asf-body">{text}</p>;
-  return (
-    <p className="asf-body">
-      <strong>{text.slice(0, colon + 1)}</strong>
-      {text.slice(colon + 1)}
-    </p>
-  );
-}
-
 export default function SoftwareFactoryPageClient() {
   return (
     <div className="asf-page">
@@ -60,20 +49,19 @@ export default function SoftwareFactoryPageClient() {
         >
           <div className="asf-container asf-sdlc-grid">
             <div className="asf-sdlc-rail-col">
-              <div className="asf-sdlc-rail-sticky">
-                <Reveal>
-                  <h2 id={`asf-section-${section.number}-title`} className="asf-section-title">
-                    {section.title}
-                  </h2>
-                  <p className="asf-section-intro"><FormattedText text={section.intro} /></p>
-                </Reveal>
-              </div>
+              <Reveal>
+                <h2 id={`asf-section-${section.number}-title`} className="asf-section-title">
+                  {section.title}
+                </h2>
+                <p className="asf-section-intro"><FormattedText text={section.intro} /></p>
+              </Reveal>
             </div>
             <div className="asf-sdlc-bullets">
-              {section.bullets.map((bullet, i) => (
-                <Reveal key={bullet} delay={i * 0.04}>
+              {section.items.map((item, i) => (
+                <Reveal key={item.title} delay={i * 0.04}>
                   <article className="asf-sdlc-bullet-card">
-                    <Bullet text={bullet} />
+                    <h3 className="asf-card-title">{item.title}</h3>
+                    <p className="asf-body">{item.description}</p>
                   </article>
                 </Reveal>
               ))}
@@ -82,11 +70,17 @@ export default function SoftwareFactoryPageClient() {
         </section>
       ))}
 
-      {"closing" in c && c.closing ? (
-        <section className="asf-closing">
+      {"closingImage" in c && c.closingImage ? (
+        <section className="asf-closing" aria-label={c.closingImageAlt}>
           <div className="asf-container">
             <Reveal>
-              <p className="asf-closing-text">{c.closing}</p>
+              <figure className="asf-closing-figure">
+                <img
+                  src={c.closingImage}
+                  alt={c.closingImageAlt}
+                  className="asf-closing-image"
+                />
+              </figure>
             </Reveal>
           </div>
         </section>
@@ -111,9 +105,6 @@ export default function SoftwareFactoryPageClient() {
             <Link href={c.cta.primaryHref} className="asf-btn asf-btn--primary">
               {c.cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
-            </Link>
-            <Link href={c.cta.secondaryHref} className="asf-btn asf-btn--ghost">
-              {c.cta.secondaryCta}
             </Link>
           </div>
         </motion.div>

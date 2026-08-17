@@ -40,9 +40,6 @@ export default function SoftwareFactoryHero() {
               {c.cta.primaryCta}
               <ArrowRight size={16} aria-hidden />
             </Link>
-            <Link href={c.cta.secondaryHref} className="asf-btn asf-btn--ghost">
-              {c.cta.secondaryCta}
-            </Link>
           </motion.div>
         </motion.div>
       </div>

@@ -10,11 +10,8 @@ export const blockchainWeb3PageContent = {
   solutionBrief: {
     title: "Solution Brief",
     paragraphs: [
-      "Enterprises are moving beyond centralized systems that depend on fragmented records, manual reconciliation, third-party verification, and limited data transparency.",
-      "Blockchain and Web3 technologies allow organizations to create secure, tamper-resistant, and programmable digital infrastructure where transactions, assets, identities, contracts, and records can be verified across trusted networks.",
-      "Astrenox helps enterprises design, build, and integrate blockchain and Web3 systems that are commercially useful, technically secure, and aligned with real business workflows. We do not approach blockchain as hype. We evaluate whether decentralized infrastructure genuinely improves trust, traceability, automation, data ownership, or transaction efficiency before recommending a blockchain-based architecture.",
-      "Our work covers enterprise blockchain networks, smart contracts, decentralized applications, asset tokenization, wallet integration, decentralized identity, blockchain middleware, smart contract audits, and AI-integrated Web3 systems.",
-      "The result is a secure digital architecture that improves transparency, reduces reconciliation friction, automates trusted transactions, and prepares enterprises for future AI-agent and digital asset ecosystems.",
+      "Astrenox designs and integrates enterprise blockchain and Web3 systems where decentralization creates clear value in trust, traceability, automation, ownership, or transaction efficiency.",
+      "Our capabilities span enterprise blockchain networks, smart contracts, tokenization, wallets, decentralized identity, middleware, audits, dApps, and AI-integrated Web3 delivering secure, programmable infrastructure aligned with real business workflows.",
     ],
   },
   coreServices: {
@@ -218,9 +215,7 @@ export const blockchainWeb3PageContent = {
     id: "how-astrenox-executes",
     title: "How Astrenox Executes",
     paragraphs: [
-      "We begin by auditing the business workflow to determine whether blockchain genuinely improves the system.",
-      "If a traditional database is better, we say so. If blockchain adds clear value through trust, traceability, decentralization, programmable transactions, data ownership, or asset transfer, we design the right architecture.",
-      "Execution follows a structured path:",
+      "Astrenox first validates whether blockchain creates measurable value in trust, traceability, automation, ownership, or asset transfer, then designs the right architecture and execution path accordingly.",
     ],
     steps: [
       "Business and use-case assessment",

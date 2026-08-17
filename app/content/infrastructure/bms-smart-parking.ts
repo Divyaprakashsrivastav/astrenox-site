@@ -17,8 +17,7 @@ export const bmsSmartParkingContent: ServicePageContent = {
   },
   intro: {
     paragraphs: [
-      "Buildings and parking environments are often managed through disconnected systems, manual processes and limited real-time visibility. This increases operating costs, slows incident response and creates an inconsistent experience for facility teams, occupants and visitors.",
-      "We help organisations assess their physical environment, define the required digital architecture and implement integrated building, parking and mobility systems, from solution design through commissioning and lifecycle optimisation.",
+      "Astrenox designs and implements integrated building, parking, and mobility systems that improve real-time visibility, operational control, and user experience across physical environments.",
     ],
   },
   chapters: [

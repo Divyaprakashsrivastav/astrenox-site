@@ -17,9 +17,8 @@ export const computerVisionContent: ServicePageContent = {
   },
   intro: {
     paragraphs: [
-      "Convert existing camera networks into real-time intelligence systems for security, safety, quality control, operations, and customer experience.",
-      "Most organizations already have cameras across plants, warehouses, stores, campuses, public spaces, infrastructure sites, and commercial facilities. But in many cases, those cameras only record events after they happen.",
-      "Astrenox engineers custom computer vision and video analytics systems that turn CCTV, IP cameras, DVRs, NVRs, and VMS infrastructure into active intelligence layers. The system detects events, flags anomalies, generates alerts, monitors compliance, tracks movement patterns, and gives teams a live view of what is happening across physical environments.",
+      "Astrenox transforms existing CCTV, IP camera, DVR, NVR, and VMS infrastructure into real-time computer vision intelligence systems for security, safety, quality, operations, and customer experience.",
+      "We implement custom video analytics that detect events and anomalies, monitor compliance, track movement patterns, trigger alerts, and give teams actionable visibility across physical environments.",
     ],
   },
   overview: {

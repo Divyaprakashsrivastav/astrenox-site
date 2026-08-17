@@ -17,8 +17,7 @@ export const cloudNetworkGccContent: ServicePageContent = {
   },
   intro: {
     paragraphs: [
-      "Enterprise infrastructure must support growth, security, distributed operations and increasingly data-intensive workloads. Yet cloud, network, physical infrastructure and global delivery models are often planned independently, creating fragmented systems and avoidable operational complexity.",
-      "We help organisations assess their current environment, define the target operating model and manage transformation from strategy through implementation and ongoing operations.",
+      "Astrenox helps enterprises unify cloud, network, physical infrastructure, and operating models into a secure, scalable technology environment, from current-state assessment through transformation and ongoing operations.",
     ],
   },
   chapters: [

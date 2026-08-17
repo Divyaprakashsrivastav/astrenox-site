@@ -508,34 +508,62 @@ function ServicePageSections({
             return (
               <motion.article
                 key={project.name}
-                className="mvp-glass-card mvp-project-card"
+                className={`mvp-glass-card mvp-project-card${project.photoSplit ? " mvp-cap-card mvp-deliverable-card mvp-deliverable-card--split" : ""}`}
                 custom={i}
                 variants={fadeUp}
               >
-                <div className="mvp-project-shot mvp-project-shot--photo">
-                  <Image
-                    src={photo}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 92vw, 360px"
-                    className="mvp-project-shot-img"
-                  />
-                  <span className="mvp-project-shot-veil" aria-hidden />
-                  <span className="mvp-project-shot-label">Case Study Preview</span>
-                </div>
-                <div className="mvp-project-body">
-                  <h3>{project.name}</h3>
-                  <p className="mvp-project-meta">{project.industry}</p>
-                  <p className="mvp-project-detail">
-                    <strong>Timeline:</strong> {project.timeline}
-                  </p>
-                  <p className="mvp-project-detail">
-                    <strong>Tech:</strong> {project.stack.join(", ")}
-                  </p>
-                  <p className="mvp-project-outcome">
-                    <FormattedText text={project.outcome} />
-                  </p>
-                </div>
+                {project.photoSplit ? (
+                  <div className="stack-card-split">
+                    <div className="stack-card-photo" aria-hidden>
+                      <img
+                        src={photo}
+                        alt=""
+                        className="carousel3d-face-photo-img"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="stack-card-split-copy mvp-project-body">
+                      <h3>{project.name}</h3>
+                      <p className="mvp-project-meta">{project.industry}</p>
+                      <p className="mvp-project-detail">
+                        <strong>Timeline:</strong> {project.timeline}
+                      </p>
+                      <p className="mvp-project-detail">
+                        <strong>Tech:</strong> {project.stack.join(", ")}
+                      </p>
+                      <p className="mvp-project-outcome">
+                        <FormattedText text={project.outcome} />
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    <div className="mvp-project-shot mvp-project-shot--photo">
+                      <Image
+                        src={photo}
+                        alt=""
+                        fill
+                        sizes="(max-width: 768px) 92vw, 360px"
+                        className="mvp-project-shot-img"
+                      />
+                      <span className="mvp-project-shot-veil" aria-hidden />
+                      <span className="mvp-project-shot-label">Case Study Preview</span>
+                    </div>
+                    <div className="mvp-project-body">
+                      <h3>{project.name}</h3>
+                      <p className="mvp-project-meta">{project.industry}</p>
+                      <p className="mvp-project-detail">
+                        <strong>Timeline:</strong> {project.timeline}
+                      </p>
+                      <p className="mvp-project-detail">
+                        <strong>Tech:</strong> {project.stack.join(", ")}
+                      </p>
+                      <p className="mvp-project-outcome">
+                        <FormattedText text={project.outcome} />
+                      </p>
+                    </div>
+                  </>
+                )}
               </motion.article>
             );
           })}

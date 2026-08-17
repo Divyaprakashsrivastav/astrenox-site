@@ -11,9 +11,8 @@ export const industriesContent = {
   },
   intro: {
     paragraphs: [
-      "AI creates sustainable value when it is connected to how an organization operates, makes decisions, manages risk, and serves customers.",
-      "Astrenox combines industry consulting, Astren AI, custom engineering, data modernization, cloud infrastructure, security, and managed operations to help enterprises move from isolated initiatives to scalable transformation.",
-      "We begin by mapping workflows, systems, data dependencies, and operational bottlenecks. Opportunities are then prioritized according to business value, feasibility, risk, and organizational readiness. Astrenox engineers the required technology and supports its adoption, governance, and continuous improvement.",
+      "Astrenox helps enterprises turn AI into scalable industry transformation by connecting strategy, workflows, data, engineering, cloud, security, and operations.",
+      "We identify high-value opportunities, build the required technology, and support adoption, governance, and continuous improvement across the enterprise.",
     ],
   },
   transformationModel: {
@@ -244,7 +243,7 @@ export const industriesContent = {
         title: "Astren AI Transformation",
         description:
           "Workflow discovery, process debt analysis, governance, employee adoption, AI enablement, performance monitoring, and value measurement.",
-        photo: "/images/delivery/ai-transformation.jpg",
+        photo: "/images/delivery/ai-transformation.png",
       },
       {
         title: "Astren Enterprise Engineering",
@@ -281,8 +280,7 @@ export const industriesContent = {
   cta: {
     title: "From Industry Ambition to Operational Impact",
     paragraphs: [
-      "Astrenox brings consulting, engineering, infrastructure, and managed operations together so transformation does not stop at strategy or isolated proofs of concept.",
-      "We identify where value exists, build the technology required to capture it, integrate it into the enterprise environment, enable the people who will use it, and continuously measure how the transformation is performing.",
+      "Astrenox combines consulting, engineering, infrastructure, and managed operations to turn transformation strategy into deployed, measurable business outcomes across the enterprise.",
     ],
     primaryCta: "Request a Consult",
     primaryHref: "/contact",

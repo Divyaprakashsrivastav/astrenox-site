@@ -243,6 +243,7 @@ export type ServicePageContent = {
       stack: string[];
       outcome: string;
       photo?: string;
+      photoSplit?: boolean;
     }>;
   };
   industries?: {

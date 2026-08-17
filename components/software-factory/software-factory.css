@@ -29,20 +29,22 @@
 }
 
 .asf-section-title {
-  margin: 0;
+  margin: 0 auto;
   font-family: var(--font-heading);
   font-size: clamp(1.625rem, 2.8vw, 2.25rem);
   font-weight: 700;
   line-height: 1.14;
   letter-spacing: -0.03em;
+  text-align: center;
 }
 
 .asf-section-intro {
-  margin: 1rem 0 0;
+  margin: 1rem auto 0;
   max-width: 68ch;
   font-size: 0.9375rem;
   line-height: 1.75;
   color: rgba(230, 237, 243, 0.62);
+  text-align: center;
 }
 
 /* Buttons */
@@ -338,35 +340,61 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
+  justify-items: center;
+  text-align: center;
 }
 
-@media (min-width: 960px) {
-  .asf-sdlc-grid {
-    grid-template-columns: 0.85fr 1.15fr;
-    gap: 3.5rem;
-  }
-
-  .asf-sdlc-rail-sticky {
-    position: sticky;
-    top: 5.5rem;
-  }
+.asf-sdlc-rail-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .asf-sdlc-bullets {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .asf-sdlc-bullets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.asf-sdlc-bullets > * {
+  height: 100%;
 }
 
 .asf-sdlc-bullet-card {
-  display: block;
-  gap: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.65rem;
+  height: 100%;
+  padding: 1.35rem 1.4rem;
+  border-radius: 18px;
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(167, 139, 250, 0.2);
   clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
+  text-align: center;
   transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.asf-card-title {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.asf-sdlc-bullet-card .asf-body {
+  text-align: center;
 }
 
 .asf-sdlc-bullet-card:hover {
@@ -531,6 +559,7 @@
   font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .asf-cta-actions {
@@ -555,6 +584,20 @@
 
 .asf-closing {
   padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.asf-closing-figure {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: center;
+}
+
+.asf-closing-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  clip-path: polygon(8% 0, 100% 0, 100% 88%, 92% 100%, 0 100%, 0 12%);
 }
 
 .asf-closing-text {
