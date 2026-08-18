@@ -1,6 +1,5 @@
 /* AI Software Factory - engineering platform identity (asf- prefix) */
 .asf-page {
-  background: #0d1117;
   color: #e6edf3;
   overflow-x: clip;
 }
@@ -92,6 +91,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: transparent;
 }
 
 .asf-hero-backdrop {
@@ -318,16 +318,8 @@
   font-style: italic;
   line-height: 1.75;
   color: rgba(230, 237, 243, 0.64);
-  max-width: 58ch;
+  max-width: 68ch;
   text-align: center;
-}
-
-.asf-hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.875rem;
-  margin-top: 2rem;
 }
 
 /* SDLC sticky section */
@@ -583,7 +575,7 @@
 }
 
 .asf-closing {
-  padding: clamp(2.5rem, 5vw, 4rem) 0;
+  padding-block: 0 clamp(1rem, 3vw, 2rem);
 }
 
 .asf-closing-figure {
@@ -607,4 +599,13 @@
   font-size: 1.05rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.72);
+}
+
+.asf-page .it-tile {
+  text-align: left;
+}
+
+.asf-page .it-tile h3,
+.asf-page .it-tile p {
+  text-align: left;
 }

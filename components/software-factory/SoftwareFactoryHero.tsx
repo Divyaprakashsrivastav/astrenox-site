@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { softwareFactoryContent as c } from "@/app/content/software-factory-content";
 import { EASE_PREMIUM } from "../v2/motion";
@@ -30,17 +28,9 @@ export default function SoftwareFactoryHero() {
           <motion.h1 id="asf-hero-title" className="asf-hero-title" variants={RISE}>
             {c.title}
           </motion.h1>
-          {c.intro.map((paragraph) => (
-            <motion.p key={paragraph} className="asf-hero-desc" variants={RISE}>
-              {paragraph}
-            </motion.p>
-          ))}
-          <motion.div className="asf-hero-actions" variants={RISE}>
-            <Link href={c.cta.primaryHref} className="asf-btn asf-btn--primary">
-              {c.cta.primaryCta}
-              <ArrowRight size={16} aria-hidden />
-            </Link>
-          </motion.div>
+          <motion.p className="asf-hero-desc" variants={RISE}>
+            {c.intro}
+          </motion.p>
         </motion.div>
       </div>
     </section>

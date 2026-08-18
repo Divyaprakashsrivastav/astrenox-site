@@ -6,22 +6,18 @@ export const softwareFactoryContent = {
   metadata: {
     title: "AI Native Software Factory | Astrenox",
     description:
-      "Governed, agentic engineering for the enterprise. Redesign how business requirements, architecture, development, validation, release and operations function together.",
+      "Enterprise AI creates value when it improves the full engineering lifecycle, not just code generation. Astrenox combines AI-native development, specialized engineering agents, and human-governed controls across planning, build, testing, deployment, and operations.",
   },
 
   label: "AI-Native Software Factory",
-  title: "Governed, Agentic Engineering for the Enterprise",
-  intro: [
-    "Enterprise AI creates value when it improves the full engineering lifecycle, not just code generation.",
-    "Astrenox combines AI-native development, specialized engineering agents, and human-governed controls across planning, build, testing, deployment, and operations to accelerate delivery while maintaining architectural, security, and production oversight.",
-  ],
+  title: "AI-Native Software Factory",
+  intro:
+    "Enterprise AI creates value when it improves the full engineering lifecycle, not just code generation. Astrenox combines AI-native development, specialized engineering agents, and human-governed controls across planning, build, testing, deployment, and operations to accelerate delivery while maintaining architectural, security, and production oversight.",
 
   sections: [
     {
       number: 1,
-      title: "Consultative Transformation and Lifecycle Design",
-      intro:
-        "Every engagement begins with an assessment of the enterprise's current engineering environment. We review repositories, application architecture, documentation, testing maturity, delivery pipelines, security controls, operational dependencies and team workflows to identify where agentic automation can create measurable value.",
+      title: "Lifecycle Assessment",
       items: [
         {
           title: "Operating Model Assessment",
@@ -63,8 +59,6 @@ export const softwareFactoryContent = {
     {
       number: 2,
       title: "Unified AIDLC and SDLC Control Plane",
-      intro:
-        "The Software Factory coordinates work from intake and planning through implementation, validation, release and production operations.",
       items: [
         {
           title: "Unified Work Intake",
@@ -126,8 +120,6 @@ export const softwareFactoryContent = {
     {
       number: 3,
       title: "Agentic Execution with Human Governance",
-      intro:
-        "Within approved boundaries, specialized agents can analyze work orders, create implementation plans, modify application logic, build features, generate migrations, resolve defects, write tests, update documentation and open review-ready pull requests.",
       items: [
         {
           title: "Parallel Agent Execution",
@@ -194,8 +186,6 @@ export const softwareFactoryContent = {
     {
       number: 4,
       title: "Enterprise Security, Deployment and Control",
-      intro:
-        "The Software Factory is designed for regulated and security-sensitive environments where source code, intellectual property and engineering telemetry require strict control.",
       items: [
         {
           title: "Flexible Enterprise Deployment",
