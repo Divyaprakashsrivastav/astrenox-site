@@ -33,9 +33,9 @@ export const homeMethodology = {
       tagline:
         "This phase establishes strategic direction, assesses **technical maturity**, and engineers the **architectural baseline** required for scalable integration.",
       items: [
-        "**Direction.** Align technical ambition with target business outcomes, defining precise project scope and standardized success KPIs.",
-        "**Readiness.** Evaluate legacy technology stacks, data silos, and operational workflows to isolate infrastructural gaps and sequence capability development.",
-        "**Foundation.** Map **IT/OT convergence** across the value chain, defining robust data models and strict standards for interoperability, modularity, and **enterprise security**.",
+        "**Direction ->** Align technical ambition with target business outcomes, defining precise project scope and standardized success KPIs.",
+        "**Readiness ->** Evaluate legacy technology stacks, data silos, and operational workflows to isolate infrastructural gaps and sequence capability development.",
+        "**Foundation ->** Map **IT/OT convergence** across the value chain, defining robust data models and strict standards for interoperability, modularity, and **enterprise security**.",
       ],
     },
     {
@@ -45,8 +45,8 @@ export const homeMethodology = {
       tagline:
         "This phase transitions foundational strategy into a mobilized, prioritized portfolio designed to deliver maximum short-term and long-term value.",
       items: [
-        "**Focus.** Build a value-scored use-case portfolio that balances immediate operational wins with complex, compounding strategic initiatives linked directly to ROI metrics.",
-        "**Coordination.** Establish cross-functional governance structures, definitive ownership roles, and rigid decision-making authority matrices to synchronize delivery across departments.",
+        "**Focus ->** Build a value-scored use-case portfolio that balances immediate operational wins with complex, compounding strategic initiatives linked directly to ROI metrics.",
+        "**Coordination ->** Establish cross-functional governance structures, definitive ownership roles, and rigid decision-making authority matrices to synchronize delivery across departments.",
       ],
     },
     {
@@ -56,9 +56,9 @@ export const homeMethodology = {
       tagline:
         "This phase builds the **deployment engine**, activates data pipelines, and implements continuous recalibration loops based on **real-time operational telemetry**.",
       items: [
-        "**Engine.** Standardize **deployment** processes using repeatable templates and agile delivery cycles to drive efficient, site-by-site scaling while mitigating adoption friction.",
-        "**Insight.** Operationalize high-fidelity data pipelines via live dashboards and **AI/ML-driven recommendations** to power real-time decision-making at all tiers.",
-        "**Refinement.** Track leading and lagging indicators through closed-loop feedback systems and technical retrospectives to continuously calibrate the overarching roadmap.",
+        "**Engine ->** Standardize **deployment** processes using repeatable templates and agile delivery cycles to drive efficient, site-by-site scaling while mitigating adoption friction.",
+        "**Insight ->** Operationalize high-fidelity data pipelines via live dashboards and **AI/ML-driven recommendations** to power real-time decision-making at all tiers.",
+        "**Refinement ->** Track leading and lagging indicators through closed-loop feedback systems and technical retrospectives to continuously calibrate the overarching roadmap.",
       ],
     },
   ],
