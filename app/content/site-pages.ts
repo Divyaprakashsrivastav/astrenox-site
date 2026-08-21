@@ -791,6 +791,11 @@ export const contactPage = {
       value: "+91 8384016763",
       href: "tel:+918384016763",
     },
+    {
+      label: "Calendly",
+      value: "Book a 30-min call",
+      href: "https://calendly.com/prajwal-astrentech/30min",
+    },
   ],
   headquarters: {
     title: "Address",

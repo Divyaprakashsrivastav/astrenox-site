@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   ArrowRight,
+  CalendarDays,
   ChevronLeft,
   ChevronRight,
   Clock,
@@ -83,7 +84,9 @@ export default function ContactPageClient() {
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
 
   const cells = useMemo(() => buildMonthCells(view), [view]);
-  const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim();
+  const calendlyUrl =
+    process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() ||
+    "https://calendly.com/prajwal-astrentech/30min";
 
   useEffect(() => {
     const intent = searchParams.get("intent");
@@ -103,11 +106,6 @@ export default function ContactPageClient() {
   function confirmBooking() {
     if (!selectedDay || !selectedSlot) return;
 
-    if (calendlyUrl) {
-      window.open(calendlyUrl, "_blank", "noopener,noreferrer");
-      return;
-    }
-
     const subject = encodeURIComponent("Architecture Scoping, 30-minute session");
     const body = encodeURIComponent(
       `I'd like to book a 30-minute architecture scoping session.\n\nPreferred date: ${formatDateLabel(selectedDay)}\nPreferred time: ${selectedSlot} IST\n\nInfrastructure challenges / context:\n`
@@ -123,19 +121,29 @@ export default function ContactPageClient() {
             <h2 className="cp-section-title">{contactPage.inbound.title}</h2>
 
             <ul className="cp-channels">
-              {contactPage.channels.map((channel) => (
-                <li key={channel.label}>
-                  <span className="cp-channel-label">{channel.label}</span>
-                  <a href={channel.href} className="cp-channel-value">
-                    {channel.label === "Number" ? (
-                      <Phone size={14} aria-hidden />
-                    ) : (
-                      <Mail size={14} aria-hidden />
-                    )}
-                    {channel.value}
-                  </a>
-                </li>
-              ))}
+              {contactPage.channels.map((channel) => {
+                const external = channel.href.startsWith("http");
+                return (
+                  <li key={channel.label}>
+                    <span className="cp-channel-label">{channel.label}</span>
+                    <a
+                      href={channel.href}
+                      className="cp-channel-value"
+                      target={external ? "_blank" : undefined}
+                      rel={external ? "noopener noreferrer" : undefined}
+                    >
+                      {channel.label === "Number" ? (
+                        <Phone size={14} aria-hidden />
+                      ) : channel.label === "Calendly" ? (
+                        <CalendarDays size={14} aria-hidden />
+                      ) : (
+                        <Mail size={14} aria-hidden />
+                      )}
+                      {channel.value}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="cp-hq">
@@ -176,106 +184,110 @@ export default function ContactPageClient() {
                   className="cp-calendly-frame"
                   loading="lazy"
                 />
+                <p className="cp-cal-note">
+                  Opens the Astrenox calendar portal to finalize your booking.
+                </p>
               </div>
-            ) : null}
-            <div className="cp-cal-header">
-              <button
-                type="button"
-                className="cp-cal-nav"
-                onClick={() => shiftMonth(-1)}
-                aria-label="Previous month"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <h3>
-                {MONTHS[view.getMonth()]} {view.getFullYear()}
-              </h3>
-              <button
-                type="button"
-                className="cp-cal-nav"
-                onClick={() => shiftMonth(1)}
-                aria-label="Next month"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-
-            <div className="cp-cal-weekdays" aria-hidden>
-              {WEEKDAYS.map((day) => (
-                <span key={day}>{day}</span>
-              ))}
-            </div>
-
-            <div className="cp-cal-grid" role="grid" aria-label="Scoping calendar">
-              {cells.map((day, index) => {
-                if (!day) {
-                  return <span key={`empty-${index}`} className="cp-cal-day is-empty" />;
-                }
-
-                const selectable = isSelectable(day, today);
-                const selected = selectedDay ? sameDay(day, selectedDay) : false;
-                const isToday = sameDay(day, today);
-
-                return (
+            ) : (
+              <>
+                <div className="cp-cal-header">
                   <button
-                    key={day.toISOString()}
                     type="button"
-                    role="gridcell"
-                    disabled={!selectable}
-                    className={[
-                      "cp-cal-day",
-                      selectable ? "is-available" : "is-disabled",
-                      selected ? "is-selected" : "",
-                      isToday ? "is-today" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    onClick={() => {
-                      setSelectedDay(day);
-                      setSelectedSlot(null);
-                    }}
+                    className="cp-cal-nav"
+                    onClick={() => shiftMonth(-1)}
+                    aria-label="Previous month"
                   >
-                    {day.getDate()}
+                    <ChevronLeft size={18} />
                   </button>
-                );
-              })}
-            </div>
+                  <h3>
+                    {MONTHS[view.getMonth()]} {view.getFullYear()}
+                  </h3>
+                  <button
+                    type="button"
+                    className="cp-cal-nav"
+                    onClick={() => shiftMonth(1)}
+                    aria-label="Next month"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
 
-            <div className="cp-slots">
-              <p className="cp-slots-label">Available times (IST)</p>
-              <div className="cp-slots-grid">
-                {contactPage.timeSlots.map((slot) => {
-                  const enabled = Boolean(selectedDay);
-                  const active = selectedSlot === slot;
-                  return (
-                    <button
-                      key={slot}
-                      type="button"
-                      disabled={!enabled}
-                      className={`cp-slot${active ? " is-selected" : ""}`}
-                      onClick={() => setSelectedSlot(slot)}
-                    >
-                      {slot}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+                <div className="cp-cal-weekdays" aria-hidden>
+                  {WEEKDAYS.map((day) => (
+                    <span key={day}>{day}</span>
+                  ))}
+                </div>
 
-            <button
-              type="button"
-              className="cp-btn-primary cp-btn-confirm"
-              disabled={!selectedDay || !selectedSlot}
-              onClick={confirmBooking}
-            >
-              Confirm scoping session
-              <ArrowRight size={16} aria-hidden />
-            </button>
-            <p className="cp-cal-note">
-              {calendlyUrl
-                ? "Opens the Astrenox calendar portal to finalize your booking."
-                : "Opens a prefilled email to prajwal@astrentech.com with your preferred slot."}
-            </p>
+                <div className="cp-cal-grid" role="grid" aria-label="Scoping calendar">
+                  {cells.map((day, index) => {
+                    if (!day) {
+                      return <span key={`empty-${index}`} className="cp-cal-day is-empty" />;
+                    }
+
+                    const selectable = isSelectable(day, today);
+                    const selected = selectedDay ? sameDay(day, selectedDay) : false;
+                    const isToday = sameDay(day, today);
+
+                    return (
+                      <button
+                        key={day.toISOString()}
+                        type="button"
+                        role="gridcell"
+                        disabled={!selectable}
+                        className={[
+                          "cp-cal-day",
+                          selectable ? "is-available" : "is-disabled",
+                          selected ? "is-selected" : "",
+                          isToday ? "is-today" : "",
+                        ]
+                          .filter(Boolean)
+                          .join(" ")}
+                        onClick={() => {
+                          setSelectedDay(day);
+                          setSelectedSlot(null);
+                        }}
+                      >
+                        {day.getDate()}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="cp-slots">
+                  <p className="cp-slots-label">Available times (IST)</p>
+                  <div className="cp-slots-grid">
+                    {contactPage.timeSlots.map((slot) => {
+                      const enabled = Boolean(selectedDay);
+                      const active = selectedSlot === slot;
+                      return (
+                        <button
+                          key={slot}
+                          type="button"
+                          disabled={!enabled}
+                          className={`cp-slot${active ? " is-selected" : ""}`}
+                          onClick={() => setSelectedSlot(slot)}
+                        >
+                          {slot}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  className="cp-btn-primary cp-btn-confirm"
+                  disabled={!selectedDay || !selectedSlot}
+                  onClick={confirmBooking}
+                >
+                  Confirm scoping session
+                  <ArrowRight size={16} aria-hidden />
+                </button>
+                <p className="cp-cal-note">
+                  Opens a prefilled email to prajwal@astrentech.com with your preferred slot.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </section>
